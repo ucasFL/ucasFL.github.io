@@ -116,7 +116,7 @@
 <meta property="og:description" content="探索哈希表hash table的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。
 哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：&amp;quo">
 <meta property="og:image" content="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png">
-<meta property="og:updated_time" content="2017-09-02T04:48:27.921Z">
+<meta property="og:updated_time" content="2017-09-02T04:55:22.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="听说过时间表，但是你是否知道“哈希表”">
 <meta name="twitter:description" content="探索哈希表hash table的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。
@@ -448,6 +448,7 @@
       
         <p>探索<ruby>哈希表<rt>hash table</rt></ruby>的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。</p>
 <p>哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：<code>&quot;苹果&quot; =&gt; &quot;一种拥有水果之王之称的绿色水果&quot;</code>。这里，“苹果”是我的关键字，而“一种拥有水果之王之称的水果”是与之关联的值。</p>
+<a id="more"></a>
 <p>还有一个例子可以让我们更清楚，哈希表的内容如下：</p>
 <figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">"面包"</span> =&gt; <span class="string">"固体"</span></div><div class="line"><span class="string">"水"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"汤"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"玉米片"</span> =&gt; <span class="string">"固体"</span></div></pre></td></tr></table></figure>
 <p>我想知道<em>面包</em>是固体还是液体，所以我将查询哈希表来获取与之相关的值，该哈希表将返回“固体”给我。现在，我们大致了解了哈希表是如何工作的。使用哈希表需要注意的另一个重要概念是每一个关键字都是唯一的。如果到了明天，我拥有一个面包奶昔（它是液体），那么我们需要更新哈希表，把“固体”改为“液体”来反映哈希表的改变。所以，我们需要添加一条记录到字典中：关键字为“面包”，对应的值为“液体”。你能发现下面的表发生了什么变化吗？（LCTT 译注：不知道这个“面包奶昔”是一种什么食物，大约是一种面包做的奶昔，总之你就理解成作者把液体的“面包奶昔”当成一种面包吧。）</p>

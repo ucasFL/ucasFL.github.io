@@ -446,47 +446,15 @@
 
       
         
-          
-            <p>探索<ruby>哈希表<rt>hash table</rt></ruby>的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。</p>
+          <p>探索<ruby>哈希表<rt>hash table</rt></ruby>的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。</p>
 <p>哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：<code>&quot;苹果&quot; =&gt; &quot;一种拥有水果之王之称的绿色水果&quot;</code>。这里，“苹果”是我的关键字，而“一种拥有水果之王之称的水果”是与之关联的值。</p>
-<p>还有一个例子可以让我们更清楚，哈希表的内容如下：</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">"面包"</span> =&gt; <span class="string">"固体"</span></div><div class="line"><span class="string">"水"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"汤"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"玉米片"</span> =&gt; <span class="string">"固体"</span></div></pre></td></tr></table></figure>
-<p>我想知道<em>面包</em>是固体还是液体，所以我将查询哈希表来获取与之相关的值，该哈希表将返回“固体”给我。现在，我们大致了解了哈希表是如何工作的。使用哈希表需要注意的另一个重要概念是每一个关键字都是唯一的。如果到了明天，我拥有一个面包奶昔（它是液体），那么我们需要更新哈希表，把“固体”改为“液体”来反映哈希表的改变。所以，我们需要添加一条记录到字典中：关键字为“面包”，对应的值为“液体”。你能发现下面的表发生了什么变化吗？（LCTT 译注：不知道这个“面包奶昔”是一种什么食物，大约是一种面包做的奶昔，总之你就理解成作者把液体的“面包奶昔”当成一种面包吧。）</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">"面包"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"水"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"汤"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"玉米片"</span> =&gt; <span class="string">"固体"</span></div></pre></td></tr></table></figure>
-<p>没错，“面包”对应的值被更新为了“液体”。</p>
-<p><strong>关键字是唯一的</strong>，我的面包不能既是液体又是固体。但是，是什么使得该数据结构与其他数据结构相比如此特殊呢？为什么不使用一个<a href="https://en.wikipedia.org/wiki/Array_data_type" target="_blank" rel="external">数组</a>来代替呢？它取决于问题的本质。对于某一个特定的问题，使用数组来描述可能会更好，因此，我们需要注意的关键点就是，<strong>我们应该选择最适合问题的数据结构</strong>。例如，如果你需要做的只是存储一个简单的杂货列表，那么使用数组会很适合。考虑下面的两个问题，两个问题的本质完全不同。</p>
-<ol>
-<li>我需要一个水果的列表</li>
-<li>我需要一个水果的列表以及各种水果的价格（每千克）</li>
-</ol>
-<p>正如你在下面所看到的，用数组来存储水果的列表可能是更好的选择。但是，用哈希表来存储每一种水果的价格看起来是更好的选择。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//示例数组</div><div class="line">[<span class="string">"苹果"</span>, <span class="string">"桔子"</span>, <span class="string">"梨子"</span>, <span class="string">"葡萄"</span>]   </div><div class="line">//示例哈希表  </div><div class="line">&#123; <span class="string">"苹果"</span> : 3.05,</div><div class="line">  <span class="string">"桔子"</span> : 5.5,</div><div class="line">  <span class="string">"梨子"</span> : 8.4,</div><div class="line">  <span class="string">"葡萄"</span> : 12.4  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>实际上，有许多的机会需要<a href="https://en.wikipedia.org/wiki/Hash_table#Uses" target="_blank" rel="external">使用</a>哈希表。</p>
-<h3 id="时间以及它对你的意义"><a href="#时间以及它对你的意义" class="headerlink" title="时间以及它对你的意义"></a>时间以及它对你的意义</h3><p><a href="https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/" target="_blank" rel="external">这是对时间复杂度和空间复杂度的一个复习</a>。</p>
-<p>平均情况下，在哈希表中进行搜索、插入和删除记录的时间复杂度均为 <code>O(1)</code> 。实际上，<code>O(1)</code> 读作“大 O 1”，表示常数时间。这意味着执行每一种操作的运行时间不依赖于数据集中数据的数量。我可以保证，查找、插入和删除项目均只花费常数时间，“当且仅当”哈希表的实现方式正确时。如果实现不正确，可能需要花费很慢的 <code>O(n)</code> 时间，尤其是当所有的数据都映射到了哈希表中的同一位置/点。</p>
-<h3 id="构建一个好的哈希表"><a href="#构建一个好的哈希表" class="headerlink" title="构建一个好的哈希表"></a>构建一个好的哈希表</h3><p>到目前为止，我们已经知道如何使用哈希表了，但是如果我们想<strong>构建</strong>一个哈希表呢？本质上我们需要做的就是把一个字符串（比如 “狗”）映射到一个哈希代码（一个生成的数），即映射到一个数组的索引。你可能会问，为什么不直接使用索引呢？为什么要这么麻烦呢？因为通过这种方式我们可以直接查询 “狗” 并立即得到 “狗” 所在的位置，<code>String name = Array[&quot;狗&quot;] // 名字叫拉斯</code>。而使用索引查询名称时，可能出现的情况是我们不知道名称所在的索引。比如，<code>String name = Array[10] // 该名字现在叫鲍勃</code> - 那不是我的狗的名字。这就是把一个字符串映射到一个哈希代码的益处（对应于一个数组的索引而言）。我们可以通过使用模运算符和哈希表的大小来计算出数组的索引：<code>index = hash_code % table_size</code>。 </p>
-<p>我们需要避免的另一种情况是两个关键字映射到同一个索引，这叫做<strong>哈希碰撞</strong>，如果哈希函数实现的不好，这很容易发生。实际上，每一个输入比输出多的哈希函数都有可能发生碰撞。通过下面的同一个函数的两个输出来展示一个简单的碰撞：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> cat_idx = hashCode(<span class="string">"猫"</span>) % table_size; <span class="comment">//cat_idx 现在等于 1</span></div><div class="line"><span class="keyword">int</span> dog_idx = hashCode(<span class="string">"狗"</span>) % table_size; <span class="comment">//dog_idx 也等于 1</span></div></pre></td></tr></table></figure>
-<p>我们可以看到，现在两个数组的索引均是 1 。这样将会出现两个值相互覆盖，因为它们被写到了相同的索引中。如果我们查找 “猫” 的值，将会返回 “拉斯” ，但是这并不是我们想要的。有许多可以<a href="https://en.wikipedia.org/wiki/Hash_table#Collision_resolution" target="_blank" rel="external">解决哈希碰撞</a>的方法，但是更受欢迎的一种方法叫做<strong>链接</strong>。链接的想法就是对于数组的每一个索引位置都有一个链表，如果碰撞发生，值就被存到链表中。因此，在前面的例子中，我们将会得到我们需要的值，但是我们需要搜索数组中索引为 1 的位置上的链表。伴有链接的哈希实现需要 <code>O(1 + α)</code> 时间，其中 α 是装载因子，它可以表示为 n/k，其中 n 是哈希表中的记录数目，k 是哈希表中可用位置的数目。但是请记住，只有当你给出的关键字非常随机时，这一结论才正确（依赖于 <a href="https://en.wikipedia.org/wiki/SUHA_(computer_science" target="_blank" rel="external">SUHA</a>）。</p>
-<p>这是做了一个很大的假设，因为总是有可能任何不相等的关键字都散列到同一点。这一问题的一个解决方法是去除哈希表中关键字对随机性的依赖，转而把随机性集中于关键字是如何被散列的，从而减少矛盾发生的可能性。这被称为……</p>
-<h3 id="通用散列"><a href="#通用散列" class="headerlink" title="通用散列"></a>通用散列</h3><p>这个观念很简单，从<ruby>通用散列<rt>universal hash</rt></ruby>家族集合随机选择一个哈希函数 h 来计算哈希代码。换句话来说，就是选择任何一个随机的哈希函数来散列关键字。通过这种方法，两个不同的关键字的散列结果相同的可能性将非常低（LCTT 译注：原文是“not be the same”，应是笔误）。我只是简单的提一下，如果不相信我那么请相信<a href="https://en.wikipedia.org/wiki/Universal_hashing#Mathematical_guarantees" target="_blank" rel="external">数学</a>。实现这一方法时需要注意的另一件事是如果选择了一个不好的通用散列家族，它会把时间和空间复杂度拖到 <code>O(U)</code>，其中 U 是散列家族的大小。而其中的挑战就是找到一个不需要太多时间来计算，也不需要太多空间来存储的哈希家族。</p>
-<h3 id="上帝哈希函数"><a href="#上帝哈希函数" class="headerlink" title="上帝哈希函数"></a>上帝哈希函数</h3><p>追求完美是人的天性。我们是否能够构建一个<em>完美的哈希函数</em>，从而能够把关键字映射到整数集中，并且几乎<em>没有碰撞</em>。好消息是我们能够在一定程度上做到，但是我们的数据必须是静态的（这意味着在一定时间内没有插入/删除/更新）。一个实现完美哈希函数的方法就是使用 <ruby>2 级哈希<rt>2-Level Hashing</rt></ruby>，它基本上是我们前面讨论过的两种方法的组合。它使用<em>通用散列</em>来选择使用哪个哈希函数，然后通过<em>链接</em>组合起来，但是这次不是使用链表数据结构，而是使用另一个哈希表。让我们看一看下面它是怎么实现的： </p>
-<p><a href="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png" target="_blank" rel="external"><img src="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png" alt="2-Level Hashing" title="2-Level Hashing"></a> </p>
-<p><strong>但是这是如何工作的以及我们如何能够确保无需关心碰撞？</strong></p>
-<p>它的工作方式与<a href="https://en.wikipedia.org/wiki/Birthday_problem" target="_blank" rel="external">生日悖论</a>相反。它指出，在随机选择的一堆人中，会有一些人生日相同。但是如果一年中的天数远远大于人数（平方以上），那么有极大的可能性所有人的生日都不相同。所以这二者是如何相关的？对于每一个链接哈希表，其大小均为第一级哈希表大小的平方。那就是说，如果有两个元素被散列到同一个点，那么链接哈希表的大小将为 4 。大多数时候，链接哈希表将会非常稀疏/空。</p>
-<p>重复下面两步来确保无需担心碰撞：</p>
-<ul>
-<li>从通用散列家族中选择一个哈希函数来计算</li>
-<li>如果发生碰撞，那么继续从通用散列家族中选择另一个哈希函数来计算</li>
-</ul>
-<p>字面上看就是这样（这是一个 <code>O(n^2)</code> 空间的解）。如果需要考虑空间问题，那么显然需要另一个不同的方法。但是值得庆幸的是，该过程平均只需要进行<strong>两次</strong>。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>只有具有一个好的哈希函数才能算得上是一个好的哈希表。在同时保证功能实现、时间和空间的提前下构建一个完美的哈希函数是一件很困难的事。我推荐你在解决问题的时候首先考虑哈希表，因为它能够为你提供巨大的性能优势，而且它能够对应用程序的可用性产生显著差异。哈希表和完美哈希函数常被用于实时编程应用中，并且在各种算法中都得到了广泛应用。你见或者不见，哈希表就在这儿。</p>
-<hr>
-<p>via: <a href="http://www.zeroequalsfalse.press/2017/02/20/hashtables/" target="_blank" rel="external">http://www.zeroequalsfalse.press/2017/02/20/hashtables/</a></p>
-<p>作者：<a href="http://www.zeroequalsfalse.press/about" target="_blank" rel="external">Marty Jacobs</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/02/Hash-Tables/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -649,204 +617,18 @@
 
       
         
-          
-            <p><img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/Ruby-Montage.png?w=565&amp;ssl=1" alt=""></p>
+          <p><img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/Ruby-Montage.png?w=565&amp;ssl=1" alt=""></p>
 <h3 id="开源的-Ruby-书籍"><a href="#开源的-Ruby-书籍" class="headerlink" title="开源的 Ruby 书籍"></a>开源的 Ruby 书籍</h3><p>Ruby 是由 Yukihiro “Matz” Matsumoto 开发的一门通用目的、脚本化、结构化、灵活且完全面向对象的编程语言。它具有一个完全动态类型系统，这意味着它的大多数类型检查是在运行的时候进行，而非编译的时候。因此程序员不必过分担心是整数类型还是字符串类型。Ruby 会自动进行内存管理，它具有许多和 Python、Perl、Lisp、Ada、Eiffel 和 Smalltalk 相同的特性。</p>
 <p>Ruby on Rails 框架对于 Ruby 的流行起到了重要作用，它是一个全栈 Web 框架，目前已被用来创建许多受欢迎的应用，包括 Basecamp、GitHub、Shopify、Airbnb、Twitch、SoundCloud、Hulu、Zendesk、Square 和 Highise 。</p>
 <p>Ruby 具有很高的可移植性性，在 Linux、Windows、Mac OS X、Cygwin、FreeBSD、NetBSD、OpenBSD、BSD/OS、Solaris、Tru64 UNIX、HP-UX 以及其他许多系统上均可运行。目前，Ruby 在 TIOBE 编程社区排名 12 。</p>
 <p>这篇文章有 9 本很优秀的推荐书籍，有针对包括初学者、中级程序员和高级程序员的书籍。当然，所有的书籍都是在开源许可下发布的。</p>
-<p>这篇文章是<a href="https://www.ossblog.org/opensourcebooks/" target="_blank" rel="external"> OSSBlog 的系列文章开源编程书籍</a>的一部分。</p>
-<h3 id="《Ruby-Best-Practices》"><a href="#《Ruby-Best-Practices》" class="headerlink" title="《Ruby Best Practices》"></a>《<a href="https://github.com/practicingruby/rbp-book/tree/gh-pages/pdfs" target="_blank" rel="external">Ruby Best Practices</a>》</h3><p><img src="https://i0.wp.com/www.ossblog.org/wp-content/uploads/2017/03/RubyBestPractices.jpg?resize=200%2C262&amp;ssl=1" alt="Ruby Best Practices"> </p>
-<p>作者： Gregory Brown (328 页)</p>
-<p>《Ruby Best Practices》适合那些希望像有经验的 Ruby 专家一样使用 Ruby 的程序员。本书是由 Ruby 项目 Prawn 的开发者所撰写的，它阐述了如何使用 Ruby 设计美丽的 API 和特定领域语言，以及如何利用函数式编程想法和技术，从而简化代码，提高效率。</p>
-<p>《Ruby Best Practices》 更多的内容是关于如何使用 Ruby 来解决问题，它阐述的是你应该使用的最佳解决方案。这本书不是针对 Ruby 初学者的，所以对于编程新手也不会有太多帮助。这本书的假想读者应该对 Ruby 的相应技术有一定理解，并且拥有一些使用 Ruby 来开发软件的经验。</p>
-<p>这本书分为两部分，前八章组成本书的核心部分，后三章附录作为补充材料。</p>
-<p>这本书提供了大量的信息：</p>
-<ul>
-<li>通过测试驱动代码 - 涉及了大量的测试哲学和技术。使用 mocks 和 stubs</li>
-<li>通过利用 Ruby 神秘的力量来设计漂亮的 API：灵活的参数处理和代码块</li>
-<li>利用动态工具包向开发者展示如何构建灵活的界面，实现单对象行为，扩展和修改已有代码，以及程序化地构建类和模块</li>
-<li>文本处理和文件管理集中于正则表达式，文件、临时文件标准库以及文本处理策略实战</li>
-<li>函数式编程技术优化了模块代码组织、存储、无穷目录以及更高顺序程序。</li>
-<li>理解代码如何出错以及为什么会出错，阐述如何处理日志记录</li>
-<li>通过利用 Ruby 的多语言能力削弱文化屏障</li>
-<li>熟练的项目维护</li>
-</ul>
-<p>本书为开源书籍，在 CC NC-SA 许可证下发布。</p>
-<p><a href="https://github.com/practicingruby/rbp-book/tree/gh-pages/pdfs" target="_blank" rel="external">在此下载《Ruby Best Practices》</a>。 </p>
-<h3 id="《I-Love-Ruby》"><a href="#《I-Love-Ruby》" class="headerlink" title="《I Love Ruby》"></a>《<a href="https://mindaslab.github.io/I-Love-Ruby/" target="_blank" rel="external">I Love Ruby</a>》</h3><p> <img src="https://i2.wp.com/www.ossblog.org/wp-content/uploads/2017/03/LoveRuby.png?resize=200%2C282&amp;ssl=1" alt="I Love Ruby"></p>
-<p>作者： Karthikeyan A K (246 页)</p>
-<p>《I Love Ruby》以比传统的介绍更高的深度阐述了基本概念和技术。该方法为编写有用、正确、易维护和高效的 Ruby 代码提供了一个坚实的基础。</p>
-<p>章节内容涵盖：</p>
-<ul>
-<li>变量</li>
-<li>字符串</li>
-<li>比较和逻辑</li>
-<li>循环</li>
-<li>数组</li>
-<li>哈希和符号</li>
-<li>Ranges</li>
-<li>函数</li>
-<li>变量作用域</li>
-<li>类 &amp; 对象</li>
-<li>Rdoc</li>
-<li>模块和 Mixins</li>
-<li>日期和时间</li>
-<li>文件</li>
-<li>Proc、匿名 和 块</li>
-<li>多线程</li>
-<li>异常处理</li>
-<li>正则表达式</li>
-<li>Gems</li>
-<li>元编程</li>
-</ul>
-<p>在 GNU 自由文档许可证之下，你可以复制、发布和修改本书，1.3 或任何之后版本由自由软件基金会发布。</p>
-<p><a href="https://mindaslab.github.io/I-Love-Ruby/" target="_blank" rel="external">点此下载《I Love Ruby》</a>。</p>
-<h3 id="Programming-Ruby-–-The-Pragmatic-Programmer’s-Guide"><a href="#Programming-Ruby-–-The-Pragmatic-Programmer’s-Guide" class="headerlink" title="Programming Ruby – The Pragmatic Programmer’s Guide"></a><a href="http://ruby-doc.com/docs/ProgrammingRuby/" target="_blank" rel="external">Programming Ruby – The Pragmatic Programmer’s Guide</a></h3><p><img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/ProgrammingRuby.jpeg?resize=200%2C248&amp;ssl=1" alt="Programming Ruby - The Pragmatic Programmer&#39;s Guide"> </p>
-<p>作者： David Thomas, Andrew Hunt (HTML)</p>
-<p>《Programming Ruby – The Pragmatic Programmer’s Guide》是一本 Ruby 编程语言的教程和参考书。使用 Ruby，你将能够写出更好的代码，更加有效率，并且使编程变成更加享受的体验。</p>
-<p>内容涵盖以下部分：</p>
-<ul>
-<li>类、对象和变量</li>
-<li>容器、块和迭代器</li>
-<li>标准类型</li>
-<li>更多方法</li>
-<li>表达式</li>
-<li>异常、捕获和抛出</li>
-<li>模块</li>
-<li>基本输入和输出</li>
-<li>线程和进程</li>
-<li>何时抓取问题</li>
-<li>Ruby 和它的世界、Web、Tk 和 微软 Windows</li>
-<li>扩展 Ruby</li>
-<li>映像、对象空间和分布式 Ruby</li>
-<li>标准库</li>
-<li>面向对象设计库</li>
-<li>网络和 Web 库</li>
-<li>嵌入式文件</li>
-<li>交互式 Ruby shell</li>
-</ul>
-<p>这本书的第一版在开放发布许可证 1.0 版或更新版的许可下发布。本书更新后的第二版涉及 Ruby 1.8 ，并且包括所有可用新库的描述，但是它不是在免费发行许可证下发布的。</p>
-<p><a href="http://ruby-doc.com/docs/ProgrammingRuby/" target="_blank" rel="external">点此下载《Programming Ruby – The Pragmatic Programmer’s Guide》</a>。</p>
-<h3 id="《Why’s-Poignant-Guide-to-Ruby》"><a href="#《Why’s-Poignant-Guide-to-Ruby》" class="headerlink" title="《Why’s (Poignant) Guide to Ruby》"></a>《<a href="http://poignant.guide/" target="_blank" rel="external">Why’s (Poignant) Guide to Ruby</a>》</h3><p><img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/WhysGuideRuby.jpg?resize=200%2C218&amp;ssl=1" alt="Why’s (Poignant) Guide to Ruby"> </p>
-<p>作者：why the lucky stiff (176 页)</p>
-<p>《Why’s (poignant) Guide to Ruby》是一本 Ruby 编程语言的介绍书籍。该书包含一些冷幽默，偶尔也会出现一些和主题无关的内容。本书包含的笑话在 Ruby 社区和卡通角色中都很出名。</p>
-<p>本书的内容包括：</p>
-<ul>
-<li>关于本书</li>
-<li>Kon’nichi wa, Ruby</li>
-<li>一个快速（希望是无痛苦的）的 Ruby 浏览（伴随卡通角色）：Ruby 核心概念的基本介绍</li>
-<li>代码浮动小叶：评估和值，哈希和列表</li>
-<li>组成规则的核心部分：case/when、while/until、变量作用域、块、方法、类定义、类属性、对象、模块、IRB 中的内省、dup、self 和 rbconfig 模块</li>
-<li>中心：元编程、正则表达式</li>
-<li>当你打算靠近胡须时：在已存在类中发送一个新方法</li>
-<li>天堂演奏</li>
-</ul>
-<p>本书在 CC-SA 许可证许可下可用。</p>
-<p><a href="http://poignant.guide/" target="_blank" rel="external">点此下载《Why’s (poignant) Guide to Ruby》</a>。</p>
-<h3 id="《Ruby-Hacking-Guide》"><a href="#《Ruby-Hacking-Guide》" class="headerlink" title="《Ruby Hacking Guide》"></a>《<a href="http://ruby-hacking-guide.github.io/" target="_blank" rel="external">Ruby Hacking Guide</a>》</h3><p><img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/RubyHackingGuide.png?resize=200%2C250&amp;ssl=1" alt="Ruby Hacking Guide"> </p>
-<p>作者： Minero Aoki ，翻译自 Vincent Isambart 和 Clifford Escobar Caoille (HTML)</p>
-<p>通过阅读本书可以达成下面的目标：</p>
-<ul>
-<li>拥有关于 Ruby 结构的知识</li>
-<li>掌握一般语言处理的知识</li>
-<li>收获阅读源代码的技能</li>
-</ul>
-<p>本书分为四个部分：</p>
-<ul>
-<li>对象</li>
-<li>动态分析</li>
-<li>评估</li>
-<li>外部评估</li>
-</ul>
-<p>要想从本书中收获最多的东西，需要具备一定 C 语言的知识和基本的面向对象编程知识。本书在 CC-NC-SA 许可证许可下发布。</p>
-<p>原书的官方支持网站为 <a href="http://i.loveruby.net/ja/rhg/" target="_blank" rel="external">i.loveruby.net/ja/rhg/</a></p>
-<p><a href="http://ruby-hacking-guide.github.io/" target="_blank" rel="external">点此下载《Ruby Hacking Guide》</a></p>
-<h3 id="《The-Book-Of-Ruby》"><a href="#《The-Book-Of-Ruby》" class="headerlink" title="《The Book Of Ruby》"></a>《<a href="http://www.sapphiresteel.com/ruby-programming/The-Book-Of-Ruby.html" target="_blank" rel="external">The Book Of Ruby</a>》</h3><p><img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/BookRuby.jpg?resize=200%2C270&amp;ssl=1" alt="The Book Of Ruby"> </p>
-<p>作者： How Collingbourne (425 页)</p>
-<p>《The Book Of Ruby》是一本免费的 Ruby 编程高级教程。</p>
-<p>《The Book Of Ruby》以 PDF 文件格式提供，并且每一个章节的所有例子都伴有可运行的源代码。同时，也有一个介绍来阐述如何在 Steel 或其他任何你喜欢的编辑器/IDE 中运行这些 Ruby 代码。它主要集中于 Ruby 语言的 1.8.x 版本。</p>
-<p>本书被分成很小的块。每一个章节介绍一个主题，并且分成几个不同的子话题。每一个编程主题由一个或多个小的自包含、可运行的 Ruby 程序构成。</p>
-<ul>
-<li>字符串、数字、类和对象 - 获取输入和输出、字符串和外部评估、数字和条件测试：if … then、局部变量和全局变量、类和对象、实例变量、消息、方法、多态性、构造器和检属性和类变量 - 超类和子类，超类传参，访问器方法，’set‘ 访问器，属性读写器、超类的方法调用，以及类变量</li>
-<li>类等级、属性和类变量 - 超类和子类，超类传参，访问器方法，’set‘ 访问器，属性读写器、超类的方法调用，以及类变量</li>
-<li>字符串和 Ranges - 用户自定义字符串定界符、引号等更多</li>
-<li>数组和哈希 - 展示如何创建一系列对象</li>
-<li>循环和迭代器 - for 循环、代码块、while 循环、while 修改器以及 until 循环</li>
-<li>条件语句 - If..Then..Else、And..Or..Not、If..Elsif、unless、if 和 unless 修改器、以及 case 语句</li>
-<li>方法 - 类方法、类变量、类方法是用来干什么的、Ruby 构造器、单例方法、单例类、重载方法以及更多</li>
-<li>传递参数和返回值 - 实例方法、类方法、单例方法、返回值、返回多重值、默认参数和多重参数、赋值和常量传递以及更多</li>
-<li>异常处理 - 涉及 rescue、ensure、else、错误数量、retry 和 raise</li>
-<li>块、Procs 和 匿名 - 阐述为什么它们对 Ruby 来说很特殊</li>
-<li>符号 - 符号和字符串、符号和变量以及为什么应该使用符号</li>
-<li>模块和 Mixins</li>
-<li>文件和 IO - 打开和关闭文件、文件和目录、复制文件、目录询问、一个关于递归的讨论以及按大小排序</li>
-<li>YAML - 包括嵌套序列，保存 YAML 数据以及更多</li>
-<li>Marshal - 提供一个保存和加载数据的可选择方式</li>
-<li>正则表达式 - 进行匹配、匹配群组以及更多</li>
-<li>线程 - 向你展示如何同时运行多个任务</li>
-<li>调试和测试 - 涉及交互式 Ruby shell（IRB.exe）、debugging 和 单元测试</li>
-<li>Ruby on Rails - 浏览一个创建博客的实践指南</li>
-<li>动态编程 - 自修改程序、重运算魔法、特殊类型的运算、添加变量和方法以及更多</li>
-</ul>
-<p>本书由 SapphireSteel Software 发布，SapphireSteel Software 是用于 Visual Studio 的 Ruby In Steel 集成开发环境的开发者。读者可以复制和发布本书的文本和代码（免费版）</p>
-<p><a href="http://www.sapphiresteel.com/ruby-programming/The-Book-Of-Ruby.html" target="_blank" rel="external">点此下载《The Book Of Ruby》</a></p>
-<h3 id="《The-Little-Book-Of-Ruby》"><a href="#《The-Little-Book-Of-Ruby》" class="headerlink" title="《The Little Book Of Ruby》"></a>《<a href="http://www.sapphiresteel.com/ruby-programming/The-Book-Of-Ruby.html" target="_blank" rel="external">The Little Book Of Ruby</a>》</h3><p> <img src="https://i0.wp.com/www.ossblog.org/wp-content/uploads/2017/03/TheLittleBookRuby.png?resize=200%2C259&amp;ssl=1" alt="The Little Book of Ruby"> </p>
-<p>作者： Huw Collingbourne (87 页)</p>
-<p>《The Little Book of Ruby》是一本一步接一步的 Ruby 编程教程。它指导读者浏览 Ruby 的基础。另外，它分享了《The Book of Ruby》一书的内容，但是它旨在作为一个简化的教程来阐述 Ruby 的主要特性。</p>
-<p>章节内容涵盖：</p>
-<ul>
-<li>字符串和方法 - 包括外部评估。详细描述了 Ruby 方法的语法</li>
-<li>类和对象 - 阐述如何创建一个新类型的对象</li>
-<li>类等级 - 一个特殊类型的类，其为一些其他类的简化并且继承了其他一些类的特性</li>
-<li>访问器、属性、类变量 - 访问器方法，属性读写器，属性创建变量，调用超类方法以及类变量探索</li>
-<li>数组 - 学习如何创建一系列对象：数组包括多维数组</li>
-<li>哈希 - 涉及创建哈希表，为哈希表建立索引以及哈希操作等</li>
-<li>循环和迭代器 - for 循环、块、while 循环、while 修饰器以及 until 循环</li>
-<li>条件语句 - If..Then..Else、And..Or..Not、If..Elsif、unless、if 和 unless 修饰器以及 case 语句</li>
-<li>模块和 Mixins - 包括模块方法、模块作为名字空间模块实例方法、模块或 ‘mixins’、来自文件的模块和预定义模块</li>
-<li>保存文件以及更多内容</li>
-</ul>
-<p>本书可免费复制和发布，只需保留原始文本且注明版权信息。</p>
-<p><a href="http://www.sapphiresteel.com/ruby-programming/The-Book-Of-Ruby.html" target="_blank" rel="external">点此下载《The Little Book of Ruby》</a></p>
-<h3 id="《Kestrels-Quirky-Birds-and-Hopeless-Egocentricity》"><a href="#《Kestrels-Quirky-Birds-and-Hopeless-Egocentricity》" class="headerlink" title="《Kestrels, Quirky Birds, and Hopeless Egocentricity》"></a>《<a href="https://leanpub.com/combinators" target="_blank" rel="external">Kestrels, Quirky Birds, and Hopeless Egocentricity</a>》</h3><p> <img src="https://i2.wp.com/www.ossblog.org/wp-content/uploads/2017/03/KestrelsQuirkyBirds.jpeg?resize=200%2C259&amp;ssl=1" alt="Kestrels, Quirky Birds, and Hopeless Egocentricity"> </p>
-<p>作者： Reg “raganwald” Braithwaite (123 页)</p>
-<p>《Kestrels, Quirky Birds, and Hopeless Egocentricity》是通过收集 “Raganwald” Braithwaite 的关于组合逻辑、Method Combinators 以及 Ruby 元编程的系列文章而形成的一本方便的电子书。</p>
-<p>本书提供了通过使用 Ruby 编程语言来应用组合逻辑的一个基本介绍。组合逻辑是一种数学表示方法，它足够强大，从而用于解决集合论问题以及计算中的问题。</p>
-<p>在这本书中，读者会会探讨到一些标准的 Combinators，并且对于每一个 Combinators，书中都用 Ruby 编程语言写程序探讨了它的一些结果。在组合逻辑上，Combinators 之间组合并相互改变，书中的 Ruby 例子注重组合和修改 Ruby 代码。通过像 K Combinator 和 .tap 方法这样的简单例子，本书阐述了元编程的理念和递归 Combinators 。</p>
-<p>本书在 MIT 许可证许可下发布。</p>
-<p><a href="https://leanpub.com/combinators" target="_blank" rel="external">点此下载《Kestrels, Quirky Birds, and Hopeless Egocentricity》</a></p>
-<h3 id="《Ruby-Programming》"><a href="#《Ruby-Programming》" class="headerlink" title="《Ruby Programming》"></a>《<a href="https://en.wikibooks.org/wiki/Ruby_Programming" target="_blank" rel="external">Ruby Programming</a>》</h3><p> <img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/RubyProgrammingWikibooks.png?resize=200%2C285&amp;ssl=1" alt="Ruby Programming"> </p>
-<p>作者： Wikibooks.org (261 页)</p>
-<p>Ruby 是一种解释性、面向对象的编程语言。</p>
-<p>本书被分为几个部分，从而方便按顺序阅读。</p>
-<ul>
-<li>开始 - 向读者展示如何在其中一个操作系统环境中安装并开始使用 Ruby </li>
-<li>Ruby 基础 - 阐述 Ruby 语法的主要特性。它涵盖了字符串、编码、写方法、类和对象以及异常等内容</li>
-<li>Ruby 语义参考</li>
-<li>内建类</li>
-<li>可用模块，涵盖一些标准库</li>
-<li>中级 Ruby 涉及一些稍微高级的话题</li>
-</ul>
-<p>本书在 CC-SA 3.0 本地化许可证许可下发布。</p>
-<p><a href="https://en.wikibooks.org/wiki/Ruby_Programming" target="_blank" rel="external">点此下载《Ruby Programming》</a></p>
-<hr>
-<p>无特定顺序，我将在结束前推荐一些没有在开源许可证下发布但可以免费下载的 Ruby 编程书籍。</p>
-<ul>
-<li><a href="http://www.humblelittlerubybook.com/" target="_blank" rel="external">Mr. Neighborly 的 Humble Little Ruby Book</a> – 一个易读易学的 Ruby 完全指南。</li>
-<li><a href="https://launchschool.com/books/ruby" target="_blank" rel="external">Introduction to Programming with Ruby</a> – 学习编程的基础知识，一切从零开始。</li>
-<li><a href="https://launchschool.com/books/oo_ruby" target="_blank" rel="external">Object Oriented Programming with Ruby</a> – 学习编程的基础知识，一切从零开始。</li>
-<li><a href="https://launchschool.com/books/core_ruby_tools" target="_blank" rel="external">Core Ruby Tools</a> – 对 Ruby 的四个核心工具 Gems、Ruby Version Managers、Bundler 和 Rake 进行了简短的概述。</li>
-<li><a href="https://learnrubythehardway.org/book/" target="_blank" rel="external">Learn Ruby the Hard Way, 3rd Edition</a> – 一本适合初学者的入门书籍。</li>
-<li><a href="https://pine.fm/LearnToProgram" target="_blank" rel="external">Learn to Program</a> – 来自 Chris Pine。</li>
-<li><a href="http://www.techotopia.com/index.php/Ruby_Essentials" target="_blank" rel="external">Ruby Essentials</a> – 一个准确且简单易学的 Ruby 学习指南。</li>
-</ul>
-<hr>
-<p>via: <a href="https://www.ossblog.org/study-ruby-programming-with-open-source-books/" target="_blank" rel="external">https://www.ossblog.org/study-ruby-programming-with-open-source-books/</a></p>
-<p>作者：<a href="https://www.ossblog.org/author/steve/" target="_blank" rel="external">Steve Emms</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/02/Open-Source-Ruby-Books/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
