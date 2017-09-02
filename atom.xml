@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-09-02T04:55:22.911Z</updated>
+  <updated>2017-09-02T05:17:45.892Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Npm 安装 Hexo 失败的解决办法</title>
+    <link href="http://ucasfl.me/2017/09/02/Fix-Error-With-Install-Hexo/"/>
+    <id>http://ucasfl.me/2017/09/02/Fix-Error-With-Install-Hexo/</id>
+    <published>2017-09-02T05:12:32.000Z</published>
+    <updated>2017-09-02T05:17:45.892Z</updated>
+    
+    <content type="html"><![CDATA[<p>用 npm 安装 Hexo 时候出现错误，使用 sudo 安装依旧不行。</p>
+<p>错误如下：</p>
+<a id="more"></a>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">/usr/local/bin/hexo<span class="function"> -&gt;</span> /usr/local/lib/node_modules/hexo-cli/bin/hexo</div><div class="line"></div><div class="line">&gt; dtrace-provider@<span class="number">0.8</span>.<span class="number">5</span> install /usr/local/lib/node_modules/hexo-cli/node_modules/dtrace-provider</div><div class="line">&gt; node scripts/install.js</div><div class="line"></div><div class="line"></div><div class="line">&gt; hexo-util@<span class="number">0.6</span>.<span class="number">1</span> postinstall /usr/local/lib/node_modules/hexo-cli/node_modules/hexo-util</div><div class="line">&gt; <span class="built_in">npm</span> run build:highlight</div><div class="line"></div><div class="line"></div><div class="line">&gt; hexo-util@<span class="number">0.6</span>.<span class="number">1</span> build:highlight /usr/local/lib/node_modules/hexo-cli/node_modules/hexo-util</div><div class="line">&gt; node scripts/build_highlight_alias.js &gt; highlight_alias.json</div><div class="line"></div><div class="line">sh: <span class="number">1</span>: cannot create highlight_alias.json: Permission denied</div><div class="line"><span class="built_in">npm</span> ERR! code ELIFECYCLE</div><div class="line"><span class="built_in">npm</span> ERR! errno <span class="number">2</span></div><div class="line"><span class="built_in">npm</span> ERR! hexo-util@<span class="number">0.6</span>.<span class="number">1</span> build:highlight: `node scripts/build_highlight_alias.js &gt; highlight_alias.json`</div><div class="line"><span class="built_in">npm</span> ERR! Exit status <span class="number">2</span></div><div class="line"><span class="built_in">npm</span> ERR! </div><div class="line"><span class="built_in">npm</span> ERR! Failed at the hexo-util@<span class="number">0.6</span>.<span class="number">1</span> build:highlight script.</div><div class="line"><span class="built_in">npm</span> ERR! This <span class="keyword">is</span> probably <span class="keyword">not</span> a problem <span class="keyword">with</span> <span class="built_in">npm</span>. There <span class="keyword">is</span> likely additional logging output above.</div><div class="line"></div><div class="line">┌──────────────────────────────────────────────────────────┐</div><div class="line">│                 <span class="built_in">npm</span> update check failed                  │</div><div class="line">│           Try running <span class="keyword">with</span> sudo <span class="keyword">or</span> get access            │</div><div class="line">│           <span class="keyword">to</span> the local update config store via           │</div><div class="line">│ sudo chown -R $USER:$(id -gn $USER) <span class="regexp">/home/fenglv/</span>.config │</div><div class="line">└──────────────────────────────────────────────────────────┘</div><div class="line"></div><div class="line"><span class="built_in">npm</span> ERR! A complete log <span class="keyword">of</span> <span class="keyword">this</span> run can be found in:</div><div class="line"><span class="built_in">npm</span> ERR!     <span class="regexp">/home/fenglv/</span>.<span class="built_in">npm</span>/_logs/<span class="number">2017</span>-<span class="number">09</span>-<span class="number">02</span>T05_00_49_566Z-debug.log</div><div class="line"><span class="built_in">npm</span> WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@<span class="number">1.1</span>.<span class="number">2</span> (node_modules/hexo-cli/node_modules/fsevents):</div><div class="line"><span class="built_in">npm</span> WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@<span class="number">1.1</span>.<span class="number">2</span>: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"linux"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</div><div class="line"></div><div class="line"><span class="built_in">npm</span> ERR! code ELIFECYCLE</div><div class="line"><span class="built_in">npm</span> ERR! errno <span class="number">2</span></div><div class="line"><span class="built_in">npm</span> ERR! hexo-util@<span class="number">0.6</span>.<span class="number">1</span> postinstall: `<span class="built_in">npm</span> run build:highlight`</div><div class="line"><span class="built_in">npm</span> ERR! Exit status <span class="number">2</span></div><div class="line"><span class="built_in">npm</span> ERR! </div><div class="line"><span class="built_in">npm</span> ERR! Failed at the hexo-util@<span class="number">0.6</span>.<span class="number">1</span> postinstall script.</div><div class="line"><span class="built_in">npm</span> ERR! This <span class="keyword">is</span> probably <span class="keyword">not</span> a problem <span class="keyword">with</span> <span class="built_in">npm</span>. There <span class="keyword">is</span> likely additional logging output above.</div><div class="line"></div><div class="line"><span class="built_in">npm</span> ERR! A complete log <span class="keyword">of</span> <span class="keyword">this</span> run can be found in:</div><div class="line"><span class="built_in">npm</span> ERR!     <span class="regexp">/home/fenglv/</span>.<span class="built_in">npm</span>/_logs/<span class="number">2017</span>-<span class="number">09</span>-<span class="number">02</span>T05_00_53_335Z-debug.log</div></pre></td></tr></table></figure>
+<p>解决办法：参见<a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions" target="_blank" rel="external">npm 官网</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R user $(npm config get prefix)/&#123;lib/node_modules,bin,share&#125;</div></pre></td></tr></table></figure>
+<p>其中，user 为你的用户名。</p>
+<p>问题解决。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用 npm 安装 Hexo 时候出现错误，使用 sudo 安装依旧不行。&lt;/p&gt;
+&lt;p&gt;错误如下：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://ucasfl.me/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://ucasfl.me/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>听说过时间表，但是你是否知道“哈希表”</title>
@@ -2310,70 +2341,6 @@
     
     
       <category term="Python/main" scheme="http://ucasfl.me/tags/Python-main/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Comm 比较两个排序好的文件</title>
-    <link href="http://ucasfl.me/2017/06/05/Linux-Command-of-comm/"/>
-    <id>http://ucasfl.me/2017/06/05/Linux-Command-of-comm/</id>
-    <published>2017-06-05T14:39:58.000Z</published>
-    <updated>2017-09-02T04:38:29.047Z</updated>
-    
-    <content type="html"><![CDATA[<p>Linux 中的 <code>comm</code> 命令可以让用户按行比较两个<strong>已经排序好</strong>的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。</p>
-<p>下面的例子将会告诉你 <code>comm</code> 命令是如何工作的。</p>
-<h3 id="1、-如何使用-comm-比较两个排序好的文件"><a href="#1、-如何使用-comm-比较两个排序好的文件" class="headerlink" title="1、 如何使用 comm 比较两个排序好的文件"></a>1、 如何使用 <code>comm</code> 比较两个排序好的文件</h3><p>要使用 <code>comm</code> 命令比较两个排序好的文件，只需要把它们的名字作为 <code>comm</code> 命令的参数。下面是通常的语法：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm [<span class="built_in">name</span>-<span class="keyword">of</span>-<span class="keyword">first</span>-<span class="built_in">file</span>] [<span class="built_in">name</span>-<span class="keyword">of</span>-<span class="keyword">second</span>-<span class="built_in">file</span>]</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>比如，假设 <code>file1</code> 和 <code>file2</code> 是这种情况下的两个文件。前者包含下面几行内容：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">001</span></div><div class="line"><span class="number">056</span></div><div class="line"><span class="number">127</span></div><div class="line"><span class="number">258</span></div></pre></td></tr></table></figure>
-<p>而后者包含下面几行内容：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">002</span></div><div class="line"><span class="number">056</span></div><div class="line"><span class="number">167</span></div><div class="line"><span class="number">369</span></div></pre></td></tr></table></figure>
-<p>此时，<code>comm</code> 命令的输出如下图所示：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">comm</span> file1 file2</div></pre></td></tr></table></figure>
-<p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-output.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-output.png" alt=""></a> </p>
-<p>你可以看到，输出包含 3 列。第一列是仅包含在 <code>file1</code> 中的内容，第二列是仅包含在 <code>file2</code> 中的内容，最后，第三列是两个文件中均包含的内容。</p>
-<h3 id="2、-如何不输出-comm-命令输出中的某些列"><a href="#2、-如何不输出-comm-命令输出中的某些列" class="headerlink" title="2、 如何不输出 comm 命令输出中的某些列"></a>2、 如何不输出 <code>comm</code> 命令输出中的某些列</h3><p>如果你想，你可以不输出 <code>comm</code> 命令输出中的某些列。对于该特性，你有三个命令行选项可用：<code>-1</code>、<code>-2</code> 和 <code>-3</code> 。正如你所猜想的，这些数字表示你不想输出的列。</p>
-<p>比如，下面这个命令将会不输出上面例子中的第三列：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm <span class="number">-3</span> file1 file2</div></pre></td></tr></table></figure>
-<p><a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-supress-column.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-supress-column.png" alt=""></a> </p>
-<p>因此，你可以看到，第三列并没有输出。</p>
-<p>注意，你可以通过一个单一命令同时不输出多列内容。比如：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm <span class="number">-12</span> file1 file2</div></pre></td></tr></table></figure>
-<p>上面这个命令将会不输出第一、二列。</p>
-<h3 id="3、-如何使用-comm-命令比较两个未排序好的文件"><a href="#3、-如何使用-comm-命令比较两个未排序好的文件" class="headerlink" title="3、 如何使用 comm 命令比较两个未排序好的文件"></a>3、 如何使用 <code>comm</code> 命令比较两个未排序好的文件</h3><p>正如我们所知道的，<code>comm</code> 只可用于排序好的文件。如果发现其中一个文件未排序好，那么便会在输出中产生一条信息来告诉用户。比如，我们交换 <code>file1</code> 的第一行和第二行，然后与 <code>file2</code> 进行比较。下面是该命令的输出：</p>
-<p><a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-not-sorted-message.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-not-sorted-message.png" alt=""></a> </p>
-<p>你可以看到，这个命令产生一个输出告诉我们：<code>file1</code> 还没有排序好。此时，如果你不想让这个工具检查输入是否已经排序好，那么你可以使用 <code>--nocheck-order</code> 选项：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm --nocheck-<span class="keyword">order</span> <span class="title">file1</span> file2</div></pre></td></tr></table></figure>
-<p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-nocheck-order.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-nocheck-order.png" alt=""></a> </p>
-<p>你可以看到，前面出现的提示信息已经消失了。</p>
-<p>注意，如果你想明确告诉 <code>comm</code> 命令来检查输入文件是否排序好，那么你可以使用 <code>--check-order</code> 选项。</p>
-<h3 id="4、-如何用自定义字符串分隔-comm-命令的输出列"><a href="#4、-如何用自定义字符串分隔-comm-命令的输出列" class="headerlink" title="4、 如何用自定义字符串分隔 comm 命令的输出列"></a>4、 如何用自定义字符串分隔 <code>comm</code> 命令的输出列</h3><p>默认情况下，<code>comm</code> 命令的输出列之间是以空格分隔的。然而，如何你想使用一个自定义字符串作为分隔符，那么你可以使用 <code>--output-delimiter</code> 选项。使用该选项时需要指定你想用来作为分隔符的字符串。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm <span class="comment">--output-delimiter=+ file1 file2</span></div></pre></td></tr></table></figure>
-<p>比如，我们使用加号来作为分隔符：</p>
-<p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-output-delimiter.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-output-delimiter.png" alt=""></a> </p>
-<h3 id="5、-如何使-comm-的输出行以-NUL-字符终止"><a href="#5、-如何使-comm-的输出行以-NUL-字符终止" class="headerlink" title="5、 如何使 comm 的输出行以 NUL 字符终止"></a>5、 如何使 <code>comm</code> 的输出行以 <code>NUL</code> 字符终止</h3><p>默认情况下，<code>comm</code> 命令的输出行以新行终止。然而，如果你想，那么你可以改为以 <code>NUL</code> 字符终止，只需要使用 <code>-z</code> 选项即可：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">comm</span> -z file1 file2</div></pre></td></tr></table></figure>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p><code>comm</code> 命令并没有特别多的特性性，我们在这儿已经讨论了它的绝大多数命令行选项。只需要理解和练习在这篇教程中讨论的内容，那么你便可以在日常工作中知道如何使用这个工具了。如果你有任何问题或者疑问，请前往该命令的 <a href="https://linux.cn/man/1/comm" target="_blank" rel="external">man 手册</a>，或者在下面评论。</p>
-<hr>
-<p>via: <a href="https://www.howtoforge.com/linux-comm-command/" target="_blank" rel="external">https://www.howtoforge.com/linux-comm-command/</a></p>
-<p>作者：<a href="https://www.howtoforge.com/linux-comm-command/" target="_blank" rel="external">Himanshu Arora</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Linux 中的 &lt;code&gt;comm&lt;/code&gt; 命令可以让用户按行比较两个&lt;strong&gt;已经排序好&lt;/strong&gt;的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。&lt;/p&gt;
-&lt;p&gt;下面的例子将会告诉你 &lt;code&gt;comm&lt;/code&gt; 命令是如何工作的。&lt;/p&gt;
-&lt;h3 id=&quot;1、-如何使用-comm-比较两个排序好的文件&quot;&gt;&lt;a href=&quot;#1、-如何使用-comm-比较两个排序好的文件&quot; class=&quot;headerlink&quot; title=&quot;1、 如何使用 comm 比较两个排序好的文件&quot;&gt;&lt;/a&gt;1、 如何使用 &lt;code&gt;comm&lt;/code&gt; 比较两个排序好的文件&lt;/h3&gt;&lt;p&gt;要使用 &lt;code&gt;comm&lt;/code&gt; 命令比较两个排序好的文件，只需要把它们的名字作为 &lt;code&gt;comm&lt;/code&gt; 命令的参数。下面是通常的语法：&lt;/p&gt;
-&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;comm [&lt;span class=&quot;built_in&quot;&gt;name&lt;/span&gt;-&lt;span class=&quot;keyword&quot;&gt;of&lt;/span&gt;-&lt;span class=&quot;keyword&quot;&gt;first&lt;/span&gt;-&lt;span class=&quot;built_in&quot;&gt;file&lt;/span&gt;] [&lt;span class=&quot;built_in&quot;&gt;name&lt;/span&gt;-&lt;span class=&quot;keyword&quot;&gt;of&lt;/span&gt;-&lt;span class=&quot;keyword&quot;&gt;second&lt;/span&gt;-&lt;span class=&quot;built_in&quot;&gt;file&lt;/span&gt;]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Command" scheme="http://ucasfl.me/categories/Command/"/>
-    
-    
-      <category term="comm/Translated" scheme="http://ucasfl.me/tags/comm-Translated/"/>
     
   </entry>
   
