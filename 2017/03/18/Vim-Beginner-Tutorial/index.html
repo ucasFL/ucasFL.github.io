@@ -1,0 +1,1287 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Vim/transshipment," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cry On My Shoulder" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="这篇文章是 VIM 用户指南 系列文章中的一篇：
+
+Vim 初学者入门指南
+Vim 快捷键速查表
+5 个针对有经验用户的 Vim 技巧
+3 个针对高级用户的 Vim 编辑器有用技巧
+
+对一个程序员来说，选择一个文本编辑器是一件非常重要的事。因为不同编辑器之间有着不少的差异：图形界面或者非图形界面、不同的快捷键、不同的编程语言支持、不同的插件以及自定义设置等等。我建议不是去搜索最棒的编辑器，而是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim 初学者入门指南">
+<meta property="og:url" content="http://ucasfl.me/2017/03/18/Vim-Beginner-Tutorial/index.html">
+<meta property="og:site_name" content="Cry On My Shoulder">
+<meta property="og:description" content="这篇文章是 VIM 用户指南 系列文章中的一篇：
+
+Vim 初学者入门指南
+Vim 快捷键速查表
+5 个针对有经验用户的 Vim 技巧
+3 个针对高级用户的 Vim 编辑器有用技巧
+
+对一个程序员来说，选择一个文本编辑器是一件非常重要的事。因为不同编辑器之间有着不少的差异：图形界面或者非图形界面、不同的快捷键、不同的编程语言支持、不同的插件以及自定义设置等等。我建议不是去搜索最棒的编辑器，而是">
+<meta property="og:image" content="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/03/vim-beginner-guide-featured.jpg">
+<meta property="og:image" content="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/02/vim-welcome.jpg">
+<meta property="og:image" content="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/02/vim-file.jpg">
+<meta property="og:image" content="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/02/vim-sp.jpg">
+<meta property="og:image" content="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/02/vim-ls.jpg">
+<meta property="og:updated_time" content="2017-09-02T04:38:29.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vim 初学者入门指南">
+<meta name="twitter:description" content="这篇文章是 VIM 用户指南 系列文章中的一篇：
+
+Vim 初学者入门指南
+Vim 快捷键速查表
+5 个针对有经验用户的 Vim 技巧
+3 个针对高级用户的 Vim 编辑器有用技巧
+
+对一个程序员来说，选择一个文本编辑器是一件非常重要的事。因为不同编辑器之间有着不少的差异：图形界面或者非图形界面、不同的快捷键、不同的编程语言支持、不同的插件以及自定义设置等等。我建议不是去搜索最棒的编辑器，而是">
+<meta name="twitter:image" content="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/03/vim-beginner-guide-featured.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2017/03/18/Vim-Beginner-Tutorial/"/>
+
+
+
+
+
+  <title> Vim 初学者入门指南 | Cry On My Shoulder </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cry On My Shoulder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">居心久已忘，何事惊麋鹿？　</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/18/Vim-Beginner-Tutorial/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Cry On My Shoulder">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Cry On My Shoulder" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Vim 初学者入门指南
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-18T15:34:57+08:00">
+                2017/03/18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vim/" itemprop="url" rel="index">
+                    <span itemprop="name">Vim</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/18/Vim-Beginner-Tutorial/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/03/18/Vim-Beginner-Tutorial/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/03/18/Vim-Beginner-Tutorial/" class="leancloud_visitors" data-flag-title="Vim 初学者入门指南">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/03/vim-beginner-guide-featured.jpg" alt="" title="Vim 初学者入门指南"> </p>
+<p>这篇文章是 <a href="https://www.maketecheasier.com/series/vim-user-guide/" target="_blank" rel="external">VIM 用户指南</a> 系列文章中的一篇：</p>
+<ul>
+<li>Vim 初学者入门指南</li>
+<li><a href="https://www.maketecheasier.com/vim-keyboard-shortcuts-cheatsheet/" target="_blank" rel="external">Vim 快捷键速查表</a></li>
+<li><a href="https://www.maketecheasier.com/vim-tips-tricks-for-experienced-users/" target="_blank" rel="external">5 个针对有经验用户的 Vim 技巧</a></li>
+<li><a href="https://www.maketecheasier.com/vim-tips-tricks-advanced-users/" target="_blank" rel="external">3 个针对高级用户的 Vim 编辑器有用技巧</a></li>
+</ul>
+<p>对一个程序员来说，选择一个文本编辑器是一件非常重要的事。因为不同编辑器之间有着不少的差异：图形界面或者非图形界面、不同的快捷键、不同的编程语言支持、不同的插件以及自定义设置等等。我建议不是去搜索最棒的编辑器，而是去选择最适合你的习惯且最适应你的任务的那一个。假如你打算在一个团体中工作，那么最好和你的共事者选择一样的编辑器。这样的话，一旦你在使用中遇到问题，你就可以去向他们寻求帮助。</p>
+<p>这正是我在几年之前开始使用 Vim 的原因。通常来说，Vim 会被置于传说中的 Emacs 的对立面。我承认我对 Emacs 知之甚少，但是对于它俩，你需要知道的是它们都可以被深度定制，并且在初学时也都非常令人困惑。这个教程并不会介绍有关 Vim 的所有内容，而是将介绍一些基础以使你在最初就能正确使用它，随后还会展示一些小技巧，借此（希望能）让你有能力自己去探索学习。</p>
+<p>Vim 一词来源于 “VI iMproved”。Vi 是一个被广泛安装于 Unix 系统的非图形界面文本编辑器，并且它也被默认安装在了 Linux 系统中。Vim 是这个原始编辑器的增强版，但是不同于 Vi，并不是每个发行版都默认安装了它。</p>
+<a id="more"></a>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Ubuntu 中可以使用如下命令来安装 Vim：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> install <span class="keyword">vim</span></div></pre></td></tr></table></figure>
+<p>如果你已经对某些插件有了兴趣，使用以下命令：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="keyword">cache</span> <span class="keyword">search</span> vim</div></pre></td></tr></table></figure>
+<p>这命令将给你输出一个很长的和 Vim 有关的包列表。在这之中，有针对不同编程语言的工具，有插件管理器，等等。</p>
+<p>在这系列教程中，我将会在  Ubuntu 上使用最新版的 Vim（7.3.154，LCTT 译注：现在最新版为 8.0）。当然你也可以使用其它任何版本。</p>
+<h3 id="热身"><a href="#热身" class="headerlink" title="热身"></a>热身</h3><p>在终端输入 <code>vim</code> 命令，你将会看到一个非常棒的欢迎界面。</p>
+<p> <img src="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/02/vim-welcome.jpg" alt="vim-welcome" title="vim-welcome"> </p>
+<p>（LCTT 译注：看到了欢迎界面中那行“Help poor children in Uganda!” 了吗？）</p>
+<p>如果你之前从未使用过 Vi 或者 Vim，那么你很可能甚至不知道该怎么退出它… 是的，这是事实。<strong>任何你常用的快捷键在 Vim 中都将失去原有的效果</strong>。（LCTT 译注：网上有个流传的笑话——“如何制造乱码”，“让新手退出 vi”）</p>
+<p>首先，要使用任何命令式的功能，像保存（save）或者退出（exit），你都先得输入一个冒号（<code>:</code>）。保存是 <code>:w</code> 而退出是 <code>:q</code>。如果你想不保存文件就退出，那么就要使用强制退出命令 <code>:q!</code>。Vim 中非常棒的一点是你不需要分开输入各个命令，换言之，如果你想保存然后退出，你就可以直接使用 <code>:wq</code>。</p>
+<p>现在，我们退出 Vim 再打开一个文本文件。为此，你只需把想要编辑的文件名加在命令后面即可：</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim <span class="string">[文本文件名]</span></div></pre></td></tr></table></figure>
+<p> <img src="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/02/vim-file.jpg" alt="vim-file" title="vim-file"> </p>
+<p>一般而言，当你打开一个文本文件，你将会处在查看模式。这使得 Vim 与众不同并且最初会让人感到困惑。Vim 主要由两种模式构成：查看模式和编辑模式。查看模式用于查看内容并且使用一些命令。想要进入编辑模式，只需按 <code>i</code> 键进行插入（insert）或者 <code>a</code> 键进行添加（add）。想要返回到查看模式或者进行命令式功能的操作，按 <code>Escape</code> 键即可。插入（insert）和添加（add）的差异仅仅在于你是想在光标位置之前还是在光标之后进入编辑模式并进行文字输入。要想彻底地明白，你应该亲自去尝试一下。我的建议是：仅在行尾使用添加（add），而在其它时候使用插入（insert）。</p>
+<p>（LCTT 译注：此段落中“查看模式”原文是 “visual mode”，疑为“view mode”，在此模式下可以查看文本，但是不能进行编辑；而“visual mode” 是编辑模式的一种，可以按 <code>v</code> 键进入，然后就可以用方向键从当前光标位置开始进行选择，并以反白的视觉效果显示，通常选择后可以按 <code>y</code> 进行复制、按 <code>d</code> 进行剪切等操作。）</p>
+<p>要想在文本之中移动光标，你通常可以使用键盘上的方向键，它们无论是在查看模式还是在编辑模式都可以生效。不过，一个真正的纯粹主义者将会告诉你使用按键 <code>h</code> 向左，<code>j</code> 向下，<code>k</code> 向上，<code>l</code> 向右来（在查看模式）进行移动。</p>
+<p>现在你已经明白了如何和简单地控制 Vim，我们再来更加深入一些。</p>
+<h3 id="一些简单命令"><a href="#一些简单命令" class="headerlink" title="一些简单命令"></a>一些简单命令</h3><p>现在你已经熟悉了在正常模式和插入模式之间进行切换，下面是一些可以在正常模式中使用的命令：</p>
+<ul>
+<li><code>x</code>：删除一个字符</li>
+<li><code>u</code>：撤销一个操作（相当与 <code>Ctrl+z</code>）</li>
+<li><code>dd</code>：删除一行内容</li>
+<li><code>dw</code>：删除一个单词</li>
+<li><code>yy</code>：复制一行内容</li>
+<li><code>yw</code>：复制一个单词</li>
+<li><code>p</code>：粘贴一个之前删除或复制的行或者单词</li>
+<li><code>e</code>：跳到下个单词（LCTT 译注：词尾）（比单纯用方向键更快）</li>
+<li><code>r</code>：替换一个字母（按 <code>r</code>，松开，然后再按新字母）</li>
+</ul>
+<p>当然不止这些，不过这些对现在来说已经足够了。如果你掌握了上面的全部，你将能你很顺溜地使用 Vim 了。</p>
+<p>对于那些还想知道更多的人，我再多提一下。你可以在任何这些命令之前加上一个数值，那么这个命令将被重复执行相应的次数。例如，<code>5x</code> 将在当前行连续删除 5 个字母，而 <code>3p</code> 将会粘贴 3 次。</p>
+<h3 id="高级命令"><a href="#高级命令" class="headerlink" title="高级命令"></a>高级命令</h3><p>最后，作为对你自己继续探索的鼓励和示例，这里给出几个高级且常用的命令：</p>
+<ul>
+<li><code>/所搜索的内容</code>：在文中搜索特定内容</li>
+<li><p><code>:sp 文本文件名</code>：将屏幕水平分割成上下两半，新文件展示在另一半。想要在两侧切换焦点，可以使用 <code>Ctrl+w</code> 快捷键。</p>
+<p><img src="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/02/vim-sp.jpg" alt="vim-sp" title="vim-sp"> </p>
+</li>
+<li><code>:vsp 文本文件名</code>：同上，但是是垂直分割屏幕</li>
+<li><code>Ctrl+Shift+C</code> 和 <code>Ctrl+Shift+V</code>：在终端中复制和粘贴文本</li>
+<li><p><code>:! 命令名</code>：在 Vim 中运行 Vim 外的终端命令，直接发送给 shell。例如，<code>:! ls</code> 将在不退出编辑器的同时，显示你当前目录内的文件。</p>
+<p><img src="https://maketecheasier-2d0f.kxcdn.com/assets/uploads/2012/02/vim-ls.jpg" alt="vim-ls" title="vim-ls"> </p>
+</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>我觉得你现在应该已经有了足够的准备来开始使用 Vim。你还可以通过安装各种插件，编辑 <code>~.vimrc</code> 文件，或者在 shell 中输入 <code>vimtutor</code> 命令来使用交互式教程以学到更多。</p>
+<p>如果你有任何你想分享的关于 Vim 的其它命令，请在评论中告知我们。</p>
+<hr>
+<p>via: <a href="https://www.maketecheasier.com/start-with-vim-linux/" target="_blank" rel="external">https://www.maketecheasier.com/start-with-vim-linux/</a></p>
+<p>作者：<a href="https://www.maketecheasier.com/author/himanshu/" target="_blank" rel="external">Himanshu Arora</a><br>译者：<a href="https://github.com/Yinr" target="_blank" rel="external">Yinr</a><br>校对：<a href="https://github.com/jasminepeng" target="_blank" rel="external">jasminepeng</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vim-transshipment/" rel="tag"># Vim/transshipment</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/18/Free-Command-in-Linux/" rel="next" title="Free：一个在 Linux 中检查内存使用情况的标准命令">
+                <i class="fa fa-chevron-left"></i> Free：一个在 Linux 中检查内存使用情况的标准命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/18/Vim-Shortcut-Sheet/" rel="prev" title="Vim 快捷键速查表">
+                Vim 快捷键速查表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/photos/profile.jpg"
+               alt="Flynn" />
+          <p class="site-author-name" itemprop="name">Flynn</p>
+           
+              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">109</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://linux.cn/lctt" title="LCTT" target="_blank">LCTT</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热身"><span class="nav-number">2.</span> <span class="nav-text">热身</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些简单命令"><span class="nav-number">3.</span> <span class="nav-text">一些简单命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级命令"><span class="nav-number">4.</span> <span class="nav-text">高级命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Flynn
+
+
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+  </span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/03/18/Vim-Beginner-Tutorial/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  
+
+</body>
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+

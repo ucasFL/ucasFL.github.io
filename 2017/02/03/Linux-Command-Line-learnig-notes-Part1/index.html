@@ -1,0 +1,1817 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Reading-Summary," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cry On My Shoulder" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言因对 Linux 命令行的喜爱，故入手《Linux 命令行大全》一书，打算从头至尾阅读、学习一遍，并将书中每一章节的命令集中整理如下。
+第一部分：学习 shellChapter 1 学习 shell
+$ date : 显示当前系统的时间和日期
+$ cal : 显示日历
+$ df : 查看磁盘驱动器可用空间
+$ free : 显示可用内存
+$ exit : 关闭终端窗口
+
+Chapter 2 导">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Linux 命令行大全》学习笔记 - Part 1">
+<meta property="og:url" content="http://ucasfl.me/2017/02/03/Linux-Command-Line-learnig-notes-Part1/index.html">
+<meta property="og:site_name" content="Cry On My Shoulder">
+<meta property="og:description" content="前言因对 Linux 命令行的喜爱，故入手《Linux 命令行大全》一书，打算从头至尾阅读、学习一遍，并将书中每一章节的命令集中整理如下。
+第一部分：学习 shellChapter 1 学习 shell
+$ date : 显示当前系统的时间和日期
+$ cal : 显示日历
+$ df : 查看磁盘驱动器可用空间
+$ free : 显示可用内存
+$ exit : 关闭终端窗口
+
+Chapter 2 导">
+<meta property="og:updated_time" content="2017-09-02T04:38:28.955Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Linux 命令行大全》学习笔记 - Part 1">
+<meta name="twitter:description" content="前言因对 Linux 命令行的喜爱，故入手《Linux 命令行大全》一书，打算从头至尾阅读、学习一遍，并将书中每一章节的命令集中整理如下。
+第一部分：学习 shellChapter 1 学习 shell
+$ date : 显示当前系统的时间和日期
+$ cal : 显示日历
+$ df : 查看磁盘驱动器可用空间
+$ free : 显示可用内存
+$ exit : 关闭终端窗口
+
+Chapter 2 导">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2017/02/03/Linux-Command-Line-learnig-notes-Part1/"/>
+
+
+
+
+
+  <title> 《Linux 命令行大全》学习笔记 - Part 1 | Cry On My Shoulder </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cry On My Shoulder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">居心久已忘，何事惊麋鹿？　</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/02/03/Linux-Command-Line-learnig-notes-Part1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Cry On My Shoulder">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Cry On My Shoulder" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《Linux 命令行大全》学习笔记 - Part 1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-03T21:12:16+08:00">
+                2017/02/03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Command/" itemprop="url" rel="index">
+                    <span itemprop="name">Command</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/03/Linux-Command-Line-learnig-notes-Part1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/02/03/Linux-Command-Line-learnig-notes-Part1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/02/03/Linux-Command-Line-learnig-notes-Part1/" class="leancloud_visitors" data-flag-title="《Linux 命令行大全》学习笔记 - Part 1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>因对 Linux 命令行的喜爱，故入手《Linux 命令行大全》一书，打算从头至尾阅读、学习一遍，并将书中每一章节的命令集中整理如下。</p>
+<h2 id="第一部分：学习-shell"><a href="#第一部分：学习-shell" class="headerlink" title="第一部分：学习 shell"></a>第一部分：学习 shell</h2><h3 id="Chapter-1-学习-shell"><a href="#Chapter-1-学习-shell" class="headerlink" title="Chapter 1 学习 shell"></a>Chapter 1 学习 shell</h3><ul>
+<li>$ date : 显示当前系统的时间和日期</li>
+<li>$ cal : 显示日历</li>
+<li>$ df : 查看磁盘驱动器可用空间</li>
+<li>$ free : 显示可用内存</li>
+<li>$ exit : 关闭终端窗口</li>
+</ul>
+<h3 id="Chapter-2-导航"><a href="#Chapter-2-导航" class="headerlink" title="Chapter 2 导航"></a>Chapter 2 导航</h3><ul>
+<li>$ pwd : 显示当前工作目录</li>
+<li>$ ls : 列出当前工作目录的文件和目录</li>
+<li>$ cd : 更改当前工作目录（路径名）</li>
+</ul>
+<ul>
+<li>绝对路径名： 从根目录开始，通向目标目录</li>
+<li>相对路径名： 从工作目录开始，通向目标目录</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>.. : 代表工作目录的父目录</li>
+<li>. : 代表工作目录</li>
+<li>$ cd .. : 进入工作目录的父目录</li>
+</ul>
+<ul>
+<li>$ cd : 将工作目录变成主目录</li>
+<li>$ cd - : 将工作目录变成先前工作目录</li>
+<li>$ cd ~username : 将工作目录变成 username 的主目录</li>
+</ul>
+<p>注：以 . 字符开头的文件名是隐藏的，用 ls 命令无法列出；如需列出，需使用 ls -a 命令（ls 和 -a 之间有空格）。</p>
+<h3 id="Chapter-3-Linux-系统"><a href="#Chapter-3-Linux-系统" class="headerlink" title="Chapter 3 Linux 系统"></a>Chapter 3 Linux 系统</h3><ul>
+<li>$ ls : 列出可见文件和目录<h4 id="ls-命令选项"><a href="#ls-命令选项" class="headerlink" title="ls 命令选项"></a>ls 命令选项</h4></li>
+</ul>
+<ul>
+<li><strong>-a</strong> : 列出所有文件和目录（包括被隐藏的）</li>
+<li>-d : 查看目录信息，不列出目录内容（在指定了目录的情况下）</li>
+<li>-F : 在列出的名字后面加上类型指示符</li>
+<li>-h : 以长格式列出，以可读方式显示文件大小</li>
+<li><strong>-l</strong> : 使用长格式显示结果</li>
+<li><strong>-r</strong> : 以降序显示结果（默认以升序显示）</li>
+<li>-S : 按文件大小排序</li>
+<li><strong>-t</strong> : 按修改时间排序</li>
+</ul>
+<ul>
+<li>$ file <em>filename</em> : 文件类型简单说明</li>
+<li>$ less <em>filename</em> : 查看文件内容(按 <em>q</em> 退出)<h4 id="less-命令的一些功能键"><a href="#less-命令的一些功能键" class="headerlink" title="less 命令的一些功能键"></a>less 命令的一些功能键</h4></li>
+</ul>
+<ul>
+<li>向下箭头键 : 向下一行</li>
+<li>G : 跳转到文本尾</li>
+<li>g : 跳转到文本头</li>
+<li><em>/charecters</em>: 向前查找指定字符串</li>
+<li>n : 向前查找下一个之前的指定字符串</li>
+<li>h : 显示帮助屏幕</li>
+<li><p>q : 退出 less 命令、</p>
+<p>注：命令行中复制粘贴文件的方法：双击文件名复制，中键单击将可将其粘贴进命令行</p>
+</li>
+</ul>
+<h3 id="Chapter-4-操作文件和目录"><a href="#Chapter-4-操作文件和目录" class="headerlink" title="Chapter 4 操作文件和目录"></a>Chapter 4 操作文件和目录</h3><h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><ul>
+<li>* : 匹配任意多个字符</li>
+<li>?  : 匹配任意单个字符</li>
+<li>[charecters] : 匹配任意一个属于字符集中的字符</li>
+<li>[!charecters] : 匹配任意一个不属于字符集中的字符</li>
+<li>[[:class:]] : 匹配任意一个属于指定字符类中的字符</li>
+</ul>
+<h4 id="常用字符集"><a href="#常用字符集" class="headerlink" title="常用字符集"></a>常用字符集</h4><ul>
+<li>[:alnum:] : 匹配任意一个字母或数字</li>
+<li>[:alpha:] : 匹配任意一个字母</li>
+<li>[:digit:] : 匹配任意一个数字</li>
+<li>[:lower:] : 匹配任意一个小写字母</li>
+<li>[:upper:] : 匹配任意一个大写字母</li>
+</ul>
+<h4 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h4><ul>
+<li>$ mkdir dir1/mkdir dir1 dir2 dir3 : 创建目录</li>
+</ul>
+<h4 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h4><ul>
+<li>$ cp item1 item2 : 将单个文件或目录 item1 复制到文件或目录 item2 中</li>
+<li>$ cp item… directory : 将多个项目（文件或目录）复制进一个目录中</li>
+</ul>
+<h4 id="cp-命令选项"><a href="#cp-命令选项" class="headerlink" title="cp 命令选项"></a>cp 命令选项</h4><ul>
+<li>-a : 复制文件和目录及其属性</li>
+<li>-i : 在覆盖一个已存在文件前，提示用户确认</li>
+<li>-r : 递归复制目录及其内容</li>
+<li>-u : 当将文件从一个目录复制到另一个目录时，只复制目标目录中不存在的文件或更新文件</li>
+<li>-v : 复制文件时，显示信息性消息</li>
+</ul>
+<h4 id="移动-重命名文件"><a href="#移动-重命名文件" class="headerlink" title="移动/重命名文件"></a>移动/重命名文件</h4><ul>
+<li>$ mv item1 item2 : 将文件（目录） item1 移动（重命名）为 item2</li>
+<li>$ mv item… directory : 将一个或多个条目从一个目录移动到另一个目录下</li>
+</ul>
+<h4 id="mv-命令选项"><a href="#mv-命令选项" class="headerlink" title="mv 命令选项"></a>mv 命令选项</h4><ul>
+<li>-i : 覆盖一个已存在文件前，提示用户确认</li>
+<li>-u : 将文件从一个目录移动到另一个目录，只移动目标目录中不存在的文件或更新文件</li>
+<li>-v : 移动文件时显示信息性消息</li>
+</ul>
+<h4 id="删除文件和目录"><a href="#删除文件和目录" class="headerlink" title="删除文件和目录"></a>删除文件和目录</h4><ul>
+<li>$ rm item… : 删除一个或多个文件或目录</li>
+</ul>
+<h4 id="rm-命令选项"><a href="#rm-命令选项" class="headerlink" title="rm 命令选项"></a>rm 命令选项</h4><ul>
+<li>-i : 删除一个已存在文件前，提示用户确认</li>
+<li>-r : 递归删除目录</li>
+<li>-f : 忽略不存在的文件并无需提示确认（该选项会覆盖 -i 选项）</li>
+<li>-v : 删除文件时显示信息性消息</li>
+</ul>
+<h4 id="创建链接"><a href="#创建链接" class="headerlink" title="创建链接"></a>创建链接</h4><ul>
+<li>$ ln file <em>link</em> : 创建硬链接</li>
+<li>$ ln -s item <em>link</em> : 创建符号链接</li>
+</ul>
+<p>注：<br>硬链接： 一个文件的一个或多个文件名，与文件本身无区别，多个文件，均指向同一硬盘地址，会同步更新。<br>符号链接： 又称<em>软链接</em>，一类特殊文件，该文件包含另一文件的路径名，类似 Windows 的快捷方式。</p>
+<h3 id="Chapter-5-命令的使用"><a href="#Chapter-5-命令的使用" class="headerlink" title="Chapter 5 命令的使用"></a>Chapter 5 命令的使用</h3><h4 id="命令的四种情况"><a href="#命令的四种情况" class="headerlink" title="命令的四种情况"></a>命令的四种情况</h4><ul>
+<li>可执行程序</li>
+<li>shell 内置命令</li>
+<li>shell 函数</li>
+<li>alias 命令</li>
+</ul>
+<h4 id="显示命令类型"><a href="#显示命令类型" class="headerlink" title="显示命令类型"></a>显示命令类型</h4><ul>
+<li>$ type <em>command</em> : 查看命令类型</li>
+</ul>
+<h4 id="显示可执行程序位置"><a href="#显示可执行程序位置" class="headerlink" title="显示可执行程序位置"></a>显示可执行程序位置</h4><ul>
+<li>$ which <em>pragram</em> : 查看程序位置</li>
+</ul>
+<h4 id="获取-shell-内置命令的帮助文档"><a href="#获取-shell-内置命令的帮助文档" class="headerlink" title="获取 shell 内置命令的帮助文档"></a>获取 shell 内置命令的帮助文档</h4><ul>
+<li>$ help <em>command</em> : 获取帮助文档，如： help cd</li>
+</ul>
+<h4 id="显示命令使用信息"><a href="#显示命令使用信息" class="headerlink" title="显示命令使用信息"></a>显示命令使用信息</h4><ul>
+<li>$ <em>command</em> –help : 显示命令使用信息，如： mkdir –help</li>
+</ul>
+<h4 id="显示程序的手册页"><a href="#显示程序的手册页" class="headerlink" title="显示程序的手册页"></a>显示程序的手册页</h4><ul>
+<li>$ man <em>program</em> : 显示程序手册页</li>
+</ul>
+<h4 id="man-手册文档的组织结构"><a href="#man-手册文档的组织结构" class="headerlink" title="man 手册文档的组织结构"></a>man 手册文档的组织结构</h4><ul>
+<li>1 : 用户命令</li>
+<li>2 : 内核系统调用的程序接口</li>
+<li>3 : C 库函数程序接口</li>
+<li>4 : 特殊文件</li>
+<li>5 : 文件格式</li>
+<li>6 : 游戏和娱乐</li>
+<li>7 : 其他杂项</li>
+<li>8 : 系统管理命令<br>另一种查询方式：<br>　$ : man section search_term  比如：　man 5 passwd</li>
+</ul>
+<ul>
+<li><p>$ apropos <em>command</em> : 显示合适命令，搜索参考条目</p>
+</li>
+<li><p>$ whatis <em>command</em> : 显示命令的简要描述</p>
+</li>
+</ul>
+<h4 id="显示程序的-info-条目"><a href="#显示程序的-info-条目" class="headerlink" title="显示程序的 info 条目"></a>显示程序的 info 条目</h4><ul>
+<li>$ info/info <em>command</em></li>
+</ul>
+<h4 id="info-命令"><a href="#info-命令" class="headerlink" title="info 命令"></a>info 命令</h4><ul>
+<li>? : 显示命令帮助</li>
+<li>PAGE UP/BACKSPACE : 返回上一页</li>
+<li>PAGE DOWN/Spacebar : 翻到下一页</li>
+<li>n : 显示下一个节点</li>
+<li>p : 显示上一个节点</li>
+<li>u : 显示目前显示节点的父节点</li>
+<li>ENTER : 进入光标所指的超链接</li>
+<li>q : 退出</li>
+</ul>
+<p>系统软件包文档文件存放位置： /usr/share/doc</p>
+<h4 id="使用别名创建自己的命令"><a href="#使用别名创建自己的命令" class="headerlink" title="使用别名创建自己的命令"></a>使用别名创建自己的命令</h4><ul>
+<li>tip : 将多条命令输在同一行中： command1;command2;command3…</li>
+</ul>
+<p>创建别名：</p>
+<ul>
+<li>$ alias <em>name</em>=’command_string’<br>如： alias foo=’cd/usr;ls;cd -‘，则之后就可以用 foo 表示等号后面的命令，可以用 type 命令查看。</li>
+</ul>
+<p>删除别名：</p>
+<ul>
+<li>$ unalias <em>name</em><br>如： unalias foo ，现在别名就消失了。</li>
+</ul>
+<h3 id="Chapter-6-重定向"><a href="#Chapter-6-重定向" class="headerlink" title="Chapter 6 重定向"></a>Chapter 6 重定向</h3><h4 id="标准输出重定向"><a href="#标准输出重定向" class="headerlink" title="标准输出重定向"></a>标准输出重定向</h4><ul>
+<li>$ <em>command</em> &gt; <em>filename</em> : 将命令的输出结果保存到文件 <em>filename</em> 中</li>
+</ul>
+<p>注：若文件不存在，则会创建一个新文件；若文件存在，会从文件开始的地方写入，即会覆盖之前的文件内容，因此，可通过重定向清除文件内容或创建新文件，方法如下：</p>
+<ul>
+<li>$ &gt; <em>filename</em> : 文件存在则清除了文件内容；文件不存在则创建了一个新文件</li>
+</ul>
+<p>（另一重定向符）从文件尾追加输出内容：</p>
+<ul>
+<li>$ : <em>command</em> &gt;&gt; <em>filename</em> : 命令可以为空；当文件不存在时，和 <strong>&gt;</strong> 作用相同</li>
+</ul>
+<h4 id="标准错误重定向"><a href="#标准错误重定向" class="headerlink" title="标准错误重定向"></a>标准错误重定向</h4><h5 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h5><ul>
+<li>0 : 标准输入文件</li>
+<li>1 : 标准输出文件</li>
+<li>2 : 标准错误文件</li>
+</ul>
+<ul>
+<li>$ <em>command</em> 2&gt; <em>filename</em> : 将文件描述符紧放在重定向符前面即可将标准错误重定向</li>
+</ul>
+<h4 id="stdout-和-stderr-重定向到同一个文件"><a href="#stdout-和-stderr-重定向到同一个文件" class="headerlink" title="stdout 和 stderr 重定向到同一个文件"></a>stdout 和 stderr 重定向到同一个文件</h4><p>有两种方法可完成该任务：</p>
+<ul>
+<li>$ <em>command</em> &gt; <em>filename</em> 2&gt;&amp;1 : 旧版本 shell</li>
+<li>$ <em>command</em> &amp;&gt; <em>filename</em> : 最近的 bash 版本</li>
+</ul>
+<h4 id="处理不想要的输出"><a href="#处理不想要的输出" class="headerlink" title="处理不想要的输出"></a>处理不想要的输出</h4><p>将输出重定向到文件 ‘/dev/null’ 中：</p>
+<ul>
+<li>$ <em>command</em> &gt; /dev/null 或 <em>command</em> 2&gt; /dev/null : 该文件接受输入但不对输入做任何处理</li>
+</ul>
+<h4 id="标准输入重定向"><a href="#标准输入重定向" class="headerlink" title="标准输入重定向"></a>标准输入重定向</h4><h5 id="cat-合并文件"><a href="#cat-合并文件" class="headerlink" title="cat - 合并文件"></a>cat - 合并文件</h5><ul>
+<li>$ cat <em>filename</em> : 读取、显示文件内容</li>
+<li>$ cat : 后面不跟参数时，它从标准输入读取内容，默认情况下即等待键盘输入</li>
+</ul>
+<p>cat 可拼接文件，假设有文件 file.001，file.002，…file.099，要拼接成一个文件 file ，可执行命令：</p>
+<ul>
+<li><p>$ cat file.0* &gt; file ：将按顺序拼接文件</p>
+<ul>
+<li>$ cat &gt; <em>filename</em> : 从键盘输入内容到文件 <em>filename</em> 中</li>
+<li>$ cat &lt; <em>filename</em> : 将标准输入源从键盘变为 <em>filename</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h4><ul>
+<li>$ <em>command1</em> | <em>command2</em> : 将 <em>command1</em> 的标准输出传送到 <em>command2</em> 的标准输入中</li>
+</ul>
+<h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><p>sort : 排序列表</p>
+<p>同时多个命令，如：</p>
+<ul>
+<li>$ ls -l | sort | less : 产生一个排好序的列表</li>
+</ul>
+<p>uniq : 报告或忽略文本中重复的行<br>如：</p>
+<ul>
+<li>$ ls -l | sort | uniq | less : 删除 sort 命令的输出中任意重复的行</li>
+</ul>
+<p>wc : 打印行数、字数和字节数</p>
+<ul>
+<li>$ wc <em>filename</em> : 依次打印出行数、字数和字节数</li>
+</ul>
+<p>多命令，如：</p>
+<ul>
+<li>$ ls | sort | uniq | wc -l : -l 选项限制命令只报告行数</li>
+</ul>
+<p>grep : 打印匹配行</p>
+<ul>
+<li>grep <em>pattern</em> <em>file</em> : 打印出所有包含 <em>pattern</em> 的行</li>
+</ul>
+<p>多命令，如：</p>
+<ul>
+<li>$ ls -l | grep zip : 打印出所有包含 zip 的行<h4 id="grep-选项"><a href="#grep-选项" class="headerlink" title="grep 选项"></a>grep 选项</h4></li>
+</ul>
+<ul>
+<li>-i : 忽略大小写，默认情况下区分大小写</li>
+<li>-v : 输出不匹配行</li>
+</ul>
+<p>head/tail : 打印文件的开头部分（前 10 行）/结尾部分（后 10 行）<br>可用 ‘-n’ 选项调整行数，命令格式为：</p>
+<ul>
+<li>$ head/tail -n line_number <em>filename</em> : 输出文件的开头或结尾 line_number 行内容</li>
+</ul>
+<p>命令选项也可用于管道中：</p>
+<ul>
+<li>$ ls | tail -n 5</li>
+</ul>
+<p>tail 命令的 ‘-f’ 选项： 实时查看内容，如：</p>
+<ul>
+<li>$ tail -f /var/logg/messages : 持续监视该文件，一旦添加新行，新行立即显示在屏幕上</li>
+</ul>
+<p>tee :从 stdin 读取数据，并同时输出到 stdout 和文件中<br>如：</p>
+<ul>
+<li>$ ls | tee ls.txt : 将整个目录列表输入到 ls.txt 文件中</li>
+</ul>
+<h3 id="Chapter-7-透过-Shell-看世界"><a href="#Chapter-7-透过-Shell-看世界" class="headerlink" title="Chapter 7 透过 Shell 看世界"></a>Chapter 7 透过 Shell 看世界</h3><h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><ul>
+<li>$ echo <em>command</em> : echo 把文本参数打印到标准输出</li>
+</ul>
+<p>注：在每次输入命令 ENTER 键时， bash 都会在执行命令前对文本进行多重处理，称为扩展。</p>
+<h4 id="路径名扩展"><a href="#路径名扩展" class="headerlink" title="路径名扩展"></a>路径名扩展</h4><p>example:</p>
+<ul>
+<li>$ echo <em>charecter** : 显示以字符 </em>charecter* 开头的所有文件</li>
+<li>$ echo *<em>charecter</em> : 显示以字符 <em>charecter</em> 结尾的所有文件</li>
+<li>$ echo [[:upper:]]* : 显示所有以大写字母开头的文件</li>
+</ul>
+<h4 id="波浪线扩展"><a href="#波浪线扩展" class="headerlink" title="波浪线扩展"></a>波浪线扩展</h4><ul>
+<li>~ : 当把波浪线用在单词的开头，它将被扩展为指定用户的主目录名；如果没有指定用户名，则扩展为当前用户的主目录</li>
+</ul>
+<p>example:</p>
+<ul>
+<li>$ echo ~fenglv : 扩展为用户 fenglv 的主目录</li>
+</ul>
+<h4 id="算数扩展"><a href="#算数扩展" class="headerlink" title="算数扩展"></a>算数扩展</h4><p>shell 支持通过扩展来运行算数表达式，因此可把 shell 提示符当计算器使用：</p>
+<ul>
+<li>$ echo $((2+2)) : 在标准输出打印出 4;扩展的格式为： $((<em>expression</em>))</li>
+</ul>
+<h5 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h5><ul>
+<li><ul>
+<li>: 加</li>
+</ul>
+</li>
+<li><ul>
+<li>: 减</li>
+</ul>
+</li>
+<li><ul>
+<li>: 乘</li>
+</ul>
+</li>
+<li>/ : 除</li>
+<li>% : 取余</li>
+<li>** : 取幂</li>
+</ul>
+<p>注： 表达式可嵌套：echo $(($((5<strong>2)) * 3))，可改写为：echo $(((5</strong>2) * 3))</p>
+<h4 id="花括号扩展"><a href="#花括号扩展" class="headerlink" title="花括号扩展"></a>花括号扩展</h4><p>花括号扩展的模式信息包括<em>前导字符</em>和<em>附言</em>，最普遍应用为创建一系列的文件和目录。<br>example:</p>
+<ul>
+<li>$ echo Front-{A,B,C}-Back<br>Front-A-Back Front-B-Back Front-C-Back</li>
+</ul>
+<ul>
+<li>$ echo Number_{1..5}<br>Number_1 Number_2 Number_3 Number_4 Number_5</li>
+</ul>
+<ul>
+<li>$ mkdir {2009..2011}-0{1..9} {2009..2011}-{10..12}</li>
+<li>$ ls<br>2009-01   2010-01  2011-01<br>2009-02   2010-02  2011-02<br>.         .        .<br>2009-12   2010-12  2011-12</li>
+</ul>
+<h4 id="参数扩展"><a href="#参数扩展" class="headerlink" title="参数扩展"></a>参数扩展</h4><ul>
+<li>$ echo \$variable : 触发参数扩展，显示变量内容</li>
+<li>$ printenv | less : 查看变量列表</li>
+</ul>
+<h4 id="命令替换"><a href="#命令替换" class="headerlink" title="命令替换"></a>命令替换</h4><p>命令替换可以把一个命令的输出作为一个扩展模式使用：</p>
+<p>example:</p>
+<ul>
+<li>$ echo \$(ls) : 打印出文件和目录</li>
+<li>$ ls -l \$(which cp) : 显示 cp 所在目录的长信息， which cp 命令的运行结果作为了 ls 命令的一个参数</li>
+<li>$ file \$(ls /usr/bin/* |grep zip) : 管道输出作为 file 的参数</li>
+</ul>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><p>shell 提供了一种引用机制，有选择性的避免不想要的扩展。</p>
+<p>example:</p>
+<ul>
+<li>$ echo this(多空格)　is a test: 打印时会除去多余的空白</li>
+<li>$ echo The total is \$100.00 : 打印结果为： The total is 00.00；\$1 为未定义变量，故被替换为空字符。</li>
+</ul>
+<h5 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h5><p>如果把文本放在双引号中，那么特殊字符均会失效（\$(美元符号)、\ (反斜杠)、’(反引号) 三者除外）。<br>可用双引号阻止单词分割：</p>
+<ul>
+<li>$ ls -l two book.txt : 会被当成两个参数，显示错误<br>正确命令：</li>
+<li>$ ls -l “two book.txt”</li>
+</ul>
+<p>注：</p>
+<ul>
+<li>参数扩展、算数扩展和命令替换在双引号中依然起用</li>
+<li>无引号时，空格、制表符、以及换行均只被当做分割符，但如果加上引号，就变成参数的一部分</li>
+<li>单词分割机制会把换行符当成界定符：注意下面两个命令个输出的区别<br>$ echo \$(cal)<br>$ echo “\$(cal)”　　</li>
+</ul>
+<h5 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h5><p>单引号会抑制所有的扩展，在单引号中所有的字符都会变成普通字符。</p>
+<h5 id="转移字符"><a href="#转移字符" class="headerlink" title="转移字符"></a>转移字符</h5><p>当要引用单个字符时，可通过在字符前加反斜杠来实现：（与 C 语言类似）</p>
+<p>注：</p>
+<ul>
+<li>echo 中加 ‘-e’ 选项可以解释转义字符</li>
+<li>$ sleep 10 : 等待 10 s(和 C 语言中类似)</li>
+</ul>
+<h3 id="Chapter-8-高级键盘技巧"><a href="#Chapter-8-高级键盘技巧" class="headerlink" title="Chapter 8 高级键盘技巧"></a>Chapter 8 高级键盘技巧</h3><h4 id="编辑命令行"><a href="#编辑命令行" class="headerlink" title="编辑命令行"></a>编辑命令行</h4><p>bash 使用了一个名为 Readline 的库，来实现命令行的编辑。</p>
+<h5 id="光标移动组合键"><a href="#光标移动组合键" class="headerlink" title="光标移动组合键"></a>光标移动组合键</h5><ul>
+<li>Ctrl+A : 移动光标到行首</li>
+<li>Ctrl+E : 移动光标到行尾</li>
+<li>Ctrl+F : 光标向前移动一个字符＝＝右箭头键</li>
+<li>Ctrl+B : 光标向后移动一个字符＝＝左箭头键</li>
+<li>Alt+F : 光标向前移动一个字</li>
+<li>Alt+B : 光标向后移动一个字</li>
+<li>Ctrl+L : 清屏并把光标移到左上角＝＝clear</li>
+</ul>
+<h5 id="修改文本"><a href="#修改文本" class="headerlink" title="修改文本"></a>修改文本</h5><ul>
+<li>Ctrl+D : 删除光标处的字符</li>
+<li>Ctrl+T : 使光标处的字符和它前面的字符对调位置</li>
+<li>Alt+T : 使光标处的字和它前面的字对调位置</li>
+<li>Alt+L : 把从光标到字尾的字符转换为小写字母形式</li>
+<li>Alt+U : 把从光标到字尾的字符转换为大写字母形式</li>
+</ul>
+<h5 id="剪切和粘贴"><a href="#剪切和粘贴" class="headerlink" title="剪切和粘贴"></a>剪切和粘贴</h5><p>Readline 文档中使用 killing 和 yanking 来指代剪切和粘贴，被剪切内容被放在叫做 king-ring 的缓冲区中。</p>
+<ul>
+<li>Ctrl+K : 剪切从光标到行尾的文本</li>
+<li>Ctrl+U : 剪切从光标到行首的文本</li>
+<li>Alt+D : 剪切从光标到当前词尾的文本</li>
+<li>Alt+BACKSPACE: 剪切从光标到词头的文本；如果光标在词头，则剪切前一个单词</li>
+<li>Ctrl+Y : 把被剪切到缓冲区中的文本粘贴到光标位置</li>
+</ul>
+<p>注：Alt 键相当于<strong>元键</strong>，按下并释放 Esc 键等同于长按 Alt 键。</p>
+<h5 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h5><p>输入一部分命令后按下 Tab 键，会自动补全当补全内容唯一时。自动补全可针对变量、用户名、命令和主机名等。</p>
+<ul>
+<li>两个 Tab : 显示所有可能的补全列表＝＝Alt+$</li>
+<li>Alt+* : 插入所有的匹配项</li>
+</ul>
+<h4 id="使用历史命令"><a href="#使用历史命令" class="headerlink" title="使用历史命令"></a>使用历史命令</h4><p>bash 会保存使用过的命令的历史记录，这些命令的历史记录列表会被保存在用户主目录的 .bash_history 文件中。</p>
+<h5 id="搜索历史命令"><a href="#搜索历史命令" class="headerlink" title="搜索历史命令"></a>搜索历史命令</h5><ul>
+<li>$ history | less : 查看历史记录的内容列表</li>
+</ul>
+<p>默认情况下， bash 会保存用户最近使用过的 500 个命令。</p>
+<ul>
+<li>$ history | grep /usr/bin : 找出用来列出 /usr/bin 目录下内容的命令</li>
+</ul>
+<h5 id="历史记录命令"><a href="#历史记录命令" class="headerlink" title="历史记录命令"></a>历史记录命令</h5><ul>
+<li>Ctrl+P : 移动到前一条历史记录＝＝向上箭头键</li>
+<li>Ctrl+N : 移动到后一条历史记录＝＝向下箭头键</li>
+<li>Alt+&lt; : 移动到历史记录列表的开始处</li>
+<li>Alt+&gt; : 移动到历史记录列表的结尾处，即当前命令行</li>
+<li>Ctrl+R : 逆向递增搜索。从当前命令行向前递增搜索</li>
+<li>Alt+P : 逆向非递增搜索。按下该组合键，接着输入待搜索字符串，然后按下 Enter 键，才开始搜索</li>
+<li>Alt+N : 向前非递增搜索</li>
+<li>Ctrl+O : 执行历史记录中的当前项，执行完跳转到下一项</li>
+</ul>
+<h5 id="历史记录扩展"><a href="#历史记录扩展" class="headerlink" title="历史记录扩展"></a>历史记录扩展</h5><ul>
+<li>$ !! : 重复最后一个执行的命令＝＝先按向上箭头键，再按 Enter 键；后者更简单</li>
+<li>$ !number : 重复历史记录中第 number 行的命令</li>
+<li>$ ! string : 重复最近以 string 开头的历史记录</li>
+<li>$ !?string : 重复最近包含 string 的历史记录</li>
+</ul>
+<p>注： Linux 中包含一个 script 程序，该程序记录下 shell 的整个会话并将会话保存到一个文件中，基本语法如下：</p>
+<ul>
+<li>$ script <em>file</em> : 不指定文件时，默认使用文件 typescript 。</li>
+</ul>
+<h3 id="Chapter-9-权限"><a href="#Chapter-9-权限" class="headerlink" title="Chapter 9 权限"></a>Chapter 9 权限</h3><h4 id="所有者、组成员和其他所有用户"><a href="#所有者、组成员和其他所有用户" class="headerlink" title="所有者、组成员和其他所有用户"></a>所有者、组成员和其他所有用户</h4><ul>
+<li>$ id : 查看用户身份标示的相关信息</li>
+</ul>
+<h4 id="读取、写入和执行"><a href="#读取、写入和执行" class="headerlink" title="读取、写入和执行"></a>读取、写入和执行</h4><p>当以 ls -l 命令列出文件时，前 10 个字符表示文件属性：</p>
+<ul>
+<li>1 : 文件类型</li>
+<li>2~4 : 所有者权限</li>
+<li>5~7 : 组权限</li>
+<li>8~10 : 其他用户权限</li>
+</ul>
+<h5 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h5><ul>
+<li>- : 普通文件</li>
+<li>d : 目录文件</li>
+<li>l : 符号链接</li>
+<li>c : 字符设备文件</li>
+<li>b : 块设备文件</li>
+</ul>
+<h5 id="权限属性"><a href="#权限属性" class="headerlink" title="权限属性"></a>权限属性</h5><ul>
+<li>r : 允许打开和读取文件</li>
+<li>w : 允许写入或截短文件，但不允许重命名和删除</li>
+<li>r : 允许执行文件</li>
+</ul>
+<h5 id="更改文件模式"><a href="#更改文件模式" class="headerlink" title="更改文件模式"></a>更改文件模式</h5><p>我们可以使用 chmod 命令来更改文件或目录的模式（权限），但需要注意的是只有文件所有者或者超级用户才能进行更改。</p>
+<h5 id="文件模式的八进制和二进制表示法-八进制-二进制：文件模式"><a href="#文件模式的八进制和二进制表示法-八进制-二进制：文件模式" class="headerlink" title="文件模式的八进制和二进制表示法(八进制/二进制：文件模式)"></a>文件模式的八进制和二进制表示法(八进制/二进制：文件模式)</h5><ul>
+<li>0/000 : —</li>
+<li>1/001 : –x</li>
+<li>2/010 : -w-</li>
+<li>3/011 : -wx</li>
+<li>4/100 : r–</li>
+<li>5/101 : r-x</li>
+<li>6/110 : rw-</li>
+<li>7/111 : rwx</li>
+</ul>
+<p>可以用三位八进制数字分别设置文件所有者、组成员和其他所有用户的文件权限，如：</p>
+<ul>
+<li>$ chmod 603 <em>file</em> : 6 表示文件所有者权限；0 表示组成员权限；3 表示其他所有用户权限</li>
+</ul>
+<h5 id="符号表示法"><a href="#符号表示法" class="headerlink" title="符号表示法"></a>符号表示法</h5><p>chmod 支持符号表示法来指定文件模式。该表示法分为三部分：更改会影响谁、要执行哪个操作以及要设置哪种权限。</p>
+<ul>
+<li>u : 表示目录或目录的所有者（user）</li>
+<li>g : 文件所属群组（group）</li>
+<li>o : 其他所有用户（other）</li>
+<li>a : all 简写，以上三者组合</li>
+</ul>
+<p>注：</p>
+<ul>
+<li>如果没有指定字符，则假定使用 ‘all’;</li>
+<li>操作符 ‘+’ 表示添加一种权限；</li>
+<li>操作符 ‘-‘ 表示删除一种权限；</li>
+<li><p>“=” 表示只有指定的权限可用，其他所有的权限都被删除；<br>example:</p>
+</li>
+<li><p>$ chmod u+x <em>file</em> : 为文件所有者添加可执行权限</p>
+</li>
+<li>$ chmod +x <em>file</em> : 为所有用户添加可执行权限</li>
+<li>$ chmod o-rw <em>file</em> : 删除其他所有用户的读写权限</li>
+<li>$ chmod u+x,go=rx <em>file</em> : 为文件所有者添加执行权限，同时设置所属群组和其他所有用户具有读权限和可执行权限（指定多种权限时，需用逗号隔开，除逗号外，权限之间不能有空格）</li>
+</ul>
+<h5 id="采用-GUI-设置文件模式"><a href="#采用-GUI-设置文件模式" class="headerlink" title="采用 GUI 设置文件模式"></a>采用 GUI 设置文件模式</h5><p>右键　－　propeties －　进行相关设置更改</p>
+<h5 id="使用-umask-命令设置默认权限"><a href="#使用-umask-命令设置默认权限" class="headerlink" title="使用 umask 命令设置默认权限"></a>使用 umask 命令设置默认权限</h5><p>umask 命令控制着创建文件时指定给文件的默认权限，它使用八进制表示法来表示从文件模式属性中删除一个位掩码。？</p>
+<ul>
+<li>$ umask xxxx : 设置默认权限（xxxx 为四个八进制数字）</li>
+</ul>
+<p>四位八进制数，展开成二进制后，对应的文件模式上， 1 出现的位置的权限被隐去/除(不常用)。</p>
+<h4 id="更改身份"><a href="#更改身份" class="headerlink" title="更改身份"></a>更改身份</h4><p>转化身份的三种方法：</p>
+<ul>
+<li>注销系统然后以其他用户身份登录</li>
+<li>使用 su 命令</li>
+<li>使用 sudo 命令</li>
+</ul>
+<h5 id="su-以其他用户和组-ID-的身份来运行-shell"><a href="#su-以其他用户和组-ID-的身份来运行-shell" class="headerlink" title="su - 以其他用户和组 ID 的身份来运行 shell"></a>su - 以其他用户和组 ID 的身份来运行 shell</h5><ul>
+<li>$ su -1 <em>user</em> : 以指定用户 <em>user</em> 来登录 shell 界面，指定用户的 shell 运行环境将被加载；-1 选项常写为 - ，且后者更常用</li>
+<li>$ su - : 进入超级用户，需要输入超级用户的密码（结束时输入 exit 退出）</li>
+<li>$ su -c <em>‘command’</em> : 使用执行单个命令，必须要有单引号</li>
+</ul>
+<h5 id="sudo-以另一个用户的身份执行命令"><a href="#sudo-以另一个用户的身份执行命令" class="headerlink" title="sudo - 以另一个用户的身份执行命令"></a>sudo - 以另一个用户的身份执行命令</h5><p>sudo 在很多方面和 su 类似；其中，管理员可以通过配置 sudo 命令，使系统以另一种可控的方式，允许一个普通用户以一个不同的身份（通常是超级用户）执行命令；另外，使用 sudo 命令并不需要输入超级用户密码，用户只需要输入自己的命令来认证。</p>
+<ul>
+<li>$ sudo -s : 进入超级用户，需要输入用户自己的密码（同样 exit 退出）</li>
+<li>$ sudo <em>command</em> : 以超级用户执行命令</li>
+<li>$ sudo -l : 查看 sudo 命令可以授予哪些权限</li>
+</ul>
+<p>注：　su 和 sudo 还有一个不同的地方，su 执行命令时命令是传递到另一个 shell 中执行，因此命令需要用单引号引起来，而 sudo 执行命令时不需要启动一个新的 shell ，因此不需要引号。</p>
+<h5 id="chown-更改文件所有者和所属群组"><a href="#chown-更改文件所有者和所属群组" class="headerlink" title="chown - 更改文件所有者和所属群组"></a>chown - 更改文件所有者和所属群组</h5><p>chown 命令用来更改文件或者目录的所有者和所属群组，使用这个命令需要超级用户权限。</p>
+<p>chown 的语法：</p>
+<ul>
+<li>$ chown owner:group <em>file</em> : 即把文件所有者改为用户 owner，改为属于群组 group;可以直接在前面加 sudo 来执行，参数 owner 和 group 可以为空</li>
+</ul>
+<h5 id="chgrp-更改所属群组"><a href="#chgrp-更改所属群组" class="headerlink" title="chgrp - 更改所属群组"></a>chgrp - 更改所属群组</h5><p>早些时候，chown 只能用来更改所有者，所以更改所属群组要使用命令 chgrp； 该命令的使用方法和 chown 几乎一样，但限制多一些（不常用）。</p>
+<h4 id="更改用户密码"><a href="#更改用户密码" class="headerlink" title="更改用户密码"></a>更改用户密码</h4><ul>
+<li>$ passwd : 当输入该命令以后， shell 会提醒用户输入旧密码和新密码</li>
+</ul>
+<p>该命令有一个很有趣的地方，它会试着强迫用户输入一个“强”密码，因此，它会拒绝短密码、与之前密码相似密码、字典中单词或容易猜到的密码。<br>？在 Ubuntu 系统上测试时发现并非如此<strong>机智</strong>！！！？</p>
+<h3 id="Chapter-10-进程"><a href="#Chapter-10-进程" class="headerlink" title="Chapter 10 进程"></a>Chapter 10 进程</h3><p>现代操作系统通常都支持多重任务处理（multitasking）。多重任务处理是指系统通过快速切换运行中的程序来实现多任务的同时执行。 Linux 内核通过进程来管理多重任务。进程是 Linux 用来安排不同程序等待 CPU 调度的一种阻止方式。</p>
+<h4 id="进程如何工作"><a href="#进程如何工作" class="headerlink" title="进程如何工作"></a>进程如何工作</h4><p>系统启动　－　程序初始化（init）－　脚本初始化（init script）</p>
+<h5 id="ps-查看进程信息"><a href="#ps-查看进程信息" class="headerlink" title="ps - 查看进程信息"></a>ps - 查看进程信息</h5><ul>
+<li>$ ps : 查看进程信息</li>
+<li>$ ps x : 显示所有进程</li>
+</ul>
+<p>ps x 命令的输出中会有一个新的项： STAT，它是 state 的缩写，表示进程状态：</p>
+<ul>
+<li>R : 运行状态</li>
+<li>S : 睡眠状态</li>
+<li>D : 不可中断的睡眠状态</li>
+<li>T : 暂停状态</li>
+<li>Z : 无效状态</li>
+<li>&lt; : 高优先级状态；被赋予更多重要性，分配更多 CPU 时间</li>
+<li><p>N : 低优先级状态</p>
+<p>$ ps aux : 显示更多信息</p>
+</li>
+</ul>
+<p>ps aux 的显示信息项（列标题）：</p>
+<ul>
+<li>USER : 用户 ID，表示进程所有者</li>
+<li>%CPU : CPU 使用百分比</li>
+<li>%MEM : 内存使用百分比</li>
+<li>VSZ : 虚拟耗用内存大小</li>
+<li>RSS : 实际使用内存大小</li>
+<li>START : 进程开启的时间</li>
+</ul>
+<h5 id="top-动态查看进程信息"><a href="#top-动态查看进程信息" class="headerlink" title="top - 动态查看进程信息"></a>top - 动态查看进程信息</h5><p>ps 命令只是显示 ps 命令执行时刻的进程信息；要查看动态视图，可以使用 top 命令：</p>
+<ul>
+<li>$ top</li>
+</ul>
+<p>top 命令以列表形式持续更新进程的当前信息；主要用于查看系统“最高”进程的运行情况；<br>top 命令显示的信息包含两部分：总体＋个体；</p>
+<p>top 命令的两个常用键盘指令：</p>
+<ul>
+<li>h : 显示程序的帮助界面</li>
+<li>q : 退出命令</li>
+</ul>
+<p>注： top 命令输出的信息和 Windows 的任务管理器的运行方式类似，但 top 命令运行的更快，消耗资源要少得多。</p>
+<h4 id="控制进程"><a href="#控制进程" class="headerlink" title="控制进程"></a>控制进程</h4><h5 id="中断进程"><a href="#中断进程" class="headerlink" title="中断进程"></a>中断进程</h5><ul>
+<li>$ xlogo : 显示 logo</li>
+<li>Ctrl+C : 中断程序</li>
+</ul>
+<h5 id="使进程在后台运行"><a href="#使进程在后台运行" class="headerlink" title="使进程在后台运行"></a>使进程在后台运行</h5><ul>
+<li><p>$ <em>app</em> &amp; : 程序 <em>app</em> 将在后台运行，输出显示： [number1] number2 ，其中，number1 为作业编号，Number2 为 PID ?</p>
+</li>
+<li><p>$ jobs : 查看从终端启动的所有作业</p>
+</li>
+</ul>
+<h5 id="使进程回到前台运行"><a href="#使进程回到前台运行" class="headerlink" title="使进程回到前台运行"></a>使进程回到前台运行</h5><p>后台运行的进程不会受到任何键盘输入的影响，包括视图中断进程的 Ctrl+C ；要想使进程回到前台来运行，可使用 fg 命令来实现：</p>
+<ul>
+<li>$ fg %number1 : 即 fg 后面跟百分号和<strong>作业编号</strong>，两者之间没空格，运行该命令后再按 Ctrl+C 即可结束进程</li>
+</ul>
+<h5 id="停止（暂停）进程"><a href="#停止（暂停）进程" class="headerlink" title="停止（暂停）进程"></a>停止（暂停）进程</h5><p>当一个进程运行以后，按下 Ctrl+Z 可以暂停进程，比如先在终端启动 xlogo ，然后在按下该组合键，进程就暂停了；</p>
+<ul>
+<li>使用 fg (上)　命令可使暂停进程回到前台运行；</li>
+<li>使用 bg 命令可使暂停进程到后台运行， bg 命令的语法和 fg 命令相同；</li>
+</ul>
+<h4 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h4><ul>
+<li>$ kill PID : 终止进程， PID 即为上面的 Number2，也可用　\$ kill %number1 来终止</li>
+</ul>
+<h5 id="使用-kill-命令发送信号到进程"><a href="#使用-kill-命令发送信号到进程" class="headerlink" title="使用 kill 命令发送信号到进程"></a>使用 kill 命令发送信号到进程</h5><p>kill 语法：</p>
+<ul>
+<li>$ kill -signal_number/-signal_name PID/%number1 : signal_number 为信号编号； signal_name 为信号名；</li>
+</ul>
+<p>如果不指定信号，则默认发送 TERM（终止）信号。</p>
+<p>常用信号：</p>
+<p>信号编号：信号名：含义</p>
+<ul>
+<li>1 : HUP : 挂起信号</li>
+<li>2 : INT : 中断信号</li>
+<li>9 : KILL : 杀死信号</li>
+<li>15 : TERM : 终止信号</li>
+<li>18 : CONT : 继续运行信号</li>
+<li>19 : STOP : 暂停信号</li>
+</ul>
+<p>注：进程也有所有者，只有进程所有者或超级用户才能使用 kill 命令来给进程发送信号。</p>
+<p>其他常用信号：</p>
+<ul>
+<li>3 : QUIT : 退出信号</li>
+<li>11 : SEGV : 段错误信号</li>
+<li>20 : TSTP : 终端暂停信号</li>
+<li>28 : WINCH : 窗口改变信号</li>
+</ul>
+<p>查看完整的信号列表：</p>
+<ul>
+<li>$ kill -l</li>
+</ul>
+<h5 id="使用-kill-命令发送信号给多个进程"><a href="#使用-kill-命令发送信号给多个进程" class="headerlink" title="使用 kill 命令发送信号给多个进程"></a>使用 kill 命令发送信号给多个进程</h5><p>使用 killall 命令可以给指定程序或指定用户的多个进程发送信号；<br>语法如下：</p>
+<ul>
+<li>$ killall -u <em>user</em> <em>-signal</em> name…</li>
+</ul>
+<p>可以有缺省。</p>
+<p>注： killall 命令同样需要有超级用户特权。</p>
+<h4 id="更多与进程相关的信号"><a href="#更多与进程相关的信号" class="headerlink" title="更多与进程相关的信号"></a>更多与进程相关的信号</h4><p>其他与进程相关的命令：</p>
+<ul>
+<li>pstree : 以树状模式输出进程列表</li>
+<li>vmstat : 输出系统资源使用情况的快照，包括内存，交换空间和磁盘 I/O</li>
+<li>xload : 用来绘制显示系统时间负载情况图形的一种图形化界面程序</li>
+<li>tload : 类似 xload ，但图形在终端绘制</li>
+</ul>
+<p>Part 1 结束！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Reading-Summary/" rel="tag"># Reading-Summary</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/27/3-Vim-Tricks-for-Advanced-Users/" rel="next" title="3 个针对高级用户的 Vim 编辑器实用技巧">
+                <i class="fa fa-chevron-left"></i> 3 个针对高级用户的 Vim 编辑器实用技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/13/Goodbye-for-Goodbye/" rel="prev" title="再见，为了再见">
+                再见，为了再见 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/photos/profile.jpg"
+               alt="Flynn" />
+          <p class="site-author-name" itemprop="name">Flynn</p>
+           
+              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">109</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://linux.cn/lctt" title="LCTT" target="_blank">LCTT</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：学习-shell"><span class="nav-number"></span> <span class="nav-text">第一部分：学习 shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-1-学习-shell"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1 学习 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-2-导航"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-3-Linux-系统"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 Linux 系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ls-命令选项"><span class="nav-number">3.1.</span> <span class="nav-text">ls 命令选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#less-命令的一些功能键"><span class="nav-number">3.2.</span> <span class="nav-text">less 命令的一些功能键</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-4-操作文件和目录"><span class="nav-number">4.</span> <span class="nav-text">Chapter 4 操作文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通配符"><span class="nav-number">4.1.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用字符集"><span class="nav-number">4.2.</span> <span class="nav-text">常用字符集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建目录"><span class="nav-number">4.3.</span> <span class="nav-text">创建目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制文件"><span class="nav-number">4.4.</span> <span class="nav-text">复制文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp-命令选项"><span class="nav-number">4.5.</span> <span class="nav-text">cp 命令选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动-重命名文件"><span class="nav-number">4.6.</span> <span class="nav-text">移动/重命名文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv-命令选项"><span class="nav-number">4.7.</span> <span class="nav-text">mv 命令选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除文件和目录"><span class="nav-number">4.8.</span> <span class="nav-text">删除文件和目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rm-命令选项"><span class="nav-number">4.9.</span> <span class="nav-text">rm 命令选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建链接"><span class="nav-number">4.10.</span> <span class="nav-text">创建链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-5-命令的使用"><span class="nav-number">5.</span> <span class="nav-text">Chapter 5 命令的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命令的四种情况"><span class="nav-number">5.1.</span> <span class="nav-text">命令的四种情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示命令类型"><span class="nav-number">5.2.</span> <span class="nav-text">显示命令类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示可执行程序位置"><span class="nav-number">5.3.</span> <span class="nav-text">显示可执行程序位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取-shell-内置命令的帮助文档"><span class="nav-number">5.4.</span> <span class="nav-text">获取 shell 内置命令的帮助文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示命令使用信息"><span class="nav-number">5.5.</span> <span class="nav-text">显示命令使用信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示程序的手册页"><span class="nav-number">5.6.</span> <span class="nav-text">显示程序的手册页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#man-手册文档的组织结构"><span class="nav-number">5.7.</span> <span class="nav-text">man 手册文档的组织结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示程序的-info-条目"><span class="nav-number">5.8.</span> <span class="nav-text">显示程序的 info 条目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#info-命令"><span class="nav-number">5.9.</span> <span class="nav-text">info 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用别名创建自己的命令"><span class="nav-number">5.10.</span> <span class="nav-text">使用别名创建自己的命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-6-重定向"><span class="nav-number">6.</span> <span class="nav-text">Chapter 6 重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准输出重定向"><span class="nav-number">6.1.</span> <span class="nav-text">标准输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准错误重定向"><span class="nav-number">6.2.</span> <span class="nav-text">标准错误重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件描述符"><span class="nav-number">6.2.1.</span> <span class="nav-text">文件描述符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stdout-和-stderr-重定向到同一个文件"><span class="nav-number">6.3.</span> <span class="nav-text">stdout 和 stderr 重定向到同一个文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理不想要的输出"><span class="nav-number">6.4.</span> <span class="nav-text">处理不想要的输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准输入重定向"><span class="nav-number">6.5.</span> <span class="nav-text">标准输入重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cat-合并文件"><span class="nav-number">6.5.1.</span> <span class="nav-text">cat - 合并文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管道"><span class="nav-number">6.6.</span> <span class="nav-text">管道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤器"><span class="nav-number">6.7.</span> <span class="nav-text">过滤器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grep-选项"><span class="nav-number">6.8.</span> <span class="nav-text">grep 选项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-7-透过-Shell-看世界"><span class="nav-number">7.</span> <span class="nav-text">Chapter 7 透过 Shell 看世界</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展"><span class="nav-number">7.1.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路径名扩展"><span class="nav-number">7.2.</span> <span class="nav-text">路径名扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#波浪线扩展"><span class="nav-number">7.3.</span> <span class="nav-text">波浪线扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算数扩展"><span class="nav-number">7.4.</span> <span class="nav-text">算数扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算数运算符"><span class="nav-number">7.4.1.</span> <span class="nav-text">算数运算符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#花括号扩展"><span class="nav-number">7.5.</span> <span class="nav-text">花括号扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数扩展"><span class="nav-number">7.6.</span> <span class="nav-text">参数扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令替换"><span class="nav-number">7.7.</span> <span class="nav-text">命令替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-number">7.8.</span> <span class="nav-text">引用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#双引号"><span class="nav-number">7.8.1.</span> <span class="nav-text">双引号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单引号"><span class="nav-number">7.8.2.</span> <span class="nav-text">单引号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转移字符"><span class="nav-number">7.8.3.</span> <span class="nav-text">转移字符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-8-高级键盘技巧"><span class="nav-number">8.</span> <span class="nav-text">Chapter 8 高级键盘技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑命令行"><span class="nav-number">8.1.</span> <span class="nav-text">编辑命令行</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#光标移动组合键"><span class="nav-number">8.1.1.</span> <span class="nav-text">光标移动组合键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改文本"><span class="nav-number">8.1.2.</span> <span class="nav-text">修改文本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#剪切和粘贴"><span class="nav-number">8.1.3.</span> <span class="nav-text">剪切和粘贴</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自动补全"><span class="nav-number">8.1.4.</span> <span class="nav-text">自动补全</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用历史命令"><span class="nav-number">8.2.</span> <span class="nav-text">使用历史命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#搜索历史命令"><span class="nav-number">8.2.1.</span> <span class="nav-text">搜索历史命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#历史记录命令"><span class="nav-number">8.2.2.</span> <span class="nav-text">历史记录命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#历史记录扩展"><span class="nav-number">8.2.3.</span> <span class="nav-text">历史记录扩展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-9-权限"><span class="nav-number">9.</span> <span class="nav-text">Chapter 9 权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#所有者、组成员和其他所有用户"><span class="nav-number">9.1.</span> <span class="nav-text">所有者、组成员和其他所有用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取、写入和执行"><span class="nav-number">9.2.</span> <span class="nav-text">读取、写入和执行</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件类型"><span class="nav-number">9.2.1.</span> <span class="nav-text">文件类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#权限属性"><span class="nav-number">9.2.2.</span> <span class="nav-text">权限属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更改文件模式"><span class="nav-number">9.2.3.</span> <span class="nav-text">更改文件模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件模式的八进制和二进制表示法-八进制-二进制：文件模式"><span class="nav-number">9.2.4.</span> <span class="nav-text">文件模式的八进制和二进制表示法(八进制/二进制：文件模式)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#符号表示法"><span class="nav-number">9.2.5.</span> <span class="nav-text">符号表示法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#采用-GUI-设置文件模式"><span class="nav-number">9.2.6.</span> <span class="nav-text">采用 GUI 设置文件模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-umask-命令设置默认权限"><span class="nav-number">9.2.7.</span> <span class="nav-text">使用 umask 命令设置默认权限</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改身份"><span class="nav-number">9.3.</span> <span class="nav-text">更改身份</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#su-以其他用户和组-ID-的身份来运行-shell"><span class="nav-number">9.3.1.</span> <span class="nav-text">su - 以其他用户和组 ID 的身份来运行 shell</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sudo-以另一个用户的身份执行命令"><span class="nav-number">9.3.2.</span> <span class="nav-text">sudo - 以另一个用户的身份执行命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chown-更改文件所有者和所属群组"><span class="nav-number">9.3.3.</span> <span class="nav-text">chown - 更改文件所有者和所属群组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chgrp-更改所属群组"><span class="nav-number">9.3.4.</span> <span class="nav-text">chgrp - 更改所属群组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改用户密码"><span class="nav-number">9.4.</span> <span class="nav-text">更改用户密码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-10-进程"><span class="nav-number">10.</span> <span class="nav-text">Chapter 10 进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程如何工作"><span class="nav-number">10.1.</span> <span class="nav-text">进程如何工作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ps-查看进程信息"><span class="nav-number">10.1.1.</span> <span class="nav-text">ps - 查看进程信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#top-动态查看进程信息"><span class="nav-number">10.1.2.</span> <span class="nav-text">top - 动态查看进程信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制进程"><span class="nav-number">10.2.</span> <span class="nav-text">控制进程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中断进程"><span class="nav-number">10.2.1.</span> <span class="nav-text">中断进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使进程在后台运行"><span class="nav-number">10.2.2.</span> <span class="nav-text">使进程在后台运行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使进程回到前台运行"><span class="nav-number">10.2.3.</span> <span class="nav-text">使进程回到前台运行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#停止（暂停）进程"><span class="nav-number">10.2.4.</span> <span class="nav-text">停止（暂停）进程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号"><span class="nav-number">10.3.</span> <span class="nav-text">信号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-kill-命令发送信号到进程"><span class="nav-number">10.3.1.</span> <span class="nav-text">使用 kill 命令发送信号到进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-kill-命令发送信号给多个进程"><span class="nav-number">10.3.2.</span> <span class="nav-text">使用 kill 命令发送信号给多个进程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更多与进程相关的信号"><span class="nav-number">10.4.</span> <span class="nav-text">更多与进程相关的信号</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Flynn
+
+
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+  </span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/02/03/Linux-Command-Line-learnig-notes-Part1/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  
+
+</body>
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+

@@ -1,0 +1,1382 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Data-Structures," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cry On My Shoulder" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="最小生成树:克鲁斯卡尔 (Kruskal) 算法先构造一个只含 n 个顶点的子图 SG ,然后从权值最小的边开始,若添加该边不会使得 SG 中产生回路,则在 SG上加上这条边。如此重复,直至加上 n-1条边为止。
+贪心原则:根据权值,从小到大依次尝试各边。
+具体描述：
+
+设 G=(V, E) 是具有 n 个顶点的连通网,现要构造 G 的最小生成树 T=(U, TE)
+
+– 初始时: U=V , T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图-Part3">
+<meta property="og:url" content="http://ucasfl.me/2017/05/11/Graph-Part3/index.html">
+<meta property="og:site_name" content="Cry On My Shoulder">
+<meta property="og:description" content="最小生成树:克鲁斯卡尔 (Kruskal) 算法先构造一个只含 n 个顶点的子图 SG ,然后从权值最小的边开始,若添加该边不会使得 SG 中产生回路,则在 SG上加上这条边。如此重复,直至加上 n-1条边为止。
+贪心原则:根据权值,从小到大依次尝试各边。
+具体描述：
+
+设 G=(V, E) 是具有 n 个顶点的连通网,现要构造 G 的最小生成树 T=(U, TE)
+
+– 初始时: U=V , T">
+<meta property="og:updated_time" content="2017-09-02T04:38:28.947Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图-Part3">
+<meta name="twitter:description" content="最小生成树:克鲁斯卡尔 (Kruskal) 算法先构造一个只含 n 个顶点的子图 SG ,然后从权值最小的边开始,若添加该边不会使得 SG 中产生回路,则在 SG上加上这条边。如此重复,直至加上 n-1条边为止。
+贪心原则:根据权值,从小到大依次尝试各边。
+具体描述：
+
+设 G=(V, E) 是具有 n 个顶点的连通网,现要构造 G 的最小生成树 T=(U, TE)
+
+– 初始时: U=V , T">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2017/05/11/Graph-Part3/"/>
+
+
+
+
+
+  <title> 图-Part3 | Cry On My Shoulder </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cry On My Shoulder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">居心久已忘，何事惊麋鹿？　</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/11/Graph-Part3/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Cry On My Shoulder">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Cry On My Shoulder" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                图-Part3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T16:50:36+08:00">
+                2017/05/11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structures/" itemprop="url" rel="index">
+                    <span itemprop="name">Data-Structures</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/11/Graph-Part3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/05/11/Graph-Part3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/05/11/Graph-Part3/" class="leancloud_visitors" data-flag-title="图-Part3">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="最小生成树-克鲁斯卡尔-Kruskal-算法"><a href="#最小生成树-克鲁斯卡尔-Kruskal-算法" class="headerlink" title="最小生成树:克鲁斯卡尔 (Kruskal) 算法"></a>最小生成树:克鲁斯卡尔 (Kruskal) 算法</h3><p>先构造一个只含 n 个顶点的子图 SG ,然后从权值最小的边开始,若添加该边不会使得 SG 中产生回路,则在 SG上加上这条边。如此重复,直至加上 n-1条边为止。</p>
+<p>贪心原则:根据权值,从小到大依次尝试各边。</p>
+<p>具体描述：</p>
+<ul>
+<li>设 G=(V, E) 是具有 n 个顶点的连通网,现要构造 G 的最小生成树 T=(U, TE)</li>
+</ul>
+<p>– 初始时: U=V , TE={}<br>– 对 G 中的边按权值大小从小到大排序<br>– 选取权值最小的边 (vi , vj )<br>– 若边 (vi , vj ) 加入到 TE 后形成回路,则舍弃该边;否则,将该边并入到 TE 中,即 TE=TE ∪ {(vi , vj )}<br>– 重复前一步骤,直到 TE 中包含有 n-1 条边为止</p>
+<ul>
+<li>贪心策略</li>
+</ul>
+<p>– 局部最优,但不一定能达到全局最优<br>– 但在拟阵上实施贪心策略,就能实现最优解</p>
+<a id="more"></a>
+<p><strong>算法实现的关键：回路的检测。</strong><br><strong>解决办法：定义一个一维数组Vset[n]。</strong></p>
+<p>– 初值: vSet[i]=i ,表示每个顶点各自组成一个连通分量,连通分量的编号简单地使用顶点在图中的位置 ( 编号 )<br>– 往 TE 中增加一条边 (vi , vj) 之前,先检查 vSet[i] 和 vSet[j] 值</p>
+<ul>
+<li>若 vSet[i]=vSet[j] ,则表明 vi 和 vj 处在同一个连通分量中,加入此边会形成回路</li>
+<li>若 vSet[i]≠vSet[j] ,则加入此边不会形成回路,故将此边加入到生成树的边集中</li>
+<li>加入一条新边后,将两个不同的连通分量合并:将一个</li>
+</ul>
+<p>连通分量的编号换成另一个连通分量的编号</p>
+<p>算法实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Enode&#123;</div><div class="line">  <span class="keyword">int</span> ivex , jvex; <span class="comment">// 边所依附的两个顶点</span></div><div class="line">  <span class="keyword">int</span> weight; <span class="comment">// 边的权值</span></div><div class="line">&#125; ENode; <span class="comment">// 边表元素类型定义</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</div><div class="line">  <span class="keyword">int</span> vexnum , edgenum; <span class="comment">// 顶点数和边数</span></div><div class="line">  ElemType vexlist[MAX_VEX]; <span class="comment">// 顶点表</span></div><div class="line">  ENode edgelist[MAX_EDGE]; <span class="comment">// 边表</span></div><div class="line">&#125; EGraph; <span class="comment">// 用边表存放图</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> MSTEdge&#123;</div><div class="line">  <span class="keyword">int</span> vex1,vex2,weight; <span class="comment">// 边所依附的两个顶点及权重</span></div><div class="line">&#125; MSTEdge; <span class="comment">// 存放最小生成树</span></div><div class="line"><span class="function">MSTEdge *<span class="title">Kruskal</span> <span class="params">(EGraph *g)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> i,j,k,s1,s2;</div><div class="line">  MSTEdge *TE; <span class="keyword">int</span> *vSet;</div><div class="line">  TE=(MSTEdge *)<span class="built_in">malloc</span>(g-&gt;vexnum*<span class="keyword">sizeof</span>(MSTEdge));</div><div class="line">  vSet=(<span class="keyword">int</span> *)<span class="built_in">malloc</span>(g-&gt;vexnum*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;g-&gt;vexnum;i++) vSet[i]=i;<span class="comment">// 初始化数组 vSet</span></div><div class="line">  <span class="comment">// 对边按权值从小到大排序</span></div><div class="line">  BubbleSort(g-&gt;edgelist,g-&gt;edgenum);</div><div class="line">  i=<span class="number">0</span>;j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(i&lt;g-&gt;vexnum &amp;&amp; j&lt;g-&gt;edgenum) &#123;</div><div class="line">    s1=vSet[g-&gt;edgelist[j].ivex];</div><div class="line">    s2=vSet[g-&gt;edgelist[j].jvex];</div><div class="line">    <span class="comment">// 若边的两个顶点的连通分量编号不同 ,</span></div><div class="line">    <span class="comment">// 则将该边加入到 TE 中</span></div><div class="line">    <span class="keyword">if</span>(s1!=s2) &#123;</div><div class="line">      TE[i].vex1=g-&gt;edgelist[j].ivex;</div><div class="line">      TE[i].vex2=g-&gt;edgelist[j].jvex;+</div><div class="line">      TE[i].weight=g-&gt;edgelist[j].weight;</div><div class="line">      i++;</div><div class="line">      <span class="keyword">for</span>(k=<span class="number">0</span>;k&lt;g-&gt;vexnum;k++)</div><div class="line">        <span class="keyword">if</span>(vSet[k]==s2) vSet[k]=s1;</div><div class="line">      &#125;</div><div class="line">      j++;</div><div class="line">    &#125;</div><div class="line">  <span class="built_in">free</span>(vSet);</div><div class="line">  <span class="keyword">return</span> TE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>算法改进：</p>
+<ul>
+<li>回路检测</li>
+</ul>
+<p>– 边的加入,会形成多颗树<br>– 为每棵树各选出一个 leader<br>– 每个顶点设指针 parent<br>– 沿 parent 可以找到对应的 leader<br>– leader.parent = 该子树的结点个数<br>– 在引入新边 e =(u,v) 时:<br>– 由 u, v 的 parent 找到并比较 leader(u) 和 leader(v)<br>– e 的引入形成回路 iff leader(u) = leader(v)</p>
+<ul>
+<li>未形成回路时的子树合并</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(leader(u).parent &gt; leader(v).parent)</div><div class="line">  leader(u).parent=leader(v);</div><div class="line"><span class="keyword">else</span></div><div class="line">  leader(v).parent =leader(u)</div></pre></td></tr></table></figure>
+<p>Kruskal 算法的时间复杂度</p>
+<p>设带权连通图有 n 个顶点和 e 条边</p>
+<ul>
+<li>则算法的主要执行是:</li>
+</ul>
+<p>– vSet 数组初始化:时间复杂度是 O(n)<br>– 边表按权值排序:若采用堆排序或快速排序,时间复杂度是<br>O(eloge)<br>– 回路检测和连通分量合并</p>
+<ul>
+<li>while 循环:最大执行频度是 O(n) ,其中包含修改 vSet 数组,共执行 n-1 次,时间复杂度是 O(n 2 )</li>
+<li>优化后,时间复杂度是 O(e)</li>
+<li>若将生成树 T 的连通分量看成等价类,则构造 T 加入新边的过程类似求等价类</li>
+<li>整个算法的时间复杂度是 O(eloge+n 2 ) ,优化后, Kruskal 算法的时间复杂度为 O(eloge)</li>
+</ul>
+<h3 id="独立系统和拟阵"><a href="#独立系统和拟阵" class="headerlink" title="独立系统和拟阵"></a>独立系统和拟阵</h3><ul>
+<li>有限集 E 的一个子集簇 F ,若具有如下的性质:对于 F 中的任一个元素 E ,当 S 是 Ei 的子集时 S 也是 F 中的元素,即 S ⊆ Ei ∈ F ==&gt; S ∈ F,则 F 称为独立系统,其元素为独立集。</li>
+</ul>
+<p>— 在独立系统上定义的组合优化问题,称为最优独立集问题,例如求最小生成树,最优边无关集。</p>
+<ul>
+<li>拟阵是指一个独立系统 F 满足下列可扩充条件:对任意两个独立集 I 、 I’ ,若 I’ 中的元素个数大于 I 的元素个数,则 I’ 中必存在一个不属于 I 的元素 e 使得将 e 加入 I 时,它仍是一个独立集。</li>
+</ul>
+<p><strong>贪心算法能求得最优独立集的充分必要条件是该独立系统是一个拟阵。</strong></p>
+<p><strong>定理:如果 G=(V,E) 是一个无向图,则是个拟阵,其中集合为 E ,即 G 的边集,为无回路的 E 的子集。</strong></p>
+<p>用贪心算法求解拟阵的组合优化问题,能获得最优解。</p>
+<p>Prim 算法和 Kruskal 算法的简单描述：</p>
+<ul>
+<li>Prime 算法：选定一个顶点，然后添加与它相连的最小权值边，加上新的顶点，再继续选与这两个顶点相连权值最小的边，一直进行下去，直到有 n-1 条边。</li>
+<li>Kruskal 算法：选边，从权值最小的往上选，确保不形成回路（贪心算法）。</li>
+</ul>
+<h3 id="图的路径"><a href="#图的路径" class="headerlink" title="图的路径"></a>图的路径</h3><ol>
+<li>关键路径 / 最长路径:有向无环带权图 /AOE 网</li>
+<li>最短路径:</li>
+</ol>
+<ul>
+<li>带权有向图 ( 权非负 ) ,求单源最短路径: Dijkstra 算法</li>
+<li>带权图,求所有顶点之间的最短路径: Floyd算法</li>
+</ul>
+<h4 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h4><ul>
+<li>对无向图 G=(V, E) ,若从顶点 vi 经过若干条边能到达 vj ,称顶点 vi 和 vj 是连通的,又称顶点 vi到 vj 有路径</li>
+<li>对有向图 G=(V, E) ,从顶点 vi 到 vj 有有向路径,指的是从顶点 vi 经过若干条有向边 (弧) 能到达 vj</li>
+<li>路径上边或有向边 ( 弧 ) 的数目称为该路径的长度</li>
+<li>从顶点 vi 到 vj 的路径不唯一</li>
+</ul>
+<p>两种路径表示法:边 / 弧的序列,结点序列<br>– Path=ei0 ei1 …eim , eij属于E, j=1,2, …,m<br>– Path=vi0 vi1 …vim , vij属于V 且 (v ij-1 , v ij 属于 E, j=1,2, …,m</p>
+<ul>
+<li>在一条路径中,若没有重复相同的顶点,该路径称为简单路径 (simple path)</li>
+<li>第一个顶点和最后一个顶点相同的路径称为回路 (circuit, 环 cycle)</li>
+<li>在一个回路中,若除第一个与最后一个顶点之外,其余顶点不重复出现的回路称为简单回路。</li>
+<li>欧拉路径 (Euler path) :若图 G 中存在这样一条简单路径,使得它恰好通过 G 中的每条边一次。</li>
+<li>欧拉回路 (Euler circuit) :若欧拉路径的第一个顶点和最后一个顶点相同。</li>
+<li>哈密顿路径 (Hamilton path) :通过图 G 的每个结点一次,且仅一次的简单路径。</li>
+<li>哈密顿回路：第一个顶点和最后一个顶点相同的哈密顿路径</li>
+</ul>
+<h4 id="有向无环带权图-AOE-网的关键路径"><a href="#有向无环带权图-AOE-网的关键路径" class="headerlink" title="有向无环带权图 /AOE 网的关键路径"></a>有向无环带权图 /AOE 网的关键路径</h4><p>AOE(Activity On Edge) 网是一个顶点表示事件 (Event) 、弧表示活动(Activity) 的有向无环图, 弧上的权值表示相应活动所需的时间 (Duration) 或费用。</p>
+<ul>
+<li>只有一个入度为 0 的点 ( 称为起点 ) 和一个出度为 0 的点( 称为汇点 )</li>
+<li>每个事件表示在其前的所有活动已经完成,其后的活动可以开始</li>
+<li><strong>在 AOE 网上从起点到汇点的长度最长的路径,是关键路径 (Critical Path)</strong></li>
+</ul>
+<p>—　关键路径的长度表示完成整个工程所需的最短时间<br>—　关键活动:关键路径上的活动<br>—　关键活动若不按期完成,就会影响整个工程的完成<br>—　非关键活动加速并不能使整个工程提前。想使整个工程提前,要考虑关键路径上的关键活动</p>
+<ul>
+<li>顶点 ( 事件 ) 的最早发生时间 ve 是从起点到该顶点的最长路径长度</li>
+<li>汇点的最早发生时间是最短工期</li>
+<li>顶点 ( 事件 ) 的 ( 不影响工程进度的 ) 最迟发生时间 vl 是从汇点最早发生时间减去该顶点到汇点的最长路径长度。</li>
+<li><strong>起点的最早发生时间等于其最迟发生时间</strong></li>
+<li><strong>汇点的最早发生时间等于其最迟发生时间</strong></li>
+<li>对弧 ( 活动 ) ,其弧头的最迟发生时间减去弧尾的最早发生时间是该活动最长可持续时间,再减去弧权,为这个弧 ( 活动 ) 允许的延时 D 。</li>
+</ul>
+<p>识别关键活动：</p>
+<ul>
+<li>利用拓扑排序计算图 g 的一个拓扑序列</li>
+<li>从拓扑排序序列的第一个顶点 ( 起点 ) 开始,按拓扑顺序依次计算每个顶点 ( 事件 ) 的最早发生时间ve(i)</li>
+<li>有向网 g 采用邻接表存储结构,若 g 无回路,则用栈 T 返回 g 的一个拓扑序列, ve 中保存各顶点事件的最早发生时间</li>
+<li>按拓扑顺序的逆序,从最后一个顶点 ( 汇点 ) 开始,依次计算每个事件的最迟发生时间 vl(i)</li>
+<li>找出 vl(i) - ve(i) == 0 的点</li>
+</ul>
+<p>算法实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></div><div class="line"><span class="function">Status <span class="title">TopologicalOrder</span><span class="params">(AGraph *g, <span class="keyword">char</span> orderResult[],<span class="keyword">int</span> ve[])</span> </span>&#123;</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;MAX_VERTEX_NUM;i++) </div><div class="line">    indegree[i]=<span class="number">0</span>;</div><div class="line">  FindIndegree(g,indegree);</div><div class="line">  <span class="keyword">for</span>(i=g-&gt;vexnum<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</div><div class="line">    <span class="keyword">if</span>(indegree[i]==<span class="number">0</span>) &#123; <span class="comment">// 入度为 0 者进栈</span></div><div class="line">      <span class="built_in">stack</span>[top]=i; top++;</div><div class="line">	  &#125;</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;g-&gt;vexnum;i++) ve[i]=<span class="number">0</span>;</div><div class="line">  count=<span class="number">0</span>; <span class="comment">// 对输出顶点计数</span></div><div class="line">  <span class="keyword">while</span>(top!=<span class="number">0</span>)&#123;</div><div class="line">    top--;i=<span class="built_in">stack</span>[top];</div><div class="line">	orderResult[count]=g-&gt;v[i].vertex;</div><div class="line">	count++;</div><div class="line">	<span class="keyword">for</span>(p=g-&gt;v[i].first;p;p=p-&gt;next)&#123; <span class="comment">// 弧 ij</span></div><div class="line">	  j=p-&gt;vindex;<span class="comment">// 对 i 号顶点的每个邻接点的入度减 1</span></div><div class="line">	  <span class="keyword">if</span>(--indegree[j]==<span class="number">0</span>)&#123;<span class="comment">// 若入度减为 0 ,则入栈</span></div><div class="line">	    <span class="built_in">stack</span>[top]=j; top++; &#125;</div><div class="line">	  <span class="keyword">if</span>(ve[j]&lt;ve[i] + p-&gt;info)</div><div class="line">	  ve[j]=ve[i]+ p-&gt;info;</div><div class="line">	  &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(count&lt;g-&gt;vexnum) <span class="keyword">return</span> ERROR;<span class="comment">// 该图有回路</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">return</span> OK; </div><div class="line">&#125;</div><div class="line"><span class="function">Status <span class="title">CriticalPath</span><span class="params">(AGraph *g)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!TopologicalOrder(g, orderedV, ve)) </div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line"><span class="comment">// 初始化顶点事件的最迟发生时间</span></div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;g-&gt;vexnum;i++) vl[i] = ve[g-&gt;vexnum<span class="number">-1</span>];</div><div class="line">  <span class="comment">// 按拓扑逆序求各顶点的 vl 值</span></div><div class="line">  top=g-&gt;vexnum;</div><div class="line">  <span class="keyword">while</span> (top)</div><div class="line">    <span class="keyword">for</span>(top--,j=orderedV[top]-<span class="string">'A'</span>,p=g-&gt;v[j].first;p; p=p-&gt;next) &#123;</div><div class="line">	  k=p-&gt;vindex; dut=p-&gt;info; <span class="comment">//dut&lt;j,k&gt;</span></div><div class="line">	  <span class="keyword">if</span> (vl[j]&gt;vl[k]-dut)</div><div class="line">	  vl[j]=vl[k]-dut;</div><div class="line">	 &#125;</div><div class="line">	<span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;g-&gt;vexnum; ++j)</div><div class="line">	<span class="comment">// 求 ee, el 和关键路径</span></div><div class="line">	<span class="keyword">for</span> (p=g-&gt;v[j].first; p; p=p-&gt;next)&#123;</div><div class="line">	  k=p-&gt;vindex; dut=p-&gt;info;</div><div class="line">	  ee = ve[j]; el = vl[k]-dut;</div><div class="line">	  tag = (ee==el) ? <span class="string">'*'</span> : <span class="string">' '</span>;</div><div class="line">	  <span class="keyword">if</span>(tag==<span class="string">'*'</span>)</div><div class="line">	    <span class="built_in">printf</span>(<span class="string">"%c %c \n"</span>,<span class="string">'A'</span>+j, <span class="string">'A'</span>+k);</div><div class="line">	&#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>算法分析：</p>
+<p>设 AOE 网有 n 个事件, e 个活动,则算法的主要执行是:<br>– 进行拓扑排序:时间复杂度是 O(n+e)<br>– 求每个事件的 ve 值和 vl 值:时间复杂度是 O(n+e)<br>– 根据 ve 值和 vl 值找关键活动:时间复杂度是 O(n+e)+</p>
+<p>整个算法的时间复杂度是 O(n+e)</p>
+<h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><ul>
+<li>边上权值非负情形的单源最短路径问题 – Dijkstra 算法</li>
+<li>边上权值为任意值的所有顶点之间的最短路径 – Floyd 算法</li>
+</ul>
+<h4 id="Dijkstra-算法"><a href="#Dijkstra-算法" class="headerlink" title="Dijkstra 算法"></a>Dijkstra 算法</h4><p>对于给定的有向图 G=(V , E) 及单个源点 Vs求 Vs 到 G 的其余各顶点的最短路径。<br>Dijkstra 算法按路径长度递增次序产生最短路径。</p>
+<p>最短路径：直接从源点到该点 ( 只含一条弧 ) ; 或者是,从源点经过已求得最短路径的顶点,再到达该顶点。</p>
+<p>就同一个起点而言,任何最短路径的前缀,也是一条最短路径。</p>
+<p>算法思想 -Dijkstra 算法：</p>
+<ul>
+<li>S 是已求得最短路径的终点的集合</li>
+<li>定义一个数组 dist[n] ,其每个 dist[i] 分量保存从源点 V0 出发中间只经过集合 S 中的顶点而到达 Vi 的所有路径中长度最小的路径长度值,换句话说, dist[] 保存了当前已求得的从源点到其余各顶点的最短路径值</li>
+</ul>
+<p>– 初始状态:<br>• 若从 V0 到顶点 Vi 有边 , 则 dist[i] 为该边的权值<br>• 若从 V0 到顶点 Vi 无边 , 则 dist[i] 为INFINITY</p>
+<ul>
+<li>下一条最短路径的终点 Vj 必定是不在 S 中且是 dist 数组值最小的顶点</li>
+</ul>
+<p>算法实现：</p>
+<ul>
+<li>有向图用带权的邻接矩阵表示</li>
+<li>数组 final[n] 用于标识一个顶点是否已加入S 中。 final[v] 为 1 当且仅当 v ∈ S ,即:已经求得从 v0 到 v 的最短路径</li>
+<li>用二维数组 P 保存从 v0 顶点到其余顶点 v 的最短路径</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 求有向网 G 的 v0 顶点到其余顶点 v 的最短路径 P[v][] 及其带权长度 dist[v]</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_DIJ</span><span class="params">(MGraph *g,<span class="keyword">int</span> v0,PathMatrix &amp;P, <span class="keyword">int</span> dist[])</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i=<span class="number">0</span>,j, v,w,min; <span class="keyword">int</span> final[MAX_VERTEX_NUM];</div><div class="line">  <span class="keyword">for</span> (v=<span class="number">0</span>; v&lt;g-&gt;vexnum; v++) &#123;<span class="comment">// 初始化</span></div><div class="line">    final[v] = <span class="number">0</span>;</div><div class="line">    dist[v] = g-&gt;arcs[v0][v];</div><div class="line">	<span class="keyword">for</span> (w=<span class="number">0</span>; w&lt;g-&gt;vexnum; w++)</div><div class="line">	  P[v][w] = <span class="number">0</span>; <span class="comment">// 设空路径</span></div><div class="line">	  <span class="keyword">if</span> (dist[v] &lt; INFINITY) &#123;</div><div class="line">	    P[v][v0] = <span class="number">1</span>; P[v][v] = <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">  &#125;</div><div class="line">  dist[v0] = <span class="number">0</span>; final[v0] = <span class="number">1</span>; <span class="comment">// 初始化, v0 顶点属于 S 集1</span></div><div class="line"><span class="comment">// 主循环:每次求得 v0 到某个 v 顶点的最短路径并加 v 到 S 集</span></div><div class="line">  <span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;g-&gt;vexnum; i++) &#123; <span class="comment">// 其余 g-&gt;vexnum-1 个顶点</span></div><div class="line">  min = INFINITY; <span class="comment">// 当前所知离 v0 顶点的最近距离</span></div><div class="line">  <span class="keyword">for</span> (w=<span class="number">0</span>; w&lt; g-&gt;vexnum; w++)</div><div class="line">    <span class="keyword">if</span> (!final[w]) <span class="comment">//w 顶点在 V-S 中</span></div><div class="line">	  <span class="keyword">if</span> (dist[w]&lt;min) <span class="comment">// w 顶点离 v0 顶点更近</span></div><div class="line">	  &#123; </div><div class="line">	    v = w; </div><div class="line">		min = D[w];</div><div class="line">	  &#125;</div><div class="line">  final[v] = <span class="number">1</span>; <span class="comment">// 离 v0 顶点最近的 v 加入 S 集</span></div><div class="line">  <span class="comment">// 更新当前最短路径及距离</span></div><div class="line">  <span class="keyword">for</span> (w=<span class="number">0</span>; w&lt;g-&gt;vexnum; w++)</div><div class="line">    <span class="keyword">if</span> (!final[w]&amp;&amp;(min+g-&gt;arcs[v][w] &lt;dist[w])) &#123;</div><div class="line">	<span class="comment">// 修改 dist[w] 和 P[w], w ∈ V-S</span></div><div class="line">	dist[w] = min + g-&gt;arcs[v][w];+</div><div class="line">	<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;g-&gt;vexnum;j++)</div><div class="line">	  P[w][j] = P[v][j];</div><div class="line">	  <span class="comment">// 第 v 行赋值于第 w 行</span></div><div class="line">	 P[w][w] = TRUE; <span class="comment">// P[w] = P[v]+[w]</span></div><div class="line">	&#125;<span class="comment">//if</span></div><div class="line">  &#125;<span class="comment">//for</span></div><div class="line">&#125; <span class="comment">//ShortestPath_DIJ</span></div></pre></td></tr></table></figure>
+<p>Dijkstra 算法 - 算法分析：</p>
+<ul>
+<li>Dijkstra 算法的主要执行是:</li>
+</ul>
+<p>– 数组变量的初始化:时间复杂度是 O(n)<br>– 求最短路径的二重循环:时间复杂度是 O(n^2)</p>
+<ul>
+<li>因此,整个算法的时间复杂度是 O(n^2)</li>
+</ul>
+<h4 id="Floyd-算法"><a href="#Floyd-算法" class="headerlink" title="Floyd 算法"></a>Floyd 算法</h4><p>求得有向图 G=(V ,E) 中每一对顶点间的最短路径：</p>
+<ul>
+<li>时间复杂度仍是 O(n^3 )</li>
+<li>允许图中有带负权值的边,但不许有包含带负权值的边组成的回路</li>
+</ul>
+<p>Floyd 算法 - 算法思想:</p>
+<ul>
+<li>Vi 和 Vj 之间的最短路径可能是:</li>
+</ul>
+<p>– 不存在通路<br>– 直接相连<br>– 最短路径 (Vi,Vk)+ 最短路径 (Vk,Vj)</p>
+<ul>
+<li>D^K (Vi,Vj) 为中途只经过前 k 个顶点的最短路径长度</li>
+<li>D^K (Vi,Vj)= Wij, k=0=min(D k-1 (Vi,Vj),D k-1 (Vi,Vk)+D k-1 (Vk,Vj)), k&gt;=1</li>
+</ul>
+<p>设顶点集 S( 初值为空 ) ,用数组 D 的每个元素D[i][j] 保存从 Vi 只经过 S 中的顶点到达 Vj 的最短路径长度,其思想是:<br>– 初始时令 S={ } , D[i][j] 的赋初值方式是:<br>$$\text{if }  i ==j:D[i][j]=0 ,\text{else if exists PATH}:D[i][j]=Wij, \text{ else}:D[i][j]=INFINITY$$</p>
+<p>– 将图中一个顶点 V k 加入到 S 中,修改 D[i][j] 的值<br>$$D[i][j]=Min ({D[i][j] , (D[i][k]+D[k][j]) })$$<br>– 原因:从 Vi 经过 S 中的顶点 (Vk ) 到达 V-j 的路径长度可能比原来不经过 Vk 的路径更短<br>– 重复上一步,直到 G 的所有顶点都加入到 S 中为止</p>
+<p>算法实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用 Floyd 算法求有向网 G 中各对顶点 v 和 w 之间的最短路径P[v][w] 及其带权长度 D[v][w] 。若 P[v][w][u] 为 TRUE ,则 u 是从 v 到 w 当前求得最短路径上的顶点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_FLOYD</span><span class="params">(MGraph G, PathMatrix P[], DistancMatrix &amp;D)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> v,w,u,i;</div><div class="line">  <span class="comment">// 各对结点之间初始化已知路径及距离</span></div><div class="line">  <span class="keyword">for</span> (v=<span class="number">0</span>; v&lt;G.vexnum; ++v)</div><div class="line">    <span class="keyword">for</span> (w=<span class="number">0</span>; w&lt;G.vexnum; ++w) &#123;</div><div class="line">	  D[v][w] = G.arcs[v][w];</div><div class="line">	  <span class="keyword">for</span> (u=<span class="number">0</span>; u&lt;G.vexnum; ++u) P[v][w][u] = FALSE;</div><div class="line">	  <span class="keyword">if</span> (D[v][w] &lt; INFINITY) &#123; <span class="comment">// 从 v 到 w 有直接路径</span></div><div class="line">	    P[v][w][v] = P[v][w][w] = TRUE; </div><div class="line">		&#125;<span class="comment">//if</span></div><div class="line">	&#125;<span class="comment">//for</span></div><div class="line">  <span class="keyword">for</span> (u=<span class="number">0</span>; u&lt;G.vexnum; ++u)</div><div class="line">    <span class="keyword">for</span> (v=<span class="number">0</span>; v&lt;G.vexnum; ++v)</div><div class="line">       <span class="keyword">for</span> (w=<span class="number">0</span>; w&lt;G.vexnum; ++w)</div><div class="line">	     <span class="keyword">if</span> (D[v][u]+D[u][w] &lt; D[v][w]) &#123;</div><div class="line">		 <span class="comment">// 从 v 经 u 到 w 的一条路径更短</span></div><div class="line">		   D[v][w] = D[v][u]+D[u][w];</div><div class="line">		   <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;G.vexnum; ++i)</div><div class="line">		   P[v][w][i] =(P[v][u][i] || P[u][w][i]);</div><div class="line">		   &#125;<span class="comment">//if</span></div><div class="line">&#125; <span class="comment">// ShortestPath_FLOYD</span></div></pre></td></tr></table></figure>
+<p>Floyd 算法 - 算法改进:</p>
+<ul>
+<li>定义二维数组 $Path[n][n]$(n 为图的顶点数 ) ,元素$ Path[i][j]$ 保存从 Vi 到 Vj 的最短路径所经过的顶点</li>
+<li>若 Path[i][j]=k :从 Vi 到 Vj 经过 Vk ,最短路径序列是 (Vi , …, Vk , …, Vj ) ,则路径子序列: (Vi ,…, Vk ) 和 (Vk , …, Vj ) 一定是从 Vi 到 Vk 和从 Vk 到 Vj的最短路径,从而可以根据 Path[i][k] 和 Path[k][j] 的值再找到该路径上所经过的其它顶点,…</li>
+<li>依此类推:</li>
+</ul>
+<p>– 初始化为 Path[i][j]=-1 ,表示从 Vi 到 Vj 不经过任何 (S 中的中间 ) 顶点。当某个顶点 Vk 加入到 S 中后使 D[i][j] 变小时,令 Path[i][j]=k</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/11/Graph-Part2/" rel="next" title="图-Part2">
+                <i class="fa fa-chevron-left"></i> 图-Part2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/" rel="prev" title="向 Linus Torvalds 学习让编出的代码具有 “Good Taste”">
+                向 Linus Torvalds 学习让编出的代码具有 “Good Taste” <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/photos/profile.jpg"
+               alt="Flynn" />
+          <p class="site-author-name" itemprop="name">Flynn</p>
+           
+              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">109</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://linux.cn/lctt" title="LCTT" target="_blank">LCTT</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树-克鲁斯卡尔-Kruskal-算法"><span class="nav-number">1.</span> <span class="nav-text">最小生成树:克鲁斯卡尔 (Kruskal) 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立系统和拟阵"><span class="nav-number">2.</span> <span class="nav-text">独立系统和拟阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图的路径"><span class="nav-number">3.</span> <span class="nav-text">图的路径</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#路径"><span class="nav-number">3.1.</span> <span class="nav-text">路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有向无环带权图-AOE-网的关键路径"><span class="nav-number">3.2.</span> <span class="nav-text">有向无环带权图 /AOE 网的关键路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最短路径"><span class="nav-number">4.</span> <span class="nav-text">最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dijkstra-算法"><span class="nav-number">4.1.</span> <span class="nav-text">Dijkstra 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Floyd-算法"><span class="nav-number">4.2.</span> <span class="nav-text">Floyd 算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Flynn
+
+
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+  </span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/05/11/Graph-Part3/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  
+
+</body>
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+

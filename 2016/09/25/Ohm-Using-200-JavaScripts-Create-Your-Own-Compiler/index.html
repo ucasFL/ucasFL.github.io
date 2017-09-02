@@ -1,0 +1,1279 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JS/Translated," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cry On My Shoulder" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="解析器是一种超级有用的软件库。从概念上简单的说，它们的实现很有挑战性，并且在计算机科学中经常被认为是黑魔法。在这个系列的博文中，我会向你们展示为什么你不需要成为哈利波特就能够精通解析器这种魔法。但是为了以防万一带上你的魔杖吧！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ohm：用两百行 JavaScript 创造你自己的编程语言">
+<meta property="og:url" content="http://ucasfl.me/2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/index.html">
+<meta property="og:site_name" content="Cry On My Shoulder">
+<meta property="og:description" content="解析器是一种超级有用的软件库。从概念上简单的说，它们的实现很有挑战性，并且在计算机科学中经常被认为是黑魔法。在这个系列的博文中，我会向你们展示为什么你不需要成为哈利波特就能够精通解析器这种魔法。但是为了以防万一带上你的魔杖吧！">
+<meta property="og:image" content="https://www.pubnub.com/wp-content/uploads/2016/08/ohm-banner.jpg">
+<meta property="og:updated_time" content="2017-09-02T04:38:29.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ohm：用两百行 JavaScript 创造你自己的编程语言">
+<meta name="twitter:description" content="解析器是一种超级有用的软件库。从概念上简单的说，它们的实现很有挑战性，并且在计算机科学中经常被认为是黑魔法。在这个系列的博文中，我会向你们展示为什么你不需要成为哈利波特就能够精通解析器这种魔法。但是为了以防万一带上你的魔杖吧！">
+<meta name="twitter:image" content="https://www.pubnub.com/wp-content/uploads/2016/08/ohm-banner.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/"/>
+
+
+
+
+
+  <title> Ohm：用两百行 JavaScript 创造你自己的编程语言 | Cry On My Shoulder </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cry On My Shoulder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">居心久已忘，何事惊麋鹿？　</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Cry On My Shoulder">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Cry On My Shoulder" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ohm：用两百行 JavaScript 创造你自己的编程语言
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-25T17:38:49+08:00">
+                2016/09/25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/" class="leancloud_visitors" data-flag-title="Ohm：用两百行 JavaScript 创造你自己的编程语言">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://www.pubnub.com/wp-content/uploads/2016/08/ohm-banner.jpg" alt=""></p>
+<p>解析器是一种超级有用的软件库。从概念上简单的说，它们的实现很有挑战性，并且在计算机科学中经常被认为是黑魔法。在这个系列的博文中，我会向你们展示为什么你不需要成为哈利波特就能够精通解析器这种魔法。但是为了以防万一带上你的魔杖吧！</p>
+<a id="more"></a>
+<p>我们将探索一种叫做 Ohm 的新的开源库，它使得搭建解析器很简单并且易于重用。在这个系列里，我们使用 Ohm 去识别数字，构建一个计算器等等。在这个系列的最后你将已经用不到 200 行的代码发明了一种完整的编程语言。这个强大的工具将让你能够做到一些你可能过去认为不可能的事情。</p>
+<p>###为什么解析器很困难？</p>
+<p>解析器非常有用。在很多时候你可能需要一个解析器。或许有一种你需要处理的新的文件格式，但还没有人为它写了一个库；又或许你发现了一种古老格式的文件，但是已有的解析器不能在你的平台上构建。我已经看到这样的事发生无数次。 Code 在或者不在， Data 就在那里，不增不减。</p>
+<p>从根本上来说，解析器很简单：只是把一个数据结构转化成另一个。所以你会不会觉得你要是邓布利多校长就好了？</p>
+<p>解析器历来是出奇地难写，所面临的挑战是绝大多数现有的工具都很老，并且需要一定的晦涩难懂的计算机科学知识。如果你在大学里上过编译器课程，那么课本里也许还有从上世纪七十年传下来的技术。幸运的是，解析器技术从那时候起已经提高了很多。</p>
+<p>典型的，解析器是通过使用一种叫作<a href="https://en.wikipedia.org/wiki/Formal_grammar" target="_blank" rel="external">形式语法（formal grammar）</a>的特殊语法来定义你想要解析的东西来创造的，然后你需要把它放入像 <a href="https://en.wikipedia.org/wiki/GNU_bison" target="_blank" rel="external">Bison</a> 和 <a href="https://en.wikipedia.org/wiki/Yacc" target="_blank" rel="external">Yacc</a> 的工具中，这些工具能够产生一堆 C 代码，这些代码你需要修改或者链接到你实际写入的编程语言中。另外的选择是用你更喜欢的语言亲自动手写一个解析器，这很慢且很容易出错，在你能够真正使用它之前还有许多额外的工作。</p>
+<p>想像一下，是否你关于你想要解析的东西的语法描述也是解析器？如果你能够只是直接运行这些语法，然后仅在你需要的地方增加一些挂钩（hook）呢？那就是 Ohm 所可以做到的事。</p>
+<h3 id="Ohm-简介"><a href="#Ohm-简介" class="headerlink" title="Ohm 简介"></a>Ohm 简介</h3><p><a href="https://github.com/cdglabs/ohm" target="_blank" rel="external">Ohm</a>是一种新的解析系统。它类似于你可能已经在课本里面看到过的语法，但是它更强大，使用起来更简单。通过 Ohm, 你能够使用一种灵活的语法在一个 .ohm 文件中来写你自己的格式定义，然后使用你的宿主语言把语义加入到里面。在这篇博文里，我们将用 JavaScript 作为宿主语言。</p>
+<p>Ohm 建立于一个为创造更简单、更灵活的解析器的多年研究基础之上。VPRI 的 <a href="http://www.vpri.org/pdf/tr2012001_steps.pdf" target="_blank" rel="external">STEPS program (pdf)</a> 使用 Ohm 的前身 <a href="http://tinlizzie.org/ometa/" target="_blank" rel="external">Ometa</a> 为许多特殊的任务创造了专门的语言（比如一个有 400 行代码的平行制图描绘器）。</p>
+<p>Ohm 有许多有趣的特点和符号，但是相比于全部解释它们，我认为我们只需要深入其中并构建一些东西就行了。</p>
+<p>###解析整数</p>
+<p>让我们来解析一些数字。这看起来会很简单，只需在一个文本串中寻找毗邻的数字，但是让我们尝试去处理所有形式的数字：整数和浮点数、十六进制数和八进制数、科学计数、负数。解析数字很简单，正确解析却很难。</p>
+<p>亲自构建这个代码将会很困难，会有很多问题，会伴随有许多特殊的情况，比如有时会相互矛盾。正则表达式或许可以做的这一点，但是它会非常丑陋而难以维护。让我们用 Ohm 来试试。</p>
+<p>用 Ohm 构建的解析器涉及三个部分：语法（grammar）、语义（semantics）和测试（tests）。我通常挑选问题的一部分为它写测试，然后构建足够的语法和语义来使测试通过。然后我再挑选问题的另一部分，增加更多的测试、更新语法和语义，从而确保所有的测试能够继续通过。即使我们有了新的强大的工具，写解析器从概念上来说依旧很复杂。测试是用一种合理的方式来构建解析器的唯一方法。现在，让我们开始工作。</p>
+<p>我们将从整数开始。一个整数由一系列相互毗邻的数字组成。让我们把下面的内容放入一个叫做 grammar.ohm 的文件中：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class">CoolNums </span>&#123;</div><div class="line">   <span class="comment">// just a basic integer</span></div><div class="line">   Number = digit+</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这创造了一条匹配一个或多个数字（<code>digit</code>）叫作 <code>Number</code> 的单一规则。<code>＋</code> 意味着一个或更多，就在正则表达式中一样。当有一个或更多的数字时，这个规则将会匹配它们，如果没有数字或者有一些不是数字的东西将不会匹配。“数字（<code>digit</code>）”的定义是从 0 到 9 其中的一个字符。<code>digit</code> 也是像 <code>Number</code> 一样的规则，但是它是 Ohm 的其中一条构建规则因此我们不需要去定义它。如果我们想的话可以推翻它，但在这时候这没有任何意义，毕竟我们不打算去发明一种新的数。</p>
+<p>现在，我们可以读入这个语法并用 Ohm 库来运行它。</p>
+<p>把它放入 test1.js：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">var ohm</span> = require(<span class="string">'ohm-js'</span>);</div><div class="line"><span class="attribute">var fs</span> = require(<span class="string">'fs'</span>);</div><div class="line"><span class="attribute">var assert</span> = require(<span class="string">'assert'</span>);</div><div class="line"><span class="attribute">var grammar</span> = ohm.grammar(fs.readFileSync(<span class="string">'src/blog_numbers/syntax1.ohm'</span>).toString());</div></pre></td></tr></table></figure>
+<p><code>Ohm.grammar</code> 调用将读入该文件并解析成一个语法对象。现在我们可以增加一些语义。把下面内容增加到你的 JavaScript 文件中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sem = grammar.createSemantics().addOperation(<span class="string">'toJS'</span>, &#123;</div><div class="line">    <span class="attr">Number</span>: <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="keyword">this</span>.sourceString,<span class="number">10</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这通过 <code>toJS</code> 操作创造了一个叫作 <code>sem</code> 的语法集。这些语义本质上是一些对应到语法中每个规则的函数。每个函数当与之相匹配的语法规则被解析时将会被调用。上面的 <code>Number</code> 函数将会在语法中的 <code>Number</code> 规则被解析时被调用。语法（grammar）定义了在语言中这些代码是什么，语义（semantics）定义了当这些代码被解析时应该做什么。</p>
+<p>语义函数能够做我们想做的任何事，比如打印出故障信息、创建对象，或者在任何子节点上递归调用 <code>toJS</code>。此时我们仅仅想把匹配的文本转换成真正的 JavaScript 整数。</p>
+<p>所有的语义函数有一个内含的 <code>this</code> 对象，带有一些有用的属性。其 <code>source</code> 属性代表了输入文本中和这个节点相匹配的部分。<code>this.sourceString</code> 是一个匹配输入的串，调用内置在 JavaScript 中的 <code>parseInt</code> 函数会把这个串转换成一个数。传给 <code>parseInt</code> 的 <code>10</code> 这个参数告诉 JavaScript 我们输入的是一个以 <code>10</code> 为基底（10 进制）的数。如果少了这个参数， JavaScript 也会假定以 10 为基底，但是我们把它包含在里面因为后面我们将支持以 16 为基底的数，所以使之明确比较好。</p>
+<p>既然我们有一些语法，让我们来实际解析一些东西看一看我们的解析器是否能够工作。如何知道我们的解析器可以工作？通过测试，许多许多的测试，每一个可能的边缘情况都需要一个测试。</p>
+<p>使用标准的断言 <code>assert</code> API，以下这个测试函数能够匹配一些输入并运用我们的语义把它转换成一个数，然后把这个数和我们期望的输入进行比较。</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function test(input, answer) &#123;</div><div class="line">  <span class="built_in">var</span> <span class="keyword">match</span> = grammar.<span class="keyword">match</span>(input);</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">match</span>.failed()) <span class="keyword">return</span> console.<span class="keyword">log</span>(<span class="string">"input failed to match "</span> + input + <span class="keyword">match</span>.message);     </div><div class="line">  <span class="built_in">var</span> result = sem(<span class="keyword">match</span>).toJS();</div><div class="line">  assert.deepEqual(result,answer);</div><div class="line">  console.<span class="keyword">log</span>(<span class="string">'success = '</span>, result, answer);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>就是如此。现在我们能够为各种不同的数写一堆测试。如果匹配失败我们的脚本将会抛出一个例外。否则就打印成功信息。让我们尝试一下，把下面这些内容加入到脚本中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">test</span>(<span class="string">"123"</span>,123);</div><div class="line"><span class="built_in">test</span>(<span class="string">"999"</span>,999);</div><div class="line"><span class="built_in">test</span>(<span class="string">"abc"</span>,999);</div></pre></td></tr></table></figure>
+<p>然后用 <code>node test1.js</code> 运行脚本。</p>
+<p>你的输出应该是这样：</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">success </span>=  123 123</div><div class="line"><span class="keyword">success </span>=  999 999</div><div class="line">input failed to match abcLine 1, col 1:</div><div class="line">&gt; 1 | abc</div><div class="line">      ^</div><div class="line">Expected a digit</div></pre></td></tr></table></figure>
+<p>真酷。正如预期的那样，前两个成功了，第三个失败了。更好的是，Ohm 自动给了我们一个很棒的错误信息指出匹配失败。</p>
+<p>###浮点数</p>
+<p>我们的解析器工作了，但是它做的工作不是很有趣。让我们把它扩展成既能解析整数又能解析浮点数。改变 grammar.ohm 文件使它看起来像下面这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CoolNums &#123;</div><div class="line">  <span class="comment">// just a basic integer</span></div><div class="line">  Number = <span class="keyword">float</span> | <span class="keyword">int</span></div><div class="line">  <span class="keyword">int</span>    = digit+</div><div class="line">  <span class="keyword">float</span>  = digit+ <span class="string">"."</span> digit+</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这把 <code>Number</code> 规则改变成指向一个浮点数（<code>float</code>）或者一个整数（<code>int</code>）。这个 <code>|</code> 代表着“或”。我们把这个读成“一个 <code>Number</code> 由一个浮点数或者一个整数构成。”然后整数（<code>int</code>）定义成 <code>digit+</code>，浮点数（<code>float</code>）定义成 <code>digit+</code> 后面跟着一个句号然后再跟着另一个 <code>digit+</code>。这意味着在句号前和句号后都至少要有一个数字。如果一个数中没有一个句号那么它就不是一个浮点数，因此就是一个整数。</p>
+<p>现在，让我们再次看一下我们的语义功能。由于我们现在有了新的规则所以我们需要新的功能函数：一个作为整数的，一个作为浮点数的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sem = grammar.createSemantics().addOperation(<span class="string">'toJS'</span>, &#123;</div><div class="line">    <span class="attr">Number</span>: <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> a.toJS();</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">int</span>: <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"doing int"</span>, <span class="keyword">this</span>.sourceString);</div><div class="line">        <span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="keyword">this</span>.sourceString,<span class="number">10</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">float</span>: <span class="function"><span class="keyword">function</span>(<span class="params">a,b,c</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"doing float"</span>, <span class="keyword">this</span>.sourceString);</div><div class="line">        <span class="keyword">return</span> <span class="built_in">parseFloat</span>(<span class="keyword">this</span>.sourceString);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这里有两件事情需要注意。首先，整数（<code>int</code>）、浮点数（<code>float</code>）和数（<code>Number</code>）都有相匹配的语法规则和函数。然而，针对 <code>Number</code> 的功能不再有任何意义。它接收子节点 <code>a</code> 然后返回该子节点的 <code>toJS</code> 结果。换句话说，<code>Number</code> 规则简单的返回相匹配的子规则。由于这是在 Ohm 中任何规则的默认行为，因此实际上我们不用去考虑 <code>Number</code> 的作用，Ohm 会替我们做好这件事。</p>
+<p>其次，整数（<code>int</code>）有一个参数 <code>a</code>，然而浮点数有三个：<code>a</code>、<code>b</code> 和 <code>c</code>。这是由于规则的实参数量（arity）决定的。<a href="https://en.wikipedia.org/wiki/Arity" target="_blank" rel="external">实参数量（arity）</a> 意味着一个规则里面有多少参数。如果我们回过头去看语法，浮点数（<code>float</code>）的规则是：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">float</span>  = digit+ <span class="string">"."</span> digit+</div></pre></td></tr></table></figure>
+<p>浮点数规则通过三个部分来定义：第一个 <code>digit+</code>、<code>.</code>、以及第二个 <code>digit+</code>。这三个部分都会作为参数传递给浮点数的功能函数。因此浮点数必须有三个参数，否则 Ohm 库会给出一个错误。在这种情况下我们不用在意参数，因为我们仅仅直接攫取了输入串，但是我们仍然需要参数列在那里来避免编译器错误。后面我们将实际使用其中一些参数。</p>
+<p>现在我们可以为新的浮点数支持添加更多的测试。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">test</span>(<span class="string">"123"</span>,123);</div><div class="line"><span class="built_in">test</span>(<span class="string">"999"</span>,999);</div><div class="line">//<span class="built_in">test</span>(<span class="string">"abc"</span>,999);</div><div class="line"><span class="built_in">test</span>(<span class="string">'123.456'</span>,123.456);</div><div class="line"><span class="built_in">test</span>(<span class="string">'0.123'</span>,0.123);</div><div class="line"><span class="built_in">test</span>(<span class="string">'.123'</span>,0.123);</div></pre></td></tr></table></figure>
+<p>注意最后一个测试将会失败。一个浮点数必须以一个数开始，即使它就是个 0，<code>.123</code> 不是有效的，实际上真正的 JavaScript 语言也有相同的规则。</p>
+<p>###十六进制数</p>
+<p>现在我们已经有了整数和浮点数，但是还有一些其它的数的语法最好可以支持：十六进制数和科学计数。十六进制数是以 16 为基底的整数。十六进制数的数字能从 0 到 9 和从 A 到 F。十六进制数经常用在计算机科学中，当用二进制数据工作时，你可以仅仅使用两个数字表示 0 到 255 的数。</p>
+<p>在绝大多数源自 C 的编程语言（包括 JavaScript），十六进制数通过在前面加上 <code>0x</code> 来向编译器表明后面跟的是一个十六进制数。为了让我们的解析器支持十六进制数，我们只需要添加另一条规则。</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Number = <span class="built_in">hex</span> | <span class="built_in">float</span> | <span class="built_in">int</span></div><div class="line"><span class="built_in">int</span>    = digit+</div><div class="line"><span class="built_in">float</span>  = digit+ <span class="string">"."</span> digit+</div><div class="line"><span class="built_in">hex</span>    = <span class="string">"0x"</span> hexDigit+</div><div class="line">hexDigit := <span class="string">"0"</span>..<span class="string">"9"</span> | <span class="string">"a"</span>..<span class="string">"f"</span> | <span class="string">"A"</span>..<span class="string">"F"</span></div></pre></td></tr></table></figure>
+<p>我实际上已经增加了两条规则。十六进制数（<code>hex</code>）表明它是一个 <code>0x</code> 后面一个或多个十六进制数字（<code>hexDigits</code>）的串。一个十六进制数字（<code>hexDigit</code>）是从 0 到 9，或从 a 到 f，或 A 到 F（包括大写和小写的情况）的一个字符。我也修改了 <code>Number</code> 规则来识别十六进制数作为另外一种可能的情况。现在我们只需要另一条针对十六进制数的功能规则。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hex: <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="keyword">this</span>.sourceString,<span class="number">16</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意到，在这种情况下，我们把 <code>16</code> 作为基底传递给 <code>parseInt</code>，因为我们希望 JavaScript 知道这是一个十六进制数。</p>
+<p>我略过了一些很重要需要注意的事。<code>hexDigit</code> 的规则像下面这样：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexDigit := <span class="string">"0"</span>..<span class="string">"9"</span> | <span class="string">"a"</span>..<span class="string">"f"</span> | <span class="string">"A"</span>..<span class="string">"F"</span></div></pre></td></tr></table></figure>
+<p>注意我使用的是 <code>:=</code> 而不是 <code>=</code>。在 Ohm 中，<code>:=</code> 是当你需要推翻一条规则的时候使用。这表明 Ohm 已经有了一条针对 <code>hexDigit</code> 的默认规则，就像 <code>digit</code>、<code>space</code> 等一堆其他的东西。如果我使用了 <code>=</code>, Ohm 将会报告一个错误。这是一个检查，从而避免我无意识的推翻一个规则。由于新的 <code>hexDigit</code> 规则和 Ohm 的构建规则一样，所以我们可以把它注释掉，然后让 Ohm 自己来实现它。我留下这个规则只是因为这样我们可以看到它实际上是如何进行的。</p>
+<p>现在，我们可以添加更多的测试然后看到十六进制数真的能工作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">test</span>(<span class="string">'0x456'</span>,0x456);</div><div class="line"><span class="built_in">test</span>(<span class="string">'0xFF'</span>,255);</div></pre></td></tr></table></figure>
+<p>###科学计数</p>
+<p>最后，让我们来支持科学计数。科学计数是针对非常大或非常小的数的，比如 <code>1.8×10^3</code>。在大多数编程语言中，科学计数法表示的数会写成这样：1.8e3 表示 18000，或者 1.8e-3 表示 .018。让我们增加另外一对规则来支持这个指数表示：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">float</span>  = digit+ <span class="string">"."</span> digit+ exp?</div><div class="line"><span class="attr">exp</span>    = <span class="string">"e"</span> <span class="string">"-"</span>? digit+</div></pre></td></tr></table></figure>
+<p>上面在浮点数规则末尾增加了一个指数（<code>exp</code>）规则和一个 <code>?</code>。<code>?</code> 表示没有或有一个，所以指数（<code>exp</code>）是可选的，但是不能超过一个。增加指数（<code>exp</code>）规则也改变了浮点数规则的实参数量，所以我们需要为浮点数功能增加另一个参数，即使我们不使用它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">float: <span class="function"><span class="keyword">function</span>(<span class="params">a,b,c,d</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"doing float"</span>, <span class="keyword">this</span>.sourceString);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">parseFloat</span>(<span class="keyword">this</span>.sourceString);</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>现在我们的测试可以通过了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">test</span>(<span class="string">'4.8e10'</span>,4.8e10);</div><div class="line"><span class="built_in">test</span>(<span class="string">'4.8e-10'</span>,4.8e-10);</div></pre></td></tr></table></figure>
+<p>###结论</p>
+<p>Ohm 是构建解析器的一个很棒的工具，因为它易于上手，并且你可以递增的增加规则。Ohm 也还有其他我今天没有写到的很棒的特点，比如调试观察仪和子类化。</p>
+<p>到目前为止，我们已经使用 Ohm 来把字符串翻译成 JavaScript 数，并且 Ohm 经常用于把一种表示方式转化成另外一种。然而，Ohm 还有更多的用途。通过放入不同的语义功能集，你可以使用 Ohm 来真正处理和计算东西。一个单独的语法可以被许多不同的语义使用，这是 Ohm 的魔法之一。</p>
+<p>在这个系列的下一篇文章中，我将向你们展示如何像真正的计算机一样计算像 <code>(4.85 + 5 * (238 - 68)/2)</code> 这样的数学表达式，不仅仅是解析数。</p>
+<p>额外的挑战：你能够扩展语法来支持八进制数吗？这些以 8 为基底的数能够只用 0 到 7 这几个数字来表示，前面加上一个数字 0 或者字母 <code>o</code>。看看针对下面这些测试情况是够正确。下次我将给出答案。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">test('<span class="number">0</span>o77',<span class="number">7</span>*<span class="number">8</span>+<span class="number">7</span>);</div><div class="line">test('<span class="number">0</span>o23',<span class="number">0</span>o23);</div></pre></td></tr></table></figure>
+<hr>
+<p>via: <a href="https://www.pubnub.com/blog/2016-08-30-javascript-parser-ohm-makes-creating-a-programming-language-easy/" target="_blank" rel="external">https://www.pubnub.com/blog/2016-08-30-javascript-parser-ohm-makes-creating-a-programming-language-easy/</a></p>
+<p>作者：<a href="https://www.pubnub.com/blog/author/josh/" target="_blank" rel="external">Josh Marinacci</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS-Translated/" rel="tag"># JS/Translated</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/25/Different-Shell-Command-in-Linux/" rel="next" title="理解 Linux 下 Shell 命令的不同分类及它们的用法">
+                <i class="fa fa-chevron-left"></i> 理解 Linux 下 Shell 命令的不同分类及它们的用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/30/Scientific-Audio-Work-Part2/" rel="prev" title="科学音频处理（二）：如何使用 Octave 对音频文件进行基本数学信号处理">
+                科学音频处理（二）：如何使用 Octave 对音频文件进行基本数学信号处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/photos/profile.jpg"
+               alt="Flynn" />
+          <p class="site-author-name" itemprop="name">Flynn</p>
+           
+              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">109</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://linux.cn/lctt" title="LCTT" target="_blank">LCTT</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ohm-简介"><span class="nav-number">1.</span> <span class="nav-text">Ohm 简介</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Flynn
+
+
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+  </span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  
+
+</body>
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+

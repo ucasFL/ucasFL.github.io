@@ -1,0 +1,1482 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Data-Structures," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cry On My Shoulder" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="排序
+排序:将一组杂乱无章的数据按一定的规律顺次排列起来。
+
+假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :
+Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }的操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内部排序">
+<meta property="og:url" content="http://ucasfl.me/2017/08/08/Inner-Sort/index.html">
+<meta property="og:site_name" content="Cry On My Shoulder">
+<meta property="og:description" content="排序
+排序:将一组杂乱无章的数据按一定的规律顺次排列起来。
+
+假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :
+Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }的操作">
+<meta property="og:updated_time" content="2017-09-02T04:38:29.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内部排序">
+<meta name="twitter:description" content="排序
+排序:将一组杂乱无章的数据按一定的规律顺次排列起来。
+
+假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :
+Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }的操作">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2017/08/08/Inner-Sort/"/>
+
+
+
+
+
+  <title> 内部排序 | Cry On My Shoulder </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cry On My Shoulder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">居心久已忘，何事惊麋鹿？　</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/08/08/Inner-Sort/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Cry On My Shoulder">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Cry On My Shoulder" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                内部排序
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T12:51:50+08:00">
+                2017/08/08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structures/" itemprop="url" rel="index">
+                    <span itemprop="name">Data-Structures</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/08/Inner-Sort/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/08/08/Inner-Sort/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/08/08/Inner-Sort/" class="leancloud_visitors" data-flag-title="内部排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ul>
+<li>排序:将一组杂乱无章的数据按一定的规律顺次排列起来。</li>
+</ul>
+<p>假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :</p>
+<p>Kp1≤Kp2≤…≤Kpn<br>按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }的操作称作排序。</p>
+<ul>
+<li>排序算法的稳定性 : 当输入含重复关键字时,重复元素在输入、输出序列中的相对次序是否保持不变。</li>
+<li>内排序与外排序 : 内排序是指在 整个排序过程 数据元素全部存放在内存、 不需要访问外存便能完成 的排序, 称此类排序为内部排序 ; 反之,若参加排序的记录数量很大 ,不能同时存放在内存,必须根据排序过程的要求,不断在内、外存之间移动的排序, 称为外部排序。</li>
+<li>排序算法的分类 :内部排序算法很多。但就其全面性能而言,很难认为哪种方法是最好的。没一种方法都有各自的优缺点,适合在不同环境下使用。插入排序、交换排序、选择排序、归并排序、计数排序等等 &lt; 按排序过程中依据的不同原则 &gt;</li>
+</ul>
+<a id="more"></a>
+<p><strong>待排记录数据类型定义</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//待排记录的数据类型定义如下 :</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 1000 <span class="comment">// 待排顺序表最大长度</span></span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> KeyType; <span class="comment">// 关键字类型为整数类型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</div><div class="line">  KeyType key;<span class="comment">// 关键字项</span></div><div class="line">  InfoType otherinfo; <span class="comment">// 其它数据项</span></div><div class="line">&#125; RcdType;<span class="comment">// 记录类型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</div><div class="line">  RcdType r[MAXSIZE+<span class="number">1</span>]; <span class="comment">// r[0] 闲置</span></div><div class="line">  <span class="keyword">int</span> length;<span class="comment">// 顺序表长度</span></div><div class="line">&#125; SqList;<span class="comment">// 顺序表类型</span></div></pre></td></tr></table></figure>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>基于交换的排序方法。</p>
+<ul>
+<li>观察：有序/无序序列中，任意/总有一对相邻元素顺序/逆序</li>
+<li>扫描交换：依次比较每一对相邻元素，如有必要，交换之</li>
+</ul>
+<p>经一轮扫描交换后，最大元素必然就位；经一轮扫描交换后，问题的规模缩减至n-1。</p>
+<ul>
+<li>若整趟扫描都没有进行交换，则排序完成。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(Elem R[ ], <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">   i = n;<span class="comment">//首先从n位置排序</span></div><div class="line">   <span class="keyword">bool</span> sorted = <span class="literal">false</span>;</div><div class="line">   <span class="keyword">while</span> (!sorted) &#123;<span class="comment">//第[i..n]大元素已排序，寻找 第i-1大元素</span></div><div class="line">         sorted = <span class="literal">true</span>;</div><div class="line">         <span class="keyword">for</span> (j = <span class="number">1</span>;  j &lt; i;  j++) <span class="comment">//从[1..i-1]寻找第i-1大元素</span></div><div class="line">             <span class="keyword">if</span> (R[j+<span class="number">1</span>].key &lt; R[j].key) &#123; <span class="comment">//将大的记录向后移</span></div><div class="line">                  Swap(R[j], R[j+<span class="number">1</span>]);</div><div class="line">                  sorted = <span class="literal">false</span>;  <span class="comment">//记下进行交换的记录位置</span></div><div class="line">             &#125; <span class="comment">//if</span></div><div class="line">         i -= <span class="number">1</span>;</div><div class="line">   &#125; <span class="comment">// while</span></div><div class="line">&#125; <span class="comment">// BubbleSort</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(Elem R[ ], <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">   <span class="keyword">int</span> i = n;<span class="comment">//首先从n位置排序</span></div><div class="line">   <span class="keyword">while</span> (i &gt;<span class="number">1</span>) &#123;<span class="comment">//第[i..n]大元素已排序，寻找 第i-1大元素</span></div><div class="line">         <span class="keyword">int</span>  lastExchangeIndex = <span class="number">1</span>;</div><div class="line">         <span class="keyword">for</span> (j = <span class="number">1</span>;  j &lt; i;  j++) <span class="comment">//从[1..i-1]寻找第i-1大元素</span></div><div class="line">             <span class="keyword">if</span> (R[j+<span class="number">1</span>].key &lt; R[j].key) &#123; <span class="comment">//将大的记录向后移</span></div><div class="line">                  Swap(R[j], R[j+<span class="number">1</span>]);</div><div class="line">                  lastExchangeIndex = j;  <span class="comment">//记下进行交换的记录位置</span></div><div class="line">             &#125; <span class="comment">//if</span></div><div class="line">         i = lastExchangeIndex; <span class="comment">//本趟进行过交换的最后一个记录的位置</span></div><div class="line">   &#125; <span class="comment">// while</span></div><div class="line">&#125; <span class="comment">// BubbleSort</span></div></pre></td></tr></table></figure>
+<p><strong>时间复杂度</strong></p>
+<ul>
+<li>最好情况：O(n)；最坏情况：O(n^2)</li>
+</ul>
+<p><strong>稳定性</strong></p>
+<ul>
+<li>稳定</li>
+</ul>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><ul>
+<li>基本方法:分而治之，序列一分为二 //O(1)；子序列递归排序 //2×T(n/2)；合并有序子序列 //O(n)</li>
+<li>归并排序算法的复杂度为 O(nlogn)</li>
+<li>关键在于 merge 的实现</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergesort</span> <span class="params">(<span class="keyword">int</span> low, <span class="keyword">int</span> hi )</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (hi-lo&lt;<span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span>; <span class="comment">// 单个元素区间自然有序</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    mi = (low+hi)/<span class="number">2</span>; <span class="comment">// 以中点为界</span></div><div class="line">    mergesort (low, mi); <span class="comment">// 将前半段排序</span></div><div class="line">    mergesort (mi+<span class="number">1</span>, hi); <span class="comment">// 对后半段排序</span></div><div class="line">    Merge (low, mi, hi); <span class="comment">// 归并</span></div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">// Msort</span></div><div class="line"></div><div class="line"><span class="comment">//二路归并算法</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span> <span class="params">(<span class="keyword">int</span> low, <span class="keyword">int</span> mi, <span class="keyword">int</span> hi)</span> </span>&#123;</div><div class="line">  RcdType *A = elements+low;</div><div class="line">  <span class="keyword">int</span> lb = mi-low; </div><div class="line">  RcdType *B = <span class="keyword">new</span> RcdType[<span class="number">1b</span>];</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;lb; B[i] = A[i++]);</div><div class="line">  <span class="keyword">int</span> lc = hi-mi;</div><div class="line">  RcdType *C = elements+mi;</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>, j=<span class="number">0</span>, k=<span class="number">0</span>; j&lt;lb || k&lt;lc; ) &#123;</div><div class="line">    <span class="keyword">if</span> ( (j&lt;lb) &amp;&amp; (lc&lt;=k || B[j].key&lt;=C[k].key) )</div><div class="line">      A[i++] = B[j++];</div><div class="line">    <span class="keyword">if</span> ( (k&lt;lc) &amp;&amp; (lb&lt;=j || C[k].key&lt;B[j].key) )</div><div class="line">      A[i++] =C[k++];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">delete</span>(B);</div><div class="line">&#125;<span class="comment">//Merge</span></div></pre></td></tr></table></figure>
+<p><strong>算法分析</strong></p>
+<p>优点：</p>
+<ul>
+<li>最坏情况下最优 O(nlogn) 性能的第一个排序算法</li>
+<li>不需要随机读写,完全顺序访问 - 尤其适用于列表之类的序列，磁带之类的设备</li>
+<li>只要实现恰当,可保证稳定</li>
+<li>可扩展性极佳,十分适宜于外部排序 - 海量网页搜索结果的归并易于并行化</li>
+<li>稳定的排序算法。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需要对等规模的辅助空间</li>
+<li>即便输入完全(或者接近)有序,仍需 O(nlogn) 时</li>
+</ul>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><ul>
+<li>基本方法: 始终将序列看作两部分sorted + unsorted，L[0, r]+L[r, n}</li>
+</ul>
+<ul>
+<li>初始条件：r=0;</li>
+</ul>
+<ul>
+<li>迭代: 处理 e=L[r]，在 sorted 中确定当前元素 e 的适当位置,插入 e ,得到有序的 L[0, r]</li>
+<li>不变性:随着 r 的递增, L[0, r) 始终有序,直到 r =n, L 即为整体有序</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertionSort</span> <span class="params">( SqList &amp;L )</span> </span>&#123;</div><div class="line"><span class="comment">// 对顺序表 L 作插入排序</span></div><div class="line">  <span class="keyword">for</span> ( i=<span class="number">2</span>; i&lt;=L.length; ++i ) <span class="comment">// 逐个将 i 插入已排好 [1..i-1] 中</span></div><div class="line">    <span class="keyword">if</span> (L.r[i].key &lt; L.r[i<span class="number">-1</span>].key) &#123; <span class="comment">// 只有小于时需要改变位置</span></div><div class="line">      p = search(L.r[i], i, L);</div><div class="line">      L.r[p] = L.r[i];</div><div class="line">    &#125;</div><div class="line">&#125; <span class="comment">// InsertSort</span></div></pre></td></tr></table></figure>
+<p><strong>算法分析</strong></p>
+<p>最坏情况：O(n)；</p>
+<p>最好情况：O(n^2)；</p>
+<p>稳定的排序算法。</p>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><ul>
+<li>起泡排序之所以需要O(n2)时间，是因为为挑选每个当前最大的元素M，需做O(n)次比较和O(n)次交换</li>
+<li>实际上经过O(n)次比较确定M后，一次交换足矣</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectSort</span> <span class="params">(Elem R[], <span class="keyword">int</span> n )</span> </span>&#123;</div><div class="line">   <span class="comment">// 对记录序列R[1..n]作简单选择排序。</span></div><div class="line">  <span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;n; ++i) &#123;</div><div class="line">        <span class="comment">// 选择第 i 小的记录，并交换到位</span></div><div class="line">       j = SelectMinKey(R, i); </div><div class="line">        <span class="comment">// 与第 i 个记录交换</span></div><div class="line">       <span class="keyword">if</span> (i!=j)</div><div class="line">         <span class="keyword">int</span> t = R[i];</div><div class="line">         R[i] = R[j];</div><div class="line">         R[j] = t;</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">// SelectSort</span></div></pre></td></tr></table></figure>
+<p><strong>算法分析</strong></p>
+<ul>
+<li>共迭代n次，在第k次迭代中SelectMinKey的复杂度O(n-k)</li>
+<li>SelectMinKey的复杂度可以降至O(logn)</li>
+</ul>
+<h4 id="树形选择排序-锦标赛排序"><a href="#树形选择排序-锦标赛排序" class="headerlink" title="树形选择排序/锦标赛排序"></a>树形选择排序/锦标赛排序</h4><ul>
+<li>一种按照锦标赛思想进行选择排序的方法。这个过程可以用一棵有 n 个叶子结点的完全二叉树表示：叶节点:待排序元素(选手)；内部节点:孩子中的胜者；</li>
+</ul>
+<p>这种比赛树又称为胜者树。</p>
+<ul>
+<li>锦标赛选择</li>
+</ul>
+<p>更新:唯上一优胜者的祖先,才有必要重新参加比赛，只需从其所在叶节点出发,逐层上溯直到树根。</p>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>堆是满足下列性质的数列：${r_1, r_2, …, r_n}$</p>
+<p>$$\text{小顶堆}=\begin{cases} r<em>i\le r</em>{2i}\r<em>i \le r</em>{2i+1}\end{cases}$$</p>
+<p>$$\text{大顶堆}=\begin{cases}r<em>i \ge r</em>{2i}\r<em>i \ge r</em>{2i+1}\end{cases}$$</p>
+<p>堆的结构性 :</p>
+<ul>
+<li>逻辑上:等同于完全二叉树</li>
+<li>物理上:直接借助顺序存储实现</li>
+</ul>
+<p>堆的堆序性：堆是符合这样定义的一棵有局部顺序的线性化完全二叉树：$K[i]\le K[parent(i)]$或$K[i]\ge K[parent(i)]$</p>
+<p><strong>优先级队列(PQ priority queue)</strong></p>
+<p>队列的一种，不过它可以按照自定义的一种方式（数据的优先级）来对队列中的数据进行态的访问，以方便快速求取最大优先级的数据。</p>
+<ul>
+<li>栈和队列，都是PQ的特例——优先级完全取决于元素的插入次序</li>
+<li>应用：操作系统中的任务调度、中断处理、离散事件模拟等等</li>
+<li>作为底层数据结构所支持的高效操作，是很多高效算法的基础</li>
+</ul>
+<p><strong>完全二叉堆：插入</strong></p>
+<p>为插入一个新的元素 e ,只需将 e 作为末元素放入原顺序结构。</p>
+<ul>
+<li>唯一可能违反堆序性的只有该新节点和它的父亲。</li>
+<li>只需从其所在叶节点出发,逐层上溯直到满足堆序性【上滤】。</li>
+</ul>
+<p>效率：</p>
+<ul>
+<li>e 与父亲的交换,每次只需 o(1) 时间,且每经过一次交换, e 都会上升一层;</li>
+<li>在插入新节点 e 的整个过程中,只有 e 的祖先们才有可能需要参与交换;</li>
+<li>堆是一棵完全树,必平衡,故 e 的祖先至多 o(logn)</li>
+</ul>
+<p>所以，通过上滤,可在 O(logn) 时间内插入一个新节点,并整体的重新调整为堆。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//插入和上滤</span></div><div class="line">Insert(Sqlist  &amp;heap,   RedType e)&#123;</div><div class="line">  heap.r[heap.length] = e;      </div><div class="line">  heap.length += <span class="number">1</span>;</div><div class="line">  percolateUp(heap, heap.length);</div><div class="line">&#125; </div><div class="line">percolateUp(Sqlist &amp;heap, <span class="keyword">int</span> i)&#123;</div><div class="line">  <span class="keyword">while</span> ( ParentValid(i) )&#123;</div><div class="line">    j = Parent（i）；</div><div class="line">      <span class="keyword">if</span> ( heap.r[i].key &gt; heap.r[j].key )  </div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      swap(heap.r[i], heap.r[j]);  i = j;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>完全二叉堆：删除</strong></p>
+<p>最大元素始终在堆顶,故删除只需摘除首元素,代之以末元素 e；// 结构性自然保持,<br>那堆序性如何保持?</p>
+<ul>
+<li>唯一可能违反堆序性的只有该节点e 和它的孩子们。</li>
+<li>只需从根节点出发,与孩子中的大者换位,逐层下滤直到满足堆</li>
+</ul>
+<p>效率:<br>通过下滤,可在 O(logn) 时间内删除堆顶节点,并整体地重新调整为堆。</p>
+<p><strong>建堆</strong></p>
+<ul>
+<li>自上而下的上滤</li>
+<li>建堆可以是一个从空堆开始,依次插入各元素。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Heapify(Sqlist &amp;L)&#123;</div><div class="line">  <span class="keyword">for</span> (i =<span class="number">1</span>; i&lt;L.length; i++)</div><div class="line">    percolateUp(L, i) ; <span class="comment">// 经上滤插入各节点</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效率: 在最坏情况下,每个元素都需上滤到根节点,所以时间复杂度是O(nlogn) 。</p>
+<ul>
+<li>自下而上的下滤</li>
+<li>给定堆 H0 、 H1 和节点 P,为了得到堆 H0 UPU H1 ,只需将 ra(H0的堆顶) 和 rb(H1的堆顶) 当作 P 的孩子,对 p 下滤</li>
+<li>从下向上,子堆逐层合并</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Heapify(Sqlist &amp;L)&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = L.length/<span class="number">2</span>; i&gt;<span class="number">0</span>; i--)</div><div class="line">    percolateDown(L, i) ; <span class="comment">// 下滤各内部节点</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效率：时间复杂度为O(n)</p>
+<p><strong>堆排序即是利用堆的特性,不断输出当前最小( 大 ) 值,从而实现对序列进行排序的一种排序方法。</strong></p>
+<p><strong>堆排序是不稳定的排序算法。</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//堆排序算法</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeapSort</span> <span class="params">(Sqlist &amp;L )</span> </span>&#123;</div><div class="line"><span class="comment">// 对顺序表 L 进行堆排序</span></div><div class="line">  Heapify ( L ); <span class="comment">// 建大顶堆</span></div><div class="line">  <span class="keyword">for</span> ( i=H.length; i&gt;<span class="number">1</span>; --i ) &#123;</div><div class="line">    <span class="keyword">int</span> t = H.r[<span class="number">0</span>];</div><div class="line">    H.r[<span class="number">0</span>] = H.r[i];</div><div class="line">    H.r[i] = t; <span class="comment">// 将堆顶记录和当前未经排序子序列H.r[1..i] 中最后一个记录相互交换堆</span></div><div class="line">  &#125;</div><div class="line">  percolateDown(L, <span class="number">0</span>) ; <span class="comment">// 对 H.r[0..i-1] 调整,成为新堆</span></div><div class="line">&#125; <span class="comment">// HeapSort</span></div></pre></td></tr></table></figure>
+<p>算法分析：</p>
+<ul>
+<li>堆排序的时间复杂度为 O(nlogn) 。</li>
+<li>堆排序方法对 n 较大的文件是很有效的。</li>
+</ul>
+<p><strong>左式堆</strong></p>
+<p>左式堆是一棵单侧倾斜的树:</p>
+<ul>
+<li>节点分布偏向左侧</li>
+<li>合并操作只涉及右侧</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//左式堆的合并</span></div><div class="line"><span class="function">BiNode *<span class="title">Merge</span><span class="params">(BiNode *a, *b)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> ( !a)</div><div class="line">      <span class="keyword">return</span> b;</div><div class="line">    <span class="keyword">if</span> (!b)</div><div class="line">      <span class="keyword">return</span> a;</div><div class="line">    <span class="keyword">if</span> ( a-&gt;data&lt;=b-&gt;data ) </div><div class="line">      swap( b, a);<span class="comment">//一般确保b不大，确保堆序性</span></div><div class="line">    a-&gt;rchild = merge(a-rchild, b); <span class="comment">//将a的右子堆与b合并</span></div><div class="line">    a-&gt;rchild-&gt;parent = a;<span class="comment">//更新父子关系</span></div><div class="line">    <span class="keyword">if</span> ( !a-&gt;lchild || a-&gt;lchild-&gt;NPL &lt; a-&gt;rchild-&gt;NPL )</div><div class="line">       swap( a-&gt;lchild, a-&gt;rchild );</div><div class="line">    a-&gt;NLP = a-&gt;rc ? A-&gt;rchild-&gt;NPL+<span class="number">1</span>: <span class="number">1</span>;<span class="comment">//更新父节点的NPL</span></div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左式堆的插入 insert( )</span></div><div class="line"><span class="function">BiNode *<span class="title">insert</span><span class="params">(BiNode *a, e)</span></span>&#123;</div><div class="line">  BiNode *v = <span class="keyword">new</span> BiNode(e);</div><div class="line">  root= merge(a, v);</div><div class="line">  root-&gt;parent = <span class="literal">NULL</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左式堆的最大元素的删除DelMax</span></div><div class="line"><span class="function">BiNode *<span class="title">insert</span><span class="params">(BiNode *root)</span></span>&#123;</div><div class="line">  BiNode *lHeap = root-&gt;lChild ;BiNode *rHeap = root-&gt;rChild;</div><div class="line">  e = root-&gt;data;</div><div class="line">  <span class="keyword">delete</span> root;</div><div class="line">  root = merge( lHeap,rHeap);</div><div class="line">  <span class="keyword">if</span> ( root ) </div><div class="line">    root-&gt;parent = <span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">return</span> e;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><ul>
+<li>分治策略的再一次体现</li>
+<li>将序列分为两个子序列: S = SL +SR；规模缩小: max{|SL|,|SR|}&lt;n；彼此独立: max(SL ) &lt;= min(SR )</li>
+<li>在子序列分别递归地排序后,原序列自然有序</li>
+<li>平凡解:当只剩单个元素时,本身就是解</li>
+<li>QuickSort 的难点在于“分” [ 归并排序 ]</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QSort</span> <span class="params">(RedType &amp; R[],  <span class="keyword">int</span> s,  <span class="keyword">int</span>  t )</span> </span>&#123;</div><div class="line">    <span class="comment">// 对记录序列R[s..t]进行快速排序</span></div><div class="line">    <span class="keyword">if</span> (s &lt; t<span class="number">-1</span>) &#123;             <span class="comment">// 长度大于1</span></div><div class="line">        pivotloc = Partition(R, s, t); <span class="comment">// 对 R[s..t] 进行一次划分</span></div><div class="line">        QSort(R, s, pivotloc<span class="number">-1</span>);  <span class="comment">// 对低子序列递归排序</span></div><div class="line">        QSort(R, pivotloc+<span class="number">1</span>, t); <span class="comment">// 对高子序列递归排序</span></div><div class="line">    &#125;</div><div class="line">&#125; <span class="comment">// QSort</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">( SqList &amp; L)</span> </span>&#123;</div><div class="line">      <span class="comment">// 对顺序表进行快速排序</span></div><div class="line">       QSort(L.r, <span class="number">1</span>, L.length);</div><div class="line">&#125; <span class="comment">// QuickSort</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span> <span class="params">(RedType&amp; R[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</div><div class="line">  pivotkey = R[low].key; <span class="comment">// 枢轴</span></div><div class="line">  <span class="keyword">while</span> (low&lt;high) &#123;</div><div class="line">    <span class="keyword">while</span> (low&lt;high &amp;&amp; R[high].key&gt;=pivotkey)</div><div class="line">      --high;</div><div class="line">    R[low]=R[high];</div><div class="line">    <span class="keyword">while</span> (low&lt;high &amp;&amp; R[low].key&lt;=pivotkey)</div><div class="line">      ++low;</div><div class="line">    R[high]=R[low];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> low;<span class="comment">// 返回枢轴所在位置</span></div><div class="line">&#125; <span class="comment">// Partition</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition2</span> <span class="params">(RedType&amp; R[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</div><div class="line">  pivotkey = R[low].key; <span class="comment">// 枢轴</span></div><div class="line">  mid = low;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> k = low+<span class="number">1</span>; k&lt;=high; k++)</div><div class="line">    <span class="keyword">if</span> (R[k].key&lt;pivotkey)</div><div class="line">      swap(R[++mid], R[k]);</div><div class="line">  swap(R[low], R[mid]);</div><div class="line"><span class="keyword">return</span> mid;<span class="comment">// 返回枢轴所在位置</span></div><div class="line">&#125; <span class="comment">// Partition例:</span></div></pre></td></tr></table></figure>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>又称“缩小增量排序”，将记录序列分成若干子序列，分别对每个子序列进行插入排序。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span> <span class="params">(SqList &amp;L, <span class="keyword">int</span> dlta[], <span class="keyword">int</span> t)</span></span>&#123;</div><div class="line"><span class="comment">// 增量序列为 dlta[] 的希尔排序,序列长为 t</span></div><div class="line">  <span class="keyword">for</span> (k=<span class="number">0</span>; k&lt;t; ++t)</div><div class="line">    ShellInsert(L, dlta[k]);</div><div class="line">&#125; <span class="comment">// ShellSort</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellInsert</span> <span class="params">( SqList &amp;L, <span class="keyword">int</span> dk )</span> </span>&#123;</div><div class="line">  <span class="keyword">for</span> ( i=dk+<span class="number">1</span>; i&lt;=n; ++i )<span class="comment">// 对每个元素在当前增量子序列中排序</span></div><div class="line">    <span class="keyword">if</span> ( L.r[i].key&lt; L.r[i-dk].key) &#123;<span class="comment">// 在子序列中用直接插入法排序当前元素</span></div><div class="line">      L.r[<span class="number">0</span>] = L.r[i];</div><div class="line">      <span class="keyword">for</span> (j=i-dk; j&gt;<span class="number">0</span>&amp;&amp;(L.r[<span class="number">0</span>].key&lt;L.r[j].key); j-=dk)</div><div class="line">        L.r[j+dk] = L.r[j]; <span class="comment">// 记录后移,查找插入位置</span></div><div class="line">      L.r[j+dk] = L.r[<span class="number">0</span>]; <span class="comment">// 插入</span></div><div class="line">    &#125; <span class="comment">// if</span></div><div class="line">&#125; <span class="comment">// ShellInsert</span></div></pre></td></tr></table></figure>
+<p><strong>算法分析</strong></p>
+<p>希尔排序是一种不稳定的插入排序方法。</p>
+<ul>
+<li>希尔排序的时间复杂性与各列内部排序的算法 ( 插入 ) 由关。内部排序不一定是高效的,但需要是 input-sensitive</li>
+<li>但其实际运行的时间更多地取决于所取“增量”序列的有关,涉及数学上尚未解决的难题。</li>
+</ul>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基数排序是一种借助“多关键字排序”的思想来实现“单关键字排序”的内部排序算法。</p>
+<p>实现多关键字排序通常有两种作法 :</p>
+<p>关键字${K^0&gt;K^1&gt;…&gt;K^{d-1}}$</p>
+<ul>
+<li>最高位优先 MSD 法 (Most Significant Digit first ) </li>
+</ul>
+<p>先对 K 进行排序,按 $K^0$ 的不同值将记录序列分成若干子序列之后,分别对 $K^1$ 进行排,…,最后对最次位关键字排序。</p>
+<ul>
+<li>最低位优先 LSD 法 (Least Significant Digit first)</li>
+</ul>
+<p>先对$ K^{d-1}$ 进行排序,然后对$ K^{d-2}$ 进行排序, …, 最后对最主位关键字 $K^0 $排序。</p>
+<p><strong>对比</strong></p>
+<p>最高位优先法</p>
+<ul>
+<li>必须将序列逐层分割为若干子序列,然后对各子序列分别进行排序 。</li>
+</ul>
+<p>最低位优先法</p>
+<ul>
+<li>使用这种排序方法对每一个关键字进行排序时,不必分成子序列,对每个关键字都是整个序列参加排序。</li>
+<li>按 LSD 排序时,可以通过若干次“分配”和“收集”来实现排序。其好处是不需要进行关键字间的比较。</li>
+</ul>
+<p><strong>实现</strong></p>
+<p>在计算机上实现基数排序时,为减少所需辅助存储空间,应采用链表作存储结构,即链式基数排序,具体作法为:</p>
+<ol>
+<li>待排序记录以指针相链,构成一个链表;</li>
+<li>“分配” 时,按当前“关键字位”所取值,将记录分配到不同的 “链队列” 中,每个队列中记录的 “关键字位” 相同;</li>
+<li>“收集”时,按当前关键字位取值从小到大将各队列首尾相链成一个链表 ；</li>
+<li>对每个关键字位均重复 2) 和 3) 两步。</li>
+</ol>
+<p><strong>链表基数排序算法</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_NUM_OF_KEY 8</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> RADIX 10</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_SPACE 10000</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</div><div class="line">   KeysType keys[MAX_NUM_OF_KEY];</div><div class="line">   InfoType otheritems;</div><div class="line">   <span class="keyword">int</span> next;</div><div class="line">&#125;SLCell;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</div><div class="line">   SLCell r[MAX_SPACE];</div><div class="line">   <span class="keyword">int</span> keynum;</div><div class="line">   <span class="keyword">int</span> recnum;</div><div class="line">&#125;SLList;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ArrType[RADIX];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Distribute</span><span class="params">(SLCell &amp;r, <span class="keyword">int</span> I, ArrType &amp;f, ArrType &amp;e)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;RADIX; ++j) f[j] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (p=r[<span class="number">0</span>].next; p; p= r[p].next)&#123;</div><div class="line">           j = r[p].keys[i];</div><div class="line">           <span class="keyword">if</span> (!f[j])  f[j] = p;</div><div class="line">           <span class="keyword">else</span>  r[e[j]].next = p;</div><div class="line">           e[j] = p;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function">Void <span class="title">Collect</span><span class="params">(SLCell &amp;r, <span class="keyword">int</span> I, ArrType f, ArrType e)</span></span>&#123;</div><div class="line">      <span class="keyword">for</span> (j=<span class="number">0</span>; !f[j]; j = succ(j));</div><div class="line">      r[<span class="number">0</span>].next = f[j]; t = e[j];</div><div class="line">      <span class="keyword">while</span> (j&lt;RADIX)&#123;</div><div class="line">                <span class="keyword">for</span> (j=succ(j); j&lt;RADIX<span class="number">-1</span>&amp;&amp;!f[j]; j = succ(j));</div><div class="line">                <span class="keyword">if</span> (f[j]) &#123; r[t].next = f[j]; t = e[j];&#125;</div><div class="line">      &#125;</div><div class="line">      r[t].next = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function">Void <span class="title">Radixsort</span><span class="params">(SLList &amp;L)</span></span>&#123;</div><div class="line">    <span class="comment">//L是静态链表表示的顺序表</span></div><div class="line">    <span class="comment">//对L作基数排序，使得L成为自小到大的有序静态链表</span></div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>；i&lt;L.recnum;；++i）L.r[i].next = i+<span class="number">1</span>；</div><div class="line">    L.r[L.recnum].next = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;L.recnum; ++i)&#123;</div><div class="line">           Distribute(L.r, i,  f, e);</div><div class="line">            Collect(L.r, I, f, e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>算法分析</strong></p>
+<ul>
+<li>若每个排序码有 d 位 , 需要重复执行 d 趟“分配”与“收集”。每趟对 n 个元素进行“分配”,对 radix 个队列进行“收集”。总时间复杂度为O(d(n+radix))</li>
+<li>若基数 radix 相同 , 对于元素个数较多而排序码位数较少的情况 , 使用链式基数排序较好。</li>
+<li>基数排序需要增加 n+2radix 个附加链接指针。</li>
+<li>基数排序是稳定的排序方法。</li>
+</ul>
+<h3 id="2-路插入排序"><a href="#2-路插入排序" class="headerlink" title="2-路插入排序"></a>2-路插入排序</h3><ul>
+<li>2- 路插入排序是在折半插入排序的基础上进行的改进,目的是减少排序过程中记录移动的次数。</li>
+<li>算法的思想为:另设一个和原始待排序列 L 相同的数组D ,该数组是一个循环向量。首先将 L[1] 复制给 D[1] ,并把 D[1]看成是已排好序的序列中处于中间位置的元素,之后将 L 中的从第二个元素开始依次插入到数组 D 中。</li>
+</ul>
+<h3 id="表插入排序"><a href="#表插入排序" class="headerlink" title="表插入排序"></a>表插入排序</h3><p>为了减少在排序过程中进行的“移动”记录的操作，静态链表结构可以避免元素移动。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE 100  </span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>  &#123;  </div><div class="line">  RcdType  rc;  </div><div class="line">  <span class="keyword">int</span> next;  </div><div class="line">&#125;SLNode;  </div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>  &#123;  </div><div class="line">  SLNode numbers[SIZE];  </div><div class="line">  <span class="keyword">int</span> length;  </div><div class="line">&#125;SLinkList;  </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LInsertionSort</span> <span class="params">(Elem SL[ ] , <span class="keyword">int</span> n)</span></span>&#123;</div><div class="line"><span class="comment">// 对记录序列 SL[1..n] 作表插入排序</span></div><div class="line">  SL[<span class="number">0</span>].key = MAXINT ;</div><div class="line">  SL[<span class="number">0</span>].next = <span class="number">1</span>; </div><div class="line">  SL[<span class="number">1</span>].next = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> ( i=<span class="number">2</span>; i&lt;=n; ++i )&#123; <span class="comment">// 逐个将 i 插入已排好 [1..i-1] 中</span></div><div class="line">    <span class="keyword">for</span> ( j=<span class="number">0</span>, k = SL[<span class="number">0</span>].next; SL[k].key&gt;=SL[i].key ;j=k, k=SL[k].next ); <span class="comment">// 从表头开始寻找插入位置</span></div><div class="line">    SL[j].next = i;</div><div class="line">    SL[i].next = k;</div><div class="line">  &#125;</div><div class="line">&#125;<span class="comment">// LinsertionSort</span></div></pre></td></tr></table></figure>
+<p>表插入排序的结果只是求得一个有序链表。为了方便查找，需要对结果进行重新排列求得一个有序数组。</p>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>各种排序方法之间的比较：</p>
+<table>
+<thead>
+<tr>
+<th>排序方法</th>
+<th>比较次数(最好)</th>
+<th>比较次数(最差)</th>
+<th>移动次数(最好)</th>
+<th>移动次数(最差)</th>
+<th>稳定性</th>
+<th>附加存储</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接插入排序</td>
+<td>n</td>
+<td>n^2</td>
+<td>0</td>
+<td>n^2</td>
+<td>稳定</td>
+<td>1</td>
+</tr>
+<tr>
+<td>冒泡排序</td>
+<td>n</td>
+<td>n^2</td>
+<td>0</td>
+<td>n^2</td>
+<td>稳定</td>
+<td>1</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>nlog2n</td>
+<td>n^2</td>
+<td>log2n</td>
+<td>n</td>
+<td>不稳定</td>
+<td>log2n</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>nlog2n</td>
+<td></td>
+<td>nlog2n</td>
+<td></td>
+<td>不稳定</td>
+<td>1</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>nlog2n</td>
+<td></td>
+<td>nlog2n</td>
+<td></td>
+<td>稳定</td>
+<td>n</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/07/Find-and-Search-Part3/" rel="next" title="查找和搜索-Part3">
+                <i class="fa fa-chevron-left"></i> 查找和搜索-Part3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/08/External-Sort/" rel="prev" title="外部排序">
+                外部排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/photos/profile.jpg"
+               alt="Flynn" />
+          <p class="site-author-name" itemprop="name">Flynn</p>
+           
+              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">109</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://linux.cn/lctt" title="LCTT" target="_blank">LCTT</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">3.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">4.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">5.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#树形选择排序-锦标赛排序"><span class="nav-number">5.1.</span> <span class="nav-text">树形选择排序/锦标赛排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">6.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">7.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">8.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基数排序"><span class="nav-number">9.</span> <span class="nav-text">基数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-路插入排序"><span class="nav-number">10.</span> <span class="nav-text">2-路插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表插入排序"><span class="nav-number">11.</span> <span class="nav-text">表插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较"><span class="nav-number">12.</span> <span class="nav-text">比较</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Flynn
+
+
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+  </span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/08/08/Inner-Sort/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  
+
+</body>
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
