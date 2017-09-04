@@ -141,7 +141,7 @@ Markdown(写博客）
 <meta property="og:image" content="http://ucasfl.me/photos/blog2/2.png">
 <meta property="og:image" content="http://ucasfl.me/photos/blog2/3.png">
 <meta property="og:image" content="http://ucasfl.me/photos/blog2/4.png">
-<meta property="og:updated_time" content="2017-09-02T04:38:29.083Z">
+<meta property="og:updated_time" content="2017-09-04T08:30:23.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客搭建：GitHub+Hexo">
 <meta name="twitter:description" content="前言既然是技术性文章，就不多说废话，直接进入正题。
@@ -505,7 +505,7 @@ Markdown(写博客）
 </code></pre><p>这是在 <em>Linux</em> 系统下的安装，<em>Windows</em> 系统下的安装都一个样，不必多说。<br>之后讲到的命令如果是 <em>Linux</em> 系统，则是在 <em>Linux</em> 命令行下操作；如果是 <em>Windows</em> 系统则是在 <em>Git Bash</em> 下操作。</p>
 <p>初始设置：</p>
 <pre><code>~$ git config --global user.name &quot;Firstname Lastname&quot;
-~$ git config --global usser.email &quot;your_email@example.com&quot;
+~$ git config --global user.email &quot;your_email@example.com&quot;
 </code></pre><p>上面的<em>双引号</em>里面的内容是你自己想设置的名字和邮箱。</p>
 <h4 id="设置-SSH-key："><a href="#设置-SSH-key：" class="headerlink" title="设置 SSH key："></a>设置 <em>SSH key</em>：</h4><p>运行下面命令创建 <em>SSH key</em>：</p>
 <pre><code>~$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
@@ -558,7 +558,7 @@ type:
 </code></pre><p>改为（实际上是加东西）：</p>
 <pre><code>deploy:
 type: git
-repository: https://github.com/user/user.github.io.git
+repository: git@github.com:user/user.github.io.git
 branch: master
 </code></pre><p>注意： <strong>user</strong> 部分为你的 <em>GitHub</em> 用户名；冒号后面要有一个<em>空格</em>，这是 <strong>yml</strong> 语法。</p>
 <p>然后，安装 <em>hexo-deployer-git</em>：</p>
