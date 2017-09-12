@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-09-12T02:25:54.538Z</updated>
+  <updated>2017-09-12T02:27:19.318Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>The Section of Variables</title>
+    <title>C 语言中变量的段</title>
     <link href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/"/>
     <id>http://ucasfl.me/2017/09/12/the-Section-of-Variables/</id>
     <published>2017-09-12T02:16:42.000Z</published>
-    <updated>2017-09-12T02:25:54.538Z</updated>
+    <updated>2017-09-12T02:27:19.318Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在 C 语言中，不同的变量位于不同的段，下面进行简单分析。</p>
 <p>看下面一个简单的 C 程序：</p>
