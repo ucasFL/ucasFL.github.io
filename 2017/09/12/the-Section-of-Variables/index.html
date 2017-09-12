@@ -117,7 +117,7 @@
 <meta property="og:description" content="前言在 C 语言中，不同的变量位于不同的段，下面进行简单分析。
 看下面一个简单的 C 程序：
 123456789101112131415161718#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;char *myname=&quot;Bao Yungang&quot;;char gdata[128];char bdata[16] = &amp;#123;1,2,3,4&amp;#12">
-<meta property="og:updated_time" content="2017-09-12T02:24:37.733Z">
+<meta property="og:updated_time" content="2017-09-12T02:25:54.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Section of Variables">
 <meta name="twitter:description" content="前言在 C 语言中，不同的变量位于不同的段，下面进行简单分析。
@@ -451,6 +451,7 @@
 <p>看下面一个简单的 C 程序：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">char</span> *myname=<span class="string">"Bao Yungang"</span>;</div><div class="line"><span class="keyword">char</span> gdata[<span class="number">128</span>];</div><div class="line"><span class="keyword">char</span> bdata[<span class="number">16</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div><div class="line">main() &#123;</div><div class="line">	<span class="keyword">char</span> * ldata[<span class="number">16</span>];	</div><div class="line">	<span class="keyword">char</span> * ddata;</div><div class="line"></div><div class="line">	ddata = <span class="built_in">malloc</span>(<span class="number">16</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"myname:%llX\n"</span>, myname);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"main: %llX\n"</span>, main);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;ddata:%llx\nddata: %llx\n"</span>,</div><div class="line">		gdata,bdata,ldata,&amp;ddata,ddata);</div><div class="line">	<span class="built_in">free</span>(ddata);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们分析一下程序中出现的变量所位于的段。</p>
+<a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先，根据所学知识进行分析：</p>
 <ul>
 <li><code>myname</code> 变量是一个全局变量，并且进行了初始化，指向一个字符串常量。因此，<code>myname</code> 变量本身位于<em>数据段：</em><code>.data</code></li>

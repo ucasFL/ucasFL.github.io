@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-09-12T02:24:37.733Z</updated>
+  <updated>2017-09-12T02:25:54.538Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,12 +20,13 @@
     <link href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/"/>
     <id>http://ucasfl.me/2017/09/12/the-Section-of-Variables/</id>
     <published>2017-09-12T02:16:42.000Z</published>
-    <updated>2017-09-12T02:24:37.733Z</updated>
+    <updated>2017-09-12T02:25:54.538Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在 C 语言中，不同的变量位于不同的段，下面进行简单分析。</p>
 <p>看下面一个简单的 C 程序：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">char</span> *myname=<span class="string">"Bao Yungang"</span>;</div><div class="line"><span class="keyword">char</span> gdata[<span class="number">128</span>];</div><div class="line"><span class="keyword">char</span> bdata[<span class="number">16</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div><div class="line">main() &#123;</div><div class="line">	<span class="keyword">char</span> * ldata[<span class="number">16</span>];	</div><div class="line">	<span class="keyword">char</span> * ddata;</div><div class="line"></div><div class="line">	ddata = <span class="built_in">malloc</span>(<span class="number">16</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"myname:%llX\n"</span>, myname);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"main: %llX\n"</span>, main);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;ddata:%llx\nddata: %llx\n"</span>,</div><div class="line">		gdata,bdata,ldata,&amp;ddata,ddata);</div><div class="line">	<span class="built_in">free</span>(ddata);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们分析一下程序中出现的变量所位于的段。</p>
+<a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先，根据所学知识进行分析：</p>
 <ul>
 <li><code>myname</code> 变量是一个全局变量，并且进行了初始化，指向一个字符串常量。因此，<code>myname</code> 变量本身位于<em>数据段：</em><code>.data</code></li>
@@ -70,7 +71,8 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;在 C 语言中，不同的变量位于不同的段，下面进行简单分析。&lt;/p&gt;
 &lt;p&gt;看下面一个简单的 C 程序：&lt;/p&gt;
-&lt;figure class=
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; *myname=&lt;span class=&quot;string&quot;&gt;&quot;Bao Yungang&quot;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; gdata[&lt;span class=&quot;number&quot;&gt;128&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; bdata[&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;] = &amp;#123;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;main() &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; * ldata[&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;];	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; * ddata;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	ddata = &lt;span class=&quot;built_in&quot;&gt;malloc&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;myname:%llX\n&quot;&lt;/span&gt;, myname);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;main: %llX\n&quot;&lt;/span&gt;, main);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;amp;ddata:%llx\nddata: %llx\n&quot;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		gdata,bdata,ldata,&amp;amp;ddata,ddata);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;free&lt;/span&gt;(ddata);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;我们分析一下程序中出现的变量所位于的段。&lt;/p&gt;
     
     </summary>
     
@@ -86,7 +88,7 @@
     <link href="http://ucasfl.me/2017/09/12/Introduction-to-Compiler/"/>
     <id>http://ucasfl.me/2017/09/12/Introduction-to-Compiler/</id>
     <published>2017-09-12T02:16:15.000Z</published>
-    <updated>2017-09-12T02:19:59.520Z</updated>
+    <updated>2017-09-12T02:25:39.505Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg" alt="了解在编译器的世界里前端和后端的新意义"></p>
 <p>简单说来，一个<ruby>编译器<rt>compiler</rt></ruby>不过是一个可以翻译其他程序的程序。传统的编译器可以把源代码翻译成你的计算机能够理解的可执行机器代码。（一些编译器将源代码翻译成别的程序语言，这样的编译器称为源到源翻译器或<ruby>转化器<rt>transpilers</rt></ruby>。）<a href="http://llvm.org/" target="_blank" rel="external">LLVM</a> 是一个广泛使用的编译器项目，包含许多模块化的编译工具。</p>
@@ -98,6 +100,7 @@
 <li><ruby>后端<rt>Backend</rt></ruby>通过将 IR 映射到目标硬件指令集从而生成机器代码。<a href="http://llvm.org/docs/CommandGuide/llc.html" target="_blank" rel="external">llc</a> 是 LLVM 的后端工具。</li>
 </ul>
 <p>注：LLVM 的 IR 是一种和汇编类似的低级语言。然而，它抽离了特定硬件信息。</p>
+<a id="more"></a>
 <h3 id="Hello-Compiler"><a href="#Hello-Compiler" class="headerlink" title="Hello, Compiler"></a>Hello, Compiler</h3><p>下面是一个打印 “Hello, Compiler!” 到标准输出的简单 C 程序。C 语法是人类可读的，但是计算机却不能理解，不知道该程序要干什么。我将通过三个编译阶段使该程序变成机器可执行的程序。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// compile_me.c</span></div><div class="line"><span class="comment">// Wave to the compiler. The world can wait.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"Hello, Compiler!\n"</span>);</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><p>正如我在上面所提到的，<code>clang</code> 是 LLVM 中用于 C 家族语言的前端工具。Clang 包含 <ruby>C 预处理器<rt>C preprocessor</rt></ruby>、<ruby>词法分析器<rt>lexer</rt></ruby>、<ruby>语法解析器<rt>parser</rt></ruby>、<ruby>语义分析器<rt>semantic analyzer</rt></ruby>和 <ruby>IR 生成器<rt>IR generator</rt></ruby>。</p>
@@ -154,7 +157,15 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg&quot; alt=&quot;了解在编译器的世界里前端和后端的新意义&quot;&gt;&lt;/p&gt;
-&lt;p&gt;简单说来，一个&lt;ruby&gt;编译器&lt;rt&gt;compiler&lt;/rt&gt;&lt;/ruby&gt;不过是一
+&lt;p&gt;简单说来，一个&lt;ruby&gt;编译器&lt;rt&gt;compiler&lt;/rt&gt;&lt;/ruby&gt;不过是一个可以翻译其他程序的程序。传统的编译器可以把源代码翻译成你的计算机能够理解的可执行机器代码。（一些编译器将源代码翻译成别的程序语言，这样的编译器称为源到源翻译器或&lt;ruby&gt;转化器&lt;rt&gt;transpilers&lt;/rt&gt;&lt;/ruby&gt;。）&lt;a href=&quot;http://llvm.org/&quot;&gt;LLVM&lt;/a&gt; 是一个广泛使用的编译器项目，包含许多模块化的编译工具。&lt;/p&gt;
+&lt;p&gt;传统的编译器设计包含三个部分：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nicoleorchard.com/img/blog/compilers/compiler1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ruby&gt;前端&lt;rt&gt;Frontend&lt;/rt&gt;&lt;/ruby&gt;将源代码翻译为&lt;ruby&gt;中间表示&lt;rt&gt;intermediate representation &lt;/rt&gt;&lt;/ruby&gt; (IR)* 。&lt;a href=&quot;http://clang.llvm.org/&quot;&gt;clang&lt;/a&gt; 是 LLVM 中用于 C 家族语言的前端工具。&lt;/li&gt;
+&lt;li&gt;&lt;ruby&gt;优化器&lt;rt&gt;Optimizer&lt;/rt&gt;&lt;/ruby&gt;分析 IR 然后将其转化为更高效的形式。&lt;a href=&quot;http://llvm.org/docs/CommandGuide/opt.html&quot;&gt;opt&lt;/a&gt; 是 LLVM 的优化工具。&lt;/li&gt;
+&lt;li&gt;&lt;ruby&gt;后端&lt;rt&gt;Backend&lt;/rt&gt;&lt;/ruby&gt;通过将 IR 映射到目标硬件指令集从而生成机器代码。&lt;a href=&quot;http://llvm.org/docs/CommandGuide/llc.html&quot;&gt;llc&lt;/a&gt; 是 LLVM 的后端工具。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注：LLVM 的 IR 是一种和汇编类似的低级语言。然而，它抽离了特定硬件信息。&lt;/p&gt;
     
     </summary>
     
