@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-09-04T08:28:14.369Z</updated>
+  <updated>2017-09-12T02:24:37.733Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,156 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>The Section of Variables</title>
+    <link href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/"/>
+    <id>http://ucasfl.me/2017/09/12/the-Section-of-Variables/</id>
+    <published>2017-09-12T02:16:42.000Z</published>
+    <updated>2017-09-12T02:24:37.733Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在 C 语言中，不同的变量位于不同的段，下面进行简单分析。</p>
+<p>看下面一个简单的 C 程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">char</span> *myname=<span class="string">"Bao Yungang"</span>;</div><div class="line"><span class="keyword">char</span> gdata[<span class="number">128</span>];</div><div class="line"><span class="keyword">char</span> bdata[<span class="number">16</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div><div class="line">main() &#123;</div><div class="line">	<span class="keyword">char</span> * ldata[<span class="number">16</span>];	</div><div class="line">	<span class="keyword">char</span> * ddata;</div><div class="line"></div><div class="line">	ddata = <span class="built_in">malloc</span>(<span class="number">16</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"myname:%llX\n"</span>, myname);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"main: %llX\n"</span>, main);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;ddata:%llx\nddata: %llx\n"</span>,</div><div class="line">		gdata,bdata,ldata,&amp;ddata,ddata);</div><div class="line">	<span class="built_in">free</span>(ddata);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们分析一下程序中出现的变量所位于的段。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先，根据所学知识进行分析：</p>
+<ul>
+<li><code>myname</code> 变量是一个全局变量，并且进行了初始化，指向一个字符串常量。因此，<code>myname</code> 变量本身位于<em>数据段：</em><code>.data</code></li>
+<li><code>myname</code>所<strong>指向的字符串</strong>是一个字符串常量，根据 C 语言知识，是只读的，所以应位于<em>只读数据段：</em><code>.rodata</code></li>
+<li><code>gdata</code>是一个为进行初始化的全局变量，因此位于<em>BSS段（Block Started by Symbol）</em>。</li>
+<li><code>bdata</code>和<code>myname</code>一样是初始化了的全局变量，因此位于数据段。</li>
+<li><code>ldata</code>是一个<code>main</code>函数中的局部变量，因此位于<em>栈中。</em></li>
+<li><code>ddata</code>变量自身也是<code>main</code>函数中的一个局部变量，因此也位于<em>栈中。</em></li>
+<li><code>ddata</code>所<strong>指向的内存空间</strong>是通过<code>malloc</code>函数动态分配的，因此位于<em>堆中。</em></li>
+</ul>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>下面，通过<code>objdump</code>来进行验证：</p>
+<p>首先，使用<code>gcc</code>来编译源程序(Ubuntu 16.04.4 + gcc  5.4.0)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -save-temps addr_space.c</div></pre></td></tr></table></figure>
+<p>通过添加 <code>-save-temps</code>选项来生成中间文件。</p>
+<p>下面，使用 <code>objdump</code> 来查看段信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">objdump -D ./a.out</div></pre></td></tr></table></figure>
+<p>通过<code>-D</code>选项显示出所有段的内容。</p>
+<ul>
+<li>首先看<code>bdata</code> 和<code>myname</code> ，我们可以直接在 <code>.data</code> 段看到：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Disassembly of section .data:</div><div class="line"></div><div class="line">0000000000601040 &lt;__data_start&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601048 &lt;__dso_handle&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601050 &lt;myname&gt;:</div><div class="line">  601050:	68 07 40 00 00       	pushq  $0x4007</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601060 &lt;bdata&gt;:</div><div class="line">  601060:	01 02                	add    %eax,(%rdx)</div><div class="line">  601062:	03 04 00             	add    (%rax,%rax,1),%eax</div><div class="line">	...</div></pre></td></tr></table></figure>
+<ul>
+<li>对于 <code>gdata</code> ，也可以直接在 <code>.bss</code> 段看到：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Disassembly of section .bss:</div><div class="line"></div><div class="line">0000000000601080 &lt;completed.7585&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">00000000006010a0 &lt;gdata&gt;:</div><div class="line">	...</div></pre></td></tr></table></figure>
+<ul>
+<li>下面看<code>myname</code> 所指向的字符串常量。</li>
+</ul>
+<p>首先，运行程序，输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">myname:400768</div><div class="line">main: 400626</div><div class="line">gdata: 6010A0</div><div class="line">bdata:601060</div><div class="line">ldata:7ffc84068960</div><div class="line">ddata:1490010</div></pre></td></tr></table></figure>
+<p>由运行结果知，<code>myname</code>的值为 400768，它即为 <code>myname</code>所指向的字符串常量的地址。然后我们在 <code>objdump</code>的输出内容中搜索该地址，得到它位于 <code>.rodata</code>中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">Disassembly of section .rodata:</div><div class="line"></div><div class="line">0000000000400760 &lt;_IO_stdin_used&gt;:</div><div class="line">  400760:	01 00                	add    %eax,(%rax)</div><div class="line">  400762:	02 00                	add    (%rax),%al</div><div class="line">  400764:	00 00                	add    %al,(%rax)</div><div class="line">  400766:	00 00                	add    %al,(%rax)</div><div class="line">  400768:	42 61                	rex.X (bad) </div><div class="line">  40076a:	6f                   	outsl  %ds:(%rsi),(%dx)</div><div class="line">  40076b:	20 59 75             	and    %bl,0x75(%rcx)</div><div class="line">  40076e:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  40076f:	67 61                	addr32 (bad) </div><div class="line">  400771:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  400772:	67 00 6d 79          	add    %ch,0x79(%ebp)</div><div class="line">  400776:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  400777:	61                   	(bad)  </div><div class="line">  400778:	6d                   	insl   (%dx),%es:(%rdi)</div><div class="line">  400779:	65 3a 25 6c 6c 58 0a 	cmp    %gs:0xa586c6c(%rip),%ah        # a9873ec &lt;_end+0xa3862cc&gt;</div><div class="line">  400780:	00 6d 61             	add    %ch,0x61(%rbp)</div><div class="line">  400783:	69 6e 3a 20 25 6c 6c 	imul   $0x6c6c2520,0x3a(%rsi),%ebp</div><div class="line">  40078a:	58                   	pop    %rax</div><div class="line">  40078b:	0a 00                	or     (%rax),%al</div><div class="line">  40078d:	00 00                	add    %al,(%rax)</div><div class="line">  40078f:	00 67 64             	add    %ah,0x64(%rdi)</div><div class="line">  400792:	61                   	(bad)  </div><div class="line">  400793:	74 61                	je     4007f6 &lt;__GNU_EH_FRAME_HDR+0x36&gt;</div><div class="line">  400795:	3a 20                	cmp    (%rax),%ah</div><div class="line">  400797:	25 6c 6c 58 0a       	and    $0xa586c6c,%eax</div><div class="line">  40079c:	62                   	(bad)  </div><div class="line">  40079d:	64 61                	fs (bad) </div><div class="line">  40079f:	74 61                	je     400802 &lt;__GNU_EH_FRAME_HDR+0x42&gt;</div><div class="line">  4007a1:	3a 25 6c 6c 58 0a    	cmp    0xa586c6c(%rip),%ah        # a987413 &lt;_end+0xa3862f3&gt;</div><div class="line">  4007a7:	6c                   	insb   (%dx),%es:(%rdi)</div><div class="line">  4007a8:	64 61                	fs (bad) </div><div class="line">  4007aa:	74 61                	je     40080d &lt;__GNU_EH_FRAME_HDR+0x4d&gt;</div><div class="line">  4007ac:	3a 25 6c 6c 78 0a    	cmp    0xa786c6c(%rip),%ah        # ab8741e &lt;_end+0xa5862fe&gt;</div><div class="line">  4007b2:	64 64 61             	fs fs (bad) </div><div class="line">  4007b5:	74 61                	je     400818 &lt;__GNU_EH_FRAME_HDR+0x58&gt;</div><div class="line">  4007b7:	3a 25 6c 6c 78 0a    	cmp    0xa786c6c(%rip),%ah        # ab87429 &lt;_end+0xa586309&gt;</div><div class="line">	...</div></pre></td></tr></table></figure>
+<p>因此，说明 <code>myname</code>指向的字符串常量位于 <code>.rodata</code> 中。事实上，看中间一栏，从 400768 开始，到 400772 的第一个数结束，其中的内容 <code>42 61 6f 20 59 75 6e 67 61 6e 67</code>对应的 ASCII 码就是字符串 “Bao Yungang” 。</p>
+<ul>
+<li>对于 <code>ldata</code> 和 <code>ddata</code> 以及 <code>ddata</code> 所指向的分配空间，很难直接从 <code>objdump</code> 的输出中看出来。我们再把 <code>ddata</code>变量本身的地址也打印出来：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">myname:400768</div><div class="line">main: 400626</div><div class="line">gdata: 6010A0</div><div class="line">bdata:601060</div><div class="line">ldata:7ffe92607930</div><div class="line">&amp;ddata:7ffe92607928</div><div class="line">ddata: 221a010</div></pre></td></tr></table></figure>
+<p>我们看到，<code>ldata</code>和<code>ddata</code>的地址非常大，而 <code>ddata</code>所指向的分配空间的地址相对来说要小很多，这其实也一定程度上验证了我们的结论，根据我们已知的结论，在程序执行过程中，函数中的局部变量是在函数压栈以后，在栈中分配的，而 <code>malloc</code> 函数分配的空间则是在堆中进行分配的，而栈是从上往下长（高地址到低地址），堆则相反，是从下往上长（低地址到高地址），因此，栈中的变量地址较大，而堆中的则较小，所以，程序运行结果与之相符。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;在 C 语言中，不同的变量位于不同的段，下面进行简单分析。&lt;/p&gt;
+&lt;p&gt;看下面一个简单的 C 程序：&lt;/p&gt;
+&lt;figure class=
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
+    
+    
+      <category term="C Section" scheme="http://ucasfl.me/tags/C-Section/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编译器简介： 在 Siri 前时代如何与计算机对话</title>
+    <link href="http://ucasfl.me/2017/09/12/Introduction-to-Compiler/"/>
+    <id>http://ucasfl.me/2017/09/12/Introduction-to-Compiler/</id>
+    <published>2017-09-12T02:16:15.000Z</published>
+    <updated>2017-09-12T02:19:59.520Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg" alt="了解在编译器的世界里前端和后端的新意义"></p>
+<p>简单说来，一个<ruby>编译器<rt>compiler</rt></ruby>不过是一个可以翻译其他程序的程序。传统的编译器可以把源代码翻译成你的计算机能够理解的可执行机器代码。（一些编译器将源代码翻译成别的程序语言，这样的编译器称为源到源翻译器或<ruby>转化器<rt>transpilers</rt></ruby>。）<a href="http://llvm.org/" target="_blank" rel="external">LLVM</a> 是一个广泛使用的编译器项目，包含许多模块化的编译工具。</p>
+<p>传统的编译器设计包含三个部分：</p>
+<p><img src="https://nicoleorchard.com/img/blog/compilers/compiler1.jpg" alt=""></p>
+<ul>
+<li><ruby>前端<rt>Frontend</rt></ruby>将源代码翻译为<ruby>中间表示<rt>intermediate representation </rt></ruby> (IR)* 。<a href="http://clang.llvm.org/" target="_blank" rel="external">clang</a> 是 LLVM 中用于 C 家族语言的前端工具。</li>
+<li><ruby>优化器<rt>Optimizer</rt></ruby>分析 IR 然后将其转化为更高效的形式。<a href="http://llvm.org/docs/CommandGuide/opt.html" target="_blank" rel="external">opt</a> 是 LLVM 的优化工具。</li>
+<li><ruby>后端<rt>Backend</rt></ruby>通过将 IR 映射到目标硬件指令集从而生成机器代码。<a href="http://llvm.org/docs/CommandGuide/llc.html" target="_blank" rel="external">llc</a> 是 LLVM 的后端工具。</li>
+</ul>
+<p>注：LLVM 的 IR 是一种和汇编类似的低级语言。然而，它抽离了特定硬件信息。</p>
+<h3 id="Hello-Compiler"><a href="#Hello-Compiler" class="headerlink" title="Hello, Compiler"></a>Hello, Compiler</h3><p>下面是一个打印 “Hello, Compiler!” 到标准输出的简单 C 程序。C 语法是人类可读的，但是计算机却不能理解，不知道该程序要干什么。我将通过三个编译阶段使该程序变成机器可执行的程序。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// compile_me.c</span></div><div class="line"><span class="comment">// Wave to the compiler. The world can wait.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"Hello, Compiler!\n"</span>);</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><p>正如我在上面所提到的，<code>clang</code> 是 LLVM 中用于 C 家族语言的前端工具。Clang 包含 <ruby>C 预处理器<rt>C preprocessor</rt></ruby>、<ruby>词法分析器<rt>lexer</rt></ruby>、<ruby>语法解析器<rt>parser</rt></ruby>、<ruby>语义分析器<rt>semantic analyzer</rt></ruby>和 <ruby>IR 生成器<rt>IR generator</rt></ruby>。</p>
+<p><strong>C 预处理器</strong>在将源程序翻译成 IR 前修改源程序。预处理器处理外部包含文件，比如上面的 <code>#include &lt;stdio.h&gt;</code>。 它将会把这一行替换为 <code>stdio.h</code> C 标准库文件的完整内容，其中包含 <code>printf</code> 函数的声明。</p>
+<p>通过运行下面的命令来查看预处理步骤的输出：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">clang</span> <span class="selector-tag">-E</span> <span class="selector-tag">compile_me</span><span class="selector-class">.c</span> <span class="selector-tag">-o</span> <span class="selector-tag">preprocessed</span><span class="selector-class">.i</span></div></pre></td></tr></table></figure>
+<p><strong>词法分析器</strong>（或<ruby>扫描器<rt>scanner</rt></ruby>或<ruby>分词器<rt>tokenizer</rt></ruby>）将一串字符转化为一串单词。每一个单词或<ruby>记号<rt>token</rt></ruby>，被归并到五种语法类别之一：标点符号、关键字、标识符、文字或注释。</p>
+<p>compile_me.c 的分词过程：</p>
+<p><img src="https://nicoleorchard.com/img/blog/compilers/lexer.jpg" alt=""></p>
+<p><strong>语法分析器</strong>确定源程序中的单词流是否组成了合法的句子。在分析记号流的语法后，它会输出一个<ruby>抽象语法树<rt>abstract syntax tree</rt></ruby>（AST）。Clang 的 AST 中的节点表示声明、语句和类型。</p>
+<p>compile_me.c 的语法树：</p>
+<p><img src="https://nicoleorchard.com/img/blog/compilers/tree.jpg" alt=""></p>
+<p><strong>语义分析器</strong>会遍历抽象语法树，从而确定代码语句是否有正确意义。这个阶段会检查类型错误。如果 <code>compile_me.c</code> 的 main 函数返回 <code>&quot;zero&quot;</code>而不是 <code>0</code>， 那么语义分析器将会抛出一个错误，因为 <code>&quot;zero&quot;</code> 不是 <code>int</code> 类型。</p>
+<p><strong>IR 生成器</strong>将抽象语法树翻译为 IR。</p>
+<p>对 compile_me.c 运行 clang 来生成 LLVM IR：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">clang</span> <span class="selector-tag">-S</span> <span class="selector-tag">-emit-llvm</span> <span class="selector-tag">-o</span> <span class="selector-tag">llvm_ir</span><span class="selector-class">.ll</span> <span class="selector-tag">compile_me</span><span class="selector-class">.c</span></div></pre></td></tr></table></figure>
+<p>在 <code>llvm_ir.ll</code> 中的 main 函数：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">; llvm_ir.ll</span></div><div class="line"><span class="title">@.str</span> = <span class="keyword">private</span> <span class="keyword">unnamed_addr</span> <span class="keyword">constant</span> [<span class="number">18</span> <span class="keyword">x</span> <span class="keyword">i8</span>] <span class="keyword">c</span><span class="string">"Hello, Compiler!\0A\00"</span>, <span class="keyword">align</span> <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">define</span> <span class="keyword">i32</span> <span class="title">@main</span>() &#123;</div><div class="line">  <span class="symbol">%1</span> = <span class="keyword">alloca</span> <span class="keyword">i32</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- memory allocated on the stack</span></div><div class="line">  <span class="keyword">store</span> <span class="keyword">i32</span> <span class="number">0</span>, <span class="keyword">i32</span>* <span class="symbol">%1</span>, <span class="keyword">align</span> <span class="number">4</span></div><div class="line">  <span class="symbol">%2</span> = <span class="keyword">call</span> <span class="keyword">i32</span> (<span class="keyword">i8</span>*, ...) <span class="title">@printf</span>(<span class="keyword">i8</span>* <span class="keyword">getelementptr</span> <span class="keyword">inbounds</span> ([<span class="number">18</span> <span class="keyword">x</span> <span class="keyword">i8</span>], [<span class="number">18</span> <span class="keyword">x</span> <span class="keyword">i8</span>]* <span class="title">@.str</span>, <span class="keyword">i32</span> <span class="number">0</span>, <span class="keyword">i32</span> <span class="number">0</span>))</div><div class="line">  <span class="keyword">ret</span> <span class="keyword">i32</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">declare</span> <span class="keyword">i32</span> <span class="title">@printf</span>(<span class="keyword">i8</span>*, ...)</div></pre></td></tr></table></figure>
+<h4 id="优化程序"><a href="#优化程序" class="headerlink" title="优化程序"></a>优化程序</h4><p>优化程序的工作是基于其对程序的运行时行为的理解来提高代码效率。优化程序将 IR 作为输入，然后生成改进后的 IR 作为输出。LLVM 的优化工具 <code>opt</code> 将会通过标记 <code>-O2</code>（大写字母 <code>o</code>，数字 2）来优化处理器速度，通过标记 <code>Os</code>（大写字母 <code>o</code>，小写字母 <code>s</code>）来减少指令数目。</p>
+<p>看一看上面的前端工具生成的 LLVM IR 代码和运行下面的命令生成的结果之间的区别：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">opt</span> -O2 -S llvm_ir.<span class="keyword">ll</span> -<span class="keyword">o</span> optimized.<span class="keyword">ll</span></div></pre></td></tr></table></figure>
+<p>在 <code>optimized.ll</code> 中的 main 函数：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">optimized.ll</div><div class="line"></div><div class="line"><span class="title">@str</span> = <span class="keyword">private</span> <span class="keyword">unnamed_addr</span> <span class="keyword">constant</span> [<span class="number">17</span> <span class="keyword">x</span> <span class="keyword">i8</span>] <span class="keyword">c</span><span class="string">"Hello, Compiler!\00"</span></div><div class="line"></div><div class="line"><span class="keyword">define</span> <span class="keyword">i32</span> <span class="title">@main</span>() &#123;</div><div class="line">  <span class="symbol">%puts</span> = <span class="keyword">tail</span> <span class="keyword">call</span> <span class="keyword">i32</span> <span class="title">@puts</span>(<span class="keyword">i8</span>* <span class="keyword">getelementptr</span> <span class="keyword">inbounds</span> ([<span class="number">17</span> <span class="keyword">x</span> <span class="keyword">i8</span>], [<span class="number">17</span> <span class="keyword">x</span> <span class="keyword">i8</span>]* <span class="title">@str</span>, <span class="keyword">i64</span> <span class="number">0</span>, <span class="keyword">i64</span> <span class="number">0</span>))</div><div class="line">  <span class="keyword">ret</span> <span class="keyword">i32</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">declare</span> <span class="keyword">i32</span> <span class="title">@puts</span>(<span class="keyword">i8</span>* <span class="keyword">nocapture</span> <span class="keyword">readonly</span>)</div></pre></td></tr></table></figure>
+<p>优化后的版本中， main 函数没有在栈中分配内存，因为它不使用任何内存。优化后的代码中调用 <code>puts</code> 函数而不是 <code>printf</code> 函数，因为程序中并没有使用 <code>printf</code> 函数的格式化功能。</p>
+<p>当然，优化程序不仅仅知道何时可以把 <code>printf</code> 函数用 <code>puts</code> 函数代替。优化程序也能展开循环并内联简单计算的结果。考虑下面的程序，它将两个整数相加并打印出结果。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// add.c</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> a = <span class="number">5</span>, b = <span class="number">10</span>, c = a + b;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"%i + %i = %i\n"</span>, a, b, c);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面是未优化的 LLVM IR：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="title">@.str</span> = <span class="keyword">private</span> <span class="keyword">unnamed_addr</span> <span class="keyword">constant</span> [<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>] <span class="keyword">c</span><span class="string">"%i + %i = %i\0A\00"</span>, <span class="keyword">align</span> <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">define</span> <span class="keyword">i32</span> <span class="title">@main</span>() &#123;</div><div class="line">  <span class="symbol">%1</span> = <span class="keyword">alloca</span> <span class="keyword">i32</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- allocate stack space for var a</span></div><div class="line">  <span class="symbol">%2</span> = <span class="keyword">alloca</span> <span class="keyword">i32</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- allocate stack space for var b</span></div><div class="line">  <span class="symbol">%3</span> = <span class="keyword">alloca</span> <span class="keyword">i32</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- allocate stack space for var c</span></div><div class="line">  <span class="keyword">store</span> <span class="keyword">i32</span> <span class="number">5</span>, <span class="keyword">i32</span>* <span class="symbol">%1</span>, <span class="keyword">align</span> <span class="number">4</span>  <span class="comment">; &lt;- store 5 at memory location %1</span></div><div class="line">  <span class="keyword">store</span> <span class="keyword">i32</span> <span class="number">10</span>, <span class="keyword">i32</span>* <span class="symbol">%2</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- store 10 at memory location %2</span></div><div class="line">  <span class="symbol">%4</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%1</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %1 into register %4</span></div><div class="line">  <span class="symbol">%5</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%2</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %2 into register %5</span></div><div class="line">  <span class="symbol">%6</span> = <span class="keyword">add</span> <span class="keyword">nsw</span> <span class="keyword">i32</span> <span class="symbol">%4</span>, <span class="symbol">%5</span> <span class="comment">; &lt;- add the values in registers %4 and %5\. put the result in register %6</span></div><div class="line">  <span class="keyword">store</span> <span class="keyword">i32</span> <span class="symbol">%6</span>, <span class="keyword">i32</span>* <span class="symbol">%3</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- put the value of register %6 into memory address %3</span></div><div class="line">  <span class="symbol">%7</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%1</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %1 into register %7</span></div><div class="line">  <span class="symbol">%8</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%2</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %2 into register %8</span></div><div class="line">  <span class="symbol">%9</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%3</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %3 into register %9</span></div><div class="line">  <span class="symbol">%10</span> = <span class="keyword">call</span> <span class="keyword">i32</span> (<span class="keyword">i8</span>*, ...) <span class="title">@printf</span>(<span class="keyword">i8</span>* <span class="keyword">getelementptr</span> <span class="keyword">inbounds</span> ([<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>], [<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>]* <span class="title">@.str</span>, <span class="keyword">i32</span> <span class="number">0</span>, <span class="keyword">i32</span> <span class="number">0</span>), <span class="keyword">i32</span> <span class="symbol">%7</span>, <span class="keyword">i32</span> <span class="symbol">%8</span>, <span class="keyword">i32</span> <span class="symbol">%9</span>)</div><div class="line">  <span class="keyword">ret</span> <span class="keyword">i32</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">declare</span> <span class="keyword">i32</span> <span class="title">@printf</span>(<span class="keyword">i8</span>*, ...)</div></pre></td></tr></table></figure>
+<p>下面是优化后的 LLVM IR：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="title">@.str</span> = <span class="keyword">private</span> <span class="keyword">unnamed_addr</span> <span class="keyword">constant</span> [<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>] <span class="keyword">c</span><span class="string">"%i + %i = %i\0A\00"</span>, <span class="keyword">align</span> <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">define</span> <span class="keyword">i32</span> <span class="title">@main</span>() &#123;</div><div class="line">  <span class="symbol">%1</span> = <span class="keyword">tail</span> <span class="keyword">call</span> <span class="keyword">i32</span> (<span class="keyword">i8</span>*, ...) <span class="title">@printf</span>(<span class="keyword">i8</span>* <span class="keyword">getelementptr</span> <span class="keyword">inbounds</span> ([<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>], [<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>]* <span class="title">@.str</span>, <span class="keyword">i64</span> <span class="number">0</span>, <span class="keyword">i64</span> <span class="number">0</span>), <span class="keyword">i32</span> <span class="number">5</span>, <span class="keyword">i32</span> <span class="number">10</span>, <span class="keyword">i32</span> <span class="number">15</span>)</div><div class="line">  <span class="keyword">ret</span> <span class="keyword">i32</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">declare</span> <span class="keyword">i32</span> <span class="title">@printf</span>(<span class="keyword">i8</span>* <span class="keyword">nocapture</span> <span class="keyword">readonly</span>, ...)</div></pre></td></tr></table></figure>
+<p>优化后的 main 函数本质上是未优化版本的第 17 行和 18 行，伴有变量值内联。<code>opt</code> 计算加法，因为所有的变量都是常数。很酷吧，对不对？</p>
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><p>LLVM 的后端工具是 <code>llc</code>。它分三个阶段将 LLVM IR 作为输入生成机器代码。</p>
+<ul>
+<li><strong>指令选择</strong>是将 IR 指令映射到目标机器的指令集。这个步骤使用虚拟寄存器的无限名字空间。</li>
+<li><strong>寄存器分配</strong>是将虚拟寄存器映射到目标体系结构的实际寄存器。我的 CPU 是 x86 结构，它只有 16 个寄存器。然而，编译器将会尽可能少的使用寄存器。</li>
+<li><strong>指令安排</strong>是重排操作，从而反映出目标机器的性能约束。</li>
+</ul>
+<p>运行下面这个命令将会产生一些机器代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">llc</span> <span class="selector-tag">-o</span> <span class="selector-tag">compiled-assembly</span><span class="selector-class">.s</span> <span class="selector-tag">optimized</span><span class="selector-class">.ll</span></div></pre></td></tr></table></figure>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">_main:</div><div class="line">	pushq	<span class="built_in">%rbp</span></div><div class="line">	movq	<span class="built_in">%rsp</span>, <span class="built_in">%rbp</span></div><div class="line">	leaq	L_str(<span class="built_in">%rip</span>), <span class="built_in">%rdi</span></div><div class="line">	callq	_puts</div><div class="line">	xorl	<span class="built_in">%eax</span>, <span class="built_in">%eax</span></div><div class="line">	popq	<span class="built_in">%rbp</span></div><div class="line">	retq</div><div class="line">L_str:</div><div class="line">	.asciz	<span class="string">"Hello, Compiler!"</span></div></pre></td></tr></table></figure>
+<p>这个程序是 x86 汇编语言，它是计算机所说的语言，并具有人类可读语法。某些人最后也许能理解我。</p>
+<hr>
+<p>相关资源：</p>
+<ol>
+<li><a href="https://www.amazon.com/Engineering-Compiler-Second-Keith-Cooper/dp/012088478X" target="_blank" rel="external">设计一个编译器</a></li>
+<li><a href="https://www.amazon.com/Getting-Started-LLVM-Core-Libraries/dp/1782166920" target="_blank" rel="external">开始探索 LLVM 核心库</a></li>
+</ol>
+<hr>
+<p>via: <a href="https://nicoleorchard.com/blog/compilers" target="_blank" rel="external">https://nicoleorchard.com/blog/compilers</a></p>
+<p>作者：<a href="https://nicoleorchard.com/" target="_blank" rel="external">Nicole Orchard</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg&quot; alt=&quot;了解在编译器的世界里前端和后端的新意义&quot;&gt;&lt;/p&gt;
+&lt;p&gt;简单说来，一个&lt;ruby&gt;编译器&lt;rt&gt;compiler&lt;/rt&gt;&lt;/ruby&gt;不过是一
+    
+    </summary>
+    
+      <category term="Compiler" scheme="http://ucasfl.me/categories/Compiler/"/>
+    
+    
+      <category term="Compiler LLVM" scheme="http://ucasfl.me/tags/Compiler-LLVM/"/>
+    
+  </entry>
   
   <entry>
     <title>Npm 安装 Hexo 失败的解决办法</title>
@@ -2237,109 +2387,6 @@
     
     
       <category term="Reading-Summary" scheme="http://ucasfl.me/tags/Reading-Summary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Python 开始你的机器学习之旅</title>
-    <link href="http://ucasfl.me/2017/06/07/Start-Machine-Learning-with-Python/"/>
-    <id>http://ucasfl.me/2017/06/07/Start-Machine-Learning-with-Python/</id>
-    <published>2017-06-07T14:42:18.000Z</published>
-    <updated>2017-09-02T04:38:28.939Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>机器学习是你的简历中必需的一门技能。我们简要概括一下使用 Python 来进行机器学习的一些步骤。</p>
-</blockquote>
-<p><img src="https://opensource.com/sites/default/files/styles/image-full-size/public/images/education/osdc_khan_520x292_FINAL.png?itok=lCkXsudF" alt="Get started with machine learning using Python" title="Get started with machine learning using Python"></p>
-<blockquote>
-<p>图片来自： opensource.com</p>
-</blockquote>
-<p>你想知道如何开始机器学习吗？在这篇文章中，我将简要概括一下使用 <a href="https://opensource.com/article/17/2/3-top-machine-learning-libraries-python" target="_blank" rel="external">Python</a> 来开始机器学习的一些步骤。Python 是一门流行的开源程序设计语言，也是在人工智能及其它相关科学领域中最常用的语言之一。机器学习简称 ML，是人工智能的一个分支，它是利用算法从数据中进行学习，然后作出预测。机器学习有助于帮助我们预测我们周围的世界。</p>
-<p>从无人驾驶汽车到股市预测，再到在线学习，机器学习通过预测来进行自我提高的方法几乎被用在了每一个领域。由于机器学习的实际运用，目前它已经成为就业市场上最有需求的技能之一。另外，使用 Python 来开始机器学习很简单，因为有大量的在线资源，以及许多可用的 <a href="https://opensource.com/article/17/2/3-top-machine-learning-libraries-python" target="_blank" rel="external">Python 机器学习库</a>。</p>
-<p>你需要如何开始使用 Python 进行机器学习呢？让我们来总结一下这个过程。<br><a id="more"></a></p>
-<h3 id="提高你的-Python-技能"><a href="#提高你的-Python-技能" class="headerlink" title="提高你的 Python 技能"></a>提高你的 Python 技能</h3><p>由于 Python 在工业界和科学界都非常受欢迎，因此你不难找到 Python 的学习资源。如果你是一个从未接触过 Python 的新手，你可以利用在线资源，比如课程、书籍和视频来学习 Python。比如下面列举的一些资源：</p>
-<ul>
-<li><a href="https://learnpythonthehardway.org/book/" target="_blank" rel="external">Python 学习之路</a></li>
-<li><a href="https://www.youtube.com/playlist?list=PLfZeRfzhgQzTMgwFVezQbnpc1ck0I6CQl" target="_blank" rel="external">Google 开发者 Python 课程（视频）</a></li>
-<li><a href="https://developers.google.com/edu/python/" target="_blank" rel="external">Google 的 Python 课堂</a></li>
-</ul>
-<h3 id="安装-Anaconda"><a href="#安装-Anaconda" class="headerlink" title="安装 Anaconda"></a>安装 Anaconda</h3><p>下一步是安装 <a href="https://opensource.com/tags/javascript?src=programming_resource_menu" target="_blank" rel="external">Anacona</a>。有了 Anaconda ，你将可以开始使用 Python 来探索机器学习的世界了。Anaconda 的默认安装库包含了进行机器学习所需要的工具。</p>
-<h3 id="基本的机器学习技能"><a href="#基本的机器学习技能" class="headerlink" title="基本的机器学习技能"></a>基本的机器学习技能</h3><p>有了一些基本的 Python 编程技能，你就可以开始学习一些基本的机器学习技能了。一个实用的学习方法是学到一定技能便开始进行练习。然而，如果你想深入学习这个领域，那么你需要准备投入更多的学习时间。</p>
-<p>一个获取技能的有效方法是在线课程。吴恩达的 Coursera <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">机器学习课程</a> 是一个不错的选择。其它有用的在线训练包括：</p>
-<ul>
-<li><a href="https://www.datacamp.com/community/tutorials/machine-learning-python#gs.HfAvLRs" target="_blank" rel="external">Python 机器学习： Scikit-Learn 教程</a></li>
-<li><a href="https://pythonprogramming.net/machine-learning-tutorial-python-introduction/" target="_blank" rel="external">Python 实用机器学习教程</a></li>
-</ul>
-<p>你也可以在 <a href="https://www.liveedu.tv/" target="_blank" rel="external">LiveEdu.tv</a> 上观看机器学习视频，从而进一步了解这个领域。</p>
-<h3 id="学习更多的-Python-库"><a href="#学习更多的-Python-库" class="headerlink" title="学习更多的 Python 库"></a>学习更多的 Python 库</h3><p>当你对 Python 和机器学习有一个好的感觉之后，可以开始学习一些<a href="https://opensource.com/article/17/5/4-practical-python-libraries" target="_blank" rel="external">开源的 Python 库</a>。科学的 Python 库将会使完成一些简单的机器学习任务变得很简单。然而，选择什么库是完全主观的，并且在业界内许多人有很大的争论。</p>
-<p>一些实用的 Python 库包括：</p>
-<ul>
-<li><a href="http://scikit-learn.org/stable/" target="_blank" rel="external">Scikit-learn</a> ：一个优雅的机器学习算法库，可用于数据挖掘和数据分析任务。</li>
-<li><a href="https://opensource.com/article/17/2/machine-learning-projects-tensorflow-raspberry-pi" target="_blank" rel="external">Tensorflow</a> ：一个易于使用的神经网络库。</li>
-<li><a href="http://deeplearning.net/software/theano/" target="_blank" rel="external">Theano</a> ： 一个强大的机器学习库，可以帮助你轻松的评估数学表达式。</li>
-<li><a href="https://github.com/clips/pattern" target="_blank" rel="external">Pattern</a> ： 可以帮助你进行自然语言处理、数据挖掘以及更多的工作。</li>
-<li><a href="https://github.com/nilearn/nilearn" target="_blank" rel="external">Nilearn</a> ：基于 Scikit-learn，它可以帮助你进行简单快速的统计学习。</li>
-</ul>
-<h3 id="探索机器学习"><a href="#探索机器学习" class="headerlink" title="探索机器学习"></a>探索机器学习</h3><p>对基本的 Python、机器学习技能和 Python 库有了一定理解之后，就可以开始探索机器学习了。接下来，尝试探索一下 Scikit-learn 库。一个不错的教程是 Jake VanderPlas 写的 <a href="http://nbviewer.jupyter.org/github/donnemartin/data-science-ipython-notebooks/blob/master/scikit-learn/scikit-learn-intro.ipynb" target="_blank" rel="external">Scikit-learn 简介</a>。</p>
-<p>然后，进入中级主题，比如 <a href="https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials" target="_blank" rel="external">K-均值聚类算法简介</a>、线性回归、<a href="http://machinelearningmastery.com/implement-decision-tree-algorithm-scratch-python/" target="_blank" rel="external">决策树</a>和逻辑回归。</p>
-<p>最后，深入高级机器学习主题，比如向量机和复杂数据转换。</p>
-<p>就像学习任何新技能一样，练习得越多，就会学得越好。你可以通过练习不同的算法，使用不同的数据集来更好的理解机器学习，并提高解决问题的整体能力。</p>
-<p>使用 Python 进行机器学习是对你的技能的一个很好的补充，并且有大量免费和低成本的在线资源可以帮助你。你已经掌握机器学习技能了吗？可以在下面留下你的评论，或者<a href="https://opensource.com/story" target="_blank" rel="external">提交一篇文章</a>来分享你的故事。</p>
-<hr>
-<p>作者简介：</p>
-<p>Michael J. Garbade 博士是旧金山 LiveEdu Inc（Livecoding.tv）的创始人兼首席执行官。Livecoding.tv 是世界上观看工程师直播编代码最先进的直播平台。你可以通过观看工程师们写网站、移动应用和游戏，来将你的技能提升到一个新的水平。MichaelJ. Garbade 博士拥有金融学博士学位，并且是一名自学成才的工程师，他喜欢 Python、Django、Sencha Touch 和视频流。</p>
-<hr>
-<p>via: <a href="https://opensource.com/article/17/5/python-machine-learning-introduction" target="_blank" rel="external">https://opensource.com/article/17/5/python-machine-learning-introduction</a></p>
-<p>作者：<a href="https://opensource.com/users/drmjg" target="_blank" rel="external">Michael J. Garbade</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;机器学习是你的简历中必需的一门技能。我们简要概括一下使用 Python 来进行机器学习的一些步骤。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://opensource.com/sites/default/files/styles/image-full-size/public/images/education/osdc_khan_520x292_FINAL.png?itok=lCkXsudF&quot; alt=&quot;Get started with machine learning using Python&quot; title=&quot;Get started with machine learning using Python&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;图片来自： opensource.com&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;你想知道如何开始机器学习吗？在这篇文章中，我将简要概括一下使用 &lt;a href=&quot;https://opensource.com/article/17/2/3-top-machine-learning-libraries-python&quot;&gt;Python&lt;/a&gt; 来开始机器学习的一些步骤。Python 是一门流行的开源程序设计语言，也是在人工智能及其它相关科学领域中最常用的语言之一。机器学习简称 ML，是人工智能的一个分支，它是利用算法从数据中进行学习，然后作出预测。机器学习有助于帮助我们预测我们周围的世界。&lt;/p&gt;
-&lt;p&gt;从无人驾驶汽车到股市预测，再到在线学习，机器学习通过预测来进行自我提高的方法几乎被用在了每一个领域。由于机器学习的实际运用，目前它已经成为就业市场上最有需求的技能之一。另外，使用 Python 来开始机器学习很简单，因为有大量的在线资源，以及许多可用的 &lt;a href=&quot;https://opensource.com/article/17/2/3-top-machine-learning-libraries-python&quot;&gt;Python 机器学习库&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;你需要如何开始使用 Python 进行机器学习呢？让我们来总结一下这个过程。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Machine-Learning" scheme="http://ucasfl.me/categories/Machine-Learning/"/>
-    
-    
-      <category term="Python/machine learning" scheme="http://ucasfl.me/tags/Python-machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 中的 __Main__</title>
-    <link href="http://ucasfl.me/2017/06/07/main-in-Python/"/>
-    <id>http://ucasfl.me/2017/06/07/main-in-Python/</id>
-    <published>2017-06-07T06:38:12.000Z</published>
-    <updated>2017-09-02T04:38:28.975Z</updated>
-    
-    <content type="html"><![CDATA[<p>在 C 语言中，我们有一个 main 函数，每一个程序的执行都以 main 函数为入口。在 Python 中，也有同样的 main 函数。</p>
-<p>Python 中，我们写的一个模块都有一个名字，当它单独执行，不被其他模块调用时，它的名字就是 <code>__main__</code>，但是，当它被其他模块调用时，它的名字就是文件名。下面看例子。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># hello.py</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></div><div class="line">    string = <span class="string">'Hello, world!\n'</span></div><div class="line">    <span class="keyword">print</span> string</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    printf <span class="string">"This is module "</span>hello.py<span class="string">""</span></div></pre></td></tr></table></figure>
-<p>正如上面的例子。当它作为模块被其他模块调用时，<code>if</code> 后面的语句便不会执行；反之，当它作为一个单独的模块运行时，便会执行 <code>if</code> 后面的语句。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在 C 语言中，我们有一个 main 函数，每一个程序的执行都以 main 函数为入口。在 Python 中，也有同样的 main 函数。&lt;/p&gt;
-&lt;p&gt;Python 中，我们写的一个模块都有一个名字，当它单独执行，不被其他模块调用时，它的名字就是 &lt;code&gt;__main
-    
-    </summary>
-    
-      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
-    
-    
-      <category term="Python/main" scheme="http://ucasfl.me/tags/Python-main/"/>
     
   </entry>
   
