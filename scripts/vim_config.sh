@@ -6,19 +6,23 @@ if [ $a -eq 0 && $b -eq 0  ]; then
 	echo "OK, everything done!";
 elif [ $a -eq 0 && $b -ne 0 ]; then
 	echo "Sorry, curl is not installed. Please install curl first.";
+	sleep 3;
 	sudo apt update;
 	sudo apt install curl;
 elif [ $a -ne 0 && $b -eq 0 ]; then
 	echo "Sorry, git is not installed. Please install git first."
+	sleep 3;
 	sudo apt update;
 	sudo apt install git;
 else
 	echo "Both git and curl are not installed. Please install them first.";
+	sleep 3;
 	sudo apt update;
 	sudo apt install git;
 	sudo apt install curl;
 fi
 echo "Begin configuring Vim......"
+sleep 3;
 
 git clone https://github.com/ucasFL/config_file.git;
 sudo cp config_file/vimrc /etc/vim;
@@ -39,5 +43,4 @@ git clone https://github.com/Lokaltog/vim-powerline.git;
 git clone https://github.com/drmingdrmer/xptemplate.git;
 git clone https://github.com/kien/ctrlp.vim.git;
 git clone https://github.com/unblevable/quick-scope.git;
-
 echo "Configuring Vim completed! Enjoying your Vim."
