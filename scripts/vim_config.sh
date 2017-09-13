@@ -2,14 +2,14 @@ which git;
 a=$?;
 which curl;
 b=$?;
-if [ $a -eq 0 && $b -eq 0  ]; then
+if [ $a -eq 0 ] && [ $b -eq 0  ]; then
 	echo "OK, everything done!";
-elif [ $a -eq 0 && $b -ne 0 ]; then
+elif [ $a -eq 0 ] && [ $b -ne 0 ]; then
 	echo "Sorry, curl is not installed. Please install curl first.";
 	sleep 3;
 	sudo apt update;
 	sudo apt install curl;
-elif [ $a -ne 0 && $b -eq 0 ]; then
+elif [ $a -ne 0 ] && [ $b -eq 0 ]; then
 	echo "Sorry, git is not installed. Please install git first."
 	sleep 3;
 	sudo apt update;
