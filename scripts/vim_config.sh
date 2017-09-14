@@ -24,9 +24,9 @@ fi
 echo "Begin configuring Vim......"
 sleep 3;
 
-git clone https://github.com/ucasFL/config_file.git;
-sudo cp config_file/vimrc /etc/vim;
-sudo rm -r config_file;
+git clone https://github.com/ucasFL/my_vimrc.git;
+sudo cp my_vimrc/vimrc /etc/vim;
+sudo rm -r my_vimrc;
 mkdir -p ~/.vim/autoload ~/.vim/bundle;
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
 git clone https://github.com/tomasr/molokai.git;
