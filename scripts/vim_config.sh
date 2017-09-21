@@ -5,24 +5,24 @@ b=$?;
 if [ $a -eq 0 ] && [ $b -eq 0  ]; then
 	echo "OK, everything done!";
 elif [ $a -eq 0 ] && [ $b -ne 0 ]; then
-	echo "Sorry, curl is not installed. Please install curl first.";
-	sleep 3;
+	echo "Sorry, curl is not installed. I install curl first.";
+	sleep 2;
 	sudo apt update;
 	sudo apt install curl;
 elif [ $a -ne 0 ] && [ $b -eq 0 ]; then
-	echo "Sorry, git is not installed. Please install git first."
-	sleep 3;
+	echo "Sorry, git is not installed. I will install git first."
+	sleep 2;
 	sudo apt update;
 	sudo apt install git;
 else
-	echo "Both git and curl are not installed. Please install them first.";
+	echo "Both git and curl are not installed. I install them first.";
 	sleep 3;
 	sudo apt update;
 	sudo apt install git;
 	sudo apt install curl;
 fi
 echo "Begin configuring Vim......"
-sleep 3;
+sleep 2;
 
 git clone https://github.com/ucasFL/my_vimrc.git;
 sudo cp my_vimrc/vimrc /etc/vim;
