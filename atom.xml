@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-09-23T04:51:21.162Z</updated>
+  <updated>2017-09-25T01:11:48.338Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu 下代理服务器失败无法上网的解决办法</title>
+    <link href="http://ucasfl.me/2017/09/25/Setting-Proxy-For-google-chrome-in-Ubuntu/"/>
+    <id>http://ucasfl.me/2017/09/25/Setting-Proxy-For-google-chrome-in-Ubuntu/</id>
+    <published>2017-09-25T00:56:12.000Z</published>
+    <updated>2017-09-25T01:11:48.338Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 Ubuntu 上装了一个 Xfce 桌面，前段时间一直在使用 Xfce 桌面，今天切换回 GNOME 桌面以后，发现 google-chrome 无法上网了，说是代理服务器有问题，按照它的提示在设置中进行设置，结果打开代理服务器设置时，又出现下面的信息：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">When running Google Chrome under <span class="keyword">a</span> supported desktop environment, <span class="keyword">the</span> <span class="keyword">system</span> proxy settings will be used. However, either your <span class="keyword">system</span> is <span class="keyword">not</span> supported <span class="keyword">or</span> there was <span class="keyword">a</span> problem launching your <span class="keyword">system</span> configuration.</div><div class="line"></div><div class="line">But you can still configure via <span class="keyword">the</span> <span class="keyword">command</span> <span class="title">line</span>. <span class="title">Please</span> <span class="title">see</span> <span class="title">man</span> <span class="title">google-chrome-stable</span> <span class="title">for</span> <span class="title">more</span> <span class="title">information</span> <span class="title">on</span> <span class="title">flags</span> <span class="title">and</span> <span class="title">environment</span> <span class="title">variables</span>.</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>因此，无法在浏览器中进行设置。</p>
+<p>后来找到了解决办法：直接对桌面图标进行设置。</p>
+<p>首先，在 root 下用 vim 编辑器打开 <code>/usr/share/applications/google-chrome.destop</code>，或者直接<code>sudo vim /usr/share/applications/google-chrome.destop</code></p>
+<p>打开后显示下面的内容：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="section">[Desktop Entry]</span></div><div class="line"><span class="attr">Version</span>=<span class="number">1.0</span></div><div class="line"><span class="attr">Name</span>=Google Chrome</div><div class="line"><span class="attr">GenericName</span>=Web Browser</div><div class="line"><span class="attr">Comment</span>=Access the Internet</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable %U</div><div class="line"><span class="attr">Terminal</span>=<span class="literal">false</span></div><div class="line"><span class="attr">Icon</span>=google-chrome</div><div class="line"><span class="attr">Type</span>=Application</div><div class="line"><span class="attr">Categories</span>=Network;WebBrowser;</div><div class="line"><span class="attr">MimeType</span>=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;</div><div class="line"><span class="attr">Actions</span>=NewWindow;NewPrivateWindow;</div><div class="line"><span class="section"></span></div><div class="line">[Desktop Action NewWindow]</div><div class="line"><span class="attr">Name</span>=New Window</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable </div><div class="line"><span class="section"></span></div><div class="line">[Desktop Action NewPrivateWindow]</div><div class="line"><span class="attr">Name</span>=New Incognito Window</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable --incognito</div></pre></td></tr></table></figure>
+<p>在第六行的后面加上<code>--proxy-auto-detect</code>，变为如下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="section">[Desktop Entry]</span></div><div class="line"><span class="attr">Version</span>=<span class="number">1.0</span></div><div class="line"><span class="attr">Name</span>=Google Chrome</div><div class="line"><span class="attr">GenericName</span>=Web Browser</div><div class="line"><span class="attr">Comment</span>=Access the Internet</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable %U --proxy-auto-detect</div><div class="line"><span class="attr">Terminal</span>=<span class="literal">false</span></div><div class="line"><span class="attr">Icon</span>=google-chrome</div><div class="line"><span class="attr">Type</span>=Application</div><div class="line"><span class="attr">Categories</span>=Network;WebBrowser;</div><div class="line"><span class="attr">MimeType</span>=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;</div><div class="line"><span class="attr">Actions</span>=NewWindow;NewPrivateWindow;</div><div class="line"><span class="section"></span></div><div class="line">[Desktop Action NewWindow]</div><div class="line"><span class="attr">Name</span>=New Window</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable </div><div class="line"><span class="section"></span></div><div class="line">[Desktop Action NewPrivateWindow]</div><div class="line"><span class="attr">Name</span>=New Incognito Window</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable --incognito</div></pre></td></tr></table></figure>
+<p>保存退出，再次打开 google-chrome，便可以正常上网了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Ubuntu 上装了一个 Xfce 桌面，前段时间一直在使用 Xfce 桌面，今天切换回 GNOME 桌面以后，发现 google-chrome 无法上网了，说是代理服务器有问题，按照它的提示在设置中进行设置，结果打开代理服务器设置时，又出现下面的信息：&lt;/p&gt;
+&lt;figure class=&quot;highlight livecodeserver&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;When running Google Chrome under &lt;span class=&quot;keyword&quot;&gt;a&lt;/span&gt; supported desktop environment, &lt;span class=&quot;keyword&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;system&lt;/span&gt; proxy settings will be used. However, either your &lt;span class=&quot;keyword&quot;&gt;system&lt;/span&gt; is &lt;span class=&quot;keyword&quot;&gt;not&lt;/span&gt; supported &lt;span class=&quot;keyword&quot;&gt;or&lt;/span&gt; there was &lt;span class=&quot;keyword&quot;&gt;a&lt;/span&gt; problem launching your &lt;span class=&quot;keyword&quot;&gt;system&lt;/span&gt; configuration.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;But you can still configure via &lt;span class=&quot;keyword&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;line&lt;/span&gt;. &lt;span class=&quot;title&quot;&gt;Please&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;see&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;man&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;google-chrome-stable&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;more&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;information&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;flags&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;environment&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;variables&lt;/span&gt;.&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Browser" scheme="http://ucasfl.me/categories/Browser/"/>
+    
+    
+      <category term="Google-chrome proxy" scheme="http://ucasfl.me/tags/Google-chrome-proxy/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 文件系统概览</title>
@@ -2443,65 +2477,6 @@
     
     
       <category term="D" scheme="http://ucasfl.me/tags/D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>总结：Python+MySQL</title>
-    <link href="http://ucasfl.me/2017/06/13/Summary:Python+MySQL/"/>
-    <id>http://ucasfl.me/2017/06/13/Summary:Python+MySQL/</id>
-    <published>2017-06-13T14:45:04.000Z</published>
-    <updated>2017-09-02T04:38:29.059Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近越来越懒了，写博客甚至只想贴几行代码上去。</p>
-<p>直接进入正题。</p>
-<p>最近在做师兄给安排的一个任务，说简单点就是用 Python 来操作 MySQL 进行一些简单的数据统计。<br><a id="more"></a></p>
-<h3 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h3><p>第一步：通过 Python 连接到数据库。需要先安装一个模块 <code>MySQLdb</code>：</p>
-<p>首先，访问<a href="https://pypi.python.org/pypi/MySQL-python" target="_blank" rel="external">https://pypi.python.org/pypi/MySQL-python</a>下载适合系统的安装包。</p>
-<p>然后：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ gunzip MySQL-python-1.2.2.tar.gz</div><div class="line">$ tar -xvf MySQL-python-1.2.2.tar</div><div class="line">$ cd MySQL-python-1.2.2</div><div class="line">$ python setup.py build</div><div class="line">$ python setup.py install</div></pre></td></tr></table></figure>
-<p>第二步：连接到 MySQL 数据库：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line">db = MySQLdb.<span class="built_in">connect</span>(<span class="string">"hostname"</span>, <span class="string">"username"</span>, <span class="string">"password"</span>, <span class="string">"database_name"</span>)</div></pre></td></tr></table></figure>
-<p>第三步：执行 SQL 语句（接上）:</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># example</span></div><div class="line"><span class="built_in">cursor</span> = db.<span class="built_in">cursor</span>()</div><div class="line">sql = <span class="string">"SELECT * FROM database_name"</span></div><div class="line"><span class="meta"># execute</span></div><div class="line"><span class="built_in">cursor</span>.execute(sql)</div></pre></td></tr></table></figure>
-<p>第四步：Fetch 结果：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># fetch one line</span></div><div class="line"><span class="attr">result</span> = cursor.fetchone()</div><div class="line"><span class="comment"># fetch all lines</span></div><div class="line"><span class="attr">result</span> = cursor.fetchall()</div></pre></td></tr></table></figure>
-<p>第五步：关闭连接：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cursor</span>.<span class="built_in">close</span>()</div></pre></td></tr></table></figure>
-<p>有了这些，并且懂一些基本的 SQL 知识的话，就知道怎么用 Python 来操作数据库了。</p>
-<p>下面，说一下利用 Python 从 MySQL fetch 出来的数据的类型：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> raw_name <span class="keyword">COUNT</span>(row_name) <span class="keyword">FROM</span> database_name <span class="keyword">GROUP</span> <span class="keyword">BY</span> raw_name;</div></pre></td></tr></table></figure>
-<p>通过上一语句 fetch 得到的数据为字典类型：键值对为：raw_name - COUNT(raw_name) .</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> databasse_name;</div></pre></td></tr></table></figure>
-<p>通过上一语句 fetch 得到的数据为元组类型，元组中的每一个元素依旧为元组。</p>
-<p>知道了数据类型，就可以方便利用 Python 对数据进行处理了。</p>
-<h3 id="Python-文件读写"><a href="#Python-文件读写" class="headerlink" title="Python 文件读写"></a>Python 文件读写</h3><p>后一个参数为打开方式。</p>
-<ul>
-<li>r：只读</li>
-<li>w：写（会覆盖）</li>
-<li>w+：追加</li>
-<li>a：追加（append)</li>
-</ul>
-<p>读文件：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file_object.<span class="built_in">read</span>()</div></pre></td></tr></table></figure>
-<p>写文件：</p>
-<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">file<span class="number">_</span><span class="keyword">object</span>.write(<span class="string">'string'</span>)</div><div class="line">file<span class="number">_</span><span class="keyword">object</span>.writelines(<span class="string">'string'</span>)</div></pre></td></tr></table></figure>
-<p>关闭文件：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file_object.<span class="built_in">close</span>()</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;最近越来越懒了，写博客甚至只想贴几行代码上去。&lt;/p&gt;
-&lt;p&gt;直接进入正题。&lt;/p&gt;
-&lt;p&gt;最近在做师兄给安排的一个任务，说简单点就是用 Python 来操作 MySQL 进行一些简单的数据统计。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
-    
-    
-      <category term="Python/MySQL" scheme="http://ucasfl.me/tags/Python-MySQL/"/>
     
   </entry>
   

@@ -1,3 +1,4 @@
+#!/bin/bash
 which git;
 a=$?;
 which curl;
