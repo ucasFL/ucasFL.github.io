@@ -27,12 +27,11 @@ sleep 2;
 
 git clone https://github.com/ucasFL/my_vimrc.git;
 sudo cp my_vimrc/vimrc /etc/vim;
-sudo rm -r my_vimrc;
 mkdir -p ~/.vim/autoload ~/.vim/bundle;
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
-git clone https://github.com/tomasr/molokai.git;
-mv molokai/colors ~/.vim;
-sudo rm -r molokai;
+sudo mv my_vimrc/colors ~/.vim/;
+sudo rm -r my_vimrc;
+mkdir -p ~/.vim/autoload ~/.vim/bundle;
 cd ~/.vim/bundle;
 git clone https://github.com/jiangmiao/auto-pairs.git;
 git clone https://github.com/scrooloose/nerdcommenter.git;
