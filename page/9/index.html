@@ -322,6 +322,191 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/15/Linux-Comman-Shutdown-Command/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Cry On My Shoulder">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Cry On My Shoulder" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/15/Linux-Comman-Shutdown-Command/" itemprop="url">
+                  Linux 常用关机命令总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T14:57:53+08:00">
+                2017/03/15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Command/" itemprop="url" rel="index">
+                    <span itemprop="name">Command</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/15/Linux-Comman-Shutdown-Command/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/03/15/Linux-Comman-Shutdown-Command/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/03/15/Linux-Comman-Shutdown-Command/" class="leancloud_visitors" data-flag-title="Linux 常用关机命令总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><em>原文链接：</em> <a href="http://www.cnblogs.com/wanggd/archive/2013/07/08/3177398.html">http://www.cnblogs.com/wanggd/archive/2013/07/08/3177398.html</a></p>
+<h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>linux下常用的关机命令有：<code>shutdown、halt、poweroff、init</code>；重启命令有：<code>reboot</code>。下面本文就主要介绍一些常用的关机命令以及各种关机命令之间的区别和具体用法。</p>
+<p>首先来看一下linux下比较常用的一些关机命令</p>
+<h3 id="关机命令："><a href="#关机命令：" class="headerlink" title="关机命令："></a>关机命令：</h3><ol>
+<li>halt   立刻关机；</li>
+<li>poweroff  立刻关机；</li>
+<li>shutdown -h now 立刻关机(root用户使用)；</li>
+<li>shutdown -h 10 10分钟后自动关机 如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启；</li>
+</ol>
+<h3 id="重启命令："><a href="#重启命令：" class="headerlink" title="重启命令："></a>重启命令：</h3><ol>
+<li>reboot ；</li>
+<li>shutdown -r now 立刻重启(root用户使用) ；</li>
+<li>shutdown -r 10 过10分钟自动重启(root用户使用)；  </li>
+<li>shutdown -r 20:35 在时间为20:35时候重启(root用户使用) 如果是通过shutdown命令设置重启的话，可以用shutdown -c命令取消重启；</li>
+</ol>
+<p>下面我们来看看linux的这些具体的关机命令之间的区别和各自的用法。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/15/Linux-Comman-Shutdown-Command/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/14/Hello-Next/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1520,181 +1705,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/02/28/SqList/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Cry On My Shoulder">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Cry On My Shoulder" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/28/SqList/" itemprop="url">
-                  顺序线性表
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T18:45:44+08:00">
-                2017/02/28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Structures/" itemprop="url" rel="index">
-                    <span itemprop="name">Data-Structures</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            <!--noindex-->
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/28/SqList/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/02/28/SqList/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-              <!--/noindex-->
-            
-          
-
-          
-          
-             <span id="/2017/02/28/SqList/" class="leancloud_visitors" data-flag-title="顺序线性表">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="线性表（Linear-list）定义"><a href="#线性表（Linear-list）定义" class="headerlink" title="线性表（Linear list）定义"></a>线性表（Linear list）定义</h3><p>线性表是由 $n(n\ge0)$ 个数据元素 ( 结点 )$a_1 , a_2<br>, … a_n$ 组成的有限序列，且该序列中的所有结点具有相同的数据类型。</p>
-<ul>
-<li>线性表中数据元素的个数 n 称为线性表的长度；</li>
-<li>$n=0$时，称为空表；</li>
-<li>当 $n&gt;0$ 时，将非空的线性表记作 $(a_1 , a_2 ,<br>…, a_n ) $，那么，$a_1$ 称为线性表的第一个 ( 首 )结点，$ a_n$ 称为线性表的最后一个 ( 尾 ) 结点，$ a_1 , a<em>2 ,… a</em>{i-1} $都是 $a<em>i (2\le i\le n)$ 的前驱，其中 $a</em>{i-1}$ 是 $a<em>i$ 的直接前驱，$ a</em>{i+1} , a_{i+2} ,… ,a_n$都是 $a<em>i (1\le i\le n-1)$ 的后继，其中 $a</em>{i+1}$ 是 $a_i$ 的直接后继。</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/28/SqList/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1744,7 +1754,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">113</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-09-25T01:11:48.338Z</updated>
+  <updated>2017-10-06T04:53:32.058Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于 Linux 你可能不是非常了解的七件事</title>
+    <link href="http://ucasfl.me/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/"/>
+    <id>http://ucasfl.me/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/</id>
+    <published>2017-10-06T04:51:31.000Z</published>
+    <updated>2017-10-06T04:53:32.058Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i0.wp.com/opensourceforu.com/wp-content/uploads/2015/12/Linux-Kernel-sys-visual5.jpg?resize=750%2C563" alt="Hidden features of Linux"></p>
+<p>使用 Linux 最酷的事情之一就是随着时间的推移，你可以不断获得新的知识。每天，你都可能会遇到一个新的实用工具，或者只是一个不太熟悉的奇技淫巧，但是却非常有用。这些零碎的东西并不总是能够改变生活，但是却是专业知识的基础。</p>
+<p>即使是专家，也不可能事事皆知。无论你有多少经验，可能总会有更多的东西需要你去学习。所以，在这儿我列出了七件关于 Linux 你可能不知道的事情。</p>
+<a id="more"></a>
+<h3 id="一个查找命令历史的交互模式"><a href="#一个查找命令历史的交互模式" class="headerlink" title="一个查找命令历史的交互模式"></a>一个查找命令历史的交互模式</h3><p>你可能对 <code>history</code> 命令非常熟悉，它会读取 bash 历史，然后以编号列表的方式输出到标准输出（<code>stdout</code>）。然而，如果你在 <code>curl</code> 命令的海洋里寻找一个特定的链接（URL），那么这个列表并不总是那么容易阅读的。</p>
+<p>你还可以有另一个选择，Linux 有一个交互式的反向搜索可以帮助你解决这个问题。你可以通过快捷键 <code>ctrl+r</code>启动交互模式，然后进入一个交互提示中，它将会根据你提供的字符串来向后搜索 bash 历史，你可以通过再次按下 <code>ctrl+r</code> 向后搜索更老的命令，或者按下 <code>ctrl+s</code> 向前搜索。</p>
+<p>注意，<code>ctrl+s</code> 有时会与 XON/XOFF 流控制冲突，即 XON/XOFF 流控制也会使用该快捷键。你可以通过运行 <code>stty -ixon</code> 命令来禁用该快捷键。在你的个人电脑上，这通常是有用的，但是在禁用前，确保你不需要 XON/XOFF 。</p>
+<h3 id="Cron-不是安排任务的唯一方式"><a href="#Cron-不是安排任务的唯一方式" class="headerlink" title="Cron 不是安排任务的唯一方式"></a>Cron 不是安排任务的唯一方式</h3><p>Cron 任务对于任何水平的系统管理员，无论是毫无经验的初学者，还是经验丰富的专家来说，都是非常有用的。但是，如果你需要安排一个一次性的任务，那么 <code>at</code> 命令为你提供了一个快捷的方式来创建任务，从而你不需要接触 crontab 。</p>
+<p><code>at</code> 命令的运行方式是在后面紧跟着你想要运行任务的运行时间。时间是灵活的，因为它支持许多时间格式。包括下面这些例子：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">at</span> <span class="number">12</span>:<span class="number">00</span> PM September <span class="number">30</span> <span class="number">2017</span></div><div class="line"><span class="keyword">at</span> now + <span class="number">1</span> hour</div><div class="line"><span class="keyword">at</span> <span class="number">9</span>:<span class="number">00</span> AM tomorrow</div></pre></td></tr></table></figure>
+<p>当你以带参数的方式输入 <code>at</code> 命令以后，将会提示你该命令将在你的 Linux 系统上运行。这可能是一个备份脚本，一套维护任务，或者甚至是一个普通的 bash 命令。如果要结束任务，可以按 <code>ctrl+d</code> 。</p>
+<p>另外，你可以使用 <code>atq</code> 命令查看当前用户的所有任务，或者使用 <code>sudo atq</code> 查看所有用户的任务。它将会展示出所有排定好的任务，并且每个任务都伴有一个 ID 。如果你想取消一个排定好的任务，可以使用 <code>atrm</code> 命令，并且以任务 ID 作为参数。</p>
+<h3 id="你可以按照功能搜索命令，而不仅仅是通过名字"><a href="#你可以按照功能搜索命令，而不仅仅是通过名字" class="headerlink" title="你可以按照功能搜索命令，而不仅仅是通过名字"></a>你可以按照功能搜索命令，而不仅仅是通过名字</h3><p>记住命令的名字非常困难，特别是对于初学者来说。幸运的是，Linux 附带了一个通过名字和描述来搜索 man 页面的工具。</p>
+<p>下次，如果你没有记住你想要使用的工具的名称，你可以尝试使用 <code>apropos</code> 命令加上你想要干的事情的描述。比如，<code>apropos build filesystem</code> 将会返回一系列名字和描述包括了 “build” 和 “filesystem” 单词的工具。</p>
+<p><code>apropos</code> 命令接受一个或多个字符串作为参数，但同时它也有其他参数，比如你可以使用 <code>-r</code> 参数，从而通过正则表达式来搜索。</p>
+<h3 id="一个允许你来管理系统版本的替代系统"><a href="#一个允许你来管理系统版本的替代系统" class="headerlink" title="一个允许你来管理系统版本的替代系统"></a>一个允许你来管理系统版本的替代系统</h3><p>如果你曾进行过软件开发，你就会明白跨项目管理不同版本的语言的支持的重要性。许多 Linux 发行版都有工具可以来处理不同的内建版本。</p>
+<p>可执行文件比如 <code>java</code> 往往符号链接到目录 <code>/etc/alternatives</code>  下。反过来，该目录会将符号链接存储为二进制文件并提供一个管理这些链接的接口。Java 可能是替代系统最常管理的语言，但是，经过一些配置，它也可以作为其他应用程序替代品，比如 NVM 和 RVM （NVM 和 RVM 分别是 NodeJS 和 Ruby 的版本管理器）。</p>
+<p>在基于 Debian 的系统中，你可以使用 <code>update-alternatives</code> 命令创建和管理这些链接。在 CentOS 中，这个工具就叫做 <code>alternatives</code> 。通过更改你的 alternatives 文件中的链接，你便可以安装一个语言的多个版本，并且在不同的情况下使用不同的二进制。这个替代系统也提供了对任何你可能在命令行运行的程序的支持。</p>
+<h3 id="shred-命令是更加安全的删除文件方式"><a href="#shred-命令是更加安全的删除文件方式" class="headerlink" title="shred 命令是更加安全的删除文件方式"></a><code>shred</code> 命令是更加安全的删除文件方式</h3><p>我们大多数时候总是使用 <code>rm</code> 命令来删除文件。但是文件去哪儿了呢？真相是 <code>rm</code> 命令所做的事情并不是像你所想像的那样，它仅仅删除了文件系统和硬盘上的数据的硬链接。硬盘上的数据依旧存在，直到被另一个应用重写覆盖。对于非常敏感的数据来说，这会带来一个很大的安全隐患。</p>
+<p><code>shred</code> 命令是 <code>rm</code> 命令的升级版。当你使用 <code>shred</code> 命令删除一个文件之后，文件中的数据会被多次随机覆写。甚至有一个选项可以在随机覆写之后对所有的数据进行清零。</p>
+<p>如果你想安全的删除一个文件并且以零覆盖，那么可以使用下面的命令：</p>
+<p><code>shred -u -z [file name]</code></p>
+<p>同时，你也可以使用 <code>-n</code> 选项和一个数字作为参数，从而指定在随机覆盖数据的时候迭代多少次。</p>
+<h3 id="通过自动更正来避免输入很长的无效文件路径"><a href="#通过自动更正来避免输入很长的无效文件路径" class="headerlink" title="通过自动更正来避免输入很长的无效文件路径"></a>通过自动更正来避免输入很长的无效文件路径</h3><p>有多少次，你输入一个文件的绝对路径，然而却看到“没有该文件或目录”的消息。任何人都会明白输入一个很长的字符串的痛苦。幸运的是，有一个很简单的解决办法。</p>
+<p>内建的 <code>shopt</code> 命令允许你设置不同的选项来改变 shell 的行为。设置 <code>cdspell</code> 选项是避免输入文件路径时一个字母出错的头痛的一个简单方式。你可以通过运行 <code>shopt -s cdspell</code> 命令来启用该选项。启用该选项后，当你想要切换目录时，会自动更正为最匹配的目录。</p>
+<p>Shell 选项是节省时间的一个好方法（更不用说减少麻烦），此外还有许许多多的其他选项。如果想查看你的系统中所有选项的完整列表，可以运行不带参数的 <code>shopt</code> 命令。需要注意的是，这是 bash 的特性，如果你运行 zsh 或者其他可供选择的 shell，可能无法使用。</p>
+<h3 id="通过子-shell-返回到当前目录"><a href="#通过子-shell-返回到当前目录" class="headerlink" title="通过子 shell 返回到当前目录"></a>通过子 shell 返回到当前目录</h3><p>如果你曾经配置过一个比较复杂的系统，那么你可能会发现你需要频繁的更换目录，从而很难跟踪你所在的位置。如果在运行完一个命令后自动返回到当前位置，不是很好吗？</p>
+<p>Linux 系统实际上提供了一个解决该问题的方法，并且非常简单。如果你想通过 <code>cd</code> 命令进入另一个目录完成一些任务，然后再返回当前工作目录，那么你可以将命令置于括号中。你可以在你的 Linux 系统上尝试下面这个命令。记住你当前的工作目录，然后运行：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">cd</span> /etc <span class="symbol">&amp;&amp;</span> ls -a)</div></pre></td></tr></table></figure>
+<p>该命令会输出 <code>/etc</code> 目录的内容。现在，检查你的当前工作目录。它和执行该命令前的目录一样，而不是 <code>/etc</code> 目录。</p>
+<p>它是如何工作的呢？运行一个括号中的命令会创建一个子 shell 或一个当前 shell 进程的复刻副本。该子 shell 可以访问所有的父变量，反之则不行。所以请记住，你是在运行一个非常复杂的单行命令。</p>
+<p>在并行处理中经常使用子 shell ，但是在命令行中，它也能为你带来同样的力量，从而使你在浏览文件系统时更加容易。</p>
+<hr>
+<p>via: <a href="http://opensourceforu.com/2017/09/top-7-things-linux-may-not-known-far/" target="_blank" rel="external">http://opensourceforu.com/2017/09/top-7-things-linux-may-not-known-far/</a></p>
+<p>作者：<a href="http://opensourceforu.com/author/phil-zona/" target="_blank" rel="external">PHIL ZONA</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://i0.wp.com/opensourceforu.com/wp-content/uploads/2015/12/Linux-Kernel-sys-visual5.jpg?resize=750%2C563&quot; alt=&quot;Hidden features of Linux&quot;&gt;&lt;/p&gt;
+&lt;p&gt;使用 Linux 最酷的事情之一就是随着时间的推移，你可以不断获得新的知识。每天，你都可能会遇到一个新的实用工具，或者只是一个不太熟悉的奇技淫巧，但是却非常有用。这些零碎的东西并不总是能够改变生活，但是却是专业知识的基础。&lt;/p&gt;
+&lt;p&gt;即使是专家，也不可能事事皆知。无论你有多少经验，可能总会有更多的东西需要你去学习。所以，在这儿我列出了七件关于 Linux 你可能不知道的事情。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu 下代理服务器失败无法上网的解决办法</title>
@@ -2404,79 +2464,6 @@
     
       <category term="Essay" scheme="http://ucasfl.me/categories/Essay/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>D 编程语言是用于开发的绝佳语言的 5 个理由</title>
-    <link href="http://ucasfl.me/2017/06/15/5-Reasons-of-D-Language-is-Good-for-Developments/"/>
-    <id>http://ucasfl.me/2017/06/15/5-Reasons-of-D-Language-is-Good-for-Developments/</id>
-    <published>2017-06-15T10:45:38.000Z</published>
-    <updated>2017-09-02T04:38:29.067Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>D 语言的模块化、开发效率、可读性以及其它一些特性使其非常适合用于协同软件的开发。</p>
-</blockquote>
-<p><img src="https://opensource.com/sites/default/files/styles/image-full-size/public/images/life/code_development_programming.png?itok=eYK4UXiq" alt="Why the D programming language is great for open source development" title="Why the D programming language is great for open source development"></p>
-<p><a href="https://dlang.org/" target="_blank" rel="external">D 编程语言</a>是一种静态类型的通用编程语言，它具有和 C 语言类似的语法，能够编译为本地代码。许多理由使得它很适合用于开源软件开发，下面讲到的是其中一些理由。</p>
-<h3 id="模块化能力"><a href="#模块化能力" class="headerlink" title="模块化能力"></a>模块化能力</h3><p>在大多数情况下，当你有一个好的想法，你可以完全按照你的内心所想的方式通过代码来实现它。然而，有的时候，你不得让你的想法向代码妥协，而不是通过模块化代码来适应想法。D 语言支持多种<a href="https://en.wikipedia.org/wiki/Programming_paradigm" target="_blank" rel="external">编程范式</a>，包括函数式风格、命令式、面向对象、元编程、并发（演员模式），这些全都和谐共存。你可以选择任何一种方便的编程范式来将你的想法转换为代码。</p>
-<p>通过使用<a href="http://ddili.org/ders/d.en/templates.html" target="_blank" rel="external">模板</a>，可以生成额外的 D 代码并在编译的过程中把它编排进去，你可以把这些代码描述成编译器生成代码的一种模式。这是一种非常有用的设计算法，无需把它们绑定到任何特定的类型。由于模版的通用性，就很容易生成平台无关的代码。通过将模板与<a href="https://dlang.org/spec/version.html" target="_blank" rel="external">条件编译</a>结合，跨平台的应用变得更加容易实现，也更容易接受来自使用不同操作系统的开发者的贡献。有了这一点，一个程序员可以通过很少的代码，利用有限的时间实现很多东西。</p>
-<p><a href="http://ddili.org/ders/d.en/ranges.html" target="_blank" rel="external">range</a> 已经深度集成到了 D 语言中，相对于具体实现，它抽象出容器元素（比如数组、关联数组和链表等）是如何访问的。这个抽象使得可以在许多容器类型中设计和使用大量的算法，而无需绑定到特定的数据结构。D 的<a href="https://dlang.org/spec/arrays.html#slicing" target="_blank" rel="external">数组切片</a>是 range 的一个实现。最终，你可以用很少的时间写很少的代码，并且只需要很低的维护成本。<br><a id="more"></a></p>
-<h3 id="开发效率"><a href="#开发效率" class="headerlink" title="开发效率"></a>开发效率</h3><p>大多数开源软件的代码贡献者都是基于有限的时间志愿工作的。 D 语言能够极大的提高开发效率，因为你可以用更少的时间完成更多的事情。D 的模板和 range 使得程序员在开发通用代码和可复用代码时效率更高，但这些仅仅是 D 开发效率高的其中几个优势。另外一个主要的吸引力是， D 的编译速度看起来感觉就像解释型语言一样，比如 Python、JavaScript、Ruby 和 PHP，它使得 D 能够快速成型。</p>
-<p>D 可以很容易的与旧的代码进行对接，减少了移植的需要。它的设计目的是<a href="https://dlang.org/spec/interfaceToC.html" target="_blank" rel="external">与 C 代码进行自然地对接</a>，毕竟， C 语言大量用在遗留代码、精心编写而测试过的代码、库以及低级系统调用（特别是 Linux 系统）上。C++ 代码在<a href="https://dlang.org/spec/cpp_interface.html" target="_blank" rel="external"> D 中也是可调用的</a>，从而进行更大的扩展。事实上，<a href="https://code.dlang.org/packages/pyd" target="_blank" rel="external">Python</a>、<a href="https://dlang.org/spec/objc_interface.html" target="_blank" rel="external">Objective-C</a>、<a href="http://beza1e1.tuxen.de/into_luad.html" target="_blank" rel="external">Lua</a> 和 <a href="http://www.active-analytics.com/blog/interface-d-with-c-fortran/" target="_blank" rel="external">Fortran</a> 这些语言在技术层面上都是可以在 D 中使用的，有许多第三方正在努力在把 D 语言推向这些领域。这使得大量的开源库在 D 中均可使用，这符合开源软件开发的惯例。</p>
-<h3 id="可读性和可维护性"><a href="#可读性和可维护性" class="headerlink" title="可读性和可维护性"></a>可读性和可维护性</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="built_in">std</span>.stdio; <span class="comment">// 导入标准输入/输出模块</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    writeln(<span class="string">"Hello, World!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><em>D 语言的 Hello, World 演示</em></p>
-<p>对于熟悉 C 语言的人来说， D 代码很容易理解。另外， D 代码的可读性很强，即使是复杂的代码。这使得很容易发现错误。可读性对于吸引贡献者来说也是很重要的，这是开源软件成长的关键。</p>
-<p>在 D 中一个非常简单但很有用的<a href="https://en.wikipedia.org/wiki/Syntactic_sugar" target="_blank" rel="external">语法糖</a>是支持使用下滑线分隔数字，这使得数字的可读性更高。这在数学上很有用：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int count = <span class="number">100</span>_000_000;</div><div class="line">double price = <span class="number">20</span>_220<span class="number">.00</span> + <span class="number">10.00</span>;</div><div class="line">int number = <span class="number">0x7FFF</span>_FFFF; <span class="comment">// 16 进制系统</span></div></pre></td></tr></table></figure>
-<p><a href="https://dlang.org/spec/ddoc.html" target="_blank" rel="external">ddoc</a> 是一个内建的工具，它能够很容易的自动根据代码注释生成文档，而不需要使用额外的工具。文档写作、改进和更新变得更加简单，不具挑战性，因为它伴随代码同时生成。</p>
-<p><a href="http://ddili.org/ders/d.en/contracts.html" target="_blank" rel="external">Contract</a> 能够检查代码的实现，从而确保 D 代码的行为能够像期望的那样。就像法律契约的签订是为了确保每一方在协议中做自己该做的事情，在 D 语言中的契约式编程，能够确保实现的每一个函数、类等如期望的那样产生预期的结果和行为。这样一个特性对于错误检查非常实用，特别是在开源软件中，当多个人合作一个项目的时候。契约是大项目的救星。D 语言强大的契约式编程特性是内建的，而不是后期添加的。契约不仅使得使用 D 语言更加方便，也减少了正确写作和维护困难的头痛。</p>
-<h3 id="方便"><a href="#方便" class="headerlink" title="方便"></a>方便</h3><p>协同开发是具有挑战性的，因为代码经常发生变化，并且有许多移动部分。D 语言通过支持在本地范围内导入模块，从而缓解了那些问题：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回偶数</span></div><div class="line"><span class="keyword">int</span>[] evenNumbers(<span class="keyword">int</span>[] numbers)</div><div class="line">&#123;</div><div class="line">    <span class="comment">// "filter" and "array" are only accessible locally</span></div><div class="line">    <span class="keyword">import</span> <span class="built_in">std</span>.algorithm: filter; </div><div class="line">    <span class="keyword">import</span> <span class="built_in">std</span>.<span class="built_in">array</span>: <span class="built_in">array</span>;</div><div class="line">    <span class="keyword">return</span> numbers.filter!(n =&gt; n%<span class="number">2</span> == <span class="number">0</span>).<span class="built_in">array</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><em>对 filter 使用 <code>!</code> 运算符是<a href="http://ddili.org/ders/d.en/templates.html" target="_blank" rel="external">模板参数</a>的一个语法</em></p>
-<p>上面的函数可以在不破坏代码的情况下调用，因为它不依赖任何全局导入模块。像这样实现的函数都可以在后期无需破坏代码的情况下增强，这是协同开发的好东西。</p>
-<p><a href="http://ddili.org/ders/d.en/ufcs.html" target="_blank" rel="external">通用函数调用语法（UFCS）</a>是 D 语言中的一个语法糖，它允许像调用一个对象的成员函数那样调用常规函数。一个函数的定义如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">cook</span><span class="params">(<span class="built_in">string</span> food, <span class="keyword">int</span> quantity)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">import</span> <span class="built_in">std</span>.stdio: writeln;</div><div class="line">    writeln(food, <span class="string">" in quantity of "</span>, quantity);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>它能够以通常的方式调用：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">string food = <span class="string">"rice"</span><span class="comment">;</span></div><div class="line">int quantity = <span class="number">3</span><span class="comment">;</span></div><div class="line"></div><div class="line">cook(food, quantity)<span class="comment">;</span></div></pre></td></tr></table></figure>
-<p>通过 UFCS，这个函数也可以像下面这样调用，看起来好像 <code>cook</code> 是一个成员函数：</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">string food = <span class="string">"rice"</span><span class="comment">;</span></div><div class="line">int quantity = <span class="number">3</span><span class="comment">;</span></div><div class="line"></div><div class="line">food.cook(quantity)<span class="comment">;</span></div></pre></td></tr></table></figure>
-<p>在编译过程中，编译器会自动把 <code>food</code> 作为 <code>cook</code> 函数的第一个参数。UFCS 使得它能够链起来常规函数，给你的代码产生一种函数风格编程的自然感觉。UFCS 在 D 语言中被大量使用，就像在上面的 <code>evenNumbers</code> 函数中使用的 <code>filter</code> 和 <code>array</code> 函数那样。结合模板、range、条件编译和 UFCS 能够在不牺牲方便性的前提下给予你强大的力量。</p>
-<p><code>auto</code> 关键词可以用来代替任何类型。编译器在编译过程中会静态推断类型。这样可以省去输入很长的类型名字，让你感觉写 D 代码就像是在写动态类型语言。</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// <span class="type">Nope</span>. <span class="type">Do</span> you?</div><div class="line"><span class="type">VeryLongTypeHere</span> variable = new <span class="type">VeryLongTypeHere</span>(); </div><div class="line"></div><div class="line">// 使用 <span class="built_in">auto</span> 关键词</div><div class="line"><span class="built_in">auto</span> variable =  new <span class="type">VeryLongTypeHere</span>();</div><div class="line"><span class="built_in">auto</span> name = <span class="string">"John Doe"</span>;</div><div class="line"><span class="built_in">auto</span> age = <span class="number">12</span>;</div><div class="line"><span class="built_in">auto</span> letter  = 'e';</div><div class="line"><span class="built_in">auto</span> anArray = [<span class="number">1</span>, <span class="number">2</span>.<span class="number">0</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>.<span class="number">5</span>]; // <span class="keyword">type</span> <span class="keyword">of</span> double[]</div><div class="line"><span class="built_in">auto</span> dictionary = [<span class="string">"one"</span>: <span class="number">1</span>, <span class="string">"two"</span>: <span class="number">2</span>, <span class="string">"three"</span>: <span class="number">3</span>]; // <span class="keyword">type</span> <span class="keyword">of</span> <span class="built_in">int</span>[<span class="built_in">string</span>]</div><div class="line"><span class="built_in">auto</span> cook(<span class="built_in">string</span> food) <span class="meta">&#123;...&#125;</span> // <span class="built_in">auto</span> <span class="keyword">for</span> a function <span class="keyword">return</span> <span class="keyword">type</span></div></pre></td></tr></table></figure>
-<p>D 的<a href="http://ddili.org/ders/d.en/foreach.html" target="_blank" rel="external">foreach</a> 循环允许遍历各种不同的底层数据类型的集合和 range：</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">foreach(name; [<span class="string">"John"</span>, <span class="string">"Yaw"</span>, <span class="string">"Paul"</span>, <span class="string">"Kofi"</span>, <span class="string">"Ama"</span>])</div><div class="line">&#123;</div><div class="line">    writeln(name);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foreach(number; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">6</span>]) <span class="meta">&#123;...&#125;</span></div><div class="line"></div><div class="line">foreach(number; <span class="number">0</span>..<span class="number">10</span>) <span class="meta">&#123;...&#125;</span> // <span class="number">0</span>..<span class="number">10</span> <span class="keyword">is</span> the syntax <span class="keyword">for</span> number <span class="built_in">range</span></div><div class="line"></div><div class="line">class <span class="type">Student</span> <span class="meta">&#123;...&#125;</span></div><div class="line"><span class="type">Student</span>[] students = [new <span class="type">Student</span>(), new <span class="type">Student</span>()];</div><div class="line">foreach(student; students) <span class="meta">&#123;...&#125;</span></div></pre></td></tr></table></figure>
-<p>D 语言中内建的<a href="https://dlang.org/spec/unittest.html" target="_blank" rel="external">单元测试</a>不仅免除了使用外部工具的需要，也方便了程序员在自己的代码中执行测试。所有的测试用例都位于可定制的 <code>unittest{}</code> 块中：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] evenNumbers(<span class="keyword">int</span>[] numbers)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">import</span> <span class="built_in">std</span>.algorithm: filter; </div><div class="line">    <span class="keyword">import</span> <span class="built_in">std</span>.<span class="built_in">array</span>: <span class="built_in">array</span>;</div><div class="line">    <span class="keyword">return</span> numbers.filter!(n =&gt; n%<span class="number">2</span> == <span class="number">0</span>).<span class="built_in">array</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">unittest</div><div class="line">&#123;</div><div class="line">    assert( evenNumbers([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) == [<span class="number">2</span>, <span class="number">4</span>] );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用 D 语言的标准编译器 DMD，你可以通过增加 <code>-unittest</code> 编译器标志把所有的测试编译进可执行结果中。</p>
-<p><a href="http://code.dlang.org/getting_started" target="_blank" rel="external">Dub</a> 是 D 语言的一个内建包管理器和构建工具，使用它可以很容易的添加来自 <a href="https://code.dlang.org/" target="_blank" rel="external">Dub package registry</a> 的第三方库。Dub 可以在编译过程中下载、编译和链接这些包，同时也会升级到新版本。</p>
-<h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><p>除了提供多种编程范例和功能特性外，D 还提供其他的选择。它目前有三个可用的开源编译器。官方编译器 DMD 使用它自己的后端，另外两个编译器 GDC 和 LDC，分别使用 GCC 和 LLVM 后端。DMD 以编译速度块而著称，而 LDC 和 GDC 则以在很短的编译时间内生成快速生成机器代码而著称。你可以自由选择其中一个以适应你的使用情况。</p>
-<p>默认情况下，D 语言是采用<a href="https://dlang.org/spec/garbage.html" target="_blank" rel="external">垃圾收集</a>的内存分配方式的。你也可以选择手动进行内存管理，如果你想的话，甚至可以进行引用计数。一切选择都是你的。</p>
-<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>在这个简要的讨论中，还有许多 D 语言好的特性没有涉及到。我强烈推荐阅读 <a href="https://dlang.org/comparison.html" target="_blank" rel="external">D 语言的特性概述</a>，这是隐藏在<a href="https://dlang.org/phobos/index.html" target="_blank" rel="external">标准库</a>中的宝藏，以及 <a href="https://dlang.org/areas-of-d-usage.html" target="_blank" rel="external">D 语言的使用区域</a>，从而进一步了解人们用它来干什么。许多组织已经<a href="https://dlang.org/orgs-using-d.html" target="_blank" rel="external">使用 D 语言来进行开发</a>。最后，如果你打算开始学习 D 语言，那么请看这本书 <em><a href="http://ddili.org/ders/d.en/index.html" target="_blank" rel="external">D 语言编程</a></em>。</p>
-<p>（题图：opensource.com）</p>
-<hr>
-<p>via: <a href="https://opensource.com/article/17/5/d-open-source-software-development" target="_blank" rel="external">https://opensource.com/article/17/5/d-open-source-software-development</a></p>
-<p>作者：<a href="https://opensource.com/users/aberba" target="_blank" rel="external">Lawrence Aberba</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;D 语言的模块化、开发效率、可读性以及其它一些特性使其非常适合用于协同软件的开发。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://opensource.com/sites/default/files/styles/image-full-size/public/images/life/code_development_programming.png?itok=eYK4UXiq&quot; alt=&quot;Why the D programming language is great for open source development&quot; title=&quot;Why the D programming language is great for open source development&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://dlang.org/&quot;&gt;D 编程语言&lt;/a&gt;是一种静态类型的通用编程语言，它具有和 C 语言类似的语法，能够编译为本地代码。许多理由使得它很适合用于开源软件开发，下面讲到的是其中一些理由。&lt;/p&gt;
-&lt;h3 id=&quot;模块化能力&quot;&gt;&lt;a href=&quot;#模块化能力&quot; class=&quot;headerlink&quot; title=&quot;模块化能力&quot;&gt;&lt;/a&gt;模块化能力&lt;/h3&gt;&lt;p&gt;在大多数情况下，当你有一个好的想法，你可以完全按照你的内心所想的方式通过代码来实现它。然而，有的时候，你不得让你的想法向代码妥协，而不是通过模块化代码来适应想法。D 语言支持多种&lt;a href=&quot;https://en.wikipedia.org/wiki/Programming_paradigm&quot;&gt;编程范式&lt;/a&gt;，包括函数式风格、命令式、面向对象、元编程、并发（演员模式），这些全都和谐共存。你可以选择任何一种方便的编程范式来将你的想法转换为代码。&lt;/p&gt;
-&lt;p&gt;通过使用&lt;a href=&quot;http://ddili.org/ders/d.en/templates.html&quot;&gt;模板&lt;/a&gt;，可以生成额外的 D 代码并在编译的过程中把它编排进去，你可以把这些代码描述成编译器生成代码的一种模式。这是一种非常有用的设计算法，无需把它们绑定到任何特定的类型。由于模版的通用性，就很容易生成平台无关的代码。通过将模板与&lt;a href=&quot;https://dlang.org/spec/version.html&quot;&gt;条件编译&lt;/a&gt;结合，跨平台的应用变得更加容易实现，也更容易接受来自使用不同操作系统的开发者的贡献。有了这一点，一个程序员可以通过很少的代码，利用有限的时间实现很多东西。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://ddili.org/ders/d.en/ranges.html&quot;&gt;range&lt;/a&gt; 已经深度集成到了 D 语言中，相对于具体实现，它抽象出容器元素（比如数组、关联数组和链表等）是如何访问的。这个抽象使得可以在许多容器类型中设计和使用大量的算法，而无需绑定到特定的数据结构。D 的&lt;a href=&quot;https://dlang.org/spec/arrays.html#slicing&quot;&gt;数组切片&lt;/a&gt;是 range 的一个实现。最终，你可以用很少的时间写很少的代码，并且只需要很低的维护成本。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="D" scheme="http://ucasfl.me/categories/D/"/>
-    
-    
-      <category term="D" scheme="http://ucasfl.me/tags/D/"/>
     
   </entry>
   
