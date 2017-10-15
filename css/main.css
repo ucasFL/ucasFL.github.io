@@ -1013,7 +1013,7 @@ pre .javascript .function {
   display: $none;
   vertical-align: top;
   line-height: 0pt;
-  font-size: 32px;
+  font-size: 48px;
   font-weight: normal;
   color: #0684bd;
   font-family: 'Lobster Two', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -1702,7 +1702,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #57bdf5;
+  background: #fff0be;
 }
 .links-of-blogroll {
   font-size: 13px;
