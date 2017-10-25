@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Cry On My Shoulder</title>
-  <subtitle>居心久已忘，何事惊麋鹿？　</subtitle>
+  <title>春暖花开</title>
+  <subtitle>love, life, thinking, coding</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-10-07T11:24:55.638Z</updated>
+  <updated>2017-10-25T14:25:34.622Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,21 +20,10 @@
     <link href="http://ucasfl.me/2017/10/07/Python-cheat-sheet/"/>
     <id>http://ucasfl.me/2017/10/07/Python-cheat-sheet/</id>
     <published>2017-10-07T11:20:55.000Z</published>
-    <updated>2017-10-07T11:24:55.638Z</updated>
+    <updated>2017-10-25T14:25:34.622Z</updated>
     
     <content type="html"><![CDATA[<p>本手册是 <a href="http://datasciencefree.com/python.pdf" target="_blank" rel="external">Python cheat sheet</a> 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。</p>
 <p>该手册同时位于 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition" target="_blank" rel="external">GitHub</a> 上，可下载 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/python-cheat-sheet-zh-cn.pdf" target="_blank" rel="external">PDF 版</a>。</p>
-<p><a href="#惯例">惯例</a></p>
-<p><a href="#获取帮助">获取帮助</a></p>
-<p><a href="#模块">模块</a></p>
-<p><a href="#数值类类型">数值类类型</a></p>
-<p><a href="#数据结构">数据结构</a></p>
-<p><a href="#函数">函数</a></p>
-<p><a href="#控制流">控制流</a></p>
-<p><a href="#面向对象编程">面向对象编程</a></p>
-<p><a href="#常见字符串操作">常见字符串操作</a></p>
-<p><a href="#异常处理">异常处理</a></p>
-<p><a href="#对列表、字典和元组的深入理解">对列表、字典和元组的深入理解</a></p>
 <a id="more"></a>
 <h2 id="惯例"><a href="#惯例" class="headerlink" title="惯例"></a>惯例</h2><ul>
 <li>Python 对大小写敏感；</li>
@@ -244,23 +233,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;key-expr : value-expr <span class="keyword">for</span> value <span class="keyword">in</span> collection <span class="keyword">if</span> condition&#125;</div></pre></td></tr></table></figure>
 <h3 id="对集合的理解"><a href="#对集合的理解" class="headerlink" title="对集合的理解"></a>对集合的理解</h3><p>基本形式：和列表一样，只是应该使用 <code>()</code> 而不是 <code>[]</code> 。</p>
 <h3 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h3><p>基本形式：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[expr <span class="keyword">for</span> val <span class="keyword">in</span> collection <span class="keyword">for</span> innerVal <span class="keyword">in</span> val <span class="keyword">if</span> condition]</div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[expr <span class="keyword">for</span> val <span class="keyword">in</span> collection <span class="keyword">for</span> innerVal <span class="keyword">in</span> val <span class="keyword">if</span> condition]</div></pre></td></tr></table></figure>
+]]></content>
     
     <summary type="html">
     
       &lt;p&gt;本手册是 &lt;a href=&quot;http://datasciencefree.com/python.pdf&quot;&gt;Python cheat sheet&lt;/a&gt; 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。&lt;/p&gt;
 &lt;p&gt;该手册同时位于 &lt;a href=&quot;https://github.com/ucasFL/python-cheat-sheet-Chinese-edition&quot;&gt;GitHub&lt;/a&gt; 上，可下载 &lt;a href=&quot;https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/python-cheat-sheet-zh-cn.pdf&quot;&gt;PDF 版&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#惯例&quot;&gt;惯例&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#获取帮助&quot;&gt;获取帮助&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#模块&quot;&gt;模块&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#数值类类型&quot;&gt;数值类类型&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#数据结构&quot;&gt;数据结构&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#函数&quot;&gt;函数&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#控制流&quot;&gt;控制流&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#面向对象编程&quot;&gt;面向对象编程&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#常见字符串操作&quot;&gt;常见字符串操作&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#异常处理&quot;&gt;异常处理&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;#对列表、字典和元组的深入理解&quot;&gt;对列表、字典和元组的深入理解&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
