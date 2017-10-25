@@ -4,8 +4,8 @@ NexT.utils = NexT.$u = {
   /**
    * Wrap images with fancybox support.
    */
-  wrapImageWithFancyBox: function () {
-    $('.content img').not('.group-picture img, .post-gallery img').each(function () {
+  wrapImageWithFancyBox: function() {
+    $('.content img').not('.group-picture img, .post-gallery img').each(function() {
 
       var $image = $(this);
       var imageTitle = $image.attr('title');
@@ -33,29 +33,29 @@ NexT.utils = NexT.$u = {
     });
   },
 
-  lazyLoadPostsImages: function () {
+  lazyLoadPostsImages: function() {
     $('#posts').find('img').lazyload({
       placeholder: '/images/loading.gif',
       effect: 'fadeIn'
     });
   },
 
-  registerBackToTop: function () {
+  registerBackToTop: function() {
     var THRESHOLD = 50;
     var $top = $('.back-to-top');
 
-    $(window).on('scroll', function () {
+    $(window).on('scroll', function() {
       $top.toggleClass('back-to-top-on', window.pageYOffset > THRESHOLD);
-      
+
       var scrollTop = $(window).scrollTop();
       var docHeight = $(document).height();
       var winHeight = $(window).height();
       var scrollPercent = (scrollTop) / (docHeight - winHeight);
-      var scrollPercentRounded = Math.round(scrollPercent*100);
+      var scrollPercentRounded = Math.round(scrollPercent * 100);
       $('#scrollpercent>span').html(scrollPercentRounded);
     });
 
-    $top.on('click', function () {
+    $top.on('click', function() {
       $('body').velocity('scroll');
     });
   },
@@ -64,7 +64,7 @@ NexT.utils = NexT.$u = {
    * Transform embedded video to support responsive layout.
    * @see http://toddmotto.com/fluid-and-responsive-youtube-and-vimeo-videos-with-fluidvids-js/
    */
-  embeddedVideoTransformer: function () {
+  embeddedVideoTransformer: function() {
     var $iframes = $('iframe');
 
     // Supported Players. Extend this if you need more players.
@@ -75,9 +75,9 @@ NexT.utils = NexT.$u = {
       'music.163.com',
       'www.tudou.com'
     ];
-    var pattern = new RegExp( SUPPORTED_PLAYERS.join('|') );
+    var pattern = new RegExp(SUPPORTED_PLAYERS.join('|'));
 
-    $iframes.each(function () {
+    $iframes.each(function() {
       var iframe = this;
       var $iframe = $(this);
       var oldDimension = getDimension($iframe);
@@ -116,7 +116,7 @@ NexT.utils = NexT.$u = {
         if (this.src.search('music.163.com') > 0) {
           newDimension = getDimension($iframe);
           var shouldRecalculateAspect = newDimension.width > oldDimension.width ||
-                                        newDimension.height < oldDimension.height;
+            newDimension.height < oldDimension.height;
 
           // 163 Music Player has a fixed height, so we need to reset the aspect radio
           if (shouldRecalculateAspect) {
@@ -142,13 +142,13 @@ NexT.utils = NexT.$u = {
    * Add `menu-item-active` class name to menu item
    * via comparing location.path with menu item's href.
    */
-  addActiveClassToMenuItem: function () {
+  addActiveClassToMenuItem: function() {
     var path = window.location.pathname;
     path = path === '/' ? path : path.substring(0, path.length - 1);
     $('.menu-item a[href="' + path + '"]').parent().addClass('menu-item-active');
   },
 
-  hasMobileUA: function () {
+  hasMobileUA: function() {
     var nav = window.navigator;
     var ua = nav.userAgent;
     var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
@@ -156,15 +156,15 @@ NexT.utils = NexT.$u = {
     return pa.test(ua);
   },
 
-  isTablet: function () {
+  isTablet: function() {
     return window.screen.width < 992 && window.screen.width > 767 && this.hasMobileUA();
   },
 
-  isMobile: function () {
+  isMobile: function() {
     return window.screen.width < 767 && this.hasMobileUA();
   },
 
-  isDesktop: function () {
+  isDesktop: function() {
     return !this.isTablet() && !this.isMobile();
   },
 
@@ -174,26 +174,26 @@ NexT.utils = NexT.$u = {
    * @param selector
    * @returns {string|void|XML|*}
    */
-  escapeSelector: function (selector) {
+  escapeSelector: function(selector) {
     return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, '\\$&');
   },
 
-  displaySidebar: function () {
+  displaySidebar: function() {
     if (!this.isDesktop() || this.isPisces()) {
       return;
     }
     $('.sidebar-toggle').trigger('click');
   },
 
-  isMist: function () {
+  isMist: function() {
     return CONFIG.scheme === 'Mist';
   },
 
-  isPisces: function () {
+  isPisces: function() {
     return CONFIG.scheme === 'Pisces';
   },
 
-  getScrollbarWidth: function () {
+  getScrollbarWidth: function() {
     var $div = $('<div />').addClass('scrollbar-measure').prependTo('body');
     var div = $div[0];
     var scrollbarWidth = div.offsetWidth - div.clientWidth;
@@ -208,7 +208,7 @@ NexT.utils = NexT.$u = {
    *
    * @returns {Boolean}
    */
-  needAffix: function () {
+  needAffix: function() {
     return this.isPisces();
   }
 };

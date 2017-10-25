@@ -2,23 +2,20 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
+
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -30,8 +27,12 @@
 
 
 
-  
-  
+
+
+
+
+
+
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
@@ -40,9 +41,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Data-Structures," />
@@ -63,62 +64,75 @@
 
 
 
-<meta name="description" content="基本概念
-查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成
-关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素
+  <meta name="description" content="基本概念
+
+  查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成
+  关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素
 
 – 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字
-关键字类型
-数据">
-<meta property="og:type" content="article">
-<meta property="og:title" content="查找和搜索-Part1">
-<meta property="og:url" content="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/index.html">
-<meta property="og:site_name" content="春暖花开">
-<meta property="og:description" content="基本概念
-查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成
-关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素
+关键字">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="查找和搜索-Part1">
+  <meta property="og:url" content="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="基本概念
+
+  查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成
+  关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素
 
 – 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字
-关键字类型
-数据">
-<meta property="og:updated_time" content="2017-09-02T04:38:29.063Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="查找和搜索-Part1">
-<meta name="twitter:description" content="基本概念
-查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成
-关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素
+关键字">
+  <meta property="og:updated_time" content="2017-09-02T04:38:29.063Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="查找和搜索-Part1">
+  <meta name="twitter:description" content="基本概念
+
+  查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成
+  关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素
 
 – 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字
-关键字类型
-数据">
+关键字">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 'undefined',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
 
 
 
-  <link rel="canonical" href="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/"/>
+  <link rel="canonical" href="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/" />
 
 
 
@@ -129,7 +143,6 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
 
 
 
@@ -144,749 +157,928 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
+
 
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">春暖花开</span>
         <span class="logo-line-after"><i></i></span>
       </a>
-    </div>
-      
-        <p class="site-subtitle">love, life, thinking, coding</p>
-      
-  </div>
+            </div>
 
-  <div class="site-nav-toggle">
-    <button>
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
     </button>
-  </div>
-</div>
+          </div>
+        </div>
 
-<nav class="site-nav">
-  
+        <nav class="site-nav">
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+            </li>
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
-        </li>
-      
-    </ul>
-  
+            </li>
 
-  
-    <div class="site-search">
-      
-  <div class="popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
       <i class="fa fa-search"></i>
     </span>
-    <span class="popup-btn-close">
+                <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
 
 
 
-    </div>
-  
-</nav>
+          </div>
+
+        </nav>
 
 
 
- </div>
+      </div>
     </header>
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+            <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Flynn">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/photos/profile.jpeg">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="春暖花开">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-  </span>
+                </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                查找和搜索-Part1
-              
-            
-          </h1>
-        
+                <header class="post-header">
 
-        <div class="post-meta">
-          <span class="post-time">
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    查找和搜索-Part1
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T12:51:20+08:00">
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T12:51:20+08:00">
                 2017/08/05
               </time>
-            
 
-            
 
-            
-          </span>
 
-          
-            <span class="post-category" >
+
+
+                    </span>
+
+
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
+
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                  </a>
-                </span>
+                    </a>
+                    </span>
 
-                
-                
-              
-            </span>
-          
 
-          
-            
-            <!--noindex-->
-              <span class="post-comments-count">
+
+
+                    </span>
+
+
+
+
+                    <!--noindex-->
+                    <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/05/Find-and-Search-Part1/#comments" itemprop="discussionUrl">
+                    <a href="/2017/08/05/Find-and-Search-Part1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count hc-comment-count" data-xid="2017/08/05/Find-and-Search-Part1/" itemprop="commentsCount"></span>
                 </a>
-              </span>
-              <!--/noindex-->
-            
-          
+                    </span>
+                    <!--/noindex-->
 
-          
-          
-             <span id="/2017/08/05/Find-and-Search-Part1/" class="leancloud_visitors" data-flag-title="查找和搜索-Part1">
+
+
+
+
+                    <span id="/2017/08/05/Find-and-Search-Part1/" class="leancloud_visitors" data-flag-title="查找和搜索-Part1">
                <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
-          
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-          
-
-          
-
-        </div>
-      </header>
-    
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
-<li>查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成</li>
-<li>关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素</li>
-</ul>
-<p>– 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字<br>– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字</p>
-<h4 id="关键字类型"><a href="#关键字类型" class="headerlink" title="关键字类型"></a>关键字类型</h4><ul>
-<li>数据元素的关键字:其类型通常是可以进行比较运算的类型</li>
-<li>典型的关键字类型</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">float</span> KeyType ;</div><div class="line"><span class="comment">// 实型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> KeyType ; <span class="comment">// 整型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> KeyType ; <span class="comment">// 字符串型</span></div><div class="line">• 数据元素类型</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> RecType &#123;</div><div class="line">KeyType key ; <span class="comment">// 关键字域</span></div><div class="line">... ... <span class="comment">// 其他域</span></div><div class="line">&#125; ElemType;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="对两个关键字的比较"><a href="#对两个关键字的比较" class="headerlink" title="对两个关键字的比较"></a>对两个关键字的比较</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//C 的宏定义</div><div class="line">// 对数值型关键字</div><div class="line">#define EQ(a, b) ((a)==(b))</div><div class="line">#define LT(a, b) ((a)&lt;(b))</div><div class="line">#define LQ(a, b) ((a)&lt;=(b))</div><div class="line">// 对字符串型关键字</div><div class="line">#define EQ(a, b) (!strcmp((a), (b)) )</div><div class="line">#define LT(a, b) (strcmp((a), (b))&lt;0 )</div><div class="line">#define LQ(a, b) (strcmp((a), (b))&lt;=0 )</div></pre></td></tr></table></figure>
-<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><p>根据给定的 Key 值,在查找表中确定一个关键字等于给定值的数据元素或记录</p>
-<ul>
-<li>查找表中存在满足条件的数据元素 / 记录,则查找成功,返回所查到的数据元素或其在查找表中的位置</li>
-<li>查找表中不存在满足条件的记录,则查找失败</li>
-<li>“ 关键字等于给定值 ” 只是一种最为常用的查找条件,实际应用中可能会有其他的查找件,例如查找 “ 关键字在某个范围内的数据元素 ” 等等</li>
-</ul>
-<p>采用何种查找方法,首先取决于查找表的组织,即按何种关系组织 / 存储数据元素</p>
-<ul>
-<li>查找表是记录的集合,而集合中的元素之间是一种完全松散的关系,因此,查找表是一种非常灵活的数据结构,可以用多种方式来存储</li>
-</ul>
-<h3 id="查找及其方法分类"><a href="#查找及其方法分类" class="headerlink" title="查找及其方法分类"></a>查找及其方法分类</h3><ul>
-<li>静态查找 / 静态查找表 (Static Search Table):只对该表的数据元素进行查询</li>
-<li>动态查找 / 动态查找表 (Dynamic Search Table) :在对该表实施查找的同时,可插入查找表中不存在的记录,或从查找表中删除已存在的某个记录;表的结构本身是在查找过程中动态生成的</li>
-</ul>
-<h4 id="分类1：按存储结构的不同"><a href="#分类1：按存储结构的不同" class="headerlink" title="分类1：按存储结构的不同"></a>分类1：按存储结构的不同</h4><ul>
-<li>线性表查找: 数据元素保存在顺序表或链表中</li>
-<li>哈希查找:数据元素保存在哈希表中,根据给定的 Key 值直接访问 查找表, 从而找到要查找的记录</li>
-<li>树表查找:数据元素保存在树中</li>
-</ul>
-<h4 id="分类2："><a href="#分类2：" class="headerlink" title="分类2："></a>分类2：</h4><ul>
-<li>内查找:整个查找过程全部在内存进行</li>
-<li>外查找:在查找过程中还需要访问外存，例如:查找表太大,无法全部放入内存中</li>
-</ul>
-<h4 id="查找方法的评价指标"><a href="#查找方法的评价指标" class="headerlink" title="查找方法的评价指标"></a>查找方法的评价指标</h4><ul>
-<li>查找过程中的主要操作是关键字的比较,查找过程中关键字的平均比较次数是衡量一个查找算法效率高低的标准</li>
-<li>ASL (Average Search Length , 平均查找长度 ) 定义为需要和给定值进行比较的关键字的个数的期望值</li>
-</ul>
-<h3 id="静态查找表"><a href="#静态查找表" class="headerlink" title="静态查找表"></a>静态查找表</h3><p>静态查找表:可以用线性表 ( 顺序表或线性链表 ) 实现</p>
-<p>静态查找表 StaticSearchTable 的基本操作:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">void CreateSSTable(SSTable *t);// 构造一个查找表</div><div class="line">void Destroy(SSTable *t);</div><div class="line">void ListSSTable(SSTable *t); // 输出查找表</div><div class="line">int SearchSSTable(SSTable *t,KeyType key); // 查找成功,返回元素值在表中位置</div><div class="line">void Traverser(SSTable *t, void Visit(ElemType *e)); // 按某种次序对 t 的每个元素调用函数 Visit()</div><div class="line">一次且一次</div></pre></td></tr></table></figure>
-<h4 id="静态查找表的查找方法"><a href="#静态查找表的查找方法" class="headerlink" title="静态查找表的查找方法"></a>静态查找表的查找方法</h4><ul>
-<li>基于顺序表的查找: 顺序查找 (SequentialSearch) ,逐一比较</li>
-<li>基于有序表的查找</li>
-</ul>
-<p>– 折半查找 / 二分查找 (Binary Search) :每次对查找表进行折半缩小<br>– Fibonacci 查找 :根据 Fibonacci 数列的特点对查找表进行分割<br>– 静态树表查找</p>
-<ul>
-<li>基于索引顺序表的查找:索引顺序查找 /分块查找 (Blocking Search) ,基于顺序表和其索引的查找</li>
-</ul>
-<h4 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h4><p>顺序表的定义如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> SSTable&#123;</div><div class="line"><span class="comment">// 数据元素存储空间的基地址</span></div><div class="line"><span class="comment">// 建表时按实际长度分配, 0 号单元留空</span></div><div class="line">ElemType *elem;</div><div class="line"><span class="keyword">int</span> length ; <span class="comment">// 实际元素个数</span></div><div class="line">&#125; SSTable;</div></pre></td></tr></table></figure>
-<p>顺序查找算法：</p>
-<p>从表的一端 ( 例如:最后一个记录 ) 开始,逐个将记录的关键字和给定 Key 值进行比较<br>– 若某个记录的关键字和给定 Key 值相等,查找成功<br>– 否则,若扫描完整个表,仍然没有找到相应的记录,则查找失败</p>
-<p>简单实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTable</span><span class="params">(SSTable *t, KeyType key)</span> </span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=t-&gt;length &amp;&amp; (t-&gt;elem[i].key != key); i++ );</div><div class="line">  <span class="keyword">if</span>( i&lt;=t-&gt;length )</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125; <span class="comment">//Search_Seq</span></div></pre></td></tr></table></figure>
-<p>标准算法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTable</span><span class="params">(SSTable *t,KeyType key)</span> </span>&#123;</div><div class="line"><span class="comment">// 设置哨兵,查找失败时返回 0</span></div><div class="line">  t-&gt;elem[<span class="number">0</span>].key=key;</div><div class="line"><span class="comment">// 从后往前找</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=t-&gt;length; !EQ(t-&gt;elem[i].key, key); i--) ;</div><div class="line">  <span class="keyword">return</span> i ; <span class="comment">// 找不到时, i 为 0</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//设立哨兵后可以使循环中省掉了一次比较</span></div></pre></td></tr></table></figure>
-<p>算法分析：</p>
-<ul>
-<li>查找成功时候的比较次数：ASL = (n+1)/2</li>
-<li>查找失败时候的比较次数：ASL=n+1</li>
-<li>若查找成功与不成功的概率相等，则 ASL = 3(n+1)/4</li>
-</ul>
-<p>缺点：</p>
-<p>查找效率低,当 n 较大时,不宜采用顺序查找。</p>
-<p>改进：</p>
-<ul>
-<li>根据数据元素被查找的概率组织顺序表，在不等概率的情况下，按被查找概率的升序排序。</li>
-<li>在数据元素中增加一数据项,用于记录对该数据元素的访问次数<br>– 在每次查找后,维护查找表使得其按照数据元素的访问次数升序排序</li>
-<li>在每次查找后,将刚查找到的元素移动至表尾:已发生的事会重复发生</li>
-<li>为顺序表加索引</li>
-</ul>
-<h4 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h4><ul>
-<li>基于有序顺序表的查找chazhao</li>
-</ul>
-<p>– 查找表中的所有记录是按关键字有序 ( 升序或降序 ) 排列的</p>
-<ul>
-<li>查找过程中,先确定待查找记录在表中的范围,然后逐步缩小范围 ( 每次将待查记录所在区间缩小一半 ) ,直到找到或找不到记录为止</li>
-</ul>
-<p>算法思想：</p>
-<ul>
-<li>初始:用 Low 、 High 和 Mid 表示待查找区间的下界、上界和中间位置指针,初值设置为 Low=1 , High=n</li>
-<li>(1) 取中间位置 Mid : Mid=(Low+High)/2</li>
-<li>(2) 比较中间位置记录的关键字与给定的 Key值:</li>
-</ul>
-<p>– 相等:查找成功;<br>– 大于:待查记录在区间的前半段,修改上界指针: High=Mid-1 ,转 (1) ;<br>– 小于:待查记录在区间的后半段,修改下界指针: Low=Mid+1 ,转 (1) ;</p>
-<ul>
-<li>直到越界 (Low&gt;High) ,查找失败</li>
-</ul>
-<p><strong>算法实现</strong>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在有序表 t 中折半查找其关键字等于 key 的数据元素</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTable</span><span class="params">(SSTable *t, KeyType key)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> low, high, mid;</div><div class="line">  low = <span class="number">1</span>; high = t-&gt;length; <span class="comment">// 置区间初值</span></div><div class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</div><div class="line">    mid = (low + high) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span> (EQ(key , t-&gt;elem[mid].key))</div><div class="line"><span class="comment">// 找到,返回该待查元素在表中的位置</span></div><div class="line">      <span class="keyword">return</span> mid;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LT(key, t-&gt;elem[mid].key))</div><div class="line"><span class="comment">// 继续在前半区间进行查找</span></div><div class="line">      high = mid - <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="comment">// 继续在后半区间进行查找</span></div><div class="line">      low = mid + <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 顺序表中不存在待查元素</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法分析</strong>：</p>
-<ul>
-<li>查找时,每经过一次比较,查找范围就缩小一半,该过程可用一棵二叉树表示:</li>
-</ul>
-<p>– 把当前查找区间的中点作为根结点<br>– 左子区间和右子区间分别作为根的左子树和右子树<br>– 排在中间位置前面的作为左子树的结点<br>– 排在中间位置后面的作为右子树的结点</p>
-<ul>
-<li>上述描述查找过程的二叉树被称为折半查找的判定树(Decision Tree)</li>
-</ul>
-<p>– 内结点代表顺序表中已有的元素,外结点代表失败结点,它表示在两个相邻已有元素值之间的值</p>
-<ul>
-<li>找到有序表中任一记录的过程是走了一条从根结点到与该记录相应的结点的路径,与给定值进行比较的关键字个数为该结点在判定树上的层次数</li>
-<li>查找成功时候的ASL = (n+1)/nlog2(n+1) - 1</li>
-<li>当n很大时(n&gt;50)，ASL = log2(n+1) - 1</li>
-</ul>
-<p><strong>算法优缺点分析</strong>：</p>
-<ul>
-<li>Strength :折半查找速度很快</li>
-</ul>
-<p>– 1000 个元素的有序表,至多需要比较 10 次<br>– 1000,000 个元素的有序表,需要不超过 20 次的比较</p>
-<ul>
-<li>Limitation :查找对象是有序表,即在查找之前需要对顺序表进行排序操作</li>
-</ul>
-<ul>
-<li>Weaknesses :</li>
-</ul>
-<p>– 折半查找无法应用于链表<br>– 在不等概率查找的情况下,折半查找不一定是有序表最好的查找方法<br>– 当查找表的长度不大时,也许折半查找的效率不如顺序查找</p>
-<ul>
-<li>Conclusion :适合于大量的静态数据</li>
-</ul>
-<p>– 有序表的插入和删除都比较麻烦,平均要移动表中一半的元素</p>
-<h4 id="Fibonacci-查找"><a href="#Fibonacci-查找" class="headerlink" title="Fibonacci 查找"></a>Fibonacci 查找</h4><ul>
-<li>基于有序顺序表的查找</li>
-</ul>
-<p>– 查找表中的所有记录是按关键字有序 ( 升序或降序 )排列的</p>
-<ul>
-<li>查找过程中,先确定待查找记录在表中的范围,然后逐步缩小范围 ( 每次根据 Fibonacci 数列的特点对查找表进行分割 ) ,直到找到或找不到记录为止</li>
-</ul>
-<p><strong>算法思想</strong></p>
-<ul>
-<li>设查找表中的记录数 n 比某个 Fibonacci 数小 1,即设 n=F(j)-1</li>
-<li>用 Low 、 High 和 Mid 表示待查找区间的下界、上界和分割位置,初值为 Low=1 , High=n</li>
-<li>(1) 取分割位置 Mid : Mid=F(j-1)</li>
-<li>(2) 比较 key 值与分割位置记录的关键字:</li>
-</ul>
-<p>– 相等: 查找成功<br>– 小于:待查记录在区间的前半段,修改上界指针:High=Mid-1 ,这时,区间长度为 F(j-1)-1 ,转(1) ;<br>– 大于:待查记录在区间的后半段,修改下界指针:Low=Mid+1 , 这时,区间长度为 F(j-2)-1 ,转(1) ;</p>
-<ul>
-<li>直到越界 (Low&gt;High) ,查找失败</li>
-</ul>
-<p><strong>算法实现</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Fibonacci 数的计算</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i, f, f0=<span class="number">0</span>, f1=<span class="number">1</span>;</div><div class="line">  <span class="keyword">if</span> (n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span> ;</div><div class="line">  <span class="keyword">if</span> (n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span> ;</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">2</span> ; i&lt;=n ; i++ ) &#123;</div><div class="line">    f=f0+f1 ; f0=f1 ; f1=f ; </div><div class="line">  &#125;chazhao</div><div class="line">  <span class="keyword">return</span> f ;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 在有序表 t 中用 Fibonacci 方法查找关键字为 key 的记录</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTableFibonacci</span><span class="params">(SSTable *t, KeyType key , <span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> Low=<span class="number">1</span>, High, Mid, f1, f2 ;</div><div class="line">  High=fib(n); </div><div class="line">  f1=fib(n<span class="number">-1</span>); </div><div class="line">  f2=fib(n<span class="number">-2</span>);<span class="function">chazhao</span></div><div class="line">  <span class="title">while</span> <span class="params">(Low&lt;=High)</span> &#123;</div><div class="line">    Mid=Low+f1<span class="number">-1</span>;</div><div class="line">    <span class="keyword">if</span> ( EQ(key, t-&gt;elem[Mid].key) ) </div><div class="line">      <span class="keyword">return</span> Mid ;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ( LT(key, t-&gt;elem[Mid].key) )&#123; </div><div class="line">      High=Mid<span class="number">-1</span>; f2=f1-f2; f1=f1-f2; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123; </div><div class="line">      Low=Mid+<span class="number">1</span>; f1=f1-f2; f2=f2-f1; </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法分析</strong></p>
-<ul>
-<li>Fibonacci 查找的平均性能比折半查找好，但最坏情况下比折半查找差。</li>
-<li>插值查找：根据key值来决定与哪个记录比较并分区。</li>
-<li>插值查找适用于关键字均匀分布。</li>
-</ul>
-<h4 id="索引顺序查找-分块查找"><a href="#索引顺序查找-分块查找" class="headerlink" title="索引顺序查找 / 分块查找"></a>索引顺序查找 / 分块查找</h4><ul>
-<li>查找表的组织:将查找表分成几块</li>
-</ul>
-<p>– 块间有序,即第 i+1 块的所有记录关键字均大于 ( 或小于 ) 第 i 块记录关键字<br>– 块内无序<br>– 在查找表的基础上附加一个索引表,索引表是按关键字有序的,索引表中记录的构成是:<br>– 可以建立多级索引<br>– 可以建立多种索引</p>
-<ul>
-<li>先 ( 用顺序查找或折半查找 ) 确定待查记录所在块,再在块内查找 ( 顺序查找 )</li>
-</ul>
-<p><strong>算法实现</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//数据结构</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> IndexType &#123;</div><div class="line">  KeyType maxkey; <span class="comment">// 块中最大的关键字</span></div><div class="line">  <span class="keyword">int</span> startpos;</div><div class="line"><span class="comment">// 块的起始位置指针</span></div><div class="line"><span class="comment">//int length;</span></div><div class="line"><span class="comment">// 块的长度</span></div><div class="line">&#125; Index;</div><div class="line"><span class="comment">//算法实现</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTableBlock</span> <span class="params">(SSTable *t, Index ind[], KeyType key , <span class="keyword">int</span> n , <span class="keyword">int</span> b)</span> </span>&#123; <span class="comment">// 表长为 n ,块数为 b</span></div><div class="line">  <span class="keyword">int</span> i=<span class="number">0</span>, j , k ;</div><div class="line"><span class="comment">// 在块间顺序查找</span></div><div class="line">  <span class="keyword">while</span> ((i&lt;b)&amp;&amp; LT(ind[i].maxkey, key) ) i++ ;</div><div class="line">  <span class="keyword">if</span> (i&gt;b)</div><div class="line">    <span class="keyword">return</span>(<span class="number">0</span>); <span class="comment">// 没有找到</span></div><div class="line">  j=ind[i].startpos;</div><div class="line">  <span class="keyword">while</span> ((j&lt;n) &amp;&amp; LQ(t-&gt;elem[j].key, ind[i].maxkey) ) &#123;</div><div class="line"><span class="comment">// 在块内顺序查找</span></div><div class="line">    <span class="keyword">if</span> ( EQ(t-&gt;elem[j].key, key) ) <span class="keyword">break</span> ;</div><div class="line">    j++ ;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (j&gt;n||!EQ(t-&gt;elem[j].key, key) ) j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">return</span>(j)；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法分析</strong></p>
-<ul>
-<li>索引顺序查找的平均查找长度ASL等于 = 查找索引表确定所在块的平均查找长度Lb + 在块内查找元素的平均查找长度Lw.</li>
-</ul>
-<h4 id="查找方法比较"><a href="#查找方法比较" class="headerlink" title="查找方法比较"></a>查找方法比较</h4><table>
-<thead>
-<tr>
-<th style="text-align:right"></th>
-<th>顺序查找</th>
-<th>分块查找</th>
-<th>折半查找</th>
-<th>Fibonacci查找</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">表结构</td>
-<td>有序表/无序表</td>
-<td>分块有序表</td>
-<td>有序表</td>
-<td>有序表</td>
-</tr>
-<tr>
-<td style="text-align:right">存储结构</td>
-<td>顺序存储结构/线性链表</td>
-<td>顺序存储结构/线性链表</td>
-<td>顺序存储结构</td>
-<td>顺序存储结构</td>
-</tr>
-<tr>
-<td style="text-align:right">ASL</td>
-<td>最大</td>
-<td>介于两者之间</td>
-<td>最小</td>
-<td>平均比折半查找好</td>
-</tr>
-</tbody>
-</table>
-<h3 id="静态树表-次优查找树的查找"><a href="#静态树表-次优查找树的查找" class="headerlink" title="静态树表/次优查找树的查找"></a>静态树表/次优查找树的查找</h3><ul>
-<li>若有序表中的各个元素的查找概率不等,那么,用折半查找,性能未必最优</li>
-<li>如何改进,以提高性能 ?</li>
-</ul>
-<p>– 需要找到查找性能最佳的判定树,即,静态最优查找树 (Static Optimal Tree)<br>– 该判定树的带权内路径长度之和最小<br>$$Min PH=Min\sum_{i=1}^{n}w_i\times h_i$$<br>– n 为有序表长度, hi 为第 i 个结点在二叉树上的层次数, wi =cpi (i=1,2,…,n) , pi 为结点的查找概率, c 为常量</p>
-<p><strong>算法思路</strong></p>
-<ul>
-<li>构造静态最优查找树的时间开销太大</li>
-<li>为有序表构造次优查找树 (Nearly Optimal Search Tree)</li>
-<li>基于次优查找树的查找</li>
-</ul>
-<p>– 给定 Key ,<br>– 从根结点开始,将 Key 值与根结点比较,若 key大于根结点值,在右子树中查找,若 key 小于根结点值,在左子树中查找<br>– 平均查找长度与 logn 成正比</p>
-<p><strong>次优查找树的构建</strong></p>
-<ul>
-<li><p>已知按关键字升序排列的记录序列$ (r<em>l ,r</em>{l+1} ,…,r_h )$ ,与每个记录相应的权值为 $w<em>l ,w</em>{l+1} ,…,w_h$,现构造一颗二叉树,使得该树的带权内路径长度 PH 值在所有具有相同权值的二叉树中近似为最小</p>
-</li>
-<li><p>取第 i(l&lt;=i&lt;=h) 个记录构造根节点,使得下式取最小</p>
-<p>$$\Delta P<em>i=|\sum</em>{j=i+1}^{h}w<em>j-\sum</em>{j=l}^{i-1}|$$</p>
-</li>
-<li><p>然后分别对子序列 $(r<em>l ,r</em>{l+1} ,…,r<em>{i-1} ) , (r</em>{i+1 },…,r_h )​$构造两颗次优查找树,并分别设为根节点的左子树和右子树.</p>
-</li>
-</ul>
-<p><strong>递归构造次优查找树t</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 根据有序表 R[low..high] 及其累计权值表 sw( 其中 sw[0]==0)构造次优查找树 t</span></div><div class="line"><span class="function">BiTree <span class="title">SecondOptimal</span><span class="params">(ElemType R[], <span class="keyword">float</span> sw[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i,j; </div><div class="line">  <span class="keyword">float</span> min,dw; </div><div class="line">  BiTree *t;</div><div class="line">  i = low; </div><div class="line">  min = (<span class="keyword">float</span>) <span class="built_in">fabs</span>(sw[high]-sw[low]);</div><div class="line">  dw = sw[high]+sw[low<span class="number">-1</span>];</div><div class="line">  <span class="keyword">for</span> (j=low+<span class="number">1</span>; j&lt;=high; ++j) <span class="comment">// 选择最小的 ΔPi 值</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(dw-sw[j]-sw[j<span class="number">-1</span>]) &lt; min) &#123;</div><div class="line">      i = j; min = (<span class="keyword">float</span>)<span class="built_in">fabs</span>(dw-sw[j]-sw[j<span class="number">-1</span>]);</div><div class="line">    &#125;</div><div class="line">  <span class="keyword">if</span> (!(t = (BiTree *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTreeTNode))))</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  t-&gt;data = R[i];</div><div class="line"><span class="comment">// 生成结点</span></div><div class="line">  <span class="keyword">if</span> (i==low) </div><div class="line">    t-&gt;lchild = <span class="literal">NULL</span>;</div><div class="line"><span class="comment">// 左子树空</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    t-&gt;lchild=SecondOptimal(R, sw, low, i<span class="number">-1</span>); <span class="comment">// 构造左子树</span></div><div class="line">  <span class="keyword">if</span> (i==high) </div><div class="line">    t-&gt;rchild = <span class="literal">NULL</span>; <span class="comment">// 右子树空</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    t-&gt;rchild=SecondOptimal(R, sw, i+<span class="number">1</span>, high); <span class="comment">// 构造右子树</span></div><div class="line">  <span class="keyword">return</span> t; </div><div class="line">&#125; <span class="comment">// SecondOptimal</span></div></pre></td></tr></table></figure>
-<h3 id="动态查找表"><a href="#动态查找表" class="headerlink" title="动态查找表"></a>动态查找表</h3><p><strong>表的组织方式</strong></p>
-<ul>
-<li>若以线性表的形式组织查找表,那么如需要对查找表进行插入、删除或排序操作,就必须移动大量的记录</li>
-</ul>
-<p>– 当记录数很多时,这种移动的代价很大</p>
-<ul>
-<li>以树的形式组织查找表,可以对查找表进行动态、高效的查找</li>
-</ul>
-<p>– 二叉排序树<br>– 平衡二叉树<br>– B 树<br>– B+ 树<br>– 键树</p>
-<h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3><p>二叉排序树或者是空树,或者是满足下列性质的二叉树:</p>
-<ul>
-<li>若左子树不为空,则左子树上所有结点的值( 关键字 ) 都小于根结点的值;</li>
-<li>若右子树不为空,则右子树上所有结点的值( 关键字 ) 都大于根结点的值;</li>
-<li>左、右子树都分别是二叉排序树</li>
-<li>每个结点的 Key 互不相同</li>
-</ul>
-<p><strong>数据结构</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//BST 可以用二叉链表来存储</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> KeyType;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> RecType&#123;</div><div class="line">  KeyType key;</div><div class="line"><span class="comment">//Others</span></div><div class="line">&#125; ElemType;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BiTreeNode &#123;</div><div class="line">  ElemType data;</div><div class="line">  <span class="keyword">struct</span> BiTreeNode *lchild,*rchild;</div><div class="line">&#125; *BiTree;</div></pre></td></tr></table></figure>
-<p><strong>BST的查找算法1</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在根指针 T 所指二叉排序树中,</span></div><div class="line"><span class="comment">// 递归地查找其关键字等于 key 的数据元素,</span></div><div class="line"><span class="comment">// 若查找成功,则返回指向该数据元素结点的指针</span></div><div class="line"><span class="comment">// 若查找不成功,则返回空指针</span></div><div class="line"><span class="function">BiTree <span class="title">SearchBST</span> <span class="params">(BiTree T, KeyType key)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!T || EQ(key, T-&gt;data.key)) </div><div class="line">    <span class="keyword">return</span> T; <span class="comment">// 查找结束</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (LT(key, T-&gt;data.key))</div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;lchild, key); <span class="comment">// 在左子树中查找</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;rchild, key); <span class="comment">// 在右子树中查找</span></div><div class="line">&#125; <span class="comment">// SearchBST</span></div></pre></td></tr></table></figure>
-<p><strong>注：若按中序遍历一棵二叉排序树,所得到的结点序列是一个递增序列</strong></p>
-<p><strong>BST的构造</strong></p>
-<ul>
-<li>BST 是在查找过程中,当树中不存在关键字等于给定值的结点时进行插入</li>
-</ul>
-<p>– 新插入的结点一定是 BST 的一个新的叶子结点,并且是查找不成功时查找路径上访问的最后一个结点的左孩子或右孩子</p>
-<ul>
-<li>因此:</li>
-</ul>
-<p>– 需要一个 BST 的查找算法,它在没有找到指定值时,返回:查找路径上访问的最后一个结点<br>– 基于上述查找算法,形成 BST 的构造算法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 若查找成功,则指针 p 指向该数据元素结点,并返回 TRUE</span></div><div class="line"><span class="comment">// 否则指针 p 指向查找路径上访问的最后一个结点,并返回</span></div><div class="line"><span class="comment">// FALSE 。指针 f 指向 T 的双亲,其初始调用值为 NULL</span></div><div class="line"><span class="function">Status <span class="title">SearchBST</span><span class="params">(BiTree T, KeyType key, BiTree f, BiTree &amp;p)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span> (!T) &#123;</div><div class="line">    p = f; <span class="keyword">return</span> FALSE; </div><div class="line">  &#125; <span class="comment">// 查找不成功</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (EQ(key, T-&gt;data.key)) &#123;</div><div class="line">    p = T; <span class="keyword">return</span> TRUE; </div><div class="line">  &#125; <span class="comment">// 查找成功</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (LT(key, T-&gt;data.key))</div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;lchild, key, T, p); <span class="comment">// 在左子树中查找</span></div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;rchild, key, T, p); <span class="comment">// 在右子树中查找</span></div><div class="line">&#125; <span class="comment">// SearchBST</span></div></pre></td></tr></table></figure>
-<p><strong>BST的插入算法</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 当二叉排序树 T 中没有关键字等于 e.key 的数据元素时,</span></div><div class="line"><span class="comment">// 插入 e 并返回 TRUE ,否则返回 FALSE</span></div><div class="line"><span class="function">Status <span class="title">InsertBST</span><span class="params">(BiTree &amp;T, ElemType e)</span></span>&#123;</div><div class="line">  BiTree p,s;</div><div class="line">  <span class="keyword">if</span> (!SearchBST(T, e.key, <span class="literal">NULL</span>, p)) &#123; <span class="comment">// 查找不成功</span></div><div class="line">    s = (BiTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>( BiTreeNode ));</div><div class="line">    s-&gt;data = e; </div><div class="line">    s-&gt;lchild = s-&gt;rchild = <span class="literal">NULL</span>; </div><div class="line">    <span class="keyword">if</span> (!p) T = s; <span class="comment">// 插入 s 为新的根结点</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LT(e.key, p-&gt;data.key))</div><div class="line">      p-&gt;lchild=s; <span class="comment">// 插入 s 为左孩子 时,不必移动其它</span></div><div class="line">    <span class="keyword">else</span> </div><div class="line">      p-&gt;rchild=s;<span class="comment">// 插入 s 为右孩子</span></div><div class="line">    <span class="keyword">return</span> TRUE;</div><div class="line">  &#125; </div><div class="line">  <span class="keyword">else</span> </div><div class="line">    <span class="keyword">return</span> FALSE; <span class="comment">// 树中已有关键字相同的结点,不再插入</span></div><div class="line">&#125; <span class="comment">// Insert BST</span></div></pre></td></tr></table></figure>
-<p><strong>BST上节点的删除</strong></p>
-<p>从 BST 上删除一个结点,需要保证删除结点后的树仍满足 BST 的性质</p>
-<p>设被删除结点为 p ,其父结点为 f ,分如下情况:</p>
-<ol>
-<li><p>若 p 是叶子结点: 直接删除 p</p>
-</li>
-<li><p>若 p 只有一棵子树 ( 左子树或右子树 ) :直接用 p 的左子树 ( 或右子树 ) 取代 p 的位置而成为 f 的一棵子树</p>
-</li>
-<li><p>若 p 既有左子树又有右子树</p>
-<p>方法一：用 p 的直接前驱 ( 或直接后继 ) 结点 s 代替 p ,即从 p 的左子树中选择值最大的结点 s 放在 p 的位置 ( 用结点 s 的内容替换结点 p 内容 ) ,然后删除结点 s ,并将 s的左子树作为 s 的父结点的右子树</p>
-<p>方法二：找到 s , s 是 p 的左子树中的最右边的结点且没有右子树,将 p 的右子树作为 s 的右子树,然后用 p 的左子树顶替被删结点 ( 也就是将 p 的左子树为 f 的左子树 )</p>
-</li>
-</ol>
-<p><strong>算法实现</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="function">Status <span class="title">DeleteBST</span><span class="params">(BiTree *T, KeyType key)</span></span></div><div class="line"><span class="comment">// 若二叉排序树 T 中存在关键字等于 key 的数据元素时,</span></div><div class="line"><span class="comment">// 则删除该数据元素结点 p ,返回 TRUE ;否则返回 FALSE</span></div><div class="line">&#123; </div><div class="line">  <span class="keyword">if</span> (!T)</div><div class="line">    <span class="keyword">return</span> FALSE;<span class="comment">// 不存在关键字等于 key 的数据元素</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">if</span> (EQ(key, T-&gt;data.key))</div><div class="line"><span class="comment">// 找到关键字等于 key 的数据元素</span></div><div class="line">      <span class="keyword">return</span> Delete(T);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LT(key, T-&gt;data.key))</div><div class="line">      <span class="keyword">return</span> DeleteBST(T-&gt;lchild, key);</div><div class="line">    <span class="keyword">else</span></div><div class="line">      <span class="keyword">return</span> DeleteBST(T-&gt;rchild, key);</div><div class="line">  &#125;</div><div class="line">&#125;<span class="comment">//DeleteBST</span></div><div class="line"><span class="comment">// 从二叉排序树中删除结点 p ,并重接它的左或右子树，伪代码</span></div><div class="line"><span class="function">Status <span class="title">Delete</span><span class="params">(BiTree &amp;p)</span> </span>&#123;</div><div class="line">  BiTree q, s;</div><div class="line">  <span class="keyword">if</span> (!p-&gt;rchild) &#123;<span class="comment">// 右子树空则只需重接它的左子树</span></div><div class="line">    q = p; p = p-&gt;lchild;</div><div class="line">    <span class="comment">//将 p 原来的父结点 ( 设为 f) 与 p 相连 </span></div><div class="line">    f-&gt;lchild/rchild=p</div><div class="line">      <span class="built_in">free</span>(q); </div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (!p-&gt;lchild) &#123;<span class="comment">// 只需重接它的右子树</span></div><div class="line">    q = p; p = p-&gt;rchild;</div><div class="line">   <span class="comment">//将 p 原来的父结点 ( 设为 f) 与 p 相连 </span></div><div class="line">    f-&gt;lchild/rchild=p</div><div class="line">      <span class="built_in">free</span>(q); </div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123; <span class="comment">// 左右子树均不空,按方法一</span></div><div class="line"><span class="comment">// 左右子树均不空</span></div><div class="line">    q = p; s = p-&gt;lchild;</div><div class="line">    <span class="keyword">while</span> (s-&gt;rchild)</div><div class="line"><span class="comment">// 转左,然后向右到尽头 q</span></div><div class="line">    &#123;</div><div class="line">      q = s; s = s-&gt;rchild;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//s 指向被删结点的前驱</span></div><div class="line">    p-&gt;data = s-&gt;data;</div><div class="line">    <span class="keyword">if</span> (q != p)</div><div class="line">      q-&gt;rchild = s-&gt;lchild;</div><div class="line"><span class="comment">// 重接 *q 的右子树</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">      q-&gt;lchild = s-&gt;lchild;</div><div class="line"><span class="comment">// 重接 *q 的左子树</span></div><div class="line">    <span class="built_in">free</span>(s);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> TRUE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>BST的查找性能分析</strong></p>
-<ul>
-<li>二叉排序树上成功的查找次数不会超过二叉树的深度,而具有 n 个结点的二叉排序树的深度,最好为 log2n ,最坏为 n 。因此二叉排序树查找的最好时间复杂度为 O(log2n) ,最坏的时间复杂度为 O(n)。</li>
-<li>在随机情况下, n 个结点的二叉排序树的平均查找长度 (ASL) 和log2n ( 树的深度 ) 是等数量级的。</li>
-<li>随机:各个元素的查找概率相同,元素组成的序列是随机的</li>
-</ul>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
 
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
-          
-        </div>
-      
 
-      
-        
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/07/30/Dynamic-Memory-Management/" rel="next" title="动态存储管理">
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3>
+                  <ul>
+                    <li>查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成</li>
+                    <li>关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素</li>
+                  </ul>
+                  <p>– 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字<br>– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字</p>
+                  <h4 id="关键字类型"><a href="#关键字类型" class="headerlink" title="关键字类型"></a>关键字类型</h4>
+                  <ul>
+                    <li>数据元素的关键字:其类型通常是可以进行比较运算的类型</li>
+                    <li>典型的关键字类型</li>
+                  </ul>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">float</span> KeyType ;</div><div class="line"><span class="comment">// 实型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> KeyType ; <span class="comment">// 整型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> KeyType ; <span class="comment">// 字符串型</span></div><div class="line">• 数据元素类型</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> RecType &#123;</div><div class="line">KeyType key ; <span class="comment">// 关键字域</span></div><div class="line">... ... <span class="comment">// 其他域</span></div><div class="line">&#125; ElemType;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <a id="more"></a>
+                  <h4 id="对两个关键字的比较"><a href="#对两个关键字的比较" class="headerlink" title="对两个关键字的比较"></a>对两个关键字的比较</h4>
+                  <figure class="highlight">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">//C 的宏定义</div><div class="line">// 对数值型关键字</div><div class="line">#define EQ(a, b) ((a)==(b))</div><div class="line">#define LT(a, b) ((a)&lt;(b))</div><div class="line">#define LQ(a, b) ((a)&lt;=(b))</div><div class="line">// 对字符串型关键字</div><div class="line">#define EQ(a, b) (!strcmp((a), (b)) )</div><div class="line">#define LT(a, b) (strcmp((a), (b))&lt;0 )</div><div class="line">#define LQ(a, b) (strcmp((a), (b))&lt;=0 )</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4>
+                  <p>根据给定的 Key 值,在查找表中确定一个关键字等于给定值的数据元素或记录</p>
+                  <ul>
+                    <li>查找表中存在满足条件的数据元素 / 记录,则查找成功,返回所查到的数据元素或其在查找表中的位置</li>
+                    <li>查找表中不存在满足条件的记录,则查找失败</li>
+                    <li>“ 关键字等于给定值 ” 只是一种最为常用的查找条件,实际应用中可能会有其他的查找件,例如查找 “ 关键字在某个范围内的数据元素 ” 等等</li>
+                  </ul>
+                  <p>采用何种查找方法,首先取决于查找表的组织,即按何种关系组织 / 存储数据元素</p>
+                  <ul>
+                    <li>查找表是记录的集合,而集合中的元素之间是一种完全松散的关系,因此,查找表是一种非常灵活的数据结构,可以用多种方式来存储</li>
+                  </ul>
+                  <h3 id="查找及其方法分类"><a href="#查找及其方法分类" class="headerlink" title="查找及其方法分类"></a>查找及其方法分类</h3>
+                  <ul>
+                    <li>静态查找 / 静态查找表 (Static Search Table):只对该表的数据元素进行查询</li>
+                    <li>动态查找 / 动态查找表 (Dynamic Search Table) :在对该表实施查找的同时,可插入查找表中不存在的记录,或从查找表中删除已存在的某个记录;表的结构本身是在查找过程中动态生成的</li>
+                  </ul>
+                  <h4 id="分类1：按存储结构的不同"><a href="#分类1：按存储结构的不同" class="headerlink" title="分类1：按存储结构的不同"></a>分类1：按存储结构的不同</h4>
+                  <ul>
+                    <li>线性表查找: 数据元素保存在顺序表或链表中</li>
+                    <li>哈希查找:数据元素保存在哈希表中,根据给定的 Key 值直接访问 查找表, 从而找到要查找的记录</li>
+                    <li>树表查找:数据元素保存在树中</li>
+                  </ul>
+                  <h4 id="分类2："><a href="#分类2：" class="headerlink" title="分类2："></a>分类2：</h4>
+                  <ul>
+                    <li>内查找:整个查找过程全部在内存进行</li>
+                    <li>外查找:在查找过程中还需要访问外存，例如:查找表太大,无法全部放入内存中</li>
+                  </ul>
+                  <h4 id="查找方法的评价指标"><a href="#查找方法的评价指标" class="headerlink" title="查找方法的评价指标"></a>查找方法的评价指标</h4>
+                  <ul>
+                    <li>查找过程中的主要操作是关键字的比较,查找过程中关键字的平均比较次数是衡量一个查找算法效率高低的标准</li>
+                    <li>ASL (Average Search Length , 平均查找长度 ) 定义为需要和给定值进行比较的关键字的个数的期望值</li>
+                  </ul>
+                  <h3 id="静态查找表"><a href="#静态查找表" class="headerlink" title="静态查找表"></a>静态查找表</h3>
+                  <p>静态查找表:可以用线性表 ( 顺序表或线性链表 ) 实现</p>
+                  <p>静态查找表 StaticSearchTable 的基本操作:</p>
+                  <figure class="highlight">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">void CreateSSTable(SSTable *t);// 构造一个查找表</div><div class="line">void Destroy(SSTable *t);</div><div class="line">void ListSSTable(SSTable *t); // 输出查找表</div><div class="line">int SearchSSTable(SSTable *t,KeyType key); // 查找成功,返回元素值在表中位置</div><div class="line">void Traverser(SSTable *t, void Visit(ElemType *e)); // 按某种次序对 t 的每个元素调用函数 Visit()</div><div class="line">一次且一次</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h4 id="静态查找表的查找方法"><a href="#静态查找表的查找方法" class="headerlink" title="静态查找表的查找方法"></a>静态查找表的查找方法</h4>
+                  <ul>
+                    <li>基于顺序表的查找: 顺序查找 (SequentialSearch) ,逐一比较</li>
+                    <li>基于有序表的查找</li>
+                  </ul>
+                  <p>– 折半查找 / 二分查找 (Binary Search) :每次对查找表进行折半缩小<br>– Fibonacci 查找 :根据 Fibonacci 数列的特点对查找表进行分割<br>– 静态树表查找</p>
+                  <ul>
+                    <li>基于索引顺序表的查找:索引顺序查找 /分块查找 (Blocking Search) ,基于顺序表和其索引的查找</li>
+                  </ul>
+                  <h4 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h4>
+                  <p>顺序表的定义如下：</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> SSTable&#123;</div><div class="line"><span class="comment">// 数据元素存储空间的基地址</span></div><div class="line"><span class="comment">// 建表时按实际长度分配, 0 号单元留空</span></div><div class="line">ElemType *elem;</div><div class="line"><span class="keyword">int</span> length ; <span class="comment">// 实际元素个数</span></div><div class="line">&#125; SSTable;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>顺序查找算法：</p>
+                  <p>从表的一端 ( 例如:最后一个记录 ) 开始,逐个将记录的关键字和给定 Key 值进行比较<br>– 若某个记录的关键字和给定 Key 值相等,查找成功<br>– 否则,若扫描完整个表,仍然没有找到相应的记录,则查找失败</p>
+                  <p>简单实现：</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTable</span><span class="params">(SSTable *t, KeyType key)</span> </span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=t-&gt;length &amp;&amp; (t-&gt;elem[i].key != key); i++ );</div><div class="line">  <span class="keyword">if</span>( i&lt;=t-&gt;length )</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125; <span class="comment">//Search_Seq</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>标准算法：</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTable</span><span class="params">(SSTable *t,KeyType key)</span> </span>&#123;</div><div class="line"><span class="comment">// 设置哨兵,查找失败时返回 0</span></div><div class="line">  t-&gt;elem[<span class="number">0</span>].key=key;</div><div class="line"><span class="comment">// 从后往前找</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=t-&gt;length; !EQ(t-&gt;elem[i].key, key); i--) ;</div><div class="line">  <span class="keyword">return</span> i ; <span class="comment">// 找不到时, i 为 0</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//设立哨兵后可以使循环中省掉了一次比较</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>算法分析：</p>
+                  <ul>
+                    <li>查找成功时候的比较次数：ASL = (n+1)/2</li>
+                    <li>查找失败时候的比较次数：ASL=n+1</li>
+                    <li>若查找成功与不成功的概率相等，则 ASL = 3(n+1)/4</li>
+                  </ul>
+                  <p>缺点：</p>
+                  <p>查找效率低,当 n 较大时,不宜采用顺序查找。</p>
+                  <p>改进：</p>
+                  <ul>
+                    <li>根据数据元素被查找的概率组织顺序表，在不等概率的情况下，按被查找概率的升序排序。</li>
+                    <li>在数据元素中增加一数据项,用于记录对该数据元素的访问次数<br>– 在每次查找后,维护查找表使得其按照数据元素的访问次数升序排序</li>
+                    <li>在每次查找后,将刚查找到的元素移动至表尾:已发生的事会重复发生</li>
+                    <li>为顺序表加索引</li>
+                  </ul>
+                  <h4 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h4>
+                  <ul>
+                    <li>基于有序顺序表的查找chazhao</li>
+                  </ul>
+                  <p>– 查找表中的所有记录是按关键字有序 ( 升序或降序 ) 排列的</p>
+                  <ul>
+                    <li>查找过程中,先确定待查找记录在表中的范围,然后逐步缩小范围 ( 每次将待查记录所在区间缩小一半 ) ,直到找到或找不到记录为止</li>
+                  </ul>
+                  <p>算法思想：</p>
+                  <ul>
+                    <li>初始:用 Low 、 High 和 Mid 表示待查找区间的下界、上界和中间位置指针,初值设置为 Low=1 , High=n</li>
+                    <li>(1) 取中间位置 Mid : Mid=(Low+High)/2</li>
+                    <li>(2) 比较中间位置记录的关键字与给定的 Key值:</li>
+                  </ul>
+                  <p>– 相等:查找成功;<br>– 大于:待查记录在区间的前半段,修改上界指针: High=Mid-1 ,转 (1) ;<br>– 小于:待查记录在区间的后半段,修改下界指针: Low=Mid+1 ,转 (1) ;</p>
+                  <ul>
+                    <li>直到越界 (Low&gt;High) ,查找失败</li>
+                  </ul>
+                  <p><strong>算法实现</strong>：</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">// 在有序表 t 中折半查找其关键字等于 key 的数据元素</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTable</span><span class="params">(SSTable *t, KeyType key)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> low, high, mid;</div><div class="line">  low = <span class="number">1</span>; high = t-&gt;length; <span class="comment">// 置区间初值</span></div><div class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</div><div class="line">    mid = (low + high) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span> (EQ(key , t-&gt;elem[mid].key))</div><div class="line"><span class="comment">// 找到,返回该待查元素在表中的位置</span></div><div class="line">      <span class="keyword">return</span> mid;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LT(key, t-&gt;elem[mid].key))</div><div class="line"><span class="comment">// 继续在前半区间进行查找</span></div><div class="line">      high = mid - <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="comment">// 继续在后半区间进行查找</span></div><div class="line">      low = mid + <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 顺序表中不存在待查元素</span></div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>算法分析</strong>：</p>
+                  <ul>
+                    <li>查找时,每经过一次比较,查找范围就缩小一半,该过程可用一棵二叉树表示:</li>
+                  </ul>
+                  <p>– 把当前查找区间的中点作为根结点<br>– 左子区间和右子区间分别作为根的左子树和右子树<br>– 排在中间位置前面的作为左子树的结点<br>– 排在中间位置后面的作为右子树的结点</p>
+                  <ul>
+                    <li>上述描述查找过程的二叉树被称为折半查找的判定树(Decision Tree)</li>
+                  </ul>
+                  <p>– 内结点代表顺序表中已有的元素,外结点代表失败结点,它表示在两个相邻已有元素值之间的值</p>
+                  <ul>
+                    <li>找到有序表中任一记录的过程是走了一条从根结点到与该记录相应的结点的路径,与给定值进行比较的关键字个数为该结点在判定树上的层次数</li>
+                    <li>查找成功时候的ASL = (n+1)/nlog2(n+1) - 1</li>
+                    <li>当n很大时(n&gt;50)，ASL = log2(n+1) - 1</li>
+                  </ul>
+                  <p><strong>算法优缺点分析</strong>：</p>
+                  <ul>
+                    <li>Strength :折半查找速度很快</li>
+                  </ul>
+                  <p>– 1000 个元素的有序表,至多需要比较 10 次<br>– 1000,000 个元素的有序表,需要不超过 20 次的比较</p>
+                  <ul>
+                    <li>Limitation :查找对象是有序表,即在查找之前需要对顺序表进行排序操作</li>
+                  </ul>
+                  <ul>
+                    <li>Weaknesses :</li>
+                  </ul>
+                  <p>– 折半查找无法应用于链表<br>– 在不等概率查找的情况下,折半查找不一定是有序表最好的查找方法<br>– 当查找表的长度不大时,也许折半查找的效率不如顺序查找</p>
+                  <ul>
+                    <li>Conclusion :适合于大量的静态数据</li>
+                  </ul>
+                  <p>– 有序表的插入和删除都比较麻烦,平均要移动表中一半的元素</p>
+                  <h4 id="Fibonacci-查找"><a href="#Fibonacci-查找" class="headerlink" title="Fibonacci 查找"></a>Fibonacci 查找</h4>
+                  <ul>
+                    <li>基于有序顺序表的查找</li>
+                  </ul>
+                  <p>– 查找表中的所有记录是按关键字有序 ( 升序或降序 )排列的</p>
+                  <ul>
+                    <li>查找过程中,先确定待查找记录在表中的范围,然后逐步缩小范围 ( 每次根据 Fibonacci 数列的特点对查找表进行分割 ) ,直到找到或找不到记录为止</li>
+                  </ul>
+                  <p><strong>算法思想</strong></p>
+                  <ul>
+                    <li>设查找表中的记录数 n 比某个 Fibonacci 数小 1,即设 n=F(j)-1</li>
+                    <li>用 Low 、 High 和 Mid 表示待查找区间的下界、上界和分割位置,初值为 Low=1 , High=n</li>
+                    <li>(1) 取分割位置 Mid : Mid=F(j-1)</li>
+                    <li>(2) 比较 key 值与分割位置记录的关键字:</li>
+                  </ul>
+                  <p>– 相等: 查找成功<br>– 小于:待查记录在区间的前半段,修改上界指针:High=Mid-1 ,这时,区间长度为 F(j-1)-1 ,转(1) ;<br>– 大于:待查记录在区间的后半段,修改下界指针:Low=Mid+1 , 这时,区间长度为 F(j-2)-1 ,转(1) ;</p>
+                  <ul>
+                    <li>直到越界 (Low&gt;High) ,查找失败</li>
+                  </ul>
+                  <p><strong>算法实现</strong></p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">//Fibonacci 数的计算</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i, f, f0=<span class="number">0</span>, f1=<span class="number">1</span>;</div><div class="line">  <span class="keyword">if</span> (n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span> ;</div><div class="line">  <span class="keyword">if</span> (n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span> ;</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">2</span> ; i&lt;=n ; i++ ) &#123;</div><div class="line">    f=f0+f1 ; f0=f1 ; f1=f ; </div><div class="line">  &#125;chazhao</div><div class="line">  <span class="keyword">return</span> f ;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 在有序表 t 中用 Fibonacci 方法查找关键字为 key 的记录</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTableFibonacci</span><span class="params">(SSTable *t, KeyType key , <span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> Low=<span class="number">1</span>, High, Mid, f1, f2 ;</div><div class="line">  High=fib(n); </div><div class="line">  f1=fib(n<span class="number">-1</span>); </div><div class="line">  f2=fib(n<span class="number">-2</span>);<span class="function">chazhao</span></div><div class="line">  <span class="title">while</span> <span class="params">(Low&lt;=High)</span> &#123;</div><div class="line">    Mid=Low+f1<span class="number">-1</span>;</div><div class="line">    <span class="keyword">if</span> ( EQ(key, t-&gt;elem[Mid].key) ) </div><div class="line">      <span class="keyword">return</span> Mid ;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ( LT(key, t-&gt;elem[Mid].key) )&#123; </div><div class="line">      High=Mid<span class="number">-1</span>; f2=f1-f2; f1=f1-f2; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123; </div><div class="line">      Low=Mid+<span class="number">1</span>; f1=f1-f2; f2=f2-f1; </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>算法分析</strong></p>
+                  <ul>
+                    <li>Fibonacci 查找的平均性能比折半查找好，但最坏情况下比折半查找差。</li>
+                    <li>插值查找：根据key值来决定与哪个记录比较并分区。</li>
+                    <li>插值查找适用于关键字均匀分布。</li>
+                  </ul>
+                  <h4 id="索引顺序查找-分块查找"><a href="#索引顺序查找-分块查找" class="headerlink" title="索引顺序查找 / 分块查找"></a>索引顺序查找 / 分块查找</h4>
+                  <ul>
+                    <li>查找表的组织:将查找表分成几块</li>
+                  </ul>
+                  <p>– 块间有序,即第 i+1 块的所有记录关键字均大于 ( 或小于 ) 第 i 块记录关键字<br>– 块内无序<br>– 在查找表的基础上附加一个索引表,索引表是按关键字有序的,索引表中记录的构成是:<br>– 可以建立多级索引<br>– 可以建立多种索引</p>
+                  <ul>
+                    <li>先 ( 用顺序查找或折半查找 ) 确定待查记录所在块,再在块内查找 ( 顺序查找 )</li>
+                  </ul>
+                  <p><strong>算法实现</strong></p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">//数据结构</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> IndexType &#123;</div><div class="line">  KeyType maxkey; <span class="comment">// 块中最大的关键字</span></div><div class="line">  <span class="keyword">int</span> startpos;</div><div class="line"><span class="comment">// 块的起始位置指针</span></div><div class="line"><span class="comment">//int length;</span></div><div class="line"><span class="comment">// 块的长度</span></div><div class="line">&#125; Index;</div><div class="line"><span class="comment">//算法实现</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTableBlock</span> <span class="params">(SSTable *t, Index ind[], KeyType key , <span class="keyword">int</span> n , <span class="keyword">int</span> b)</span> </span>&#123; <span class="comment">// 表长为 n ,块数为 b</span></div><div class="line">  <span class="keyword">int</span> i=<span class="number">0</span>, j , k ;</div><div class="line"><span class="comment">// 在块间顺序查找</span></div><div class="line">  <span class="keyword">while</span> ((i&lt;b)&amp;&amp; LT(ind[i].maxkey, key) ) i++ ;</div><div class="line">  <span class="keyword">if</span> (i&gt;b)</div><div class="line">    <span class="keyword">return</span>(<span class="number">0</span>); <span class="comment">// 没有找到</span></div><div class="line">  j=ind[i].startpos;</div><div class="line">  <span class="keyword">while</span> ((j&lt;n) &amp;&amp; LQ(t-&gt;elem[j].key, ind[i].maxkey) ) &#123;</div><div class="line"><span class="comment">// 在块内顺序查找</span></div><div class="line">    <span class="keyword">if</span> ( EQ(t-&gt;elem[j].key, key) ) <span class="keyword">break</span> ;</div><div class="line">    j++ ;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (j&gt;n||!EQ(t-&gt;elem[j].key, key) ) j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">return</span>(j)；</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>算法分析</strong></p>
+                  <ul>
+                    <li>索引顺序查找的平均查找长度ASL等于 = 查找索引表确定所在块的平均查找长度Lb + 在块内查找元素的平均查找长度Lw.</li>
+                  </ul>
+                  <h4 id="查找方法比较"><a href="#查找方法比较" class="headerlink" title="查找方法比较"></a>查找方法比较</h4>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="text-align:right"></th>
+                        <th>顺序查找</th>
+                        <th>分块查找</th>
+                        <th>折半查找</th>
+                        <th>Fibonacci查找</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:right">表结构</td>
+                        <td>有序表/无序表</td>
+                        <td>分块有序表</td>
+                        <td>有序表</td>
+                        <td>有序表</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:right">存储结构</td>
+                        <td>顺序存储结构/线性链表</td>
+                        <td>顺序存储结构/线性链表</td>
+                        <td>顺序存储结构</td>
+                        <td>顺序存储结构</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:right">ASL</td>
+                        <td>最大</td>
+                        <td>介于两者之间</td>
+                        <td>最小</td>
+                        <td>平均比折半查找好</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h3 id="静态树表-次优查找树的查找"><a href="#静态树表-次优查找树的查找" class="headerlink" title="静态树表/次优查找树的查找"></a>静态树表/次优查找树的查找</h3>
+                  <ul>
+                    <li>若有序表中的各个元素的查找概率不等,那么,用折半查找,性能未必最优</li>
+                    <li>如何改进,以提高性能 ?</li>
+                  </ul>
+                  <p>– 需要找到查找性能最佳的判定树,即,静态最优查找树 (Static Optimal Tree)<br>– 该判定树的带权内路径长度之和最小<br>$$Min PH=Min\sum_{i=1}^{n}w_i\times h_i$$<br>– n 为有序表长度, hi 为第 i 个结点在二叉树上的层次数, wi =cpi (i=1,2,…,n) , pi 为结点的查找概率, c 为常量</p>
+                  <p><strong>算法思路</strong></p>
+                  <ul>
+                    <li>构造静态最优查找树的时间开销太大</li>
+                    <li>为有序表构造次优查找树 (Nearly Optimal Search Tree)</li>
+                    <li>基于次优查找树的查找</li>
+                  </ul>
+                  <p>– 给定 Key ,<br>– 从根结点开始,将 Key 值与根结点比较,若 key大于根结点值,在右子树中查找,若 key 小于根结点值,在左子树中查找<br>– 平均查找长度与 logn 成正比</p>
+                  <p><strong>次优查找树的构建</strong></p>
+                  <ul>
+                    <li>
+                      <p>已知按关键字升序排列的记录序列$ (r<em>l ,r</em>{l+1} ,…,r_h )$ ,与每个记录相应的权值为 $w<em>l ,w</em>{l+1} ,…,w_h$,现构造一颗二叉树,使得该树的带权内路径长度 PH 值在所有具有相同权值的二叉树中近似为最小</p>
+                    </li>
+                    <li>
+                      <p>取第 i(l&lt;=i&lt;=h) 个记录构造根节点,使得下式取最小</p>
+                      <p>$$\Delta P<em>i=|\sum</em>{j=i+1}^{h}w<em>j-\sum</em>{j=l}^{i-1}|$$</p>
+                    </li>
+                    <li>
+                      <p>然后分别对子序列 $(r<em>l ,r</em>{l+1} ,…,r<em>{i-1} ) , (r</em>{i+1 },…,r_h )​$构造两颗次优查找树,并分别设为根节点的左子树和右子树.</p>
+                    </li>
+                  </ul>
+                  <p><strong>递归构造次优查找树t</strong></p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">// 根据有序表 R[low..high] 及其累计权值表 sw( 其中 sw[0]==0)构造次优查找树 t</span></div><div class="line"><span class="function">BiTree <span class="title">SecondOptimal</span><span class="params">(ElemType R[], <span class="keyword">float</span> sw[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i,j; </div><div class="line">  <span class="keyword">float</span> min,dw; </div><div class="line">  BiTree *t;</div><div class="line">  i = low; </div><div class="line">  min = (<span class="keyword">float</span>) <span class="built_in">fabs</span>(sw[high]-sw[low]);</div><div class="line">  dw = sw[high]+sw[low<span class="number">-1</span>];</div><div class="line">  <span class="keyword">for</span> (j=low+<span class="number">1</span>; j&lt;=high; ++j) <span class="comment">// 选择最小的 ΔPi 值</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(dw-sw[j]-sw[j<span class="number">-1</span>]) &lt; min) &#123;</div><div class="line">      i = j; min = (<span class="keyword">float</span>)<span class="built_in">fabs</span>(dw-sw[j]-sw[j<span class="number">-1</span>]);</div><div class="line">    &#125;</div><div class="line">  <span class="keyword">if</span> (!(t = (BiTree *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTreeTNode))))</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  t-&gt;data = R[i];</div><div class="line"><span class="comment">// 生成结点</span></div><div class="line">  <span class="keyword">if</span> (i==low) </div><div class="line">    t-&gt;lchild = <span class="literal">NULL</span>;</div><div class="line"><span class="comment">// 左子树空</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    t-&gt;lchild=SecondOptimal(R, sw, low, i<span class="number">-1</span>); <span class="comment">// 构造左子树</span></div><div class="line">  <span class="keyword">if</span> (i==high) </div><div class="line">    t-&gt;rchild = <span class="literal">NULL</span>; <span class="comment">// 右子树空</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    t-&gt;rchild=SecondOptimal(R, sw, i+<span class="number">1</span>, high); <span class="comment">// 构造右子树</span></div><div class="line">  <span class="keyword">return</span> t; </div><div class="line">&#125; <span class="comment">// SecondOptimal</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="动态查找表"><a href="#动态查找表" class="headerlink" title="动态查找表"></a>动态查找表</h3>
+                  <p><strong>表的组织方式</strong></p>
+                  <ul>
+                    <li>若以线性表的形式组织查找表,那么如需要对查找表进行插入、删除或排序操作,就必须移动大量的记录</li>
+                  </ul>
+                  <p>– 当记录数很多时,这种移动的代价很大</p>
+                  <ul>
+                    <li>以树的形式组织查找表,可以对查找表进行动态、高效的查找</li>
+                  </ul>
+                  <p>– 二叉排序树<br>– 平衡二叉树<br>– B 树<br>– B+ 树<br>– 键树</p>
+                  <h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3>
+                  <p>二叉排序树或者是空树,或者是满足下列性质的二叉树:</p>
+                  <ul>
+                    <li>若左子树不为空,则左子树上所有结点的值( 关键字 ) 都小于根结点的值;</li>
+                    <li>若右子树不为空,则右子树上所有结点的值( 关键字 ) 都大于根结点的值;</li>
+                    <li>左、右子树都分别是二叉排序树</li>
+                    <li>每个结点的 Key 互不相同</li>
+                  </ul>
+                  <p><strong>数据结构</strong></p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">//BST 可以用二叉链表来存储</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> KeyType;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> RecType&#123;</div><div class="line">  KeyType key;</div><div class="line"><span class="comment">//Others</span></div><div class="line">&#125; ElemType;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BiTreeNode &#123;</div><div class="line">  ElemType data;</div><div class="line">  <span class="keyword">struct</span> BiTreeNode *lchild,*rchild;</div><div class="line">&#125; *BiTree;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>BST的查找算法1</strong></p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">// 在根指针 T 所指二叉排序树中,</span></div><div class="line"><span class="comment">// 递归地查找其关键字等于 key 的数据元素,</span></div><div class="line"><span class="comment">// 若查找成功,则返回指向该数据元素结点的指针</span></div><div class="line"><span class="comment">// 若查找不成功,则返回空指针</span></div><div class="line"><span class="function">BiTree <span class="title">SearchBST</span> <span class="params">(BiTree T, KeyType key)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!T || EQ(key, T-&gt;data.key)) </div><div class="line">    <span class="keyword">return</span> T; <span class="comment">// 查找结束</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (LT(key, T-&gt;data.key))</div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;lchild, key); <span class="comment">// 在左子树中查找</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;rchild, key); <span class="comment">// 在右子树中查找</span></div><div class="line">&#125; <span class="comment">// SearchBST</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>注：若按中序遍历一棵二叉排序树,所得到的结点序列是一个递增序列</strong></p>
+                  <p><strong>BST的构造</strong></p>
+                  <ul>
+                    <li>BST 是在查找过程中,当树中不存在关键字等于给定值的结点时进行插入</li>
+                  </ul>
+                  <p>– 新插入的结点一定是 BST 的一个新的叶子结点,并且是查找不成功时查找路径上访问的最后一个结点的左孩子或右孩子</p>
+                  <ul>
+                    <li>因此:</li>
+                  </ul>
+                  <p>– 需要一个 BST 的查找算法,它在没有找到指定值时,返回:查找路径上访问的最后一个结点<br>– 基于上述查找算法,形成 BST 的构造算法：</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">// 若查找成功,则指针 p 指向该数据元素结点,并返回 TRUE</span></div><div class="line"><span class="comment">// 否则指针 p 指向查找路径上访问的最后一个结点,并返回</span></div><div class="line"><span class="comment">// FALSE 。指针 f 指向 T 的双亲,其初始调用值为 NULL</span></div><div class="line"><span class="function">Status <span class="title">SearchBST</span><span class="params">(BiTree T, KeyType key, BiTree f, BiTree &amp;p)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span> (!T) &#123;</div><div class="line">    p = f; <span class="keyword">return</span> FALSE; </div><div class="line">  &#125; <span class="comment">// 查找不成功</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (EQ(key, T-&gt;data.key)) &#123;</div><div class="line">    p = T; <span class="keyword">return</span> TRUE; </div><div class="line">  &#125; <span class="comment">// 查找成功</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (LT(key, T-&gt;data.key))</div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;lchild, key, T, p); <span class="comment">// 在左子树中查找</span></div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;rchild, key, T, p); <span class="comment">// 在右子树中查找</span></div><div class="line">&#125; <span class="comment">// SearchBST</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>BST的插入算法</strong></p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">// 当二叉排序树 T 中没有关键字等于 e.key 的数据元素时,</span></div><div class="line"><span class="comment">// 插入 e 并返回 TRUE ,否则返回 FALSE</span></div><div class="line"><span class="function">Status <span class="title">InsertBST</span><span class="params">(BiTree &amp;T, ElemType e)</span></span>&#123;</div><div class="line">  BiTree p,s;</div><div class="line">  <span class="keyword">if</span> (!SearchBST(T, e.key, <span class="literal">NULL</span>, p)) &#123; <span class="comment">// 查找不成功</span></div><div class="line">    s = (BiTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>( BiTreeNode ));</div><div class="line">    s-&gt;data = e; </div><div class="line">    s-&gt;lchild = s-&gt;rchild = <span class="literal">NULL</span>; </div><div class="line">    <span class="keyword">if</span> (!p) T = s; <span class="comment">// 插入 s 为新的根结点</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LT(e.key, p-&gt;data.key))</div><div class="line">      p-&gt;lchild=s; <span class="comment">// 插入 s 为左孩子 时,不必移动其它</span></div><div class="line">    <span class="keyword">else</span> </div><div class="line">      p-&gt;rchild=s;<span class="comment">// 插入 s 为右孩子</span></div><div class="line">    <span class="keyword">return</span> TRUE;</div><div class="line">  &#125; </div><div class="line">  <span class="keyword">else</span> </div><div class="line">    <span class="keyword">return</span> FALSE; <span class="comment">// 树中已有关键字相同的结点,不再插入</span></div><div class="line">&#125; <span class="comment">// Insert BST</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>BST上节点的删除</strong></p>
+                  <p>从 BST 上删除一个结点,需要保证删除结点后的树仍满足 BST 的性质</p>
+                  <p>设被删除结点为 p ,其父结点为 f ,分如下情况:</p>
+                  <ol>
+                    <li>
+                      <p>若 p 是叶子结点: 直接删除 p</p>
+                    </li>
+                    <li>
+                      <p>若 p 只有一棵子树 ( 左子树或右子树 ) :直接用 p 的左子树 ( 或右子树 ) 取代 p 的位置而成为 f 的一棵子树</p>
+                    </li>
+                    <li>
+                      <p>若 p 既有左子树又有右子树</p>
+                      <p>方法一：用 p 的直接前驱 ( 或直接后继 ) 结点 s 代替 p ,即从 p 的左子树中选择值最大的结点 s 放在 p 的位置 ( 用结点 s 的内容替换结点 p 内容 ) ,然后删除结点 s ,并将 s的左子树作为 s 的父结点的右子树</p>
+                      <p>方法二：找到 s , s 是 p 的左子树中的最右边的结点且没有右子树,将 p 的右子树作为 s 的右子树,然后用 p 的左子树顶替被删结点 ( 也就是将 p 的左子树为 f 的左子树 )</p>
+                    </li>
+                  </ol>
+                  <p><strong>算法实现</strong></p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="function">Status <span class="title">DeleteBST</span><span class="params">(BiTree *T, KeyType key)</span></span></div><div class="line"><span class="comment">// 若二叉排序树 T 中存在关键字等于 key 的数据元素时,</span></div><div class="line"><span class="comment">// 则删除该数据元素结点 p ,返回 TRUE ;否则返回 FALSE</span></div><div class="line">&#123; </div><div class="line">  <span class="keyword">if</span> (!T)</div><div class="line">    <span class="keyword">return</span> FALSE;<span class="comment">// 不存在关键字等于 key 的数据元素</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">if</span> (EQ(key, T-&gt;data.key))</div><div class="line"><span class="comment">// 找到关键字等于 key 的数据元素</span></div><div class="line">      <span class="keyword">return</span> Delete(T);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LT(key, T-&gt;data.key))</div><div class="line">      <span class="keyword">return</span> DeleteBST(T-&gt;lchild, key);</div><div class="line">    <span class="keyword">else</span></div><div class="line">      <span class="keyword">return</span> DeleteBST(T-&gt;rchild, key);</div><div class="line">  &#125;</div><div class="line">&#125;<span class="comment">//DeleteBST</span></div><div class="line"><span class="comment">// 从二叉排序树中删除结点 p ,并重接它的左或右子树，伪代码</span></div><div class="line"><span class="function">Status <span class="title">Delete</span><span class="params">(BiTree &amp;p)</span> </span>&#123;</div><div class="line">  BiTree q, s;</div><div class="line">  <span class="keyword">if</span> (!p-&gt;rchild) &#123;<span class="comment">// 右子树空则只需重接它的左子树</span></div><div class="line">    q = p; p = p-&gt;lchild;</div><div class="line">    <span class="comment">//将 p 原来的父结点 ( 设为 f) 与 p 相连 </span></div><div class="line">    f-&gt;lchild/rchild=p</div><div class="line">      <span class="built_in">free</span>(q); </div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (!p-&gt;lchild) &#123;<span class="comment">// 只需重接它的右子树</span></div><div class="line">    q = p; p = p-&gt;rchild;</div><div class="line">   <span class="comment">//将 p 原来的父结点 ( 设为 f) 与 p 相连 </span></div><div class="line">    f-&gt;lchild/rchild=p</div><div class="line">      <span class="built_in">free</span>(q); </div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123; <span class="comment">// 左右子树均不空,按方法一</span></div><div class="line"><span class="comment">// 左右子树均不空</span></div><div class="line">    q = p; s = p-&gt;lchild;</div><div class="line">    <span class="keyword">while</span> (s-&gt;rchild)</div><div class="line"><span class="comment">// 转左,然后向右到尽头 q</span></div><div class="line">    &#123;</div><div class="line">      q = s; s = s-&gt;rchild;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//s 指向被删结点的前驱</span></div><div class="line">    p-&gt;data = s-&gt;data;</div><div class="line">    <span class="keyword">if</span> (q != p)</div><div class="line">      q-&gt;rchild = s-&gt;lchild;</div><div class="line"><span class="comment">// 重接 *q 的右子树</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">      q-&gt;lchild = s-&gt;lchild;</div><div class="line"><span class="comment">// 重接 *q 的左子树</span></div><div class="line">    <span class="built_in">free</span>(s);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> TRUE;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>BST的查找性能分析</strong></p>
+                  <ul>
+                    <li>二叉排序树上成功的查找次数不会超过二叉树的深度,而具有 n 个结点的二叉排序树的深度,最好为 log2n ,最坏为 n 。因此二叉排序树查找的最好时间复杂度为 O(log2n) ,最坏的时间复杂度为 O(n)。</li>
+                    <li>在随机情况下, n 个结点的二叉排序树的平均查找长度 (ASL) 和log2n ( 树的深度 ) 是等数量级的。</li>
+                    <li>随机:各个元素的查找概率相同,元素组成的序列是随机的</li>
+                  </ul>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2017/07/30/Dynamic-Memory-Management/" rel="next" title="动态存储管理">
                 <i class="fa fa-chevron-left"></i> 动态存储管理
               </a>
-            
-          </div>
 
-          <span class="post-nav-divider"></span>
+                    </div>
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/07/Find-and-Search-Part2/" rel="prev" title="查找和搜索-Part2">
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                      <a href="/2017/08/07/Find-and-Search-Part2/" rel="prev" title="查找和搜索-Part2">
                 查找和搜索-Part2 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+            <div id="hypercomments_widget"></div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
           </div>
         </div>
-      
 
-      
-      
-    </footer>
-  </article>
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
 
 
 
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
 
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
-  </div>
-
-          
-          </div>
-          
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="hypercomments_widget"></div>
-    
-  </div>
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
 
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/photos/profile.jpeg"
-               alt="Flynn" />
-          <p class="site-author-name" itemprop="name">Flynn</p>
-           
-              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-        
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
                 <span class="site-state-item-count">115</span>
                 <span class="site-state-item-name">日志</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
                 <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">分类</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">67</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
 
-        </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
               <i class="fa fa-rss"></i>
               RSS
             </a>
-          </div>
-        
+              </div>
 
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
                 <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
@@ -894,8 +1086,8 @@
                   GitHub
                 </a>
               </span>
-            
-              <span class="links-of-author-item">
+
+                <span class="links-of-author-item">
                 <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
                   
                     <i class="fa fa-fw fa-weibo"></i>
@@ -903,143 +1095,182 @@
                   Weibo
                 </a>
               </span>
-            
-          
-        </div>
 
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#关键字类型"><span class="nav-number">1.1.</span> <span class="nav-text">关键字类型</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#对两个关键字的比较"><span class="nav-number">1.2.</span> <span class="nav-text">对两个关键字的比较</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#查找"><span class="nav-number">1.3.</span> <span class="nav-text">查找</span></a></li>
+                      </ol>
+                    </li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#查找及其方法分类"><span class="nav-number">2.</span> <span class="nav-text">查找及其方法分类</span></a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#分类1：按存储结构的不同"><span class="nav-number">2.1.</span> <span class="nav-text">分类1：按存储结构的不同</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#分类2："><span class="nav-number">2.2.</span> <span class="nav-text">分类2：</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#查找方法的评价指标"><span class="nav-number">2.3.</span> <span class="nav-text">查找方法的评价指标</span></a></li>
+                      </ol>
+                    </li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#静态查找表"><span class="nav-number">3.</span> <span class="nav-text">静态查找表</span></a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#静态查找表的查找方法"><span class="nav-number">3.1.</span> <span class="nav-text">静态查找表的查找方法</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#顺序查找"><span class="nav-number">3.2.</span> <span class="nav-text">顺序查找</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#折半查找"><span class="nav-number">3.3.</span> <span class="nav-text">折半查找</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#Fibonacci-查找"><span class="nav-number">3.4.</span> <span class="nav-text">Fibonacci 查找</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#索引顺序查找-分块查找"><span class="nav-number">3.5.</span> <span class="nav-text">索引顺序查找 / 分块查找</span></a></li>
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#查找方法比较"><span class="nav-number">3.6.</span> <span class="nav-text">查找方法比较</span></a></li>
+                      </ol>
+                    </li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#静态树表-次优查找树的查找"><span class="nav-number">4.</span> <span class="nav-text">静态树表/次优查找树的查找</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#动态查找表"><span class="nav-number">5.</span> <span class="nav-text">动态查找表</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#二叉排序树"><span class="nav-number">6.</span> <span class="nav-text">二叉排序树</span></a></li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
           </div>
-        
+        </aside>
 
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                </li>
-              
-            </ul>
+
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
           </div>
-        
-
-        
+        </div>
 
 
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字类型"><span class="nav-number">1.1.</span> <span class="nav-text">关键字类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对两个关键字的比较"><span class="nav-number">1.2.</span> <span class="nav-text">对两个关键字的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找"><span class="nav-number">1.3.</span> <span class="nav-text">查找</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找及其方法分类"><span class="nav-number">2.</span> <span class="nav-text">查找及其方法分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分类1：按存储结构的不同"><span class="nav-number">2.1.</span> <span class="nav-text">分类1：按存储结构的不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类2："><span class="nav-number">2.2.</span> <span class="nav-text">分类2：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找方法的评价指标"><span class="nav-number">2.3.</span> <span class="nav-text">查找方法的评价指标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态查找表"><span class="nav-number">3.</span> <span class="nav-text">静态查找表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#静态查找表的查找方法"><span class="nav-number">3.1.</span> <span class="nav-text">静态查找表的查找方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序查找"><span class="nav-number">3.2.</span> <span class="nav-text">顺序查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#折半查找"><span class="nav-number">3.3.</span> <span class="nav-text">折半查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fibonacci-查找"><span class="nav-number">3.4.</span> <span class="nav-text">Fibonacci 查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引顺序查找-分块查找"><span class="nav-number">3.5.</span> <span class="nav-text">索引顺序查找 / 分块查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找方法比较"><span class="nav-number">3.6.</span> <span class="nav-text">查找方法比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态树表-次优查找树的查找"><span class="nav-number">4.</span> <span class="nav-text">静态树表/次优查找树的查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态查找表"><span class="nav-number">5.</span> <span class="nav-text">动态查找表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉排序树"><span class="nav-number">6.</span> <span class="nav-text">二叉排序树</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
+          <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
 
-  </span>
-</div>
+          </span>
+        </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
-</div>
+        </div>
 
 
-&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
-&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
-        
 
-        
+
+
+
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-    
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
 
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
 
 
 
@@ -1047,36 +1278,38 @@
 
 
 
-  
-
-
-  
 
 
 
-  
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
+
   <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
@@ -1085,8 +1318,8 @@
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
@@ -1095,51 +1328,19 @@
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
-  
-
-
-
-  
-
-
-
-
-	
-
-		<script type="text/javascript">
-		_hcwp = window._hcwp || [];
-
-		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
-
-		
-		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/08/05/Find-and-Search-Part1/"});
-		
-
-		(function() {
-		if("HC_LOAD_INIT" in window)return;
-		HC_LOAD_INIT = true;
-		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
-		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(hcc, s.nextSibling);
-		})();
-		</script>
-
-	
 
 
 
@@ -1149,8 +1350,51 @@
 
 
 
-  
-  
+
+
+  <script type="text/javascript">
+    _hcwp = window._hcwp || [];
+
+    _hcwp.push({
+      widget: "Bloggerstream",
+      widget_id: 90700,
+      selector: ".hc-comment-count",
+      label: "{\%COUNT%\}"
+    });
+
+
+    _hcwp.push({
+      widget: "Stream",
+      widget_id: 90700,
+      xid: "2017/08/05/Find-and-Search-Part1/"
+    });
+
+
+    (function() {
+      if ("HC_LOAD_INIT" in window) return;
+      HC_LOAD_INIT = true;
+      var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+      var hcc = document.createElement("script");
+      hcc.type = "text/javascript";
+      hcc.async = true;
+      hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://w.hypercomments.com/widget/hc/90700/" + lang + "/widget.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
@@ -1173,22 +1417,22 @@
         url: path,
         dataType: "xml",
         async: true,
-        success: function( xmlResponse ) {
+        success: function(xmlResponse) {
           // get the contents from search data
           isfetched = true;
           $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
+          var datas = $("entry", xmlResponse).map(function() {
             return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
             };
           }).get();
           var $input = document.getElementById(search_id);
           var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
+          $input.addEventListener('input', function() {
             var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
+            var str = '<ul class=\"search-result-list\">';
             var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
             $resultContent.innerHTML = "";
             if (this.value.trim().length > 1) {
@@ -1197,17 +1441,17 @@
                 var isMatch = false;
                 var content_index = [];
                 var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
                 var data_url = decodeURIComponent(data.url);
                 var index_title = -1;
                 var index_content = -1;
                 var first_occur = -1;
                 // only match artiles with not empty titles and contents
-                if(data_title != '') {
+                if (data_title != '') {
                   keywords.forEach(function(keyword, i) {
                     index_title = data_title.indexOf(keyword);
                     index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
+                    if (index_title >= 0 || index_content >= 0) {
                       isMatch = true;
                       if (i == 0) {
                         first_occur = index_content;
@@ -1219,41 +1463,47 @@
                 // show search results
                 if (isMatch) {
                   matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
                   if (first_occur >= 0) {
                     // cut out 100 characters
                     var start = first_occur - 20;
                     var end = first_occur + 80;
-                    if(start < 0){
+                    if (start < 0) {
                       start = 0;
                     }
-                    if(start == 0){
+                    if (start == 0) {
                       end = 50;
                     }
-                    if(end > content.length){
+                    if (end > content.length) {
                       end = content.length;
                     }
                     var match_content = content.substring(start, end);
                     // highlight all keywords
-                    keywords.forEach(function(keyword){
+                    keywords.forEach(function(keyword) {
                       var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
                     });
 
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
                   }
                   str += "</li>";
                 }
-              })};
+              })
+            };
             str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
             $resultContent.innerHTML = str;
           });
           proceedsearch();
         }
-      });}
+      });
+    }
 
     // handle and trigger popup window;
     $('.popup-trigger').click(function(e) {
@@ -1265,173 +1515,164 @@
       };
     });
 
-    $('.popup-btn-close').click(function(e){
+    $('.popup-btn-close').click(function(e) {
       $('.popup').hide();
       $(".local-search-pop-overlay").remove();
       $('body').css('overflow', '');
     });
-    $('.popup').click(function(e){
+    $('.popup').click(function(e) {
       e.stopPropagation();
     });
   </script>
 
 
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
 
 
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
   </script>
 
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
 
-  
 
 
-  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
 
 </body>
+
 </html>
 <!-- 动态背景 -->
 
@@ -1441,5 +1682,3 @@
 
 <!-- 小红心 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
-
-

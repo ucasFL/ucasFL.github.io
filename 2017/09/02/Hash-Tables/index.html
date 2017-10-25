@@ -2,23 +2,20 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
+
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -30,8 +27,12 @@
 
 
 
-  
-  
+
+
+
+
+
+
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
@@ -40,9 +41,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hash-table," />
@@ -63,49 +64,62 @@
 
 
 
-<meta name="description" content="探索哈希表hash table的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。
+  <meta name="description" content="探索哈希表hash table的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。
 哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：&amp;quo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="听说过时间表，但是你是否知道“哈希表”">
-<meta property="og:url" content="http://ucasfl.me/2017/09/02/Hash-Tables/index.html">
-<meta property="og:site_name" content="春暖花开">
-<meta property="og:description" content="探索哈希表hash table的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="听说过时间表，但是你是否知道“哈希表”">
+  <meta property="og:url" content="http://ucasfl.me/2017/09/02/Hash-Tables/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="探索哈希表hash table的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。
 哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：&amp;quo">
-<meta property="og:image" content="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png">
-<meta property="og:updated_time" content="2017-09-02T04:55:22.911Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="听说过时间表，但是你是否知道“哈希表”">
-<meta name="twitter:description" content="探索哈希表hash table的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。
+  <meta property="og:image" content="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png">
+  <meta property="og:updated_time" content="2017-09-02T04:55:22.911Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="听说过时间表，但是你是否知道“哈希表”">
+  <meta name="twitter:description" content="探索哈希表hash table的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。
 哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：&amp;quo">
-<meta name="twitter:image" content="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png">
+  <meta name="twitter:image" content="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 'undefined',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
 
 
 
-  <link rel="canonical" href="http://ucasfl.me/2017/09/02/Hash-Tables/"/>
+  <link rel="canonical" href="http://ucasfl.me/2017/09/02/Hash-Tables/" />
 
 
 
@@ -116,7 +130,6 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
 
 
 
@@ -131,515 +144,560 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
+
 
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">春暖花开</span>
         <span class="logo-line-after"><i></i></span>
       </a>
-    </div>
-      
-        <p class="site-subtitle">love, life, thinking, coding</p>
-      
-  </div>
+            </div>
 
-  <div class="site-nav-toggle">
-    <button>
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
     </button>
-  </div>
-</div>
+          </div>
+        </div>
 
-<nav class="site-nav">
-  
+        <nav class="site-nav">
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+            </li>
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
-        </li>
-      
-    </ul>
-  
+            </li>
 
-  
-    <div class="site-search">
-      
-  <div class="popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
       <i class="fa fa-search"></i>
     </span>
-    <span class="popup-btn-close">
+                <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
 
 
 
-    </div>
-  
-</nav>
+          </div>
+
+        </nav>
 
 
 
- </div>
+      </div>
     </header>
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+            <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/09/02/Hash-Tables/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/09/02/Hash-Tables/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Flynn">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/photos/profile.jpeg">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="春暖花开">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-  </span>
+                </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                听说过时间表，但是你是否知道“哈希表”
-              
-            
-          </h1>
-        
+                <header class="post-header">
 
-        <div class="post-meta">
-          <span class="post-time">
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    听说过时间表，但是你是否知道“哈希表”
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-02T12:44:26+08:00">
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-02T12:44:26+08:00">
                 2017/09/02
               </time>
-            
 
-            
 
-            
-          </span>
 
-          
-            <span class="post-category" >
+
+
+                    </span>
+
+
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
+
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                  </a>
-                </span>
+                    </a>
+                    </span>
 
-                
-                
-              
-            </span>
-          
 
-          
-            
-            <!--noindex-->
-              <span class="post-comments-count">
+
+
+                    </span>
+
+
+
+
+                    <!--noindex-->
+                    <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/02/Hash-Tables/#comments" itemprop="discussionUrl">
+                    <a href="/2017/09/02/Hash-Tables/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count hc-comment-count" data-xid="2017/09/02/Hash-Tables/" itemprop="commentsCount"></span>
                 </a>
-              </span>
-              <!--/noindex-->
-            
-          
+                    </span>
+                    <!--/noindex-->
 
-          
-          
-             <span id="/2017/09/02/Hash-Tables/" class="leancloud_visitors" data-flag-title="听说过时间表，但是你是否知道“哈希表”">
+
+
+
+
+                    <span id="/2017/09/02/Hash-Tables/" class="leancloud_visitors" data-flag-title="听说过时间表，但是你是否知道“哈希表”">
                <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
-          
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-          
-
-          
-
-        </div>
-      </header>
-    
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>探索<ruby>哈希表<rt>hash table</rt></ruby>的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。</p>
-<p>哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：<code>&quot;苹果&quot; =&gt; &quot;一种拥有水果之王之称的绿色水果&quot;</code>。这里，“苹果”是我的关键字，而“一种拥有水果之王之称的水果”是与之关联的值。</p>
-<a id="more"></a>
-<p>还有一个例子可以让我们更清楚，哈希表的内容如下：</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">"面包"</span> =&gt; <span class="string">"固体"</span></div><div class="line"><span class="string">"水"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"汤"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"玉米片"</span> =&gt; <span class="string">"固体"</span></div></pre></td></tr></table></figure>
-<p>我想知道<em>面包</em>是固体还是液体，所以我将查询哈希表来获取与之相关的值，该哈希表将返回“固体”给我。现在，我们大致了解了哈希表是如何工作的。使用哈希表需要注意的另一个重要概念是每一个关键字都是唯一的。如果到了明天，我拥有一个面包奶昔（它是液体），那么我们需要更新哈希表，把“固体”改为“液体”来反映哈希表的改变。所以，我们需要添加一条记录到字典中：关键字为“面包”，对应的值为“液体”。你能发现下面的表发生了什么变化吗？（LCTT 译注：不知道这个“面包奶昔”是一种什么食物，大约是一种面包做的奶昔，总之你就理解成作者把液体的“面包奶昔”当成一种面包吧。）</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">"面包"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"水"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"汤"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"玉米片"</span> =&gt; <span class="string">"固体"</span></div></pre></td></tr></table></figure>
-<p>没错，“面包”对应的值被更新为了“液体”。</p>
-<p><strong>关键字是唯一的</strong>，我的面包不能既是液体又是固体。但是，是什么使得该数据结构与其他数据结构相比如此特殊呢？为什么不使用一个<a href="https://en.wikipedia.org/wiki/Array_data_type" target="_blank" rel="external">数组</a>来代替呢？它取决于问题的本质。对于某一个特定的问题，使用数组来描述可能会更好，因此，我们需要注意的关键点就是，<strong>我们应该选择最适合问题的数据结构</strong>。例如，如果你需要做的只是存储一个简单的杂货列表，那么使用数组会很适合。考虑下面的两个问题，两个问题的本质完全不同。</p>
-<ol>
-<li>我需要一个水果的列表</li>
-<li>我需要一个水果的列表以及各种水果的价格（每千克）</li>
-</ol>
-<p>正如你在下面所看到的，用数组来存储水果的列表可能是更好的选择。但是，用哈希表来存储每一种水果的价格看起来是更好的选择。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//示例数组</div><div class="line">[<span class="string">"苹果"</span>, <span class="string">"桔子"</span>, <span class="string">"梨子"</span>, <span class="string">"葡萄"</span>]   </div><div class="line">//示例哈希表  </div><div class="line">&#123; <span class="string">"苹果"</span> : 3.05,</div><div class="line">  <span class="string">"桔子"</span> : 5.5,</div><div class="line">  <span class="string">"梨子"</span> : 8.4,</div><div class="line">  <span class="string">"葡萄"</span> : 12.4  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>实际上，有许多的机会需要<a href="https://en.wikipedia.org/wiki/Hash_table#Uses" target="_blank" rel="external">使用</a>哈希表。</p>
-<h3 id="时间以及它对你的意义"><a href="#时间以及它对你的意义" class="headerlink" title="时间以及它对你的意义"></a>时间以及它对你的意义</h3><p><a href="https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/" target="_blank" rel="external">这是对时间复杂度和空间复杂度的一个复习</a>。</p>
-<p>平均情况下，在哈希表中进行搜索、插入和删除记录的时间复杂度均为 <code>O(1)</code> 。实际上，<code>O(1)</code> 读作“大 O 1”，表示常数时间。这意味着执行每一种操作的运行时间不依赖于数据集中数据的数量。我可以保证，查找、插入和删除项目均只花费常数时间，“当且仅当”哈希表的实现方式正确时。如果实现不正确，可能需要花费很慢的 <code>O(n)</code> 时间，尤其是当所有的数据都映射到了哈希表中的同一位置/点。</p>
-<h3 id="构建一个好的哈希表"><a href="#构建一个好的哈希表" class="headerlink" title="构建一个好的哈希表"></a>构建一个好的哈希表</h3><p>到目前为止，我们已经知道如何使用哈希表了，但是如果我们想<strong>构建</strong>一个哈希表呢？本质上我们需要做的就是把一个字符串（比如 “狗”）映射到一个哈希代码（一个生成的数），即映射到一个数组的索引。你可能会问，为什么不直接使用索引呢？为什么要这么麻烦呢？因为通过这种方式我们可以直接查询 “狗” 并立即得到 “狗” 所在的位置，<code>String name = Array[&quot;狗&quot;] // 名字叫拉斯</code>。而使用索引查询名称时，可能出现的情况是我们不知道名称所在的索引。比如，<code>String name = Array[10] // 该名字现在叫鲍勃</code> - 那不是我的狗的名字。这就是把一个字符串映射到一个哈希代码的益处（对应于一个数组的索引而言）。我们可以通过使用模运算符和哈希表的大小来计算出数组的索引：<code>index = hash_code % table_size</code>。 </p>
-<p>我们需要避免的另一种情况是两个关键字映射到同一个索引，这叫做<strong>哈希碰撞</strong>，如果哈希函数实现的不好，这很容易发生。实际上，每一个输入比输出多的哈希函数都有可能发生碰撞。通过下面的同一个函数的两个输出来展示一个简单的碰撞：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> cat_idx = hashCode(<span class="string">"猫"</span>) % table_size; <span class="comment">//cat_idx 现在等于 1</span></div><div class="line"><span class="keyword">int</span> dog_idx = hashCode(<span class="string">"狗"</span>) % table_size; <span class="comment">//dog_idx 也等于 1</span></div></pre></td></tr></table></figure>
-<p>我们可以看到，现在两个数组的索引均是 1 。这样将会出现两个值相互覆盖，因为它们被写到了相同的索引中。如果我们查找 “猫” 的值，将会返回 “拉斯” ，但是这并不是我们想要的。有许多可以<a href="https://en.wikipedia.org/wiki/Hash_table#Collision_resolution" target="_blank" rel="external">解决哈希碰撞</a>的方法，但是更受欢迎的一种方法叫做<strong>链接</strong>。链接的想法就是对于数组的每一个索引位置都有一个链表，如果碰撞发生，值就被存到链表中。因此，在前面的例子中，我们将会得到我们需要的值，但是我们需要搜索数组中索引为 1 的位置上的链表。伴有链接的哈希实现需要 <code>O(1 + α)</code> 时间，其中 α 是装载因子，它可以表示为 n/k，其中 n 是哈希表中的记录数目，k 是哈希表中可用位置的数目。但是请记住，只有当你给出的关键字非常随机时，这一结论才正确（依赖于 <a href="https://en.wikipedia.org/wiki/SUHA_(computer_science" target="_blank" rel="external">SUHA</a>）。</p>
-<p>这是做了一个很大的假设，因为总是有可能任何不相等的关键字都散列到同一点。这一问题的一个解决方法是去除哈希表中关键字对随机性的依赖，转而把随机性集中于关键字是如何被散列的，从而减少矛盾发生的可能性。这被称为……</p>
-<h3 id="通用散列"><a href="#通用散列" class="headerlink" title="通用散列"></a>通用散列</h3><p>这个观念很简单，从<ruby>通用散列<rt>universal hash</rt></ruby>家族集合随机选择一个哈希函数 h 来计算哈希代码。换句话来说，就是选择任何一个随机的哈希函数来散列关键字。通过这种方法，两个不同的关键字的散列结果相同的可能性将非常低（LCTT 译注：原文是“not be the same”，应是笔误）。我只是简单的提一下，如果不相信我那么请相信<a href="https://en.wikipedia.org/wiki/Universal_hashing#Mathematical_guarantees" target="_blank" rel="external">数学</a>。实现这一方法时需要注意的另一件事是如果选择了一个不好的通用散列家族，它会把时间和空间复杂度拖到 <code>O(U)</code>，其中 U 是散列家族的大小。而其中的挑战就是找到一个不需要太多时间来计算，也不需要太多空间来存储的哈希家族。</p>
-<h3 id="上帝哈希函数"><a href="#上帝哈希函数" class="headerlink" title="上帝哈希函数"></a>上帝哈希函数</h3><p>追求完美是人的天性。我们是否能够构建一个<em>完美的哈希函数</em>，从而能够把关键字映射到整数集中，并且几乎<em>没有碰撞</em>。好消息是我们能够在一定程度上做到，但是我们的数据必须是静态的（这意味着在一定时间内没有插入/删除/更新）。一个实现完美哈希函数的方法就是使用 <ruby>2 级哈希<rt>2-Level Hashing</rt></ruby>，它基本上是我们前面讨论过的两种方法的组合。它使用<em>通用散列</em>来选择使用哪个哈希函数，然后通过<em>链接</em>组合起来，但是这次不是使用链表数据结构，而是使用另一个哈希表。让我们看一看下面它是怎么实现的： </p>
-<p><a href="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png" target="_blank" rel="external"><img src="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png" alt="2-Level Hashing" title="2-Level Hashing"></a> </p>
-<p><strong>但是这是如何工作的以及我们如何能够确保无需关心碰撞？</strong></p>
-<p>它的工作方式与<a href="https://en.wikipedia.org/wiki/Birthday_problem" target="_blank" rel="external">生日悖论</a>相反。它指出，在随机选择的一堆人中，会有一些人生日相同。但是如果一年中的天数远远大于人数（平方以上），那么有极大的可能性所有人的生日都不相同。所以这二者是如何相关的？对于每一个链接哈希表，其大小均为第一级哈希表大小的平方。那就是说，如果有两个元素被散列到同一个点，那么链接哈希表的大小将为 4 。大多数时候，链接哈希表将会非常稀疏/空。</p>
-<p>重复下面两步来确保无需担心碰撞：</p>
-<ul>
-<li>从通用散列家族中选择一个哈希函数来计算</li>
-<li>如果发生碰撞，那么继续从通用散列家族中选择另一个哈希函数来计算</li>
-</ul>
-<p>字面上看就是这样（这是一个 <code>O(n^2)</code> 空间的解）。如果需要考虑空间问题，那么显然需要另一个不同的方法。但是值得庆幸的是，该过程平均只需要进行<strong>两次</strong>。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>只有具有一个好的哈希函数才能算得上是一个好的哈希表。在同时保证功能实现、时间和空间的提前下构建一个完美的哈希函数是一件很困难的事。我推荐你在解决问题的时候首先考虑哈希表，因为它能够为你提供巨大的性能优势，而且它能够对应用程序的可用性产生显著差异。哈希表和完美哈希函数常被用于实时编程应用中，并且在各种算法中都得到了广泛应用。你见或者不见，哈希表就在这儿。</p>
-<hr>
-<p>via: <a href="http://www.zeroequalsfalse.press/2017/02/20/hashtables/" target="_blank" rel="external">http://www.zeroequalsfalse.press/2017/02/20/hashtables/</a></p>
-<p>作者：<a href="http://www.zeroequalsfalse.press/about" target="_blank" rel="external">Marty Jacobs</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
 
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Hash-table/" rel="tag"># Hash-table</a>
-          
-        </div>
-      
 
-      
-        
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/09/02/Open-Source-Ruby-Books/" rel="next" title="通过开源书籍学习 Ruby 编程">
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <p>探索<ruby>哈希表<rt>hash table</rt></ruby>的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。</p>
+                  <p>哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：<code>&quot;苹果&quot; =&gt; &quot;一种拥有水果之王之称的绿色水果&quot;</code>。这里，“苹果”是我的关键字，而“一种拥有水果之王之称的水果”是与之关联的值。</p>
+                  <a id="more"></a>
+                  <p>还有一个例子可以让我们更清楚，哈希表的内容如下：</p>
+                  <figure class="highlight coq">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="string">"面包"</span> =&gt; <span class="string">"固体"</span></div><div class="line"><span class="string">"水"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"汤"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"玉米片"</span> =&gt; <span class="string">"固体"</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>我想知道<em>面包</em>是固体还是液体，所以我将查询哈希表来获取与之相关的值，该哈希表将返回“固体”给我。现在，我们大致了解了哈希表是如何工作的。使用哈希表需要注意的另一个重要概念是每一个关键字都是唯一的。如果到了明天，我拥有一个面包奶昔（它是液体），那么我们需要更新哈希表，把“固体”改为“液体”来反映哈希表的改变。所以，我们需要添加一条记录到字典中：关键字为“面包”，对应的值为“液体”。你能发现下面的表发生了什么变化吗？（LCTT 译注：不知道这个“面包奶昔”是一种什么食物，大约是一种面包做的奶昔，总之你就理解成作者把液体的“面包奶昔”当成一种面包吧。）</p>
+                  <figure class="highlight coq">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="string">"面包"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"水"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"汤"</span> =&gt; <span class="string">"液体"</span></div><div class="line"><span class="string">"玉米片"</span> =&gt; <span class="string">"固体"</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>没错，“面包”对应的值被更新为了“液体”。</p>
+                  <p><strong>关键字是唯一的</strong>，我的面包不能既是液体又是固体。但是，是什么使得该数据结构与其他数据结构相比如此特殊呢？为什么不使用一个<a href="https://en.wikipedia.org/wiki/Array_data_type" target="_blank" rel="external">数组</a>来代替呢？它取决于问题的本质。对于某一个特定的问题，使用数组来描述可能会更好，因此，我们需要注意的关键点就是，<strong>我们应该选择最适合问题的数据结构</strong>。例如，如果你需要做的只是存储一个简单的杂货列表，那么使用数组会很适合。考虑下面的两个问题，两个问题的本质完全不同。</p>
+                  <ol>
+                    <li>我需要一个水果的列表</li>
+                    <li>我需要一个水果的列表以及各种水果的价格（每千克）</li>
+                  </ol>
+                  <p>正如你在下面所看到的，用数组来存储水果的列表可能是更好的选择。但是，用哈希表来存储每一种水果的价格看起来是更好的选择。</p>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">//示例数组</div><div class="line">[<span class="string">"苹果"</span>, <span class="string">"桔子"</span>, <span class="string">"梨子"</span>, <span class="string">"葡萄"</span>]   </div><div class="line">//示例哈希表  </div><div class="line">&#123; <span class="string">"苹果"</span> : 3.05,</div><div class="line">  <span class="string">"桔子"</span> : 5.5,</div><div class="line">  <span class="string">"梨子"</span> : 8.4,</div><div class="line">  <span class="string">"葡萄"</span> : 12.4  </div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>实际上，有许多的机会需要<a href="https://en.wikipedia.org/wiki/Hash_table#Uses" target="_blank" rel="external">使用</a>哈希表。</p>
+                  <h3 id="时间以及它对你的意义"><a href="#时间以及它对你的意义" class="headerlink" title="时间以及它对你的意义"></a>时间以及它对你的意义</h3>
+                  <p><a href="https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/" target="_blank" rel="external">这是对时间复杂度和空间复杂度的一个复习</a>。</p>
+                  <p>平均情况下，在哈希表中进行搜索、插入和删除记录的时间复杂度均为 <code>O(1)</code> 。实际上，<code>O(1)</code> 读作“大 O 1”，表示常数时间。这意味着执行每一种操作的运行时间不依赖于数据集中数据的数量。我可以保证，查找、插入和删除项目均只花费常数时间，“当且仅当”哈希表的实现方式正确时。如果实现不正确，可能需要花费很慢的 <code>O(n)</code> 时间，尤其是当所有的数据都映射到了哈希表中的同一位置/点。</p>
+                  <h3 id="构建一个好的哈希表"><a href="#构建一个好的哈希表" class="headerlink" title="构建一个好的哈希表"></a>构建一个好的哈希表</h3>
+                  <p>到目前为止，我们已经知道如何使用哈希表了，但是如果我们想<strong>构建</strong>一个哈希表呢？本质上我们需要做的就是把一个字符串（比如 “狗”）映射到一个哈希代码（一个生成的数），即映射到一个数组的索引。你可能会问，为什么不直接使用索引呢？为什么要这么麻烦呢？因为通过这种方式我们可以直接查询 “狗” 并立即得到 “狗” 所在的位置，<code>String name = Array[&quot;狗&quot;] // 名字叫拉斯</code>。而使用索引查询名称时，可能出现的情况是我们不知道名称所在的索引。比如，<code>String name = Array[10] // 该名字现在叫鲍勃</code>                    - 那不是我的狗的名字。这就是把一个字符串映射到一个哈希代码的益处（对应于一个数组的索引而言）。我们可以通过使用模运算符和哈希表的大小来计算出数组的索引：<code>index = hash_code % table_size</code>。 </p>
+                  <p>我们需要避免的另一种情况是两个关键字映射到同一个索引，这叫做<strong>哈希碰撞</strong>，如果哈希函数实现的不好，这很容易发生。实际上，每一个输入比输出多的哈希函数都有可能发生碰撞。通过下面的同一个函数的两个输出来展示一个简单的碰撞：</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">int</span> cat_idx = hashCode(<span class="string">"猫"</span>) % table_size; <span class="comment">//cat_idx 现在等于 1</span></div><div class="line"><span class="keyword">int</span> dog_idx = hashCode(<span class="string">"狗"</span>) % table_size; <span class="comment">//dog_idx 也等于 1</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>我们可以看到，现在两个数组的索引均是 1 。这样将会出现两个值相互覆盖，因为它们被写到了相同的索引中。如果我们查找 “猫” 的值，将会返回 “拉斯” ，但是这并不是我们想要的。有许多可以<a href="https://en.wikipedia.org/wiki/Hash_table#Collision_resolution" target="_blank" rel="external">解决哈希碰撞</a>的方法，但是更受欢迎的一种方法叫做<strong>链接</strong>。链接的想法就是对于数组的每一个索引位置都有一个链表，如果碰撞发生，值就被存到链表中。因此，在前面的例子中，我们将会得到我们需要的值，但是我们需要搜索数组中索引为
+                    1 的位置上的链表。伴有链接的哈希实现需要 <code>O(1 + α)</code> 时间，其中 α 是装载因子，它可以表示为 n/k，其中 n 是哈希表中的记录数目，k 是哈希表中可用位置的数目。但是请记住，只有当你给出的关键字非常随机时，这一结论才正确（依赖于 <a href="https://en.wikipedia.org/wiki/SUHA_(computer_science" target="_blank" rel="external">SUHA</a>）。</p>
+                  <p>这是做了一个很大的假设，因为总是有可能任何不相等的关键字都散列到同一点。这一问题的一个解决方法是去除哈希表中关键字对随机性的依赖，转而把随机性集中于关键字是如何被散列的，从而减少矛盾发生的可能性。这被称为……</p>
+                  <h3 id="通用散列"><a href="#通用散列" class="headerlink" title="通用散列"></a>通用散列</h3>
+                  <p>这个观念很简单，从<ruby>通用散列<rt>universal hash</rt></ruby>家族集合随机选择一个哈希函数 h 来计算哈希代码。换句话来说，就是选择任何一个随机的哈希函数来散列关键字。通过这种方法，两个不同的关键字的散列结果相同的可能性将非常低（LCTT 译注：原文是“not be the same”，应是笔误）。我只是简单的提一下，如果不相信我那么请相信<a href="https://en.wikipedia.org/wiki/Universal_hashing#Mathematical_guarantees"
+                      target="_blank" rel="external">数学</a>。实现这一方法时需要注意的另一件事是如果选择了一个不好的通用散列家族，它会把时间和空间复杂度拖到
+                    <code>O(U)</code>，其中 U 是散列家族的大小。而其中的挑战就是找到一个不需要太多时间来计算，也不需要太多空间来存储的哈希家族。</p>
+                  <h3 id="上帝哈希函数"><a href="#上帝哈希函数" class="headerlink" title="上帝哈希函数"></a>上帝哈希函数</h3>
+                  <p>追求完美是人的天性。我们是否能够构建一个<em>完美的哈希函数</em>，从而能够把关键字映射到整数集中，并且几乎<em>没有碰撞</em>。好消息是我们能够在一定程度上做到，但是我们的数据必须是静态的（这意味着在一定时间内没有插入/删除/更新）。一个实现完美哈希函数的方法就是使用 <ruby>2 级哈希<rt>2-Level Hashing</rt></ruby>，它基本上是我们前面讨论过的两种方法的组合。它使用<em>通用散列</em>来选择使用哪个哈希函数，然后通过<em>链接</em>组合起来，但是这次不是使用链表数据结构，而是使用另一个哈希表。让我们看一看下面它是怎么实现的：
+                  </p>
+                  <p><a href="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png" target="_blank" rel="external"><img src="http://www.zeroequalsfalse.press/2017/02/20/hashtables/Diagram.png" alt="2-Level Hashing" title="2-Level Hashing"></a>                    </p>
+                  <p><strong>但是这是如何工作的以及我们如何能够确保无需关心碰撞？</strong></p>
+                  <p>它的工作方式与<a href="https://en.wikipedia.org/wiki/Birthday_problem" target="_blank" rel="external">生日悖论</a>相反。它指出，在随机选择的一堆人中，会有一些人生日相同。但是如果一年中的天数远远大于人数（平方以上），那么有极大的可能性所有人的生日都不相同。所以这二者是如何相关的？对于每一个链接哈希表，其大小均为第一级哈希表大小的平方。那就是说，如果有两个元素被散列到同一个点，那么链接哈希表的大小将为
+                    4 。大多数时候，链接哈希表将会非常稀疏/空。</p>
+                  <p>重复下面两步来确保无需担心碰撞：</p>
+                  <ul>
+                    <li>从通用散列家族中选择一个哈希函数来计算</li>
+                    <li>如果发生碰撞，那么继续从通用散列家族中选择另一个哈希函数来计算</li>
+                  </ul>
+                  <p>字面上看就是这样（这是一个 <code>O(n^2)</code> 空间的解）。如果需要考虑空间问题，那么显然需要另一个不同的方法。但是值得庆幸的是，该过程平均只需要进行<strong>两次</strong>。</p>
+                  <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
+                  <p>只有具有一个好的哈希函数才能算得上是一个好的哈希表。在同时保证功能实现、时间和空间的提前下构建一个完美的哈希函数是一件很困难的事。我推荐你在解决问题的时候首先考虑哈希表，因为它能够为你提供巨大的性能优势，而且它能够对应用程序的可用性产生显著差异。哈希表和完美哈希函数常被用于实时编程应用中，并且在各种算法中都得到了广泛应用。你见或者不见，哈希表就在这儿。</p>
+                  <hr>
+                  <p>via: <a href="http://www.zeroequalsfalse.press/2017/02/20/hashtables/" target="_blank" rel="external">http://www.zeroequalsfalse.press/2017/02/20/hashtables/</a></p>
+                  <p>作者：<a href="http://www.zeroequalsfalse.press/about" target="_blank" rel="external">Marty Jacobs</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank"
+                      rel="external">wxy</a></p>
+                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Hash-table/" rel="tag"># Hash-table</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2017/09/02/Open-Source-Ruby-Books/" rel="next" title="通过开源书籍学习 Ruby 编程">
                 <i class="fa fa-chevron-left"></i> 通过开源书籍学习 Ruby 编程
               </a>
-            
-          </div>
 
-          <span class="post-nav-divider"></span>
+                    </div>
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/02/Fix-Error-With-Install-Hexo/" rel="prev" title="Npm 安装 Hexo 失败的解决办法">
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                      <a href="/2017/09/02/Fix-Error-With-Install-Hexo/" rel="prev" title="Npm 安装 Hexo 失败的解决办法">
                 Npm 安装 Hexo 失败的解决办法 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+            <div id="hypercomments_widget"></div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
           </div>
         </div>
-      
 
-      
-      
-    </footer>
-  </article>
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
 
 
 
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
 
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
-  </div>
-
-          
-          </div>
-          
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="hypercomments_widget"></div>
-    
-  </div>
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
 
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/photos/profile.jpeg"
-               alt="Flynn" />
-          <p class="site-author-name" itemprop="name">Flynn</p>
-           
-              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-        
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
                 <span class="site-state-item-count">115</span>
                 <span class="site-state-item-name">日志</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
                 <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">分类</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">67</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
 
-        </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
               <i class="fa fa-rss"></i>
               RSS
             </a>
-          </div>
-        
+              </div>
 
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
                 <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
@@ -647,8 +705,8 @@
                   GitHub
                 </a>
               </span>
-            
-              <span class="links-of-author-item">
+
+                <span class="links-of-author-item">
                 <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
                   
                     <i class="fa fa-fw fa-weibo"></i>
@@ -656,143 +714,160 @@
                   Weibo
                 </a>
               </span>
-            
-          
-        </div>
 
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#时间以及它对你的意义"><span class="nav-number">1.</span> <span class="nav-text">时间以及它对你的意义</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#构建一个好的哈希表"><span class="nav-number">2.</span> <span class="nav-text">构建一个好的哈希表</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#通用散列"><span class="nav-number">3.</span> <span class="nav-text">通用散列</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#上帝哈希函数"><span class="nav-number">4.</span> <span class="nav-text">上帝哈希函数</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
           </div>
-        
+        </aside>
 
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                </li>
-              
-            </ul>
+
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
           </div>
-        
-
-        
+        </div>
 
 
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间以及它对你的意义"><span class="nav-number">1.</span> <span class="nav-text">时间以及它对你的意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建一个好的哈希表"><span class="nav-number">2.</span> <span class="nav-text">构建一个好的哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用散列"><span class="nav-number">3.</span> <span class="nav-text">通用散列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上帝哈希函数"><span class="nav-number">4.</span> <span class="nav-text">上帝哈希函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
+          <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
 
-  </span>
-</div>
+          </span>
+        </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
-</div>
+        </div>
 
 
-&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
-&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
-        
 
-        
+
+
+
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-    
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
 
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
 
 
 
@@ -800,36 +875,38 @@
 
 
 
-  
-
-
-  
 
 
 
-  
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
+
   <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
@@ -838,8 +915,8 @@
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
@@ -848,51 +925,19 @@
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
-  
-
-
-
-  
-
-
-
-
-	
-
-		<script type="text/javascript">
-		_hcwp = window._hcwp || [];
-
-		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
-
-		
-		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/09/02/Hash-Tables/"});
-		
-
-		(function() {
-		if("HC_LOAD_INIT" in window)return;
-		HC_LOAD_INIT = true;
-		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
-		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(hcc, s.nextSibling);
-		})();
-		</script>
-
-	
 
 
 
@@ -902,8 +947,51 @@
 
 
 
-  
-  
+
+
+  <script type="text/javascript">
+    _hcwp = window._hcwp || [];
+
+    _hcwp.push({
+      widget: "Bloggerstream",
+      widget_id: 90700,
+      selector: ".hc-comment-count",
+      label: "{\%COUNT%\}"
+    });
+
+
+    _hcwp.push({
+      widget: "Stream",
+      widget_id: 90700,
+      xid: "2017/09/02/Hash-Tables/"
+    });
+
+
+    (function() {
+      if ("HC_LOAD_INIT" in window) return;
+      HC_LOAD_INIT = true;
+      var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+      var hcc = document.createElement("script");
+      hcc.type = "text/javascript";
+      hcc.async = true;
+      hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://w.hypercomments.com/widget/hc/90700/" + lang + "/widget.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
@@ -926,22 +1014,22 @@
         url: path,
         dataType: "xml",
         async: true,
-        success: function( xmlResponse ) {
+        success: function(xmlResponse) {
           // get the contents from search data
           isfetched = true;
           $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
+          var datas = $("entry", xmlResponse).map(function() {
             return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
             };
           }).get();
           var $input = document.getElementById(search_id);
           var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
+          $input.addEventListener('input', function() {
             var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
+            var str = '<ul class=\"search-result-list\">';
             var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
             $resultContent.innerHTML = "";
             if (this.value.trim().length > 1) {
@@ -950,17 +1038,17 @@
                 var isMatch = false;
                 var content_index = [];
                 var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
                 var data_url = decodeURIComponent(data.url);
                 var index_title = -1;
                 var index_content = -1;
                 var first_occur = -1;
                 // only match artiles with not empty titles and contents
-                if(data_title != '') {
+                if (data_title != '') {
                   keywords.forEach(function(keyword, i) {
                     index_title = data_title.indexOf(keyword);
                     index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
+                    if (index_title >= 0 || index_content >= 0) {
                       isMatch = true;
                       if (i == 0) {
                         first_occur = index_content;
@@ -972,41 +1060,47 @@
                 // show search results
                 if (isMatch) {
                   matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
                   if (first_occur >= 0) {
                     // cut out 100 characters
                     var start = first_occur - 20;
                     var end = first_occur + 80;
-                    if(start < 0){
+                    if (start < 0) {
                       start = 0;
                     }
-                    if(start == 0){
+                    if (start == 0) {
                       end = 50;
                     }
-                    if(end > content.length){
+                    if (end > content.length) {
                       end = content.length;
                     }
                     var match_content = content.substring(start, end);
                     // highlight all keywords
-                    keywords.forEach(function(keyword){
+                    keywords.forEach(function(keyword) {
                       var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
                     });
 
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
                   }
                   str += "</li>";
                 }
-              })};
+              })
+            };
             str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
             $resultContent.innerHTML = str;
           });
           proceedsearch();
         }
-      });}
+      });
+    }
 
     // handle and trigger popup window;
     $('.popup-trigger').click(function(e) {
@@ -1018,173 +1112,164 @@
       };
     });
 
-    $('.popup-btn-close').click(function(e){
+    $('.popup-btn-close').click(function(e) {
       $('.popup').hide();
       $(".local-search-pop-overlay").remove();
       $('body').css('overflow', '');
     });
-    $('.popup').click(function(e){
+    $('.popup').click(function(e) {
       e.stopPropagation();
     });
   </script>
 
 
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
 
 
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
   </script>
 
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
 
-  
 
 
-  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
 
 </body>
+
 </html>
 <!-- 动态背景 -->
 
@@ -1194,5 +1279,3 @@
 
 <!-- 小红心 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
-
-

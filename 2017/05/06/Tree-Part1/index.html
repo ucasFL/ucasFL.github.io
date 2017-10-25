@@ -2,23 +2,20 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
+
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -30,8 +27,12 @@
 
 
 
-  
-  
+
+
+
+
+
+
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
@@ -40,9 +41,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Data-Structures," />
@@ -63,47 +64,63 @@
 
 
 
-<meta name="description" content="树的定义树 (tree) 是一个 n(n&amp;gt;=0) 个结点的有限集。
+  <meta name="description" content="树的定义
+树 (tree) 是一个 n(n&amp;gt;=0) 个结点的有限集。
 在一棵非空树中：(1) 有且仅有 一个的称为根 (root) 的结点；(2) 当 n&amp;gt;1 时,其余结点可分为 m (m&amp;gt;0)个互不相交的有限集 T_1 , T_2 , …, T_m.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="树-Part1">
-<meta property="og:url" content="http://ucasfl.me/2017/05/06/Tree-Part1/index.html">
-<meta property="og:site_name" content="春暖花开">
-<meta property="og:description" content="树的定义树 (tree) 是一个 n(n&amp;gt;=0) 个结点的有限集。
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="树-Part1">
+  <meta property="og:url" content="http://ucasfl.me/2017/05/06/Tree-Part1/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="树的定义
+树 (tree) 是一个 n(n&amp;gt;=0) 个结点的有限集。
 在一棵非空树中：(1) 有且仅有 一个的称为根 (root) 的结点；(2) 当 n&amp;gt;1 时,其余结点可分为 m (m&amp;gt;0)个互不相交的有限集 T_1 , T_2 , …, T_m.">
-<meta property="og:updated_time" content="2017-09-02T04:38:28.955Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树-Part1">
-<meta name="twitter:description" content="树的定义树 (tree) 是一个 n(n&amp;gt;=0) 个结点的有限集。
+  <meta property="og:updated_time" content="2017-09-02T04:38:28.955Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="树-Part1">
+  <meta name="twitter:description" content="树的定义
+树 (tree) 是一个 n(n&amp;gt;=0) 个结点的有限集。
 在一棵非空树中：(1) 有且仅有 一个的称为根 (root) 的结点；(2) 当 n&amp;gt;1 时,其余结点可分为 m (m&amp;gt;0)个互不相交的有限集 T_1 , T_2 , …, T_m.">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 'undefined',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
 
 
 
-  <link rel="canonical" href="http://ucasfl.me/2017/05/06/Tree-Part1/"/>
+  <link rel="canonical" href="http://ucasfl.me/2017/05/06/Tree-Part1/" />
 
 
 
@@ -114,7 +131,6 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
 
 
 
@@ -129,557 +145,643 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
+
 
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">春暖花开</span>
         <span class="logo-line-after"><i></i></span>
       </a>
-    </div>
-      
-        <p class="site-subtitle">love, life, thinking, coding</p>
-      
-  </div>
+            </div>
 
-  <div class="site-nav-toggle">
-    <button>
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
     </button>
-  </div>
-</div>
+          </div>
+        </div>
 
-<nav class="site-nav">
-  
+        <nav class="site-nav">
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+            </li>
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
-        </li>
-      
-    </ul>
-  
+            </li>
 
-  
-    <div class="site-search">
-      
-  <div class="popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
       <i class="fa fa-search"></i>
     </span>
-    <span class="popup-btn-close">
+                <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
 
 
 
-    </div>
-  
-</nav>
+          </div>
+
+        </nav>
 
 
 
- </div>
+      </div>
     </header>
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+            <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/06/Tree-Part1/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/06/Tree-Part1/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Flynn">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/photos/profile.jpeg">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="春暖花开">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-  </span>
+                </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                树-Part1
-              
-            
-          </h1>
-        
+                <header class="post-header">
 
-        <div class="post-meta">
-          <span class="post-time">
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    树-Part1
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T15:01:22+08:00">
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T15:01:22+08:00">
                 2017/05/06
               </time>
-            
 
-            
 
-            
-          </span>
 
-          
-            <span class="post-category" >
+
+
+                    </span>
+
+
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
+
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                  </a>
-                </span>
+                    </a>
+                    </span>
 
-                
-                
-              
-            </span>
-          
 
-          
-            
-            <!--noindex-->
-              <span class="post-comments-count">
+
+
+                    </span>
+
+
+
+
+                    <!--noindex-->
+                    <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/06/Tree-Part1/#comments" itemprop="discussionUrl">
+                    <a href="/2017/05/06/Tree-Part1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count hc-comment-count" data-xid="2017/05/06/Tree-Part1/" itemprop="commentsCount"></span>
                 </a>
-              </span>
-              <!--/noindex-->
-            
-          
+                    </span>
+                    <!--/noindex-->
 
-          
-          
-             <span id="/2017/05/06/Tree-Part1/" class="leancloud_visitors" data-flag-title="树-Part1">
+
+
+
+
+                    <span id="/2017/05/06/Tree-Part1/" class="leancloud_visitors" data-flag-title="树-Part1">
                <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
-          
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-          
-
-          
-
-        </div>
-      </header>
-    
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="树的定义"><a href="#树的定义" class="headerlink" title="树的定义"></a>树的定义</h3><p>树 (tree) 是一个 n(n&gt;=0) 个结点的有限集。</p>
-<p>在一棵非空树中：<br>(1) 有且仅有 一个的称为根 (root) 的结点；<br>(2) 当 n&gt;1 时,其余结点可分为 m (m&gt;0)个互不相交的有限集 T_1 , T_2 , …, T_m.</p>
-<a id="more"></a>
-<p>树的基本术语：</p>
-<ul>
-<li>结点:数据元素 + 若干指向子树的分支</li>
-<li>结点的度:结点拥有的子树个数</li>
-<li>树的度:树中所有结点的度的最大值</li>
-<li>叶子结点:度为零的结点</li>
-<li>分支结点:度大于零的结点</li>
-<li>孩子:若结点的子树非空,结点子树的根即为该结点的子女。</li>
-<li>双亲:若结点有子女,该结点是子女双亲。</li>
-<li>兄弟:同一结点的子女互称为兄弟。</li>
-<li>祖先:结点的祖先是从根到该结点所经分支上的所有结点。</li>
-<li>子孙: 以某结点为根的子树种任一结点都是该结点的子孙。</li>
-<li>结点的层次:规定根结点为第一层,其子女</li>
-<li>结点的层次等于它的层次加一。</li>
-<li>深度:树中结点的最大 层次称为树的深度。</li>
-<li>有序树:树中结点的各棵子树 T0, T1, …是有次序的,即为有序树。</li>
-<li>无序树:</li>
-<li>森林:森林是 m ( m≥0 )棵树的集合。</li>
-</ul>
-<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>二叉树的定义：是一种树型结构,它的特点是每个节点至多只有两棵子树,并且,二叉树的子树有左右之分,其次序不能任意颠倒 。</p>
-<p>满二叉树 (Full Binary Tree)：一棵 深度为 k 且有 2k−12k−1 个结点的二叉树。<br>特点:每层上的结点数都是最大的结点数。</p>
-<p>完全二叉树 (Complete Binary Tree)：树中所含的 n 个结点和满二叉树中编号为 1 至 n 的结点一一对应。</p>
-<p>特点:</p>
-<ol>
-<li>叶子结点只可能出现在层次最大的两层上</li>
-<li>对任一结点,若其右分支下的子孙的最大层次为 l ,则其左分支下的子孙的最大层次必定为 l 或者 l+1 。</li>
-</ol>
-<h3 id="二叉树的基本性质"><a href="#二叉树的基本性质" class="headerlink" title="二叉树的基本性质"></a>二叉树的基本性质</h3><p>性质 1：</p>
-<ul>
-<li>若二叉树结点的层次从 1 开始 ,则在二叉树的第 i 层最多有 $2^{i-1}$ 个结点( i≥1)。</li>
-</ul>
-<p>性质 2：</p>
-<ul>
-<li>深度为 k 的二叉树最少有 k 个结点,最多有 $2^k−1$ 个结点( k ≥1 )。（等比数列求和）</li>
-</ul>
-<p>性质 3：</p>
-<ul>
-<li>对任何一棵二叉树,如果其叶结点有 $n_0$ 个 , 度为 2 的非叶结点有 $n_2$个 ,则有：</li>
-</ul>
-<p>$$n_0=n_2+1$$$$<br>性质 4：</p>
-<ul>
-<li>具有 n (n≥0) 个结点的完全二叉树的深度为 $log_2n+1$</li>
-</ul>
-<p>性质 5:</p>
-<ul>
-<li>若对含 n 个结点的完全二叉树从上到下且从左至右进行 1 至 n 的编号,则对完全二叉树中任意一个编号为 i 的结点:</li>
-</ul>
-<ol>
-<li>若 i=1 ,则该结点是二叉树的根,无双亲;否则,编号为 i/2 的结点为其双亲结点 ;</li>
-<li>若 2i&gt;n ,则该结点无左孩子,否则,编号为 2i 的结点为其左孩子结点;</li>
-<li>若 2i+1&gt;n ,则该结点无右孩子结点,否则,编号为 2i+1 的结点为其右孩子结点。</li>
-</ol>
-<h3 id="二叉树的存储结构："><a href="#二叉树的存储结构：" class="headerlink" title="二叉树的存储结构："></a>二叉树的存储结构：</h3><p>顺序存储：仅适用于完全二叉树，将完全二叉树中编号为 i 的节点存储在一维数组中编号为 i-1 的分量中。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> TElemType;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_TREE_SIZE 100  <span class="comment">//二叉树最大节点数</span></span></div><div class="line"><span class="keyword">typedef</span> TElemType SqBiTree[MAX_TREE_SIZE];　　<span class="comment">//０号单元存储根节点</span></div><div class="line">SqBiTree bt;</div></pre></td></tr></table></figure>
-<p>链式存储结构：</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">typedef</span> <span class="keyword">struct </span><span class="keyword">BiTNode&#123;</span></div><div class="line">  TElemType <span class="meta">data</span><span class="comment">;+</span></div><div class="line">  <span class="keyword">struct </span><span class="keyword">BiTNode </span>*lchild, *rchild<span class="comment">;//左右孩子指针</span></div><div class="line">&#125;<span class="keyword">BiTNode, </span>*<span class="keyword">BiTree;</span></div></pre></td></tr></table></figure>
-<p>创建二叉树：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Status CreateBiTree(BiTree *T)&#123;</div><div class="line">  <span class="regexp">//</span>按先序次序输入二叉树的值，空格字符表示空树</div><div class="line">  char ch;</div><div class="line">  <span class="keyword">if</span> ((ch = getchar ()) == <span class="string">' '</span>)&#123;</div><div class="line">    T = NULL;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!(T = (BiTNode *) malloc (sizeof(BiTNode)))) <span class="keyword">exit</span>(-<span class="number">1</span>)</div><div class="line">    T-&gt;data = ch;+</div><div class="line">    CreateBiTree(T-&gt;lchild);</div><div class="line">    CreateBiTree(T-&gt;rchild);</div><div class="line">  &#125;</div><div class="line">  return <span class="number">1</span>;</div><div class="line">&#125;<span class="regexp">//</span>CreateBiTree</div></pre></td></tr></table></figure>
-<h3 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a>遍历二叉树</h3><p>顺着某一条搜索路径巡访二叉树中的结点,使得每个结点均被访问一次,而且仅被访问一次。</p>
-<ul>
-<li>先序遍历：先访问根节点，然后访问左孩子，然后再访问右孩子；（对应前缀表达式）</li>
-<li>中序遍历：先访问左孩子，然后访问根节点，最后访问右孩子；（对应中缀表达式）</li>
-<li>后序遍历：先访问左孩子，然后访问右孩子，最后访问根节点；（对应后缀表达式）</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">//先序遍历二叉树，递归</div><div class="line">Status PreOrderTraverse(BiTree T, Status(* Visit)(TElemType))&#123;</div><div class="line">  if(T)&#123;</div><div class="line">    if(Visit(T-&gt;data))</div><div class="line">       if(PreOrderTraverse(T-&gt;lchild, Visit))</div><div class="line">          if(PreOrderTraverse(T-&gt;rchild, Visit))</div><div class="line">             return OK;</div><div class="line">    return ERROR;</div><div class="line">  &#125;</div><div class="line">  else  return OK;</div><div class="line">&#125;</div><div class="line">Status Visit(T-&gt;data)&#123;</div><div class="line">  if (T-&gt;data != ' ')&#123;</div><div class="line">    printf("%c\n",T-&gt;data);</div><div class="line">    return OK;</div><div class="line">  &#125;</div><div class="line">  return ERROR;</div><div class="line">&#125;</div><div class="line">//中序遍历二叉树，递归</div><div class="line">Status InOrderTraverse(BiTree T, Status(* Visit)(TElemType e))&#123;</div><div class="line">  if(T)&#123;</div><div class="line">    if(InOrderTraverse(T-&gt;lchild, Visit))</div><div class="line">       if(Visit(T-&gt;data))</div><div class="line">          if(InOrderTraverse(T-&gt;rchild, Visit))</div><div class="line">             return OK;</div><div class="line">    return ERROR;</div><div class="line">  &#125;</div><div class="line">  return OK;</div><div class="line">&#125;</div><div class="line">//后序遍历二叉树，递归</div><div class="line">Status PostOrderTraverse(BiTree T, Status(* Visit)(TElemType e))&#123;</div><div class="line">  if(T)&#123;</div><div class="line">    if(PostOrderTraverse(T-&gt;lchild, Visit))</div><div class="line">       if(PostOrderTraverse(T-&gt;rchild, Visit))</div><div class="line">          if(Visit(T-&gt;data))</div><div class="line">             return OK;</div><div class="line">    return ERROR;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//下面部分为伪代码</div><div class="line">//先序遍历迭代算法１</div><div class="line">void PreOrder_iter1( BiTree T, Status ( *Visit)(TElemType e)&#123;</div><div class="line">  IniStack ( S )</div><div class="line">  if (T) Push (S, T);</div><div class="line">  While (! StackEmpty(S) ) &#123; // 在栈变空前反复循环</div><div class="line">    Pop (S, p);</div><div class="line">    visit(p); // 弹出并访问当前结点</div><div class="line">    if (p-&gt;rchild)</div><div class="line">       Push (S, p-&gt;rchild); // 右孩子先入后出</div><div class="line">    if (p-&gt;lchild)</div><div class="line">       Push (S, p-&gt;lchild); // 左孩子后入先出</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">//先序遍历的迭代算法 2</div><div class="line">void PreOrder_iter2( BiTree T, Status ( *Visit)(TElemType e)&#123;</div><div class="line">  IniStack(S);</div><div class="line">  if (T) Push(S, T);</div><div class="line">  do&#123; // 在栈变空前反复循环</div><div class="line">    Pop(S, x);</div><div class="line">    while (x)&#123; // 访问子树 x 的左侧链,右子树入栈缓冲</div><div class="line">      visit(x);</div><div class="line">      Push(S, x-&gt;rchild); // 右子树入栈</div><div class="line">      x = x-&gt;lchild; // 沿左侧链下行</div><div class="line">    &#125;</div><div class="line">  &#125;while (! StackEmpty(S))</div><div class="line">&#125;</div><div class="line">中序遍历迭代算法 1</div><div class="line">void InOrder_iter1( BiTree T , Status ( *Visit)(TElemType e)&#123;</div><div class="line">// 采用二叉链表存储结构,中序遍历二叉树的非递归算法</div><div class="line">　　IniStack ( S );</div><div class="line">　　BiTree p = T ;</div><div class="line">   while (p || ! StackEmpty(S))&#123;</div><div class="line">     if (p) &#123;</div><div class="line">       Push (S, p); p= p-&gt;lchild; &#125;// 从当前节点出发 , 逐批进栈</div><div class="line">     else&#123;</div><div class="line">       Pop (S, p);</div><div class="line">       if ( !Visit (p-&gt;data) ) return ERROR; // 退栈 , 访问</div><div class="line">       p = p-&gt;rightChild; // 遍历指针进到右子女</div><div class="line">     &#125;</div><div class="line">  &#125; //while</div><div class="line">  return OK;</div><div class="line">&#125;;</div><div class="line">中序遍历迭代算法 2</div><div class="line">void InOrder_iter2( BiTree T , Status ( *Visit)(TElemType e)&#123;</div><div class="line">  // 采用二叉链表存储结构,中序遍历二叉树的非递归算法</div><div class="line">  IniStack ( S ); push(S, T) ;</div><div class="line">  while ( ! StackEmpty(S) )&#123;</div><div class="line">    while (GetTop(S, p) &amp;&amp; p)</div><div class="line">       Push (S, p-&gt;lchild);</div><div class="line">    Pop(S, p);</div><div class="line">    if (! StackEmpty(S) )&#123;</div><div class="line">      Pop (S, p);</div><div class="line">      if ( !Visit (p-&gt;data)) return ERROR); // 退栈 , 访问</div><div class="line">      p = p-&gt;rightChild; // 遍历指针进到右子女</div><div class="line">    &#125;</div><div class="line">  &#125; //while</div><div class="line">  return OK;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="层次遍历二叉树："><a href="#层次遍历二叉树：" class="headerlink" title="层次遍历二叉树："></a>层次遍历二叉树：</h3><p>层次序遍历二叉树就是从根结点开始,按层次逐层从左至右逐一遍历。</p>
-<p>层次遍历方法按照深度,逐层对二叉树结构进行遍历,所以可以利用和栈对立的数据结构-队列来进行。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder_iter2</span><span class="params">( BiTree T , Status ( *Visit)</span><span class="params">(TElemType e)</span></span>&#123;</div><div class="line">  InitQueue(Q);</div><div class="line">  EnQueue(Q, T);</div><div class="line">  <span class="keyword">while</span> ( ! QueueEmpty(Q) ) &#123;</div><div class="line">    DeQueue(Q, x);</div><div class="line">    Visit(x);</div><div class="line">    <span class="keyword">if</span> ( x-&gt;leftChild )</div><div class="line">      EnQueue( Q, x-&gt;leftChild );</div><div class="line">    <span class="keyword">if</span> ( x-&gt;rightChild )</div><div class="line">      EnQueue( Q, x-&gt;rightChild);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="线索化二叉树"><a href="#线索化二叉树" class="headerlink" title="线索化二叉树"></a>线索化二叉树</h3><p>二叉树的遍历实际将二叉树的非线性结构线性化,任一数据都有它的前驱和后继。但这种信息只能在遍历过程中才能得到。</p>
-<p>预处理,将某种遍历顺序下的前驱、后继关系(线索)记在树的存储结构中,实现二叉树的线索化。而加上线索的二叉树称为线索二叉树。</p>
-<p>n 个结点的二叉链表必定存在n+1 个空链域。</p>
-<p>以这 n+1 个 leftChild 和 rightChild 的空闲指针用作 pred 指针和succ 指针,并增设两个标志ltag 和 rtag ,指明指针是指示子女还是前驱、后继线索。</p>
-<p>当 ltag ( 或 rtag) = 0 ,表示相应指针指示左子女( 或右子女结点 ) ;<br>当 ltag ( 或 rtag) = 1 ,表示相应指针为前驱 ( 或后继 ) 线索。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//二叉线索存储表示</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123; Link, Thread &#125; PointerThr;<span class="comment">// Link==0: 指针, Thread==1: 线索</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BiThrNod &#123;</div><div class="line">  TElemType data;</div><div class="line">  <span class="keyword">struct</span> BiThrNode *lchild, *rchild; <span class="comment">// 左右指针</span></div><div class="line">  PointerThr LTag, RTag; <span class="comment">// 左右标志</span></div><div class="line">&#125; BiThrNode, *BiThrTree;</div></pre></td></tr></table></figure>
-<p>为仿照线性表的存储界偶，在二叉树的线索表上题添加ａｇｉｅｌ头节点，并令其 lchild 指向二叉树的根节点， rchild 指向中序遍历时访问的最后一个节点；反之，令中序遍历的第一个节点的 lchild 和最后一个遍历的节点的 rchild 均指向头节点。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">void InOrderTraverse_Thr(BiThrTree T,void (*Visit)(TElemType e)) &#123;</div><div class="line">  //T 指向头结点。中序遍历二叉树 T 的非递归算法</div><div class="line">  BiThrTree p = T-&gt;lchild;// p 指向根结点</div><div class="line">  while ( p != T ) &#123; // 空树或遍历结束时, p==T</div><div class="line">    while (p-&gt;LTag==Link) p = p-&gt;lchild; // 第一个结点</div><div class="line">    if ( ! Visit(p-&gt;data) ) return ERROR;</div><div class="line">    while (p-&gt;RTag==Thread &amp;&amp; p-&gt;rchild!=T) &#123; // 无右子树</div><div class="line">      p = p-&gt;rchild;</div><div class="line">      Visit(p-&gt;data);// 访问后继结点</div><div class="line">    &#125;</div><div class="line">    p = p-&gt;rchild;</div><div class="line">    // p 进至其右子树根</div><div class="line">  &#125;</div><div class="line">&#125; // InOrderTraverse_Thr</div></pre></td></tr></table></figure>
-<h4 id="线索化二叉树-1"><a href="#线索化二叉树-1" class="headerlink" title="线索化二叉树"></a>线索化二叉树</h4><p>在中序遍历过程中修改结点的左、右指针域,以保存当前访问结点的“前驱”和“后继”信息。遍历过程中,附设指针 pre, 并始终保持指针 pre 指向当前访问的、指针 p 所指结点的前驱。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function">Status <span class="title">InOrderThreading</span><span class="params">( BiThrTree *Thrt,BiThrTree T )</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span>(!(Thrt = (BiThrTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiThrNode))))</div><div class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>);</div><div class="line">  Thrt-&gt;LTag= LINK ;</div><div class="line">  Thrt-&gt;Rtag= Thread ;</div><div class="line">  Thrt-&gt;rchild = Thrt;</div><div class="line">  <span class="keyword">if</span> (!T)</div><div class="line">    Thre-&gt;lchild = Thrt;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    Thrt-&gt;lchild = T;</div><div class="line">    BiThrTree  pre = Thrt;</div><div class="line">    InThreading(T, pre);</div><div class="line">    pre-&gt;rchild = Thrt; pre-Rtag = Thread;</div><div class="line">    Thrt-&gt;rchild = pre;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125; <span class="comment">// InThreading</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InThreading</span><span class="params">(BiThrTree p, BiThrTree pre)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(p)&#123;</div><div class="line">    InThreading(p-&gt;lchild, p);</div><div class="line">    <span class="keyword">if</span>(!p-&gt;lchild)&#123;</div><div class="line">      p-&gt;LTag = Thread;</div><div class="line">      p-&gt;lchild = pre;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(!pre-&gt;rchild)&#123;</div><div class="line">      pre-&gt;RTag = Thread;</div><div class="line">      pre-&gt;rchild = p;</div><div class="line">    &#125;</div><div class="line">    pre = p;</div><div class="line">    InThreading(p-&gt;rchild ,pre);</div><div class="line">  &#125;</div><div class="line">&#125;<span class="comment">//InThreading</span></div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
 
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
-          
-        </div>
-      
 
-      
-        
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/" rel="next" title="pyDash：一个基于 Web 的 Linux 性能监测工具">
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <h3 id="树的定义"><a href="#树的定义" class="headerlink" title="树的定义"></a>树的定义</h3>
+                  <p>树 (tree) 是一个 n(n&gt;=0) 个结点的有限集。</p>
+                  <p>在一棵非空树中：<br>(1) 有且仅有 一个的称为根 (root) 的结点；<br>(2) 当 n&gt;1 时,其余结点可分为 m (m&gt;0)个互不相交的有限集 T_1 , T_2 , …, T_m.</p>
+                  <a id="more"></a>
+                  <p>树的基本术语：</p>
+                  <ul>
+                    <li>结点:数据元素 + 若干指向子树的分支</li>
+                    <li>结点的度:结点拥有的子树个数</li>
+                    <li>树的度:树中所有结点的度的最大值</li>
+                    <li>叶子结点:度为零的结点</li>
+                    <li>分支结点:度大于零的结点</li>
+                    <li>孩子:若结点的子树非空,结点子树的根即为该结点的子女。</li>
+                    <li>双亲:若结点有子女,该结点是子女双亲。</li>
+                    <li>兄弟:同一结点的子女互称为兄弟。</li>
+                    <li>祖先:结点的祖先是从根到该结点所经分支上的所有结点。</li>
+                    <li>子孙: 以某结点为根的子树种任一结点都是该结点的子孙。</li>
+                    <li>结点的层次:规定根结点为第一层,其子女</li>
+                    <li>结点的层次等于它的层次加一。</li>
+                    <li>深度:树中结点的最大 层次称为树的深度。</li>
+                    <li>有序树:树中结点的各棵子树 T0, T1, …是有次序的,即为有序树。</li>
+                    <li>无序树:</li>
+                    <li>森林:森林是 m ( m≥0 )棵树的集合。</li>
+                  </ul>
+                  <h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3>
+                  <p>二叉树的定义：是一种树型结构,它的特点是每个节点至多只有两棵子树,并且,二叉树的子树有左右之分,其次序不能任意颠倒 。</p>
+                  <p>满二叉树 (Full Binary Tree)：一棵 深度为 k 且有 2k−12k−1 个结点的二叉树。<br>特点:每层上的结点数都是最大的结点数。</p>
+                  <p>完全二叉树 (Complete Binary Tree)：树中所含的 n 个结点和满二叉树中编号为 1 至 n 的结点一一对应。</p>
+                  <p>特点:</p>
+                  <ol>
+                    <li>叶子结点只可能出现在层次最大的两层上</li>
+                    <li>对任一结点,若其右分支下的子孙的最大层次为 l ,则其左分支下的子孙的最大层次必定为 l 或者 l+1 。</li>
+                  </ol>
+                  <h3 id="二叉树的基本性质"><a href="#二叉树的基本性质" class="headerlink" title="二叉树的基本性质"></a>二叉树的基本性质</h3>
+                  <p>性质 1：</p>
+                  <ul>
+                    <li>若二叉树结点的层次从 1 开始 ,则在二叉树的第 i 层最多有 $2^{i-1}$ 个结点( i≥1)。</li>
+                  </ul>
+                  <p>性质 2：</p>
+                  <ul>
+                    <li>深度为 k 的二叉树最少有 k 个结点,最多有 $2^k−1$ 个结点( k ≥1 )。（等比数列求和）</li>
+                  </ul>
+                  <p>性质 3：</p>
+                  <ul>
+                    <li>对任何一棵二叉树,如果其叶结点有 $n_0$ 个 , 度为 2 的非叶结点有 $n_2$个 ,则有：</li>
+                  </ul>
+                  <p>$$n_0=n_2+1$$$$<br>性质 4：</p>
+                  <ul>
+                    <li>具有 n (n≥0) 个结点的完全二叉树的深度为 $log_2n+1$</li>
+                  </ul>
+                  <p>性质 5:</p>
+                  <ul>
+                    <li>若对含 n 个结点的完全二叉树从上到下且从左至右进行 1 至 n 的编号,则对完全二叉树中任意一个编号为 i 的结点:</li>
+                  </ul>
+                  <ol>
+                    <li>若 i=1 ,则该结点是二叉树的根,无双亲;否则,编号为 i/2 的结点为其双亲结点 ;</li>
+                    <li>若 2i&gt;n ,则该结点无左孩子,否则,编号为 2i 的结点为其左孩子结点;</li>
+                    <li>若 2i+1&gt;n ,则该结点无右孩子结点,否则,编号为 2i+1 的结点为其右孩子结点。</li>
+                  </ol>
+                  <h3 id="二叉树的存储结构："><a href="#二叉树的存储结构：" class="headerlink" title="二叉树的存储结构："></a>二叉树的存储结构：</h3>
+                  <p>顺序存储：仅适用于完全二叉树，将完全二叉树中编号为 i 的节点存储在一维数组中编号为 i-1 的分量中。</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> TElemType;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_TREE_SIZE 100  <span class="comment">//二叉树最大节点数</span></span></div><div class="line"><span class="keyword">typedef</span> TElemType SqBiTree[MAX_TREE_SIZE];　　<span class="comment">//０号单元存储根节点</span></div><div class="line">SqBiTree bt;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>链式存储结构：</p>
+                  <figure class="highlight armasm">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="symbol">typedef</span> <span class="keyword">struct </span><span class="keyword">BiTNode&#123;</span></div><div class="line">  TElemType <span class="meta">data</span><span class="comment">;+</span></div><div class="line">  <span class="keyword">struct </span><span class="keyword">BiTNode </span>*lchild, *rchild<span class="comment">;//左右孩子指针</span></div><div class="line">&#125;<span class="keyword">BiTNode, </span>*<span class="keyword">BiTree;</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>创建二叉树：</p>
+                  <figure class="highlight awk">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">Status CreateBiTree(BiTree *T)&#123;</div><div class="line">  <span class="regexp">//</span>按先序次序输入二叉树的值，空格字符表示空树</div><div class="line">  char ch;</div><div class="line">  <span class="keyword">if</span> ((ch = getchar ()) == <span class="string">' '</span>)&#123;</div><div class="line">    T = NULL;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!(T = (BiTNode *) malloc (sizeof(BiTNode)))) <span class="keyword">exit</span>(-<span class="number">1</span>)</div><div class="line">    T-&gt;data = ch;+</div><div class="line">    CreateBiTree(T-&gt;lchild);</div><div class="line">    CreateBiTree(T-&gt;rchild);</div><div class="line">  &#125;</div><div class="line">  return <span class="number">1</span>;</div><div class="line">&#125;<span class="regexp">//</span>CreateBiTree</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a>遍历二叉树</h3>
+                  <p>顺着某一条搜索路径巡访二叉树中的结点,使得每个结点均被访问一次,而且仅被访问一次。</p>
+                  <ul>
+                    <li>先序遍历：先访问根节点，然后访问左孩子，然后再访问右孩子；（对应前缀表达式）</li>
+                    <li>中序遍历：先访问左孩子，然后访问根节点，最后访问右孩子；（对应中缀表达式）</li>
+                    <li>后序遍历：先访问左孩子，然后访问右孩子，最后访问根节点；（对应后缀表达式）</li>
+                  </ul>
+                  <figure class="highlight">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">//先序遍历二叉树，递归</div><div class="line">Status PreOrderTraverse(BiTree T, Status(* Visit)(TElemType))&#123;</div><div class="line">  if(T)&#123;</div><div class="line">    if(Visit(T-&gt;data))</div><div class="line">       if(PreOrderTraverse(T-&gt;lchild, Visit))</div><div class="line">          if(PreOrderTraverse(T-&gt;rchild, Visit))</div><div class="line">             return OK;</div><div class="line">    return ERROR;</div><div class="line">  &#125;</div><div class="line">  else  return OK;</div><div class="line">&#125;</div><div class="line">Status Visit(T-&gt;data)&#123;</div><div class="line">  if (T-&gt;data != ' ')&#123;</div><div class="line">    printf("%c\n",T-&gt;data);</div><div class="line">    return OK;</div><div class="line">  &#125;</div><div class="line">  return ERROR;</div><div class="line">&#125;</div><div class="line">//中序遍历二叉树，递归</div><div class="line">Status InOrderTraverse(BiTree T, Status(* Visit)(TElemType e))&#123;</div><div class="line">  if(T)&#123;</div><div class="line">    if(InOrderTraverse(T-&gt;lchild, Visit))</div><div class="line">       if(Visit(T-&gt;data))</div><div class="line">          if(InOrderTraverse(T-&gt;rchild, Visit))</div><div class="line">             return OK;</div><div class="line">    return ERROR;</div><div class="line">  &#125;</div><div class="line">  return OK;</div><div class="line">&#125;</div><div class="line">//后序遍历二叉树，递归</div><div class="line">Status PostOrderTraverse(BiTree T, Status(* Visit)(TElemType e))&#123;</div><div class="line">  if(T)&#123;</div><div class="line">    if(PostOrderTraverse(T-&gt;lchild, Visit))</div><div class="line">       if(PostOrderTraverse(T-&gt;rchild, Visit))</div><div class="line">          if(Visit(T-&gt;data))</div><div class="line">             return OK;</div><div class="line">    return ERROR;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//下面部分为伪代码</div><div class="line">//先序遍历迭代算法１</div><div class="line">void PreOrder_iter1( BiTree T, Status ( *Visit)(TElemType e)&#123;</div><div class="line">  IniStack ( S )</div><div class="line">  if (T) Push (S, T);</div><div class="line">  While (! StackEmpty(S) ) &#123; // 在栈变空前反复循环</div><div class="line">    Pop (S, p);</div><div class="line">    visit(p); // 弹出并访问当前结点</div><div class="line">    if (p-&gt;rchild)</div><div class="line">       Push (S, p-&gt;rchild); // 右孩子先入后出</div><div class="line">    if (p-&gt;lchild)</div><div class="line">       Push (S, p-&gt;lchild); // 左孩子后入先出</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">//先序遍历的迭代算法 2</div><div class="line">void PreOrder_iter2( BiTree T, Status ( *Visit)(TElemType e)&#123;</div><div class="line">  IniStack(S);</div><div class="line">  if (T) Push(S, T);</div><div class="line">  do&#123; // 在栈变空前反复循环</div><div class="line">    Pop(S, x);</div><div class="line">    while (x)&#123; // 访问子树 x 的左侧链,右子树入栈缓冲</div><div class="line">      visit(x);</div><div class="line">      Push(S, x-&gt;rchild); // 右子树入栈</div><div class="line">      x = x-&gt;lchild; // 沿左侧链下行</div><div class="line">    &#125;</div><div class="line">  &#125;while (! StackEmpty(S))</div><div class="line">&#125;</div><div class="line">中序遍历迭代算法 1</div><div class="line">void InOrder_iter1( BiTree T , Status ( *Visit)(TElemType e)&#123;</div><div class="line">// 采用二叉链表存储结构,中序遍历二叉树的非递归算法</div><div class="line">　　IniStack ( S );</div><div class="line">　　BiTree p = T ;</div><div class="line">   while (p || ! StackEmpty(S))&#123;</div><div class="line">     if (p) &#123;</div><div class="line">       Push (S, p); p= p-&gt;lchild; &#125;// 从当前节点出发 , 逐批进栈</div><div class="line">     else&#123;</div><div class="line">       Pop (S, p);</div><div class="line">       if ( !Visit (p-&gt;data) ) return ERROR; // 退栈 , 访问</div><div class="line">       p = p-&gt;rightChild; // 遍历指针进到右子女</div><div class="line">     &#125;</div><div class="line">  &#125; //while</div><div class="line">  return OK;</div><div class="line">&#125;;</div><div class="line">中序遍历迭代算法 2</div><div class="line">void InOrder_iter2( BiTree T , Status ( *Visit)(TElemType e)&#123;</div><div class="line">  // 采用二叉链表存储结构,中序遍历二叉树的非递归算法</div><div class="line">  IniStack ( S ); push(S, T) ;</div><div class="line">  while ( ! StackEmpty(S) )&#123;</div><div class="line">    while (GetTop(S, p) &amp;&amp; p)</div><div class="line">       Push (S, p-&gt;lchild);</div><div class="line">    Pop(S, p);</div><div class="line">    if (! StackEmpty(S) )&#123;</div><div class="line">      Pop (S, p);</div><div class="line">      if ( !Visit (p-&gt;data)) return ERROR); // 退栈 , 访问</div><div class="line">      p = p-&gt;rightChild; // 遍历指针进到右子女</div><div class="line">    &#125;</div><div class="line">  &#125; //while</div><div class="line">  return OK;</div><div class="line">&#125;;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="层次遍历二叉树："><a href="#层次遍历二叉树：" class="headerlink" title="层次遍历二叉树："></a>层次遍历二叉树：</h3>
+                  <p>层次序遍历二叉树就是从根结点开始,按层次逐层从左至右逐一遍历。</p>
+                  <p>层次遍历方法按照深度,逐层对二叉树结构进行遍历,所以可以利用和栈对立的数据结构-队列来进行。</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder_iter2</span><span class="params">( BiTree T , Status ( *Visit)</span><span class="params">(TElemType e)</span></span>&#123;</div><div class="line">  InitQueue(Q);</div><div class="line">  EnQueue(Q, T);</div><div class="line">  <span class="keyword">while</span> ( ! QueueEmpty(Q) ) &#123;</div><div class="line">    DeQueue(Q, x);</div><div class="line">    Visit(x);</div><div class="line">    <span class="keyword">if</span> ( x-&gt;leftChild )</div><div class="line">      EnQueue( Q, x-&gt;leftChild );</div><div class="line">    <span class="keyword">if</span> ( x-&gt;rightChild )</div><div class="line">      EnQueue( Q, x-&gt;rightChild);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="线索化二叉树"><a href="#线索化二叉树" class="headerlink" title="线索化二叉树"></a>线索化二叉树</h3>
+                  <p>二叉树的遍历实际将二叉树的非线性结构线性化,任一数据都有它的前驱和后继。但这种信息只能在遍历过程中才能得到。</p>
+                  <p>预处理,将某种遍历顺序下的前驱、后继关系(线索)记在树的存储结构中,实现二叉树的线索化。而加上线索的二叉树称为线索二叉树。</p>
+                  <p>n 个结点的二叉链表必定存在n+1 个空链域。</p>
+                  <p>以这 n+1 个 leftChild 和 rightChild 的空闲指针用作 pred 指针和succ 指针,并增设两个标志ltag 和 rtag ,指明指针是指示子女还是前驱、后继线索。</p>
+                  <p>当 ltag ( 或 rtag) = 0 ,表示相应指针指示左子女( 或右子女结点 ) ;<br>当 ltag ( 或 rtag) = 1 ,表示相应指针为前驱 ( 或后继 ) 线索。</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">//二叉线索存储表示</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123; Link, Thread &#125; PointerThr;<span class="comment">// Link==0: 指针, Thread==1: 线索</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BiThrNod &#123;</div><div class="line">  TElemType data;</div><div class="line">  <span class="keyword">struct</span> BiThrNode *lchild, *rchild; <span class="comment">// 左右指针</span></div><div class="line">  PointerThr LTag, RTag; <span class="comment">// 左右标志</span></div><div class="line">&#125; BiThrNode, *BiThrTree;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>为仿照线性表的存储界偶，在二叉树的线索表上题添加ａｇｉｅｌ头节点，并令其 lchild 指向二叉树的根节点， rchild 指向中序遍历时访问的最后一个节点；反之，令中序遍历的第一个节点的 lchild 和最后一个遍历的节点的 rchild 均指向头节点。</p>
+                  <figure class="highlight">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">void InOrderTraverse_Thr(BiThrTree T,void (*Visit)(TElemType e)) &#123;</div><div class="line">  //T 指向头结点。中序遍历二叉树 T 的非递归算法</div><div class="line">  BiThrTree p = T-&gt;lchild;// p 指向根结点</div><div class="line">  while ( p != T ) &#123; // 空树或遍历结束时, p==T</div><div class="line">    while (p-&gt;LTag==Link) p = p-&gt;lchild; // 第一个结点</div><div class="line">    if ( ! Visit(p-&gt;data) ) return ERROR;</div><div class="line">    while (p-&gt;RTag==Thread &amp;&amp; p-&gt;rchild!=T) &#123; // 无右子树</div><div class="line">      p = p-&gt;rchild;</div><div class="line">      Visit(p-&gt;data);// 访问后继结点</div><div class="line">    &#125;</div><div class="line">    p = p-&gt;rchild;</div><div class="line">    // p 进至其右子树根</div><div class="line">  &#125;</div><div class="line">&#125; // InOrderTraverse_Thr</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h4 id="线索化二叉树-1"><a href="#线索化二叉树-1" class="headerlink" title="线索化二叉树"></a>线索化二叉树</h4>
+                  <p>在中序遍历过程中修改结点的左、右指针域,以保存当前访问结点的“前驱”和“后继”信息。遍历过程中,附设指针 pre, 并始终保持指针 pre 指向当前访问的、指针 p 所指结点的前驱。</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="function">Status <span class="title">InOrderThreading</span><span class="params">( BiThrTree *Thrt,BiThrTree T )</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span>(!(Thrt = (BiThrTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiThrNode))))</div><div class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>);</div><div class="line">  Thrt-&gt;LTag= LINK ;</div><div class="line">  Thrt-&gt;Rtag= Thread ;</div><div class="line">  Thrt-&gt;rchild = Thrt;</div><div class="line">  <span class="keyword">if</span> (!T)</div><div class="line">    Thre-&gt;lchild = Thrt;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    Thrt-&gt;lchild = T;</div><div class="line">    BiThrTree  pre = Thrt;</div><div class="line">    InThreading(T, pre);</div><div class="line">    pre-&gt;rchild = Thrt; pre-Rtag = Thread;</div><div class="line">    Thrt-&gt;rchild = pre;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125; <span class="comment">// InThreading</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InThreading</span><span class="params">(BiThrTree p, BiThrTree pre)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(p)&#123;</div><div class="line">    InThreading(p-&gt;lchild, p);</div><div class="line">    <span class="keyword">if</span>(!p-&gt;lchild)&#123;</div><div class="line">      p-&gt;LTag = Thread;</div><div class="line">      p-&gt;lchild = pre;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(!pre-&gt;rchild)&#123;</div><div class="line">      pre-&gt;RTag = Thread;</div><div class="line">      pre-&gt;rchild = p;</div><div class="line">    &#125;</div><div class="line">    pre = p;</div><div class="line">    InThreading(p-&gt;rchild ,pre);</div><div class="line">  &#125;</div><div class="line">&#125;<span class="comment">//InThreading</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/" rel="next" title="pyDash：一个基于 Web 的 Linux 性能监测工具">
                 <i class="fa fa-chevron-left"></i> pyDash：一个基于 Web 的 Linux 性能监测工具
               </a>
-            
-          </div>
 
-          <span class="post-nav-divider"></span>
+                    </div>
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/06/Tree-Part2/" rel="prev" title="树-Part2">
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                      <a href="/2017/05/06/Tree-Part2/" rel="prev" title="树-Part2">
                 树-Part2 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+            <div id="hypercomments_widget"></div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
           </div>
         </div>
-      
 
-      
-      
-    </footer>
-  </article>
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
 
 
 
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
 
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
-  </div>
-
-          
-          </div>
-          
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="hypercomments_widget"></div>
-    
-  </div>
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
 
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/photos/profile.jpeg"
-               alt="Flynn" />
-          <p class="site-author-name" itemprop="name">Flynn</p>
-           
-              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-        
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
                 <span class="site-state-item-count">115</span>
                 <span class="site-state-item-name">日志</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
                 <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">分类</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">67</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
 
-        </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
               <i class="fa fa-rss"></i>
               RSS
             </a>
-          </div>
-        
+              </div>
 
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
                 <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
@@ -687,8 +789,8 @@
                   GitHub
                 </a>
               </span>
-            
-              <span class="links-of-author-item">
+
+                <span class="links-of-author-item">
                 <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
                   
                     <i class="fa fa-fw fa-weibo"></i>
@@ -696,143 +798,166 @@
                   Weibo
                 </a>
               </span>
-            
-          
-        </div>
 
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#树的定义"><span class="nav-number">1.</span> <span class="nav-text">树的定义</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树"><span class="nav-number">2.</span> <span class="nav-text">二叉树</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的基本性质"><span class="nav-number">3.</span> <span class="nav-text">二叉树的基本性质</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的存储结构："><span class="nav-number">4.</span> <span class="nav-text">二叉树的存储结构：</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#遍历二叉树"><span class="nav-number">5.</span> <span class="nav-text">遍历二叉树</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#层次遍历二叉树："><span class="nav-number">6.</span> <span class="nav-text">层次遍历二叉树：</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#线索化二叉树"><span class="nav-number">7.</span> <span class="nav-text">线索化二叉树</span></a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-4"><a class="nav-link" href="#线索化二叉树-1"><span class="nav-number">7.1.</span> <span class="nav-text">线索化二叉树</span></a></li>
+                      </ol>
+                    </li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
           </div>
-        
+        </aside>
 
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                </li>
-              
-            </ul>
+
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
           </div>
-        
-
-        
+        </div>
 
 
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#树的定义"><span class="nav-number">1.</span> <span class="nav-text">树的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树"><span class="nav-number">2.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的基本性质"><span class="nav-number">3.</span> <span class="nav-text">二叉树的基本性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的存储结构："><span class="nav-number">4.</span> <span class="nav-text">二叉树的存储结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历二叉树"><span class="nav-number">5.</span> <span class="nav-text">遍历二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次遍历二叉树："><span class="nav-number">6.</span> <span class="nav-text">层次遍历二叉树：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线索化二叉树"><span class="nav-number">7.</span> <span class="nav-text">线索化二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线索化二叉树-1"><span class="nav-number">7.1.</span> <span class="nav-text">线索化二叉树</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
+          <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
 
-  </span>
-</div>
+          </span>
+        </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
-</div>
+        </div>
 
 
-&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
-&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
-        
 
-        
+
+
+
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-    
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
 
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
 
 
 
@@ -840,36 +965,38 @@
 
 
 
-  
-
-
-  
 
 
 
-  
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
+
   <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
@@ -878,8 +1005,8 @@
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
@@ -888,51 +1015,19 @@
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
-  
-
-
-
-  
-
-
-
-
-	
-
-		<script type="text/javascript">
-		_hcwp = window._hcwp || [];
-
-		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
-
-		
-		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/05/06/Tree-Part1/"});
-		
-
-		(function() {
-		if("HC_LOAD_INIT" in window)return;
-		HC_LOAD_INIT = true;
-		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
-		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(hcc, s.nextSibling);
-		})();
-		</script>
-
-	
 
 
 
@@ -942,8 +1037,51 @@
 
 
 
-  
-  
+
+
+  <script type="text/javascript">
+    _hcwp = window._hcwp || [];
+
+    _hcwp.push({
+      widget: "Bloggerstream",
+      widget_id: 90700,
+      selector: ".hc-comment-count",
+      label: "{\%COUNT%\}"
+    });
+
+
+    _hcwp.push({
+      widget: "Stream",
+      widget_id: 90700,
+      xid: "2017/05/06/Tree-Part1/"
+    });
+
+
+    (function() {
+      if ("HC_LOAD_INIT" in window) return;
+      HC_LOAD_INIT = true;
+      var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+      var hcc = document.createElement("script");
+      hcc.type = "text/javascript";
+      hcc.async = true;
+      hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://w.hypercomments.com/widget/hc/90700/" + lang + "/widget.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
@@ -966,22 +1104,22 @@
         url: path,
         dataType: "xml",
         async: true,
-        success: function( xmlResponse ) {
+        success: function(xmlResponse) {
           // get the contents from search data
           isfetched = true;
           $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
+          var datas = $("entry", xmlResponse).map(function() {
             return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
             };
           }).get();
           var $input = document.getElementById(search_id);
           var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
+          $input.addEventListener('input', function() {
             var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
+            var str = '<ul class=\"search-result-list\">';
             var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
             $resultContent.innerHTML = "";
             if (this.value.trim().length > 1) {
@@ -990,17 +1128,17 @@
                 var isMatch = false;
                 var content_index = [];
                 var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
                 var data_url = decodeURIComponent(data.url);
                 var index_title = -1;
                 var index_content = -1;
                 var first_occur = -1;
                 // only match artiles with not empty titles and contents
-                if(data_title != '') {
+                if (data_title != '') {
                   keywords.forEach(function(keyword, i) {
                     index_title = data_title.indexOf(keyword);
                     index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
+                    if (index_title >= 0 || index_content >= 0) {
                       isMatch = true;
                       if (i == 0) {
                         first_occur = index_content;
@@ -1012,41 +1150,47 @@
                 // show search results
                 if (isMatch) {
                   matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
                   if (first_occur >= 0) {
                     // cut out 100 characters
                     var start = first_occur - 20;
                     var end = first_occur + 80;
-                    if(start < 0){
+                    if (start < 0) {
                       start = 0;
                     }
-                    if(start == 0){
+                    if (start == 0) {
                       end = 50;
                     }
-                    if(end > content.length){
+                    if (end > content.length) {
                       end = content.length;
                     }
                     var match_content = content.substring(start, end);
                     // highlight all keywords
-                    keywords.forEach(function(keyword){
+                    keywords.forEach(function(keyword) {
                       var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
                     });
 
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
                   }
                   str += "</li>";
                 }
-              })};
+              })
+            };
             str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
             $resultContent.innerHTML = str;
           });
           proceedsearch();
         }
-      });}
+      });
+    }
 
     // handle and trigger popup window;
     $('.popup-trigger').click(function(e) {
@@ -1058,173 +1202,164 @@
       };
     });
 
-    $('.popup-btn-close').click(function(e){
+    $('.popup-btn-close').click(function(e) {
       $('.popup').hide();
       $(".local-search-pop-overlay").remove();
       $('body').css('overflow', '');
     });
-    $('.popup').click(function(e){
+    $('.popup').click(function(e) {
       e.stopPropagation();
     });
   </script>
 
 
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
 
 
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
   </script>
 
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
 
-  
 
 
-  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
 
 </body>
+
 </html>
 <!-- 动态背景 -->
 
@@ -1234,5 +1369,3 @@
 
 <!-- 小红心 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
-
-

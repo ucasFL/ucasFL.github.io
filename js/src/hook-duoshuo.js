@@ -9,7 +9,7 @@ typeof DUOSHUO !== 'undefined' ?
 function hookTemplate() {
   var post = DUOSHUO.templates.post;
 
-  DUOSHUO.templates.post = function (e, t) {
+  DUOSHUO.templates.post = function(e, t) {
     var rs = post(e, t);
     var agent = e.post.agent;
     var userId = e.post.author.user_id;
@@ -34,44 +34,44 @@ function getAgentInfo(string) {
   var sua = $.ua;
   var separator = isMobile() ? '<br><br>' : '<span class="duoshuo-ua-separator"></span>';
   var osName = sua.os.name || UNKNOWN;
-  var osVersion = sua.os.version  || UNKNOWN;
+  var osVersion = sua.os.version || UNKNOWN;
   var browserName = sua.browser.name || UNKNOWN;
   var browserVersion = sua.browser.version || UNKNOWN;
   var iconMapping = {
     os: {
-      android : 'android',
-      linux   : 'linux',
-      windows : 'windows',
-      ios     : 'apple',
+      android: 'android',
+      linux: 'linux',
+      windows: 'windows',
+      ios: 'apple',
       'mac os': 'apple',
-      unknown : 'desktop'
+      unknown: 'desktop'
     },
     browser: {
-      chrome   : 'chrome',
-      chromium : 'chrome',
-      firefox  : 'firefox',
-      opera    : 'opera',
-      safari   : 'safari',
-      ie       : 'internet-explorer',
-      wechat   : 'wechat',
-      qq       : 'qq',
-      unknown  : 'globe'
+      chrome: 'chrome',
+      chromium: 'chrome',
+      firefox: 'firefox',
+      opera: 'opera',
+      safari: 'safari',
+      ie: 'internet-explorer',
+      wechat: 'wechat',
+      qq: 'qq',
+      unknown: 'globe'
     }
   };
   var osIcon = iconMapping.os[osName.toLowerCase()];
-  var browserIcon =  iconMapping.browser[getBrowserKey()];
+  var browserIcon = iconMapping.browser[getBrowserKey()];
 
   return separator +
     '<span class="duoshuo-ua-platform duoshuo-ua-platform-' + osName.toLowerCase() + '">' +
-       '<i class="fa fa-' + osIcon + '"></i>' +
-       osName + ' ' + osVersion +
+    '<i class="fa fa-' + osIcon + '"></i>' +
+    osName + ' ' + osVersion +
     '</span>' + separator +
     '<span class="duoshuo-ua-browser duoshuo-ua-browser-' + browserName.toLowerCase() + '">' +
-      '<i class="fa fa-' + browserIcon + '"></i>' +
-      browserName + ' ' + browserVersion +
+    '<i class="fa fa-' + browserIcon + '"></i>' +
+    browserName + ' ' + browserVersion +
     '</span>';
 
-  function getBrowserKey () {
+  function getBrowserKey() {
     var key = browserName.toLowerCase();
 
     if (key.match(/WeChat/i)) {
@@ -96,7 +96,7 @@ function getAgentInfo(string) {
       'symbianos', 'series', 'webos', 'sony',
       'blackberry', 'dopod', 'nokia', 'samsung',
       'palmsource', 'xda', 'pieplus', 'meizu',
-      'midp' ,'cldc' , 'motorola', 'foma',
+      'midp', 'cldc', 'motorola', 'foma',
       'docomo', 'up.browser', 'up.link', 'blazer',
       'helio', 'hosin', 'huawei', 'novarra',
       'coolpad', 'webos', 'techfaith', 'palmsource',

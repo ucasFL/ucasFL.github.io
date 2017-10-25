@@ -2,23 +2,20 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
+
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -30,8 +27,12 @@
 
 
 
-  
-  
+
+
+
+
+
+
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
@@ -40,9 +41,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="comm/Translated," />
@@ -63,56 +64,72 @@
 
 
 
-<meta name="description" content="Linux 中的 comm 命令可以让用户按行比较两个已经排序好的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。
+  <meta name="description" content="Linux 中的 comm 命令可以让用户按行比较两个已经排序好的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。
 下面的例子将会告诉你 comm 命令是如何工作的。
-1、 如何使用 comm 比较两个排序好的文件要使用 comm 命令比较两个排序好的文件，只需要把它们的名字作为">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用 Comm 比较两个排序好的文件">
-<meta property="og:url" content="http://ucasfl.me/2017/06/05/Linux-Command-of-comm/index.html">
-<meta property="og:site_name" content="春暖花开">
-<meta property="og:description" content="Linux 中的 comm 命令可以让用户按行比较两个已经排序好的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。
+1、 如何使用 comm 比较两个排序好的文件
+要使用 comm 命令比较两个排序好的文件，只需要把它们的名字作为">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="使用 Comm 比较两个排序好的文件">
+  <meta property="og:url" content="http://ucasfl.me/2017/06/05/Linux-Command-of-comm/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="Linux 中的 comm 命令可以让用户按行比较两个已经排序好的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。
 下面的例子将会告诉你 comm 命令是如何工作的。
-1、 如何使用 comm 比较两个排序好的文件要使用 comm 命令比较两个排序好的文件，只需要把它们的名字作为">
-<meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-output.png">
-<meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-supress-column.png">
-<meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-not-sorted-message.png">
-<meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-nocheck-order.png">
-<meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-output-delimiter.png">
-<meta property="og:updated_time" content="2017-09-02T04:38:29.047Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Comm 比较两个排序好的文件">
-<meta name="twitter:description" content="Linux 中的 comm 命令可以让用户按行比较两个已经排序好的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。
+1、 如何使用 comm 比较两个排序好的文件
+要使用 comm 命令比较两个排序好的文件，只需要把它们的名字作为">
+  <meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-output.png">
+  <meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-supress-column.png">
+  <meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-not-sorted-message.png">
+  <meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-nocheck-order.png">
+  <meta property="og:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-output-delimiter.png">
+  <meta property="og:updated_time" content="2017-09-02T04:38:29.047Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用 Comm 比较两个排序好的文件">
+  <meta name="twitter:description" content="Linux 中的 comm 命令可以让用户按行比较两个已经排序好的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。
 下面的例子将会告诉你 comm 命令是如何工作的。
-1、 如何使用 comm 比较两个排序好的文件要使用 comm 命令比较两个排序好的文件，只需要把它们的名字作为">
-<meta name="twitter:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-output.png">
+1、 如何使用 comm 比较两个排序好的文件
+要使用 comm 命令比较两个排序好的文件，只需要把它们的名字作为">
+  <meta name="twitter:image" content="https://www.howtoforge.com/images/linux_comm_command/comm-output.png">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 'undefined',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
 
 
 
-  <link rel="canonical" href="http://ucasfl.me/2017/06/05/Linux-Command-of-comm/"/>
+  <link rel="canonical" href="http://ucasfl.me/2017/06/05/Linux-Command-of-comm/" />
 
 
 
@@ -123,7 +140,6 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
 
 
 
@@ -138,515 +154,611 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
+
 
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">春暖花开</span>
         <span class="logo-line-after"><i></i></span>
       </a>
-    </div>
-      
-        <p class="site-subtitle">love, life, thinking, coding</p>
-      
-  </div>
+            </div>
 
-  <div class="site-nav-toggle">
-    <button>
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
     </button>
-  </div>
-</div>
+          </div>
+        </div>
 
-<nav class="site-nav">
-  
+        <nav class="site-nav">
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+            </li>
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
-        </li>
-      
-    </ul>
-  
+            </li>
 
-  
-    <div class="site-search">
-      
-  <div class="popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
       <i class="fa fa-search"></i>
     </span>
-    <span class="popup-btn-close">
+                <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
 
 
 
-    </div>
-  
-</nav>
+          </div>
+
+        </nav>
 
 
 
- </div>
+      </div>
     </header>
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+            <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/06/05/Linux-Command-of-comm/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/06/05/Linux-Command-of-comm/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Flynn">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/photos/profile.jpeg">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="春暖花开">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-  </span>
+                </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                使用 Comm 比较两个排序好的文件
-              
-            
-          </h1>
-        
+                <header class="post-header">
 
-        <div class="post-meta">
-          <span class="post-time">
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    使用 Comm 比较两个排序好的文件
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T22:39:58+08:00">
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T22:39:58+08:00">
                 2017/06/05
               </time>
-            
 
-            
 
-            
-          </span>
 
-          
-            <span class="post-category" >
+
+
+                    </span>
+
+
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
+
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Command/" itemprop="url" rel="index">
                     <span itemprop="name">Command</span>
-                  </a>
-                </span>
+                    </a>
+                    </span>
 
-                
-                
-              
-            </span>
-          
 
-          
-            
-            <!--noindex-->
-              <span class="post-comments-count">
+
+
+                    </span>
+
+
+
+
+                    <!--noindex-->
+                    <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/05/Linux-Command-of-comm/#comments" itemprop="discussionUrl">
+                    <a href="/2017/06/05/Linux-Command-of-comm/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count hc-comment-count" data-xid="2017/06/05/Linux-Command-of-comm/" itemprop="commentsCount"></span>
                 </a>
-              </span>
-              <!--/noindex-->
-            
-          
+                    </span>
+                    <!--/noindex-->
 
-          
-          
-             <span id="/2017/06/05/Linux-Command-of-comm/" class="leancloud_visitors" data-flag-title="使用 Comm 比较两个排序好的文件">
+
+
+
+
+                    <span id="/2017/06/05/Linux-Command-of-comm/" class="leancloud_visitors" data-flag-title="使用 Comm 比较两个排序好的文件">
                <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
-          
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-          
-
-          
-
-        </div>
-      </header>
-    
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>Linux 中的 <code>comm</code> 命令可以让用户按行比较两个<strong>已经排序好</strong>的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。</p>
-<p>下面的例子将会告诉你 <code>comm</code> 命令是如何工作的。</p>
-<h3 id="1、-如何使用-comm-比较两个排序好的文件"><a href="#1、-如何使用-comm-比较两个排序好的文件" class="headerlink" title="1、 如何使用 comm 比较两个排序好的文件"></a>1、 如何使用 <code>comm</code> 比较两个排序好的文件</h3><p>要使用 <code>comm</code> 命令比较两个排序好的文件，只需要把它们的名字作为 <code>comm</code> 命令的参数。下面是通常的语法：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm [<span class="built_in">name</span>-<span class="keyword">of</span>-<span class="keyword">first</span>-<span class="built_in">file</span>] [<span class="built_in">name</span>-<span class="keyword">of</span>-<span class="keyword">second</span>-<span class="built_in">file</span>]</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>比如，假设 <code>file1</code> 和 <code>file2</code> 是这种情况下的两个文件。前者包含下面几行内容：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">001</span></div><div class="line"><span class="number">056</span></div><div class="line"><span class="number">127</span></div><div class="line"><span class="number">258</span></div></pre></td></tr></table></figure>
-<p>而后者包含下面几行内容：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">002</span></div><div class="line"><span class="number">056</span></div><div class="line"><span class="number">167</span></div><div class="line"><span class="number">369</span></div></pre></td></tr></table></figure>
-<p>此时，<code>comm</code> 命令的输出如下图所示：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">comm</span> file1 file2</div></pre></td></tr></table></figure>
-<p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-output.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-output.png" alt=""></a> </p>
-<p>你可以看到，输出包含 3 列。第一列是仅包含在 <code>file1</code> 中的内容，第二列是仅包含在 <code>file2</code> 中的内容，最后，第三列是两个文件中均包含的内容。</p>
-<h3 id="2、-如何不输出-comm-命令输出中的某些列"><a href="#2、-如何不输出-comm-命令输出中的某些列" class="headerlink" title="2、 如何不输出 comm 命令输出中的某些列"></a>2、 如何不输出 <code>comm</code> 命令输出中的某些列</h3><p>如果你想，你可以不输出 <code>comm</code> 命令输出中的某些列。对于该特性，你有三个命令行选项可用：<code>-1</code>、<code>-2</code> 和 <code>-3</code> 。正如你所猜想的，这些数字表示你不想输出的列。</p>
-<p>比如，下面这个命令将会不输出上面例子中的第三列：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm <span class="number">-3</span> file1 file2</div></pre></td></tr></table></figure>
-<p><a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-supress-column.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-supress-column.png" alt=""></a> </p>
-<p>因此，你可以看到，第三列并没有输出。</p>
-<p>注意，你可以通过一个单一命令同时不输出多列内容。比如：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm <span class="number">-12</span> file1 file2</div></pre></td></tr></table></figure>
-<p>上面这个命令将会不输出第一、二列。</p>
-<h3 id="3、-如何使用-comm-命令比较两个未排序好的文件"><a href="#3、-如何使用-comm-命令比较两个未排序好的文件" class="headerlink" title="3、 如何使用 comm 命令比较两个未排序好的文件"></a>3、 如何使用 <code>comm</code> 命令比较两个未排序好的文件</h3><p>正如我们所知道的，<code>comm</code> 只可用于排序好的文件。如果发现其中一个文件未排序好，那么便会在输出中产生一条信息来告诉用户。比如，我们交换 <code>file1</code> 的第一行和第二行，然后与 <code>file2</code> 进行比较。下面是该命令的输出：</p>
-<p><a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-not-sorted-message.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-not-sorted-message.png" alt=""></a> </p>
-<p>你可以看到，这个命令产生一个输出告诉我们：<code>file1</code> 还没有排序好。此时，如果你不想让这个工具检查输入是否已经排序好，那么你可以使用 <code>--nocheck-order</code> 选项：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm --nocheck-<span class="keyword">order</span> <span class="title">file1</span> file2</div></pre></td></tr></table></figure>
-<p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-nocheck-order.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-nocheck-order.png" alt=""></a> </p>
-<p>你可以看到，前面出现的提示信息已经消失了。</p>
-<p>注意，如果你想明确告诉 <code>comm</code> 命令来检查输入文件是否排序好，那么你可以使用 <code>--check-order</code> 选项。</p>
-<h3 id="4、-如何用自定义字符串分隔-comm-命令的输出列"><a href="#4、-如何用自定义字符串分隔-comm-命令的输出列" class="headerlink" title="4、 如何用自定义字符串分隔 comm 命令的输出列"></a>4、 如何用自定义字符串分隔 <code>comm</code> 命令的输出列</h3><p>默认情况下，<code>comm</code> 命令的输出列之间是以空格分隔的。然而，如何你想使用一个自定义字符串作为分隔符，那么你可以使用 <code>--output-delimiter</code> 选项。使用该选项时需要指定你想用来作为分隔符的字符串。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comm <span class="comment">--output-delimiter=+ file1 file2</span></div></pre></td></tr></table></figure>
-<p>比如，我们使用加号来作为分隔符：</p>
-<p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-output-delimiter.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-output-delimiter.png" alt=""></a> </p>
-<h3 id="5、-如何使-comm-的输出行以-NUL-字符终止"><a href="#5、-如何使-comm-的输出行以-NUL-字符终止" class="headerlink" title="5、 如何使 comm 的输出行以 NUL 字符终止"></a>5、 如何使 <code>comm</code> 的输出行以 <code>NUL</code> 字符终止</h3><p>默认情况下，<code>comm</code> 命令的输出行以新行终止。然而，如果你想，那么你可以改为以 <code>NUL</code> 字符终止，只需要使用 <code>-z</code> 选项即可：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">comm</span> -z file1 file2</div></pre></td></tr></table></figure>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p><code>comm</code> 命令并没有特别多的特性性，我们在这儿已经讨论了它的绝大多数命令行选项。只需要理解和练习在这篇教程中讨论的内容，那么你便可以在日常工作中知道如何使用这个工具了。如果你有任何问题或者疑问，请前往该命令的 <a href="https://linux.cn/man/1/comm" target="_blank" rel="external">man 手册</a>，或者在下面评论。</p>
-<hr>
-<p>via: <a href="https://www.howtoforge.com/linux-comm-command/" target="_blank" rel="external">https://www.howtoforge.com/linux-comm-command/</a></p>
-<p>作者：<a href="https://www.howtoforge.com/linux-comm-command/" target="_blank" rel="external">Himanshu Arora</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
 
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/comm-Translated/" rel="tag"># comm/Translated</a>
-          
-        </div>
-      
 
-      
-        
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/06/05/MyCli-Tutorial/" rel="next" title="MyCLI ：一个支持自动补全和语法高亮的 MySQL/MariaDB 客户端">
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <p>Linux 中的 <code>comm</code> 命令可以让用户按行比较两个<strong>已经排序好</strong>的文件。在本教程中，我们将使用一些浅显易懂的例子来讨论这个命令行工具。在开始之前，请注意，本教程中提到的所有例子都已经在 Ubuntu 16.04LTS 版本中测试过。</p>
+                  <p>下面的例子将会告诉你 <code>comm</code> 命令是如何工作的。</p>
+                  <h3 id="1、-如何使用-comm-比较两个排序好的文件"><a href="#1、-如何使用-comm-比较两个排序好的文件" class="headerlink" title="1、 如何使用 comm 比较两个排序好的文件"></a>1、 如何使用 <code>comm</code> 比较两个排序好的文件</h3>
+                  <p>要使用 <code>comm</code> 命令比较两个排序好的文件，只需要把它们的名字作为 <code>comm</code> 命令的参数。下面是通常的语法：</p>
+                  <figure class="highlight applescript">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">comm [<span class="built_in">name</span>-<span class="keyword">of</span>-<span class="keyword">first</span>-<span class="built_in">file</span>] [<span class="built_in">name</span>-<span class="keyword">of</span>-<span class="keyword">second</span>-<span class="built_in">file</span>]</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <a id="more"></a>
+                  <p>比如，假设 <code>file1</code> 和 <code>file2</code> 是这种情况下的两个文件。前者包含下面几行内容：</p>
+                  <figure class="highlight lsl">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="number">001</span></div><div class="line"><span class="number">056</span></div><div class="line"><span class="number">127</span></div><div class="line"><span class="number">258</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>而后者包含下面几行内容：</p>
+                  <figure class="highlight lsl">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="number">002</span></div><div class="line"><span class="number">056</span></div><div class="line"><span class="number">167</span></div><div class="line"><span class="number">369</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>此时，<code>comm</code> 命令的输出如下图所示：</p>
+                  <figure class="highlight nginx">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="attribute">comm</span> file1 file2</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-output.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-output.png" alt=""></a> </p>
+                  <p>你可以看到，输出包含 3 列。第一列是仅包含在 <code>file1</code> 中的内容，第二列是仅包含在 <code>file2</code> 中的内容，最后，第三列是两个文件中均包含的内容。</p>
+                  <h3 id="2、-如何不输出-comm-命令输出中的某些列"><a href="#2、-如何不输出-comm-命令输出中的某些列" class="headerlink" title="2、 如何不输出 comm 命令输出中的某些列"></a>2、 如何不输出 <code>comm</code> 命令输出中的某些列</h3>
+                  <p>如果你想，你可以不输出 <code>comm</code> 命令输出中的某些列。对于该特性，你有三个命令行选项可用：<code>-1</code>、<code>-2</code> 和 <code>-3</code> 。正如你所猜想的，这些数字表示你不想输出的列。</p>
+                  <p>比如，下面这个命令将会不输出上面例子中的第三列：</p>
+                  <figure class="highlight lsl">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">comm <span class="number">-3</span> file1 file2</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-supress-column.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-supress-column.png" alt=""></a> </p>
+                  <p>因此，你可以看到，第三列并没有输出。</p>
+                  <p>注意，你可以通过一个单一命令同时不输出多列内容。比如：</p>
+                  <figure class="highlight lsl">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">comm <span class="number">-12</span> file1 file2</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>上面这个命令将会不输出第一、二列。</p>
+                  <h3 id="3、-如何使用-comm-命令比较两个未排序好的文件"><a href="#3、-如何使用-comm-命令比较两个未排序好的文件" class="headerlink" title="3、 如何使用 comm 命令比较两个未排序好的文件"></a>3、 如何使用 <code>comm</code> 命令比较两个未排序好的文件</h3>
+                  <p>正如我们所知道的，<code>comm</code> 只可用于排序好的文件。如果发现其中一个文件未排序好，那么便会在输出中产生一条信息来告诉用户。比如，我们交换 <code>file1</code> 的第一行和第二行，然后与 <code>file2</code> 进行比较。下面是该命令的输出：</p>
+                  <p><a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-not-sorted-message.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-not-sorted-message.png" alt=""></a> </p>
+                  <p>你可以看到，这个命令产生一个输出告诉我们：<code>file1</code> 还没有排序好。此时，如果你不想让这个工具检查输入是否已经排序好，那么你可以使用 <code>--nocheck-order</code> 选项：</p>
+                  <figure class="highlight crmsh">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">comm --nocheck-<span class="keyword">order</span> <span class="title">file1</span> file2</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-nocheck-order.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-nocheck-order.png" alt=""></a> </p>
+                  <p>你可以看到，前面出现的提示信息已经消失了。</p>
+                  <p>注意，如果你想明确告诉 <code>comm</code> 命令来检查输入文件是否排序好，那么你可以使用 <code>--check-order</code> 选项。</p>
+                  <h3 id="4、-如何用自定义字符串分隔-comm-命令的输出列"><a href="#4、-如何用自定义字符串分隔-comm-命令的输出列" class="headerlink" title="4、 如何用自定义字符串分隔 comm 命令的输出列"></a>4、 如何用自定义字符串分隔 <code>comm</code> 命令的输出列</h3>
+                  <p>默认情况下，<code>comm</code> 命令的输出列之间是以空格分隔的。然而，如何你想使用一个自定义字符串作为分隔符，那么你可以使用 <code>--output-delimiter</code> 选项。使用该选项时需要指定你想用来作为分隔符的字符串。</p>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">comm <span class="comment">--output-delimiter=+ file1 file2</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>比如，我们使用加号来作为分隔符：</p>
+                  <p> <a href="https://www.howtoforge.com/images/linux_comm_command/big/comm-output-delimiter.png" target="_blank" rel="external"><img src="https://www.howtoforge.com/images/linux_comm_command/comm-output-delimiter.png" alt=""></a> </p>
+                  <h3 id="5、-如何使-comm-的输出行以-NUL-字符终止"><a href="#5、-如何使-comm-的输出行以-NUL-字符终止" class="headerlink" title="5、 如何使 comm 的输出行以 NUL 字符终止"></a>5、 如何使 <code>comm</code> 的输出行以 <code>NUL</code> 字符终止</h3>
+                  <p>默认情况下，<code>comm</code> 命令的输出行以新行终止。然而，如果你想，那么你可以改为以 <code>NUL</code> 字符终止，只需要使用 <code>-z</code> 选项即可：</p>
+                  <figure class="highlight nginx">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="attribute">comm</span> -z file1 file2</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3>
+                  <p><code>comm</code> 命令并没有特别多的特性性，我们在这儿已经讨论了它的绝大多数命令行选项。只需要理解和练习在这篇教程中讨论的内容，那么你便可以在日常工作中知道如何使用这个工具了。如果你有任何问题或者疑问，请前往该命令的 <a href="https://linux.cn/man/1/comm" target="_blank" rel="external">man 手册</a>，或者在下面评论。</p>
+                  <hr>
+                  <p>via: <a href="https://www.howtoforge.com/linux-comm-command/" target="_blank" rel="external">https://www.howtoforge.com/linux-comm-command/</a></p>
+                  <p>作者：<a href="https://www.howtoforge.com/linux-comm-command/" target="_blank" rel="external">Himanshu Arora</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy"
+                      target="_blank" rel="external">wxy</a></p>
+                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/comm-Translated/" rel="tag"># comm/Translated</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2017/06/05/MyCli-Tutorial/" rel="next" title="MyCLI ：一个支持自动补全和语法高亮的 MySQL/MariaDB 客户端">
                 <i class="fa fa-chevron-left"></i> MyCLI ：一个支持自动补全和语法高亮的 MySQL/MariaDB 客户端
               </a>
-            
-          </div>
 
-          <span class="post-nav-divider"></span>
+                    </div>
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/07/main-in-Python/" rel="prev" title="Python 中的 __Main__">
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                      <a href="/2017/06/07/main-in-Python/" rel="prev" title="Python 中的 __Main__">
                 Python 中的 __Main__ <i class="fa fa-chevron-right"></i>
               </a>
-            
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+            <div id="hypercomments_widget"></div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
           </div>
         </div>
-      
 
-      
-      
-    </footer>
-  </article>
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
 
 
 
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
 
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
-  </div>
-
-          
-          </div>
-          
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="hypercomments_widget"></div>
-    
-  </div>
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
 
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/photos/profile.jpeg"
-               alt="Flynn" />
-          <p class="site-author-name" itemprop="name">Flynn</p>
-           
-              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-        
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
                 <span class="site-state-item-count">115</span>
                 <span class="site-state-item-name">日志</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
                 <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">分类</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">67</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
 
-        </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
               <i class="fa fa-rss"></i>
               RSS
             </a>
-          </div>
-        
+              </div>
 
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
                 <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
@@ -654,8 +766,8 @@
                   GitHub
                 </a>
               </span>
-            
-              <span class="links-of-author-item">
+
+                <span class="links-of-author-item">
                 <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
                   
                     <i class="fa fa-fw fa-weibo"></i>
@@ -663,143 +775,161 @@
                   Weibo
                 </a>
               </span>
-            
-          
-        </div>
 
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#1、-如何使用-comm-比较两个排序好的文件"><span class="nav-number">1.</span> <span class="nav-text">1、 如何使用 comm 比较两个排序好的文件</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#2、-如何不输出-comm-命令输出中的某些列"><span class="nav-number">2.</span> <span class="nav-text">2、 如何不输出 comm 命令输出中的某些列</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#3、-如何使用-comm-命令比较两个未排序好的文件"><span class="nav-number">3.</span> <span class="nav-text">3、 如何使用 comm 命令比较两个未排序好的文件</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#4、-如何用自定义字符串分隔-comm-命令的输出列"><span class="nav-number">4.</span> <span class="nav-text">4、 如何用自定义字符串分隔 comm 命令的输出列</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#5、-如何使-comm-的输出行以-NUL-字符终止"><span class="nav-number">5.</span> <span class="nav-text">5、 如何使 comm 的输出行以 NUL 字符终止</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">6.</span> <span class="nav-text">结论</span></a></li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
           </div>
-        
+        </aside>
 
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                </li>
-              
-            </ul>
+
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
           </div>
-        
-
-        
+        </div>
 
 
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、-如何使用-comm-比较两个排序好的文件"><span class="nav-number">1.</span> <span class="nav-text">1、 如何使用 comm 比较两个排序好的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、-如何不输出-comm-命令输出中的某些列"><span class="nav-number">2.</span> <span class="nav-text">2、 如何不输出 comm 命令输出中的某些列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、-如何使用-comm-命令比较两个未排序好的文件"><span class="nav-number">3.</span> <span class="nav-text">3、 如何使用 comm 命令比较两个未排序好的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、-如何用自定义字符串分隔-comm-命令的输出列"><span class="nav-number">4.</span> <span class="nav-text">4、 如何用自定义字符串分隔 comm 命令的输出列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、-如何使-comm-的输出行以-NUL-字符终止"><span class="nav-number">5.</span> <span class="nav-text">5、 如何使 comm 的输出行以 NUL 字符终止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">6.</span> <span class="nav-text">结论</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
+          <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
 
-  </span>
-</div>
+          </span>
+        </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
-</div>
+        </div>
 
 
-&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
-&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
-        
 
-        
+
+
+
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-    
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
 
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
 
 
 
@@ -807,36 +937,38 @@
 
 
 
-  
-
-
-  
 
 
 
-  
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
+
   <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
@@ -845,8 +977,8 @@
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
@@ -855,51 +987,19 @@
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
-  
-
-
-
-  
-
-
-
-
-	
-
-		<script type="text/javascript">
-		_hcwp = window._hcwp || [];
-
-		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
-
-		
-		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/06/05/Linux-Command-of-comm/"});
-		
-
-		(function() {
-		if("HC_LOAD_INIT" in window)return;
-		HC_LOAD_INIT = true;
-		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
-		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(hcc, s.nextSibling);
-		})();
-		</script>
-
-	
 
 
 
@@ -909,8 +1009,51 @@
 
 
 
-  
-  
+
+
+  <script type="text/javascript">
+    _hcwp = window._hcwp || [];
+
+    _hcwp.push({
+      widget: "Bloggerstream",
+      widget_id: 90700,
+      selector: ".hc-comment-count",
+      label: "{\%COUNT%\}"
+    });
+
+
+    _hcwp.push({
+      widget: "Stream",
+      widget_id: 90700,
+      xid: "2017/06/05/Linux-Command-of-comm/"
+    });
+
+
+    (function() {
+      if ("HC_LOAD_INIT" in window) return;
+      HC_LOAD_INIT = true;
+      var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+      var hcc = document.createElement("script");
+      hcc.type = "text/javascript";
+      hcc.async = true;
+      hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://w.hypercomments.com/widget/hc/90700/" + lang + "/widget.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
@@ -933,22 +1076,22 @@
         url: path,
         dataType: "xml",
         async: true,
-        success: function( xmlResponse ) {
+        success: function(xmlResponse) {
           // get the contents from search data
           isfetched = true;
           $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
+          var datas = $("entry", xmlResponse).map(function() {
             return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
             };
           }).get();
           var $input = document.getElementById(search_id);
           var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
+          $input.addEventListener('input', function() {
             var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
+            var str = '<ul class=\"search-result-list\">';
             var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
             $resultContent.innerHTML = "";
             if (this.value.trim().length > 1) {
@@ -957,17 +1100,17 @@
                 var isMatch = false;
                 var content_index = [];
                 var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
                 var data_url = decodeURIComponent(data.url);
                 var index_title = -1;
                 var index_content = -1;
                 var first_occur = -1;
                 // only match artiles with not empty titles and contents
-                if(data_title != '') {
+                if (data_title != '') {
                   keywords.forEach(function(keyword, i) {
                     index_title = data_title.indexOf(keyword);
                     index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
+                    if (index_title >= 0 || index_content >= 0) {
                       isMatch = true;
                       if (i == 0) {
                         first_occur = index_content;
@@ -979,41 +1122,47 @@
                 // show search results
                 if (isMatch) {
                   matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
                   if (first_occur >= 0) {
                     // cut out 100 characters
                     var start = first_occur - 20;
                     var end = first_occur + 80;
-                    if(start < 0){
+                    if (start < 0) {
                       start = 0;
                     }
-                    if(start == 0){
+                    if (start == 0) {
                       end = 50;
                     }
-                    if(end > content.length){
+                    if (end > content.length) {
                       end = content.length;
                     }
                     var match_content = content.substring(start, end);
                     // highlight all keywords
-                    keywords.forEach(function(keyword){
+                    keywords.forEach(function(keyword) {
                       var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
                     });
 
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
                   }
                   str += "</li>";
                 }
-              })};
+              })
+            };
             str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
             $resultContent.innerHTML = str;
           });
           proceedsearch();
         }
-      });}
+      });
+    }
 
     // handle and trigger popup window;
     $('.popup-trigger').click(function(e) {
@@ -1025,173 +1174,164 @@
       };
     });
 
-    $('.popup-btn-close').click(function(e){
+    $('.popup-btn-close').click(function(e) {
       $('.popup').hide();
       $(".local-search-pop-overlay").remove();
       $('body').css('overflow', '');
     });
-    $('.popup').click(function(e){
+    $('.popup').click(function(e) {
       e.stopPropagation();
     });
   </script>
 
 
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
 
 
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
   </script>
 
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
 
-  
 
 
-  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
 
 </body>
+
 </html>
 <!-- 动态背景 -->
 
@@ -1201,5 +1341,3 @@
 
 <!-- 小红心 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
-
-

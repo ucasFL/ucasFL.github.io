@@ -1,6 +1,6 @@
 /* global NexT: true */
 
-$(document).ready(function () {
+$(document).ready(function() {
 
   $(document).trigger('bootstrap:before');
 
@@ -10,14 +10,14 @@ $(document).ready(function () {
 
   NexT.utils.registerBackToTop();
 
-  $('.site-nav-toggle button').on('click', function () {
+  $('.site-nav-toggle button').on('click', function() {
     var $siteNav = $('.site-nav');
     var ON_CLASS_NAME = 'site-nav-on';
     var isSiteNavOn = $siteNav.hasClass(ON_CLASS_NAME);
     var animateAction = isSiteNavOn ? 'slideUp' : 'slideDown';
     var animateCallback = isSiteNavOn ? 'removeClass' : 'addClass';
 
-    $siteNav.stop()[animateAction]('fast', function () {
+    $siteNav.stop()[animateAction]('fast', function() {
       $siteNav[animateCallback](ON_CLASS_NAME);
     });
   });

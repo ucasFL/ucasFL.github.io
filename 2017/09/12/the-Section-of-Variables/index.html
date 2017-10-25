@@ -2,23 +2,20 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
+
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -30,8 +27,12 @@
 
 
 
-  
-  
+
+
+
+
+
+
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
@@ -40,9 +41,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="C Section," />
@@ -63,50 +64,87 @@
 
 
 
-<meta name="description" content="前言在 C 语言中，不同的变量位于不同的段，下面进行简单分析。
+  <meta name="description" content="前言
+在 C 语言中，不同的变量位于不同的段，下面进行简单分析。
 看下面一个简单的 C 程序：
-123456789101112131415161718#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;char *myname=&quot;Bao Yungang&quot;;char gdata[128];char bdata[16] = &amp;#123;1,2,3,4&amp;#12">
-<meta property="og:type" content="article">
-<meta property="og:title" content="C 语言中变量的段">
-<meta property="og:url" content="http://ucasfl.me/2017/09/12/the-Section-of-Variables/index.html">
-<meta property="og:site_name" content="春暖花开">
-<meta property="og:description" content="前言在 C 语言中，不同的变量位于不同的段，下面进行简单分析。
+
+  
+    
+      
+        123456789101112131415161718
+      
+      
+        #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;char *myname=&quot;Bao Yungang&quot;;ch">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="C 语言中变量的段">
+  <meta property="og:url" content="http://ucasfl.me/2017/09/12/the-Section-of-Variables/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="前言
+在 C 语言中，不同的变量位于不同的段，下面进行简单分析。
 看下面一个简单的 C 程序：
-123456789101112131415161718#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;char *myname=&quot;Bao Yungang&quot;;char gdata[128];char bdata[16] = &amp;#123;1,2,3,4&amp;#12">
-<meta property="og:updated_time" content="2017-09-12T02:27:19.318Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C 语言中变量的段">
-<meta name="twitter:description" content="前言在 C 语言中，不同的变量位于不同的段，下面进行简单分析。
+
+  
+    
+      
+        123456789101112131415161718
+      
+      
+        #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;char *myname=&quot;Bao Yungang&quot;;ch">
+  <meta property="og:updated_time" content="2017-09-12T02:27:19.318Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="C 语言中变量的段">
+  <meta name="twitter:description" content="前言
+在 C 语言中，不同的变量位于不同的段，下面进行简单分析。
 看下面一个简单的 C 程序：
-123456789101112131415161718#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;char *myname=&quot;Bao Yungang&quot;;char gdata[128];char bdata[16] = &amp;#123;1,2,3,4&amp;#12">
+
+  
+    
+      
+        123456789101112131415161718
+      
+      
+        #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;char *myname=&quot;Bao Yungang&quot;;ch">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 'undefined',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
 
 
 
-  <link rel="canonical" href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/"/>
+  <link rel="canonical" href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/" />
 
 
 
@@ -117,7 +155,6 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
 
 
 
@@ -132,519 +169,600 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
+
 
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">春暖花开</span>
         <span class="logo-line-after"><i></i></span>
       </a>
-    </div>
-      
-        <p class="site-subtitle">love, life, thinking, coding</p>
-      
-  </div>
+            </div>
 
-  <div class="site-nav-toggle">
-    <button>
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
     </button>
-  </div>
-</div>
+          </div>
+        </div>
 
-<nav class="site-nav">
-  
+        <nav class="site-nav">
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+            </li>
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
-        </li>
-      
-    </ul>
-  
+            </li>
 
-  
-    <div class="site-search">
-      
-  <div class="popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
       <i class="fa fa-search"></i>
     </span>
-    <span class="popup-btn-close">
+                <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
 
 
 
-    </div>
-  
-</nav>
+          </div>
+
+        </nav>
 
 
 
- </div>
+      </div>
     </header>
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+            <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Flynn">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/photos/profile.jpeg">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="春暖花开">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-  </span>
+                </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                C 语言中变量的段
-              
-            
-          </h1>
-        
+                <header class="post-header">
 
-        <div class="post-meta">
-          <span class="post-time">
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    C 语言中变量的段
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T10:16:42+08:00">
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T10:16:42+08:00">
                 2017/09/12
               </time>
-            
 
-            
 
-            
-          </span>
 
-          
-            <span class="post-category" >
+
+
+                    </span>
+
+
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
+
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/C-C/" itemprop="url" rel="index">
                     <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
+                    </a>
+                    </span>
 
-                
-                
-              
-            </span>
-          
 
-          
-            
-            <!--noindex-->
-              <span class="post-comments-count">
+
+
+                    </span>
+
+
+
+
+                    <!--noindex-->
+                    <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/12/the-Section-of-Variables/#comments" itemprop="discussionUrl">
+                    <a href="/2017/09/12/the-Section-of-Variables/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count hc-comment-count" data-xid="2017/09/12/the-Section-of-Variables/" itemprop="commentsCount"></span>
                 </a>
-              </span>
-              <!--/noindex-->
-            
-          
+                    </span>
+                    <!--/noindex-->
 
-          
-          
-             <span id="/2017/09/12/the-Section-of-Variables/" class="leancloud_visitors" data-flag-title="C 语言中变量的段">
+
+
+
+
+                    <span id="/2017/09/12/the-Section-of-Variables/" class="leancloud_visitors" data-flag-title="C 语言中变量的段">
                <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
-          
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-          
-
-          
-
-        </div>
-      </header>
-    
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在 C 语言中，不同的变量位于不同的段，下面进行简单分析。</p>
-<p>看下面一个简单的 C 程序：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">char</span> *myname=<span class="string">"Bao Yungang"</span>;</div><div class="line"><span class="keyword">char</span> gdata[<span class="number">128</span>];</div><div class="line"><span class="keyword">char</span> bdata[<span class="number">16</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div><div class="line">main() &#123;</div><div class="line">	<span class="keyword">char</span> * ldata[<span class="number">16</span>];	</div><div class="line">	<span class="keyword">char</span> * ddata;</div><div class="line"></div><div class="line">	ddata = <span class="built_in">malloc</span>(<span class="number">16</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"myname:%llX\n"</span>, myname);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"main: %llX\n"</span>, main);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;ddata:%llx\nddata: %llx\n"</span>,</div><div class="line">		gdata,bdata,ldata,&amp;ddata,ddata);</div><div class="line">	<span class="built_in">free</span>(ddata);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们分析一下程序中出现的变量所位于的段。</p>
-<a id="more"></a>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先，根据所学知识进行分析：</p>
-<ul>
-<li><code>myname</code> 变量是一个全局变量，并且进行了初始化，指向一个字符串常量。因此，<code>myname</code> 变量本身位于<em>数据段：</em><code>.data</code></li>
-<li><code>myname</code>所<strong>指向的字符串</strong>是一个字符串常量，根据 C 语言知识，是只读的，所以应位于<em>只读数据段：</em><code>.rodata</code></li>
-<li><code>gdata</code>是一个为进行初始化的全局变量，因此位于<em>BSS段（Block Started by Symbol）</em>。</li>
-<li><code>bdata</code>和<code>myname</code>一样是初始化了的全局变量，因此位于数据段。</li>
-<li><code>ldata</code>是一个<code>main</code>函数中的局部变量，因此位于<em>栈中。</em></li>
-<li><code>ddata</code>变量自身也是<code>main</code>函数中的一个局部变量，因此也位于<em>栈中。</em></li>
-<li><code>ddata</code>所<strong>指向的内存空间</strong>是通过<code>malloc</code>函数动态分配的，因此位于<em>堆中。</em></li>
-</ul>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>下面，通过<code>objdump</code>来进行验证：</p>
-<p>首先，使用<code>gcc</code>来编译源程序(Ubuntu 16.04.4 + gcc  5.4.0)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -save-temps addr_space.c</div></pre></td></tr></table></figure>
-<p>通过添加 <code>-save-temps</code>选项来生成中间文件。</p>
-<p>下面，使用 <code>objdump</code> 来查看段信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">objdump -D ./a.out</div></pre></td></tr></table></figure>
-<p>通过<code>-D</code>选项显示出所有段的内容。</p>
-<ul>
-<li>首先看<code>bdata</code> 和<code>myname</code> ，我们可以直接在 <code>.data</code> 段看到：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Disassembly of section .data:</div><div class="line"></div><div class="line">0000000000601040 &lt;__data_start&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601048 &lt;__dso_handle&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601050 &lt;myname&gt;:</div><div class="line">  601050:	68 07 40 00 00       	pushq  $0x4007</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601060 &lt;bdata&gt;:</div><div class="line">  601060:	01 02                	add    %eax,(%rdx)</div><div class="line">  601062:	03 04 00             	add    (%rax,%rax,1),%eax</div><div class="line">	...</div></pre></td></tr></table></figure>
-<ul>
-<li>对于 <code>gdata</code> ，也可以直接在 <code>.bss</code> 段看到：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Disassembly of section .bss:</div><div class="line"></div><div class="line">0000000000601080 &lt;completed.7585&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">00000000006010a0 &lt;gdata&gt;:</div><div class="line">	...</div></pre></td></tr></table></figure>
-<ul>
-<li>下面看<code>myname</code> 所指向的字符串常量。</li>
-</ul>
-<p>首先，运行程序，输出如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">myname:400768</div><div class="line">main: 400626</div><div class="line">gdata: 6010A0</div><div class="line">bdata:601060</div><div class="line">ldata:7ffc84068960</div><div class="line">ddata:1490010</div></pre></td></tr></table></figure>
-<p>由运行结果知，<code>myname</code>的值为 400768，它即为 <code>myname</code>所指向的字符串常量的地址。然后我们在 <code>objdump</code>的输出内容中搜索该地址，得到它位于 <code>.rodata</code>中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">Disassembly of section .rodata:</div><div class="line"></div><div class="line">0000000000400760 &lt;_IO_stdin_used&gt;:</div><div class="line">  400760:	01 00                	add    %eax,(%rax)</div><div class="line">  400762:	02 00                	add    (%rax),%al</div><div class="line">  400764:	00 00                	add    %al,(%rax)</div><div class="line">  400766:	00 00                	add    %al,(%rax)</div><div class="line">  400768:	42 61                	rex.X (bad) </div><div class="line">  40076a:	6f                   	outsl  %ds:(%rsi),(%dx)</div><div class="line">  40076b:	20 59 75             	and    %bl,0x75(%rcx)</div><div class="line">  40076e:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  40076f:	67 61                	addr32 (bad) </div><div class="line">  400771:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  400772:	67 00 6d 79          	add    %ch,0x79(%ebp)</div><div class="line">  400776:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  400777:	61                   	(bad)  </div><div class="line">  400778:	6d                   	insl   (%dx),%es:(%rdi)</div><div class="line">  400779:	65 3a 25 6c 6c 58 0a 	cmp    %gs:0xa586c6c(%rip),%ah        # a9873ec &lt;_end+0xa3862cc&gt;</div><div class="line">  400780:	00 6d 61             	add    %ch,0x61(%rbp)</div><div class="line">  400783:	69 6e 3a 20 25 6c 6c 	imul   $0x6c6c2520,0x3a(%rsi),%ebp</div><div class="line">  40078a:	58                   	pop    %rax</div><div class="line">  40078b:	0a 00                	or     (%rax),%al</div><div class="line">  40078d:	00 00                	add    %al,(%rax)</div><div class="line">  40078f:	00 67 64             	add    %ah,0x64(%rdi)</div><div class="line">  400792:	61                   	(bad)  </div><div class="line">  400793:	74 61                	je     4007f6 &lt;__GNU_EH_FRAME_HDR+0x36&gt;</div><div class="line">  400795:	3a 20                	cmp    (%rax),%ah</div><div class="line">  400797:	25 6c 6c 58 0a       	and    $0xa586c6c,%eax</div><div class="line">  40079c:	62                   	(bad)  </div><div class="line">  40079d:	64 61                	fs (bad) </div><div class="line">  40079f:	74 61                	je     400802 &lt;__GNU_EH_FRAME_HDR+0x42&gt;</div><div class="line">  4007a1:	3a 25 6c 6c 58 0a    	cmp    0xa586c6c(%rip),%ah        # a987413 &lt;_end+0xa3862f3&gt;</div><div class="line">  4007a7:	6c                   	insb   (%dx),%es:(%rdi)</div><div class="line">  4007a8:	64 61                	fs (bad) </div><div class="line">  4007aa:	74 61                	je     40080d &lt;__GNU_EH_FRAME_HDR+0x4d&gt;</div><div class="line">  4007ac:	3a 25 6c 6c 78 0a    	cmp    0xa786c6c(%rip),%ah        # ab8741e &lt;_end+0xa5862fe&gt;</div><div class="line">  4007b2:	64 64 61             	fs fs (bad) </div><div class="line">  4007b5:	74 61                	je     400818 &lt;__GNU_EH_FRAME_HDR+0x58&gt;</div><div class="line">  4007b7:	3a 25 6c 6c 78 0a    	cmp    0xa786c6c(%rip),%ah        # ab87429 &lt;_end+0xa586309&gt;</div><div class="line">	...</div></pre></td></tr></table></figure>
-<p>因此，说明 <code>myname</code>指向的字符串常量位于 <code>.rodata</code> 中。事实上，看中间一栏，从 400768 开始，到 400772 的第一个数结束，其中的内容 <code>42 61 6f 20 59 75 6e 67 61 6e 67</code>对应的 ASCII 码就是字符串 “Bao Yungang” 。</p>
-<ul>
-<li>对于 <code>ldata</code> 和 <code>ddata</code> 以及 <code>ddata</code> 所指向的分配空间，很难直接从 <code>objdump</code> 的输出中看出来。我们再把 <code>ddata</code>变量本身的地址也打印出来：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">myname:400768</div><div class="line">main: 400626</div><div class="line">gdata: 6010A0</div><div class="line">bdata:601060</div><div class="line">ldata:7ffe92607930</div><div class="line">&amp;ddata:7ffe92607928</div><div class="line">ddata: 221a010</div></pre></td></tr></table></figure>
-<p>我们看到，<code>ldata</code>和<code>ddata</code>的地址非常大，而 <code>ddata</code>所指向的分配空间的地址相对来说要小很多，这其实也一定程度上验证了我们的结论，根据我们已知的结论，在程序执行过程中，函数中的局部变量是在函数压栈以后，在栈中分配的，而 <code>malloc</code> 函数分配的空间则是在堆中进行分配的，而栈是从上往下长（高地址到低地址），堆则相反，是从下往上长（低地址到高地址），因此，栈中的变量地址较大，而堆中的则较小，所以，程序运行结果与之相符。</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
 
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/C-Section/" rel="tag"># C Section</a>
-          
-        </div>
-      
 
-      
-        
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/09/12/Introduction-to-Compiler/" rel="next" title="编译器简介： 在 Siri 前时代如何与计算机对话">
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
+                  <p>在 C 语言中，不同的变量位于不同的段，下面进行简单分析。</p>
+                  <p>看下面一个简单的 C 程序：</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">char</span> *myname=<span class="string">"Bao Yungang"</span>;</div><div class="line"><span class="keyword">char</span> gdata[<span class="number">128</span>];</div><div class="line"><span class="keyword">char</span> bdata[<span class="number">16</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div><div class="line">main() &#123;</div><div class="line">	<span class="keyword">char</span> * ldata[<span class="number">16</span>];	</div><div class="line">	<span class="keyword">char</span> * ddata;</div><div class="line"></div><div class="line">	ddata = <span class="built_in">malloc</span>(<span class="number">16</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"myname:%llX\n"</span>, myname);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"main: %llX\n"</span>, main);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;ddata:%llx\nddata: %llx\n"</span>,</div><div class="line">		gdata,bdata,ldata,&amp;ddata,ddata);</div><div class="line">	<span class="built_in">free</span>(ddata);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>我们分析一下程序中出现的变量所位于的段。</p>
+                  <a id="more"></a>
+                  <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3>
+                  <p>首先，根据所学知识进行分析：</p>
+                  <ul>
+                    <li><code>myname</code> 变量是一个全局变量，并且进行了初始化，指向一个字符串常量。因此，<code>myname</code> 变量本身位于<em>数据段：</em><code>.data</code></li>
+                    <li><code>myname</code>所<strong>指向的字符串</strong>是一个字符串常量，根据 C 语言知识，是只读的，所以应位于<em>只读数据段：</em><code>.rodata</code></li>
+                    <li><code>gdata</code>是一个为进行初始化的全局变量，因此位于<em>BSS段（Block Started by Symbol）</em>。</li>
+                    <li><code>bdata</code>和<code>myname</code>一样是初始化了的全局变量，因此位于数据段。</li>
+                    <li><code>ldata</code>是一个<code>main</code>函数中的局部变量，因此位于<em>栈中。</em></li>
+                    <li><code>ddata</code>变量自身也是<code>main</code>函数中的一个局部变量，因此也位于<em>栈中。</em></li>
+                    <li><code>ddata</code>所<strong>指向的内存空间</strong>是通过<code>malloc</code>函数动态分配的，因此位于<em>堆中。</em></li>
+                  </ul>
+                  <h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3>
+                  <p>下面，通过<code>objdump</code>来进行验证：</p>
+                  <p>首先，使用<code>gcc</code>来编译源程序(Ubuntu 16.04.4 + gcc 5.4.0)：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">gcc -save-temps addr_space.c</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>通过添加 <code>-save-temps</code>选项来生成中间文件。</p>
+                  <p>下面，使用 <code>objdump</code> 来查看段信息：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">objdump -D ./a.out</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>通过<code>-D</code>选项显示出所有段的内容。</p>
+                  <ul>
+                    <li>首先看<code>bdata</code> 和<code>myname</code> ，我们可以直接在 <code>.data</code> 段看到：</li>
+                  </ul>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">Disassembly of section .data:</div><div class="line"></div><div class="line">0000000000601040 &lt;__data_start&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601048 &lt;__dso_handle&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601050 &lt;myname&gt;:</div><div class="line">  601050:	68 07 40 00 00       	pushq  $0x4007</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601060 &lt;bdata&gt;:</div><div class="line">  601060:	01 02                	add    %eax,(%rdx)</div><div class="line">  601062:	03 04 00             	add    (%rax,%rax,1),%eax</div><div class="line">	...</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>对于 <code>gdata</code> ，也可以直接在 <code>.bss</code> 段看到：</li>
+                  </ul>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">Disassembly of section .bss:</div><div class="line"></div><div class="line">0000000000601080 &lt;completed.7585&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">00000000006010a0 &lt;gdata&gt;:</div><div class="line">	...</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>下面看<code>myname</code> 所指向的字符串常量。</li>
+                  </ul>
+                  <p>首先，运行程序，输出如下：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">myname:400768</div><div class="line">main: 400626</div><div class="line">gdata: 6010A0</div><div class="line">bdata:601060</div><div class="line">ldata:7ffc84068960</div><div class="line">ddata:1490010</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>由运行结果知，<code>myname</code>的值为 400768，它即为 <code>myname</code>所指向的字符串常量的地址。然后我们在 <code>objdump</code>的输出内容中搜索该地址，得到它位于 <code>.rodata</code>中：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">Disassembly of section .rodata:</div><div class="line"></div><div class="line">0000000000400760 &lt;_IO_stdin_used&gt;:</div><div class="line">  400760:	01 00                	add    %eax,(%rax)</div><div class="line">  400762:	02 00                	add    (%rax),%al</div><div class="line">  400764:	00 00                	add    %al,(%rax)</div><div class="line">  400766:	00 00                	add    %al,(%rax)</div><div class="line">  400768:	42 61                	rex.X (bad) </div><div class="line">  40076a:	6f                   	outsl  %ds:(%rsi),(%dx)</div><div class="line">  40076b:	20 59 75             	and    %bl,0x75(%rcx)</div><div class="line">  40076e:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  40076f:	67 61                	addr32 (bad) </div><div class="line">  400771:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  400772:	67 00 6d 79          	add    %ch,0x79(%ebp)</div><div class="line">  400776:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  400777:	61                   	(bad)  </div><div class="line">  400778:	6d                   	insl   (%dx),%es:(%rdi)</div><div class="line">  400779:	65 3a 25 6c 6c 58 0a 	cmp    %gs:0xa586c6c(%rip),%ah        # a9873ec &lt;_end+0xa3862cc&gt;</div><div class="line">  400780:	00 6d 61             	add    %ch,0x61(%rbp)</div><div class="line">  400783:	69 6e 3a 20 25 6c 6c 	imul   $0x6c6c2520,0x3a(%rsi),%ebp</div><div class="line">  40078a:	58                   	pop    %rax</div><div class="line">  40078b:	0a 00                	or     (%rax),%al</div><div class="line">  40078d:	00 00                	add    %al,(%rax)</div><div class="line">  40078f:	00 67 64             	add    %ah,0x64(%rdi)</div><div class="line">  400792:	61                   	(bad)  </div><div class="line">  400793:	74 61                	je     4007f6 &lt;__GNU_EH_FRAME_HDR+0x36&gt;</div><div class="line">  400795:	3a 20                	cmp    (%rax),%ah</div><div class="line">  400797:	25 6c 6c 58 0a       	and    $0xa586c6c,%eax</div><div class="line">  40079c:	62                   	(bad)  </div><div class="line">  40079d:	64 61                	fs (bad) </div><div class="line">  40079f:	74 61                	je     400802 &lt;__GNU_EH_FRAME_HDR+0x42&gt;</div><div class="line">  4007a1:	3a 25 6c 6c 58 0a    	cmp    0xa586c6c(%rip),%ah        # a987413 &lt;_end+0xa3862f3&gt;</div><div class="line">  4007a7:	6c                   	insb   (%dx),%es:(%rdi)</div><div class="line">  4007a8:	64 61                	fs (bad) </div><div class="line">  4007aa:	74 61                	je     40080d &lt;__GNU_EH_FRAME_HDR+0x4d&gt;</div><div class="line">  4007ac:	3a 25 6c 6c 78 0a    	cmp    0xa786c6c(%rip),%ah        # ab8741e &lt;_end+0xa5862fe&gt;</div><div class="line">  4007b2:	64 64 61             	fs fs (bad) </div><div class="line">  4007b5:	74 61                	je     400818 &lt;__GNU_EH_FRAME_HDR+0x58&gt;</div><div class="line">  4007b7:	3a 25 6c 6c 78 0a    	cmp    0xa786c6c(%rip),%ah        # ab87429 &lt;_end+0xa586309&gt;</div><div class="line">	...</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>因此，说明 <code>myname</code>指向的字符串常量位于 <code>.rodata</code> 中。事实上，看中间一栏，从 400768 开始，到 400772 的第一个数结束，其中的内容 <code>42 61 6f 20 59 75 6e 67 61 6e 67</code>对应的 ASCII 码就是字符串 “Bao Yungang” 。</p>
+                  <ul>
+                    <li>对于 <code>ldata</code> 和 <code>ddata</code> 以及 <code>ddata</code> 所指向的分配空间，很难直接从 <code>objdump</code> 的输出中看出来。我们再把 <code>ddata</code>变量本身的地址也打印出来：</li>
+                  </ul>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">myname:400768</div><div class="line">main: 400626</div><div class="line">gdata: 6010A0</div><div class="line">bdata:601060</div><div class="line">ldata:7ffe92607930</div><div class="line">&amp;ddata:7ffe92607928</div><div class="line">ddata: 221a010</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>我们看到，<code>ldata</code>和<code>ddata</code>的地址非常大，而 <code>ddata</code>所指向的分配空间的地址相对来说要小很多，这其实也一定程度上验证了我们的结论，根据我们已知的结论，在程序执行过程中，函数中的局部变量是在函数压栈以后，在栈中分配的，而 <code>malloc</code> 函数分配的空间则是在堆中进行分配的，而栈是从上往下长（高地址到低地址），堆则相反，是从下往上长（低地址到高地址），因此，栈中的变量地址较大，而堆中的则较小，所以，程序运行结果与之相符。</p>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/C-Section/" rel="tag"># C Section</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2017/09/12/Introduction-to-Compiler/" rel="next" title="编译器简介： 在 Siri 前时代如何与计算机对话">
                 <i class="fa fa-chevron-left"></i> 编译器简介： 在 Siri 前时代如何与计算机对话
               </a>
-            
-          </div>
 
-          <span class="post-nav-divider"></span>
+                    </div>
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/23/Introduction-to-Linux-FileSystem/" rel="prev" title="Linux 文件系统概览">
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                      <a href="/2017/09/23/Introduction-to-Linux-FileSystem/" rel="prev" title="Linux 文件系统概览">
                 Linux 文件系统概览 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+            <div id="hypercomments_widget"></div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
           </div>
         </div>
-      
 
-      
-      
-    </footer>
-  </article>
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
 
 
 
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
 
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
-  </div>
-
-          
-          </div>
-          
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div id="hypercomments_widget"></div>
-    
-  </div>
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
 
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/photos/profile.jpeg"
-               alt="Flynn" />
-          <p class="site-author-name" itemprop="name">Flynn</p>
-           
-              <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-        
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
                 <span class="site-state-item-count">115</span>
                 <span class="site-state-item-name">日志</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
                 <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">分类</span>
               </a>
-            </div>
-          
+                </div>
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">67</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
 
-        </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
               <i class="fa fa-rss"></i>
               RSS
             </a>
-          </div>
-        
+              </div>
 
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
                 <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
@@ -652,8 +770,8 @@
                   GitHub
                 </a>
               </span>
-            
-              <span class="links-of-author-item">
+
+                <span class="links-of-author-item">
                 <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
                   
                     <i class="fa fa-fw fa-weibo"></i>
@@ -661,143 +779,158 @@
                   Weibo
                 </a>
               </span>
-            
-          
-        </div>
 
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#验证"><span class="nav-number">3.</span> <span class="nav-text">验证</span></a></li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
           </div>
-        
+        </aside>
 
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                </li>
-              
-            </ul>
+
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
           </div>
-        
-
-        
+        </div>
 
 
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证"><span class="nav-number">3.</span> <span class="nav-text">验证</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
+          <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
 
-  </span>
-</div>
+          </span>
+        </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
-</div>
+        </div>
 
 
-&nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次
-&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
-        
 
-        
+
+
+
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-    
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
 
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
 
 
 
@@ -805,36 +938,38 @@
 
 
 
-  
-
-
-  
 
 
 
-  
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  
+
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
+
   <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
@@ -843,8 +978,8 @@
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
@@ -853,51 +988,19 @@
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
-  
-
-
-
-  
-
-
-
-
-	
-
-		<script type="text/javascript">
-		_hcwp = window._hcwp || [];
-
-		_hcwp.push({widget:"Bloggerstream", widget_id: 90700, selector:".hc-comment-count", label: "{\%COUNT%\}" });
-
-		
-		_hcwp.push({widget:"Stream", widget_id: 90700, xid: "2017/09/12/the-Section-of-Variables/"});
-		
-
-		(function() {
-		if("HC_LOAD_INIT" in window)return;
-		HC_LOAD_INIT = true;
-		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
-		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90700/"+lang+"/widget.js";
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(hcc, s.nextSibling);
-		})();
-		</script>
-
-	
 
 
 
@@ -907,8 +1010,51 @@
 
 
 
-  
-  
+
+
+  <script type="text/javascript">
+    _hcwp = window._hcwp || [];
+
+    _hcwp.push({
+      widget: "Bloggerstream",
+      widget_id: 90700,
+      selector: ".hc-comment-count",
+      label: "{\%COUNT%\}"
+    });
+
+
+    _hcwp.push({
+      widget: "Stream",
+      widget_id: 90700,
+      xid: "2017/09/12/the-Section-of-Variables/"
+    });
+
+
+    (function() {
+      if ("HC_LOAD_INIT" in window) return;
+      HC_LOAD_INIT = true;
+      var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+      var hcc = document.createElement("script");
+      hcc.type = "text/javascript";
+      hcc.async = true;
+      hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://w.hypercomments.com/widget/hc/90700/" + lang + "/widget.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
@@ -931,22 +1077,22 @@
         url: path,
         dataType: "xml",
         async: true,
-        success: function( xmlResponse ) {
+        success: function(xmlResponse) {
           // get the contents from search data
           isfetched = true;
           $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
+          var datas = $("entry", xmlResponse).map(function() {
             return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
             };
           }).get();
           var $input = document.getElementById(search_id);
           var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
+          $input.addEventListener('input', function() {
             var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
+            var str = '<ul class=\"search-result-list\">';
             var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
             $resultContent.innerHTML = "";
             if (this.value.trim().length > 1) {
@@ -955,17 +1101,17 @@
                 var isMatch = false;
                 var content_index = [];
                 var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
                 var data_url = decodeURIComponent(data.url);
                 var index_title = -1;
                 var index_content = -1;
                 var first_occur = -1;
                 // only match artiles with not empty titles and contents
-                if(data_title != '') {
+                if (data_title != '') {
                   keywords.forEach(function(keyword, i) {
                     index_title = data_title.indexOf(keyword);
                     index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
+                    if (index_title >= 0 || index_content >= 0) {
                       isMatch = true;
                       if (i == 0) {
                         first_occur = index_content;
@@ -977,41 +1123,47 @@
                 // show search results
                 if (isMatch) {
                   matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
                   if (first_occur >= 0) {
                     // cut out 100 characters
                     var start = first_occur - 20;
                     var end = first_occur + 80;
-                    if(start < 0){
+                    if (start < 0) {
                       start = 0;
                     }
-                    if(start == 0){
+                    if (start == 0) {
                       end = 50;
                     }
-                    if(end > content.length){
+                    if (end > content.length) {
                       end = content.length;
                     }
                     var match_content = content.substring(start, end);
                     // highlight all keywords
-                    keywords.forEach(function(keyword){
+                    keywords.forEach(function(keyword) {
                       var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
                     });
 
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
                   }
                   str += "</li>";
                 }
-              })};
+              })
+            };
             str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
             $resultContent.innerHTML = str;
           });
           proceedsearch();
         }
-      });}
+      });
+    }
 
     // handle and trigger popup window;
     $('.popup-trigger').click(function(e) {
@@ -1023,173 +1175,164 @@
       };
     });
 
-    $('.popup-btn-close').click(function(e){
+    $('.popup-btn-close').click(function(e) {
       $('.popup').hide();
       $(".local-search-pop-overlay").remove();
       $('body').css('overflow', '');
     });
-    $('.popup').click(function(e){
+    $('.popup').click(function(e) {
       e.stopPropagation();
     });
   </script>
 
 
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
 
 
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
   </script>
 
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
 
-  
 
 
-  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
 
 </body>
+
 </html>
 <!-- 动态背景 -->
 
@@ -1199,5 +1342,3 @@
 
 <!-- 小红心 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
-
-
