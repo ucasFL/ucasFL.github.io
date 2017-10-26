@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-10-25T14:25:34.622Z</updated>
+  <updated>2017-10-26T05:01:04.757Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,137 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 编程风格</title>
+    <link href="http://ucasfl.me/2017/10/26/Pythonic-programming-tips/"/>
+    <id>http://ucasfl.me/2017/10/26/Pythonic-programming-tips/</id>
+    <published>2017-10-26T04:10:08.000Z</published>
+    <updated>2017-10-26T05:01:04.757Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。</p>
+<a id="more"></a>
+<h3 id="多变量赋值"><a href="#多变量赋值" class="headerlink" title="多变量赋值"></a>多变量赋值</h3>
+<p>变量赋值是编程语言里面最简单的语句之一，通常情况下，我们会这样做：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line">c = <span class="number">3</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>这样便完成了对三个变量的赋值，但你可以用更简单的方式：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="元素值交换"><a href="#元素值交换" class="headerlink" title="元素值交换"></a>元素值交换</h3>
+<p>在编程过程中，交换两个变量的值是非常常见的。一般情况下，我们会用下面这种方式来交换两个变量的值（尤其是对于第一门语言是C/C++的人来说）：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">t = a</div><div class="line">a = b</div><div class="line">b = t</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>这种方式是正确的，没有人敢说它不对，但事实上，在 Python 里，你可以有更简单的方式来完成这件事：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a, b = b, a</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>没错，一行语句就够了。</p>
+<p>对上面两个技巧的解释：在 Python 中，任何以逗号分隔的对象均被当作元组处理，因此<code>1, 2, 3</code>　实际上就是一个元组<code>(1, 2, 3)</code>，赋值过程可以看成是元组的解包 。交换值也是同样的，它相当于把等号右边的元组解包后赋值给了左边的变量。为了提高代码的可读性，上面的例子可以加上括号：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span> = (<span class="selector-tag">b</span>, a)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="列表解析"><a href="#列表解析" class="headerlink" title="列表解析"></a>列表解析</h3>
+<p>假设 <code>list1</code> 是一个字符串组成的列表，现在，需要把 <code>list1</code> 中的每一个字符串的每一个小写字母找出来，形成一个新的元组。一般情况下，我们可以这样做：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list1 = [<span class="string">'adg'</span>, <span class="string">'Adf'</span>, <span class="string">'124'</span>]</div><div class="line">list2 = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> i:</div><div class="line">    <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>:</div><div class="line">      list2.append(j)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>但实际上，你只需要用一个语句就可以完成这件事：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list2 = [j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>没错，Python 就是这么简介。如果把上面的方括号换成圆括号，那么结果返回的就是一个迭代器，可以使用 <code>next()</code> 方法获取元素：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list2 = (j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>)</div><div class="line">list2.next() <span class="comment"># 返回'a'</span></div><div class="line">list2.next() <span class="comment"># 返回'd'</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://ucasfl.me/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python 速查表</title>
@@ -4510,81 +4641,6 @@
     
     
       <category term="AVL-Tree" scheme="http://ucasfl.me/tags/AVL-Tree/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 中的命名冲突</title>
-    <link href="http://ucasfl.me/2017/06/18/Name-Conflict-in-Python/"/>
-    <id>http://ucasfl.me/2017/06/18/Name-Conflict-in-Python/</id>
-    <published>2017-06-18T13:40:57.000Z</published>
-    <updated>2017-09-02T04:38:28.959Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
-<p>今天中午正在吃饭，一位外校的学妹突然发微信问关于 <code>Python</code> 的编程题，其实很简单，但中间却出了一些意料不到的差错。</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3>
-<p>学妹问的其中一个题是利用 <code>random</code> 函数连续取 100 个随机数，统计其中小于 0.2 的随机数个数。这题很简单，毕竟该学妹并不是计算机系的，所以不会也算正常吧。</p>
-<p>我们知道，<code>random</code> 函数是 Python 内建的 <code>random</code> 模块中的一个函数，可直接调用该模块来用。它能够产生区间 0~1 之间的随机数。</p>
-<p>下面是我写的代码：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#!/home/fenglv/FILE/anaconda2/bin/python</span></div><div class="line"><span class="keyword">import</span> random <span class="keyword">as</span> rd</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">less</span><span class="params">()</span>:</span></div><div class="line">    num = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">        value = rd.random()</div><div class="line">        <span class="keyword">if</span> value &lt; <span class="number">0.2</span>:</div><div class="line">            num += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> num</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">print</span> less()</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<a id="more"></a>
-<p>无论怎么看，这个代码都是没问题的。因为它的确是对的，但是，当我运行的时候，却出错了：</p>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;random.py&quot;, line 11, in &lt;module&gt;</div><div class="line">    print less()</div><div class="line">  File &quot;random.py&quot;, line 6, in less</div><div class="line">    value = rd.random()</div><div class="line">AttributeError: &apos;module&apos; object has no attribute &apos;random&apos;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>WTF？于是我在 Python 提示符下一行一行的运行代码，发现却是对的？</p>
-<p>后来上网查，在 <code>stackoverflow</code> 上看到了答案。其实过去也注意过，只是这次却不小心忽略了。</p>
-<p><strong>在 Python，每一个脚本就是一个模块，模块名就是脚本名。</strong></p>
-<p>而我把这个文件命名为了 <code>random.py</code> ，于是便和内建的 <code>random</code> 模块冲突了，所以才导致错误的出现。</p>
-<p>所以，无论如何，一定切记不要把脚本名命名了和内建模块名相同，特别是你还在该脚本中调用这一模块时。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;
-&lt;p&gt;今天中午正在吃饭，一位外校的学妹突然发微信问关于 &lt;code&gt;Python&lt;/code&gt; 的编程题，其实很简单，但中间却出了一些意料不到的差错。&lt;/p&gt;
-&lt;h3 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h3&gt;
-&lt;p&gt;学妹问的其中一个题是利用 &lt;code&gt;random&lt;/code&gt; 函数连续取 100 个随机数，统计其中小于 0.2 的随机数个数。这题很简单，毕竟该学妹并不是计算机系的，所以不会也算正常吧。&lt;/p&gt;
-&lt;p&gt;我们知道，&lt;code&gt;random&lt;/code&gt; 函数是 Python 内建的 &lt;code&gt;random&lt;/code&gt; 模块中的一个函数，可直接调用该模块来用。它能够产生区间 0~1 之间的随机数。&lt;/p&gt;
-&lt;p&gt;下面是我写的代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;td class=&quot;gutter&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;code&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/home/fenglv/FILE/anaconda2/bin/python&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; random &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; rd&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;less&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    num = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; range(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        value = rd.random()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; value &amp;lt; &lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            num += &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; num&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; __name__ == &lt;span class=&quot;string&quot;&gt;&#39;__main__&#39;&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; less()&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
-    
-    
-      <category term="Python/name" scheme="http://ucasfl.me/tags/Python-name/"/>
     
   </entry>
   
