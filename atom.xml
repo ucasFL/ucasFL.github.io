@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-10-26T05:04:26.338Z</updated>
+  <updated>2017-10-28T06:52:02.027Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -16,11 +16,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux 主机和 Vbox 下的 Windows 虚拟机创建共享文件夹</title>
+    <link href="http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/"/>
+    <id>http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/</id>
+    <published>2017-10-28T06:42:12.000Z</published>
+    <updated>2017-10-28T06:52:02.027Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。</p>
+<a id="more"></a>
+<p>首先确保安装好虚拟机。</p>
+<p>第一步，启动虚拟机，点击左上方工具栏 -&gt; 安装增加功能 -&gt; 按照提示安装成功即可。</p>
+<p>第一步，打开虚拟机设置 -&gt; 共享文件夹 -&gt; 添加路径 -&gt; 设置共享文件夹名字（假设名字为 Win7，后面会用到。）</p>
+<p>第三步，重启虚拟机 -&gt; 打开 cmd -&gt; 输入命令 <code>net use x: \\vboxsvr\Win7</code> 即可。其中 <code>x</code> 为盘符，任意一个未使用的字母均可以，<code>Win7</code> 即为上面设置的共享文件夹名字。</p>
+<p>这样，在主机和虚拟机之间就创建了一个共享文件夹。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python 编程风格</title>
     <link href="http://ucasfl.me/2017/10/26/Pythonic-programming-tips/"/>
     <id>http://ucasfl.me/2017/10/26/Pythonic-programming-tips/</id>
     <published>2017-10-26T04:10:08.000Z</published>
-    <updated>2017-10-26T05:04:26.338Z</updated>
+    <updated>2017-10-27T13:04:59.314Z</updated>
     
     <content type="html"><![CDATA[<p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。</p>
 <a id="more"></a>
@@ -131,7 +159,76 @@
       </td>
     </tr>
   </table>
-</figure>]]></content>
+</figure>
+<h3 id="收集参数"><a href="#收集参数" class="headerlink" title="收集参数"></a>收集参数</h3>
+<p>函数的多个参数可通过一个元组传递，假设有如下函数：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x + y</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可重新定义为：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(*params)</span>:</span></div><div class="line">  <span class="keyword">return</span> params[<span class="number">0</span>] + params[<span class="number">1</span>]</div><div class="line"><span class="comment">#传递参数</span></div><div class="line">add2(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="comment">#或</span></div><div class="line">tuple1 = (<span class="number">1</span>, <span class="number">2</span>)</div><div class="line">add2(*tuple1)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>使用双星号则可以传递一个字典：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">with_star</span><span class="params">(**kwds)</span>:</span></div><div class="line">  print(kwds[<span class="string">'name'</span>], <span class="string">' is '</span>, kwds[<span class="string">'age'</span>] ,<span class="string">' years old.'</span>)</div><div class="line">args = &#123;<span class="string">'name'</span> : <span class="string">'Mrs. GUmby'</span>, <span class="string">'age'</span> : <span class="number">42</span>&#125;</div><div class="line">with_star(**args)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="使用两个列表创建字典"><a href="#使用两个列表创建字典" class="headerlink" title="使用两个列表创建字典"></a>使用两个列表创建字典</h3>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">list2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">d = dict(zip(list1, list2))</div><div class="line">list1 == list(d.keys())</div><div class="line">list2 == list(d.values())</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
+<p>多态意味着就算不知道变量所引用的对象类型是什么，也可以对它进行操作，看下面的函数：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span> <span class="params">(a, b)</span>:</span></div><div class="line">  <span class="keyword">return</span> a + b</div><div class="line">add(<span class="number">1</span>, <span class="number">2</span>)  <span class="comment"># 返回３</span></div><div class="line">add(<span class="string">'ab'</span>, <span class="string">'cd'</span>) <span class="comment"># 返回'abcd'</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>很多函数和运算符都是多态的，因此写程序时也应该尽量避免破坏多态，尽量不使用 <code>type, isinstance, issubclass</code> 之类会破坏多态的函数。</p>
+<p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>]]></content>
     
     <summary type="html">
     
@@ -4562,85 +4659,6 @@
     
     
       <category term="Static-variables" scheme="http://ucasfl.me/tags/Static-variables/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>递归实现平衡二叉树的插入、删除、合并和分裂</title>
-    <link href="http://ucasfl.me/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/"/>
-    <id>http://ucasfl.me/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/</id>
-    <published>2017-06-19T08:39:12.000Z</published>
-    <updated>2017-09-02T04:38:29.019Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3>
-<p>平衡二叉树是这样一棵树，要么是一棵空树，要么是满足下面条件的树：</p>
-<ul>
-  <li>左子树和右子树的深度的绝对值只差不超过 1;</li>
-  <li>左子树和右子树也是平衡二叉树。</li>
-</ul>
-<p>既是二茬排序树又是平衡二叉树的树为平衡二茬排序树。下面说到的平衡二叉树表示平衡二茬排序树。</p>
-<p>在平衡二叉树的结构定义中，比二叉树多了一个平衡因子。实现平衡二叉树的插入和删除是一件比较头疼的事情。因为每次插入或删除之后都要检查平衡是否被破坏，如果被破坏，则要进行各种左旋、右旋的平衡化。</p>
-<a id="more"></a>
-<p>除了插入和删除，有的时候还会涉及到将两个平衡二叉树或多个合并成一个平衡二叉树。或者将一个平衡二叉树分裂为两个平衡二叉树，其中一个中的值均小于等于 $x$，另一个的值均大于 $x$ 。对于合并，最常规的方法自然是，将其中一个二叉树中的点一个个插入到另一个平衡二叉树中。然而，这样做的时间复杂度很大，而且其中一棵二叉树被破坏。但是，如果通过递归来做，则可以在不破坏两棵树的前提下创建一棵新的平衡二叉树，并且时间复杂度比前者要优越很多。</p>
-<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3>
-<p>下面说一下该算法：</p>
-<ol>
-  <li>分别中序遍历两棵二叉树，得到两个有序序列。</li>
-  <li>将两个有序序列合并为一个有序序列。</li>
-  <li>利用该有序序列来创建一棵新的平衡二叉树。</li>
-</ol>
-<p>递归部分：</p>
-<p>终止条件：</p>
-<ul>
-  <li>序列中只剩下一个或两个记录，一个时，直接建节点，插入记录；两个时，可建节点，将前者插入，然后再后一个作为前者的右孩子插入。</li>
-</ul>
-<p>递归：</p>
-<ul>
-  <li>当序列数大于二时，首先建立节点，将序列最中间的记录插入，然后递归，将中间节点之前的记录作为左孩子插入，中间节点后面的记录作为右孩子插入。</li>
-</ul>
-<p>通过该算法构造出的二叉树一定为平衡二茬排序树：</p>
-<ul>
-  <li>每次递归保证了左边的点小于根节点，右边的点大于根节点，因此为排序树。</li>
-  <li>递归过程中保证了左右孩子的数目相等或相差一个，这样保证了左右孩子的深度绝对值只差不会超过 1 。</li>
-</ul>
-<p>利用这一个思路，也可进行分裂、插入和删除：</p>
-<ul>
-  <li>分裂：中序遍历平衡二叉树得到序列，定位出 $x$ 的位置，利用递归算法和 $x$ 以及之前的序列可构造出一棵二叉树，之后的序列同样构造出一棵二叉树。</li>
-  <li>插入：先中序遍历得到序列，将需插入的值插入序列，然后再建树，只是这样相当于重新创建一棵二叉树。</li>
-  <li>删除：和插入一样。</li>
-</ul>
-<h3 id="C-语言实现："><a href="#C-语言实现：" class="headerlink" title="C 语言实现："></a>C 语言实现：</h3>
-<p>下面是合并和分裂的 C 语言实现：</p>
-<figure class="highlight c">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 100</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MMAX 200</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BiTreeNode&#123;</div><div class="line">	<span class="keyword">int</span> number;</div><div class="line">	<span class="keyword">int</span> data;</div><div class="line">	<span class="keyword">struct</span> BiTreeNode *lchild;</div><div class="line">	<span class="keyword">struct</span> BiTreeNode *rchild;</div><div class="line">&#125;BiTreeNode, *BiTree;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(BiTree *T, <span class="keyword">int</span> key[], <span class="keyword">int</span> first, <span class="keyword">int</span> last)</span></span>; <span class="comment">//use a sorted array key[] to create a balanced tree</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(BiTree T, BiTree *T1, BiTree *T2, <span class="keyword">int</span> x)</span></span>; <span class="comment">//split a balanced tree into two balanced tree</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last, <span class="keyword">int</span> restore)</span></span>; <span class="comment">//inorder traverse a balanced tree to get the record list</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">preorder</span><span class="params">(BiTree T)</span></span>; <span class="comment">//preorder traverse a tree</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_index_x</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> last, <span class="keyword">int</span> x, <span class="keyword">int</span> *index_x)</span></span>; <span class="comment">//get the index of x in array key</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_array</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> key1[], <span class="keyword">int</span> key2[], <span class="keyword">int</span> len1, <span class="keyword">int</span> len2, <span class="keyword">int</span> *last)</span></span>; <span class="comment">//merge two sorted array into one sorted array</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_tree</span><span class="params">(BiTree *T, BiTree T1, BiTree T2)</span></span>;  <span class="comment">//merge two balanced tree into one balanced tree</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_tree</span><span class="params">(BiTree *T, BiTree T1, BiTree T2)</span></span>&#123; </div><div class="line">	<span class="keyword">int</span> key[MMAX], key1[MAX], key2[MAX];</div><div class="line">	<span class="keyword">int</span> len1, len2, last;</div><div class="line">    <span class="comment">//get lists</span></div><div class="line">	inorder(T1, key1, &amp;len1, <span class="number">0</span>);</div><div class="line">	inorder(T2, key2, &amp;len2, <span class="number">0</span>);</div><div class="line">   <span class="comment">//merge lists</span></div><div class="line">	merge_array(key, key1, key2, len1, len2, &amp;last);</div><div class="line">	join(T, key, <span class="number">0</span>, last); <span class="comment">//create tree</span></div><div class="line">&#125;<span class="comment">//merge_tree</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_array</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> key1[], <span class="keyword">int</span> key2[], <span class="keyword">int</span> len1, <span class="keyword">int</span> len2, <span class="keyword">int</span> *last)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j, k ;</div><div class="line">	key[<span class="number">0</span>] = (key1[<span class="number">0</span>] &lt; key2[<span class="number">0</span>])?key1[<span class="number">0</span>]:key2[<span class="number">0</span>];<span class="comment">//get the first value </span></div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>, j = <span class="number">0</span>, k = <span class="number">1</span>; i &lt;= len1 &amp;&amp; j &lt;= len2; )&#123; <span class="comment">//merge lists</span></div><div class="line">		<span class="keyword">if</span> (key1[i] &lt; key2[j] )&#123;</div><div class="line">			<span class="keyword">if</span> (key1[i] != key[k<span class="number">-1</span>])</div><div class="line">			  key[k++] = key1[i++];</div><div class="line">			<span class="keyword">else</span></div><div class="line">			  i ++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">if</span> (key2[j] != key[k<span class="number">-1</span>])</div><div class="line">			  key[k++] = key2[j++];</div><div class="line">			<span class="keyword">else</span></div><div class="line">			  j ++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (i &lt;= len1)&#123;  <span class="comment">//merge remain record of key1[]</span></div><div class="line">		<span class="keyword">while</span> ( i &lt;= len1 ) &#123;</div><div class="line">			key[k++] = key1[i++];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(j &lt;= len2 )&#123; <span class="comment">//merge remain record of key2[]</span></div><div class="line">		<span class="keyword">while</span> ( j &lt;= len2 ) &#123;</div><div class="line">			key[k++] = key2[j++];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> ;</div><div class="line">	*last = k - <span class="number">1</span>; <span class="comment">//get lenth-1</span></div><div class="line">&#125;<span class="comment">//merge_array</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(BiTree *T, <span class="keyword">int</span> key[], <span class="keyword">int</span> first, <span class="keyword">int</span> last)</span></span>&#123; <span class="comment">//create balanced tree using sorted array</span></div><div class="line">	<span class="keyword">if</span>(first == last)&#123;<span class="comment">//left one record</span></div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[first];</div><div class="line">		(*T)-&gt;lchild = (*T)-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(first == last - <span class="number">1</span>)&#123;<span class="comment">//left two record</span></div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[first];</div><div class="line">		(*T)-&gt;rchild = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;rchild-&gt;data = key[last];</div><div class="line">		(*T)-&gt;lchild = (*T)-&gt;rchild-&gt;lchild = (*T)-&gt;rchild-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123; <span class="comment">//insert middle record</span></div><div class="line">		<span class="keyword">int</span> middle = (first + last) / <span class="number">2</span>;</div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[middle];</div><div class="line">		<span class="comment">//recursive call the join function</span></div><div class="line">		join(&amp;((*T)-&gt;lchild), key, first, middle - <span class="number">1</span>);</div><div class="line">		join(&amp;((*T)-&gt;rchild), key, middle + <span class="number">1</span>, last);</div><div class="line">	&#125;</div><div class="line">&#125; <span class="comment">//join</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(BiTree T, BiTree *T1, BiTree *T2, <span class="keyword">int</span> x)</span></span>&#123; <span class="comment">//split one balanced tree T into two balanced tree T1 and T2</span></div><div class="line">	<span class="keyword">int</span> key[MAX];</div><div class="line">	<span class="keyword">int</span> last, index_x;</div><div class="line">	inorder(T, key, &amp;last, <span class="number">0</span>);<span class="comment">//get sorted list array</span></div><div class="line">	<span class="keyword">int</span> get_x = get_index_x(key, last, x, &amp;index_x);<span class="comment">//get the index of x in array key</span></div><div class="line">	<span class="keyword">if</span> (get_x)&#123;</div><div class="line">		<span class="comment">//call join funcion to create balanced tree</span></div><div class="line">		join(T1, key, <span class="number">0</span>, index_x);</div><div class="line">		join(T2, key, index_x + <span class="number">1</span>, last);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123; <span class="comment">//all record &gt; x or &lt;= x, don't need split;</span></div><div class="line">		*T1 = T;</div><div class="line">		*T2 = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">&#125; <span class="comment">//split</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_index_x</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> last, <span class="keyword">int</span> x, <span class="keyword">int</span> *index_x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= last; i++ ) &#123;</div><div class="line">		j = i + <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>( key[i] &lt;= x &amp;&amp; key[j] &gt; x &amp;&amp;  j &lt;= last )&#123;</div><div class="line">			*index_x = i;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;<span class="comment">//get_index</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last, <span class="keyword">int</span> restore)</span></span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (!restore)</div><div class="line">	  i = <span class="number">0</span>;<span class="comment">//when everytime call the function in main function, restore i to zero</span></div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, key, last, ++ restore))&#123;</div><div class="line">			key[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, key, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">preorder</span><span class="params">(BiTree T)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(!T)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">printf</span>( <span class="string">"%d  "</span>, T-&gt;data );</div><div class="line">		<span class="keyword">if</span>(preorder(T-&gt;lchild))</div><div class="line">		  <span class="keyword">if</span>(preorder(T-&gt;rchild))</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;<span class="comment">//preorder</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> **argv )</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> key[<span class="number">16</span>];</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">16</span>; i++ ) &#123;</div><div class="line">		key[i<span class="number">-1</span>] = <span class="number">4</span>*i - <span class="number">3</span>;</div><div class="line">	&#125;</div><div class="line">	BiTree T;</div><div class="line">	join(&amp;T, key, <span class="number">0</span>, <span class="number">15</span>);</div><div class="line">	preorder(T);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line"></div><div class="line">	<span class="keyword">int</span> num[<span class="number">40</span>];</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">40</span>; i++ ) &#123;</div><div class="line">		num[i] = <span class="number">2</span>*i + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	BiTree T0, T1, T2;</div><div class="line">	</div><div class="line">	join(&amp;T0, num, <span class="number">0</span>, <span class="number">39</span>);</div><div class="line">	preorder(T0);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> x;</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"Input x: "</span> );</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</div><div class="line">	split(T0, &amp;T1, &amp;T2, x);</div><div class="line">	preorder(T1);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	preorder(T2);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line"></div><div class="line">	<span class="keyword">int</span> key1[<span class="number">10</span>], key2[<span class="number">20</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)</div><div class="line">	  key1[i] = <span class="number">3</span>*i;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++ ) &#123;</div><div class="line">		key2[i] = <span class="number">2</span>*i;</div><div class="line">	&#125;</div><div class="line">	BiTree t, t1, t2;</div><div class="line">	join(&amp;t1, key1, <span class="number">0</span>, <span class="number">9</span>);</div><div class="line">	preorder(t1);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	join(&amp;t2, key2, <span class="number">0</span>, <span class="number">19</span>);</div><div class="line">	preorder(t2);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line">	merge_tree(&amp;t, t1, t2);</div><div class="line">	preorder(t);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;平衡二叉树&quot;&gt;&lt;a href=&quot;#平衡二叉树&quot; class=&quot;headerlink&quot; title=&quot;平衡二叉树&quot;&gt;&lt;/a&gt;平衡二叉树&lt;/h3&gt;
-&lt;p&gt;平衡二叉树是这样一棵树，要么是一棵空树，要么是满足下面条件的树：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;左子树和右子树的深度的绝对值只差不超过 1;&lt;/li&gt;
-  &lt;li&gt;左子树和右子树也是平衡二叉树。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;既是二茬排序树又是平衡二叉树的树为平衡二茬排序树。下面说到的平衡二叉树表示平衡二茬排序树。&lt;/p&gt;
-&lt;p&gt;在平衡二叉树的结构定义中，比二叉树多了一个平衡因子。实现平衡二叉树的插入和删除是一件比较头疼的事情。因为每次插入或删除之后都要检查平衡是否被破坏，如果被破坏，则要进行各种左旋、右旋的平衡化。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Algorithms" scheme="http://ucasfl.me/categories/Algorithms/"/>
-    
-    
-      <category term="AVL-Tree" scheme="http://ucasfl.me/tags/AVL-Tree/"/>
     
   </entry>
   
