@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-10-28T06:52:02.027Z</updated>
+  <updated>2017-10-30T12:31:04.208Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一下那些年使用 Linux 踩过的坑</title>
+    <link href="http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/"/>
+    <id>http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/</id>
+    <published>2017-10-30T11:54:31.000Z</published>
+    <updated>2017-10-30T12:31:04.208Z</updated>
+    
+    <content type="html"><![CDATA[<p>笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 <code>emergency mode</code>，尝试重新启动到默认模式，然后出现下面的错误信息：</p>
+<a id="more"></a>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">[   84.260812] EXT4-fs (sda7): VFS: can&apos;t find ext4 filesystem.</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>错误信息很直接，说<code>sda7</code>不是<code>ext4</code>文件系统格式。</p>
+<p>然后查看分区：<code>fdisk -l</code>，输出如下：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">Disk /dev/sda: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors</div><div class="line">Units: sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 4096 bytes</div><div class="line">I/O size (minimum/optimal): 4096 bytes / 4096 bytes</div><div class="line">Disklabel type: gpt</div><div class="line">Disk identifier: A3FE2E3C-3EBC-401D-8BB3-987D9B33F0EC</div><div class="line"></div><div class="line">Device          Start        End   Sectors   Size Type</div><div class="line">/dev/sda1        2048    1026047   1024000   500M EFI System</div><div class="line">/dev/sda2     1026048    1288191    262144   128M Microsoft reserved</div><div class="line">/dev/sda3     1288192  284209819 282921628 134.9G Microsoft basic data</div><div class="line">/dev/sda4   284211200  508033023 223821824 106.7G Microsoft basic data</div><div class="line">/dev/sda5   508035072  949225471 441190400 210.4G Linux filesystem</div><div class="line">/dev/sda6   949225472  965793791  16568320   7.9G Linux swap</div><div class="line">/dev/sda7   965793792 1298845695 333051904 158.8G Microsoft basic data</div><div class="line">/dev/sda8  1298845696 1718274047 419428352   200G Linux filesystem</div><div class="line">/dev/sda9  1718276096 1927991295 209715200   100G Microsoft basic data</div><div class="line">/dev/sda10 1927993344 1928998911   1005568   491M Windows recovery environment</div><div class="line">/dev/sda11 1928998912 1951117311  22118400  10.6G Windows recovery environment</div><div class="line">/dev/sda12 1951119360 1953523711   2404352   1.2G Windows recovery environment</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>What ? <code>/dev/sd7</code> 是 Windows 系统的 C 盘，怎么它会在启动的时候挂载呢，而且还是以 <code>ext4</code> 的文件系统格式挂载。想了半天，没发现问题。还好，机智的我赶紧看了一下 <code>/etc/fstab</code> 文件内容：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"># /etc/fstab: static file system information.</div><div class="line">#</div><div class="line"># Use &apos;blkid&apos; to print the universally unique identifier for a</div><div class="line"># device; this may be used with UUID= as a more robust way to name devices</div><div class="line"># that works even if disks are added and removed. See fstab(5).</div><div class="line">#</div><div class="line"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</div><div class="line"># / was on /dev/sda9 during installation</div><div class="line">UUID=e3a38d48-680a-49e5-a98f-ae8bb6a37293 /               ext4    errors=remount-ro 0       1</div><div class="line"># /boot/efi was on /dev/sda1 during installation</div><div class="line">UUID=FE51-6D32  /boot/efi       vfat    umask=0077      0       1</div><div class="line"># swap was on /dev/sda10 during installation</div><div class="line">UUID=c6a51fbb-d72a-4d93-9305-b75aaf6ab1fa none            swap    sw              0       0</div><div class="line">dev/sda7 home/fenglv/FILE ext4 defaults 0 1</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>？？？原来之前挂载到 Ubuntu 上的盘设备名就是 <code>/dev/sda7</code> ，添加一个新的分区后设备名变为了 <code>/dev/sda8</code>，现在的 <code>/dev/sda7</code> 对应的就是 Windows 系统的 C 盘。而我没有修改 <code>/etc/fstab</code> ，所以才导致 Linux 系统启动的时候无法将该设备挂载上。</p>
+<p>修改之后终于正常启动了。</p>
+<p>然而事情并没有结束。之后，<code>sudo</code> 不能使用了，错误信息如下：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sudo: error in /etc/sudo.conf, line 0 while loading plugin `sudoers_policy&apos;</div><div class="line">sudo: /usr/lib/sudo/sudoers.so must be only be writable by owner</div><div class="line">sudo: fatal error, unable to load plugins</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>好吧，直接上网查。最后在 <a href="https://askubuntu.com/questions/637432/sudo-comes-up-with-an-error-cannot-run-anything-as-root" target="_blank" rel="external">askubunntu</a> 上找到了解决办法：启动到 <code>recovery mode</code> ，然后执行下面的命令：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">mount -o remount,rw /</div><div class="line">chmod 644 /usr/lib/sudo/sudoers.so</div><div class="line">chown -R root /usr/lib/sudo</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>至此，全部问题解决。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 &lt;code&gt;emergency mode&lt;/code&gt;，尝试重新启动到默认模式，然后出现下面的错误信息：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 主机和 Vbox 下的 Windows 虚拟机创建共享文件夹</title>
@@ -4560,105 +4651,6 @@
     
     
       <category term="Reading-Summary" scheme="http://ucasfl.me/tags/Reading-Summary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C 语言中的静态变量</title>
-    <link href="http://ucasfl.me/2017/06/19/The-Static-Variables-in-C/"/>
-    <id>http://ucasfl.me/2017/06/19/The-Static-Variables-in-C/</id>
-    <published>2017-06-19T09:17:44.000Z</published>
-    <updated>2017-09-02T04:38:28.979Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3>
-<p>静态变量的关键字为 <code>static</code> ，采用静态存储方式，一般的声明如：</p>
-<figure class="highlight c">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">static</span> <span class="keyword">int</span> a;<span class="comment">//a 为一个静态变量</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>静态变量的一些特点：</p>
-<ul>
-  <li><strong>静态局部变量在函数内定义，但不像自动变量那样，当调用时就存在，退出函数时就消失。静态局部变量始终存在着，也就是说它的生存期为整个源程序。</strong></li>
-  <li><strong>静态局部变量的生存期虽然为整个源程序，但是其作用域仍与自动变量相同，即只能在定义该变量的函数内使用该变量。退出该函数后， 尽管该变量还继续存在，但不能使用它。</strong></li>
-  <li>允许对构造类静态局部量赋初值。若未赋以初值，则由系统自动赋值。数值型变量自动赋初值0，字符型变量赋空字符。</li>
-  <li>对基本类型的静态局部变量若在说明时未赋以初值，则系统自动赋予0值。而对自动变量不赋初值，则其值是不定的。 根据静态局部变量的特点， 可以看出它是一种生存期为整个源文件的量。<strong>虽然离开定义它的函数后不能使用，但如再次调用定义它的函数时，它又可继续使用， 而且保存了前次被调用后留下的值。</strong> 因此，当多次调用一个函数且要求在调用之间保留某些变量的值时，可考虑采用静态局部变量。</li>
-</ul>
-<p>尽管如此，全局静态变量和局部静态变量还有一些区别。</p>
-<a id="more"></a>
-<h3 id="全局静态变量"><a href="#全局静态变量" class="headerlink" title="全局静态变量"></a>全局静态变量</h3>
-<p>尽管全局静态变量的生命周期为整个源程序，<strong>但是，当一个源程序由多个源文件组成时，非静态的全局变量在各个源文件中都是有效的。 而静态全局变量则限制了其作用域， 即只在定义该变量的源文件内有效， 在同一源程序的其它源文件中不能使用它。</strong></p>
-<h3 id="局部静态变量"><a href="#局部静态变量" class="headerlink" title="局部静态变量"></a>局部静态变量</h3>
-<p>在一些函数比如递归函数中，局部静态变量用处较大，比如在递归函数中。但是需要注意，每次在主函数中调用该函数时，局部静态变量都保存之前的值。此时，需要注意一个问题。</p>
-<p><strong>如果在一个递归函数中，当递归调用时，需要静态变量保存之前的值，而每次在主函数中调用该递归函数，都需要将该静态变量赋一个固定的初值，那么可以多加一个参数来实现。</strong></p>
-<p>下面是一个例子。通过中序遍历一个平衡二叉排序树来获取一个递增序列，将该序列存于一个数组中，并得到数组的最后一个元素下标。</p>
-<p>第一种实现：</p>
-<figure class="highlight c">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last)</span></span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, key, last, ++ restore))&#123;</div><div class="line">			key[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, key, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>如果在主函数中，该函数仅调用一次，那么像这样写没有任何问题。但是，如果主函数中多次调用了该递归函数，那么之后的调用 <code>i</code> 的初值遍不是 0 ，而这儿我们需要在是 0 ，当每次在主函数中调用时。</strong></p>
-<p>我们可以通过添加一个参数来保证每次在主函数中调用该递归函数时，<code>i</code> 的初值均为 0：</p>
-<figure class="highlight c">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last, <span class="keyword">int</span> restore)</span></span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (!restore)</div><div class="line">	  i = <span class="number">0</span>;<span class="comment">//when everytime call the function in main function, restore i to zero</span></div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, key, last, ++ restore))&#123;</div><div class="line">			key[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, key, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>如上面的代码所示，我们增加了一个新的参数 <code>restore</code>，每次在主函数中调用该函数时，<code>restore</code> 传入的值为 0 ，这样便可消除上面的问题。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;静态变量&quot;&gt;&lt;a href=&quot;#静态变量&quot; class=&quot;headerlink&quot; title=&quot;静态变量&quot;&gt;&lt;/a&gt;静态变量&lt;/h3&gt;
-&lt;p&gt;静态变量的关键字为 &lt;code&gt;static&lt;/code&gt; ，采用静态存储方式，一般的声明如：&lt;/p&gt;
-&lt;figure class=&quot;highlight c&quot;&gt;
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;td class=&quot;gutter&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;code&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; a;&lt;span class=&quot;comment&quot;&gt;//a 为一个静态变量&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-&lt;/figure&gt;
-&lt;p&gt;静态变量的一些特点：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;静态局部变量在函数内定义，但不像自动变量那样，当调用时就存在，退出函数时就消失。静态局部变量始终存在着，也就是说它的生存期为整个源程序。&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;静态局部变量的生存期虽然为整个源程序，但是其作用域仍与自动变量相同，即只能在定义该变量的函数内使用该变量。退出该函数后， 尽管该变量还继续存在，但不能使用它。&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;允许对构造类静态局部量赋初值。若未赋以初值，则由系统自动赋值。数值型变量自动赋初值0，字符型变量赋空字符。&lt;/li&gt;
-  &lt;li&gt;对基本类型的静态局部变量若在说明时未赋以初值，则系统自动赋予0值。而对自动变量不赋初值，则其值是不定的。 根据静态局部变量的特点， 可以看出它是一种生存期为整个源文件的量。&lt;strong&gt;虽然离开定义它的函数后不能使用，但如再次调用定义它的函数时，它又可继续使用， 而且保存了前次被调用后留下的值。&lt;/strong&gt; 因此，当多次调用一个函数且要求在调用之间保留某些变量的值时，可考虑采用静态局部变量。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;尽管如此，全局静态变量和局部静态变量还有一些区别。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
-    
-    
-      <category term="Static-variables" scheme="http://ucasfl.me/tags/Static-variables/"/>
     
   </entry>
   

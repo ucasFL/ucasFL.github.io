@@ -46,7 +46,7 @@
   <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Flynn,ucasFL" />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -64,15 +64,16 @@
 
 
 
-  <meta name="description" content="高山仰止，景行行止">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="春暖花开">
-  <meta property="og:url" content="http://ucasfl.me/categories/Assembly/index.html">
+  <meta name="description" content="笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 emergency mode，尝试重新启动到默认">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="记一下那些年使用 Linux 踩过的坑">
+  <meta property="og:url" content="http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/index.html">
   <meta property="og:site_name" content="春暖花开">
-  <meta property="og:description" content="高山仰止，景行行止">
+  <meta property="og:description" content="笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 emergency mode，尝试重新启动到默认">
+  <meta property="og:updated_time" content="2017-10-30T12:31:04.208Z">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="春暖花开">
-  <meta name="twitter:description" content="高山仰止，景行行止">
+  <meta name="twitter:title" content="记一下那些年使用 Linux 踩过的坑">
+  <meta name="twitter:description" content="笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 emergency mode，尝试重新启动到默认">
 
 
 
@@ -113,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://ucasfl.me/categories/Assembly/" />
+  <link rel="canonical" href="http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/" />
 
 
 
 
 
-  <title> 分类: Assembly | 春暖花开 </title>
+  <title> 记一下那些年使用 Linux 踩过的坑 | 春暖花开 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -144,7 +145,7 @@
 
 
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,51 +272,316 @@
           <div id="content" class="content">
 
 
-            <section id="posts" class="posts-collapse">
-              <div class="collection-title">
-                <h2>
-                  Assembly
-                  <small>分类</small>
-                </h2>
-              </div>
+            <div id="posts" class="posts-expand">
 
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
                 <header class="post-header">
 
-                  <h1 class="post-title">
 
-                    <a class="post-title-link" href="/2017/03/06/Intel-Assembly-Instructions-Manual/" itemprop="url">
-              
-                <span itemprop="name">Intel 汇编指令手册</span>
-              
-            </a>
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    记一下那些年使用 Linux 踩过的坑
+
 
                   </h1>
 
+
                   <div class="post-meta">
-                    <time class="post-time" itemprop="dateCreated" datetime="2017-03-06T22:36:20+08:00" content="2017/03/06">
-          03-06
-        </time>
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-30T19:54:31+08:00">
+                2017/10/30
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+                    <!--noindex-->
+                    <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                    <a href="/2017/10/30/What-the-fuck-problem-with-Linux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/30/What-the-fuck-problem-with-Linux/" itemprop="commentsCount"></span>
+                </a>
+                    </span>
+                    <!--/noindex-->
+
+
+
+
+
+                    <span id="/2017/10/30/What-the-fuck-problem-with-Linux/" class="leancloud_visitors" data-flag-title="记一下那些年使用 Linux 踩过的坑">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <p>笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 <code>emergency mode</code>，尝试重新启动到默认模式，然后出现下面的错误信息：</p>
+                  <a id="more"></a>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">[   84.260812] EXT4-fs (sda7): VFS: can&apos;t find ext4 filesystem.</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>错误信息很直接，说<code>sda7</code>不是<code>ext4</code>文件系统格式。</p>
+                  <p>然后查看分区：<code>fdisk -l</code>，输出如下：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">Disk /dev/sda: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors</div><div class="line">Units: sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 4096 bytes</div><div class="line">I/O size (minimum/optimal): 4096 bytes / 4096 bytes</div><div class="line">Disklabel type: gpt</div><div class="line">Disk identifier: A3FE2E3C-3EBC-401D-8BB3-987D9B33F0EC</div><div class="line"></div><div class="line">Device          Start        End   Sectors   Size Type</div><div class="line">/dev/sda1        2048    1026047   1024000   500M EFI System</div><div class="line">/dev/sda2     1026048    1288191    262144   128M Microsoft reserved</div><div class="line">/dev/sda3     1288192  284209819 282921628 134.9G Microsoft basic data</div><div class="line">/dev/sda4   284211200  508033023 223821824 106.7G Microsoft basic data</div><div class="line">/dev/sda5   508035072  949225471 441190400 210.4G Linux filesystem</div><div class="line">/dev/sda6   949225472  965793791  16568320   7.9G Linux swap</div><div class="line">/dev/sda7   965793792 1298845695 333051904 158.8G Microsoft basic data</div><div class="line">/dev/sda8  1298845696 1718274047 419428352   200G Linux filesystem</div><div class="line">/dev/sda9  1718276096 1927991295 209715200   100G Microsoft basic data</div><div class="line">/dev/sda10 1927993344 1928998911   1005568   491M Windows recovery environment</div><div class="line">/dev/sda11 1928998912 1951117311  22118400  10.6G Windows recovery environment</div><div class="line">/dev/sda12 1951119360 1953523711   2404352   1.2G Windows recovery environment</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>What ? <code>/dev/sd7</code> 是 Windows 系统的 C 盘，怎么它会在启动的时候挂载呢，而且还是以 <code>ext4</code> 的文件系统格式挂载。想了半天，没发现问题。还好，机智的我赶紧看了一下 <code>/etc/fstab</code> 文件内容：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"># /etc/fstab: static file system information.</div><div class="line">#</div><div class="line"># Use &apos;blkid&apos; to print the universally unique identifier for a</div><div class="line"># device; this may be used with UUID= as a more robust way to name devices</div><div class="line"># that works even if disks are added and removed. See fstab(5).</div><div class="line">#</div><div class="line"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</div><div class="line"># / was on /dev/sda9 during installation</div><div class="line">UUID=e3a38d48-680a-49e5-a98f-ae8bb6a37293 /               ext4    errors=remount-ro 0       1</div><div class="line"># /boot/efi was on /dev/sda1 during installation</div><div class="line">UUID=FE51-6D32  /boot/efi       vfat    umask=0077      0       1</div><div class="line"># swap was on /dev/sda10 during installation</div><div class="line">UUID=c6a51fbb-d72a-4d93-9305-b75aaf6ab1fa none            swap    sw              0       0</div><div class="line">dev/sda7 home/fenglv/FILE ext4 defaults 0 1</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>？？？原来之前挂载到 Ubuntu 上的盘设备名就是 <code>/dev/sda7</code> ，添加一个新的分区后设备名变为了 <code>/dev/sda8</code>，现在的 <code>/dev/sda7</code> 对应的就是 Windows 系统的 C 盘。而我没有修改 <code>/etc/fstab</code> ，所以才导致 Linux 系统启动的时候无法将该设备挂载上。</p>
+                  <p>修改之后终于正常启动了。</p>
+                  <p>然而事情并没有结束。之后，<code>sudo</code> 不能使用了，错误信息如下：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">sudo: error in /etc/sudo.conf, line 0 while loading plugin `sudoers_policy&apos;</div><div class="line">sudo: /usr/lib/sudo/sudoers.so must be only be writable by owner</div><div class="line">sudo: fatal error, unable to load plugins</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>好吧，直接上网查。最后在 <a href="https://askubuntu.com/questions/637432/sudo-comes-up-with-an-error-cannot-run-anything-as-root" target="_blank" rel="external">askubunntu</a> 上找到了解决办法：启动到 <code>recovery mode</code> ，然后执行下面的命令：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">mount -o remount,rw /</div><div class="line">chmod 644 /usr/lib/sudo/sudoers.so</div><div class="line">chown -R root /usr/lib/sudo</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>至此，全部问题解决。</p>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Linux/" rel="tag"># Linux</a>
+
                   </div>
 
-                </header>
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/" rel="next" title="Linux 主机和 Vbox 下的 Windows 虚拟机创建共享文件夹">
+                <i class="fa fa-chevron-left"></i> Linux 主机和 Vbox 下的 Windows 虚拟机创建共享文件夹
+              </a>
+
+                    </div>
+
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
               </article>
 
 
 
-            </section>
+              <div class="post-spread">
 
 
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
 
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
 
 
           </div>
 
 
 
+
+          <div class="comments" id="comments">
+
+            <div id="hypercomments_widget"></div>
+
+          </div>
 
 
         </div>
@@ -598,6 +864,10 @@
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
 
 
@@ -627,6 +897,12 @@
       label: "{\%COUNT%\}"
     });
 
+
+    _hcwp.push({
+      widget: "Stream",
+      widget_id: 90700,
+      xid: "2017/10/30/What-the-fuck-problem-with-Linux/"
+    });
 
 
     (function() {
