@@ -4,7 +4,7 @@
   <url>
     <loc>http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/</loc>
     
-    <lastmod>2017-10-30T12:31:04.208Z</lastmod>
+    <lastmod>2017-10-31T02:48:59.013Z</lastmod>
     
   </url>
   
@@ -121,14 +121,14 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/12/19/the-Solution-of-sudo-apt-update-Failed/</loc>
+    <loc>http://ucasfl.me/categories/index.html</loc>
     
     <lastmod>2017-09-02T04:38:29.083Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://ucasfl.me/categories/index.html</loc>
+    <loc>http://ucasfl.me/2016/12/19/the-Solution-of-sudo-apt-update-Failed/</loc>
     
     <lastmod>2017-09-02T04:38:29.083Z</lastmod>
     
@@ -177,7 +177,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/08/07/Find-and-Search-Part3/</loc>
+    <loc>http://ucasfl.me/2017/08/07/Find-and-Search-Part2/</loc>
     
     <lastmod>2017-09-02T04:38:29.063Z</lastmod>
     
@@ -191,35 +191,14 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/05/25/The-Package-of-Cream-for-Vim/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/03/18/Vim-Beginner-Tutorial/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/08/07/Find-and-Search-Part2/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/08/05/Find-and-Search-Part1/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://ucasfl.me/2017/08/08/Inner-Sort/</loc>
+    
+    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/08/07/Find-and-Search-Part3/</loc>
     
     <lastmod>2017-09-02T04:38:29.063Z</lastmod>
     
@@ -233,14 +212,35 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/03/16/Stack/</loc>
+    <loc>http://ucasfl.me/2017/03/18/Vim-Beginner-Tutorial/</loc>
+    
+    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/08/05/Find-and-Search-Part1/</loc>
+    
+    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/05/25/The-Package-of-Cream-for-Vim/</loc>
+    
+    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/06/13/Summary:Python+MySQL/</loc>
     
     <lastmod>2017-09-02T04:38:29.059Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/03/27/String-Part2/</loc>
+    <loc>http://ucasfl.me/2017/03/16/Stack/</loc>
     
     <lastmod>2017-09-02T04:38:29.059Z</lastmod>
     
@@ -254,28 +254,14 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/06/13/Summary:Python+MySQL/</loc>
+    <loc>http://ucasfl.me/2017/03/27/String-Part2/</loc>
     
     <lastmod>2017-09-02T04:38:29.059Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.051Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/04/12/NMAP-Comman-Scan-Introduction-2/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.051Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/06/10/Reading-Summary:Python-MySQL-HTML-CSS-XML/</loc>
+    <loc>http://ucasfl.me/2016/09/24/Speed-LibreOffice-With-4-Tips/</loc>
     
     <lastmod>2017-09-02T04:38:29.051Z</lastmod>
     
@@ -289,14 +275,28 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/09/30/Scientific-Audio-Work-Part2/</loc>
+    <loc>http://ucasfl.me/2017/04/12/NMAP-Comman-Scan-Introduction-2/</loc>
     
     <lastmod>2017-09-02T04:38:29.051Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/09/24/Speed-LibreOffice-With-4-Tips/</loc>
+    <loc>http://ucasfl.me/2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/</loc>
+    
+    <lastmod>2017-09-02T04:38:29.051Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/06/10/Reading-Summary:Python-MySQL-HTML-CSS-XML/</loc>
+    
+    <lastmod>2017-09-02T04:38:29.051Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2016/09/30/Scientific-Audio-Work-Part2/</loc>
     
     <lastmod>2017-09-02T04:38:29.051Z</lastmod>
     
@@ -317,13 +317,6 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/04/22/the-Error-Summary-of-C-Pointer-Part2/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.043Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://ucasfl.me/2016/11/20/KDE-use-guide-Like-Windows10/</loc>
     
     <lastmod>2017-09-02T04:38:29.043Z</lastmod>
@@ -331,9 +324,9 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/04/15/Array-and-Table/</loc>
+    <loc>http://ucasfl.me/2017/04/22/the-Error-Summary-of-C-Pointer-Part2/</loc>
     
-    <lastmod>2017-09-02T04:38:29.039Z</lastmod>
+    <lastmod>2017-09-02T04:38:29.043Z</lastmod>
     
   </url>
   
@@ -352,6 +345,13 @@
   </url>
   
   <url>
+    <loc>http://ucasfl.me/2017/04/15/Array-and-Table/</loc>
+    
+    <lastmod>2017-09-02T04:38:29.039Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ucasfl.me/2017/05/11/Graph-Part1/</loc>
     
     <lastmod>2017-09-02T04:38:29.039Z</lastmod>
@@ -359,14 +359,14 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/06/04/4-Best-Library-of-Python-for-Build-Good-cli-ui/</loc>
+    <loc>http://ucasfl.me/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/</loc>
     
     <lastmod>2017-09-02T04:38:29.031Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/01/27/3-Vim-Tricks-for-Advanced-Users/</loc>
+    <loc>http://ucasfl.me/2017/06/04/4-Best-Library-of-Python-for-Build-Good-cli-ui/</loc>
     
     <lastmod>2017-09-02T04:38:29.031Z</lastmod>
     
@@ -380,7 +380,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/</loc>
+    <loc>http://ucasfl.me/2017/01/27/3-Vim-Tricks-for-Advanced-Users/</loc>
     
     <lastmod>2017-09-02T04:38:29.031Z</lastmod>
     
@@ -394,7 +394,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/</loc>
+    <loc>http://ucasfl.me/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/</loc>
     
     <lastmod>2017-09-02T04:38:29.019Z</lastmod>
     
@@ -408,7 +408,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/</loc>
+    <loc>http://ucasfl.me/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/</loc>
     
     <lastmod>2017-09-02T04:38:29.019Z</lastmod>
     
@@ -429,21 +429,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/02/28/Beginning-of-Data-Structures/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.003Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://ucasfl.me/2017/04/09/How-to-Install-Devuan-Linux/</loc>
-    
-    <lastmod>2017-09-02T04:38:29.003Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2016/10/24/FEDORA-CHAPEAU-LINUX-24-Released/</loc>
     
     <lastmod>2017-09-02T04:38:29.003Z</lastmod>
     
@@ -457,9 +443,16 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/05/20/Text-Specific-Setting-in-Vim/</loc>
+    <loc>http://ucasfl.me/2016/10/24/FEDORA-CHAPEAU-LINUX-24-Released/</loc>
     
-    <lastmod>2017-09-02T04:38:28.991Z</lastmod>
+    <lastmod>2017-09-02T04:38:29.003Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/02/28/Beginning-of-Data-Structures/</loc>
+    
+    <lastmod>2017-09-02T04:38:29.003Z</lastmod>
     
   </url>
   
@@ -471,9 +464,9 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/03/19/How-to-Install-Latest-Python3.6-in-Linux/</loc>
+    <loc>http://ucasfl.me/2017/05/20/Text-Specific-Setting-in-Vim/</loc>
     
-    <lastmod>2017-09-02T04:38:28.987Z</lastmod>
+    <lastmod>2017-09-02T04:38:28.991Z</lastmod>
     
   </url>
   
@@ -485,7 +478,14 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/02/26/How-to-Spend-Old-Ubunntu-System/</loc>
+    <loc>http://ucasfl.me/2017/03/19/How-to-Install-Latest-Python3.6-in-Linux/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.987Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/04/15/How-to-Enable-Desktop-Share-in-Ubuntu-and-Linux-Mint/</loc>
     
     <lastmod>2017-09-02T04:38:28.983Z</lastmod>
     
@@ -499,7 +499,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/12/31/How-to-Install-PyCharm-in-Linux/</loc>
+    <loc>http://ucasfl.me/2017/03/18/How-to-Install-and-configure-FTP-in-Ubuntu/</loc>
     
     <lastmod>2017-09-02T04:38:28.983Z</lastmod>
     
@@ -513,14 +513,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/04/15/How-to-Enable-Desktop-Share-in-Ubuntu-and-Linux-Mint/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/03/18/How-to-Install-and-configure-FTP-in-Ubuntu/</loc>
+    <loc>http://ucasfl.me/2017/02/26/How-to-Spend-Old-Ubunntu-System/</loc>
     
     <lastmod>2017-09-02T04:38:28.983Z</lastmod>
     
@@ -541,35 +534,14 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/11/04/Using-Docker-for-NET-Core-in-Linux/</loc>
+    <loc>http://ucasfl.me/2016/12/31/How-to-Install-PyCharm-in-Linux/</loc>
     
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://ucasfl.me/2017/06/19/The-Static-Variables-in-C/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/03/18/Free-Command-in-Linux/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/03/18/Vim-Shortcut-Sheet/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2016/11/24/XFCE-New-Features/</loc>
     
     <lastmod>2017-09-02T04:38:28.979Z</lastmod>
     
@@ -583,14 +555,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2016/12/06/Install-Patch-or-Auto-Update-in-CentOS-and-RHEL/</loc>
+    <loc>http://ucasfl.me/2017/03/18/Vim-Shortcut-Sheet/</loc>
     
     <lastmod>2017-09-02T04:38:28.979Z</lastmod>
     
@@ -604,9 +569,65 @@
   </url>
   
   <url>
+    <loc>http://ucasfl.me/2016/12/06/Install-Patch-or-Auto-Update-in-CentOS-and-RHEL/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ucasfl.me/2017/03/18/Queue/</loc>
     
     <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2016/11/04/Using-Docker-for-NET-Core-in-Linux/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2016/11/24/XFCE-New-Features/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/03/18/Free-Command-in-Linux/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/06/07/main-in-Python/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/06/17/no-zuo-no-die/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2016/10/27/ORWL-Little-Computer-Which-Can-Delete-Modified-Data/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
     
   </url>
   
@@ -625,37 +646,9 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/10/27/ORWL-Little-Computer-Which-Can-Delete-Modified-Data/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://ucasfl.me/2016/10/24/White-House-Open-Source-Chat-Robot-Codes/</loc>
     
     <lastmod>2017-09-02T04:38:28.975Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/06/17/no-zuo-no-die/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/06/07/main-in-Python/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/05/28/From-Ctex-to-TeXlive/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.971Z</lastmod>
     
   </url>
   
@@ -667,7 +660,7 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/01/26/5-Practical-Skills-of-Vim-for-Experienced-Users/</loc>
+    <loc>http://ucasfl.me/2017/05/28/From-Ctex-to-TeXlive/</loc>
     
     <lastmod>2017-09-02T04:38:28.971Z</lastmod>
     
@@ -681,14 +674,21 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/04/29/Recursive-Theorem/</loc>
+    <loc>http://ucasfl.me/2017/06/20/Linux-Command-Line-learning-notes-Part3/</loc>
     
     <lastmod>2017-09-02T04:38:28.971Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/06/20/Linux-Command-Line-learning-notes-Part3/</loc>
+    <loc>http://ucasfl.me/2017/01/26/5-Practical-Skills-of-Vim-for-Experienced-Users/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.971Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/04/29/Recursive-Theorem/</loc>
     
     <lastmod>2017-09-02T04:38:28.971Z</lastmod>
     
@@ -709,14 +709,21 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/03/02/Link-List/</loc>
+    <loc>http://ucasfl.me/2017/05/23/8-Excellent-Open-Source-Markdown-Editor/</loc>
     
     <lastmod>2017-09-02T04:38:28.959Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/05/23/8-Excellent-Open-Source-Markdown-Editor/</loc>
+    <loc>http://ucasfl.me/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.959Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/03/02/Link-List/</loc>
     
     <lastmod>2017-09-02T04:38:28.959Z</lastmod>
     
@@ -737,9 +744,16 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/</loc>
+    <loc>http://ucasfl.me/2017/02/13/Goodbye-for-Goodbye/</loc>
     
-    <lastmod>2017-09-02T04:38:28.959Z</lastmod>
+    <lastmod>2017-09-02T04:38:28.955Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/01/22/the-Best-Linux-System-for-Beginners/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.955Z</lastmod>
     
   </url>
   
@@ -758,20 +772,6 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/05/06/Tree-Part1/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.955Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/01/22/the-Best-Linux-System-for-Beginners/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.955Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://ucasfl.me/2017/04/26/the%20Sieve%20of%20Eratosthenes/</loc>
     
     <lastmod>2017-09-02T04:38:28.955Z</lastmod>
@@ -779,9 +779,16 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/02/13/Goodbye-for-Goodbye/</loc>
+    <loc>http://ucasfl.me/2017/05/06/Tree-Part1/</loc>
     
     <lastmod>2017-09-02T04:38:28.955Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ucasfl.me/2017/03/14/Hello-Next/</loc>
+    
+    <lastmod>2017-09-02T04:38:28.947Z</lastmod>
     
   </url>
   
@@ -794,13 +801,6 @@
   
   <url>
     <loc>http://ucasfl.me/2017/05/11/Graph-Part3/</loc>
-    
-    <lastmod>2017-09-02T04:38:28.947Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/03/14/Hello-Next/</loc>
     
     <lastmod>2017-09-02T04:38:28.947Z</lastmod>
     
@@ -828,14 +828,14 @@
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/02/14/10-Top-Open-Source-Projects-of-2016/</loc>
+    <loc>http://ucasfl.me/2017/05/06/Tree-Part2/</loc>
     
     <lastmod>2017-09-02T04:38:28.939Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://ucasfl.me/2017/05/06/Tree-Part2/</loc>
+    <loc>http://ucasfl.me/2017/02/14/10-Top-Open-Source-Projects-of-2016/</loc>
     
     <lastmod>2017-09-02T04:38:28.939Z</lastmod>
     

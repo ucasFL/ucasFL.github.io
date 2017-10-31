@@ -70,7 +70,7 @@
   <meta property="og:url" content="http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/index.html">
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 emergency mode，尝试重新启动到默认">
-  <meta property="og:updated_time" content="2017-10-30T12:31:04.208Z">
+  <meta property="og:updated_time" content="2017-10-31T02:48:59.013Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="记一下那些年使用 Linux 踩过的坑">
   <meta name="twitter:description" content="笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 emergency mode，尝试重新启动到默认">
@@ -422,10 +422,10 @@
                     <table>
                       <tr>
                         <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre>
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">Disk /dev/sda: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors</div><div class="line">Units: sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 4096 bytes</div><div class="line">I/O size (minimum/optimal): 4096 bytes / 4096 bytes</div><div class="line">Disklabel type: gpt</div><div class="line">Disk identifier: A3FE2E3C-3EBC-401D-8BB3-987D9B33F0EC</div><div class="line"></div><div class="line">Device          Start        End   Sectors   Size Type</div><div class="line">/dev/sda1        2048    1026047   1024000   500M EFI System</div><div class="line">/dev/sda2     1026048    1288191    262144   128M Microsoft reserved</div><div class="line">/dev/sda3     1288192  284209819 282921628 134.9G Microsoft basic data</div><div class="line">/dev/sda4   284211200  508033023 223821824 106.7G Microsoft basic data</div><div class="line">/dev/sda5   508035072  949225471 441190400 210.4G Linux filesystem</div><div class="line">/dev/sda6   949225472  965793791  16568320   7.9G Linux swap</div><div class="line">/dev/sda7   965793792 1298845695 333051904 158.8G Microsoft basic data</div><div class="line">/dev/sda8  1298845696 1718274047 419428352   200G Linux filesystem</div><div class="line">/dev/sda9  1718276096 1927991295 209715200   100G Microsoft basic data</div><div class="line">/dev/sda10 1927993344 1928998911   1005568   491M Windows recovery environment</div><div class="line">/dev/sda11 1928998912 1951117311  22118400  10.6G Windows recovery environment</div><div class="line">/dev/sda12 1951119360 1953523711   2404352   1.2G Windows recovery environment</div></pre>
+                          <pre><div class="line">Disk /dev/sda: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors</div><div class="line">Units: sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 4096 bytes</div><div class="line">I/O size (minimum/optimal): 4096 bytes / 4096 bytes</div><div class="line">Disklabel type: gpt</div><div class="line">Disk identifier: A3FE2E3C-3EBC-401D-8BB3-987D9B33F0EC</div><div class="line"></div><div class="line">Device          Start        End   Sectors   Size Type</div><div class="line">/dev/sda1        2048    1026047   1024000   500M EFI System</div><div class="line">/dev/sda2     1026048    1288191    262144   128M Microsoft reserved</div><div class="line">/dev/sda3     1288192  284209819 282921628 134.9G Microsoft basic data</div><div class="line">/dev/sda4   284211200  508033023 223821824 106.7G Microsoft basic data</div><div class="line">/dev/sda5   508035072  949225471 441190400 210.4G Linux filesystem</div><div class="line">/dev/sda6   949225472  965793791  16568320   7.9G Linux swap</div><div class="line">/dev/sda7   965793792 1298845695 333051904 158.8G Microsoft basic data</div><div class="line">/dev/sda8  1298845696 1718274047 419428352   200G Linux filesystem</div><div class="line">/dev/sda9  1718276096 1927991295 209715200   100G Microsoft basic datamount -o remount,rw /</div><div class="line">mount --all</div><div class="line">chown root:root /usr/bin/sudo</div><div class="line">chmod 4755 /usr/bin/sudo</div><div class="line">/dev/sda10 1927993344 1928998911   1005568   491M Windows recovery environment</div><div class="line">/dev/sda11 1928998912 1951117311  22118400  10.6G Windows recovery environment</div><div class="line">/dev/sda12 1951119360 1953523711   2404352   1.2G Windows recovery environment</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -472,6 +472,47 @@
                     </table>
                   </figure>
                   <p>至此，全部问题解决。</p>
+                  <p>问题并没有真的结束（文章更新），之后，virtualbox 不能启动了：</p>
+                  <figure class="highlight vim">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">VBoxHeadles<span class="variable">s:</span> Effective UID <span class="keyword">is</span> not root (euid=<span class="number">1000</span> egid=<span class="number">1000</span> uid=<span class="number">1000</span> gid=<span class="number">1000</span>)</div><div class="line">VBoxHeadles<span class="variable">s:</span> Tip! It may <span class="keyword">help</span> <span class="keyword">to</span> reinstall VirtualBox.</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>正确的做法就是按照它的提示把 virtualbox 卸了重新安装。然而，我却去修改<code>/usr/bin</code>的所有者：<code>chown -R root /usr/bin</code> 。这样以后，不但 <code>virtual box</code> 无法启动，<code>sudo</code> 又不能用了，这次的错误信息如下：</p>
+                  <figure class="highlight armasm">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="symbol">sudo</span>: /usr/<span class="keyword">bin/sudo </span>must <span class="keyword">be </span>owned <span class="keyword">by </span>uid <span class="number">0</span> <span class="keyword">and </span>have the setuid <span class="keyword">bit </span>set</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>最后找到解决办法：再次进入 <code>recovery mode</code>，执行下面命令：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">mount -o remount,rw /</div><div class="line">mount --all</div><div class="line">chown root:root /usr/bin/sudo</div><div class="line">chmod 4755 /usr/bin/sudo</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>问题解决。</p>
+                  <p>Linux 的权限问题真让人头疼。</p>
 
                 </div>
 
