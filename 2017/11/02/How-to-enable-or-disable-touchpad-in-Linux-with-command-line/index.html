@@ -70,7 +70,7 @@
   <meta property="og:url" content="http://ucasfl.me/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/index.html">
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。">
-  <meta property="og:updated_time" content="2017-11-02T16:07:14.241Z">
+  <meta property="og:updated_time" content="2017-11-02T16:12:49.183Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="在 Linux 中如何通过命令行开启或禁用触摸板">
   <meta name="twitter:description" content="本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。">
@@ -464,27 +464,27 @@
                   </figure>
                   <p>其中，设备 ID 和属性编号也可替换为名字。</p>
                   <p>但是，每次都使用这个命令会比较麻烦，因此，可以通过一个简单的脚本来实现：</p>
-                  <figure class="highlight plain">
+                  <figure class="highlight bash">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">#!/bin/bash</div><div class="line">if [ &quot;$1&quot; == &quot;on&quot; ]; then</div><div class="line">	xinput set-prop 12 140 1;</div><div class="line">	echo &quot;Touchpad successfully enabled!&quot;;</div><div class="line">elif [ &quot;$1&quot; == &quot;off&quot; ]; then</div><div class="line">	xinput set-prop 12 140 0;</div><div class="line">	echo &quot;Touchpad successfully disabled!&quot;</div><div class="line">else</div><div class="line">	echo &quot;Please use the program with one of the following arguments:&quot;</div><div class="line">	echo &quot;   (1) on  : enable the touchpad!&quot;</div><div class="line">	echo &quot;   (2) off : disable the touchpad!&quot;</div><div class="line">fi</div></pre>
+                          <pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> == <span class="string">"on"</span> ]; <span class="keyword">then</span></div><div class="line">	xinput <span class="built_in">set</span>-prop 12 140 1;</div><div class="line">	<span class="built_in">echo</span> <span class="string">"Touchpad successfully enabled!"</span>;</div><div class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$1</span>"</span> == <span class="string">"off"</span> ]; <span class="keyword">then</span></div><div class="line">	xinput <span class="built_in">set</span>-prop 12 140 0;</div><div class="line">	<span class="built_in">echo</span> <span class="string">"Touchpad successfully disabled!"</span></div><div class="line"><span class="keyword">else</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"Please use the program with one of the following arguments:"</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"   (1) on  : enable the touchpad!"</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"   (2) off : disable the touchpad!"</span></div><div class="line"><span class="keyword">fi</span></div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
                   <p>将该脚本命名为 <code>touchpad</code> ，然后放到 <code>/home/user/bin</code> 目录下。然后，开启或关闭触摸板就很方便了：</p>
-                  <figure class="highlight plain">
+                  <figure class="highlight nginx">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"># 开启触摸板</div><div class="line">touchpad on</div><div class="line"># 关闭触摸板</div><div class="line">touchpad off</div></pre>
+                          <pre><div class="line"><span class="comment"># 开启触摸板</span></div><div class="line"><span class="attribute">touchpad</span> <span class="literal">on</span></div><div class="line"><span class="comment"># 关闭触摸板</span></div><div class="line">touchpad <span class="literal">off</span></div></pre>
                         </td>
                       </tr>
                     </table>
