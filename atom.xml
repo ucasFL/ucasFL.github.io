@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-10-31T02:48:59.013Z</updated>
+  <updated>2017-11-02T16:07:14.241Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,127 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在 Linux 中如何通过命令行开启或禁用触摸板</title>
+    <link href="http://ucasfl.me/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/"/>
+    <id>http://ucasfl.me/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/</id>
+    <published>2017-11-02T15:45:10.000Z</published>
+    <updated>2017-11-02T16:07:14.241Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。</p>
+<a id="more"></a>
+<p>首先，需要了解一个工具：<code>xinput</code></p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">xinput is <span class="selector-tag">a</span> utility to list available <span class="selector-tag">input</span> devices, query information</div><div class="line">about <span class="selector-tag">a</span> device and change <span class="selector-tag">input</span> device settings.</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>上面是 <code>man</code> 手册对它的描述，中文什么意思很简单。</p>
+<p>要通过触摸板开启或关闭触摸板，首先要要获取触摸板的设备 ID 和属性。</p>
+<p>我们可以可以先通过 <code>xinput --list</code> 命令查看有哪些输入设备。下面的结果是在我的笔记本上的输出：</p>
+<figure class="highlight crmsh">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">⎡ Virtual core pointer                          <span class="attr">id=</span><span class="number">2</span>    [<span class="keyword">master</span> <span class="title">pointer</span>  (<span class="number">3</span>)]</div><div class="line">⎜   ↳ Virtual core XTEST pointer                <span class="attr">id=</span><span class="number">4</span>    [<span class="literal">slave</span>  pointer  (<span class="number">2</span>)]</div><div class="line">⎜   ↳ PixArt USB Optical Mouse                  <span class="attr">id=</span><span class="number">10</span>   [<span class="literal">slave</span>  pointer  (<span class="number">2</span>)]</div><div class="line">⎜   ↳ DELL0767:<span class="number">00</span> <span class="number">06</span>CB:<span class="number">7</span>E92 Touchpad            <span class="attr">id=</span><span class="number">12</span>   [<span class="literal">slave</span>  pointer  (<span class="number">2</span>)]</div><div class="line">⎜   ↳ SynPS/<span class="number">2</span> Synaptics TouchPad                <span class="attr">id=</span><span class="number">14</span>   [<span class="literal">slave</span>  pointer  (<span class="number">2</span>)]</div><div class="line">⎣ Virtual core keyboard                         <span class="attr">id=</span><span class="number">3</span>    [<span class="keyword">master</span> <span class="title">keyboard</span> (<span class="number">2</span>)]</div><div class="line">    ↳ Virtual core XTEST keyboard               <span class="attr">id=</span><span class="number">5</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Power Button                              <span class="attr">id=</span><span class="number">6</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Video Bus                                 <span class="attr">id=</span><span class="number">7</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Power Button                              <span class="attr">id=</span><span class="number">8</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Sleep Button                              <span class="attr">id=</span><span class="number">9</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Integrated Webcam                         <span class="attr">id=</span><span class="number">11</span>   [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ AT Translated Set <span class="number">2</span> keyboard              <span class="attr">id=</span><span class="number">13</span>   [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Dell WMI hotkeys                          <span class="attr">id=</span><span class="number">15</span>   [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ DELL Wireless hotkeys                     <span class="attr">id=</span><span class="number">16</span>   [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可以看到，第 4 行输出即为触摸板，后面的 <code>id</code> 即为设备号。</p>
+<p>下面，查看触摸板的属性：</p>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">xinput <span class="comment">--list-props 12 </span></div><div class="line">＃或</div><div class="line">xinput <span class="comment">--list-props ‘DELL0767:00 06CB:7E92 Touchpad’</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>即使用设备 <code>id</code> 或设备名作为后面的参数均可以。</p>
+<p>下面是在我的笔记本上的输出：</p>
+<figure class="highlight aspectj">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">Device <span class="string">'DELL0767:00 06CB:7E92 Touchpad'</span>:</div><div class="line">	Device Enabled (140):	0</div><div class="line">	Coordinate Transformation Matrix (142):	1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000</div><div class="line">	Device Accel Profile (263):	1</div><div class="line">	Device Accel Constant Deceleration (264):	2.500000</div><div class="line">	Device Accel Adaptive Deceleration (265):	1.000000</div><div class="line">	Device Accel Velocity Scaling (266):	12.500000</div><div class="line">	Synaptics Edges (288):	49, 1180, 50, 879</div><div class="line">	Synaptics Finger (289):	25, 30, 0</div><div class="line">	Synaptics Tap Time (290):	180</div><div class="line">	Synaptics Tap Move (291):	67</div><div class="line">	Synaptics Tap Durations (292):	180, 180, 100</div><div class="line">	Synaptics ClickPad (293):	1</div><div class="line">	Synaptics Middle Button Timeout (294):	0</div><div class="line">	Synaptics Two-Finger Pressure (295):	282</div><div class="line">	Synaptics Two-Finger Width (296):	7</div><div class="line">	Synaptics Scrolling Distance (297):	30, 30</div><div class="line">	Synaptics Edge Scrolling (298):	0, 0, 0</div><div class="line">	Synaptics Two-Finger Scrolling (299):	1, 1</div><div class="line">	Synaptics Move Speed (300):	1.000000, 1.750000, 0.129870, 0.000000</div><div class="line">	Synaptics Off (301):	0</div><div class="line">	Synaptics Locked Drags (302):	0</div><div class="line">	Synaptics Locked Drags Timeout (303):	5000</div><div class="line">	Synaptics Tap Action (304):	2, 3, 0, 0, 1, 3, 2</div><div class="line">	Synaptics Click Action (305):	1, 3, 0</div><div class="line">	Synaptics Circular Scrolling (306):	0</div><div class="line">	Synaptics Circular Scrolling Distance (307):	0.100000</div><div class="line">	Synaptics Circular Scrolling Trigger (308):	0</div><div class="line">	Synaptics Circular Pad (309):	0</div><div class="line">	Synaptics Palm Detection (310):	0</div><div class="line">	Synaptics Palm Dimensions (311):	10, 200</div><div class="line">	Synaptics Coasting Speed (312):	20.000000, 50.000000</div><div class="line">	Synaptics Pressure Motion (313):	30, 160</div><div class="line">	Synaptics Pressure Motion Factor (314):	1.000000, 1.000000</div><div class="line">	Synaptics Resolution Detect (315):	1</div><div class="line">	Synaptics Grab Event Device (316):	0</div><div class="line">	Synaptics Gestures (317):	1</div><div class="line">	Synaptics Capabilities (318):	1, 0, 0, 1, 1, 0, 0</div><div class="line">	Synaptics Pad Resolution (319):	12, 12</div><div class="line">	Synaptics Area (320):	0, 0, 0, 0</div><div class="line">	Synaptics Soft Button Areas (321):	614, 0, 761, 0, 0, 0, 0, 0</div><div class="line">	Synaptics Noise Cancellation (322):	7, 7</div><div class="line">	Device Product ID (258):	1739, 32402</div><div class="line">	Device Node (259):	<span class="string">"/dev/input/event15"</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可以看到，第一个属性即为触摸板状态：1 表示开启，0 表示关闭，属性编号为 140。</p>
+<p>之后，我们可以使用下面的命令来开启或关闭触摸板：</p>
+<figure class="highlight dsconfig">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment"># 开启触摸板</span></div><div class="line"><span class="string">xinput </span><span class="built_in">set-prop</span> <span class="string">12 </span><span class="string">140 </span>1</div><div class="line"><span class="comment"># 关闭触摸板</span></div><div class="line"><span class="string">xinput </span><span class="built_in">set-prop</span> <span class="string">12 </span><span class="string">140 </span>0</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>其中，设备 ID 和属性编号也可替换为名字。</p>
+<p>但是，每次都使用这个命令会比较麻烦，因此，可以通过一个简单的脚本来实现：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">#!/bin/bash</div><div class="line">if [ &quot;$1&quot; == &quot;on&quot; ]; then</div><div class="line">	xinput set-prop 12 140 1;</div><div class="line">	echo &quot;Touchpad successfully enabled!&quot;;</div><div class="line">elif [ &quot;$1&quot; == &quot;off&quot; ]; then</div><div class="line">	xinput set-prop 12 140 0;</div><div class="line">	echo &quot;Touchpad successfully disabled!&quot;</div><div class="line">else</div><div class="line">	echo &quot;Please use the program with one of the following arguments:&quot;</div><div class="line">	echo &quot;   (1) on  : enable the touchpad!&quot;</div><div class="line">	echo &quot;   (2) off : disable the touchpad!&quot;</div><div class="line">fi</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>将该脚本命名为 <code>touchpad</code> ，然后放到 <code>/home/user/bin</code> 目录下。然后，开启或关闭触摸板就很方便了：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"># 开启触摸板</div><div class="line">touchpad on</div><div class="line"># 关闭触摸板</div><div class="line">touchpad off</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>注意，脚本中的设备 ID 和属性编号应和你的笔记本一致，<code>user</code> 为你的用户名。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Linux touchpad" scheme="http://ucasfl.me/tags/Linux-touchpad/"/>
+    
+  </entry>
   
   <entry>
     <title>记一下那些年使用 Linux 踩过的坑</title>
@@ -4199,499 +4320,6 @@
     
     
       <category term="Stack-Over-Flow" scheme="http://ucasfl.me/tags/Stack-Over-Flow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Linux 命令行大全》学习笔记-Part3</title>
-    <link href="http://ucasfl.me/2017/06/20/Linux-Command-Line-learning-notes-Part3/"/>
-    <id>http://ucasfl.me/2017/06/20/Linux-Command-Line-learning-notes-Part3/</id>
-    <published>2017-06-20T04:54:21.000Z</published>
-    <updated>2017-09-02T04:38:28.971Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Chapter-14-软件包管理"><a href="#Chapter-14-软件包管理" class="headerlink" title="Chapter 14 软件包管理"></a>Chapter 14 软件包管理</h3>
-<p>低级软件包：</p>
-<ul>
-  <li>
-    <p>Debian : dpkg/rpm</p>
-    <ul>
-      <li>dpkg –install file.deb/rpm -i package_file/rpm -U package_file：安装/升级软件</li>
-      <li>dpkg –list ：列出所有已安装软件</li>
-      <li>dpkg –status package_name：判断是否已安装</li>
-      <li>dpkg –search filename/rpm -qf file_name：查询文件所属命令</li>
-    </ul>
-  </li>
-  <li>高级软件包：apt-get
-    <ul>
-      <li>apt-get update ; apt-cache search file_name：搜索软件包</li>
-      <li>apt-get update ; apt-get install package_name：安装软件包</li>
-      <li>apt-get remove package_name/yum erase package_name：删除软件包，彻底删除干净，可加上 –purge 参数</li>
-      <li>apt-get update ; apt-get upgrade ：更新/升级软件包</li>
-      <li>apt-cache show packagename ：显示软件包相关信息</li>
-      <li>apt-cache search package_name/yum search package_name：搜索软件包</li>
-    </ul>
-  </li>
-</ul>
-<a id="more"></a>
-<h3 id="Chapter-15-存储介质"><a href="#Chapter-15-存储介质" class="headerlink" title="Chapter 15 存储介质"></a>Chapter 15 存储介质</h3>
-<p>/etc/fstab 文件：显示系统启动时挂载的设备。</p>
-<ul>
-  <li>mount ：查看已挂载文件系统（不带参数）</li>
-  <li>mount -t ext4 /dev/sda1 /mnt ：挂载文件系统（root 权限），-t 选项指定文件系统类型</li>
-  <li>umount /dev/hdc：卸载设备</li>
-  <li>ls /dev：查看/dev目录下的设备信息</li>
-  <li>sudo tail -f /var/log/messages ：实时系统监测</li>
-  <li>sudo fdisk /dev/sdb：磁盘分区</li>
-  <li>sudo fdformat /dev/sdb1：格式化</li>
-  <li>sudo mkfs -t ext4 /dev/sdb1：创建新的文件系统(-t vfat:fat32)</li>
-  <li>sudo fsck /dev/sdb1：检查闪存（事先需卸载）</li>
-  <li>dd if=input_file of=output_file：文件复制（数据块）
-    <ul>
-      <li>example: dd if=/dev/sdb of=/dev/sdc</li>
-      <li>​ dd if=ubuntu.iso of=/dev/sdc（创建系统启动盘）</li>
-    </ul>
-  </li>
-  <li>挂载镜像文件：mkdir /mnt/iso_file; mount -t iso9660 -o loop image.iso /mnt/iso_file</li>
-  <li>wodim dev=/dev/cdrw blank=fast ：擦除设备</li>
-  <li>wodim dev=/dev/cdrw image.iso ：写入镜像文件</li>
-  <li>md5sum image.iso：计算校验和</li>
-</ul>
-<h3 id="Chapter-16-网络"><a href="#Chapter-16-网络" class="headerlink" title="Chapter 16 网络"></a>Chapter 16 网络</h3>
-<ul>
-  <li>
-    <p>ping ：向网络主机发送特殊数据包，检测网络是否连通，例如：ping linux.com</p>
-  </li>
-  <li>
-    <p>traceroute ：跟踪网络数据包的传输路径，例如：traceroute ucasfl.me</p>
-  </li>
-  <li>
-    <p>netstat ：检查网络设置及相关统计数据</p>
-    <ul>
-      <li>
-        <p>-ie 选项：检查系统中的网络接口信息</p>
-      </li>
-      <li>
-        <p>-r 选项：显示内核的网络路由表</p>
-      </li>
-    </ul>
-  </li>
-</ul>
-<h4 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h4>
-<p>ftp:</p>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">ftp fileserver:连接主机</div><div class="line">cd dir:进入目录</div><div class="line">ls:列出内容</div><div class="line">lcd dir ：切换目录</div><div class="line">get something:下载东西</div><div class="line">help:显示命令列表</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>lftp：与 ftp 类似，支持更多的协议和功能</p>
-<ul>
-  <li>wget ：用于文件下载的命令行程序，既可从网站上下载，也可从 ftp 站点下载
-    <ul>
-      <li>example:　<code>wget http://ucasfl.me/scripts/vim_config.sh</code></li>
-    </ul>
-  </li>
-  <li>ssh:安全登录远程计算机：ssh user@hostname/ip </li>
-  <li>ssh user@remote_host command : 远程执行命令</li>
-  <li>scp user@remote_host:document.txt /user/home/ ：将远程文件复制到当前的 home 目录下</li>
-  <li>sftp : 命令与 ftp 类似，不过远程主机不需要 ftp 服务器，只需要 ssh 服务器</li>
-</ul>
-<h3 id="Chapter-17-文件搜索"><a href="#Chapter-17-文件搜索" class="headerlink" title="Chapter 17 文件搜索"></a>Chapter 17 文件搜索</h3>
-<ul>
-  <li>locate filename：搜索文件，支持扩展，例如：locate zip :搜索以 zip 开头的文件</li>
-</ul>
-<p>find : 较复杂的方式查找文件</p>
-<p>find ~ | wc -l : 计算当前系统总目录的文件数。</p>
-<figure class="highlight dts">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">find ~ -type x : 指定类型查找，x 为参数</div><div class="line"><span class="symbol">x:</span></div><div class="line"><span class="symbol"> b:</span>块设备文件</div><div class="line"><span class="symbol"> c:</span>字符设备文件</div><div class="line"><span class="symbol"> d:</span>目录文件</div><div class="line"><span class="symbol"> f:</span>普通文件</div><div class="line"><span class="symbol"> l:</span>符号链接</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>find 命令的 test 项参数：</p>
-<figure class="highlight haml">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">-<span class="ruby">cmin n ：匹配n分钟前改变状态的文件或目录，不到n分钟，用 -n，超过n分钟，用+n</span></div><div class="line">-<span class="ruby">cnewer file <span class="symbol">:</span>匹配内容或属性的修改时间比file晚的文件或目录</span></div><div class="line">-<span class="ruby">ctime <span class="number">24</span><span class="symbol">:</span>匹配系统中n*<span class="number">24</span>小时前文件状态被改变的文件或目录</span></div><div class="line">-<span class="ruby"><span class="symbol">empty:</span> 匹配空文件或空目录</span></div><div class="line">-<span class="ruby">group <span class="symbol">name:</span>匹配属于name组的文件或目录</span></div><div class="line">-<span class="ruby">iname <span class="symbol">pattern:</span>与-name test项功能类似，只是不区分大小写</span></div><div class="line">-<span class="ruby">inum <span class="symbol">n:</span>匹配索引节点是n的文件</span></div><div class="line">-<span class="ruby">mmin <span class="symbol">n:</span>匹配n分钟前内容被修改的文件或目录</span></div><div class="line">-<span class="ruby">mtime <span class="symbol">n:</span>匹配n*<span class="number">24</span>小时前只有内容被修改的文件或目录</span></div><div class="line">-<span class="ruby">name pattern <span class="symbol">:</span>匹配有特定通配符的文件或目录</span></div><div class="line">-<span class="ruby">newer file <span class="symbol">:</span>匹配内容的修改时间比file文件更近的文件或目录</span></div><div class="line">-<span class="ruby"><span class="symbol">nouser:</span>匹配不属于有效用户的文件或目录</span></div><div class="line">-<span class="ruby"><span class="symbol">nogroup:</span>匹配不属于有效组的文件或目录</span></div><div class="line">-<span class="ruby">perm mode <span class="symbol">:</span>寻找访问权限与既定模式匹配的文件或目录</span></div><div class="line">-<span class="ruby">samefile <span class="symbol">name:</span>与-inum test 选项类似</span></div><div class="line">-<span class="ruby">size <span class="symbol">n:</span>匹配n大小的文件</span></div><div class="line">-<span class="ruby">type <span class="symbol">c:</span>匹配c类型的文件</span></div><div class="line">-<span class="ruby">user <span class="symbol">name:</span>匹配属于name用户的文件或目录</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>find 命令的逻辑操作符：</p>
-<ul>
-  <li>-and :与</li>
-  <li>-or : 或</li>
-  <li>-not : 非</li>
-  <li>() : 括号</li>
-</ul>
-<p>注：在shell中，括号需要加反斜杠进行转义。</p>
-<p>action 选项：</p>
-<figure class="highlight haml">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">预定义操作：</div><div class="line">-<span class="ruby"><span class="symbol">delete:</span> 删除匹配文件</span></div><div class="line">-<span class="ruby"><span class="symbol">ls:</span> 对匹配的文件执行ls操作</span></div><div class="line">-<span class="ruby"><span class="symbol">print:</span> 将匹配的文件的全路径以标准形式打印出，默认形式</span></div><div class="line">-<span class="ruby"><span class="symbol">quit:</span> 匹配成功便退出</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>自定义操作：</p>
-<p>-exec/-ok command {}; :command 为预执行命令(-ok会在每一次执行命令前询问用户)</p>
-<p>touch filename: 设定或更新文件的修改时间，文件不存在时，会创建一个新文件(空文件)</p>
-<p>stat filename: 显示文件的所有信息及属性</p>
-<p>option选项：</p>
-<figure class="highlight haml">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">-<span class="ruby"><span class="symbol">depth:</span> 引导find程序处理目录前先处理目录内的文件</span></div><div class="line">-<span class="ruby">maxdepth <span class="symbol">levels:</span> 当执行测试条件行为时，设置find程序陷入的目录数的最大级别数</span></div><div class="line">-<span class="ruby">mindepth <span class="symbol">levels:</span> 设置find程序陷入目录数的最小级别数</span></div><div class="line">-<span class="ruby"><span class="symbol">noleaf:</span> 指导find程序不要基于“正在搜索类UNIX文件系统”的假设来优化搜索，当扫描DOS/Windows文件系统和CD时，会用到该选项</span></div><div class="line">-<span class="ruby"><span class="symbol">mount:</span> 引导find程序不要遍历挂载在其他文件系统上的目录</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="Chapter-18-归档和备份"><a href="#Chapter-18-归档和备份" class="headerlink" title="Chapter 18 归档和备份"></a>Chapter 18 归档和备份</h3>
-<p>gzip:</p>
-<figure class="highlight groovy">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">gzip <span class="string">filename:</span> 压缩文件</div><div class="line">gunzip filename.<span class="string">gz:</span> 解压缩文件</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>gzip 命令的一些选项：</p>
-<figure class="highlight haml">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">-<span class="ruby"><span class="symbol">c:</span> 将输出内容写到标准输出端口并且保持原有文件</span></div><div class="line">-<span class="ruby"><span class="symbol">d:</span> 解压缩，gzip -d == gunzip</span></div><div class="line">-<span class="ruby"><span class="symbol">f:</span> 强制压缩</span></div><div class="line">-<span class="ruby"><span class="symbol">h:</span> 显示有用信息，可用 --help 代替</span></div><div class="line">-<span class="ruby"><span class="symbol">l:</span> 列出所有压缩文件的压缩统计，也可以用 --list 代替</span></div><div class="line">-<span class="ruby"><span class="symbol">r:</span> 存在目录时，递归压缩 ==--recursive</span></div><div class="line">-<span class="ruby"><span class="symbol">t:</span> 检验压缩文件的完整性 ==--test</span></div><div class="line">-<span class="ruby"><span class="symbol">v:</span> 在压缩时显示详细信息，==--verbose</span></div><div class="line">-<span class="ruby"><span class="symbol">number:</span> 设置压缩级别，number是<span class="number">1</span>~<span class="number">9</span>的一个数，默认压缩级别是<span class="number">6</span></span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>bzip2/bunzip2: 与gzip命令类似，不过使用不同的压缩算法，该算法具有高质量的数据压缩能力，但降低了压缩速度。</p>
-<p>tar: 归档文件</p>
-<p>用法：tar mode pathname…</p>
-<p>tar命令的操作模式：</p>
-<figure class="highlight avrasm">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="symbol">c:</span> 创建文件或目录的归档文件</div><div class="line"><span class="symbol">x:</span> 从归档文件中提取文件</div><div class="line"><span class="symbol">t:</span> 在归档文件末尾追加指定路径名</div><div class="line"><span class="symbol">r:</span> 列出归档文件的内容</div><div class="line"><span class="symbol">f:</span> 指定归档文件名</div><div class="line"><span class="symbol">v:</span> 获取详细信息</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>example:</p>
-<ul>
-  <li>tar cf/cvf file.tar file: 归档文件</li>
-  <li>tar xf/xvf file.tar file: 提取文件</li>
-</ul>
-<p>zip: 打包压缩文件</p>
-<p>example: zip -r file.zip file</p>
-<p>解压缩：unzip file.zip</p>
-<p>rsync: 远程文件、目录的同步</p>
-<h3 id="Chapter-19-正则表达式"><a href="#Chapter-19-正则表达式" class="headerlink" title="Chapter 19 正则表达式"></a>Chapter 19 正则表达式</h3>
-<p>grep: 文本搜索，搜索文本文件中与指定正则表达式匹配的行，并送至标准输出</p>
-<p>命令用法： grep mode searchfile，例如 grep -h ‘^int$’ test.c </p>
-<p>grep 选项：</p>
-<figure class="highlight haml">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">-<span class="ruby"><span class="symbol">i:</span> 忽略大小写</span></div><div class="line">-<span class="ruby"><span class="symbol">v:</span> 输出不匹配行</span></div><div class="line">-<span class="ruby"><span class="symbol">c:</span> 输出匹配项数目</span></div><div class="line">-<span class="ruby"><span class="symbol">l:</span> 输出匹配项文件名而不是直接输出匹配行</span></div><div class="line">-<span class="ruby"><span class="symbol">L:</span> 与-l类似，但输出不包含匹配项的文件名</span></div><div class="line">-<span class="ruby"><span class="symbol">n:</span> 在每个匹配行前面加上该行在文件中的行号</span></div><div class="line">-<span class="ruby"><span class="symbol">h:</span> 进行多文件搜索时，抑制文件名输出</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h4 id="正则表达式："><a href="#正则表达式：" class="headerlink" title="正则表达式："></a>正则表达式：</h4>
-<p>详细内容可查看计算理论相关书籍。</p>
-<p>元字符：^ $ . [ ] - ? * + ( ) | \ </p>
-<p>a/A~z/Z 为文字字符</p>
-<p>注：在命令行中输入包含元字符的正则表达式时，应把元字符用引号括起来以避免不必要的shell 扩展。</p>
-<h5 id="任意字符："><a href="#任意字符：" class="headerlink" title="任意字符："></a>任意字符：</h5>
-<p>. : 匹配任意字符</p>
-<p>example: ls /usr/bin/ | grep -h ‘.zip’</p>
-<p>注意，上面输出中并不会包含zip，因为zip只包含三个字符，而这里至少要有四个字符。</p>
-<h5 id="开头字符和末尾字符："><a href="#开头字符和末尾字符：" class="headerlink" title="开头字符和末尾字符："></a>开头字符和末尾字符：</h5>
-<p>^ : 匹配开头字符</p>
-<p>$ : 匹配末尾字符</p>
-<p>example : ls /usr/bin | grep -h ‘^zip’ : 匹配以zip开头的输出</p>
-<p>ls /usr/bin | grep -h ‘zip$’ : 匹配以zip结尾的输出</p>
-<p>ls /usr/bin | grep -h ‘^zip$’ : 输出只有zip</p>
-<h5 id="中括号表达式和字符类"><a href="#中括号表达式和字符类" class="headerlink" title="中括号表达式和字符类"></a>中括号表达式和字符类</h5>
-<p>中括号除了可用于匹配正则表达式中的给定字符外，还可用于匹配字符集中的单个字符。借助中括号，也可指定要匹配的字符集，例如：ls /usr/bin | grep -h ‘[bg]zip’ 会输出以bzip和gzip开头的输出。</p>
-<p>注：^在中括号中表示否定；-在中括号中表示字符范围。</p>
-<h5 id="否定"><a href="#否定" class="headerlink" title="否定"></a>否定</h5>
-<p>在中括号中使用 ^ ,表示剩余字符不应该出现，例如：</p>
-<p><code>ls /usr/bin/ | grep -h &#39;[^bg]zip&#39;</code> 会得到包含zip但zip前面既不是b，又不是g的程序。</p>
-<p>注：^ 只有在中括号中的第一个字符才会当作否定符，否则当作普通符号处理。</p>
-<h5 id="字符范围"><a href="#字符范围" class="headerlink" title="字符范围"></a>字符范围</h5>
-<p>使用 -</p>
-<p>例：</p>
-<figure class="highlight gradle">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">grep</span> -h <span class="string">'^[A-Z]'</span> filename :所有以大写字母开头的行</div><div class="line"><span class="keyword">grep</span> -h <span class="string">'^[A-Za-z0-9]'</span> filename :所有以字母和数字开头的行</div><div class="line"><span class="keyword">grep</span> -h <span class="string">'[-AZ]'</span> filename :仅表示包含连字符，大写字母A或Z的行</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h5 id="POSIX-字符集"><a href="#POSIX-字符集" class="headerlink" title="POSIX 字符集"></a>POSIX 字符集</h5>
-<figure class="highlight accesslog">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="string">[:alnum:]</span>  字母字符和数字字母，在ASCII中，与<span class="string">[A-Za-z0-9]</span>等效</div><div class="line"><span class="string">[:word:]</span>   与上者相比，多了下划线字符_</div><div class="line"><span class="string">[:alpha:]</span>  字母字符，在ASCII中，等效于<span class="string">[A-Za-z]</span></div><div class="line"><span class="string">[:blank:]</span>  空字符，包括空格和制表符</div><div class="line"><span class="string">[:cntrl:]</span>  ASCII控制符，包括ASCII字符<span class="number">0</span>~<span class="number">31</span>以及<span class="number">127</span></div><div class="line"><span class="string">[:digit:]</span>  数字<span class="number">0</span>~<span class="number">9</span></div><div class="line"><span class="string">[:graph:]</span>  可见字符，在ASCII中，包括字符<span class="number">33</span>~<span class="number">126</span></div><div class="line"><span class="string">[:lower:]</span>  小写字母</div><div class="line"><span class="string">[:punct:]</span>  标点符号字符</div><div class="line"><span class="string">[:print:]</span>  可打印字符，包括<span class="string">[:graph:]</span>中的所有字符加上空格字符</div><div class="line"><span class="string">[:space:]</span>  空白字符包括空格符，制表符，回车符，换行符垂直制表符以及换页符，在ASCII中，等价于<span class="string">[\t\r\n\v\f]</span></div><div class="line"><span class="string">[:upper:]</span>  大写字母</div><div class="line"><span class="string">[:xdigit:]</span> 用于表示十六进制的字符 ==<span class="string">[0-9a-fA-F]</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>例如：</p>
-<p>ls /usr/sbin/[[:upper:]]* : 列出所有以大写字母开头的文件</p>
-<h5 id="或选项："><a href="#或选项：" class="headerlink" title="或选项：|"></a>或选项：|</h5>
-<p>例如：</p>
-<figure class="highlight coq">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">echo <span class="string">"AAA"</span> | <span class="type">grep</span> -E 'AAA|<span class="type">BBB</span>|<span class="type">CCC</span>'</div><div class="line">ls /usr/bin | <span class="type">grep</span> -Eh '^(bz|<span class="type">gz</span>|<span class="type">zip</span>)' 匹配以bz或gz或zip开头的程序</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h5 id="匹配某元素0次或1次："><a href="#匹配某元素0次或1次：" class="headerlink" title="匹配某元素0次或1次：?"></a>匹配某元素0次或1次：?</h5>
-<p>? 置于字符的后面表示前面的字符（单个）匹配一次或零次</p>
-<h5 id="匹配0次或多次："><a href="#匹配0次或多次：" class="headerlink" title="匹配0次或多次： *"></a>匹配0次或多次： *</h5>
-<p>用法和上者类似。</p>
-<h5 id="匹配一次或多次："><a href="#匹配一次或多次：" class="headerlink" title="匹配一次或多次： +"></a>匹配一次或多次： +</h5>
-<p>用法和上者类似。</p>
-<h5 id="以指定次数匹配："><a href="#以指定次数匹配：" class="headerlink" title="以指定次数匹配："></a>以指定次数匹配：</h5>
-<figure class="highlight swift">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">&#123;n&#125;   前面的元素恰好出现n次</div><div class="line">&#123;n,m&#125; 前面的元素出现的次数在n~m之间时匹配</div><div class="line">&#123;n,&#125;  前面的元素超过n次时匹配</div><div class="line">&#123;,m&#125;  前面的元素不超过m次时匹配</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>locate 查找文件： </p>
-<p>选项： </p>
-<ul>
-  <li>–regexp 支持基本正则表达式</li>
-  <li>–regex 支持扩展正则表达式</li>
-</ul>
-<h5 id="less-和-Vim"><a href="#less-和-Vim" class="headerlink" title="less 和 Vim"></a>less 和 Vim</h5>
-<p>二者皆支持正则表达式搜索，并且搜索方法相同：按下“/”键后，输入正则表达式，便可搜索。</p>
-<h3 id="Chapter-20-文本处理"><a href="#Chapter-20-文本处理" class="headerlink" title="Chapter 20 文本处理"></a>Chapter 20 文本处理</h3>
-<h5 id="cat-进行文件间的拼接并输出到标准输出"><a href="#cat-进行文件间的拼接并输出到标准输出" class="headerlink" title="cat : 进行文件间的拼接并输出到标准输出"></a>cat : 进行文件间的拼接并输出到标准输出</h5>
-<p>选项：</p>
-<ul>
-  <li>-A : 输出非打印字符</li>
-  <li>-n : 对行编号</li>
-  <li>-s : 禁止输出多个空白行</li>
-</ul>
-<h5 id="sort-对文本进行排序"><a href="#sort-对文本进行排序" class="headerlink" title="sort : 对文本进行排序"></a>sort : 对文本进行排序</h5>
-<p>sort 是一个排序程序，操作对象为标准输入或是命令行中指定的一个或多个文件，然后将结果送至标准输出。</p>
-<p>example:</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">sort &gt; foo<span class="selector-class">.txt</span>   可在键盘输入然后sort排序后输入到 foo<span class="selector-class">.txt</span> 中（重定向）</div><div class="line">sort file1 file2 file3 &gt; file_sorted  将三个文件进行排序后输出到一个文件中</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>sort 选项：</p>
-<figure class="highlight haml">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">-<span class="ruby">b  忽略行开头的空格，默认情况下，会对整个行进行排序</span></div><div class="line">-<span class="ruby">f  排序时不区分大小写</span></div><div class="line">-<span class="ruby">n  基于字符串的长度进行排序而不是基于字母表顺序进行排序</span></div><div class="line">-<span class="ruby">r  逆序进行排序</span></div><div class="line">-<span class="ruby">m  将输入的多个参数当作已经排序好的。将多个文件合并为一个排序好的文件，而不执行额外的排序操作</span></div><div class="line">-<span class="ruby">o  将排序结果输出到文件而不是标准输出</span></div><div class="line">-<span class="ruby">t  定义字段分隔符，默认情况下是空格或制表符</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h5 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h5>
-<p>给定一个排序好的文件或标准输入，unip会删除重复的行并将结果输出到标准输出中。</p>
-<p>注意：uniq仅对排序好的文件有用，因为uniq只能移除相邻的重复行。</p>
-<figure class="highlight haml">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">-<span class="ruby">c  输出重复行列表，并且在重复行的前面加上出现的次数</span></div><div class="line">-<span class="ruby">d  只输出重复行，不包括单独行</span></div><div class="line">-<span class="ruby">f n 忽略每行的前n个字段</span></div><div class="line">-<span class="ruby">i  行与行之间比较时忽略大小写</span></div><div class="line">-<span class="ruby">s n 忽略每行的前n个字符</span></div><div class="line">-<span class="ruby">u  仅输出不重复的行，该选项是默认的</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h5 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h5>
-<p>从文本行中提取一段文字并输出至标准输出。</p>
-<figure class="highlight haml">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">-<span class="ruby">c char_list   从文本行中提取char_list定义的内容，例，cut -c <span class="number">7</span>-<span class="number">10</span> 提取每行中的<span class="number">7</span>-<span class="number">10</span>个字符</span></div><div class="line">-<span class="ruby">f field_list  从文本行中提取field_list定义的一个或多个字段</span></div><div class="line">-<span class="ruby">d delim_char  使用-f选项后，可使用delim_char作为字段分隔符，默认时以Tab制表符隔开</span></div><div class="line">-<span class="ruby">-complemet  从文本中提取整行，除了那些-c和/或-f指定的部分</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h4 id="paste-合并文本行"><a href="#paste-合并文本行" class="headerlink" title="paste - 合并文本行"></a>paste - 合并文本行</h4>
-<p>example:</p>
-<p><code>paste file1.txt file2.txt</code>：将两个文件中的内容按行拼接起来</p>
-<h4 id="join-连接两个文件中具有相同字段的行"><a href="#join-连接两个文件中具有相同字段的行" class="headerlink" title="join - 连接两个文件中具有相同字段的行"></a>join - 连接两个文件中具有相同字段的行</h4>
-<p>example:</p>
-<p><code>join file1.txt file2.txt</code></p>
-<h4 id="comm-逐行比较两个已排序好的文件"><a href="#comm-逐行比较两个已排序好的文件" class="headerlink" title="comm - 逐行比较两个已排序好的文件"></a>comm - 逐行比较两个已排序好的文件</h4>
-<p>详见<a href="http://ucasfl.me/2017/06/05/Linux-Command-of-comm/">另一篇博客 - Linux Command of comm</a></p>
-<ul>
-  <li>diff - 逐行比较文件</li>
-  <li>patch - 对原文件进行 diff 操作</li>
-  <li>tr - 替换或删除字符</li>
-  <li>sed - 用于文本过滤和转换的流编辑器</li>
-  <li>aspell - 交互式拼写检查工具</li>
-</ul>
-<h3 id="Chapter-21-格式化输出"><a href="#Chapter-21-格式化输出" class="headerlink" title="Chapter 21 格式化输出"></a>Chapter 21 格式化输出</h3>
-<h4 id="nl-对行进行标号"><a href="#nl-对行进行标号" class="headerlink" title="nl - 对行进行标号"></a>nl - 对行进行标号</h4>
-<p>example :</p>
-<p><code>nl file.txt</code> : 默认对非空行进行标号。</p>
-<h4 id="fold-设定文本行长度"><a href="#fold-设定文本行长度" class="headerlink" title="fold - 设定文本行长度"></a>fold - 设定文本行长度</h4>
-<p>example :</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">fold -w <span class="number">15</span> file<span class="selector-class">.txt</span>  每行设置为<span class="number">15</span>个字符</div><div class="line">fold -w <span class="number">15</span> -s file<span class="selector-class">.txt</span> 使其断行时考虑单词边界</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>fmt - 简单的文本格式化工具</li>
-  <li>pr - 格式化打印文本</li>
-  <li>printf - 格式化并打印数据，与C语言中的printf类似。</li>
-</ul>
-<h3 id="Chapter-22-打印"><a href="#Chapter-22-打印" class="headerlink" title="Chapter 22 打印"></a>Chapter 22 打印</h3>
-<ul>
-  <li>pr : 转换打印文本，从而进行打印操作</li>
-  <li>lpr: 打印文件</li>
-  <li>lp: 打印文件</li>
-  <li>a2ps: 格式化文件，以在PostScript打印机上打印</li>
-  <li>lpstat: 显示打印状态信息</li>
-  <li>lpq: 显示打印机队列状态</li>
-  <li>lprm: 取消打印任务</li>
-  <li>cancel: 取消打印任务</li>
-</ul>
-<h3 id="Chapter-23-编译程序"><a href="#Chapter-23-编译程序" class="headerlink" title="Chapter 23 编译程序"></a>Chapter 23 编译程序</h3>
-<figure class="highlight gauss">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">./configure</div><div class="line"><span class="built_in">make</span></div><div class="line">sudo <span class="built_in">make</span> install</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Chapter-14-软件包管理&quot;&gt;&lt;a href=&quot;#Chapter-14-软件包管理&quot; class=&quot;headerlink&quot; title=&quot;Chapter 14 软件包管理&quot;&gt;&lt;/a&gt;Chapter 14 软件包管理&lt;/h3&gt;
-&lt;p&gt;低级软件包：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Debian : dpkg/rpm&lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;dpkg –install file.deb/rpm -i package_file/rpm -U package_file：安装/升级软件&lt;/li&gt;
-      &lt;li&gt;dpkg –list ：列出所有已安装软件&lt;/li&gt;
-      &lt;li&gt;dpkg –status package_name：判断是否已安装&lt;/li&gt;
-      &lt;li&gt;dpkg –search filename/rpm -qf file_name：查询文件所属命令&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;高级软件包：apt-get
-    &lt;ul&gt;
-      &lt;li&gt;apt-get update ; apt-cache search file_name：搜索软件包&lt;/li&gt;
-      &lt;li&gt;apt-get update ; apt-get install package_name：安装软件包&lt;/li&gt;
-      &lt;li&gt;apt-get remove package_name/yum erase package_name：删除软件包，彻底删除干净，可加上 –purge 参数&lt;/li&gt;
-      &lt;li&gt;apt-get update ; apt-get upgrade ：更新/升级软件包&lt;/li&gt;
-      &lt;li&gt;apt-cache show packagename ：显示软件包相关信息&lt;/li&gt;
-      &lt;li&gt;apt-cache search package_name/yum search package_name：搜索软件包&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Command" scheme="http://ucasfl.me/categories/Command/"/>
-    
-    
-      <category term="Reading-Summary" scheme="http://ucasfl.me/tags/Reading-Summary/"/>
     
   </entry>
   
