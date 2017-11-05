@@ -72,7 +72,7 @@
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="数据传输指令
 它们在存贮器和寄存器、寄存器和输入输出端口之间传送数据.">
-  <meta property="og:updated_time" content="2017-09-02T04:38:28.987Z">
+  <meta property="og:updated_time" content="2017-11-05T11:28:05.503Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Intel 汇编指令手册">
   <meta name="twitter:description" content="数据传输指令
@@ -458,6 +458,24 @@
                     <br>　　　　JMP　　无条件转移指令<br>　　　　CALL　　过程调用<br>　　　　RET/RETF过程返回.<br>　　2&gt;条件转移指令 (短转移,-128到+127的距离内)<br>　　　　( 当且仅当(SF XOR OF)=1时,OP1循环控制指令(短转移)<br>　　　　LOOP　　　　　　CX不为零时循环.<br>　　　　LOOPE/LOOPZ　　CX不为零且标志Z=1时循环.<br>　　　　LOOPNE/LOOPNZ　CX不为零且标志Z=0时循环.<br>　　　　JCXZ　　　　　　CX为零时转移.<br>　　　　JECXZ　　　　　ECX为零时转移.<br>　　4&gt;中断指令<br>　　　　INT　　中断指令<br>　　　　INTO　　溢出中断<br>　　　　IRET　　中断返回<br>　　5&gt;处理器控制指令<br>　　　　HLT　　处理器暂停,
                     直到出现中断或复位信号才继续.
                     <br>　　　　WAIT　　当芯片引线TEST为高电平时使CPU进入等待状态.<br>　　　　ESC　　转换到外处理器.<br>　　　　LOCK　　封锁总线.<br>　　　　NOP　　空操作.<br>　　　　STC　　置进位标志位.<br>　　　　CLC　　清进位标志位.<br>　　　　CMC　　进位标志取反.<br>　　　　STD　　置方向标志位.<br>　　　　CLD　　清方向标志位.<br>　　　　STI　　置中断允许位.<br>　　　　CLI　　清中断允许位.<br>六、伪指令<br>                    DW　　　定义字(2字节).<br>　　　　PROC　　定义过程.<br>　　　　ENDP　　过程结束.<br>　　　　SEGMENT 定义段.<br>　　　　ASSUME　建立段寄存器寻址.<br>　　　　ENDS　　段结束.<br>　　　　END　　程序结束.</p>
+                  <p>
+                    <div id="container"></div>
+                  </p>
+                  <p>
+                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                  </p>
+                  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                  <script>
+                    var gitment = new Gitment({
+                      owner: 'ucasFL',
+                      repo: 'BlogComments',
+                      oauth: {
+                        client_id: 'ef399b43f01e072241fd',
+                        client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+                      },
+                    })
+                    gitment.render('container');
+                  </script>
 
                 </div>
 
@@ -572,8 +590,6 @@
 
           <div class="comments" id="comments">
 
-            <div id="uyan_frame"></div>
-
           </div>
 
 
@@ -619,7 +635,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-count">120</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -921,14 +937,6 @@
 
 
 
-
-
-
-
-
-  <!-- UY BEGIN -->
-  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147761"></script>
-  <!-- UY END -->
 
 
 

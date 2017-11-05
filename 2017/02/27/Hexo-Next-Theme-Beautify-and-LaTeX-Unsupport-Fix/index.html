@@ -76,7 +76,7 @@
 在网上查找 next 主题不支持 Latex 语法的过程中，我无意看到一个 next 主题的简单美化：动态背景和鼠标点击小红心。
 经测试有效，首先对其技术分享表示感谢，其间也发现原博主的一个无意的小错误，从中也看到了 JS 的强大之处。因此，决定把美化教程搬过来。
 之后我也在 next 主题的 issue 那儿看到了 Latex 不支持的解决办法。">
-  <meta property="og:updated_time" content="2017-09-02T04:38:29.067Z">
+  <meta property="og:updated_time" content="2017-11-05T11:25:37.995Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hexo - Next 主题美化和 Latex 不支持的 Bug 处理">
   <meta name="twitter:description" content="前言
@@ -490,6 +490,24 @@
                   </p>
                   <p>把 <code>enable</code>设为<code>true</code>，然后去掉<code>per_page</code>一行即可。</p>
                   <p>结束~</p>
+                  <p>
+                    <div id="container"></div>
+                  </p>
+                  <p>
+                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                  </p>
+                  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                  <script>
+                    var gitment = new Gitment({
+                      owner: 'ucasFL',
+                      repo: 'BlogComments',
+                      oauth: {
+                        client_id: 'ef399b43f01e072241fd',
+                        client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+                      },
+                    })
+                    gitment.render('container');
+                  </script>
 
                 </div>
 
@@ -604,8 +622,6 @@
 
           <div class="comments" id="comments">
 
-            <div id="uyan_frame"></div>
-
           </div>
 
 
@@ -651,7 +667,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-count">120</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -949,14 +965,6 @@
 
 
 
-
-
-
-
-
-  <!-- UY BEGIN -->
-  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147761"></script>
-  <!-- UY END -->
 
 
 

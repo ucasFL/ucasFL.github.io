@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-11-05T11:10:49.098Z</updated>
+  <updated>2017-11-05T11:26:03.935Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -16,52 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Gitment Test</title>
-    <link href="http://ucasfl.me/2017/11/05/Gitment-test/"/>
-    <id>http://ucasfl.me/2017/11/05/Gitment-test/</id>
-    <published>2017-11-05T11:09:16.000Z</published>
-    <updated>2017-11-05T11:10:49.098Z</updated>
-    
-    <content type="html"><![CDATA[<p>这儿有一个Gitment 评论</p>
-<p>
-  <div id="container"></div>
-</p>
-<p>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-</p>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-  var gitment = new Gitment({
-    owner: 'ucasFL',
-    repo: 'BlogComments',
-    oauth: {
-      client_id: 'ef399b43f01e072241fd',
-      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
-    },
-  })
-  gitment.render('container');
-</script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这儿有一个Gitment 评论&lt;/p&gt;
-&lt;p&gt;
-  &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://imsun.github.io/gitment/style/defaul
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>在 Linux 中如何通过命令行开启或禁用触摸板</title>
     <link href="http://ucasfl.me/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/"/>
     <id>http://ucasfl.me/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/</id>
     <published>2017-11-02T15:45:10.000Z</published>
-    <updated>2017-11-02T16:12:49.183Z</updated>
+    <updated>2017-11-05T11:26:03.935Z</updated>
     
     <content type="html"><![CDATA[<p>本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。</p>
 <a id="more"></a>
@@ -162,7 +121,25 @@
     </tr>
   </table>
 </figure>
-<p>注意，脚本中的设备 ID 和属性编号应和你的笔记本一致，<code>user</code> 为你的用户名。</p>]]></content>
+<p>注意，脚本中的设备 ID 和属性编号应和你的笔记本一致，<code>user</code> 为你的用户名。</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -182,7 +159,7 @@
     <link href="http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/"/>
     <id>http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/</id>
     <published>2017-10-30T11:54:31.000Z</published>
-    <updated>2017-10-31T02:48:59.013Z</updated>
+    <updated>2017-11-05T11:37:52.078Z</updated>
     
     <content type="html"><![CDATA[<p>笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 <code>emergency mode</code>，尝试重新启动到默认模式，然后出现下面的错误信息：</p>
 <a id="more"></a>
@@ -294,7 +271,25 @@
   </table>
 </figure>
 <p>问题解决。</p>
-<p>Linux 的权限问题真让人头疼。</p>]]></content>
+<p>Linux 的权限问题真让人头疼。</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -314,7 +309,7 @@
     <link href="http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/"/>
     <id>http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/</id>
     <published>2017-10-28T06:42:12.000Z</published>
-    <updated>2017-10-28T06:52:02.027Z</updated>
+    <updated>2017-11-05T11:30:04.231Z</updated>
     
     <content type="html"><![CDATA[<p>在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。</p>
 <a id="more"></a>
@@ -322,7 +317,25 @@
 <p>第一步，启动虚拟机，点击左上方工具栏 -&gt; 安装增加功能 -&gt; 按照提示安装成功即可。</p>
 <p>第一步，打开虚拟机设置 -&gt; 共享文件夹 -&gt; 添加路径 -&gt; 设置共享文件夹名字（假设名字为 Win7，后面会用到。）</p>
 <p>第三步，重启虚拟机 -&gt; 打开 cmd -&gt; 输入命令 <code>net use x: \\vboxsvr\Win7</code> 即可。其中 <code>x</code> 为盘符，任意一个未使用的字母均可以，<code>Win7</code> 即为上面设置的共享文件夹名字。</p>
-<p>这样，在主机和虚拟机之间就创建了一个共享文件夹。</p>]]></content>
+<p>这样，在主机和虚拟机之间就创建了一个共享文件夹。</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -342,7 +355,7 @@
     <link href="http://ucasfl.me/2017/10/26/Pythonic-programming-tips/"/>
     <id>http://ucasfl.me/2017/10/26/Pythonic-programming-tips/</id>
     <published>2017-10-26T04:10:08.000Z</published>
-    <updated>2017-10-27T13:04:59.314Z</updated>
+    <updated>2017-11-05T11:31:51.171Z</updated>
     
     <content type="html"><![CDATA[<p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。</p>
 <a id="more"></a>
@@ -522,7 +535,25 @@
   </table>
 </figure>
 <p>很多函数和运算符都是多态的，因此写程序时也应该尽量避免破坏多态，尽量不使用 <code>type, isinstance, issubclass</code> 之类会破坏多态的函数。</p>
-<p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>]]></content>
+<p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -542,7 +573,7 @@
     <link href="http://ucasfl.me/2017/10/07/Python-cheat-sheet/"/>
     <id>http://ucasfl.me/2017/10/07/Python-cheat-sheet/</id>
     <published>2017-10-07T11:20:55.000Z</published>
-    <updated>2017-10-25T14:25:34.622Z</updated>
+    <updated>2017-11-05T11:31:44.295Z</updated>
     
     <content type="html"><![CDATA[<p>本手册是 <a href="http://datasciencefree.com/python.pdf" target="_blank" rel="external">Python cheat sheet</a> 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。</p>
 <p>该手册同时位于 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition" target="_blank" rel="external">GitHub</a> 上，可下载 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/python-cheat-sheet-zh-cn.pdf" target="_blank" rel="external">PDF 版</a>。</p>
@@ -1196,7 +1227,25 @@
       </td>
     </tr>
   </table>
-</figure>]]></content>
+</figure>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -1217,7 +1266,7 @@
     <link href="http://ucasfl.me/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/"/>
     <id>http://ucasfl.me/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/</id>
     <published>2017-10-06T04:51:31.000Z</published>
-    <updated>2017-10-06T04:53:32.058Z</updated>
+    <updated>2017-11-05T11:33:33.463Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i0.wp.com/opensourceforu.com/wp-content/uploads/2015/12/Linux-Kernel-sys-visual5.jpg?resize=750%2C563" alt="Hidden features of Linux"></p>
 <p>使用 Linux 最酷的事情之一就是随着时间的推移，你可以不断获得新的知识。每天，你都可能会遇到一个新的实用工具，或者只是一个不太熟悉的奇技淫巧，但是却非常有用。这些零碎的东西并不总是能够改变生活，但是却是专业知识的基础。</p>
@@ -1283,7 +1332,25 @@
 <hr>
 <p>via: <a href="http://opensourceforu.com/2017/09/top-7-things-linux-may-not-known-far/" target="_blank" rel="external">http://opensourceforu.com/2017/09/top-7-things-linux-may-not-known-far/</a></p>
 <p>作者：<a href="http://opensourceforu.com/author/phil-zona/" target="_blank" rel="external">PHIL ZONA</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>]]></content>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -1305,7 +1372,7 @@
     <link href="http://ucasfl.me/2017/09/25/Setting-Proxy-For-google-chrome-in-Ubuntu/"/>
     <id>http://ucasfl.me/2017/09/25/Setting-Proxy-For-google-chrome-in-Ubuntu/</id>
     <published>2017-09-25T00:56:12.000Z</published>
-    <updated>2017-09-25T01:11:48.338Z</updated>
+    <updated>2017-11-05T11:33:26.827Z</updated>
     
     <content type="html"><![CDATA[<p>在 Ubuntu 上装了一个 Xfce 桌面，前段时间一直在使用 Xfce 桌面，今天切换回 GNOME 桌面以后，发现 google-chrome 无法上网了，说是代理服务器有问题，按照它的提示在设置中进行设置，结果打开代理服务器设置时，又出现下面的信息：</p>
 <figure class="highlight livecodeserver">
@@ -1350,7 +1417,25 @@
     </tr>
   </table>
 </figure>
-<p>保存退出，再次打开 google-chrome，便可以正常上网了。</p>]]></content>
+<p>保存退出，再次打开 google-chrome，便可以正常上网了。</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -1382,7 +1467,7 @@
     <link href="http://ucasfl.me/2017/09/23/Introduction-to-Linux-FileSystem/"/>
     <id>http://ucasfl.me/2017/09/23/Introduction-to-Linux-FileSystem/</id>
     <published>2017-09-23T04:48:42.000Z</published>
-    <updated>2017-09-23T04:51:21.162Z</updated>
+    <updated>2017-11-05T11:28:22.827Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/community-penguins-osdc-lead.png?itok=BmqsAF4A" alt="Introduction to Linux filesystems" title="Introduction to Linux filesystems"></p>
 <p>本文旨在高屋建瓴地来讨论 Linux 文件系统概念，而不是对某种特定的文件系统，比如 EXT4 是如何工作的进行具体的描述。另外，本文也不是一个文件系统命令的教程。</p>
@@ -1532,7 +1617,25 @@
 <hr>
 <p>via: <a href="https://opensource.com/life/16/10/introduction-linux-filesystems" target="_blank" rel="external">https://opensource.com/life/16/10/introduction-linux-filesystems</a></p>
 <p>作者：<a href="https://opensource.com/users/dboth" target="_blank" rel="external">David Both</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>]]></content>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -1556,7 +1659,7 @@
     <link href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/"/>
     <id>http://ucasfl.me/2017/09/12/the-Section-of-Variables/</id>
     <published>2017-09-12T02:16:42.000Z</published>
-    <updated>2017-09-12T02:27:19.318Z</updated>
+    <updated>2017-11-05T11:36:07.958Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
 <p>在 C 语言中，不同的变量位于不同的段，下面进行简单分析。</p>
@@ -1691,7 +1794,25 @@
     </tr>
   </table>
 </figure>
-<p>我们看到，<code>ldata</code>和<code>ddata</code>的地址非常大，而 <code>ddata</code>所指向的分配空间的地址相对来说要小很多，这其实也一定程度上验证了我们的结论，根据我们已知的结论，在程序执行过程中，函数中的局部变量是在函数压栈以后，在栈中分配的，而 <code>malloc</code> 函数分配的空间则是在堆中进行分配的，而栈是从上往下长（高地址到低地址），堆则相反，是从下往上长（低地址到高地址），因此，栈中的变量地址较大，而堆中的则较小，所以，程序运行结果与之相符。</p>]]></content>
+<p>我们看到，<code>ldata</code>和<code>ddata</code>的地址非常大，而 <code>ddata</code>所指向的分配空间的地址相对来说要小很多，这其实也一定程度上验证了我们的结论，根据我们已知的结论，在程序执行过程中，函数中的局部变量是在函数压栈以后，在栈中分配的，而 <code>malloc</code> 函数分配的空间则是在堆中进行分配的，而栈是从上往下长（高地址到低地址），堆则相反，是从下往上长（低地址到高地址），因此，栈中的变量地址较大，而堆中的则较小，所以，程序运行结果与之相符。</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -1726,7 +1847,7 @@
     <link href="http://ucasfl.me/2017/09/12/Introduction-to-Compiler/"/>
     <id>http://ucasfl.me/2017/09/12/Introduction-to-Compiler/</id>
     <published>2017-09-12T02:16:15.000Z</published>
-    <updated>2017-09-12T02:25:39.505Z</updated>
+    <updated>2017-11-05T11:28:11.051Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg" alt="了解在编译器的世界里前端和后端的新意义"></p>
 <p>简单说来，一个<ruby>编译器<rt>compiler</rt></ruby>不过是一个可以翻译其他程序的程序。传统的编译器可以把源代码翻译成你的计算机能够理解的可执行机器代码。（一些编译器将源代码翻译成别的程序语言，这样的编译器称为源到源翻译器或<ruby>转化器<rt>transpilers</rt></ruby>。）<a href="http://llvm.org/" target="_blank" rel="external">LLVM</a> 是一个广泛使用的编译器项目，包含许多模块化的编译工具。</p>
@@ -1914,7 +2035,25 @@
 <hr>
 <p>via: <a href="https://nicoleorchard.com/blog/compilers" target="_blank" rel="external">https://nicoleorchard.com/blog/compilers</a></p>
 <p>作者：<a href="https://nicoleorchard.com/" target="_blank" rel="external">Nicole Orchard</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>]]></content>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -1943,7 +2082,7 @@
     <link href="http://ucasfl.me/2017/09/02/Fix-Error-With-Install-Hexo/"/>
     <id>http://ucasfl.me/2017/09/02/Fix-Error-With-Install-Hexo/</id>
     <published>2017-09-02T05:12:32.000Z</published>
-    <updated>2017-09-04T08:28:14.369Z</updated>
+    <updated>2017-11-05T11:22:45.220Z</updated>
     
     <content type="html"><![CDATA[<p>用 npm 安装 Hexo 时候出现错误，使用 sudo 安装依旧不行。</p>
 <p>错误如下：</p>
@@ -1973,7 +2112,25 @@
     </tr>
   </table>
 </figure>
-<p>问题解决。</p>]]></content>
+<p>问题解决。</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -1994,7 +2151,7 @@
     <link href="http://ucasfl.me/2017/09/02/Hash-Tables/"/>
     <id>http://ucasfl.me/2017/09/02/Hash-Tables/</id>
     <published>2017-09-02T04:44:26.000Z</published>
-    <updated>2017-09-02T04:55:22.911Z</updated>
+    <updated>2017-11-05T11:24:51.232Z</updated>
     
     <content type="html"><![CDATA[<p>探索<ruby>哈希表<rt>hash table</rt></ruby>的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。</p>
 <p>哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：<code>&quot;苹果&quot; =&gt; &quot;一种拥有水果之王之称的绿色水果&quot;</code>。这里，“苹果”是我的关键字，而“一种拥有水果之王之称的水果”是与之关联的值。</p>
@@ -2086,7 +2243,25 @@
 <hr>
 <p>via: <a href="http://www.zeroequalsfalse.press/2017/02/20/hashtables/" target="_blank" rel="external">http://www.zeroequalsfalse.press/2017/02/20/hashtables/</a></p>
 <p>作者：<a href="http://www.zeroequalsfalse.press/about" target="_blank" rel="external">Marty Jacobs</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>]]></content>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -2107,7 +2282,7 @@
     <link href="http://ucasfl.me/2017/09/02/Open-Source-Ruby-Books/"/>
     <id>http://ucasfl.me/2017/09/02/Open-Source-Ruby-Books/</id>
     <published>2017-09-02T04:44:13.000Z</published>
-    <updated>2017-09-02T04:55:43.099Z</updated>
+    <updated>2017-11-05T11:31:12.135Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/Ruby-Montage.png?w=565&amp;ssl=1" alt=""></p>
 <h3 id="开源的-Ruby-书籍"><a href="#开源的-Ruby-书籍" class="headerlink" title="开源的 Ruby 书籍"></a>开源的 Ruby 书籍</h3>
@@ -2315,7 +2490,25 @@
 <hr>
 <p>via: <a href="https://www.ossblog.org/study-ruby-programming-with-open-source-books/" target="_blank" rel="external">https://www.ossblog.org/study-ruby-programming-with-open-source-books/</a></p>
 <p>作者：<a href="https://www.ossblog.org/author/steve/" target="_blank" rel="external">Steve Emms</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>]]></content>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -2340,7 +2533,7 @@
     <link href="http://ucasfl.me/2017/08/08/External-Sort/"/>
     <id>http://ucasfl.me/2017/08/08/External-Sort/</id>
     <published>2017-08-08T04:53:19.000Z</published>
-    <updated>2017-09-02T04:38:29.067Z</updated>
+    <updated>2017-11-05T11:22:00.956Z</updated>
     
     <content type="html"><![CDATA[<h3 id="主存储器与外部存储器"><a href="#主存储器与外部存储器" class="headerlink" title="主存储器与外部存储器"></a>主存储器与外部存储器</h3>
 <p>外存储器与内存储器相比,优点是:</p>
@@ -2437,7 +2630,25 @@
   <li>各非叶结点代表归并出来的新归并段</li>
   <li>归并树的带权路径长度 WPL 即为归并过程中的总读记录数。因而,在归并过程中总的读写记录次数为 2*WPL 。</li>
 </ul>
-<p>不同的归并方案所对应的归并树的带权路径长度各不相同。为了使得总的读写次数达到最少 , 需要改变归并方案 , 重新组织归并树。可将 Huffman 树的思想扩充到 m 叉树的情形。在归并树中 , 让记录个数少的初始归并段最先归并 , 记录个数多的初始归并段最晚归并 , 就可建立总读写次数达到最少的最佳归并树。</p>]]></content>
+<p>不同的归并方案所对应的归并树的带权路径长度各不相同。为了使得总的读写次数达到最少 , 需要改变归并方案 , 重新组织归并树。可将 Huffman 树的思想扩充到 m 叉树的情形。在归并树中 , 让记录个数少的初始归并段最先归并 , 记录个数多的初始归并段最晚归并 , 就可建立总读写次数达到最少的最佳归并树。</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -2467,7 +2678,7 @@
     <link href="http://ucasfl.me/2017/08/08/Inner-Sort/"/>
     <id>http://ucasfl.me/2017/08/08/Inner-Sort/</id>
     <published>2017-08-08T04:51:50.000Z</published>
-    <updated>2017-09-02T04:38:29.063Z</updated>
+    <updated>2017-11-05T11:27:36.907Z</updated>
     
     <content type="html"><![CDATA[<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3>
 <ul>
@@ -2907,7 +3118,25 @@
       <td>n</td>
     </tr>
   </tbody>
-</table>]]></content>
+</table>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -2937,7 +3166,7 @@
     <link href="http://ucasfl.me/2017/08/07/Find-and-Search-Part3/"/>
     <id>http://ucasfl.me/2017/08/07/Find-and-Search-Part3/</id>
     <published>2017-08-07T04:51:28.000Z</published>
-    <updated>2017-09-02T04:38:29.063Z</updated>
+    <updated>2017-11-05T11:22:35.856Z</updated>
     
     <content type="html"><![CDATA[<h3 id="键树-数字查找树"><a href="#键树-数字查找树" class="headerlink" title="键树 / 数字查找树"></a>键树 / 数字查找树</h3>
 <p>Keyword Tree/Digital Search Tree 是关键字的一种组织方式,其具有下列特征:</p>
@@ -3171,7 +3400,25 @@
   <li>一般情况下,可以认为选用的哈希函数是均匀的,则在讨论 ASL 时,可以不考虑它的因素</li>
   <li>哈希表的ASL是填满因子$\alpha$的函数，而不是$n$的函数。</li>
   <li>用哈希表构造查找表时，可以选择一个合适的填满因子，使得ASL限定在某个范围内。</li>
-</ul>]]></content>
+</ul>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -3211,7 +3458,7 @@
     <link href="http://ucasfl.me/2017/08/07/Find-and-Search-Part2/"/>
     <id>http://ucasfl.me/2017/08/07/Find-and-Search-Part2/</id>
     <published>2017-08-07T04:51:24.000Z</published>
-    <updated>2017-09-02T04:38:29.063Z</updated>
+    <updated>2017-11-05T11:22:29.136Z</updated>
     
     <content type="html"><![CDATA[<h3 id="AVL-树"><a href="#AVL-树" class="headerlink" title="AVL 树"></a>AVL 树</h3>
 <ul>
@@ -3483,7 +3730,25 @@
 <p><strong>B+ 树的插入、删除</strong></p>
 <ul>
   <li>在 B+ 树上插入、删除的过程基本上和 B 树类似。</li>
-</ul>]]></content>
+</ul>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -3519,7 +3784,7 @@
     <link href="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/"/>
     <id>http://ucasfl.me/2017/08/05/Find-and-Search-Part1/</id>
     <published>2017-08-05T04:51:20.000Z</published>
-    <updated>2017-09-02T04:38:29.063Z</updated>
+    <updated>2017-11-05T11:22:18.584Z</updated>
     
     <content type="html"><![CDATA[<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3>
 <ul>
@@ -3982,7 +4247,25 @@
   <li>二叉排序树上成功的查找次数不会超过二叉树的深度,而具有 n 个结点的二叉排序树的深度,最好为 log2n ,最坏为 n 。因此二叉排序树查找的最好时间复杂度为 O(log2n) ,最坏的时间复杂度为 O(n)。</li>
   <li>在随机情况下, n 个结点的二叉排序树的平均查找长度 (ASL) 和log2n ( 树的深度 ) 是等数量级的。</li>
   <li>随机:各个元素的查找概率相同,元素组成的序列是随机的</li>
-</ul>]]></content>
+</ul>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -4024,7 +4307,7 @@
     <link href="http://ucasfl.me/2017/07/30/Dynamic-Memory-Management/"/>
     <id>http://ucasfl.me/2017/07/30/Dynamic-Memory-Management/</id>
     <published>2017-07-30T11:57:40.000Z</published>
-    <updated>2017-09-02T04:38:29.019Z</updated>
+    <updated>2017-11-05T11:21:48.912Z</updated>
     
     <content type="html"><![CDATA[<h3 id="存储空间的分配和管理"><a href="#存储空间的分配和管理" class="headerlink" title="存储空间的分配和管理"></a>存储空间的分配和管理</h3>
 <ul>
@@ -4270,7 +4553,25 @@
   <li>无用单元:用户不再使用而系统没有回收的变量和结构</li>
   <li>产生原因:程序 Bug</li>
 </ul>
-<p>– p=malloc(size); … … p=NULL; // 未回收的空间<br>– p=malloc(size); … … q=p;free(p);// 悬挂访问</p>]]></content>
+<p>– p=malloc(size); … … p=NULL; // 未回收的空间<br>– p=malloc(size); … … q=p;free(p);// 悬挂访问</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
     
     <summary type="html">
     
@@ -4293,6 +4594,92 @@
     
     
       <category term="Data-Structures" scheme="http://ucasfl.me/tags/Data-Structures/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>局部变量的栈溢出</title>
+    <link href="http://ucasfl.me/2017/07/28/Stack-Over-Flow-in-Function/"/>
+    <id>http://ucasfl.me/2017/07/28/Stack-Over-Flow-in-Function/</id>
+    <published>2017-07-28T13:47:54.000Z</published>
+    <updated>2017-11-05T11:34:15.494Z</updated>
+    
+    <content type="html"><![CDATA[<p>先上代码：</p>
+<figure class="highlight c++">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">10000000</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">bool</span> Tree[MAX_N] = &#123;<span class="literal">false</span>&#125;;<span class="comment">//全局变量</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> depth, balls;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; depth &gt;&gt; balls;</div><div class="line">	 </div><div class="line">	<span class="keyword">int</span> ind = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> last = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>( ind ++ &lt; balls )&#123;</div><div class="line">		<span class="keyword">int</span> curr = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; depth; ++i )&#123;</div><div class="line">			<span class="keyword">if</span>( <span class="literal">false</span> == Tree[curr] )&#123;</div><div class="line">				curr = curr*<span class="number">2</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				curr = curr*<span class="number">2</span> + <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			Tree[curr] = !Tree[curr];</div><div class="line">			last = curr;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; last &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><em>代码1</em></p>
+<a id="more"></a>
+<figure class="highlight c++">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">10000000</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">bool</span> Tree[MAX_N] = &#123;<span class="literal">false</span>&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> depth, balls;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; depth &gt;&gt; balls;</div><div class="line">    <span class="keyword">bool</span> Tree[MAX_N] = &#123;<span class="literal">false</span>&#125;;<span class="comment">//局部变量</span></div><div class="line">	 </div><div class="line">	<span class="keyword">int</span> ind = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> last = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>( ind ++ &lt; balls )&#123;</div><div class="line">		<span class="keyword">int</span> curr = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; depth; ++i )&#123;</div><div class="line">			<span class="keyword">if</span>( <span class="literal">false</span> == Tree[curr] )&#123;</div><div class="line">				curr = curr*<span class="number">2</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				curr = curr*<span class="number">2</span> + <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			Tree[curr] = !Tree[curr];</div><div class="line">			last = curr;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; last &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><em>代码2</em></p>
+<p>观察<em>代码1</em>和<em>代码2</em>，二者只有一个区别，前者<code>Tree</code>为全局变量，而后者为局部变量。一般来说，我们可能觉得两个函数运行的时候不会有什么不同，然而却出现不同的结果：</p>
+<p><em>代码1</em>能正确运行，<em>代码2</em>：</p>
+<p><img src="/photos/stack/1.png" alt=""></p>
+<p>惊喜不惊喜，意外不意外！</p>
+<p>我们知道，<strong>在内存中，全局变量存于全局变量区，而局部变量位于栈中，函数以栈帧的形式存储。</strong>相对来说，全局变量区空间较大，而栈空间较小，因此便导致了<em>代码2</em>的栈溢出，而<em>代码1</em>则正常。</p>
+<p><img src="/photos/stack/2.png" alt=""></p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先上代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;gutter&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;code&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;meta-string&quot;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; MAX_N = &lt;span class=&quot;number&quot;&gt;10000000&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;bool&lt;/span&gt; Tree[MAX_N] = &amp;#123;&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&amp;#125;;&lt;span class=&quot;comment&quot;&gt;//全局变量&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; depth, balls;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;cin&lt;/span&gt; &amp;gt;&amp;gt; depth &amp;gt;&amp;gt; balls;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	 &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; ind = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; last = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;( ind ++ &amp;lt; balls )&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; curr = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ( &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; depth; ++i )&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;( &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt; == Tree[curr] )&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				curr = curr*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				curr = curr*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			Tree[curr] = !Tree[curr];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			last = curr;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; last &amp;lt;&amp;lt; &lt;span class=&quot;built_in&quot;&gt;endl&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;em&gt;代码1&lt;/em&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
+    
+    
+      <category term="Stack-Over-Flow" scheme="http://ucasfl.me/tags/Stack-Over-Flow/"/>
     
   </entry>
   

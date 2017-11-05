@@ -77,7 +77,7 @@
 指导
 首先，需要到多说创建一个站点。">
   <meta property="og:image" content="http://ucasfl.me/photos/blog1/1.png">
-  <meta property="og:updated_time" content="2017-09-02T04:38:29.079Z">
+  <meta property="og:updated_time" content="2017-11-05T11:25:21.408Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hexo - 添加多说评论">
   <meta name="twitter:description" content="目的
@@ -437,6 +437,24 @@
                   </figure>
                   <p>在<code>duoshuo_shortname</code>后面填上刚才创建站点的信息。</p>
                   <p>完成~</p>
+                  <p>
+                    <div id="container"></div>
+                  </p>
+                  <p>
+                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                  </p>
+                  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                  <script>
+                    var gitment = new Gitment({
+                      owner: 'ucasFL',
+                      repo: 'BlogComments',
+                      oauth: {
+                        client_id: 'ef399b43f01e072241fd',
+                        client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+                      },
+                    })
+                    gitment.render('container');
+                  </script>
 
                 </div>
 
@@ -551,8 +569,6 @@
 
           <div class="comments" id="comments">
 
-            <div id="uyan_frame"></div>
-
           </div>
 
 
@@ -598,7 +614,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-count">120</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -894,14 +910,6 @@
 
 
 
-
-
-
-
-
-  <!-- UY BEGIN -->
-  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147761"></script>
-  <!-- UY END -->
 
 
 

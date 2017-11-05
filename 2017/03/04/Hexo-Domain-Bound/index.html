@@ -73,7 +73,7 @@
   <meta property="og:description" content="前言
 当用 Hexo+GitHub 搭建好博客以后，域名为：username.github.io 。但是很多人包括我都会觉得这个域名过于太长，还好 GitHub 支持域名绑定，因此你可以选择一个自己喜欢的域名绑定到博客上，之后，便可通过该域名访问博客。">
   <meta property="og:image" content="http://ucasfl.me/photos/blog7/1.png">
-  <meta property="og:updated_time" content="2017-09-02T04:38:29.079Z">
+  <meta property="og:updated_time" content="2017-11-05T11:25:14.512Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hexo博客域名绑定">
   <meta name="twitter:description" content="前言
@@ -417,6 +417,24 @@
                   <p><img src="/photos/blog7/1.png" alt=""></p>
                   <p>然后，到博客根目录的 <code>sources</code> 文件夹新建文件 <code>CNAME</code>，文件内容即为你购买的域名，不需要前缀<code>http://</code>；</p>
                   <p>之后再重新部署到 <code>GitHub</code> 上就可以通过你购买的域名访问博客了。</p>
+                  <p>
+                    <div id="container"></div>
+                  </p>
+                  <p>
+                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                  </p>
+                  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                  <script>
+                    var gitment = new Gitment({
+                      owner: 'ucasFL',
+                      repo: 'BlogComments',
+                      oauth: {
+                        client_id: 'ef399b43f01e072241fd',
+                        client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+                      },
+                    })
+                    gitment.render('container');
+                  </script>
 
                 </div>
 
@@ -531,8 +549,6 @@
 
           <div class="comments" id="comments">
 
-            <div id="uyan_frame"></div>
-
           </div>
 
 
@@ -578,7 +594,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-count">120</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -874,14 +890,6 @@
 
 
 
-
-
-
-
-
-  <!-- UY BEGIN -->
-  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147761"></script>
-  <!-- UY END -->
 
 
 
