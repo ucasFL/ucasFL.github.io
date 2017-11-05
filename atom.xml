@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-11-05T06:13:35.863Z</updated>
+  <updated>2017-11-05T06:26:04.032Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,36 +20,59 @@
     <link href="http://ucasfl.me/2017/11/05/Gitment-test/"/>
     <id>http://ucasfl.me/2017/11/05/Gitment-test/</id>
     <published>2017-11-05T05:40:13.000Z</published>
-    <updated>2017-11-05T06:13:35.863Z</updated>
+    <updated>2017-11-05T06:26:04.032Z</updated>
     
     <content type="html"><![CDATA[<p>This page have gitment.</p>
+<div class="comments" id="comments"><br><br>
+  <div id="gitment-container"></div>
+
+  <p>
+</p></div><br>
+<!-- LOCAL: You can save these files to your site and update links -->
+<p></p>
 <p>
-  <div id="container"></div>
+  <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
 </p>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
 
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<!-- END LOCAL -->
+<style>
+  a.gitment-editor-footer-tip {
+    display: none;
+  }
 
-<script>
-  var gitment = new Gitment({
-    id: location.href, // 可选。默认为 location.href
-    owner: 'ucasFL',
-    repo: 'https://github.com/ucasFL/BlogComment',
-    oauth: {
-      client_id: 'ef399b43f01e072241fd',
-      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
-    },
-  })
-  gitment.render('container')
+  .gitment-container.gitment-footer-container {
+    display: none;
+  }
+</style>
+
+<script type="text/javascript">
+  function renderGitment() {
+    var gitment = new Gitmint({
+      id: window.location.pathname,
+      owner: 'ucasFL',
+      repo: 'BlogComment',
+      lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+      oauth: {
+        client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+        client_id: 'ef399b43f01e072241fd'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  renderGitment();
 </script>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;This page have gitment.&lt;/p&gt;
-&lt;p&gt;
-  &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://imsun.github.io/gitment/style/defa
+&lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;&lt;br&gt;&lt;br&gt;
+  &lt;div id=&quot;gitment-container&quot;&gt;&lt;/div&gt;
+
+  &lt;p&gt;
+&lt;/p&gt;&lt;/div&gt;&lt;br&gt;
+&lt;!-- 
     
     </summary>
     
