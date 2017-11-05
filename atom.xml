@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-11-05T05:53:29.038Z</updated>
+  <updated>2017-11-05T05:58:01.390Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ucasfl.me/2017/11/05/Gitment-test/"/>
     <id>http://ucasfl.me/2017/11/05/Gitment-test/</id>
     <published>2017-11-05T05:40:13.000Z</published>
-    <updated>2017-11-05T05:53:29.038Z</updated>
+    <updated>2017-11-05T05:58:01.390Z</updated>
     
     <content type="html"><![CDATA[<p>This page have gitment.</p>
 <p>
@@ -32,7 +32,7 @@
 
 <script>
   var gitment = new Gitment({
-    id: window.location.pathname, // 可选。默认为 location.href
+    id: location.href, // 可选。默认为 location.href
     owner: 'ucasFL',
     repo: 'BlogComment',
     oauth: {
