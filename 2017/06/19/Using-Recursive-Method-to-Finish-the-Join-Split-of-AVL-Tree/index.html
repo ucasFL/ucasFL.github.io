@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,7 +51,22 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="AVL-Tree," />
@@ -53,11 +76,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -102,19 +120,31 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -141,7 +171,16 @@
 
 
 
-  <title> 递归实现平衡二叉树的插入、删除、合并和分裂 | 春暖花开 </title>
+  <title>递归实现平衡二叉树的插入、删除、合并和分裂 | 春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,22 +190,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,28 +237,8 @@
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -244,41 +248,9 @@
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -302,47 +274,41 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
+                  <header class="post-header">
 
 
 
-                  <h1 class="post-title" itemprop="name headline">
+                    <h1 class="post-title" itemprop="name headline">递归实现平衡二叉树的插入、删除、合并和分裂</h1>
 
 
-
-                    递归实现平衡二叉树的插入、删除、合并和分裂
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-19T16:39:12+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-19T16:39:12+08:00">
                 2017/06/19
               </time>
 
@@ -350,48 +316,43 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Algorithms/" itemprop="url" rel="index">
                     <span itemprop="name">Algorithms</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
+                      </span>
 
 
 
 
-
-
-
-
-                    <span id="/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/" class="leancloud_visitors" data-flag-title="递归实现平衡二叉树的插入、删除、合并和分裂">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                      <a href="/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/" itemprop="commentsCount"></span>
+                </a>
+                      </span>
 
 
 
@@ -400,110 +361,74 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
-
-                  <h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3>
-                  <p>平衡二叉树是这样一棵树，要么是一棵空树，要么是满足下面条件的树：</p>
-                  <ul>
-                    <li>左子树和右子树的深度的绝对值只差不超过 1;</li>
-                    <li>左子树和右子树也是平衡二叉树。</li>
-                  </ul>
-                  <p>既是二茬排序树又是平衡二叉树的树为平衡二茬排序树。下面说到的平衡二叉树表示平衡二茬排序树。</p>
-                  <p>在平衡二叉树的结构定义中，比二叉树多了一个平衡因子。实现平衡二叉树的插入和删除是一件比较头疼的事情。因为每次插入或删除之后都要检查平衡是否被破坏，如果被破坏，则要进行各种左旋、右旋的平衡化。</p>
-                  <a id="more"></a>
-                  <p>除了插入和删除，有的时候还会涉及到将两个平衡二叉树或多个合并成一个平衡二叉树。或者将一个平衡二叉树分裂为两个平衡二叉树，其中一个中的值均小于等于 $x$，另一个的值均大于 $x$ 。对于合并，最常规的方法自然是，将其中一个二叉树中的点一个个插入到另一个平衡二叉树中。然而，这样做的时间复杂度很大，而且其中一棵二叉树被破坏。但是，如果通过递归来做，则可以在不破坏两棵树的前提下创建一棵新的平衡二叉树，并且时间复杂度比前者要优越很多。</p>
-                  <h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3>
-                  <p>下面说一下该算法：</p>
-                  <ol>
-                    <li>分别中序遍历两棵二叉树，得到两个有序序列。</li>
-                    <li>将两个有序序列合并为一个有序序列。</li>
-                    <li>利用该有序序列来创建一棵新的平衡二叉树。</li>
-                  </ol>
-                  <p>递归部分：</p>
-                  <p>终止条件：</p>
-                  <ul>
-                    <li>序列中只剩下一个或两个记录，一个时，直接建节点，插入记录；两个时，可建节点，将前者插入，然后再后一个作为前者的右孩子插入。</li>
-                  </ul>
-                  <p>递归：</p>
-                  <ul>
-                    <li>当序列数大于二时，首先建立节点，将序列最中间的记录插入，然后递归，将中间节点之前的记录作为左孩子插入，中间节点后面的记录作为右孩子插入。</li>
-                  </ul>
-                  <p>通过该算法构造出的二叉树一定为平衡二茬排序树：</p>
-                  <ul>
-                    <li>每次递归保证了左边的点小于根节点，右边的点大于根节点，因此为排序树。</li>
-                    <li>递归过程中保证了左右孩子的数目相等或相差一个，这样保证了左右孩子的深度绝对值只差不会超过 1 。</li>
-                  </ul>
-                  <p>利用这一个思路，也可进行分裂、插入和删除：</p>
-                  <ul>
-                    <li>分裂：中序遍历平衡二叉树得到序列，定位出 $x$ 的位置，利用递归算法和 $x$ 以及之前的序列可构造出一棵二叉树，之后的序列同样构造出一棵二叉树。</li>
-                    <li>插入：先中序遍历得到序列，将需插入的值插入序列，然后再建树，只是这样相当于重新创建一棵二叉树。</li>
-                    <li>删除：和插入一样。</li>
-                  </ul>
-                  <h3 id="C-语言实现："><a href="#C-语言实现：" class="headerlink" title="C 语言实现："></a>C 语言实现：</h3>
-                  <p>下面是合并和分裂的 C 语言实现：</p>
-                  <figure class="highlight c">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 100</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MMAX 200</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BiTreeNode&#123;</div><div class="line">	<span class="keyword">int</span> number;</div><div class="line">	<span class="keyword">int</span> data;</div><div class="line">	<span class="keyword">struct</span> BiTreeNode *lchild;</div><div class="line">	<span class="keyword">struct</span> BiTreeNode *rchild;</div><div class="line">&#125;BiTreeNode, *BiTree;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(BiTree *T, <span class="keyword">int</span> key[], <span class="keyword">int</span> first, <span class="keyword">int</span> last)</span></span>; <span class="comment">//use a sorted array key[] to create a balanced tree</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(BiTree T, BiTree *T1, BiTree *T2, <span class="keyword">int</span> x)</span></span>; <span class="comment">//split a balanced tree into two balanced tree</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last, <span class="keyword">int</span> restore)</span></span>; <span class="comment">//inorder traverse a balanced tree to get the record list</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">preorder</span><span class="params">(BiTree T)</span></span>; <span class="comment">//preorder traverse a tree</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_index_x</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> last, <span class="keyword">int</span> x, <span class="keyword">int</span> *index_x)</span></span>; <span class="comment">//get the index of x in array key</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_array</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> key1[], <span class="keyword">int</span> key2[], <span class="keyword">int</span> len1, <span class="keyword">int</span> len2, <span class="keyword">int</span> *last)</span></span>; <span class="comment">//merge two sorted array into one sorted array</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_tree</span><span class="params">(BiTree *T, BiTree T1, BiTree T2)</span></span>;  <span class="comment">//merge two balanced tree into one balanced tree</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_tree</span><span class="params">(BiTree *T, BiTree T1, BiTree T2)</span></span>&#123; </div><div class="line">	<span class="keyword">int</span> key[MMAX], key1[MAX], key2[MAX];</div><div class="line">	<span class="keyword">int</span> len1, len2, last;</div><div class="line">    <span class="comment">//get lists</span></div><div class="line">	inorder(T1, key1, &amp;len1, <span class="number">0</span>);</div><div class="line">	inorder(T2, key2, &amp;len2, <span class="number">0</span>);</div><div class="line">   <span class="comment">//merge lists</span></div><div class="line">	merge_array(key, key1, key2, len1, len2, &amp;last);</div><div class="line">	join(T, key, <span class="number">0</span>, last); <span class="comment">//create tree</span></div><div class="line">&#125;<span class="comment">//merge_tree</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_array</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> key1[], <span class="keyword">int</span> key2[], <span class="keyword">int</span> len1, <span class="keyword">int</span> len2, <span class="keyword">int</span> *last)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j, k ;</div><div class="line">	key[<span class="number">0</span>] = (key1[<span class="number">0</span>] &lt; key2[<span class="number">0</span>])?key1[<span class="number">0</span>]:key2[<span class="number">0</span>];<span class="comment">//get the first value </span></div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>, j = <span class="number">0</span>, k = <span class="number">1</span>; i &lt;= len1 &amp;&amp; j &lt;= len2; )&#123; <span class="comment">//merge lists</span></div><div class="line">		<span class="keyword">if</span> (key1[i] &lt; key2[j] )&#123;</div><div class="line">			<span class="keyword">if</span> (key1[i] != key[k<span class="number">-1</span>])</div><div class="line">			  key[k++] = key1[i++];</div><div class="line">			<span class="keyword">else</span></div><div class="line">			  i ++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">if</span> (key2[j] != key[k<span class="number">-1</span>])</div><div class="line">			  key[k++] = key2[j++];</div><div class="line">			<span class="keyword">else</span></div><div class="line">			  j ++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (i &lt;= len1)&#123;  <span class="comment">//merge remain record of key1[]</span></div><div class="line">		<span class="keyword">while</span> ( i &lt;= len1 ) &#123;</div><div class="line">			key[k++] = key1[i++];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(j &lt;= len2 )&#123; <span class="comment">//merge remain record of key2[]</span></div><div class="line">		<span class="keyword">while</span> ( j &lt;= len2 ) &#123;</div><div class="line">			key[k++] = key2[j++];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> ;</div><div class="line">	*last = k - <span class="number">1</span>; <span class="comment">//get lenth-1</span></div><div class="line">&#125;<span class="comment">//merge_array</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(BiTree *T, <span class="keyword">int</span> key[], <span class="keyword">int</span> first, <span class="keyword">int</span> last)</span></span>&#123; <span class="comment">//create balanced tree using sorted array</span></div><div class="line">	<span class="keyword">if</span>(first == last)&#123;<span class="comment">//left one record</span></div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[first];</div><div class="line">		(*T)-&gt;lchild = (*T)-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(first == last - <span class="number">1</span>)&#123;<span class="comment">//left two record</span></div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[first];</div><div class="line">		(*T)-&gt;rchild = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;rchild-&gt;data = key[last];</div><div class="line">		(*T)-&gt;lchild = (*T)-&gt;rchild-&gt;lchild = (*T)-&gt;rchild-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123; <span class="comment">//insert middle record</span></div><div class="line">		<span class="keyword">int</span> middle = (first + last) / <span class="number">2</span>;</div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[middle];</div><div class="line">		<span class="comment">//recursive call the join function</span></div><div class="line">		join(&amp;((*T)-&gt;lchild), key, first, middle - <span class="number">1</span>);</div><div class="line">		join(&amp;((*T)-&gt;rchild), key, middle + <span class="number">1</span>, last);</div><div class="line">	&#125;</div><div class="line">&#125; <span class="comment">//join</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(BiTree T, BiTree *T1, BiTree *T2, <span class="keyword">int</span> x)</span></span>&#123; <span class="comment">//split one balanced tree T into two balanced tree T1 and T2</span></div><div class="line">	<span class="keyword">int</span> key[MAX];</div><div class="line">	<span class="keyword">int</span> last, index_x;</div><div class="line">	inorder(T, key, &amp;last, <span class="number">0</span>);<span class="comment">//get sorted list array</span></div><div class="line">	<span class="keyword">int</span> get_x = get_index_x(key, last, x, &amp;index_x);<span class="comment">//get the index of x in array key</span></div><div class="line">	<span class="keyword">if</span> (get_x)&#123;</div><div class="line">		<span class="comment">//call join funcion to create balanced tree</span></div><div class="line">		join(T1, key, <span class="number">0</span>, index_x);</div><div class="line">		join(T2, key, index_x + <span class="number">1</span>, last);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123; <span class="comment">//all record &gt; x or &lt;= x, don't need split;</span></div><div class="line">		*T1 = T;</div><div class="line">		*T2 = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">&#125; <span class="comment">//split</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_index_x</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> last, <span class="keyword">int</span> x, <span class="keyword">int</span> *index_x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= last; i++ ) &#123;</div><div class="line">		j = i + <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>( key[i] &lt;= x &amp;&amp; key[j] &gt; x &amp;&amp;  j &lt;= last )&#123;</div><div class="line">			*index_x = i;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;<span class="comment">//get_index</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last, <span class="keyword">int</span> restore)</span></span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (!restore)</div><div class="line">	  i = <span class="number">0</span>;<span class="comment">//when everytime call the function in main function, restore i to zero</span></div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, key, last, ++ restore))&#123;</div><div class="line">			key[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, key, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">preorder</span><span class="params">(BiTree T)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(!T)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">printf</span>( <span class="string">"%d  "</span>, T-&gt;data );</div><div class="line">		<span class="keyword">if</span>(preorder(T-&gt;lchild))</div><div class="line">		  <span class="keyword">if</span>(preorder(T-&gt;rchild))</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;<span class="comment">//preorder</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> **argv )</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> key[<span class="number">16</span>];</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">16</span>; i++ ) &#123;</div><div class="line">		key[i<span class="number">-1</span>] = <span class="number">4</span>*i - <span class="number">3</span>;</div><div class="line">	&#125;</div><div class="line">	BiTree T;</div><div class="line">	join(&amp;T, key, <span class="number">0</span>, <span class="number">15</span>);</div><div class="line">	preorder(T);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line"></div><div class="line">	<span class="keyword">int</span> num[<span class="number">40</span>];</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">40</span>; i++ ) &#123;</div><div class="line">		num[i] = <span class="number">2</span>*i + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	BiTree T0, T1, T2;</div><div class="line">	</div><div class="line">	join(&amp;T0, num, <span class="number">0</span>, <span class="number">39</span>);</div><div class="line">	preorder(T0);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> x;</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"Input x: "</span> );</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</div><div class="line">	split(T0, &amp;T1, &amp;T2, x);</div><div class="line">	preorder(T1);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	preorder(T2);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line"></div><div class="line">	<span class="keyword">int</span> key1[<span class="number">10</span>], key2[<span class="number">20</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)</div><div class="line">	  key1[i] = <span class="number">3</span>*i;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++ ) &#123;</div><div class="line">		key2[i] = <span class="number">2</span>*i;</div><div class="line">	&#125;</div><div class="line">	BiTree t, t1, t2;</div><div class="line">	join(&amp;t1, key1, <span class="number">0</span>, <span class="number">9</span>);</div><div class="line">	preorder(t1);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	join(&amp;t2, key2, <span class="number">0</span>, <span class="number">19</span>);</div><div class="line">	preorder(t2);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line">	merge_tree(&amp;t, t1, t2);</div><div class="line">	preorder(t);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-
-                </div>
-
-                <div>
+                    </div>
+                  </header>
 
 
 
 
-                </div>
 
-                <div>
-
+                  <div class="post-body" itemprop="articleBody">
 
 
 
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-                  <div class="post-tags">
-
-                    <a href="/tags/AVL-Tree/" rel="tag"># AVL-Tree</a>
+                    <h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3>
+                    <p>平衡二叉树是这样一棵树，要么是一棵空树，要么是满足下面条件的树：</p>
+                    <ul>
+                      <li>左子树和右子树的深度的绝对值只差不超过 1;</li>
+                      <li>左子树和右子树也是平衡二叉树。</li>
+                    </ul>
+                    <p>既是二茬排序树又是平衡二叉树的树为平衡二茬排序树。下面说到的平衡二叉树表示平衡二茬排序树。</p>
+                    <p>在平衡二叉树的结构定义中，比二叉树多了一个平衡因子。实现平衡二叉树的插入和删除是一件比较头疼的事情。因为每次插入或删除之后都要检查平衡是否被破坏，如果被破坏，则要进行各种左旋、右旋的平衡化。</p>
+                    <a id="more"></a>
+                    <p>除了插入和删除，有的时候还会涉及到将两个平衡二叉树或多个合并成一个平衡二叉树。或者将一个平衡二叉树分裂为两个平衡二叉树，其中一个中的值均小于等于 $x$，另一个的值均大于 $x$ 。对于合并，最常规的方法自然是，将其中一个二叉树中的点一个个插入到另一个平衡二叉树中。然而，这样做的时间复杂度很大，而且其中一棵二叉树被破坏。但是，如果通过递归来做，则可以在不破坏两棵树的前提下创建一棵新的平衡二叉树，并且时间复杂度比前者要优越很多。</p>
+                    <h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3>
+                    <p>下面说一下该算法：</p>
+                    <ol>
+                      <li>分别中序遍历两棵二叉树，得到两个有序序列。</li>
+                      <li>将两个有序序列合并为一个有序序列。</li>
+                      <li>利用该有序序列来创建一棵新的平衡二叉树。</li>
+                    </ol>
+                    <p>递归部分：</p>
+                    <p>终止条件：</p>
+                    <ul>
+                      <li>序列中只剩下一个或两个记录，一个时，直接建节点，插入记录；两个时，可建节点，将前者插入，然后再后一个作为前者的右孩子插入。</li>
+                    </ul>
+                    <p>递归：</p>
+                    <ul>
+                      <li>当序列数大于二时，首先建立节点，将序列最中间的记录插入，然后递归，将中间节点之前的记录作为左孩子插入，中间节点后面的记录作为右孩子插入。</li>
+                    </ul>
+                    <p>通过该算法构造出的二叉树一定为平衡二茬排序树：</p>
+                    <ul>
+                      <li>每次递归保证了左边的点小于根节点，右边的点大于根节点，因此为排序树。</li>
+                      <li>递归过程中保证了左右孩子的数目相等或相差一个，这样保证了左右孩子的深度绝对值只差不会超过 1 。</li>
+                    </ul>
+                    <p>利用这一个思路，也可进行分裂、插入和删除：</p>
+                    <ul>
+                      <li>分裂：中序遍历平衡二叉树得到序列，定位出 $x$ 的位置，利用递归算法和 $x$ 以及之前的序列可构造出一棵二叉树，之后的序列同样构造出一棵二叉树。</li>
+                      <li>插入：先中序遍历得到序列，将需插入的值插入序列，然后再建树，只是这样相当于重新创建一棵二叉树。</li>
+                      <li>删除：和插入一样。</li>
+                    </ul>
+                    <h3 id="C-语言实现："><a href="#C-语言实现：" class="headerlink" title="C 语言实现："></a>C 语言实现：</h3>
+                    <p>下面是合并和分裂的 C 语言实现：</p>
+                    <figure class="highlight c">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 100</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MMAX 200</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BiTreeNode&#123;</div><div class="line">	<span class="keyword">int</span> number;</div><div class="line">	<span class="keyword">int</span> data;</div><div class="line">	<span class="keyword">struct</span> BiTreeNode *lchild;</div><div class="line">	<span class="keyword">struct</span> BiTreeNode *rchild;</div><div class="line">&#125;BiTreeNode, *BiTree;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(BiTree *T, <span class="keyword">int</span> key[], <span class="keyword">int</span> first, <span class="keyword">int</span> last)</span></span>; <span class="comment">//use a sorted array key[] to create a balanced tree</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(BiTree T, BiTree *T1, BiTree *T2, <span class="keyword">int</span> x)</span></span>; <span class="comment">//split a balanced tree into two balanced tree</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last, <span class="keyword">int</span> restore)</span></span>; <span class="comment">//inorder traverse a balanced tree to get the record list</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">preorder</span><span class="params">(BiTree T)</span></span>; <span class="comment">//preorder traverse a tree</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_index_x</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> last, <span class="keyword">int</span> x, <span class="keyword">int</span> *index_x)</span></span>; <span class="comment">//get the index of x in array key</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_array</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> key1[], <span class="keyword">int</span> key2[], <span class="keyword">int</span> len1, <span class="keyword">int</span> len2, <span class="keyword">int</span> *last)</span></span>; <span class="comment">//merge two sorted array into one sorted array</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_tree</span><span class="params">(BiTree *T, BiTree T1, BiTree T2)</span></span>;  <span class="comment">//merge two balanced tree into one balanced tree</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_tree</span><span class="params">(BiTree *T, BiTree T1, BiTree T2)</span></span>&#123; </div><div class="line">	<span class="keyword">int</span> key[MMAX], key1[MAX], key2[MAX];</div><div class="line">	<span class="keyword">int</span> len1, len2, last;</div><div class="line">    <span class="comment">//get lists</span></div><div class="line">	inorder(T1, key1, &amp;len1, <span class="number">0</span>);</div><div class="line">	inorder(T2, key2, &amp;len2, <span class="number">0</span>);</div><div class="line">   <span class="comment">//merge lists</span></div><div class="line">	merge_array(key, key1, key2, len1, len2, &amp;last);</div><div class="line">	join(T, key, <span class="number">0</span>, last); <span class="comment">//create tree</span></div><div class="line">&#125;<span class="comment">//merge_tree</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_array</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> key1[], <span class="keyword">int</span> key2[], <span class="keyword">int</span> len1, <span class="keyword">int</span> len2, <span class="keyword">int</span> *last)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j, k ;</div><div class="line">	key[<span class="number">0</span>] = (key1[<span class="number">0</span>] &lt; key2[<span class="number">0</span>])?key1[<span class="number">0</span>]:key2[<span class="number">0</span>];<span class="comment">//get the first value </span></div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>, j = <span class="number">0</span>, k = <span class="number">1</span>; i &lt;= len1 &amp;&amp; j &lt;= len2; )&#123; <span class="comment">//merge lists</span></div><div class="line">		<span class="keyword">if</span> (key1[i] &lt; key2[j] )&#123;</div><div class="line">			<span class="keyword">if</span> (key1[i] != key[k<span class="number">-1</span>])</div><div class="line">			  key[k++] = key1[i++];</div><div class="line">			<span class="keyword">else</span></div><div class="line">			  i ++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">if</span> (key2[j] != key[k<span class="number">-1</span>])</div><div class="line">			  key[k++] = key2[j++];</div><div class="line">			<span class="keyword">else</span></div><div class="line">			  j ++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (i &lt;= len1)&#123;  <span class="comment">//merge remain record of key1[]</span></div><div class="line">		<span class="keyword">while</span> ( i &lt;= len1 ) &#123;</div><div class="line">			key[k++] = key1[i++];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(j &lt;= len2 )&#123; <span class="comment">//merge remain record of key2[]</span></div><div class="line">		<span class="keyword">while</span> ( j &lt;= len2 ) &#123;</div><div class="line">			key[k++] = key2[j++];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> ;</div><div class="line">	*last = k - <span class="number">1</span>; <span class="comment">//get lenth-1</span></div><div class="line">&#125;<span class="comment">//merge_array</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(BiTree *T, <span class="keyword">int</span> key[], <span class="keyword">int</span> first, <span class="keyword">int</span> last)</span></span>&#123; <span class="comment">//create balanced tree using sorted array</span></div><div class="line">	<span class="keyword">if</span>(first == last)&#123;<span class="comment">//left one record</span></div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[first];</div><div class="line">		(*T)-&gt;lchild = (*T)-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(first == last - <span class="number">1</span>)&#123;<span class="comment">//left two record</span></div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[first];</div><div class="line">		(*T)-&gt;rchild = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;rchild-&gt;data = key[last];</div><div class="line">		(*T)-&gt;lchild = (*T)-&gt;rchild-&gt;lchild = (*T)-&gt;rchild-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123; <span class="comment">//insert middle record</span></div><div class="line">		<span class="keyword">int</span> middle = (first + last) / <span class="number">2</span>;</div><div class="line">		*T = (BiTree) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(BiTreeNode));</div><div class="line">		(*T)-&gt;data = key[middle];</div><div class="line">		<span class="comment">//recursive call the join function</span></div><div class="line">		join(&amp;((*T)-&gt;lchild), key, first, middle - <span class="number">1</span>);</div><div class="line">		join(&amp;((*T)-&gt;rchild), key, middle + <span class="number">1</span>, last);</div><div class="line">	&#125;</div><div class="line">&#125; <span class="comment">//join</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(BiTree T, BiTree *T1, BiTree *T2, <span class="keyword">int</span> x)</span></span>&#123; <span class="comment">//split one balanced tree T into two balanced tree T1 and T2</span></div><div class="line">	<span class="keyword">int</span> key[MAX];</div><div class="line">	<span class="keyword">int</span> last, index_x;</div><div class="line">	inorder(T, key, &amp;last, <span class="number">0</span>);<span class="comment">//get sorted list array</span></div><div class="line">	<span class="keyword">int</span> get_x = get_index_x(key, last, x, &amp;index_x);<span class="comment">//get the index of x in array key</span></div><div class="line">	<span class="keyword">if</span> (get_x)&#123;</div><div class="line">		<span class="comment">//call join funcion to create balanced tree</span></div><div class="line">		join(T1, key, <span class="number">0</span>, index_x);</div><div class="line">		join(T2, key, index_x + <span class="number">1</span>, last);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123; <span class="comment">//all record &gt; x or &lt;= x, don't need split;</span></div><div class="line">		*T1 = T;</div><div class="line">		*T2 = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">&#125; <span class="comment">//split</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_index_x</span><span class="params">(<span class="keyword">int</span> key[], <span class="keyword">int</span> last, <span class="keyword">int</span> x, <span class="keyword">int</span> *index_x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= last; i++ ) &#123;</div><div class="line">		j = i + <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>( key[i] &lt;= x &amp;&amp; key[j] &gt; x &amp;&amp;  j &lt;= last )&#123;</div><div class="line">			*index_x = i;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;<span class="comment">//get_index</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last, <span class="keyword">int</span> restore)</span></span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (!restore)</div><div class="line">	  i = <span class="number">0</span>;<span class="comment">//when everytime call the function in main function, restore i to zero</span></div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, key, last, ++ restore))&#123;</div><div class="line">			key[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, key, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">preorder</span><span class="params">(BiTree T)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(!T)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">printf</span>( <span class="string">"%d  "</span>, T-&gt;data );</div><div class="line">		<span class="keyword">if</span>(preorder(T-&gt;lchild))</div><div class="line">		  <span class="keyword">if</span>(preorder(T-&gt;rchild))</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;<span class="comment">//preorder</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> **argv )</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> key[<span class="number">16</span>];</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">16</span>; i++ ) &#123;</div><div class="line">		key[i<span class="number">-1</span>] = <span class="number">4</span>*i - <span class="number">3</span>;</div><div class="line">	&#125;</div><div class="line">	BiTree T;</div><div class="line">	join(&amp;T, key, <span class="number">0</span>, <span class="number">15</span>);</div><div class="line">	preorder(T);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line"></div><div class="line">	<span class="keyword">int</span> num[<span class="number">40</span>];</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">40</span>; i++ ) &#123;</div><div class="line">		num[i] = <span class="number">2</span>*i + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	BiTree T0, T1, T2;</div><div class="line">	</div><div class="line">	join(&amp;T0, num, <span class="number">0</span>, <span class="number">39</span>);</div><div class="line">	preorder(T0);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> x;</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"Input x: "</span> );</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</div><div class="line">	split(T0, &amp;T1, &amp;T2, x);</div><div class="line">	preorder(T1);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	preorder(T2);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line"></div><div class="line">	<span class="keyword">int</span> key1[<span class="number">10</span>], key2[<span class="number">20</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)</div><div class="line">	  key1[i] = <span class="number">3</span>*i;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++ ) &#123;</div><div class="line">		key2[i] = <span class="number">2</span>*i;</div><div class="line">	&#125;</div><div class="line">	BiTree t, t1, t2;</div><div class="line">	join(&amp;t1, key1, <span class="number">0</span>, <span class="number">9</span>);</div><div class="line">	preorder(t1);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	join(&amp;t2, key2, <span class="number">0</span>, <span class="number">19</span>);</div><div class="line">	preorder(t2);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n\n"</span> );</div><div class="line">	merge_tree(&amp;t, t1, t2);</div><div class="line">	preorder(t);</div><div class="line">	<span class="built_in">printf</span>( <span class="string">"\n"</span> );</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
 
                   </div>
 
@@ -513,76 +438,56 @@
 
 
 
-                  <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
 
-                      <a href="/2017/06/18/Name-Conflict-in-Python/" rel="next" title="Python 中的命名冲突">
+
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/AVL-Tree/" rel="tag"># AVL-Tree</a>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/2017/06/18/Name-Conflict-in-Python/" rel="next" title="Python 中的命名冲突">
                 <i class="fa fa-chevron-left"></i> Python 中的命名冲突
               </a>
 
-                    </div>
+                      </div>
 
-                    <span class="post-nav-divider"></span>
+                      <span class="post-nav-divider"></span>
 
-                    <div class="post-nav-prev post-nav-item">
+                      <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2017/06/19/The-Static-Variables-in-C/" rel="prev" title="C 语言中的静态变量">
+                        <a href="/2017/06/19/The-Static-Variables-in-C/" rel="prev" title="C 语言中的静态变量">
                 C 语言中的静态变量 <i class="fa fa-chevron-right"></i>
               </a>
 
+                      </div>
                     </div>
-                  </div>
 
 
 
 
-                </footer>
+                  </footer>
+                </div>
+
+
+
               </article>
 
 
 
-
-
-
               <div class="post-spread">
-
-
-                <div class="bdsharebuttonbox">
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                  window._bd_share_config = {
-                    "common": {
-                      "bdText": "",
-                      "bdMini": "2",
-                      "bdMiniList": false,
-                      "bdPic": ""
-                    },
-                    "share": {
-                      "bdSize": "16",
-                      "bdStyle": "0"
-                    },
-                    "image": {
-                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-                      "viewText": "分享到：",
-                      "viewSize": "16"
-                    }
-                  }
-                </script>
-
-                <script>
-                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-                </script>
-
 
               </div>
             </div>
@@ -593,13 +498,19 @@
 
 
 
+
+
           <div class="comments" id="comments">
+
+            <div id="gitment-container"></div>
 
           </div>
 
 
-        </div>
 
+
+
+        </div>
 
 
 
@@ -612,6 +523,7 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
@@ -621,124 +533,79 @@
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview">
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview sidebar-panel">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -771,66 +638,37 @@
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -845,9 +683,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -876,56 +714,70 @@
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -953,6 +805,8 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -962,275 +816,14 @@
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -1241,11 +834,3 @@
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>

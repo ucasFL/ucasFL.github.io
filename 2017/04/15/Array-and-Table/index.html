@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,7 +51,22 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Data-Structures," />
@@ -53,11 +76,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -84,19 +102,31 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -123,7 +153,16 @@
 
 
 
-  <title> 数组和广义表 | 春暖花开 </title>
+  <title>数组和广义表 | 春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,22 +172,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -195,28 +219,8 @@
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -226,41 +230,9 @@
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -284,47 +256,41 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/04/15/Array-and-Table/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/04/15/Array-and-Table/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
+                  <header class="post-header">
 
 
 
-                  <h1 class="post-title" itemprop="name headline">
+                    <h1 class="post-title" itemprop="name headline">数组和广义表</h1>
 
 
-
-                    数组和广义表
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T15:13:55+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T15:13:55+08:00">
                 2017/04/15
               </time>
 
@@ -332,48 +298,43 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
+                      </span>
 
 
 
 
-
-
-
-
-                    <span id="/2017/04/15/Array-and-Table/" class="leancloud_visitors" data-flag-title="数组和广义表">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                      <a href="/2017/04/15/Array-and-Table/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/04/15/Array-and-Table/" itemprop="commentsCount"></span>
+                </a>
+                      </span>
 
 
 
@@ -382,282 +343,246 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
-
-                  <h3 id="数组的类型定义"><a href="#数组的类型定义" class="headerlink" title="数组的类型定义　"></a>数组的类型定义　</h3>
-                  <p>数组是几乎所有程序设计语言都设定为固有类型的一种数据类型。从线性结构看,数组类型可以看作是数据元素本身还是线性结构的一个数据结构。</p>
-                  <a id="more"></a>
-                  <p>n 维数组的特点是每一个数据元素受 n 个线性关系的约束,可以有多个直接前驱和多个直接后继 ;</p>
-                  <p>数组元素的下标一般具有固定的下界和上界,因此它比其他复杂的非线性结构简单。</p>
-                  <ul>
-                    <li>一维数组常被称为向量( Vector )；</li>
-                    <li>二维数组 A[m][n] 可看成是由 m 个行向量组成的向量,也可看成是由 n 个列向量组成的向量；</li>
-                    <li>一个二维数组类型可以定义为其分量类型为一维数组类型的一维数组类型；</li>
-                  </ul>
-                  <h3 id="数组的顺序表示和实现："><a href="#数组的顺序表示和实现：" class="headerlink" title="数组的顺序表示和实现："></a>数组的顺序表示和实现：</h3>
-                  <p>一旦建立了数组 ,结构中的数据元素个数 和元素之间的关系固定 。因此,采用顺序存储结构表示数组是自然;用顺序存储表示多维数组,就必须按某种次序将数组元素排列到一个序列中。<br>　<br>有两种顺序映象的方式:</p>
-                  <ul>
-                    <li>以行序为主序；</li>
-                    <li>以列序为主序；</li>
-                  </ul>
-                  <p>数组元素的存储位置是其下标($j_1 , j_2 , ….j_n$ ) 的线性函数。一旦确定了数组的各维的阶数, $c_i$就是常数。所以存取数组中任一元素的时间相等。我们称具有这一特点的存储结构为随机存储结构。</p>
-                  <figure class="highlight zephir">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="comment">#include&lt;stdarg.h&gt;</span></div><div class="line"></div><div class="line"><span class="comment">#define MAX_ARRAY_DIM 8</span></div><div class="line"></div><div class="line">typedef <span class="keyword">int</span> Status;</div><div class="line">typedef <span class="keyword">int</span> OK;</div><div class="line">typedef <span class="keyword">int</span> ERROR;</div><div class="line">typedef <span class="keyword">int</span> OVERFLOW;</div><div class="line"></div><div class="line">typedef struct &#123;</div><div class="line">  ElemType *base;  <span class="comment">//数组元素基址</span></div><div class="line">  <span class="keyword">int</span> dim;    <span class="comment">//数组维数</span></div><div class="line">  <span class="keyword">int</span> *bounds;  <span class="comment">//数组维界基址</span></div><div class="line">  <span class="keyword">int</span> *constants;  <span class="comment">//数组映像函数常量基址</span></div><div class="line">&#125;<span class="keyword">Array</span>;</div><div class="line"></div><div class="line"><span class="comment">//初始化数组</span></div><div class="line">Status InitArray(<span class="keyword">Array</span> *A, <span class="keyword">int</span> dim, ...)&#123;</div><div class="line">  <span class="comment">//若数组维数和各维长度合法，则构造相应数组A并返回OK</span></div><div class="line">  <span class="keyword">if</span>( dim &lt; <span class="number">1</span> || dim &gt; MAX_ARRAY_DIM )</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  A-&gt;dim = dim;</div><div class="line">  A-&gt;bounds = (<span class="keyword">int</span> *) malloc (dim * sizeof(<span class="keyword">int</span>));</div><div class="line">  <span class="keyword">if</span>(!A-&gt;bounds)</div><div class="line">    <span class="keyword">exit</span>(OVERFLOW);</div><div class="line">  <span class="comment">//若各维长度合法，则存入A-&gt;bounds,并求出元素总数</span></div><div class="line">  <span class="keyword">int</span> elemtotal = <span class="number">1</span>;</div><div class="line">  va_list ap;</div><div class="line">  va_start(ap, dim);<span class="comment">//va 初始化</span></div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dim; i++)&#123;</div><div class="line">    A-&gt;bounds[i] = va_arg(ap, <span class="keyword">int</span>); <span class="comment">//依次访问每一个参数</span></div><div class="line">    <span class="keyword">if</span>(A-&gt;bounds[i] &lt; <span class="number">0</span>)&#123;</div><div class="line">      <span class="keyword">return</span> ERROR;</div><div class="line">    &#125;</div><div class="line">    elemtotal *= A-&gt;bounds[i];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  va_end(ap);</div><div class="line"></div><div class="line">  A-&gt;base = (ElemType *) malloc (elemtotal * sizeof(ElemType));</div><div class="line">  <span class="keyword">if</span>(!A-&gt;base)&#123;</div><div class="line">    <span class="keyword">return</span> OVERFLOW;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//求映像常数Ci</span></div><div class="line">  A-&gt;constants = (<span class="keyword">int</span> *) malloc (dim * sizeof(<span class="keyword">int</span>));</div><div class="line">  <span class="keyword">if</span>(!A-&gt;constants)&#123;</div><div class="line">    <span class="keyword">return</span> OVERFLOW;</div><div class="line">  &#125;</div><div class="line">  A-&gt;constants[dim - <span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = dim <span class="number">-2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</div><div class="line">    A-&gt;constants[i] = A-&gt;boun[i+<span class="number">1</span>] * A-&gt;constants[i+<span class="number">1</span>];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//销毁数组</span></div><div class="line">Status DestroyArray(<span class="keyword">Array</span> *A)&#123;</div><div class="line">  <span class="keyword">if</span>(!A-&gt;base)&#123;</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  &#125;</div><div class="line">  free(A-&gt;base);</div><div class="line">  A-&gt;base = <span class="keyword">NULL</span>;</div><div class="line">  <span class="keyword">if</span>(!A-&gt;bounds)&#123;</div><div class="line">    <span class="keyword">return</span> ERROE;</div><div class="line">  &#125;</div><div class="line">  free(A-&gt;bounds);</div><div class="line">  A-&gt;bounds = <span class="keyword">NULL</span>;</div><div class="line">  <span class="keyword">if</span>(!A-&gt;constants)&#123;</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  &#125;</div><div class="line">  free(A-&gt;constants);</div><div class="line">  A-&gt;constants = <span class="keyword">NULL</span>;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"><span class="comment">//定位，相对位置</span></div><div class="line">Status Locate(<span class="keyword">Array</span> *A, va_list ap, <span class="keyword">int</span> *off)&#123;</div><div class="line">  *off = <span class="number">0</span>;</div><div class="line">  <span class="keyword">int</span> ind</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A-&gt;dim, i++)&#123;</div><div class="line">    ind = va_arg(ap, <span class="keyword">int</span>)</div><div class="line">    <span class="keyword">if</span>(ind &lt; <span class="number">0</span>|| ind &gt;= A-&gt;bounds[i])</div><div class="line">      <span class="keyword">return</span> OVERFLOW;</div><div class="line">    off += A-&gt;constants[i] * ind;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Status value(<span class="keyword">Array</span> *A, ElemType e, ...)&#123;</div><div class="line">  va_list ap;</div><div class="line">  <span class="keyword">int</span> off, result;</div><div class="line">  va_start(ap,e);</div><div class="line">  <span class="keyword">if</span>((result = Locate(A, ap, &amp;off)) &lt;= <span class="number">0</span>)</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  e = *(A-&gt;base + off);</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Status Assign(<span class="keyword">Array</span> *A, ElemType e, ...)&#123;</div><div class="line">  va_list ap;</div><div class="line">  va_start(ap, e);</div><div class="line">  <span class="keyword">int</span> result, off;</div><div class="line">  <span class="keyword">if</span>((result = Locate(A, ap, &amp;off)) &lt;= <span class="number">0</span> )</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  *(A-&gt;base + off) = e;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="矩阵的压缩存储-特殊矩阵"><a href="#矩阵的压缩存储-特殊矩阵" class="headerlink" title="矩阵的压缩存储(特殊矩阵)"></a>矩阵的压缩存储(特殊矩阵)</h3>
-                  <p>特殊矩阵是指非零元素或零元素的分布有一定规律的矩阵。</p>
-                  <p>假若值相同的元素或者零元素在矩阵中的分布有一定规律,则我们称此类矩阵为特殊矩阵;反之,称为稀疏矩阵。</p>
-                  <p>特殊矩阵的压缩存储主要是针对阶数很高的特殊矩阵。为节省存储空间,对可以不存储的元素,如零元素或对称元素,不再存储。</p>
-                  <h4 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h4>
-                  <p>对称矩阵中的元素关于主对角线对称, $a<em>{ij} = a</em>{ji} , 0 \le i,j \le n-1$</p>
-                  <p>为节约存储,只存对角线及对角线以上的元素,或者只存对角线或对角线以下的元素。前者称为上三角矩阵,后者称为下三角矩阵。</p>
-                  <h4 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h4>
-                  <p>三对角矩阵中除主对角线及在主对角线上 下最临近的两条对角线上的元素外,所有其它元素均为 0 。总共有$3n-2$个非零元素。</p>
-                  <p>在三条对角线上的元素 $a_{ij}$满足$$0 \le i\le n-1, i-1\le j \le i+1$$</p>
-                  <p>在一维数组 B 中 $A[i][j]$ 在第 $i$ 行,它前面有 $3\times i-1$个非零元素 , 在本行中第 $j$ 列前面有 $j-i+1$ 个,所以元素 $A[i][j] $在 B 中位置为$$ k = 2\times i + j$$</p>
-                  <p>若已知三对角矩阵中某元素 $A[i][j]$在数组 $B[ ] $存放于第 $k$ 个位置,则有<br>$$i =\frac{k+1}{3},<br>j = k - 2 \times i$$</p>
-                  <h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3>
-                  <p>假设 $m$ 行 $n$ 列的矩阵含 $t$ 个非零元素,令$$e = \frac{t}{m\times n}$$ 称$e$为稀疏因子,通常认为 $e \le 0.05$ 的矩阵为稀疏矩阵。</p>
-                  <p>以常规方法,即以二维数组表示高阶的稀疏矩阵时产生的问题 :</p>
-                  <ol>
-                    <li>零值元素占了很大空间;</li>
-                    <li>计算中进行了很多和零值的运算。如遇除法,则需判别除数是否为零;</li>
-                  </ol>
-                  <p>解决问题的原则 :</p>
-                  <ol>
-                    <li>尽可能少存或不存零值元素 ;</li>
-                    <li>尽可能减少没有实际意义的运算 ;</li>
-                    <li>操作方便;即:能尽可能快地找到与下标值 (i, j) 对应的元素 ;能尽可能快地找到同一行或同一列的非零值元。</li>
-                  </ol>
-                  <p>在存储稀疏矩阵时,为节省存储空间,应只存储非零元素。但由于非零元素的分布一般没有规律,故在存储非零元素时,必须记下它所在的行和列的位置 ( i, j ) 。</p>
-                  <p>每一个三元组 $(i, j, a_{ij} )$ 唯一确定了矩阵 A 的一个非零元素。因此,稀疏矩阵可由表示非零元的一系列三元组及其行列数唯一确定。</p>
-                  <p>基于三元组表示的稀疏矩阵的压缩存储方法:</p>
-                  <ul>
-                    <li>三元组顺序表；</li>
-                    <li>行逻辑联接的顺序表；</li>
-                    <li>十字链表；</li>
-                  </ul>
-                  <h3 id="三元组顺序表："><a href="#三元组顺序表：" class="headerlink" title="三元组顺序表："></a>三元组顺序表：</h3>
-                  <figure class="highlight rust">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">#define MAXSIZE <span class="number">12500</span>  <span class="comment">//假设非零元素个数的最大值为12500</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  <span class="keyword">int</span> i, j ;<span class="comment">// 该非零元的行下标和列下标</span></div><div class="line">  ElemType e ;<span class="comment">// 该非零元的值</span></div><div class="line">&#125; Triple ; <span class="comment">// 三元组类型</span></div><div class="line"></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  Triple data[MAXSIZE + <span class="number">1</span>];</div><div class="line">  <span class="keyword">int</span> mu, nu, tu; <span class="comment">// 矩阵的行数、列数和非零元素个数</span></div><div class="line">&#125; TSMatrix; <span class="comment">// 稀疏矩阵类型</span></div><div class="line"></div><div class="line"><span class="comment">//转置</span></div><div class="line">Status TransposeSMatrix(TSMatrix M, TSMatrix *T)&#123;</div><div class="line">  *T-&gt;mu = M.nu;</div><div class="line">  *T-&gt;nu = M.mu;</div><div class="line">  *T-&gt;tu = M.tu;</div><div class="line">  <span class="keyword">if</span>(*T-&gt;tu)&#123;</div><div class="line">    <span class="keyword">int</span> q = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> col = <span class="number">1</span>; col &lt;= M.nu; col++)&#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">1</span>; p &lt;= M.tu; p++ )&#123;</div><div class="line">        <span class="keyword">if</span>(M.data[p].j = col)&#123;</div><div class="line">          *T-&gt;data[q]-&gt;i = M.data[p].j;</div><div class="line">          *T-&gt;data[q]-&gt;j = M.data[p].i;</div><div class="line">          *T-&gt;data[q]-&gt;e = M.data[p].e;</div><div class="line">          q++;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;<span class="comment">//TransposeSMatrix</span></div><div class="line"></div><div class="line"><span class="comment">//快速转置算法</span></div><div class="line">Status FastTransposeSMatrix(TSMatrix M, TSMatrix *T)&#123;</div><div class="line">  *T-&gt;mu = M.nu;</div><div class="line">  *T-&gt;nu = M.mu;</div><div class="line">  *T-&gt;tu = M.tu;</div><div class="line">  <span class="keyword">int</span> num[M.nu], cpot[M.nu];</div><div class="line">  <span class="keyword">if</span>(*T-&gt;tu)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> col = <span class="number">1</span>; col &lt;＝ M.nu; ++col)&#123;</div><div class="line">      num[col] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">1</span>; t &lt;= M.tu; t++)&#123;</div><div class="line">      ++num[M.data[t].j];<span class="comment">//求M中每一列含非零元素的个数</span></div><div class="line">    &#125;</div><div class="line">    cpot[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> col = <span class="number">2</span>; col &lt;= M.nu; col++)&#123;</div><div class="line">      cpot[col] = cpot[col - <span class="number">1</span>] + num[col - <span class="number">1</span>];<span class="comment">//求第col列第一个非零元素在b.data中的序号</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">1</span>, <span class="keyword">int</span> col; p &lt; M.tu; p++)&#123;</div><div class="line">      col = M.data[p].j;</div><div class="line">      q = cpot[col];</div><div class="line">      *T-&gt;data[q]-&gt;i = M.data[p].j;</div><div class="line">      *T-&gt;data[q]-&gt;j = M.data[p].i;</div><div class="line">      *T-&gt;data[q]-&gt;e = M.data[p].e;</div><div class="line">      ++ cpot[col];</div><div class="line">    &#125;<span class="comment">//for</span></div><div class="line">  &#125;<span class="comment">//if</span></div><div class="line">&#125;<span class="comment">//FastTransposeSMatrix</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="行逻辑联接的顺序表"><a href="#行逻辑联接的顺序表" class="headerlink" title="行逻辑联接的顺序表"></a>行逻辑联接的顺序表</h3>
-                  <p>三元组顺序表又称有序的双下标法,它的特点是,非零元在表中按行序有序存储,因此便于进行依行顺序处理的矩阵运算。然而,若需随机存取某一行中的非零元,则需从头开始进行查找。</p>
-                  <p>修改前述的稀疏矩阵的结构定义,增加一个数据成员rpos ,指示各行第一个非零元素的位置。</p>
-                  <figure class="highlight rust">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">#define MAXMN <span class="number">500</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  Triple data[MAXSIZE + <span class="number">1</span>]; <span class="comment">//非零元三元组表</span></div><div class="line">  <span class="keyword">int</span> rpos[MAXMN + <span class="number">1</span>]; <span class="comment">// 各行第一个非零元的位置表</span></div><div class="line">  <span class="keyword">int</span> mu, nu, tu;</div><div class="line">&#125; RLSMatrix; <span class="comment">// 行逻辑链接顺序表类型</span></div><div class="line"></div><div class="line"><span class="comment">//两个稀疏矩阵相乘</span></div><div class="line">Status MultSMatrix(RLSMatrix M, RLSMatrix N, RLSMatrix *Q)&#123;</div><div class="line">  <span class="keyword">if</span>(M.nu != N.mu) <span class="keyword">return</span> ERROR; <span class="comment">//不能相乘，出错</span></div><div class="line">  *Q-&gt;mu = M.mu; *Q-&gt;nu = N.nu; *Q-&gt;tu = <span class="number">0</span>; <span class="comment">//Q初始化</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span>(M.tu * N.tu != <span class="number">0</span>)&#123;</div><div class="line">    <span class="keyword">int</span> arow ;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line">    <span class="keyword">int</span> tp, p, q;</div><div class="line">    <span class="keyword">int</span> brow, t;</div><div class="line">    <span class="keyword">int</span> ctemp[N.nu];</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(arow = <span class="number">1</span>; arow &lt;= M.nu; arow++)&#123;</div><div class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; N.nu; i++) ctemp[i] = <span class="number">0</span>;</div><div class="line">      *Q-&gt;rpos[arow] = Q.tu + <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(arow &lt; M.tu) tp = M.rpos[arow + <span class="number">1</span>];</div><div class="line">      <span class="keyword">else</span> tp = M.tu + <span class="number">1</span>;</div><div class="line"></div><div class="line">      <span class="keyword">for</span>(p = M.rpos[arow]; p &lt; tp; p++)&#123;</div><div class="line">        brow = M.data[p].j;<span class="comment">//对当前行非零元，找到在N中的行号</span></div><div class="line">        <span class="keyword">if</span>(brow &lt; N.mu)  </div><div class="line">          t = N.rpos[brow + <span class="number">1</span>];</div><div class="line">        <span class="keyword">else</span></div><div class="line">          t = N.tu + <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(q = N.rpos[brow]; q &lt; t; q++)&#123;</div><div class="line">          ccol = N.data[q].j;</div><div class="line">          ctemp[ccol] += M.data[p].e * M.data[q].e;</div><div class="line">        &#125; <span class="comment">//for q</span></div><div class="line">      &#125; <span class="comment">//求Q中第arow行的非零元</span></div><div class="line"></div><div class="line">      <span class="keyword">for</span>(ccol = <span class="number">1</span>; ccol &lt;= *Q-&gt;nu; ccol++)<span class="comment">//压缩存储该行非零元素</span></div><div class="line">        <span class="keyword">if</span>(ctemp[ccol])&#123;</div><div class="line">          <span class="keyword">if</span>(++*Q-&gt;tu　&gt; MAXSIZE) <span class="keyword">return</span> ERROE;</div><div class="line">          *Q-&gt;data[*Q-&gt;tu]-&gt;i = arow;</div><div class="line">          *Q-&gt;data[*Q-&gt;tu]-&gt;j = ccol;</div><div class="line">          *Q-&gt;data[*A-&gt;tu]-&gt;e = ctemp[ccol];</div><div class="line">        &#125;<span class="comment">//if</span></div><div class="line">    &#125;<span class="comment">//for arow</span></div><div class="line">  &#125;<span class="comment">//if</span></div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;<span class="comment">//MultSMatrix</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3>
-                  <p>当矩阵的非零元个数和位置在操作中变化较大时 [ 例如矩阵的加法 ] ,就不宜采用顺序存储结构来表示三元组的线性表,而是采用链式存储结构表示三元组的线性表。</p>
-                  <p>每个非零元由一个含 5 个域的节点表示( i , j, e, right, down )：</p>
-                  <figure class="highlight xl">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">typedef struct OLNode&#123;</div><div class="line">  int i, j; <span class="comment">//该非零元的行和列下标</span></div><div class="line">  ElemType e;</div><div class="line">  struct OLNODE *right, *down;　<span class="comment">//该非零元所在行表和列表的后继链域</span></div><div class="line">&#125; OLNode; *Olink;</div><div class="line">typedef struct&#123;</div><div class="line">  OLink *rhead, *chead;　<span class="comment">//行和列链表头指针向量</span></div><div class="line">  int mu, nu, tu;</div><div class="line">&#125;CrossList;</div><div class="line"></div><div class="line"><span class="comment">//创建采用十字链存储的稀疏矩阵</span></div><div class="line">Status CreateSMatrix_OL(CrossList *M)&#123;</div><div class="line">  <span class="comment">//if(M)</span></div><div class="line">    <span class="comment">//free(M);</span></div><div class="line">  int m, n, t;</div><div class="line">  int i, j, e;</div><div class="line">  scanf(<span class="string">"%d%d%d"</span>,&amp;m, &amp;n, &amp;t);</div><div class="line">  *M-&gt;mu = m;</div><div class="line">  *M-&gt;nu = n;</div><div class="line">  *M-&gt;tu = t;</div><div class="line">   M-&gt;rhead = (OLink *) malloc ((m + <span class="number">1</span>) * sizeof(OLink));</div><div class="line">   M-&gt;chead = (OLink *) malloc ((n + <span class="number">1</span>) * sizeof(OLink));</div><div class="line">   <span class="function"><span class="title">if</span>(!M-&gt;</span><span class="function"><span class="title">rhead</span> || !M-&gt;</span>chead)</div><div class="line">     exit(OVERFLOW);<span class="comment">//存储分配失败</span></div><div class="line">   <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= m; i++)</div><div class="line">     M-&gt;rhead[i] = NULL;</div><div class="line">   <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= n; i++)</div><div class="line">     M-&gt;chead[i] = NULL;<span class="comment">//初始化行列表头指针向量</span></div><div class="line">   <span class="keyword">for</span>(scanf(<span class="string">"%d%d%d"</span>,&amp;i,&amp;j,&amp;e);i!=<span class="number">0</span>;scanf(<span class="string">"%d%d%d"</span>,&amp;i,&amp;j,&amp;e))&#123;</div><div class="line">     OLNode *p, *q;</div><div class="line">     p = (OLNode *) malloc (sizeof(OLnode));</div><div class="line">     <span class="keyword">if</span>(!p)</div><div class="line">       exit(OVERFLOW);</div><div class="line">     <span class="function"><span class="title">p</span>-&gt;</span>i = i;</div><div class="line">     <span class="function"><span class="title">p</span>-&gt;</span>j = j;</div><div class="line">     <span class="function"><span class="title">p</span>-&gt;</span>e = e;<span class="comment">//生成节点</span></div><div class="line">     <span class="function"><span class="title">if</span>(M-&gt;</span><span class="function"><span class="title">rhead</span>[i] == NULL || M-&gt;</span><span class="function"><span class="title">rhead</span>[i]-&gt;</span>j &gt; j)&#123;<span class="comment">//寻找在行表中的插入位置</span></div><div class="line">       <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">right</span> = M-&gt;</span>rhead[i];</div><div class="line">       M-&gt;rhead[i] = p;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">else</span>&#123;</div><div class="line">       <span class="function"><span class="title">for</span>(q = M-&gt;</span><span class="function"><span class="title">rhead</span>[i]; q-&gt;</span><span class="function"><span class="title">right</span> &amp;&amp; q-&gt;</span><span class="function"><span class="title">right</span>-&gt;</span><span class="function"><span class="title">j</span> &lt; j; q = q-&gt;</span>right) ;</div><div class="line">       <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">right</span> = q-&gt;</span>right ;</div><div class="line">       <span class="function"><span class="title">q</span>-&gt;</span>right = p;</div><div class="line">     &#125;<span class="comment">//完成行插入</span></div><div class="line">     <span class="function"><span class="title">if</span>(M-&gt;</span><span class="function"><span class="title">chead</span>[j] == NULL || M-&gt;</span><span class="function"><span class="title">chead</span>[j]-&gt;</span>i &gt; i)&#123;</div><div class="line">       <span class="function"><span class="title">p</span>-&gt;</span>down = M.chead[j];</div><div class="line">       M-&gt;chead[j] = p;</div><div class="line">     &#125;<span class="comment">//寻找在列表中的插入位置</span></div><div class="line">     <span class="keyword">else</span>&#123;</div><div class="line">       <span class="function"><span class="title">for</span>(q = M-&gt;</span><span class="function"><span class="title">head</span>[j]; q-&gt;</span><span class="function"><span class="title">down</span> &amp;&amp; q-&gt;</span><span class="function"><span class="title">down</span>-&gt;</span><span class="function"><span class="title">i</span> &lt; i; q = q-&gt;</span>down);</div><div class="line">       <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">down</span> = q-&gt;</span>down;</div><div class="line">       <span class="function"><span class="title">q</span>-&gt;</span>down = p;</div><div class="line">     &#125;<span class="comment">//完成列插入</span></div><div class="line">   &#125;<span class="comment">//for</span></div><div class="line">   return OK;</div><div class="line">&#125;<span class="comment">//CreateSMatrix_OL</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h3>
-                  <p>广义表是线性表的推广。</p>
-                  <ul>
-                    <li>广义表是递归定义的线性结构。</li>
-                    <li>广义表是 $n (n \ge 0 )$ 个表元素组成的有限序列,记作$LS (a_1 , a_2 , a_3 , …, a_n )$</li>
-                  </ul>
-                  <p>其中,$LS$ 是表名; $a_i$ 是表元素,可以是广义表(称为子表),也可以是数据元素(称为原子)。$n$ 为表的长度。 $n = 0$ 的广义表为空表。</p>
-                  <p>当 $LS$ 非空时,即 $n &gt; 0$ 时,表的第一个表元素称为广义表的表头( head ), 而其它表元素组成的表称为广义表的表尾( tail )。</p>
-                  <h3 id="广义表的存储结构"><a href="#广义表的存储结构" class="headerlink" title="广义表的存储结构"></a>广义表的存储结构</h3>
-                  <p>广义表的数据元素具有不同的结构,且是一个带深度的层次结构。因此难以用顺序存储结构来存放,而是采用链式存储结构。</p>
-                  <p>构造存储结构的两种分析方法 :</p>
-                  <ul>
-                    <li>表头、表尾分析法</li>
-                    <li>子表分析法</li>
-                  </ul>
-                  <p>表头表尾分析法：若广义表不空,则可分解为表头和表尾;反之,一对确定的表头和表尾可唯一确定广义表</p>
-                  <figure class="highlight crystal">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">typedef <span class="class"><span class="keyword">enum</span>&#123;<span class="title">ATOM</span>, <span class="title">LIST</span>&#125; <span class="title">ElemTag</span>;</span></div><div class="line"></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">GLNode</span> &#123;</span></div><div class="line">  ElemTag tag;<span class="regexp">//</span> = ATOM or = LIST</div><div class="line">  <span class="class"><span class="keyword">union</span> &#123;// 原子结点和表结点的联合部分</span></div><div class="line">    AtomType atom;</div><div class="line">    <span class="class"><span class="keyword">struct</span> &#123;<span class="title">struct</span> <span class="title">GLNode</span> *<span class="title">hp</span>, *<span class="title">tp</span>;</span>&#125; ptr;<span class="regexp">//ptr</span>.hp,ptr.tp分别指向表头和表尾</div><div class="line">&#125;</div><div class="line">&#125; *GList;</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>子表分析法：</p>
-                  <figure class="highlight crystal">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">typedef <span class="class"><span class="keyword">enum</span>&#123;<span class="title">ATOM</span>, <span class="title">LIST</span>&#125; <span class="title">ElemTag</span>;</span></div><div class="line"></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">GLNode</span> &#123;</span></div><div class="line">  ElemTag tag;<span class="regexp">//</span> = ATOM or = LIST</div><div class="line">  <span class="class"><span class="keyword">union</span> &#123;// 原子结点和表结点的联合部分</span></div><div class="line">    AtomType atom;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">GLNode</span> *<span class="title">hp</span>;</span></div><div class="line">  &#125;;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">GLNode</span> *<span class="title">tp</span>;</span>/<span class="regexp">/ 相当于线性链表的 next</span></div><div class="line">&#125; *GList;</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>m 元多项式的表示：</p>
-                  <figure class="highlight crystal">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">MPNode</span> &#123;</span></div><div class="line">  ElemTag tag;</div><div class="line">  int exp; <span class="regexp">//</span> 指数域</div><div class="line">  <span class="class"><span class="keyword">union</span> &#123;// 原子结点和表结点的联合部分</span></div><div class="line">    float coef; <span class="regexp">//</span> 系数域</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">GLNodex</span> *<span class="title">hp</span>;</span></div><div class="line">  &#125;;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">MPNode</span> *<span class="title">tp</span> ;</span> /<span class="regexp">/ 相当于线性链表的 next</span></div><div class="line">&#125; *Mplist; /<span class="regexp">/m 元多项式广义表类型定义</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="广义表操作得递归函数"><a href="#广义表操作得递归函数" class="headerlink" title="广义表操作得递归函数"></a>广义表操作得递归函数</h3>
-                  <p>利用递归算法分而治之的思想,递归算法设计中的关键问题是,如何将 一个子问题的解组合成原问题的解。</p>
-                  <h4 id="求广义表的深度"><a href="#求广义表的深度" class="headerlink" title="求广义表的深度"></a>求广义表的深度</h4>
-                  <p>将广义表 $LS (a_1 , a_2 , a_3 , …, a_n )$ 分解成 $n$ 个子表,分别 ( 递归 ) 求得每个子表的深度 。</p>
-                  <p>广义表的深度 =Max { 子表的深度 } +1</p>
-                  <p>DEPTH(LS)的递归定义：</p>
-                  <p>基本项</p>
-                  <ul>
-                    <li>当 LS 为空表时，DEPTH(LS) = 1;</li>
-                    <li>当 LS 为原子时，DEPTH(LS) = 0;</li>
-                  </ul>
-                  <p>归纳项</p>
-                  <ul>
-                    <li>DEPTH(LS) = 1 + Max{DEPTH(ai)} i = 1,2,…,n</li>
-                  </ul>
-                  <figure class="highlight arduino">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">int</span> GListDepth(GList L)&#123;<span class="comment">//采用头尾链表存储结构</span></div><div class="line">  <span class="keyword">int</span> <span class="built_in">max</span>;</div><div class="line">  <span class="keyword">int</span> dep;</div><div class="line">  <span class="built_in">if</span>(!L)&#123;</div><div class="line">    <span class="built_in">return</span> <span class="number">1</span>;<span class="comment">//空表深度为1</span></div><div class="line">  &#125;</div><div class="line">  <span class="built_in">if</span>(L-&gt;tag == ATOM)&#123;</div><div class="line">    <span class="built_in">return</span> <span class="number">0</span>;<span class="comment">//原子深度为0</span></div><div class="line">  &#125;</div><div class="line">  <span class="built_in">for</span>(<span class="built_in">max</span> = <span class="number">0</span>, GList pp = L; pp; pp = pp-&gt;ptr.tp)&#123;</div><div class="line">    dep = GListDepth(pp-&gt;ptr.hp);</div><div class="line">    <span class="built_in">if</span>(dep &gt; <span class="built_in">max</span>)</div><div class="line">       <span class="built_in">max</span> = dep;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> <span class="built_in">max</span> + <span class="number">1</span>;</div><div class="line">&#125;<span class="comment">//GListDepth</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h4 id="复制广义表"><a href="#复制广义表" class="headerlink" title="复制广义表"></a>复制广义表</h4>
-                  <p>将广义表分解成表头和表尾两部分,分别 ( 递归 ) 复制求得新的表头和表尾。</p>
-                  <p>新的广义表由新的表头和表尾构成。</p>
-                  <p>基本项 :</p>
-                  <ul>
-                    <li>InitGList(NEWLS) 当LS 为空表</li>
-                  </ul>
-                  <p>递归项:</p>
-                  <ul>
-                    <li>COPY(表头) { 复制表头 }</li>
-                    <li>COPY(表尾) { 复制表尾 }</li>
-                  </ul>
-                  <figure class="highlight xl">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">Status CopyGList(GList *T, GList L)&#123;<span class="comment">//由L复制得T</span></div><div class="line">  <span class="keyword">if</span>(!L)&#123;</div><div class="line">    T = NULL;<span class="comment">//复制空表</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!(T = (GList)malloc(sizeof(GLNode))))</div><div class="line">      exit(OVERFLOW);</div><div class="line">    *T-&gt;<span class="function"><span class="title">tag</span> = L-&gt;</span>tag;</div><div class="line">    <span class="function"><span class="title">if</span>(L-&gt;</span>tag == ATOM)</div><div class="line">      *T-&gt;<span class="function"><span class="title">atom</span> = L-&gt;</span>atom;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      C<span class="function"><span class="title">opyGList</span>(*T-&gt;</span><span class="function"><span class="title">ptr</span>.hp, L-&gt;</span>ptr.hp);</div><div class="line">      C<span class="function"><span class="title">opyGList</span>(*T-&gt;</span><span class="function"><span class="title">ptr</span>.tp, L-&gt;</span>ptr.tp);</div><div class="line">    &#125;<span class="comment">//else</span></div><div class="line">  &#125;<span class="comment">//else</span></div><div class="line">  return OK;</div><div class="line">&#125;<span class="comment">//CopyGList</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h4 id="建立广义表的存储结构"><a href="#建立广义表的存储结构" class="headerlink" title="建立广义表的存储结构"></a>建立广义表的存储结构</h4>
-                  <figure class="highlight perl">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">//伪代码</div><div class="line">Status CreateGList(GList &amp;L, SString S)&#123;</div><div class="line">  <span class="keyword">if</span>(StrCompare(S, emp)) L = NULL; <span class="regexp">//emp</span> = <span class="string">"()"</span></div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!(L = (GList)malloc(sizeof(GLNode))))</div><div class="line">      <span class="keyword">exit</span>(OVERFLOW);<span class="regexp">//</span>建立表节点</div><div class="line">    <span class="keyword">if</span>(StrLength(S) == <span class="number">1</span>)&#123;</div><div class="line">      L-&gt;tag = ATOM;</div><div class="line">      L-&gt;atom = S;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      L-&gt;tag = LIST;</div><div class="line">      p = L;</div><div class="line">      SubString(<span class="function"><span class="keyword">sub</span>, 2, <span class="title">StrLength</span></span>(S) - 2);</div><div class="line">      <span class="keyword">do</span>&#123;<span class="regexp">//</span>重复建立n个子表</div><div class="line">        sever(<span class="function"><span class="keyword">sub</span>, <span class="title">hsub</span>)</span>;//从<span class="function"><span class="keyword">sub</span>中分离出表头串<span class="title">hsub</span></span></div><div class="line">        <span class="title">CreateGList</span>(p-&gt;ptr.hp, hsub);</div><div class="line">        <span class="keyword">q</span> = p;</div><div class="line">        <span class="keyword">if</span>(!StrEmpty(<span class="function"><span class="keyword">sub</span>))</span>&#123;//表尾不空</div><div class="line">          <span class="keyword">if</span>(!(p = (GLNode *)malloc(sizeof(GLNode))))</div><div class="line">            <span class="keyword">exit</span>(OVERFLOW);</div><div class="line">          p-&gt;tag = LIST;</div><div class="line">          <span class="keyword">q</span>-&gt;ptr.tp = p;</div><div class="line">        &#125;//<span class="keyword">if</span></div><div class="line">      &#125;</div><div class="line">      <span class="keyword">while</span>(!StrEmpty(<span class="function"><span class="keyword">sub</span>))</span>;</div><div class="line">      <span class="keyword">q</span>-&gt;ptr.tp = NULL</div><div class="line">    &#125;//<span class="keyword">else</span></div><div class="line">  &#125;//<span class="keyword">else</span></div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;//CreateGList</div><div class="line"></div><div class="line">Status sever(SString &amp;str, SString &amp;hstr)&#123;</div><div class="line">  n = StrLength(str);</div><div class="line">  i = <span class="number">0</span>;</div><div class="line">  k = <span class="number">0</span>;</div><div class="line">  <span class="keyword">do</span>&#123;</div><div class="line">    ++i;</div><div class="line">    SubString(ch, str, i, <span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span>(ch == <span class="string">'()'</span>)</div><div class="line">      ++k;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">')'</span>)</div><div class="line">      --k;</div><div class="line">  &#125;<span class="keyword">while</span>(i &lt; n &amp;&amp; (ch != <span class="string">','</span>|| k != <span class="number">0</span>));</div><div class="line">  <span class="keyword">if</span>(i &lt; n)&#123;</div><div class="line">    SubString(hstr, str, <span class="number">1</span>, i - <span class="number">1</span>);</div><div class="line">    SubString(str, str, i + <span class="number">1</span>, n - i);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    StrCopy(hstr, str);</div><div class="line">    ClearString(str);</div><div class="line">  &#125;</div><div class="line">&#125;//sever</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-
-                </div>
-
-                <div>
+                    </div>
+                  </header>
 
 
 
 
-                </div>
 
-                <div>
-
+                  <div class="post-body" itemprop="articleBody">
 
 
 
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-                  <div class="post-tags">
-
-                    <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
+                    <h3 id="数组的类型定义"><a href="#数组的类型定义" class="headerlink" title="数组的类型定义　"></a>数组的类型定义　</h3>
+                    <p>数组是几乎所有程序设计语言都设定为固有类型的一种数据类型。从线性结构看,数组类型可以看作是数据元素本身还是线性结构的一个数据结构。</p>
+                    <a id="more"></a>
+                    <p>n 维数组的特点是每一个数据元素受 n 个线性关系的约束,可以有多个直接前驱和多个直接后继 ;</p>
+                    <p>数组元素的下标一般具有固定的下界和上界,因此它比其他复杂的非线性结构简单。</p>
+                    <ul>
+                      <li>一维数组常被称为向量( Vector )；</li>
+                      <li>二维数组 A[m][n] 可看成是由 m 个行向量组成的向量,也可看成是由 n 个列向量组成的向量；</li>
+                      <li>一个二维数组类型可以定义为其分量类型为一维数组类型的一维数组类型；</li>
+                    </ul>
+                    <h3 id="数组的顺序表示和实现："><a href="#数组的顺序表示和实现：" class="headerlink" title="数组的顺序表示和实现："></a>数组的顺序表示和实现：</h3>
+                    <p>一旦建立了数组 ,结构中的数据元素个数 和元素之间的关系固定 。因此,采用顺序存储结构表示数组是自然;用顺序存储表示多维数组,就必须按某种次序将数组元素排列到一个序列中。<br>　<br>有两种顺序映象的方式:</p>
+                    <ul>
+                      <li>以行序为主序；</li>
+                      <li>以列序为主序；</li>
+                    </ul>
+                    <p>数组元素的存储位置是其下标($j_1 , j_2 , ….j_n$ ) 的线性函数。一旦确定了数组的各维的阶数, $c_i$就是常数。所以存取数组中任一元素的时间相等。我们称具有这一特点的存储结构为随机存储结构。</p>
+                    <figure class="highlight zephir">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="comment">#include&lt;stdarg.h&gt;</span></div><div class="line"></div><div class="line"><span class="comment">#define MAX_ARRAY_DIM 8</span></div><div class="line"></div><div class="line">typedef <span class="keyword">int</span> Status;</div><div class="line">typedef <span class="keyword">int</span> OK;</div><div class="line">typedef <span class="keyword">int</span> ERROR;</div><div class="line">typedef <span class="keyword">int</span> OVERFLOW;</div><div class="line"></div><div class="line">typedef struct &#123;</div><div class="line">  ElemType *base;  <span class="comment">//数组元素基址</span></div><div class="line">  <span class="keyword">int</span> dim;    <span class="comment">//数组维数</span></div><div class="line">  <span class="keyword">int</span> *bounds;  <span class="comment">//数组维界基址</span></div><div class="line">  <span class="keyword">int</span> *constants;  <span class="comment">//数组映像函数常量基址</span></div><div class="line">&#125;<span class="keyword">Array</span>;</div><div class="line"></div><div class="line"><span class="comment">//初始化数组</span></div><div class="line">Status InitArray(<span class="keyword">Array</span> *A, <span class="keyword">int</span> dim, ...)&#123;</div><div class="line">  <span class="comment">//若数组维数和各维长度合法，则构造相应数组A并返回OK</span></div><div class="line">  <span class="keyword">if</span>( dim &lt; <span class="number">1</span> || dim &gt; MAX_ARRAY_DIM )</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  A-&gt;dim = dim;</div><div class="line">  A-&gt;bounds = (<span class="keyword">int</span> *) malloc (dim * sizeof(<span class="keyword">int</span>));</div><div class="line">  <span class="keyword">if</span>(!A-&gt;bounds)</div><div class="line">    <span class="keyword">exit</span>(OVERFLOW);</div><div class="line">  <span class="comment">//若各维长度合法，则存入A-&gt;bounds,并求出元素总数</span></div><div class="line">  <span class="keyword">int</span> elemtotal = <span class="number">1</span>;</div><div class="line">  va_list ap;</div><div class="line">  va_start(ap, dim);<span class="comment">//va 初始化</span></div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dim; i++)&#123;</div><div class="line">    A-&gt;bounds[i] = va_arg(ap, <span class="keyword">int</span>); <span class="comment">//依次访问每一个参数</span></div><div class="line">    <span class="keyword">if</span>(A-&gt;bounds[i] &lt; <span class="number">0</span>)&#123;</div><div class="line">      <span class="keyword">return</span> ERROR;</div><div class="line">    &#125;</div><div class="line">    elemtotal *= A-&gt;bounds[i];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  va_end(ap);</div><div class="line"></div><div class="line">  A-&gt;base = (ElemType *) malloc (elemtotal * sizeof(ElemType));</div><div class="line">  <span class="keyword">if</span>(!A-&gt;base)&#123;</div><div class="line">    <span class="keyword">return</span> OVERFLOW;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//求映像常数Ci</span></div><div class="line">  A-&gt;constants = (<span class="keyword">int</span> *) malloc (dim * sizeof(<span class="keyword">int</span>));</div><div class="line">  <span class="keyword">if</span>(!A-&gt;constants)&#123;</div><div class="line">    <span class="keyword">return</span> OVERFLOW;</div><div class="line">  &#125;</div><div class="line">  A-&gt;constants[dim - <span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = dim <span class="number">-2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</div><div class="line">    A-&gt;constants[i] = A-&gt;boun[i+<span class="number">1</span>] * A-&gt;constants[i+<span class="number">1</span>];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//销毁数组</span></div><div class="line">Status DestroyArray(<span class="keyword">Array</span> *A)&#123;</div><div class="line">  <span class="keyword">if</span>(!A-&gt;base)&#123;</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  &#125;</div><div class="line">  free(A-&gt;base);</div><div class="line">  A-&gt;base = <span class="keyword">NULL</span>;</div><div class="line">  <span class="keyword">if</span>(!A-&gt;bounds)&#123;</div><div class="line">    <span class="keyword">return</span> ERROE;</div><div class="line">  &#125;</div><div class="line">  free(A-&gt;bounds);</div><div class="line">  A-&gt;bounds = <span class="keyword">NULL</span>;</div><div class="line">  <span class="keyword">if</span>(!A-&gt;constants)&#123;</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  &#125;</div><div class="line">  free(A-&gt;constants);</div><div class="line">  A-&gt;constants = <span class="keyword">NULL</span>;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"><span class="comment">//定位，相对位置</span></div><div class="line">Status Locate(<span class="keyword">Array</span> *A, va_list ap, <span class="keyword">int</span> *off)&#123;</div><div class="line">  *off = <span class="number">0</span>;</div><div class="line">  <span class="keyword">int</span> ind</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A-&gt;dim, i++)&#123;</div><div class="line">    ind = va_arg(ap, <span class="keyword">int</span>)</div><div class="line">    <span class="keyword">if</span>(ind &lt; <span class="number">0</span>|| ind &gt;= A-&gt;bounds[i])</div><div class="line">      <span class="keyword">return</span> OVERFLOW;</div><div class="line">    off += A-&gt;constants[i] * ind;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Status value(<span class="keyword">Array</span> *A, ElemType e, ...)&#123;</div><div class="line">  va_list ap;</div><div class="line">  <span class="keyword">int</span> off, result;</div><div class="line">  va_start(ap,e);</div><div class="line">  <span class="keyword">if</span>((result = Locate(A, ap, &amp;off)) &lt;= <span class="number">0</span>)</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  e = *(A-&gt;base + off);</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Status Assign(<span class="keyword">Array</span> *A, ElemType e, ...)&#123;</div><div class="line">  va_list ap;</div><div class="line">  va_start(ap, e);</div><div class="line">  <span class="keyword">int</span> result, off;</div><div class="line">  <span class="keyword">if</span>((result = Locate(A, ap, &amp;off)) &lt;= <span class="number">0</span> )</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  *(A-&gt;base + off) = e;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="矩阵的压缩存储-特殊矩阵"><a href="#矩阵的压缩存储-特殊矩阵" class="headerlink" title="矩阵的压缩存储(特殊矩阵)"></a>矩阵的压缩存储(特殊矩阵)</h3>
+                    <p>特殊矩阵是指非零元素或零元素的分布有一定规律的矩阵。</p>
+                    <p>假若值相同的元素或者零元素在矩阵中的分布有一定规律,则我们称此类矩阵为特殊矩阵;反之,称为稀疏矩阵。</p>
+                    <p>特殊矩阵的压缩存储主要是针对阶数很高的特殊矩阵。为节省存储空间,对可以不存储的元素,如零元素或对称元素,不再存储。</p>
+                    <h4 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h4>
+                    <p>对称矩阵中的元素关于主对角线对称, $a<em>{ij} = a</em>{ji} , 0 \le i,j \le n-1$</p>
+                    <p>为节约存储,只存对角线及对角线以上的元素,或者只存对角线或对角线以下的元素。前者称为上三角矩阵,后者称为下三角矩阵。</p>
+                    <h4 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h4>
+                    <p>三对角矩阵中除主对角线及在主对角线上 下最临近的两条对角线上的元素外,所有其它元素均为 0 。总共有$3n-2$个非零元素。</p>
+                    <p>在三条对角线上的元素 $a_{ij}$满足$$0 \le i\le n-1, i-1\le j \le i+1$$</p>
+                    <p>在一维数组 B 中 $A[i][j]$ 在第 $i$ 行,它前面有 $3\times i-1$个非零元素 , 在本行中第 $j$ 列前面有 $j-i+1$ 个,所以元素 $A[i][j] $在 B 中位置为$$ k = 2\times i + j$$</p>
+                    <p>若已知三对角矩阵中某元素 $A[i][j]$在数组 $B[ ] $存放于第 $k$ 个位置,则有<br>$$i =\frac{k+1}{3},<br>j = k - 2 \times i$$</p>
+                    <h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3>
+                    <p>假设 $m$ 行 $n$ 列的矩阵含 $t$ 个非零元素,令$$e = \frac{t}{m\times n}$$ 称$e$为稀疏因子,通常认为 $e \le 0.05$ 的矩阵为稀疏矩阵。</p>
+                    <p>以常规方法,即以二维数组表示高阶的稀疏矩阵时产生的问题 :</p>
+                    <ol>
+                      <li>零值元素占了很大空间;</li>
+                      <li>计算中进行了很多和零值的运算。如遇除法,则需判别除数是否为零;</li>
+                    </ol>
+                    <p>解决问题的原则 :</p>
+                    <ol>
+                      <li>尽可能少存或不存零值元素 ;</li>
+                      <li>尽可能减少没有实际意义的运算 ;</li>
+                      <li>操作方便;即:能尽可能快地找到与下标值 (i, j) 对应的元素 ;能尽可能快地找到同一行或同一列的非零值元。</li>
+                    </ol>
+                    <p>在存储稀疏矩阵时,为节省存储空间,应只存储非零元素。但由于非零元素的分布一般没有规律,故在存储非零元素时,必须记下它所在的行和列的位置 ( i, j ) 。</p>
+                    <p>每一个三元组 $(i, j, a_{ij} )$ 唯一确定了矩阵 A 的一个非零元素。因此,稀疏矩阵可由表示非零元的一系列三元组及其行列数唯一确定。</p>
+                    <p>基于三元组表示的稀疏矩阵的压缩存储方法:</p>
+                    <ul>
+                      <li>三元组顺序表；</li>
+                      <li>行逻辑联接的顺序表；</li>
+                      <li>十字链表；</li>
+                    </ul>
+                    <h3 id="三元组顺序表："><a href="#三元组顺序表：" class="headerlink" title="三元组顺序表："></a>三元组顺序表：</h3>
+                    <figure class="highlight rust">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">#define MAXSIZE <span class="number">12500</span>  <span class="comment">//假设非零元素个数的最大值为12500</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  <span class="keyword">int</span> i, j ;<span class="comment">// 该非零元的行下标和列下标</span></div><div class="line">  ElemType e ;<span class="comment">// 该非零元的值</span></div><div class="line">&#125; Triple ; <span class="comment">// 三元组类型</span></div><div class="line"></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  Triple data[MAXSIZE + <span class="number">1</span>];</div><div class="line">  <span class="keyword">int</span> mu, nu, tu; <span class="comment">// 矩阵的行数、列数和非零元素个数</span></div><div class="line">&#125; TSMatrix; <span class="comment">// 稀疏矩阵类型</span></div><div class="line"></div><div class="line"><span class="comment">//转置</span></div><div class="line">Status TransposeSMatrix(TSMatrix M, TSMatrix *T)&#123;</div><div class="line">  *T-&gt;mu = M.nu;</div><div class="line">  *T-&gt;nu = M.mu;</div><div class="line">  *T-&gt;tu = M.tu;</div><div class="line">  <span class="keyword">if</span>(*T-&gt;tu)&#123;</div><div class="line">    <span class="keyword">int</span> q = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> col = <span class="number">1</span>; col &lt;= M.nu; col++)&#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">1</span>; p &lt;= M.tu; p++ )&#123;</div><div class="line">        <span class="keyword">if</span>(M.data[p].j = col)&#123;</div><div class="line">          *T-&gt;data[q]-&gt;i = M.data[p].j;</div><div class="line">          *T-&gt;data[q]-&gt;j = M.data[p].i;</div><div class="line">          *T-&gt;data[q]-&gt;e = M.data[p].e;</div><div class="line">          q++;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;<span class="comment">//TransposeSMatrix</span></div><div class="line"></div><div class="line"><span class="comment">//快速转置算法</span></div><div class="line">Status FastTransposeSMatrix(TSMatrix M, TSMatrix *T)&#123;</div><div class="line">  *T-&gt;mu = M.nu;</div><div class="line">  *T-&gt;nu = M.mu;</div><div class="line">  *T-&gt;tu = M.tu;</div><div class="line">  <span class="keyword">int</span> num[M.nu], cpot[M.nu];</div><div class="line">  <span class="keyword">if</span>(*T-&gt;tu)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> col = <span class="number">1</span>; col &lt;＝ M.nu; ++col)&#123;</div><div class="line">      num[col] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">1</span>; t &lt;= M.tu; t++)&#123;</div><div class="line">      ++num[M.data[t].j];<span class="comment">//求M中每一列含非零元素的个数</span></div><div class="line">    &#125;</div><div class="line">    cpot[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> col = <span class="number">2</span>; col &lt;= M.nu; col++)&#123;</div><div class="line">      cpot[col] = cpot[col - <span class="number">1</span>] + num[col - <span class="number">1</span>];<span class="comment">//求第col列第一个非零元素在b.data中的序号</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">1</span>, <span class="keyword">int</span> col; p &lt; M.tu; p++)&#123;</div><div class="line">      col = M.data[p].j;</div><div class="line">      q = cpot[col];</div><div class="line">      *T-&gt;data[q]-&gt;i = M.data[p].j;</div><div class="line">      *T-&gt;data[q]-&gt;j = M.data[p].i;</div><div class="line">      *T-&gt;data[q]-&gt;e = M.data[p].e;</div><div class="line">      ++ cpot[col];</div><div class="line">    &#125;<span class="comment">//for</span></div><div class="line">  &#125;<span class="comment">//if</span></div><div class="line">&#125;<span class="comment">//FastTransposeSMatrix</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="行逻辑联接的顺序表"><a href="#行逻辑联接的顺序表" class="headerlink" title="行逻辑联接的顺序表"></a>行逻辑联接的顺序表</h3>
+                    <p>三元组顺序表又称有序的双下标法,它的特点是,非零元在表中按行序有序存储,因此便于进行依行顺序处理的矩阵运算。然而,若需随机存取某一行中的非零元,则需从头开始进行查找。</p>
+                    <p>修改前述的稀疏矩阵的结构定义,增加一个数据成员rpos ,指示各行第一个非零元素的位置。</p>
+                    <figure class="highlight rust">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">#define MAXMN <span class="number">500</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  Triple data[MAXSIZE + <span class="number">1</span>]; <span class="comment">//非零元三元组表</span></div><div class="line">  <span class="keyword">int</span> rpos[MAXMN + <span class="number">1</span>]; <span class="comment">// 各行第一个非零元的位置表</span></div><div class="line">  <span class="keyword">int</span> mu, nu, tu;</div><div class="line">&#125; RLSMatrix; <span class="comment">// 行逻辑链接顺序表类型</span></div><div class="line"></div><div class="line"><span class="comment">//两个稀疏矩阵相乘</span></div><div class="line">Status MultSMatrix(RLSMatrix M, RLSMatrix N, RLSMatrix *Q)&#123;</div><div class="line">  <span class="keyword">if</span>(M.nu != N.mu) <span class="keyword">return</span> ERROR; <span class="comment">//不能相乘，出错</span></div><div class="line">  *Q-&gt;mu = M.mu; *Q-&gt;nu = N.nu; *Q-&gt;tu = <span class="number">0</span>; <span class="comment">//Q初始化</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span>(M.tu * N.tu != <span class="number">0</span>)&#123;</div><div class="line">    <span class="keyword">int</span> arow ;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line">    <span class="keyword">int</span> tp, p, q;</div><div class="line">    <span class="keyword">int</span> brow, t;</div><div class="line">    <span class="keyword">int</span> ctemp[N.nu];</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(arow = <span class="number">1</span>; arow &lt;= M.nu; arow++)&#123;</div><div class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; N.nu; i++) ctemp[i] = <span class="number">0</span>;</div><div class="line">      *Q-&gt;rpos[arow] = Q.tu + <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(arow &lt; M.tu) tp = M.rpos[arow + <span class="number">1</span>];</div><div class="line">      <span class="keyword">else</span> tp = M.tu + <span class="number">1</span>;</div><div class="line"></div><div class="line">      <span class="keyword">for</span>(p = M.rpos[arow]; p &lt; tp; p++)&#123;</div><div class="line">        brow = M.data[p].j;<span class="comment">//对当前行非零元，找到在N中的行号</span></div><div class="line">        <span class="keyword">if</span>(brow &lt; N.mu)  </div><div class="line">          t = N.rpos[brow + <span class="number">1</span>];</div><div class="line">        <span class="keyword">else</span></div><div class="line">          t = N.tu + <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(q = N.rpos[brow]; q &lt; t; q++)&#123;</div><div class="line">          ccol = N.data[q].j;</div><div class="line">          ctemp[ccol] += M.data[p].e * M.data[q].e;</div><div class="line">        &#125; <span class="comment">//for q</span></div><div class="line">      &#125; <span class="comment">//求Q中第arow行的非零元</span></div><div class="line"></div><div class="line">      <span class="keyword">for</span>(ccol = <span class="number">1</span>; ccol &lt;= *Q-&gt;nu; ccol++)<span class="comment">//压缩存储该行非零元素</span></div><div class="line">        <span class="keyword">if</span>(ctemp[ccol])&#123;</div><div class="line">          <span class="keyword">if</span>(++*Q-&gt;tu　&gt; MAXSIZE) <span class="keyword">return</span> ERROE;</div><div class="line">          *Q-&gt;data[*Q-&gt;tu]-&gt;i = arow;</div><div class="line">          *Q-&gt;data[*Q-&gt;tu]-&gt;j = ccol;</div><div class="line">          *Q-&gt;data[*A-&gt;tu]-&gt;e = ctemp[ccol];</div><div class="line">        &#125;<span class="comment">//if</span></div><div class="line">    &#125;<span class="comment">//for arow</span></div><div class="line">  &#125;<span class="comment">//if</span></div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;<span class="comment">//MultSMatrix</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3>
+                    <p>当矩阵的非零元个数和位置在操作中变化较大时 [ 例如矩阵的加法 ] ,就不宜采用顺序存储结构来表示三元组的线性表,而是采用链式存储结构表示三元组的线性表。</p>
+                    <p>每个非零元由一个含 5 个域的节点表示( i , j, e, right, down )：</p>
+                    <figure class="highlight xl">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">typedef struct OLNode&#123;</div><div class="line">  int i, j; <span class="comment">//该非零元的行和列下标</span></div><div class="line">  ElemType e;</div><div class="line">  struct OLNODE *right, *down;　<span class="comment">//该非零元所在行表和列表的后继链域</span></div><div class="line">&#125; OLNode; *Olink;</div><div class="line">typedef struct&#123;</div><div class="line">  OLink *rhead, *chead;　<span class="comment">//行和列链表头指针向量</span></div><div class="line">  int mu, nu, tu;</div><div class="line">&#125;CrossList;</div><div class="line"></div><div class="line"><span class="comment">//创建采用十字链存储的稀疏矩阵</span></div><div class="line">Status CreateSMatrix_OL(CrossList *M)&#123;</div><div class="line">  <span class="comment">//if(M)</span></div><div class="line">    <span class="comment">//free(M);</span></div><div class="line">  int m, n, t;</div><div class="line">  int i, j, e;</div><div class="line">  scanf(<span class="string">"%d%d%d"</span>,&amp;m, &amp;n, &amp;t);</div><div class="line">  *M-&gt;mu = m;</div><div class="line">  *M-&gt;nu = n;</div><div class="line">  *M-&gt;tu = t;</div><div class="line">   M-&gt;rhead = (OLink *) malloc ((m + <span class="number">1</span>) * sizeof(OLink));</div><div class="line">   M-&gt;chead = (OLink *) malloc ((n + <span class="number">1</span>) * sizeof(OLink));</div><div class="line">   <span class="function"><span class="title">if</span>(!M-&gt;</span><span class="function"><span class="title">rhead</span> || !M-&gt;</span>chead)</div><div class="line">     exit(OVERFLOW);<span class="comment">//存储分配失败</span></div><div class="line">   <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= m; i++)</div><div class="line">     M-&gt;rhead[i] = NULL;</div><div class="line">   <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= n; i++)</div><div class="line">     M-&gt;chead[i] = NULL;<span class="comment">//初始化行列表头指针向量</span></div><div class="line">   <span class="keyword">for</span>(scanf(<span class="string">"%d%d%d"</span>,&amp;i,&amp;j,&amp;e);i!=<span class="number">0</span>;scanf(<span class="string">"%d%d%d"</span>,&amp;i,&amp;j,&amp;e))&#123;</div><div class="line">     OLNode *p, *q;</div><div class="line">     p = (OLNode *) malloc (sizeof(OLnode));</div><div class="line">     <span class="keyword">if</span>(!p)</div><div class="line">       exit(OVERFLOW);</div><div class="line">     <span class="function"><span class="title">p</span>-&gt;</span>i = i;</div><div class="line">     <span class="function"><span class="title">p</span>-&gt;</span>j = j;</div><div class="line">     <span class="function"><span class="title">p</span>-&gt;</span>e = e;<span class="comment">//生成节点</span></div><div class="line">     <span class="function"><span class="title">if</span>(M-&gt;</span><span class="function"><span class="title">rhead</span>[i] == NULL || M-&gt;</span><span class="function"><span class="title">rhead</span>[i]-&gt;</span>j &gt; j)&#123;<span class="comment">//寻找在行表中的插入位置</span></div><div class="line">       <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">right</span> = M-&gt;</span>rhead[i];</div><div class="line">       M-&gt;rhead[i] = p;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">else</span>&#123;</div><div class="line">       <span class="function"><span class="title">for</span>(q = M-&gt;</span><span class="function"><span class="title">rhead</span>[i]; q-&gt;</span><span class="function"><span class="title">right</span> &amp;&amp; q-&gt;</span><span class="function"><span class="title">right</span>-&gt;</span><span class="function"><span class="title">j</span> &lt; j; q = q-&gt;</span>right) ;</div><div class="line">       <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">right</span> = q-&gt;</span>right ;</div><div class="line">       <span class="function"><span class="title">q</span>-&gt;</span>right = p;</div><div class="line">     &#125;<span class="comment">//完成行插入</span></div><div class="line">     <span class="function"><span class="title">if</span>(M-&gt;</span><span class="function"><span class="title">chead</span>[j] == NULL || M-&gt;</span><span class="function"><span class="title">chead</span>[j]-&gt;</span>i &gt; i)&#123;</div><div class="line">       <span class="function"><span class="title">p</span>-&gt;</span>down = M.chead[j];</div><div class="line">       M-&gt;chead[j] = p;</div><div class="line">     &#125;<span class="comment">//寻找在列表中的插入位置</span></div><div class="line">     <span class="keyword">else</span>&#123;</div><div class="line">       <span class="function"><span class="title">for</span>(q = M-&gt;</span><span class="function"><span class="title">head</span>[j]; q-&gt;</span><span class="function"><span class="title">down</span> &amp;&amp; q-&gt;</span><span class="function"><span class="title">down</span>-&gt;</span><span class="function"><span class="title">i</span> &lt; i; q = q-&gt;</span>down);</div><div class="line">       <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">down</span> = q-&gt;</span>down;</div><div class="line">       <span class="function"><span class="title">q</span>-&gt;</span>down = p;</div><div class="line">     &#125;<span class="comment">//完成列插入</span></div><div class="line">   &#125;<span class="comment">//for</span></div><div class="line">   return OK;</div><div class="line">&#125;<span class="comment">//CreateSMatrix_OL</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h3>
+                    <p>广义表是线性表的推广。</p>
+                    <ul>
+                      <li>广义表是递归定义的线性结构。</li>
+                      <li>广义表是 $n (n \ge 0 )$ 个表元素组成的有限序列,记作$LS (a_1 , a_2 , a_3 , …, a_n )$</li>
+                    </ul>
+                    <p>其中,$LS$ 是表名; $a_i$ 是表元素,可以是广义表(称为子表),也可以是数据元素(称为原子)。$n$ 为表的长度。 $n = 0$ 的广义表为空表。</p>
+                    <p>当 $LS$ 非空时,即 $n &gt; 0$ 时,表的第一个表元素称为广义表的表头( head ), 而其它表元素组成的表称为广义表的表尾( tail )。</p>
+                    <h3 id="广义表的存储结构"><a href="#广义表的存储结构" class="headerlink" title="广义表的存储结构"></a>广义表的存储结构</h3>
+                    <p>广义表的数据元素具有不同的结构,且是一个带深度的层次结构。因此难以用顺序存储结构来存放,而是采用链式存储结构。</p>
+                    <p>构造存储结构的两种分析方法 :</p>
+                    <ul>
+                      <li>表头、表尾分析法</li>
+                      <li>子表分析法</li>
+                    </ul>
+                    <p>表头表尾分析法：若广义表不空,则可分解为表头和表尾;反之,一对确定的表头和表尾可唯一确定广义表</p>
+                    <figure class="highlight crystal">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">typedef <span class="class"><span class="keyword">enum</span>&#123;<span class="title">ATOM</span>, <span class="title">LIST</span>&#125; <span class="title">ElemTag</span>;</span></div><div class="line"></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">GLNode</span> &#123;</span></div><div class="line">  ElemTag tag;<span class="regexp">//</span> = ATOM or = LIST</div><div class="line">  <span class="class"><span class="keyword">union</span> &#123;// 原子结点和表结点的联合部分</span></div><div class="line">    AtomType atom;</div><div class="line">    <span class="class"><span class="keyword">struct</span> &#123;<span class="title">struct</span> <span class="title">GLNode</span> *<span class="title">hp</span>, *<span class="title">tp</span>;</span>&#125; ptr;<span class="regexp">//ptr</span>.hp,ptr.tp分别指向表头和表尾</div><div class="line">&#125;</div><div class="line">&#125; *GList;</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>子表分析法：</p>
+                    <figure class="highlight crystal">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">typedef <span class="class"><span class="keyword">enum</span>&#123;<span class="title">ATOM</span>, <span class="title">LIST</span>&#125; <span class="title">ElemTag</span>;</span></div><div class="line"></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">GLNode</span> &#123;</span></div><div class="line">  ElemTag tag;<span class="regexp">//</span> = ATOM or = LIST</div><div class="line">  <span class="class"><span class="keyword">union</span> &#123;// 原子结点和表结点的联合部分</span></div><div class="line">    AtomType atom;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">GLNode</span> *<span class="title">hp</span>;</span></div><div class="line">  &#125;;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">GLNode</span> *<span class="title">tp</span>;</span>/<span class="regexp">/ 相当于线性链表的 next</span></div><div class="line">&#125; *GList;</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>m 元多项式的表示：</p>
+                    <figure class="highlight crystal">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">MPNode</span> &#123;</span></div><div class="line">  ElemTag tag;</div><div class="line">  int exp; <span class="regexp">//</span> 指数域</div><div class="line">  <span class="class"><span class="keyword">union</span> &#123;// 原子结点和表结点的联合部分</span></div><div class="line">    float coef; <span class="regexp">//</span> 系数域</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">GLNodex</span> *<span class="title">hp</span>;</span></div><div class="line">  &#125;;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">MPNode</span> *<span class="title">tp</span> ;</span> /<span class="regexp">/ 相当于线性链表的 next</span></div><div class="line">&#125; *Mplist; /<span class="regexp">/m 元多项式广义表类型定义</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="广义表操作得递归函数"><a href="#广义表操作得递归函数" class="headerlink" title="广义表操作得递归函数"></a>广义表操作得递归函数</h3>
+                    <p>利用递归算法分而治之的思想,递归算法设计中的关键问题是,如何将 一个子问题的解组合成原问题的解。</p>
+                    <h4 id="求广义表的深度"><a href="#求广义表的深度" class="headerlink" title="求广义表的深度"></a>求广义表的深度</h4>
+                    <p>将广义表 $LS (a_1 , a_2 , a_3 , …, a_n )$ 分解成 $n$ 个子表,分别 ( 递归 ) 求得每个子表的深度 。</p>
+                    <p>广义表的深度 =Max { 子表的深度 } +1</p>
+                    <p>DEPTH(LS)的递归定义：</p>
+                    <p>基本项</p>
+                    <ul>
+                      <li>当 LS 为空表时，DEPTH(LS) = 1;</li>
+                      <li>当 LS 为原子时，DEPTH(LS) = 0;</li>
+                    </ul>
+                    <p>归纳项</p>
+                    <ul>
+                      <li>DEPTH(LS) = 1 + Max{DEPTH(ai)} i = 1,2,…,n</li>
+                    </ul>
+                    <figure class="highlight arduino">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">int</span> GListDepth(GList L)&#123;<span class="comment">//采用头尾链表存储结构</span></div><div class="line">  <span class="keyword">int</span> <span class="built_in">max</span>;</div><div class="line">  <span class="keyword">int</span> dep;</div><div class="line">  <span class="built_in">if</span>(!L)&#123;</div><div class="line">    <span class="built_in">return</span> <span class="number">1</span>;<span class="comment">//空表深度为1</span></div><div class="line">  &#125;</div><div class="line">  <span class="built_in">if</span>(L-&gt;tag == ATOM)&#123;</div><div class="line">    <span class="built_in">return</span> <span class="number">0</span>;<span class="comment">//原子深度为0</span></div><div class="line">  &#125;</div><div class="line">  <span class="built_in">for</span>(<span class="built_in">max</span> = <span class="number">0</span>, GList pp = L; pp; pp = pp-&gt;ptr.tp)&#123;</div><div class="line">    dep = GListDepth(pp-&gt;ptr.hp);</div><div class="line">    <span class="built_in">if</span>(dep &gt; <span class="built_in">max</span>)</div><div class="line">       <span class="built_in">max</span> = dep;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> <span class="built_in">max</span> + <span class="number">1</span>;</div><div class="line">&#125;<span class="comment">//GListDepth</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h4 id="复制广义表"><a href="#复制广义表" class="headerlink" title="复制广义表"></a>复制广义表</h4>
+                    <p>将广义表分解成表头和表尾两部分,分别 ( 递归 ) 复制求得新的表头和表尾。</p>
+                    <p>新的广义表由新的表头和表尾构成。</p>
+                    <p>基本项 :</p>
+                    <ul>
+                      <li>InitGList(NEWLS) 当LS 为空表</li>
+                    </ul>
+                    <p>递归项:</p>
+                    <ul>
+                      <li>COPY(表头) { 复制表头 }</li>
+                      <li>COPY(表尾) { 复制表尾 }</li>
+                    </ul>
+                    <figure class="highlight xl">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">Status CopyGList(GList *T, GList L)&#123;<span class="comment">//由L复制得T</span></div><div class="line">  <span class="keyword">if</span>(!L)&#123;</div><div class="line">    T = NULL;<span class="comment">//复制空表</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!(T = (GList)malloc(sizeof(GLNode))))</div><div class="line">      exit(OVERFLOW);</div><div class="line">    *T-&gt;<span class="function"><span class="title">tag</span> = L-&gt;</span>tag;</div><div class="line">    <span class="function"><span class="title">if</span>(L-&gt;</span>tag == ATOM)</div><div class="line">      *T-&gt;<span class="function"><span class="title">atom</span> = L-&gt;</span>atom;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      C<span class="function"><span class="title">opyGList</span>(*T-&gt;</span><span class="function"><span class="title">ptr</span>.hp, L-&gt;</span>ptr.hp);</div><div class="line">      C<span class="function"><span class="title">opyGList</span>(*T-&gt;</span><span class="function"><span class="title">ptr</span>.tp, L-&gt;</span>ptr.tp);</div><div class="line">    &#125;<span class="comment">//else</span></div><div class="line">  &#125;<span class="comment">//else</span></div><div class="line">  return OK;</div><div class="line">&#125;<span class="comment">//CopyGList</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h4 id="建立广义表的存储结构"><a href="#建立广义表的存储结构" class="headerlink" title="建立广义表的存储结构"></a>建立广义表的存储结构</h4>
+                    <figure class="highlight perl">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">//伪代码</div><div class="line">Status CreateGList(GList &amp;L, SString S)&#123;</div><div class="line">  <span class="keyword">if</span>(StrCompare(S, emp)) L = NULL; <span class="regexp">//emp</span> = <span class="string">"()"</span></div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!(L = (GList)malloc(sizeof(GLNode))))</div><div class="line">      <span class="keyword">exit</span>(OVERFLOW);<span class="regexp">//</span>建立表节点</div><div class="line">    <span class="keyword">if</span>(StrLength(S) == <span class="number">1</span>)&#123;</div><div class="line">      L-&gt;tag = ATOM;</div><div class="line">      L-&gt;atom = S;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      L-&gt;tag = LIST;</div><div class="line">      p = L;</div><div class="line">      SubString(<span class="function"><span class="keyword">sub</span>, 2, <span class="title">StrLength</span></span>(S) - 2);</div><div class="line">      <span class="keyword">do</span>&#123;<span class="regexp">//</span>重复建立n个子表</div><div class="line">        sever(<span class="function"><span class="keyword">sub</span>, <span class="title">hsub</span>)</span>;//从<span class="function"><span class="keyword">sub</span>中分离出表头串<span class="title">hsub</span></span></div><div class="line">        <span class="title">CreateGList</span>(p-&gt;ptr.hp, hsub);</div><div class="line">        <span class="keyword">q</span> = p;</div><div class="line">        <span class="keyword">if</span>(!StrEmpty(<span class="function"><span class="keyword">sub</span>))</span>&#123;//表尾不空</div><div class="line">          <span class="keyword">if</span>(!(p = (GLNode *)malloc(sizeof(GLNode))))</div><div class="line">            <span class="keyword">exit</span>(OVERFLOW);</div><div class="line">          p-&gt;tag = LIST;</div><div class="line">          <span class="keyword">q</span>-&gt;ptr.tp = p;</div><div class="line">        &#125;//<span class="keyword">if</span></div><div class="line">      &#125;</div><div class="line">      <span class="keyword">while</span>(!StrEmpty(<span class="function"><span class="keyword">sub</span>))</span>;</div><div class="line">      <span class="keyword">q</span>-&gt;ptr.tp = NULL</div><div class="line">    &#125;//<span class="keyword">else</span></div><div class="line">  &#125;//<span class="keyword">else</span></div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;//CreateGList</div><div class="line"></div><div class="line">Status sever(SString &amp;str, SString &amp;hstr)&#123;</div><div class="line">  n = StrLength(str);</div><div class="line">  i = <span class="number">0</span>;</div><div class="line">  k = <span class="number">0</span>;</div><div class="line">  <span class="keyword">do</span>&#123;</div><div class="line">    ++i;</div><div class="line">    SubString(ch, str, i, <span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span>(ch == <span class="string">'()'</span>)</div><div class="line">      ++k;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">')'</span>)</div><div class="line">      --k;</div><div class="line">  &#125;<span class="keyword">while</span>(i &lt; n &amp;&amp; (ch != <span class="string">','</span>|| k != <span class="number">0</span>));</div><div class="line">  <span class="keyword">if</span>(i &lt; n)&#123;</div><div class="line">    SubString(hstr, str, <span class="number">1</span>, i - <span class="number">1</span>);</div><div class="line">    SubString(str, str, i + <span class="number">1</span>, n - i);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    StrCopy(hstr, str);</div><div class="line">    ClearString(str);</div><div class="line">  &#125;</div><div class="line">&#125;//sever</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
 
                   </div>
 
@@ -667,76 +592,56 @@
 
 
 
-                  <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
 
-                      <a href="/2017/04/13/Ubuntu-17.04-Released/" rel="next" title="Ubuntu 17.04（Zesty Zapus）正式发布，可以下载使用了">
+
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/2017/04/13/Ubuntu-17.04-Released/" rel="next" title="Ubuntu 17.04（Zesty Zapus）正式发布，可以下载使用了">
                 <i class="fa fa-chevron-left"></i> Ubuntu 17.04（Zesty Zapus）正式发布，可以下载使用了
               </a>
 
-                    </div>
+                      </div>
 
-                    <span class="post-nav-divider"></span>
+                      <span class="post-nav-divider"></span>
 
-                    <div class="post-nav-prev post-nav-item">
+                      <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2017/04/15/How-to-Enable-Desktop-Share-in-Ubuntu-and-Linux-Mint/" rel="prev" title="如何在 Ubuntu 和 Linux Mint 上启用桌面共享">
+                        <a href="/2017/04/15/How-to-Enable-Desktop-Share-in-Ubuntu-and-Linux-Mint/" rel="prev" title="如何在 Ubuntu 和 Linux Mint 上启用桌面共享">
                 如何在 Ubuntu 和 Linux Mint 上启用桌面共享 <i class="fa fa-chevron-right"></i>
               </a>
 
+                      </div>
                     </div>
-                  </div>
 
 
 
 
-                </footer>
+                  </footer>
+                </div>
+
+
+
               </article>
 
 
 
-
-
-
               <div class="post-spread">
-
-
-                <div class="bdsharebuttonbox">
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                  window._bd_share_config = {
-                    "common": {
-                      "bdText": "",
-                      "bdMini": "2",
-                      "bdMiniList": false,
-                      "bdPic": ""
-                    },
-                    "share": {
-                      "bdSize": "16",
-                      "bdStyle": "0"
-                    },
-                    "image": {
-                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-                      "viewText": "分享到：",
-                      "viewSize": "16"
-                    }
-                  }
-                </script>
-
-                <script>
-                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-                </script>
-
 
               </div>
             </div>
@@ -747,13 +652,19 @@
 
 
 
+
+
           <div class="comments" id="comments">
+
+            <div id="gitment-container"></div>
 
           </div>
 
 
-        </div>
 
+
+
+        </div>
 
 
 
@@ -766,6 +677,7 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
@@ -775,124 +687,79 @@
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview">
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview sidebar-panel">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -943,66 +810,37 @@
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -1017,9 +855,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -1048,56 +886,70 @@
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1125,6 +977,8 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -1134,275 +988,14 @@
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -1413,11 +1006,3 @@
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>

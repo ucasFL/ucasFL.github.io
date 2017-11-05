@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,7 +51,22 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Ubuntu/Translated," />
@@ -53,11 +76,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -87,19 +105,31 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -126,7 +156,16 @@
 
 
 
-  <title> 加速老旧 Ubuntu 系统的技巧 | 春暖花开 </title>
+  <title>加速老旧 Ubuntu 系统的技巧 | 春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,22 +175,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -198,28 +222,8 @@
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -229,41 +233,9 @@
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -287,47 +259,41 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/02/26/How-to-Spend-Old-Ubunntu-System/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/02/26/How-to-Spend-Old-Ubunntu-System/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
+                  <header class="post-header">
 
 
 
-                  <h1 class="post-title" itemprop="name headline">
+                    <h1 class="post-title" itemprop="name headline">加速老旧 Ubuntu 系统的技巧</h1>
 
 
-
-                    加速老旧 Ubuntu 系统的技巧
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-26T19:39:40+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-26T19:39:40+08:00">
                 2017/02/26
               </time>
 
@@ -335,48 +301,43 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Ubuntu/" itemprop="url" rel="index">
                     <span itemprop="name">Ubuntu</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
+                      </span>
 
 
 
 
-
-
-
-
-                    <span id="/2017/02/26/How-to-Spend-Old-Ubunntu-System/" class="leancloud_visitors" data-flag-title="加速老旧 Ubuntu 系统的技巧">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                      <a href="/2017/02/26/How-to-Spend-Old-Ubunntu-System/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/02/26/How-to-Spend-Old-Ubunntu-System/" itemprop="commentsCount"></span>
+                </a>
+                      </span>
 
 
 
@@ -385,149 +346,114 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
+                    </div>
+                  </header>
 
-                  <p><a href="http://www.linuxandubuntu.com/home/tips-to-improve-ubuntu-speed" target="_blank" rel="external"><br> <img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/tips-to-improve-ubuntu-speed_orig.jpg" alt="Tips To Improve Ubuntu Speed">
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                    <p><a href="http://www.linuxandubuntu.com/home/tips-to-improve-ubuntu-speed" target="_blank" rel="external"><br> <img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/tips-to-improve-ubuntu-speed_orig.jpg" alt="Tips To Improve Ubuntu Speed">
 </a></p>
-                  <p>你的 Ubuntu 系统可以运行得如此顺畅，以至于你会奇怪为什么没有早一些从那些桌面加载很慢的操作系统（比如 Windows）转过来。Ubuntu 在大多数现代化的机器上都能够很顺畅的运行，一些更老的机器使用 Ubuntu 系统的一些变种版本，比如 Lubuntu、Xubuntu 和 <a href="http://www.linuxandubuntu.com/home/linuxandubuntu-distro-review-of-the-week-ubuntu-mate-1610"
-                      target="_blank" rel="external">Ubuntu MATE</a>，同样给人留下了深刻印象。极少的情况下，你对 Ubuntu 桌面的使用体验会越来越糟。如果非常不走运，你的 Ubuntu 系统并没有像你所希望的那样运行顺畅，那么你可以做一些事情来提高系统性能和响应速度。</p>
-                  <p>不过首先我们来看一看为什么电脑会运行得很慢？下面是我列举的一些原因：</p>
-                  <ol>
-                    <li>电脑陈旧</li>
-                    <li>安装了太多的应用</li>
-                    <li>系统里的一些东西坏了</li>
-                    <li>还有更多的原因…</li>
-                  </ol>
-                  <p>现在让我们来看一些改善这个问题的技巧。</p>
-                  <a id="more"></a>
-                  <h3 id="1、-交换值Swappiness"><a href="#1、-交换值Swappiness" class="headerlink" title="1、 交换值Swappiness"></a>1、 <ruby>交换值<rt>Swappiness</rt></ruby></h3>
-                  <p>如果你的系统有一个交换分区，那么这个技巧对你是最适合的（注：交换分区不建议为固态驱动器，因为这样会缩短驱动器的使用寿命）。交换分区可以帮助系统，特别是内存容量较低的系统，来管理系统内存。将数据写入交换分区（硬盘）比写入内存要慢一些，所以你可以通过减少 <code>swappiness</code> 值来限制数据写入交换分区的频率。默认情况下， Ubuntu 的 <code>swappiness</code> 值是 60%， 所以你可以通过下面的命令将它减至 10%：<br>
-                    <figure class="highlight armasm">
+                    <p>你的 Ubuntu 系统可以运行得如此顺畅，以至于你会奇怪为什么没有早一些从那些桌面加载很慢的操作系统（比如 Windows）转过来。Ubuntu 在大多数现代化的机器上都能够很顺畅的运行，一些更老的机器使用 Ubuntu 系统的一些变种版本，比如 Lubuntu、Xubuntu 和 <a href="http://www.linuxandubuntu.com/home/linuxandubuntu-distro-review-of-the-week-ubuntu-mate-1610"
+                        target="_blank" rel="external">Ubuntu MATE</a>，同样给人留下了深刻印象。极少的情况下，你对 Ubuntu 桌面的使用体验会越来越糟。如果非常不走运，你的 Ubuntu 系统并没有像你所希望的那样运行顺畅，那么你可以做一些事情来提高系统性能和响应速度。</p>
+                    <p>不过首先我们来看一看为什么电脑会运行得很慢？下面是我列举的一些原因：</p>
+                    <ol>
+                      <li>电脑陈旧</li>
+                      <li>安装了太多的应用</li>
+                      <li>系统里的一些东西坏了</li>
+                      <li>还有更多的原因…</li>
+                    </ol>
+                    <p>现在让我们来看一些改善这个问题的技巧。</p>
+                    <a id="more"></a>
+                    <h3 id="1、-交换值Swappiness"><a href="#1、-交换值Swappiness" class="headerlink" title="1、 交换值Swappiness"></a>1、 <ruby>交换值<rt>Swappiness</rt></ruby></h3>
+                    <p>如果你的系统有一个交换分区，那么这个技巧对你是最适合的（注：交换分区不建议为固态驱动器，因为这样会缩短驱动器的使用寿命）。交换分区可以帮助系统，特别是内存容量较低的系统，来管理系统内存。将数据写入交换分区（硬盘）比写入内存要慢一些，所以你可以通过减少 <code>swappiness</code> 值来限制数据写入交换分区的频率。默认情况下， Ubuntu 的 <code>swappiness</code> 值是 60%， 所以你可以通过下面的命令将它减至
+                      10%：<br>
+                      <figure class="highlight armasm">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><div class="line">1</div></pre>
+                            </td>
+                            <td class="code">
+                              <pre><div class="line"><span class="symbol">sudo</span> <span class="keyword">bash </span>-c <span class="string">"echo 'vm.swappiness = 10' &gt;&gt; /etc/sysctl.conf"</span></div></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <h3 id="2、-停止索引"><a href="#2、-停止索引" class="headerlink" title="2、 停止索引"></a>2、 停止索引</h3>
+                    <p>索引的目的是加快搜索结果，但另一方面，索引会导致较老配置的系统出现一些问题。为了停止索引，输入下面的命令来移除索引工具：</p>
+                    <figure class="highlight sql">
                       <table>
                         <tr>
                           <td class="gutter">
                             <pre><div class="line">1</div></pre>
                           </td>
                           <td class="code">
-                            <pre><div class="line"><span class="symbol">sudo</span> <span class="keyword">bash </span>-c <span class="string">"echo 'vm.swappiness = 10' &gt;&gt; /etc/sysctl.conf"</span></div></pre>
+                            <pre><div class="line">sudo apt-get <span class="keyword">purge</span> apt-xapian-<span class="keyword">index</span></div></pre>
                           </td>
                         </tr>
                       </table>
                     </figure>
-                  </p>
-                  <h3 id="2、-停止索引"><a href="#2、-停止索引" class="headerlink" title="2、 停止索引"></a>2、 停止索引</h3>
-                  <p>索引的目的是加快搜索结果，但另一方面，索引会导致较老配置的系统出现一些问题。为了停止索引，输入下面的命令来移除索引工具：</p>
-                  <figure class="highlight sql">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">sudo apt-get <span class="keyword">purge</span> apt-xapian-<span class="keyword">index</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="3、-管理启动应用startup-applications"><a href="#3、-管理启动应用startup-applications" class="headerlink" title="3、 管理启动应用startup applications"></a>3、 管理<ruby>启动应用<rt>startup applications</rt></ruby></h3>
-                  <p>启动应用会对系统性能造成很大的影响。当你安装一些应用以后，这些应用会添加启动项，从而当你启动系统的时候它们也跟着启动，但你可以移除这些应用以提高系统性能。通过在 Unity 窗口搜索打开 “启动应用”。绝大多数自启动选项都会被隐藏，所以在终端输入下面的命令使它们可见然后你就可以停止某些 “启动应用”了：</p>
-                  <figure class="highlight awk">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">sudo sed -i <span class="string">"s/NoDisplay=true/NoDisplay=false/g"</span> <span class="regexp">/etc/</span>xdg<span class="regexp">/autostart/</span>\*.desktop</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/ubuntu-startup-application_orig.jpg" target="_blank" rel="external"><br> <img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/ubuntu-startup-application_orig.jpg" alt="ubuntu startup application">
+                    <h3 id="3、-管理启动应用startup-applications"><a href="#3、-管理启动应用startup-applications" class="headerlink" title="3、 管理启动应用startup applications"></a>3、 管理<ruby>启动应用<rt>startup applications</rt></ruby></h3>
+                    <p>启动应用会对系统性能造成很大的影响。当你安装一些应用以后，这些应用会添加启动项，从而当你启动系统的时候它们也跟着启动，但你可以移除这些应用以提高系统性能。通过在 Unity 窗口搜索打开 “启动应用”。绝大多数自启动选项都会被隐藏，所以在终端输入下面的命令使它们可见然后你就可以停止某些 “启动应用”了：</p>
+                    <figure class="highlight awk">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">sudo sed -i <span class="string">"s/NoDisplay=true/NoDisplay=false/g"</span> <span class="regexp">/etc/</span>xdg<span class="regexp">/autostart/</span>\*.desktop</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/ubuntu-startup-application_orig.jpg" target="_blank" rel="external"><br> <img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/ubuntu-startup-application_orig.jpg" alt="ubuntu startup application">
 </a></p>
-                  <h3 id="4、-尝试预载入"><a href="#4、-尝试预载入" class="headerlink" title="4、 尝试预载入"></a>4、 尝试预载入</h3>
-                  <p>预载入（<code>preload</code>） 是一个守护进程/后台服务，它可以监控系统上使用的应用程序，它会将所需要的二进制库在其需要加载到内存前就预先载入，以便应用程序启动得更快。在终端输入下面的命令安装预载入：</p>
-                  <figure class="highlight actionscript">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">sudo apt-<span class="keyword">get</span> install preload</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="5、-选择更加轻量型的应用"><a href="#5、-选择更加轻量型的应用" class="headerlink" title="5、 选择更加轻量型的应用"></a>5、 选择更加轻量型的应用</h3>
-                  <p>你在 Ubuntu 桌面上使用什么应用程序呢？有更轻量的替代品吗？如果有，就替换成它们——如果它们也能满足你的需求的话。 LibreOffice 能够给你最好的办公体验，但是它的替代品，比如 Abiword 能够很大程度的改善系统性能。</p>
-                  <h3 id="6、-切换到一个更加轻量型的桌面环境"><a href="#6、-切换到一个更加轻量型的桌面环境" class="headerlink" title="6、 切换到一个更加轻量型的桌面环境"></a>6、 切换到一个更加轻量型的桌面环境</h3>
-                  <p>你在 Ubuntu 系统上使用的桌面环境是 Unity 或 KDE 吗？这些桌面环境对系统的要求很高。相反，你可以在当前桌面环境之外同时安装一个 LxQt 或者 XFCE 环境，然后切换到它们。或者，你也可以换到 Ubuntu 的不同变种版本，比如 Lubuntu 或 Xubuntu ，从而享受更快的体验。</p>
-                  <h3 id="7、-清理系统垃圾"><a href="#7、-清理系统垃圾" class="headerlink" title="7、 清理系统垃圾"></a>7、 清理系统垃圾</h3>
-                  <p>尽管 Ubuntu 系统不会变得像 Windows 系统那么慢，但它还是会变慢。清除系统里不需要的文件可以改善系统性能。尝试使用 Ubuntu Tweak 工具中的 Janitor 工具来清理系统。还有一个 Bleachbit 工具也可用来清理系统。</p>
-                  <p>同时请阅读 - <a href="http://www.linuxandubuntu.com/home/bleachbit-an-alternative-to-ccleaner-on-linux" target="_blank" rel="external">Bleachbit - CCleaner 的一个替代品</a></p>
-                  <h3 id="8、-尝试重新安装"><a href="#8、-尝试重新安装" class="headerlink" title="8、 尝试重新安装"></a>8、 尝试重新安装</h3>
-                  <p>有时，一些东西可能坏了，清理垃圾或者使用上面提到的大多数技巧都没用。这时，你唯一的选择就是备份文件，然后尝试重新安装。</p>
-                  <h3 id="9、-升级硬件"><a href="#9、-升级硬件" class="headerlink" title="9、 升级硬件"></a>9、 升级硬件</h3>
-                  <p>我列表上的最后一个技巧是升级硬件。在绝大多数情况下，这是可以的。如果可以这样做，那将极大的提高系统性能。你可以增加已安装的内存， 从传统磁盘切换到固态驱动器或者升级你的处理器，特别是如果你在台式电脑上运行 Ubuntu 系统，这将极大提高系统性能。</p>
-                  <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3>
-                  <p>我希望这些技巧能够陪伴你走很长的一段路，让你的 Ubuntu 桌面以一个<strong>令人印象深刻的速度</strong>运行。注意，你不需要尝试所有的技巧，只需要找到一个适合你的情况的技巧，然后观察系统响应如何变化。你还知道其他提高 Ubuntu 系统性能的技巧吗？请在评论里分享给我们。</p>
-                  <hr>
-                  <p>via: <a href="http://www.linuxandubuntu.com/home/tips-to-improve-ubuntu-speed" target="_blank" rel="external">http://www.linuxandubuntu.com/home/tips-to-improve-ubuntu-speed</a></p>
-                  <p>作者：<a href="http://www.linuxandubuntu.com/home/tips-to-improve-ubuntu-speed" target="_blank" rel="external">linuxandubuntu.com</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/jasminepeng"
-                      target="_blank" rel="external">jasminepeng</a></p>
-                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-
-                </div>
-
-                <div>
-
-
-
-
-                </div>
-
-                <div>
-
-
-
-
-                </div>
-
-
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-                  <div class="post-tags">
-
-                    <a href="/tags/Ubuntu-Translated/" rel="tag"># Ubuntu/Translated</a>
+                    <h3 id="4、-尝试预载入"><a href="#4、-尝试预载入" class="headerlink" title="4、 尝试预载入"></a>4、 尝试预载入</h3>
+                    <p>预载入（<code>preload</code>） 是一个守护进程/后台服务，它可以监控系统上使用的应用程序，它会将所需要的二进制库在其需要加载到内存前就预先载入，以便应用程序启动得更快。在终端输入下面的命令安装预载入：</p>
+                    <figure class="highlight actionscript">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">sudo apt-<span class="keyword">get</span> install preload</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="5、-选择更加轻量型的应用"><a href="#5、-选择更加轻量型的应用" class="headerlink" title="5、 选择更加轻量型的应用"></a>5、 选择更加轻量型的应用</h3>
+                    <p>你在 Ubuntu 桌面上使用什么应用程序呢？有更轻量的替代品吗？如果有，就替换成它们——如果它们也能满足你的需求的话。 LibreOffice 能够给你最好的办公体验，但是它的替代品，比如 Abiword 能够很大程度的改善系统性能。</p>
+                    <h3 id="6、-切换到一个更加轻量型的桌面环境"><a href="#6、-切换到一个更加轻量型的桌面环境" class="headerlink" title="6、 切换到一个更加轻量型的桌面环境"></a>6、 切换到一个更加轻量型的桌面环境</h3>
+                    <p>你在 Ubuntu 系统上使用的桌面环境是 Unity 或 KDE 吗？这些桌面环境对系统的要求很高。相反，你可以在当前桌面环境之外同时安装一个 LxQt 或者 XFCE 环境，然后切换到它们。或者，你也可以换到 Ubuntu 的不同变种版本，比如 Lubuntu 或 Xubuntu ，从而享受更快的体验。</p>
+                    <h3 id="7、-清理系统垃圾"><a href="#7、-清理系统垃圾" class="headerlink" title="7、 清理系统垃圾"></a>7、 清理系统垃圾</h3>
+                    <p>尽管 Ubuntu 系统不会变得像 Windows 系统那么慢，但它还是会变慢。清除系统里不需要的文件可以改善系统性能。尝试使用 Ubuntu Tweak 工具中的 Janitor 工具来清理系统。还有一个 Bleachbit 工具也可用来清理系统。</p>
+                    <p>同时请阅读 - <a href="http://www.linuxandubuntu.com/home/bleachbit-an-alternative-to-ccleaner-on-linux" target="_blank" rel="external">Bleachbit - CCleaner 的一个替代品</a></p>
+                    <h3 id="8、-尝试重新安装"><a href="#8、-尝试重新安装" class="headerlink" title="8、 尝试重新安装"></a>8、 尝试重新安装</h3>
+                    <p>有时，一些东西可能坏了，清理垃圾或者使用上面提到的大多数技巧都没用。这时，你唯一的选择就是备份文件，然后尝试重新安装。</p>
+                    <h3 id="9、-升级硬件"><a href="#9、-升级硬件" class="headerlink" title="9、 升级硬件"></a>9、 升级硬件</h3>
+                    <p>我列表上的最后一个技巧是升级硬件。在绝大多数情况下，这是可以的。如果可以这样做，那将极大的提高系统性能。你可以增加已安装的内存， 从传统磁盘切换到固态驱动器或者升级你的处理器，特别是如果你在台式电脑上运行 Ubuntu 系统，这将极大提高系统性能。</p>
+                    <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3>
+                    <p>我希望这些技巧能够陪伴你走很长的一段路，让你的 Ubuntu 桌面以一个<strong>令人印象深刻的速度</strong>运行。注意，你不需要尝试所有的技巧，只需要找到一个适合你的情况的技巧，然后观察系统响应如何变化。你还知道其他提高 Ubuntu 系统性能的技巧吗？请在评论里分享给我们。</p>
+                    <hr>
+                    <p>via: <a href="http://www.linuxandubuntu.com/home/tips-to-improve-ubuntu-speed" target="_blank" rel="external">http://www.linuxandubuntu.com/home/tips-to-improve-ubuntu-speed</a></p>
+                    <p>作者：<a href="http://www.linuxandubuntu.com/home/tips-to-improve-ubuntu-speed" target="_blank" rel="external">linuxandubuntu.com</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/jasminepeng"
+                        target="_blank" rel="external">jasminepeng</a></p>
+                    <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
 
                   </div>
 
@@ -537,76 +463,56 @@
 
 
 
-                  <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
 
-                      <a href="/2017/02/25/the-ADB-tool-Tutorial-for-Ubuntu/" rel="next" title="如何在 Ubuntu 上使用 ADB 备份 Android 数据">
+
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/Ubuntu-Translated/" rel="tag"># Ubuntu/Translated</a>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/2017/02/25/the-ADB-tool-Tutorial-for-Ubuntu/" rel="next" title="如何在 Ubuntu 上使用 ADB 备份 Android 数据">
                 <i class="fa fa-chevron-left"></i> 如何在 Ubuntu 上使用 ADB 备份 Android 数据
               </a>
 
-                    </div>
+                      </div>
 
-                    <span class="post-nav-divider"></span>
+                      <span class="post-nav-divider"></span>
 
-                    <div class="post-nav-prev post-nav-item">
+                      <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2017/02/27/Hexo-Next-Theme-Beautify-and-LaTeX-Unsupport-Fix/" rel="prev" title="Hexo - Next 主题美化和 Latex 不支持的 Bug 处理">
+                        <a href="/2017/02/27/Hexo-Next-Theme-Beautify-and-LaTeX-Unsupport-Fix/" rel="prev" title="Hexo - Next 主题美化和 Latex 不支持的 Bug 处理">
                 Hexo - Next 主题美化和 Latex 不支持的 Bug 处理 <i class="fa fa-chevron-right"></i>
               </a>
 
+                      </div>
                     </div>
-                  </div>
 
 
 
 
-                </footer>
+                  </footer>
+                </div>
+
+
+
               </article>
 
 
 
-
-
-
               <div class="post-spread">
-
-
-                <div class="bdsharebuttonbox">
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                  window._bd_share_config = {
-                    "common": {
-                      "bdText": "",
-                      "bdMini": "2",
-                      "bdMiniList": false,
-                      "bdPic": ""
-                    },
-                    "share": {
-                      "bdSize": "16",
-                      "bdStyle": "0"
-                    },
-                    "image": {
-                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-                      "viewText": "分享到：",
-                      "viewSize": "16"
-                    }
-                  }
-                </script>
-
-                <script>
-                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-                </script>
-
 
               </div>
             </div>
@@ -617,13 +523,19 @@
 
 
 
+
+
           <div class="comments" id="comments">
+
+            <div id="gitment-container"></div>
 
           </div>
 
 
-        </div>
 
+
+
+        </div>
 
 
 
@@ -636,6 +548,7 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
@@ -645,124 +558,79 @@
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview">
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview sidebar-panel">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -802,66 +670,37 @@
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -876,9 +715,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -907,56 +746,70 @@
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -984,6 +837,8 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -993,275 +848,14 @@
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -1272,11 +866,3 @@
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>

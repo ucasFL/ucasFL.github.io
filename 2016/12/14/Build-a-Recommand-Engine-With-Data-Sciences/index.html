@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,7 +51,22 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Data-science/Translated," />
@@ -53,11 +76,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -129,19 +147,31 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -168,7 +198,16 @@
 
 
 
-  <title> 用数据科学搭建一个实时推荐引擎 | 春暖花开 </title>
+  <title>用数据科学搭建一个实时推荐引擎 | 春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -178,22 +217,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -240,28 +264,8 @@
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -271,41 +275,9 @@
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -329,47 +301,41 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
+                  <header class="post-header">
 
 
 
-                  <h1 class="post-title" itemprop="name headline">
+                    <h1 class="post-title" itemprop="name headline">用数据科学搭建一个实时推荐引擎</h1>
 
 
-
-                    用数据科学搭建一个实时推荐引擎
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-14T18:14:40+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-14T18:14:40+08:00">
                 2016/12/14
               </time>
 
@@ -377,48 +343,43 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Science/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Science</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
+                      </span>
 
 
 
 
-
-
-
-
-                    <span id="/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/" class="leancloud_visitors" data-flag-title="用数据科学搭建一个实时推荐引擎">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                      <a href="/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/" itemprop="commentsCount"></span>
+                </a>
+                      </span>
 
 
 
@@ -427,155 +388,119 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
-
-                  <p>编者注：本文是 2016 年 4 月 Nicole Whilte 在欧洲 <a href="http://graphconnect.com/" target="_blank" rel="external">GraphConnect</a> 时所作。这儿我们快速回顾一下她所涉及的内容：</p>
-                  <ul>
-                    <li>图数据库推荐基础</li>
-                    <li>社会化推荐</li>
-                    <li>相似性推荐</li>
-                    <li>集群推荐</li>
-                  </ul>
-                  <p>今天我们将要讨论的内容是数据科学和图推荐（graph recommendations）：</p>
-                  <p>我在 <a href="http://neo4j.com/product/" target="_blank" rel="external">Neo4j</a> 任职已经两年了，但实际上我已经使用 Neo4j 和 <a href="http://neo4j.com/blog/why-database-query-language-matters/#cypher" target="_blank" rel="external">Cypher</a> 工作三年了。当我首次发现这个特别的图数据库（graph
-                    database）的时候，我还是一个研究生，那时候我在奥斯丁的德克萨斯大学攻读关于社交网络的统计学硕士学位。</p>
-                  <p><a href="https://neo4j.com/use-cases/real-time-recommendation-engine/" target="_blank" rel="external">实时推荐引擎</a>是 Neo4j 中最广泛的用途之一，也是使它如此强大并且容易使用的原因之一。为了探索这个东西，我将通过使用示例数据集来阐述如何将统计学方法并入这些引擎中。</p>
-                  <p>第一个很简单 - 将 Cypher 用于社交推荐。接下来，我们将看一看相似性推荐，这涉及到可被计算的相似性度量，最后探索的是集群推荐。</p>
-                  <a id="more"></a>
-                  <h3 id="图数据库推荐基础"><a href="#图数据库推荐基础" class="headerlink" title="图数据库推荐基础"></a>图数据库推荐基础</h3>
-                  <p>下面的数据集包含所有达拉斯 Fort Worth 国际机场的餐饮场所，达拉斯 Fort Worth 国际机场是美国主要的机场枢纽之一：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816214938/recommendation-engine-data-science-nicole-white-graphconnect-768x432.png" alt=""></p>
-                  <p>我们把节点标记成黄色并按照出入口和航站楼给它们的位置建模。同时我们也按照食物和饮料的主类别将地点分类，其中一些包括墨西哥食物、三明治、酒吧和烤肉。</p>
-                  <p>让我们做一个简单的推荐。我们想要在机场的某一确定地点找到一种特定食物，大括号中的内容表示是的用户输入，它将进入我们的假想应用程序中。</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215426/food-drink-real-time-recommendation-engine-parameters-768x208.png" alt=""></p>
-                  <p>这个英文句子表示成 Cypher 查询：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215537/cypher-query-dfw-food-drink-real-time-recommendations-768x364.png" alt=""></p>
-                  <p>这将提取出该类别中用户所请求的所有地点、航站楼和出入口。然后我们可以计算出用户所在位置到出入口的准确距离，并以升序返回结果。再次说明，这个非常简单的 Cypher 推荐仅仅依据的是用户在机场中的位置。</p>
-                  <h3 id="社交推荐（Social-Recommendations）"><a href="#社交推荐（Social-Recommendations）" class="headerlink" title="社交推荐（Social Recommendations）"></a>社交推荐（Social Recommendations）</h3>
-                  <p>让我们来看一下社交推荐。在我们的假想应用程序中，用户可以登录并且可以用和 Facebook 类似的方式标记自己“喜好”的地点，也可以在某地签到。</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215655/social-media-recommendation-engine-data-model-768x550.png" alt=""></p>
-                  <p>考虑位于我们所研究的第一个模型之上的数据模型，现在让我们在下面的分类中找到用户的朋友喜好的航站楼里面离出入口最近的餐饮场所：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215751/social-recommendation-engine-parameters-768x258.png" alt=""></p>
-                  <p>MATCH 子句和我们第一次 Cypher 查询的 MATCH 子句相似，只是现在我们依据喜好和朋友来匹配：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215846/social-recommendation-engine-cypher-query-768x468.png" alt=""></p>
-                  <p>前三行是完全一样的，但是现在要考虑的是那些登录的用户，我们想要通过 :FRIENDS_WITH 这一关系来找到他们的朋友。仅需通过在 Cypher 中增加一些行内容，我们现在已经把社交层面考虑到了我们的推荐引擎中。</p>
-                  <p>再次说明，我们仅仅显示了用户明确请求的类别，并且这些类别中的地点与用户进入的地方是相同的航站楼。当然，我们希望按照登录并做出请求的用户来滤过这些目录，然后返回地点的名字、位置以及所在目录。我们也要显示出有多少朋友已经“喜好”那个地点以及那个地点到出入口的确切距离，然后在 RETURN 子句中同时返回所有这些内容。</p>
-                  <h3 id="相似性推荐（Similarity-Recommendations）"><a href="#相似性推荐（Similarity-Recommendations）" class="headerlink" title="相似性推荐（Similarity Recommendations）"></a>相似性推荐（Similarity Recommendations）</h3>
-                  <p>现在，让我们看一看相似性推荐引擎：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215944/similarity-recommendation-engine-data-model-768x646.png" alt=""></p>
-                  <p>和前面的数据模型相似，用户可以标记“喜好”的地点，但是这一次他们可以用 1 到 10 的整数给地点评分。这是通过前期在 Neo4j 中增加一些属性到关系中建模实现的。</p>
-                  <p>这将允许我们找到其他相似的用户，比如以上面的 Greta 和 Alice 为例，我们已经查询了他们共同喜好的地点，并且对于每一个地点，我们可以看到他们所设定的权重。大概地，我们可以通过他们的评分来确定他们之间的相似性大小。</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220107/user-similarity-recommendation-engine-768x481.png" alt=""></p>
-                  <p>现在我们有两个向量：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220204/user-length-vectors-300x180.png" alt=""></p>
-                  <p>现在让我们按照欧几里得距离（Euclidean distance）的定义来计算这两个向量之间的距离：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220239/euclidean-distance-user-vectors.png" alt=""></p>
-                  <p>我们把所有的数字带入公式中计算，然后得到下面的相似度，这就是两个用户之间的“距离”：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220323/user-vector-distance-similarity-metric-768x140.png" alt=""></p>
-                  <p>你可以很容易地在 Cypher 中计算两个特定用户的“距离”，特别是如果他们仅仅同时“喜好”一个很小的地点子集。再次说明，这儿我们依据两个用户 Alice 和 Greta 来进行匹配，并尝试去找到他们同时“喜好”的地点：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220517/similarity-recommendation-engine-Cypher-query-users-768x399.png" alt=""></p>
-                  <p>他们都有对最后找到的地点的 :LIKES 关系，然后我们可以在 Cypher 中很容易的计算出他们之间的欧几里得距离，计算方法为他们对各个地点评分差的平方求和再开平方根。</p>
-                  <p>在两个特定用户的例子中上面这个方法或许能够工作。但是，在实时情况下，当你想要通过和实时数据库中的其他用户比较，从而由一架飞机上的一个用户推断相似用户时，这个方法就不一定能够工作。不用说，至少它不能够很好的工作。</p>
-                  <p>为了找到解决这个问题的好方法，我们可以预先计算好距离并存入实际关系中：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220642/similarity-recommendation-engine-user-euclidean-distance-768x284.png" alt=""></p>
-                  <p>当遇到一个很大的数据集时，我们需要成批处理这件事，在这个很小的示例数据集中，我们可以按照所有用户的迪卡尔乘积（Cartesian product）和他们共同“喜好”的地点来进行匹配。当我们使用 WHERE id（u1） &lt; id（u2） 作为 Cypher 询问的一部分时，它只是来确定我们在左边和右边没有找到相同的对的一个技巧。</p>
-                  <p>通过用户之间的欧几里得距离，我们创建了他们之间的一种关系，叫做 :DISTANCE，并且设置了一个叫做 euclidean 的欧几里得属性。理论上，我们可以也通过用户间的一些关系来存储其他相似度从而获取不同的相似度，因为在确定的环境下某些相似度可能比其他相似度更有用。</p>
-                  <p>在 Neo4j 中，的确是对关系属性建模的能力使得完成像这样的事情无比简单。然而，实际上，你不会希望存储每一个可能存在的单一关系，因为你仅仅希望返回离他们“最近”的一些人。</p>
-                  <p>因此你可以根据一些临界值来存入前几个，从而你不需要构建完整的连通图。这允许你完成一些像下面这样的实时的数据库查询，因为我们已经预先计算好了“距离”并存储在了关系中，在 Cypher 中，我们能够很快的攫取出数据。</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220737/similarity-recommendation-engine-parameters-768x256.png" alt=""></p>
-                  <p>在这个查询中，我们依据地点和类别来进行匹配：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221031/similarity-real-time-recommendation-engine-cypher-query-768x384.png" alt=""></p>
-                  <p>再次说明，前三行是相同的，除了登录用户以外，我们找出了和他们有 :DISTANCE 关系的用户。这是我们前面查看的关系产生的作用 - 实际上，你只需要存储处于前几位的相似用户 :DISTANCE 关系，因此你不需要在 MATCH 子句中攫取大量用户。相反，我们只攫取和那些用户“喜好”的地方有 :DISTANCE 关系的用户。</p>
-                  <p>这允许我们用少许几行内容表达较为复杂的模型。我们也可以攫取 :LIKES 关系并把它放入到变量中，因为后面我们将使用这些权重来评分。</p>
-                  <p>在这儿重要的是，我们可以依据“距离”大小将用户按照升序进行排序，因为这是一个距离测度。同时，我们想要找到用户间的最小距离因为距离越小表明他们的相似度最大。</p>
-                  <p>通过其他按照欧几里得距离大小排序好的用户，我们得到用户评分最高的三个地点并按照用户的平均评分高低来推荐这些地点。换句话说，我们先找出一个活跃用户，然后依据其他用户“喜好”的地点找出和他最相似的其他用户，接下来按照这些相似用户的平均评分把那些地点排序在结果的集合中。</p>
-                  <p>本质上，我们通过把所有评分相加然后除以收集的用户数目来计算出平均分，然后按照平均评分的升序进行排序。其次，我们按照出入口距离排序。假想地，我猜测应该会有交接点，因此你可以按照出入口距离排序然后再返回名字、类别、出入口和航站楼。</p>
-                  <h3 id="集群推荐（Cluster-Recommendations）"><a href="#集群推荐（Cluster-Recommendations）" class="headerlink" title="集群推荐（Cluster Recommendations）"></a>集群推荐（Cluster Recommendations）</h3>
-                  <p>我们最后要讲的一个例子是集群推荐，在 Cypher 中，这可以被想像成一个作为临时解决方案的离线计算工作流。这可能完全基于在<a href="https://neo4j.com/blog/neo4j-3-0-massive-scale-developer-productivity/" target="_blank" rel="external">欧洲 GraphConnect 上宣布的新方法</a>，但是有时你必须进行一些 Cypher 2.3 版本所没有的算法逼近。</p>
-                  <p>在这儿你可以使用一些统计软件，把数据从 Neo4j 取出然后放入像 Apache Spark、R 或者 Python 这样的软件中。下面是一段把数据从 Neo4j 中取出的 R 代码，运行该程序，如果正确，写下程序返回结果的给 Neo4j，可以是一个属性、节点、关系或者一个新的标签。</p>
-                  <p>通过持续把程序运行结果放入到图表中，你可以在一个和我们刚刚看到的查询相似的实时查询中使用它：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221336/cluster-recommendation-r-code-algorithm-neo4j.png" alt=""></p>
-                  <p>下面是用 R 来完成这件事的一些示例代码，但是你可以使用任何你最喜欢的软件来做这件事，比如 Python 或 Spark。你需要做的只是登录并连接到图表。</p>
-                  <p>在下面的例子中，我基于用户的相似性把他们聚合起来。每个用户作为一个观察点，然后得到他们对每一个目录评分的平均值。</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221449/cluster-recommendation-engine-r-code-example-768x403.png" alt=""></p>
-                  <p>假定用户对酒吧类评分的方式和一般的评分方式相似。然后我攫取出喜欢相同类别中的地点的用户名、类别名、“喜好”关系的平均权重，比如平均权重这些信息，从而我可以得到下面这样一个表格：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221557/cluster-user-category-likes-768x295.png" alt=""></p>
-                  <p>因为我们把每一个用户都作为一个观察点，所以我们必须巧妙的处理每一个类别中的数据，这些数据的每一个特性都是用户对该类中餐厅评分的平均权重。接下来，我们将使用这些数据来确定用户的相似性，然后我将使用聚类（clustering）算法来确定在不同集群中的用户。</p>
-                  <p>在 R 中这很直接：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221716/clustering-algorith-recommendation-r-example-768x347.png" alt=""></p>
-                  <p>在这个示例中我们使用 K-均值（k-means）聚类算法，这将使你很容易攫取集群分配。总之，我通过运行聚类算法然后分别得到每一个用户的集群分配。</p>
-                  <p>Bob 和 David 在一个相同的集群中 - 他们在集群二中 - 现在我可以实时查看哪些用户被放在了相同的集群中。</p>
-                  <p>接下来我把集群分配写入 CSV 文件中，然后存入图数据库：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221805/load-csv-cypher-example-768x227.png" alt=""></p>
-                  <p>我们只有用户和集群分配，因此 CSV 文件只有两列。 LOAD CSV 是 Cypher 中的内建语法，它允许你从一些其他文件路径或者 URL 调用 CSV ，并给它一个别名。接下来，我们将匹配图数据库中存在的用户，从 CSV 文件中攫取用户列然后合并到集群中。</p>
-                  <p>我们在图表中创建了一个新的标签节点：Cluster ID， 这是由 K-平均聚类算法给出的。接下来我们创建用户和集群间的关系，通过创建这个关系，当我们想要找到在相同集群中的实际推荐用户时，就会很容易进行查询。</p>
-                  <p>我们现在有了一个新的集群标签，在相同集群中的用户和那个集群存在关系。新的数据模型看起来像下面这样，它比我们前面探索的其他数据模型要更好：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221913/clustering-recommendation-engine-data-model-768x401.png" alt=""></p>
-                  <p>现在让我们考虑下面的查询：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816222009/clustering-recommendation-engine-parameters-768x259.png" alt=""></p>
-                  <p>通过这个 Cypher 查询，我们在更远处找到了在同一个集群中的相似用户。由于这个原因，我们删除了“距离”关系：</p>
-                  <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816222045/cluster-recommendation-engine-cypher-query-example-768x385.png" alt=""></p>
-                  <p>在这个查询中，我们取出已经登录的用户，根据用户-集群关系找到他们所在的集群，找到他们附近和他们在相同集群中的用户。</p>
-                  <p>我们把这些用户分配到变量 c1 中，然后我们得到其他被我取别名为 neighbor 变量的用户，这些用户和那个相同集群存在着用户-集群关系，最后我们得到这些附近用户“喜好”的地点。再次说明，我把“喜好”放入了变量 r 中，因为我们需要从关系中攫取权重来对结果进行排序。</p>
-                  <p>在这个查询中，我们所做的改变是，不使用相似性距离，而是攫取在相同集群中的用户，然后对类别、航站楼以及我们所攫取的登录用户进行声明。我们收集所有的权重：来自附近用户“喜好”地点的“喜好”关系，得到的类别，确定的距离值，然后把它们按升序进行排序并返回结果。</p>
-                  <p>在这些例子中，我们可以进行一个相当复杂的处理并且将其放到图数据库中，然后我们就可以使用实时算法结果-聚类算法和集群分配的结果。</p>
-                  <p>我们更喜欢的工作流程是更新这些集群分配，更新频率适合你自己就可以，比如每晚一次或每小时一次。当然，你可以根据直觉来决定多久更新一次这些集群分配是可接受的。</p>
-                  <hr>
-                  <p>via: <a href="https://neo4j.com/blog/real-time-recommendation-engine-data-science/" target="_blank" rel="external">https://neo4j.com/blog/real-time-recommendation-engine-data-science/</a></p>
-                  <p>作者：<a href="https://neo4j.com/blog/contributor/nicole-white/" target="_blank" rel="external">Nicole White</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy"
-                      target="_blank" rel="external">wxy</a></p>
-                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-
-                </div>
-
-                <div>
+                    </div>
+                  </header>
 
 
 
 
-                </div>
 
-                <div>
-
+                  <div class="post-body" itemprop="articleBody">
 
 
 
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-                  <div class="post-tags">
-
-                    <a href="/tags/Data-science-Translated/" rel="tag"># Data-science/Translated</a>
+                    <p>编者注：本文是 2016 年 4 月 Nicole Whilte 在欧洲 <a href="http://graphconnect.com/" target="_blank" rel="external">GraphConnect</a> 时所作。这儿我们快速回顾一下她所涉及的内容：</p>
+                    <ul>
+                      <li>图数据库推荐基础</li>
+                      <li>社会化推荐</li>
+                      <li>相似性推荐</li>
+                      <li>集群推荐</li>
+                    </ul>
+                    <p>今天我们将要讨论的内容是数据科学和图推荐（graph recommendations）：</p>
+                    <p>我在 <a href="http://neo4j.com/product/" target="_blank" rel="external">Neo4j</a> 任职已经两年了，但实际上我已经使用 Neo4j 和 <a href="http://neo4j.com/blog/why-database-query-language-matters/#cypher" target="_blank" rel="external">Cypher</a> 工作三年了。当我首次发现这个特别的图数据库（graph
+                      database）的时候，我还是一个研究生，那时候我在奥斯丁的德克萨斯大学攻读关于社交网络的统计学硕士学位。</p>
+                    <p><a href="https://neo4j.com/use-cases/real-time-recommendation-engine/" target="_blank" rel="external">实时推荐引擎</a>是 Neo4j 中最广泛的用途之一，也是使它如此强大并且容易使用的原因之一。为了探索这个东西，我将通过使用示例数据集来阐述如何将统计学方法并入这些引擎中。</p>
+                    <p>第一个很简单 - 将 Cypher 用于社交推荐。接下来，我们将看一看相似性推荐，这涉及到可被计算的相似性度量，最后探索的是集群推荐。</p>
+                    <a id="more"></a>
+                    <h3 id="图数据库推荐基础"><a href="#图数据库推荐基础" class="headerlink" title="图数据库推荐基础"></a>图数据库推荐基础</h3>
+                    <p>下面的数据集包含所有达拉斯 Fort Worth 国际机场的餐饮场所，达拉斯 Fort Worth 国际机场是美国主要的机场枢纽之一：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816214938/recommendation-engine-data-science-nicole-white-graphconnect-768x432.png" alt=""></p>
+                    <p>我们把节点标记成黄色并按照出入口和航站楼给它们的位置建模。同时我们也按照食物和饮料的主类别将地点分类，其中一些包括墨西哥食物、三明治、酒吧和烤肉。</p>
+                    <p>让我们做一个简单的推荐。我们想要在机场的某一确定地点找到一种特定食物，大括号中的内容表示是的用户输入，它将进入我们的假想应用程序中。</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215426/food-drink-real-time-recommendation-engine-parameters-768x208.png" alt=""></p>
+                    <p>这个英文句子表示成 Cypher 查询：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215537/cypher-query-dfw-food-drink-real-time-recommendations-768x364.png" alt=""></p>
+                    <p>这将提取出该类别中用户所请求的所有地点、航站楼和出入口。然后我们可以计算出用户所在位置到出入口的准确距离，并以升序返回结果。再次说明，这个非常简单的 Cypher 推荐仅仅依据的是用户在机场中的位置。</p>
+                    <h3 id="社交推荐（Social-Recommendations）"><a href="#社交推荐（Social-Recommendations）" class="headerlink" title="社交推荐（Social Recommendations）"></a>社交推荐（Social Recommendations）</h3>
+                    <p>让我们来看一下社交推荐。在我们的假想应用程序中，用户可以登录并且可以用和 Facebook 类似的方式标记自己“喜好”的地点，也可以在某地签到。</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215655/social-media-recommendation-engine-data-model-768x550.png" alt=""></p>
+                    <p>考虑位于我们所研究的第一个模型之上的数据模型，现在让我们在下面的分类中找到用户的朋友喜好的航站楼里面离出入口最近的餐饮场所：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215751/social-recommendation-engine-parameters-768x258.png" alt=""></p>
+                    <p>MATCH 子句和我们第一次 Cypher 查询的 MATCH 子句相似，只是现在我们依据喜好和朋友来匹配：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215846/social-recommendation-engine-cypher-query-768x468.png" alt=""></p>
+                    <p>前三行是完全一样的，但是现在要考虑的是那些登录的用户，我们想要通过 :FRIENDS_WITH 这一关系来找到他们的朋友。仅需通过在 Cypher 中增加一些行内容，我们现在已经把社交层面考虑到了我们的推荐引擎中。</p>
+                    <p>再次说明，我们仅仅显示了用户明确请求的类别，并且这些类别中的地点与用户进入的地方是相同的航站楼。当然，我们希望按照登录并做出请求的用户来滤过这些目录，然后返回地点的名字、位置以及所在目录。我们也要显示出有多少朋友已经“喜好”那个地点以及那个地点到出入口的确切距离，然后在 RETURN 子句中同时返回所有这些内容。</p>
+                    <h3 id="相似性推荐（Similarity-Recommendations）"><a href="#相似性推荐（Similarity-Recommendations）" class="headerlink" title="相似性推荐（Similarity Recommendations）"></a>相似性推荐（Similarity Recommendations）</h3>
+                    <p>现在，让我们看一看相似性推荐引擎：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215944/similarity-recommendation-engine-data-model-768x646.png" alt=""></p>
+                    <p>和前面的数据模型相似，用户可以标记“喜好”的地点，但是这一次他们可以用 1 到 10 的整数给地点评分。这是通过前期在 Neo4j 中增加一些属性到关系中建模实现的。</p>
+                    <p>这将允许我们找到其他相似的用户，比如以上面的 Greta 和 Alice 为例，我们已经查询了他们共同喜好的地点，并且对于每一个地点，我们可以看到他们所设定的权重。大概地，我们可以通过他们的评分来确定他们之间的相似性大小。</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220107/user-similarity-recommendation-engine-768x481.png" alt=""></p>
+                    <p>现在我们有两个向量：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220204/user-length-vectors-300x180.png" alt=""></p>
+                    <p>现在让我们按照欧几里得距离（Euclidean distance）的定义来计算这两个向量之间的距离：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220239/euclidean-distance-user-vectors.png" alt=""></p>
+                    <p>我们把所有的数字带入公式中计算，然后得到下面的相似度，这就是两个用户之间的“距离”：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220323/user-vector-distance-similarity-metric-768x140.png" alt=""></p>
+                    <p>你可以很容易地在 Cypher 中计算两个特定用户的“距离”，特别是如果他们仅仅同时“喜好”一个很小的地点子集。再次说明，这儿我们依据两个用户 Alice 和 Greta 来进行匹配，并尝试去找到他们同时“喜好”的地点：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220517/similarity-recommendation-engine-Cypher-query-users-768x399.png" alt=""></p>
+                    <p>他们都有对最后找到的地点的 :LIKES 关系，然后我们可以在 Cypher 中很容易的计算出他们之间的欧几里得距离，计算方法为他们对各个地点评分差的平方求和再开平方根。</p>
+                    <p>在两个特定用户的例子中上面这个方法或许能够工作。但是，在实时情况下，当你想要通过和实时数据库中的其他用户比较，从而由一架飞机上的一个用户推断相似用户时，这个方法就不一定能够工作。不用说，至少它不能够很好的工作。</p>
+                    <p>为了找到解决这个问题的好方法，我们可以预先计算好距离并存入实际关系中：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220642/similarity-recommendation-engine-user-euclidean-distance-768x284.png" alt=""></p>
+                    <p>当遇到一个很大的数据集时，我们需要成批处理这件事，在这个很小的示例数据集中，我们可以按照所有用户的迪卡尔乘积（Cartesian product）和他们共同“喜好”的地点来进行匹配。当我们使用 WHERE id（u1） &lt; id（u2） 作为 Cypher 询问的一部分时，它只是来确定我们在左边和右边没有找到相同的对的一个技巧。</p>
+                    <p>通过用户之间的欧几里得距离，我们创建了他们之间的一种关系，叫做 :DISTANCE，并且设置了一个叫做 euclidean 的欧几里得属性。理论上，我们可以也通过用户间的一些关系来存储其他相似度从而获取不同的相似度，因为在确定的环境下某些相似度可能比其他相似度更有用。</p>
+                    <p>在 Neo4j 中，的确是对关系属性建模的能力使得完成像这样的事情无比简单。然而，实际上，你不会希望存储每一个可能存在的单一关系，因为你仅仅希望返回离他们“最近”的一些人。</p>
+                    <p>因此你可以根据一些临界值来存入前几个，从而你不需要构建完整的连通图。这允许你完成一些像下面这样的实时的数据库查询，因为我们已经预先计算好了“距离”并存储在了关系中，在 Cypher 中，我们能够很快的攫取出数据。</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816220737/similarity-recommendation-engine-parameters-768x256.png" alt=""></p>
+                    <p>在这个查询中，我们依据地点和类别来进行匹配：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221031/similarity-real-time-recommendation-engine-cypher-query-768x384.png" alt=""></p>
+                    <p>再次说明，前三行是相同的，除了登录用户以外，我们找出了和他们有 :DISTANCE 关系的用户。这是我们前面查看的关系产生的作用 - 实际上，你只需要存储处于前几位的相似用户 :DISTANCE 关系，因此你不需要在 MATCH 子句中攫取大量用户。相反，我们只攫取和那些用户“喜好”的地方有 :DISTANCE 关系的用户。</p>
+                    <p>这允许我们用少许几行内容表达较为复杂的模型。我们也可以攫取 :LIKES 关系并把它放入到变量中，因为后面我们将使用这些权重来评分。</p>
+                    <p>在这儿重要的是，我们可以依据“距离”大小将用户按照升序进行排序，因为这是一个距离测度。同时，我们想要找到用户间的最小距离因为距离越小表明他们的相似度最大。</p>
+                    <p>通过其他按照欧几里得距离大小排序好的用户，我们得到用户评分最高的三个地点并按照用户的平均评分高低来推荐这些地点。换句话说，我们先找出一个活跃用户，然后依据其他用户“喜好”的地点找出和他最相似的其他用户，接下来按照这些相似用户的平均评分把那些地点排序在结果的集合中。</p>
+                    <p>本质上，我们通过把所有评分相加然后除以收集的用户数目来计算出平均分，然后按照平均评分的升序进行排序。其次，我们按照出入口距离排序。假想地，我猜测应该会有交接点，因此你可以按照出入口距离排序然后再返回名字、类别、出入口和航站楼。</p>
+                    <h3 id="集群推荐（Cluster-Recommendations）"><a href="#集群推荐（Cluster-Recommendations）" class="headerlink" title="集群推荐（Cluster Recommendations）"></a>集群推荐（Cluster Recommendations）</h3>
+                    <p>我们最后要讲的一个例子是集群推荐，在 Cypher 中，这可以被想像成一个作为临时解决方案的离线计算工作流。这可能完全基于在<a href="https://neo4j.com/blog/neo4j-3-0-massive-scale-developer-productivity/" target="_blank" rel="external">欧洲 GraphConnect 上宣布的新方法</a>，但是有时你必须进行一些 Cypher 2.3 版本所没有的算法逼近。</p>
+                    <p>在这儿你可以使用一些统计软件，把数据从 Neo4j 取出然后放入像 Apache Spark、R 或者 Python 这样的软件中。下面是一段把数据从 Neo4j 中取出的 R 代码，运行该程序，如果正确，写下程序返回结果的给 Neo4j，可以是一个属性、节点、关系或者一个新的标签。</p>
+                    <p>通过持续把程序运行结果放入到图表中，你可以在一个和我们刚刚看到的查询相似的实时查询中使用它：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221336/cluster-recommendation-r-code-algorithm-neo4j.png" alt=""></p>
+                    <p>下面是用 R 来完成这件事的一些示例代码，但是你可以使用任何你最喜欢的软件来做这件事，比如 Python 或 Spark。你需要做的只是登录并连接到图表。</p>
+                    <p>在下面的例子中，我基于用户的相似性把他们聚合起来。每个用户作为一个观察点，然后得到他们对每一个目录评分的平均值。</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221449/cluster-recommendation-engine-r-code-example-768x403.png" alt=""></p>
+                    <p>假定用户对酒吧类评分的方式和一般的评分方式相似。然后我攫取出喜欢相同类别中的地点的用户名、类别名、“喜好”关系的平均权重，比如平均权重这些信息，从而我可以得到下面这样一个表格：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221557/cluster-user-category-likes-768x295.png" alt=""></p>
+                    <p>因为我们把每一个用户都作为一个观察点，所以我们必须巧妙的处理每一个类别中的数据，这些数据的每一个特性都是用户对该类中餐厅评分的平均权重。接下来，我们将使用这些数据来确定用户的相似性，然后我将使用聚类（clustering）算法来确定在不同集群中的用户。</p>
+                    <p>在 R 中这很直接：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221716/clustering-algorith-recommendation-r-example-768x347.png" alt=""></p>
+                    <p>在这个示例中我们使用 K-均值（k-means）聚类算法，这将使你很容易攫取集群分配。总之，我通过运行聚类算法然后分别得到每一个用户的集群分配。</p>
+                    <p>Bob 和 David 在一个相同的集群中 - 他们在集群二中 - 现在我可以实时查看哪些用户被放在了相同的集群中。</p>
+                    <p>接下来我把集群分配写入 CSV 文件中，然后存入图数据库：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221805/load-csv-cypher-example-768x227.png" alt=""></p>
+                    <p>我们只有用户和集群分配，因此 CSV 文件只有两列。 LOAD CSV 是 Cypher 中的内建语法，它允许你从一些其他文件路径或者 URL 调用 CSV ，并给它一个别名。接下来，我们将匹配图数据库中存在的用户，从 CSV 文件中攫取用户列然后合并到集群中。</p>
+                    <p>我们在图表中创建了一个新的标签节点：Cluster ID， 这是由 K-平均聚类算法给出的。接下来我们创建用户和集群间的关系，通过创建这个关系，当我们想要找到在相同集群中的实际推荐用户时，就会很容易进行查询。</p>
+                    <p>我们现在有了一个新的集群标签，在相同集群中的用户和那个集群存在关系。新的数据模型看起来像下面这样，它比我们前面探索的其他数据模型要更好：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221913/clustering-recommendation-engine-data-model-768x401.png" alt=""></p>
+                    <p>现在让我们考虑下面的查询：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816222009/clustering-recommendation-engine-parameters-768x259.png" alt=""></p>
+                    <p>通过这个 Cypher 查询，我们在更远处找到了在同一个集群中的相似用户。由于这个原因，我们删除了“距离”关系：</p>
+                    <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816222045/cluster-recommendation-engine-cypher-query-example-768x385.png" alt=""></p>
+                    <p>在这个查询中，我们取出已经登录的用户，根据用户-集群关系找到他们所在的集群，找到他们附近和他们在相同集群中的用户。</p>
+                    <p>我们把这些用户分配到变量 c1 中，然后我们得到其他被我取别名为 neighbor 变量的用户，这些用户和那个相同集群存在着用户-集群关系，最后我们得到这些附近用户“喜好”的地点。再次说明，我把“喜好”放入了变量 r 中，因为我们需要从关系中攫取权重来对结果进行排序。</p>
+                    <p>在这个查询中，我们所做的改变是，不使用相似性距离，而是攫取在相同集群中的用户，然后对类别、航站楼以及我们所攫取的登录用户进行声明。我们收集所有的权重：来自附近用户“喜好”地点的“喜好”关系，得到的类别，确定的距离值，然后把它们按升序进行排序并返回结果。</p>
+                    <p>在这些例子中，我们可以进行一个相当复杂的处理并且将其放到图数据库中，然后我们就可以使用实时算法结果-聚类算法和集群分配的结果。</p>
+                    <p>我们更喜欢的工作流程是更新这些集群分配，更新频率适合你自己就可以，比如每晚一次或每小时一次。当然，你可以根据直觉来决定多久更新一次这些集群分配是可接受的。</p>
+                    <hr>
+                    <p>via: <a href="https://neo4j.com/blog/real-time-recommendation-engine-data-science/" target="_blank" rel="external">https://neo4j.com/blog/real-time-recommendation-engine-data-science/</a></p>
+                    <p>作者：<a href="https://neo4j.com/blog/contributor/nicole-white/" target="_blank" rel="external">Nicole White</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy"
+                        target="_blank" rel="external">wxy</a></p>
+                    <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
 
                   </div>
 
@@ -585,76 +510,56 @@
 
 
 
-                  <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
 
-                      <a href="/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/" rel="next" title="不常见但是很有用的 GCC 命令行选项（二）">
+
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/Data-science-Translated/" rel="tag"># Data-science/Translated</a>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/" rel="next" title="不常见但是很有用的 GCC 命令行选项（二）">
                 <i class="fa fa-chevron-left"></i> 不常见但是很有用的 GCC 命令行选项（二）
               </a>
 
-                    </div>
+                      </div>
 
-                    <span class="post-nav-divider"></span>
+                      <span class="post-nav-divider"></span>
 
-                    <div class="post-nav-prev post-nav-item">
+                      <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2016/12/18/Hexo-Blog-Build-with-GitHub/" rel="prev" title="个人博客搭建：GitHub+Hexo">
+                        <a href="/2016/12/18/Hexo-Blog-Build-with-GitHub/" rel="prev" title="个人博客搭建：GitHub+Hexo">
                 个人博客搭建：GitHub+Hexo <i class="fa fa-chevron-right"></i>
               </a>
 
+                      </div>
                     </div>
-                  </div>
 
 
 
 
-                </footer>
+                  </footer>
+                </div>
+
+
+
               </article>
 
 
 
-
-
-
               <div class="post-spread">
-
-
-                <div class="bdsharebuttonbox">
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                  window._bd_share_config = {
-                    "common": {
-                      "bdText": "",
-                      "bdMini": "2",
-                      "bdMiniList": false,
-                      "bdPic": ""
-                    },
-                    "share": {
-                      "bdSize": "16",
-                      "bdStyle": "0"
-                    },
-                    "image": {
-                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-                      "viewText": "分享到：",
-                      "viewSize": "16"
-                    }
-                  }
-                </script>
-
-                <script>
-                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-                </script>
-
 
               </div>
             </div>
@@ -665,13 +570,19 @@
 
 
 
+
+
           <div class="comments" id="comments">
+
+            <div id="gitment-container"></div>
 
           </div>
 
 
-        </div>
 
+
+
+        </div>
 
 
 
@@ -684,6 +595,7 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
@@ -693,124 +605,79 @@
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview">
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview sidebar-panel">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -844,66 +711,37 @@
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -918,9 +756,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -949,56 +787,70 @@
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1026,6 +878,8 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -1035,275 +889,14 @@
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -1314,11 +907,3 @@
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>

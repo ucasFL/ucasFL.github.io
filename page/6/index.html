@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,21 +51,31 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Flynn,ucasFL" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -80,19 +98,31 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -119,7 +149,16 @@
 
 
 
-  <title> 春暖花开 </title>
+  <title>春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -129,24 +168,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -193,28 +216,8 @@
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,41 +227,9 @@
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -282,50 +253,43 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/20/Text-Specific-Setting-in-Vim/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/20/Text-Specific-Setting-in-Vim/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
+                  <header class="post-header">
 
 
 
-                    <a class="post-title-link" href="/2017/05/20/Text-Specific-Setting-in-Vim/" itemprop="url">
-                  如何在 Vim 中使用模式行进行文本特定设置
-                </a>
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2017/05/20/Text-Specific-Setting-in-Vim/" itemprop="url">如何在 Vim 中使用模式行进行文本特定设置</a></h1>
 
 
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T17:15:15+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T17:15:15+08:00">
                 2017/05/20
               </time>
 
@@ -333,48 +297,30 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Vim/" itemprop="url" rel="index">
                     <span itemprop="name">Vim</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/05/20/Text-Specific-Setting-in-Vim/" class="leancloud_visitors" data-flag-title="如何在 Vim 中使用模式行进行文本特定设置">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      </span>
 
 
 
@@ -383,72 +329,66 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-                  <p>虽然<a href="https://linux.cn/article-7901-1.html">插件</a>毫无疑问是 Vim 最大的优势，然而，还有其它一些功能，使得它成为当今 Linux 用户中最强大、功能最丰富的文本编辑器/IDE 之一。其中一个功能就是可以根据文件做特定的设置。我们可以使用该编辑器的模式行（Modeline）特性来实现该功能。</p>
-                  <p>在这篇文章中，我将讨论如何使用 Vim 的<a href="http://vim.wikia.com/wiki/Modeline_magic">模式行（Modeline）</a>特性来简单的理解一些例子。</p>
-                  <p>在开始之前，值得提醒一下，这篇教程中提及的所有例子、命令和指令都已经在 Ubuntu 16.04 中使用 Vim 7.4 版本测试过。</p>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/05/20/Text-Specific-Setting-in-Vim/#more" rel="contents">
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p>虽然<a href="https://linux.cn/article-7901-1.html">插件</a>毫无疑问是 Vim 最大的优势，然而，还有其它一些功能，使得它成为当今 Linux 用户中最强大、功能最丰富的文本编辑器/IDE 之一。其中一个功能就是可以根据文件做特定的设置。我们可以使用该编辑器的模式行（Modeline）特性来实现该功能。</p>
+                    <p>在这篇文章中，我将讨论如何使用 Vim 的<a href="http://vim.wikia.com/wiki/Modeline_magic">模式行（Modeline）</a>特性来简单的理解一些例子。</p>
+                    <p>在开始之前，值得提醒一下，这篇教程中提及的所有例子、命令和指令都已经在 Ubuntu 16.04 中使用 Vim 7.4 版本测试过。</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2017/05/20/Text-Specific-Setting-in-Vim/#more" rel="contents">
               阅读全文 &raquo;
             </a>
+                    </div>
+                    <!--/noindex-->
+
+
                   </div>
-                  <!--/noindex-->
 
 
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
 
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
               </article>
 
 
@@ -461,50 +401,43 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
+                  <header class="post-header">
 
 
 
-                    <a class="post-title-link" href="/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/" itemprop="url">
-                  向 Linus Torvalds 学习让编出的代码具有 “Good Taste”
-                </a>
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/" itemprop="url">向 Linus Torvalds 学习让编出的代码具有 “Good Taste”</a></h1>
 
 
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-14T17:18:20+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-14T17:18:20+08:00">
                 2017/05/14
               </time>
 
@@ -512,48 +445,30 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/C-C/" itemprop="url" rel="index">
                     <span itemprop="name">C/C++</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/" class="leancloud_visitors" data-flag-title="向 Linus Torvalds 学习让编出的代码具有 “Good Taste”">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      </span>
 
 
 
@@ -562,73 +477,67 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-                  <p>在<a href="https://www.ted.com/talks/linus_torvalds_the_mind_behind_linux">最近关于 Linus Torvalds 的一个采访中</a>，这位 Linux 的创始人，在采访过程中大约 14:20 的时候，提及了关于代码的 “good taste”。good taste？采访者请他展示更多的细节，于是，Linus Torvalds 展示了一张提前准备好的插图。</p>
-                  <p>他展示的是一个代码片段。但这段代码并没有 “good taste”。这是一个具有 “poor taste” 的代码片段，把它作为例子，以提供一些初步的比较。</p>
-                  <p><img src="https://d262ilb51hltx0.cloudfront.net/max/1200/1*X2VgEA_IkLvsCS-X4iPY7g.png" alt="Poor Taste Code Example"></p>
-                  <p>这是一个用 C 写的函数，作用是删除链表中的一个对象，它包含有 10 行代码。</p>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/#more" rel="contents">
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p>在<a href="https://www.ted.com/talks/linus_torvalds_the_mind_behind_linux">最近关于 Linus Torvalds 的一个采访中</a>，这位 Linux 的创始人，在采访过程中大约 14:20 的时候，提及了关于代码的 “good taste”。good taste？采访者请他展示更多的细节，于是，Linus Torvalds 展示了一张提前准备好的插图。</p>
+                    <p>他展示的是一个代码片段。但这段代码并没有 “good taste”。这是一个具有 “poor taste” 的代码片段，把它作为例子，以提供一些初步的比较。</p>
+                    <p><img src="https://d262ilb51hltx0.cloudfront.net/max/1200/1*X2VgEA_IkLvsCS-X4iPY7g.png" alt="Poor Taste Code Example"></p>
+                    <p>这是一个用 C 写的函数，作用是删除链表中的一个对象，它包含有 10 行代码。</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2017/05/14/Linus's-Coding-Preference-of-Good-Tastes/#more" rel="contents">
               阅读全文 &raquo;
             </a>
+                    </div>
+                    <!--/noindex-->
+
+
                   </div>
-                  <!--/noindex-->
 
 
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
 
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
               </article>
 
 
@@ -641,50 +550,43 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/11/Graph-Part3/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/11/Graph-Part3/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
+                  <header class="post-header">
 
 
 
-                    <a class="post-title-link" href="/2017/05/11/Graph-Part3/" itemprop="url">
-                  图-Part3
-                </a>
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2017/05/11/Graph-Part3/" itemprop="url">图-Part3</a></h1>
 
 
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T16:50:36+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T16:50:36+08:00">
                 2017/05/11
               </time>
 
@@ -692,48 +594,30 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/05/11/Graph-Part3/" class="leancloud_visitors" data-flag-title="图-Part3">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      </span>
 
 
 
@@ -742,81 +626,75 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-                  <h3 id="最小生成树-克鲁斯卡尔-Kruskal-算法"><a href="#最小生成树-克鲁斯卡尔-Kruskal-算法" class="headerlink" title="最小生成树:克鲁斯卡尔 (Kruskal) 算法"></a>最小生成树:克鲁斯卡尔 (Kruskal) 算法</h3>
-                  <p>先构造一个只含 n 个顶点的子图 SG ,然后从权值最小的边开始,若添加该边不会使得 SG 中产生回路,则在 SG上加上这条边。如此重复,直至加上 n-1条边为止。</p>
-                  <p>贪心原则:根据权值,从小到大依次尝试各边。</p>
-                  <p>具体描述：</p>
-                  <ul>
-                    <li>设 G=(V, E) 是具有 n 个顶点的连通网,现要构造 G 的最小生成树 T=(U, TE)</li>
-                  </ul>
-                  <p>– 初始时: U=V , TE={}<br>– 对 G 中的边按权值大小从小到大排序<br>– 选取权值最小的边 (vi , vj )<br>– 若边 (vi , vj ) 加入到 TE 后形成回路,则舍弃该边;否则,将该边并入到 TE 中,即 TE=TE ∪ {(vi , vj )}<br>– 重复前一步骤,直到 TE 中包含有 n-1 条边为止</p>
-                  <ul>
-                    <li>贪心策略</li>
-                  </ul>
-                  <p>– 局部最优,但不一定能达到全局最优<br>– 但在拟阵上实施贪心策略,就能实现最优解</p>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/05/11/Graph-Part3/#more" rel="contents">
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <h3 id="最小生成树-克鲁斯卡尔-Kruskal-算法"><a href="#最小生成树-克鲁斯卡尔-Kruskal-算法" class="headerlink" title="最小生成树:克鲁斯卡尔 (Kruskal) 算法"></a>最小生成树:克鲁斯卡尔 (Kruskal) 算法</h3>
+                    <p>先构造一个只含 n 个顶点的子图 SG ,然后从权值最小的边开始,若添加该边不会使得 SG 中产生回路,则在 SG上加上这条边。如此重复,直至加上 n-1条边为止。</p>
+                    <p>贪心原则:根据权值,从小到大依次尝试各边。</p>
+                    <p>具体描述：</p>
+                    <ul>
+                      <li>设 G=(V, E) 是具有 n 个顶点的连通网,现要构造 G 的最小生成树 T=(U, TE)</li>
+                    </ul>
+                    <p>– 初始时: U=V , TE={}<br>– 对 G 中的边按权值大小从小到大排序<br>– 选取权值最小的边 (vi , vj )<br>– 若边 (vi , vj ) 加入到 TE 后形成回路,则舍弃该边;否则,将该边并入到 TE 中,即 TE=TE ∪ {(vi , vj )}<br>– 重复前一步骤,直到 TE 中包含有 n-1 条边为止</p>
+                    <ul>
+                      <li>贪心策略</li>
+                    </ul>
+                    <p>– 局部最优,但不一定能达到全局最优<br>– 但在拟阵上实施贪心策略,就能实现最优解</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2017/05/11/Graph-Part3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
+                    </div>
+                    <!--/noindex-->
+
+
                   </div>
-                  <!--/noindex-->
 
 
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
 
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
               </article>
 
 
@@ -829,50 +707,43 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/11/Graph-Part2/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/11/Graph-Part2/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
+                  <header class="post-header">
 
 
 
-                    <a class="post-title-link" href="/2017/05/11/Graph-Part2/" itemprop="url">
-                  图-Part2
-                </a>
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2017/05/11/Graph-Part2/" itemprop="url">图-Part2</a></h1>
 
 
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T16:32:48+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T16:32:48+08:00">
                 2017/05/11
               </time>
 
@@ -880,48 +751,30 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/05/11/Graph-Part2/" class="leancloud_visitors" data-flag-title="图-Part2">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      </span>
 
 
 
@@ -930,80 +783,74 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-                  <h3 id="图的结点排序-拓扑排序"><a href="#图的结点排序-拓扑排序" class="headerlink" title="图的结点排序:拓扑排序"></a>图的结点排序:拓扑排序</h3>
-                  <p>拓扑排序 (Topological Sort) :由某个集合上的一个偏序得到该集合上的一个全序的操作。</p>
-                  <p>集合上的关系:集合 A 上的关系是从 A 到 A 的关系($A\times A$)。</p>
-                  <ul>
-                    <li>自反性</li>
-                    <li>对称性与非对称性</li>
-                    <li>传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。</li>
-                  </ul>
-                  <p>可以用有向无环图 (Directed Acycling Graph)表示集合元素以及元素之间的关系。<br>DAG :图中没有回路 ( 环 ) 的有向图</p>
-                  <p>AOV 网 (Activity On Vertex Network) :在有向图中,用顶点表示活动,用有向边表示活动之间的优先关系。</p>
-                  <p>DAG/AOV 网的拓扑排序：<br>DAG/AOV 网的拓扑排序:构造 AOV 网中顶点的一个拓扑线性序列 (v’1 ,v’2 , ⋯ ,v’n ) ,使得该线性序列不仅保持原来有向图中顶点之间的优先关系,而且对原图中没有优先关系的顶点之间也建立一种 ( 人为的 ) 优先关系。</p>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/05/11/Graph-Part2/#more" rel="contents">
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <h3 id="图的结点排序-拓扑排序"><a href="#图的结点排序-拓扑排序" class="headerlink" title="图的结点排序:拓扑排序"></a>图的结点排序:拓扑排序</h3>
+                    <p>拓扑排序 (Topological Sort) :由某个集合上的一个偏序得到该集合上的一个全序的操作。</p>
+                    <p>集合上的关系:集合 A 上的关系是从 A 到 A 的关系($A\times A$)。</p>
+                    <ul>
+                      <li>自反性</li>
+                      <li>对称性与非对称性</li>
+                      <li>传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。</li>
+                    </ul>
+                    <p>可以用有向无环图 (Directed Acycling Graph)表示集合元素以及元素之间的关系。<br>DAG :图中没有回路 ( 环 ) 的有向图</p>
+                    <p>AOV 网 (Activity On Vertex Network) :在有向图中,用顶点表示活动,用有向边表示活动之间的优先关系。</p>
+                    <p>DAG/AOV 网的拓扑排序：<br>DAG/AOV 网的拓扑排序:构造 AOV 网中顶点的一个拓扑线性序列 (v’1 ,v’2 , ⋯ ,v’n ) ,使得该线性序列不仅保持原来有向图中顶点之间的优先关系,而且对原图中没有优先关系的顶点之间也建立一种 ( 人为的 ) 优先关系。</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2017/05/11/Graph-Part2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
+                    </div>
+                    <!--/noindex-->
+
+
                   </div>
-                  <!--/noindex-->
 
 
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
 
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
               </article>
 
 
@@ -1016,50 +863,43 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/11/Graph-Part1/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/11/Graph-Part1/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
+                  <header class="post-header">
 
 
 
-                    <a class="post-title-link" href="/2017/05/11/Graph-Part1/" itemprop="url">
-                  图-Part1
-                </a>
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2017/05/11/Graph-Part1/" itemprop="url">图-Part1</a></h1>
 
 
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T16:07:46+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T16:07:46+08:00">
                 2017/05/11
               </time>
 
@@ -1067,48 +907,30 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/05/11/Graph-Part1/" class="leancloud_visitors" data-flag-title="图-Part1">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      </span>
 
 
 
@@ -1117,77 +939,71 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-                  <h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3>
-                  <p>线性结构:</p>
-                  <p>除第一个和最后一个元素外,任何一个元素都有唯一的一个直接前驱和直接后继。</p>
-                  <p>非线性结构：</p>
-                  <ul>
-                    <li>树结构:每个元素对下 ( 层 ) 可以有 0 个或多个元素相联系,对上 (层) 只有唯一的一个元素相关,数据元素之间有明显的层次关系</li>
-                    <li>图结构:任意两个元素之间可能存在关系,图中任意元素之间都可能相关;结点之间的关系可以是任意的</li>
-                  </ul>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/05/11/Graph-Part1/#more" rel="contents">
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3>
+                    <p>线性结构:</p>
+                    <p>除第一个和最后一个元素外,任何一个元素都有唯一的一个直接前驱和直接后继。</p>
+                    <p>非线性结构：</p>
+                    <ul>
+                      <li>树结构:每个元素对下 ( 层 ) 可以有 0 个或多个元素相联系,对上 (层) 只有唯一的一个元素相关,数据元素之间有明显的层次关系</li>
+                      <li>图结构:任意两个元素之间可能存在关系,图中任意元素之间都可能相关;结点之间的关系可以是任意的</li>
+                    </ul>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2017/05/11/Graph-Part1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
+                    </div>
+                    <!--/noindex-->
+
+
                   </div>
-                  <!--/noindex-->
 
 
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
 
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
               </article>
 
 
@@ -1200,50 +1016,43 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/06/Tree-Part2/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/06/Tree-Part2/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
+                  <header class="post-header">
 
 
 
-                    <a class="post-title-link" href="/2017/05/06/Tree-Part2/" itemprop="url">
-                  树-Part2
-                </a>
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2017/05/06/Tree-Part2/" itemprop="url">树-Part2</a></h1>
 
 
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T15:52:46+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T15:52:46+08:00">
                 2017/05/06
               </time>
 
@@ -1251,48 +1060,30 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/05/06/Tree-Part2/" class="leancloud_visitors" data-flag-title="树-Part2">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      </span>
 
 
 
@@ -1301,84 +1092,78 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-                  <h3 id="树与森林"><a href="#树与森林" class="headerlink" title="树与森林"></a>树与森林</h3>
-                  <p>树的三种存储表示方法：</p>
-                  <p>双亲表示法：顺序存储，设置一个指示器指示双亲位置。</p>
-                  <figure class="highlight c">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_TREE_SIZE 100</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> PTNode&#123;<span class="comment">//节点结构</span></div><div class="line">  TElemType data;　</div><div class="line">  <span class="keyword">int</span> parent;<span class="comment">//双亲位置域</span></div><div class="line">&#125;PTNode;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</div><div class="line">  PTNode nodes[MAX_TREE_SIZE];</div><div class="line">  <span class="keyword">int</span> r, n; <span class="comment">//根的位置和节点数</span></div><div class="line">&#125;PTree;</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/05/06/Tree-Part2/#more" rel="contents">
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <h3 id="树与森林"><a href="#树与森林" class="headerlink" title="树与森林"></a>树与森林</h3>
+                    <p>树的三种存储表示方法：</p>
+                    <p>双亲表示法：顺序存储，设置一个指示器指示双亲位置。</p>
+                    <figure class="highlight c">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_TREE_SIZE 100</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> PTNode&#123;<span class="comment">//节点结构</span></div><div class="line">  TElemType data;　</div><div class="line">  <span class="keyword">int</span> parent;<span class="comment">//双亲位置域</span></div><div class="line">&#125;PTNode;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</div><div class="line">  PTNode nodes[MAX_TREE_SIZE];</div><div class="line">  <span class="keyword">int</span> r, n; <span class="comment">//根的位置和节点数</span></div><div class="line">&#125;PTree;</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2017/05/06/Tree-Part2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
+                    </div>
+                    <!--/noindex-->
+
+
                   </div>
-                  <!--/noindex-->
 
 
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
 
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
               </article>
 
 
@@ -1391,50 +1176,43 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/06/Tree-Part1/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/06/Tree-Part1/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
+                  <header class="post-header">
 
 
 
-                    <a class="post-title-link" href="/2017/05/06/Tree-Part1/" itemprop="url">
-                  树-Part1
-                </a>
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2017/05/06/Tree-Part1/" itemprop="url">树-Part1</a></h1>
 
 
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T15:01:22+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T15:01:22+08:00">
                 2017/05/06
               </time>
 
@@ -1442,48 +1220,30 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/05/06/Tree-Part1/" class="leancloud_visitors" data-flag-title="树-Part1">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      </span>
 
 
 
@@ -1492,72 +1252,66 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-                  <h3 id="树的定义"><a href="#树的定义" class="headerlink" title="树的定义"></a>树的定义</h3>
-                  <p>树 (tree) 是一个 n(n&gt;=0) 个结点的有限集。</p>
-                  <p>在一棵非空树中：<br>(1) 有且仅有 一个的称为根 (root) 的结点；<br>(2) 当 n&gt;1 时,其余结点可分为 m (m&gt;0)个互不相交的有限集 T_1 , T_2 , …, T_m.</p>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/05/06/Tree-Part1/#more" rel="contents">
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <h3 id="树的定义"><a href="#树的定义" class="headerlink" title="树的定义"></a>树的定义</h3>
+                    <p>树 (tree) 是一个 n(n&gt;=0) 个结点的有限集。</p>
+                    <p>在一棵非空树中：<br>(1) 有且仅有 一个的称为根 (root) 的结点；<br>(2) 当 n&gt;1 时,其余结点可分为 m (m&gt;0)个互不相交的有限集 T_1 , T_2 , …, T_m.</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2017/05/06/Tree-Part1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
+                    </div>
+                    <!--/noindex-->
+
+
                   </div>
-                  <!--/noindex-->
 
 
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
 
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
               </article>
 
 
@@ -1570,50 +1324,43 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
+                  <header class="post-header">
 
 
 
-                    <a class="post-title-link" href="/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/" itemprop="url">
-                  pyDash：一个基于 Web 的 Linux 性能监测工具
-                </a>
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/" itemprop="url">pyDash：一个基于 Web 的 Linux 性能监测工具</a></h1>
 
 
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-01T17:48:02+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-01T17:48:02+08:00">
                 2017/05/01
               </time>
 
@@ -1621,121 +1368,97 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/" class="leancloud_visitors" data-flag-title="pyDash：一个基于 Web 的 Linux 性能监测工具">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      </span>
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p><code>pyDash</code> 是一个轻量且<a href="http://www.tecmint.com/command-line-tools-to-monitor-linux-performance/">基于 web 的 Linux 性能监测工具</a>，它是用 Python 和 <a href="http://www.tecmint.com/install-and-configure-django-web-framework-in-centos-debian-ubuntu/">Django</a>                      加上 Chart.js 来写的。经测试，在下面这些主流 Linux 发行版上可运行：CentOS、Fedora、Ubuntu、Debian、Raspbian 以及 Pidora 。</p>
+                    <p>你可以使用这个工具来监视你的 Linux 个人电脑/服务器资源，比如 CPU、内存、网络统计，包括在线用户的进程以及更多。仪表盘完全由主要的 Python 发行版本所提供的 Python 库开发，因此它的依赖关系很少，你不需要安装许多包或库来运行它。<br>
+                      <!--noindex-->
+                      <div class="post-button text-center">
+                        <a class="btn" href="/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                      </div>
+                      <!--/noindex-->
 
 
                   </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-                  <p><code>pyDash</code> 是一个轻量且<a href="http://www.tecmint.com/command-line-tools-to-monitor-linux-performance/">基于 web 的 Linux 性能监测工具</a>，它是用 Python 和 <a href="http://www.tecmint.com/install-and-configure-django-web-framework-in-centos-debian-ubuntu/">Django</a>                    加上 Chart.js 来写的。经测试，在下面这些主流 Linux 发行版上可运行：CentOS、Fedora、Ubuntu、Debian、Raspbian 以及 Pidora 。</p>
-                  <p>你可以使用这个工具来监视你的 Linux 个人电脑/服务器资源，比如 CPU、内存、网络统计，包括在线用户的进程以及更多。仪表盘完全由主要的 Python 发行版本所提供的 Python 库开发，因此它的依赖关系很少，你不需要安装许多包或库来运行它。<br>
-                    <!--noindex-->
-                    <div class="post-button text-center">
-                      <a class="btn" href="/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                    </div>
-                    <!--/noindex-->
 
 
-                </div>
 
-                <div>
 
-                </div>
+                  <footer class="post-footer">
 
-                <div>
 
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
               </article>
 
 
@@ -1761,7 +1484,6 @@
 
 
 
-
         <div class="sidebar-toggle">
           <div class="sidebar-toggle-line-wrap">
             <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -1771,124 +1493,80 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
 
 
 
-            <section class="site-overview sidebar-panel sidebar-panel-active">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -1899,66 +1577,37 @@
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -1973,9 +1622,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -2004,33 +1653,49 @@
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
@@ -2038,18 +1703,16 @@
 
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -2077,6 +1740,8 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -2086,275 +1751,14 @@
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -2365,11 +1769,3 @@
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>

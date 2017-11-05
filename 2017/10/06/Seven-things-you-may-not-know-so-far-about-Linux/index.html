@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,7 +51,22 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Linux," />
@@ -53,11 +76,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -86,19 +104,31 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -125,7 +155,16 @@
 
 
 
-  <title> 关于 Linux 你可能不是非常了解的七件事 | 春暖花开 </title>
+  <title>关于 Linux 你可能不是非常了解的七件事 | 春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,22 +174,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -197,28 +221,8 @@
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -228,41 +232,9 @@
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -286,47 +258,41 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
+                  <header class="post-header">
 
 
 
-                  <h1 class="post-title" itemprop="name headline">
+                    <h1 class="post-title" itemprop="name headline">关于 Linux 你可能不是非常了解的七件事</h1>
 
 
-
-                    关于 Linux 你可能不是非常了解的七件事
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-06T12:51:31+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-06T12:51:31+08:00">
                 2017/10/06
               </time>
 
@@ -334,48 +300,43 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
+                      </span>
 
 
 
 
-
-
-
-
-                    <span id="/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/" class="leancloud_visitors" data-flag-title="关于 Linux 你可能不是非常了解的七件事">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                      <a href="/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/10/06/Seven-things-you-may-not-know-so-far-about-Linux/" itemprop="commentsCount"></span>
+                </a>
+                      </span>
 
 
 
@@ -384,125 +345,89 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
-
-                  <p><img src="https://i0.wp.com/opensourceforu.com/wp-content/uploads/2015/12/Linux-Kernel-sys-visual5.jpg?resize=750%2C563" alt="Hidden features of Linux"></p>
-                  <p>使用 Linux 最酷的事情之一就是随着时间的推移，你可以不断获得新的知识。每天，你都可能会遇到一个新的实用工具，或者只是一个不太熟悉的奇技淫巧，但是却非常有用。这些零碎的东西并不总是能够改变生活，但是却是专业知识的基础。</p>
-                  <p>即使是专家，也不可能事事皆知。无论你有多少经验，可能总会有更多的东西需要你去学习。所以，在这儿我列出了七件关于 Linux 你可能不知道的事情。</p>
-                  <a id="more"></a>
-                  <h3 id="一个查找命令历史的交互模式"><a href="#一个查找命令历史的交互模式" class="headerlink" title="一个查找命令历史的交互模式"></a>一个查找命令历史的交互模式</h3>
-                  <p>你可能对 <code>history</code> 命令非常熟悉，它会读取 bash 历史，然后以编号列表的方式输出到标准输出（<code>stdout</code>）。然而，如果你在 <code>curl</code> 命令的海洋里寻找一个特定的链接（URL），那么这个列表并不总是那么容易阅读的。</p>
-                  <p>你还可以有另一个选择，Linux 有一个交互式的反向搜索可以帮助你解决这个问题。你可以通过快捷键 <code>ctrl+r</code>启动交互模式，然后进入一个交互提示中，它将会根据你提供的字符串来向后搜索 bash 历史，你可以通过再次按下 <code>ctrl+r</code> 向后搜索更老的命令，或者按下 <code>ctrl+s</code> 向前搜索。</p>
-                  <p>注意，<code>ctrl+s</code> 有时会与 XON/XOFF 流控制冲突，即 XON/XOFF 流控制也会使用该快捷键。你可以通过运行 <code>stty -ixon</code> 命令来禁用该快捷键。在你的个人电脑上，这通常是有用的，但是在禁用前，确保你不需要 XON/XOFF 。</p>
-                  <h3 id="Cron-不是安排任务的唯一方式"><a href="#Cron-不是安排任务的唯一方式" class="headerlink" title="Cron 不是安排任务的唯一方式"></a>Cron 不是安排任务的唯一方式</h3>
-                  <p>Cron 任务对于任何水平的系统管理员，无论是毫无经验的初学者，还是经验丰富的专家来说，都是非常有用的。但是，如果你需要安排一个一次性的任务，那么 <code>at</code> 命令为你提供了一个快捷的方式来创建任务，从而你不需要接触 crontab 。</p>
-                  <p><code>at</code> 命令的运行方式是在后面紧跟着你想要运行任务的运行时间。时间是灵活的，因为它支持许多时间格式。包括下面这些例子：</p>
-                  <figure class="highlight ada">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">at</span> <span class="number">12</span>:<span class="number">00</span> PM September <span class="number">30</span> <span class="number">2017</span></div><div class="line"><span class="keyword">at</span> now + <span class="number">1</span> hour</div><div class="line"><span class="keyword">at</span> <span class="number">9</span>:<span class="number">00</span> AM tomorrow</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>当你以带参数的方式输入 <code>at</code> 命令以后，将会提示你该命令将在你的 Linux 系统上运行。这可能是一个备份脚本，一套维护任务，或者甚至是一个普通的 bash 命令。如果要结束任务，可以按 <code>ctrl+d</code> 。</p>
-                  <p>另外，你可以使用 <code>atq</code> 命令查看当前用户的所有任务，或者使用 <code>sudo atq</code> 查看所有用户的任务。它将会展示出所有排定好的任务，并且每个任务都伴有一个 ID 。如果你想取消一个排定好的任务，可以使用 <code>atrm</code> 命令，并且以任务 ID 作为参数。</p>
-                  <h3 id="你可以按照功能搜索命令，而不仅仅是通过名字"><a href="#你可以按照功能搜索命令，而不仅仅是通过名字" class="headerlink" title="你可以按照功能搜索命令，而不仅仅是通过名字"></a>你可以按照功能搜索命令，而不仅仅是通过名字</h3>
-                  <p>记住命令的名字非常困难，特别是对于初学者来说。幸运的是，Linux 附带了一个通过名字和描述来搜索 man 页面的工具。</p>
-                  <p>下次，如果你没有记住你想要使用的工具的名称，你可以尝试使用 <code>apropos</code> 命令加上你想要干的事情的描述。比如，<code>apropos build filesystem</code> 将会返回一系列名字和描述包括了 “build” 和 “filesystem” 单词的工具。</p>
-                  <p><code>apropos</code> 命令接受一个或多个字符串作为参数，但同时它也有其他参数，比如你可以使用 <code>-r</code> 参数，从而通过正则表达式来搜索。</p>
-                  <h3 id="一个允许你来管理系统版本的替代系统"><a href="#一个允许你来管理系统版本的替代系统" class="headerlink" title="一个允许你来管理系统版本的替代系统"></a>一个允许你来管理系统版本的替代系统</h3>
-                  <p>如果你曾进行过软件开发，你就会明白跨项目管理不同版本的语言的支持的重要性。许多 Linux 发行版都有工具可以来处理不同的内建版本。</p>
-                  <p>可执行文件比如 <code>java</code> 往往符号链接到目录 <code>/etc/alternatives</code> 下。反过来，该目录会将符号链接存储为二进制文件并提供一个管理这些链接的接口。Java 可能是替代系统最常管理的语言，但是，经过一些配置，它也可以作为其他应用程序替代品，比如 NVM 和 RVM （NVM 和 RVM 分别是 NodeJS 和 Ruby 的版本管理器）。</p>
-                  <p>在基于 Debian 的系统中，你可以使用 <code>update-alternatives</code> 命令创建和管理这些链接。在 CentOS 中，这个工具就叫做 <code>alternatives</code> 。通过更改你的 alternatives 文件中的链接，你便可以安装一个语言的多个版本，并且在不同的情况下使用不同的二进制。这个替代系统也提供了对任何你可能在命令行运行的程序的支持。</p>
-                  <h3 id="shred-命令是更加安全的删除文件方式"><a href="#shred-命令是更加安全的删除文件方式" class="headerlink" title="shred 命令是更加安全的删除文件方式"></a><code>shred</code> 命令是更加安全的删除文件方式</h3>
-                  <p>我们大多数时候总是使用 <code>rm</code> 命令来删除文件。但是文件去哪儿了呢？真相是 <code>rm</code> 命令所做的事情并不是像你所想像的那样，它仅仅删除了文件系统和硬盘上的数据的硬链接。硬盘上的数据依旧存在，直到被另一个应用重写覆盖。对于非常敏感的数据来说，这会带来一个很大的安全隐患。</p>
-                  <p><code>shred</code> 命令是 <code>rm</code> 命令的升级版。当你使用 <code>shred</code> 命令删除一个文件之后，文件中的数据会被多次随机覆写。甚至有一个选项可以在随机覆写之后对所有的数据进行清零。</p>
-                  <p>如果你想安全的删除一个文件并且以零覆盖，那么可以使用下面的命令：</p>
-                  <p><code>shred -u -z [file name]</code></p>
-                  <p>同时，你也可以使用 <code>-n</code> 选项和一个数字作为参数，从而指定在随机覆盖数据的时候迭代多少次。</p>
-                  <h3 id="通过自动更正来避免输入很长的无效文件路径"><a href="#通过自动更正来避免输入很长的无效文件路径" class="headerlink" title="通过自动更正来避免输入很长的无效文件路径"></a>通过自动更正来避免输入很长的无效文件路径</h3>
-                  <p>有多少次，你输入一个文件的绝对路径，然而却看到“没有该文件或目录”的消息。任何人都会明白输入一个很长的字符串的痛苦。幸运的是，有一个很简单的解决办法。</p>
-                  <p>内建的 <code>shopt</code> 命令允许你设置不同的选项来改变 shell 的行为。设置 <code>cdspell</code> 选项是避免输入文件路径时一个字母出错的头痛的一个简单方式。你可以通过运行 <code>shopt -s cdspell</code> 命令来启用该选项。启用该选项后，当你想要切换目录时，会自动更正为最匹配的目录。</p>
-                  <p>Shell 选项是节省时间的一个好方法（更不用说减少麻烦），此外还有许许多多的其他选项。如果想查看你的系统中所有选项的完整列表，可以运行不带参数的 <code>shopt</code> 命令。需要注意的是，这是 bash 的特性，如果你运行 zsh 或者其他可供选择的 shell，可能无法使用。</p>
-                  <h3 id="通过子-shell-返回到当前目录"><a href="#通过子-shell-返回到当前目录" class="headerlink" title="通过子 shell 返回到当前目录"></a>通过子 shell 返回到当前目录</h3>
-                  <p>如果你曾经配置过一个比较复杂的系统，那么你可能会发现你需要频繁的更换目录，从而很难跟踪你所在的位置。如果在运行完一个命令后自动返回到当前位置，不是很好吗？</p>
-                  <p>Linux 系统实际上提供了一个解决该问题的方法，并且非常简单。如果你想通过 <code>cd</code> 命令进入另一个目录完成一些任务，然后再返回当前工作目录，那么你可以将命令置于括号中。你可以在你的 Linux 系统上尝试下面这个命令。记住你当前的工作目录，然后运行：</p>
-                  <figure class="highlight lisp">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">(<span class="name">cd</span> /etc <span class="symbol">&amp;&amp;</span> ls -a)</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>该命令会输出 <code>/etc</code> 目录的内容。现在，检查你的当前工作目录。它和执行该命令前的目录一样，而不是 <code>/etc</code> 目录。</p>
-                  <p>它是如何工作的呢？运行一个括号中的命令会创建一个子 shell 或一个当前 shell 进程的复刻副本。该子 shell 可以访问所有的父变量，反之则不行。所以请记住，你是在运行一个非常复杂的单行命令。</p>
-                  <p>在并行处理中经常使用子 shell ，但是在命令行中，它也能为你带来同样的力量，从而使你在浏览文件系统时更加容易。</p>
-                  <hr>
-                  <p>via: <a href="http://opensourceforu.com/2017/09/top-7-things-linux-may-not-known-far/" target="_blank" rel="external">http://opensourceforu.com/2017/09/top-7-things-linux-may-not-known-far/</a></p>
-                  <p>作者：<a href="http://opensourceforu.com/author/phil-zona/" target="_blank" rel="external">PHIL ZONA</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank"
-                      rel="external">wxy</a></p>
-                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-
-                </div>
-
-                <div>
+                    </div>
+                  </header>
 
 
 
 
-                </div>
 
-                <div>
-
+                  <div class="post-body" itemprop="articleBody">
 
 
 
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-                  <div class="post-tags">
-
-                    <a href="/tags/Linux/" rel="tag"># Linux</a>
+                    <p><img src="https://i0.wp.com/opensourceforu.com/wp-content/uploads/2015/12/Linux-Kernel-sys-visual5.jpg?resize=750%2C563" alt="Hidden features of Linux"></p>
+                    <p>使用 Linux 最酷的事情之一就是随着时间的推移，你可以不断获得新的知识。每天，你都可能会遇到一个新的实用工具，或者只是一个不太熟悉的奇技淫巧，但是却非常有用。这些零碎的东西并不总是能够改变生活，但是却是专业知识的基础。</p>
+                    <p>即使是专家，也不可能事事皆知。无论你有多少经验，可能总会有更多的东西需要你去学习。所以，在这儿我列出了七件关于 Linux 你可能不知道的事情。</p>
+                    <a id="more"></a>
+                    <h3 id="一个查找命令历史的交互模式"><a href="#一个查找命令历史的交互模式" class="headerlink" title="一个查找命令历史的交互模式"></a>一个查找命令历史的交互模式</h3>
+                    <p>你可能对 <code>history</code> 命令非常熟悉，它会读取 bash 历史，然后以编号列表的方式输出到标准输出（<code>stdout</code>）。然而，如果你在 <code>curl</code> 命令的海洋里寻找一个特定的链接（URL），那么这个列表并不总是那么容易阅读的。</p>
+                    <p>你还可以有另一个选择，Linux 有一个交互式的反向搜索可以帮助你解决这个问题。你可以通过快捷键 <code>ctrl+r</code>启动交互模式，然后进入一个交互提示中，它将会根据你提供的字符串来向后搜索 bash 历史，你可以通过再次按下 <code>ctrl+r</code> 向后搜索更老的命令，或者按下 <code>ctrl+s</code> 向前搜索。</p>
+                    <p>注意，<code>ctrl+s</code> 有时会与 XON/XOFF 流控制冲突，即 XON/XOFF 流控制也会使用该快捷键。你可以通过运行 <code>stty -ixon</code> 命令来禁用该快捷键。在你的个人电脑上，这通常是有用的，但是在禁用前，确保你不需要 XON/XOFF 。</p>
+                    <h3 id="Cron-不是安排任务的唯一方式"><a href="#Cron-不是安排任务的唯一方式" class="headerlink" title="Cron 不是安排任务的唯一方式"></a>Cron 不是安排任务的唯一方式</h3>
+                    <p>Cron 任务对于任何水平的系统管理员，无论是毫无经验的初学者，还是经验丰富的专家来说，都是非常有用的。但是，如果你需要安排一个一次性的任务，那么 <code>at</code> 命令为你提供了一个快捷的方式来创建任务，从而你不需要接触 crontab 。</p>
+                    <p><code>at</code> 命令的运行方式是在后面紧跟着你想要运行任务的运行时间。时间是灵活的，因为它支持许多时间格式。包括下面这些例子：</p>
+                    <figure class="highlight ada">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">at</span> <span class="number">12</span>:<span class="number">00</span> PM September <span class="number">30</span> <span class="number">2017</span></div><div class="line"><span class="keyword">at</span> now + <span class="number">1</span> hour</div><div class="line"><span class="keyword">at</span> <span class="number">9</span>:<span class="number">00</span> AM tomorrow</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>当你以带参数的方式输入 <code>at</code> 命令以后，将会提示你该命令将在你的 Linux 系统上运行。这可能是一个备份脚本，一套维护任务，或者甚至是一个普通的 bash 命令。如果要结束任务，可以按 <code>ctrl+d</code> 。</p>
+                    <p>另外，你可以使用 <code>atq</code> 命令查看当前用户的所有任务，或者使用 <code>sudo atq</code> 查看所有用户的任务。它将会展示出所有排定好的任务，并且每个任务都伴有一个 ID 。如果你想取消一个排定好的任务，可以使用 <code>atrm</code> 命令，并且以任务 ID 作为参数。</p>
+                    <h3 id="你可以按照功能搜索命令，而不仅仅是通过名字"><a href="#你可以按照功能搜索命令，而不仅仅是通过名字" class="headerlink" title="你可以按照功能搜索命令，而不仅仅是通过名字"></a>你可以按照功能搜索命令，而不仅仅是通过名字</h3>
+                    <p>记住命令的名字非常困难，特别是对于初学者来说。幸运的是，Linux 附带了一个通过名字和描述来搜索 man 页面的工具。</p>
+                    <p>下次，如果你没有记住你想要使用的工具的名称，你可以尝试使用 <code>apropos</code> 命令加上你想要干的事情的描述。比如，<code>apropos build filesystem</code> 将会返回一系列名字和描述包括了 “build” 和 “filesystem” 单词的工具。</p>
+                    <p><code>apropos</code> 命令接受一个或多个字符串作为参数，但同时它也有其他参数，比如你可以使用 <code>-r</code> 参数，从而通过正则表达式来搜索。</p>
+                    <h3 id="一个允许你来管理系统版本的替代系统"><a href="#一个允许你来管理系统版本的替代系统" class="headerlink" title="一个允许你来管理系统版本的替代系统"></a>一个允许你来管理系统版本的替代系统</h3>
+                    <p>如果你曾进行过软件开发，你就会明白跨项目管理不同版本的语言的支持的重要性。许多 Linux 发行版都有工具可以来处理不同的内建版本。</p>
+                    <p>可执行文件比如 <code>java</code> 往往符号链接到目录 <code>/etc/alternatives</code> 下。反过来，该目录会将符号链接存储为二进制文件并提供一个管理这些链接的接口。Java 可能是替代系统最常管理的语言，但是，经过一些配置，它也可以作为其他应用程序替代品，比如 NVM 和 RVM （NVM 和 RVM 分别是 NodeJS 和 Ruby 的版本管理器）。</p>
+                    <p>在基于 Debian 的系统中，你可以使用 <code>update-alternatives</code> 命令创建和管理这些链接。在 CentOS 中，这个工具就叫做 <code>alternatives</code> 。通过更改你的 alternatives 文件中的链接，你便可以安装一个语言的多个版本，并且在不同的情况下使用不同的二进制。这个替代系统也提供了对任何你可能在命令行运行的程序的支持。</p>
+                    <h3 id="shred-命令是更加安全的删除文件方式"><a href="#shred-命令是更加安全的删除文件方式" class="headerlink" title="shred 命令是更加安全的删除文件方式"></a><code>shred</code> 命令是更加安全的删除文件方式</h3>
+                    <p>我们大多数时候总是使用 <code>rm</code> 命令来删除文件。但是文件去哪儿了呢？真相是 <code>rm</code> 命令所做的事情并不是像你所想像的那样，它仅仅删除了文件系统和硬盘上的数据的硬链接。硬盘上的数据依旧存在，直到被另一个应用重写覆盖。对于非常敏感的数据来说，这会带来一个很大的安全隐患。</p>
+                    <p><code>shred</code> 命令是 <code>rm</code> 命令的升级版。当你使用 <code>shred</code> 命令删除一个文件之后，文件中的数据会被多次随机覆写。甚至有一个选项可以在随机覆写之后对所有的数据进行清零。</p>
+                    <p>如果你想安全的删除一个文件并且以零覆盖，那么可以使用下面的命令：</p>
+                    <p><code>shred -u -z [file name]</code></p>
+                    <p>同时，你也可以使用 <code>-n</code> 选项和一个数字作为参数，从而指定在随机覆盖数据的时候迭代多少次。</p>
+                    <h3 id="通过自动更正来避免输入很长的无效文件路径"><a href="#通过自动更正来避免输入很长的无效文件路径" class="headerlink" title="通过自动更正来避免输入很长的无效文件路径"></a>通过自动更正来避免输入很长的无效文件路径</h3>
+                    <p>有多少次，你输入一个文件的绝对路径，然而却看到“没有该文件或目录”的消息。任何人都会明白输入一个很长的字符串的痛苦。幸运的是，有一个很简单的解决办法。</p>
+                    <p>内建的 <code>shopt</code> 命令允许你设置不同的选项来改变 shell 的行为。设置 <code>cdspell</code> 选项是避免输入文件路径时一个字母出错的头痛的一个简单方式。你可以通过运行 <code>shopt -s cdspell</code> 命令来启用该选项。启用该选项后，当你想要切换目录时，会自动更正为最匹配的目录。</p>
+                    <p>Shell 选项是节省时间的一个好方法（更不用说减少麻烦），此外还有许许多多的其他选项。如果想查看你的系统中所有选项的完整列表，可以运行不带参数的 <code>shopt</code> 命令。需要注意的是，这是 bash 的特性，如果你运行 zsh 或者其他可供选择的 shell，可能无法使用。</p>
+                    <h3 id="通过子-shell-返回到当前目录"><a href="#通过子-shell-返回到当前目录" class="headerlink" title="通过子 shell 返回到当前目录"></a>通过子 shell 返回到当前目录</h3>
+                    <p>如果你曾经配置过一个比较复杂的系统，那么你可能会发现你需要频繁的更换目录，从而很难跟踪你所在的位置。如果在运行完一个命令后自动返回到当前位置，不是很好吗？</p>
+                    <p>Linux 系统实际上提供了一个解决该问题的方法，并且非常简单。如果你想通过 <code>cd</code> 命令进入另一个目录完成一些任务，然后再返回当前工作目录，那么你可以将命令置于括号中。你可以在你的 Linux 系统上尝试下面这个命令。记住你当前的工作目录，然后运行：</p>
+                    <figure class="highlight lisp">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">(<span class="name">cd</span> /etc <span class="symbol">&amp;&amp;</span> ls -a)</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>该命令会输出 <code>/etc</code> 目录的内容。现在，检查你的当前工作目录。它和执行该命令前的目录一样，而不是 <code>/etc</code> 目录。</p>
+                    <p>它是如何工作的呢？运行一个括号中的命令会创建一个子 shell 或一个当前 shell 进程的复刻副本。该子 shell 可以访问所有的父变量，反之则不行。所以请记住，你是在运行一个非常复杂的单行命令。</p>
+                    <p>在并行处理中经常使用子 shell ，但是在命令行中，它也能为你带来同样的力量，从而使你在浏览文件系统时更加容易。</p>
+                    <hr>
+                    <p>via: <a href="http://opensourceforu.com/2017/09/top-7-things-linux-may-not-known-far/" target="_blank" rel="external">http://opensourceforu.com/2017/09/top-7-things-linux-may-not-known-far/</a></p>
+                    <p>作者：<a href="http://opensourceforu.com/author/phil-zona/" target="_blank" rel="external">PHIL ZONA</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank"
+                        rel="external">wxy</a></p>
+                    <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
 
                   </div>
 
@@ -512,76 +437,56 @@
 
 
 
-                  <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
 
-                      <a href="/2017/09/25/Setting-Proxy-For-google-chrome-in-Ubuntu/" rel="next" title="Ubuntu 下代理服务器失败无法上网的解决办法">
+
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/Linux/" rel="tag"># Linux</a>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/2017/09/25/Setting-Proxy-For-google-chrome-in-Ubuntu/" rel="next" title="Ubuntu 下代理服务器失败无法上网的解决办法">
                 <i class="fa fa-chevron-left"></i> Ubuntu 下代理服务器失败无法上网的解决办法
               </a>
 
-                    </div>
+                      </div>
 
-                    <span class="post-nav-divider"></span>
+                      <span class="post-nav-divider"></span>
 
-                    <div class="post-nav-prev post-nav-item">
+                      <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2017/10/07/Python-cheat-sheet/" rel="prev" title="Python 速查表">
+                        <a href="/2017/10/07/Python-cheat-sheet/" rel="prev" title="Python 速查表">
                 Python 速查表 <i class="fa fa-chevron-right"></i>
               </a>
 
+                      </div>
                     </div>
-                  </div>
 
 
 
 
-                </footer>
+                  </footer>
+                </div>
+
+
+
               </article>
 
 
 
-
-
-
               <div class="post-spread">
-
-
-                <div class="bdsharebuttonbox">
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                  window._bd_share_config = {
-                    "common": {
-                      "bdText": "",
-                      "bdMini": "2",
-                      "bdMiniList": false,
-                      "bdPic": ""
-                    },
-                    "share": {
-                      "bdSize": "16",
-                      "bdStyle": "0"
-                    },
-                    "image": {
-                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-                      "viewText": "分享到：",
-                      "viewSize": "16"
-                    }
-                  }
-                </script>
-
-                <script>
-                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-                </script>
-
 
               </div>
             </div>
@@ -592,13 +497,19 @@
 
 
 
+
+
           <div class="comments" id="comments">
+
+            <div id="gitment-container"></div>
 
           </div>
 
 
-        </div>
 
+
+
+        </div>
 
 
 
@@ -611,6 +522,7 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
@@ -620,124 +532,79 @@
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview">
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview sidebar-panel">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -774,66 +641,37 @@
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -848,9 +686,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -879,56 +717,70 @@
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -956,6 +808,8 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -965,275 +819,14 @@
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -1244,11 +837,3 @@
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>

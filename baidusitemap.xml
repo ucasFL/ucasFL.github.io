@@ -346,26 +346,6 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/02/27/Hexo-Next-Theme-Background-Pictures/</loc>
-    <lastmod>2017-09-02T04:38:29.079Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo 博客 Next 主题添加背景图片</title>
-        <pubTime>2017-02-27T12:19:21.000Z</pubTime>
-        
-        <tag>Hexo </tag>
-         
-         
-           
-             
-              <breadCrumb title="Hexo" url="http://ucasfl.me/categories/Hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ucasfl.me/2017/02/27/Hexo-duoshuo-Comment/</loc>
     <lastmod>2017-09-02T04:38:29.079Z</lastmod>
     <data>
@@ -406,12 +386,12 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/02/27/Hexo-Next-Theme-Beautify-and-LaTeX-Unsupport-Fix/</loc>
-    <lastmod>2017-09-02T04:38:29.067Z</lastmod>
+    <loc>http://ucasfl.me/2017/02/27/Hexo-Next-Theme-Background-Pictures/</loc>
+    <lastmod>2017-09-02T04:38:29.079Z</lastmod>
     <data>
         <display>
-        <title>Hexo - Next 主题美化和 Latex 不支持的 Bug 处理</title>
-        <pubTime>2017-02-27T05:45:14.000Z</pubTime>
+        <title>Hexo 博客 Next 主题添加背景图片</title>
+        <pubTime>2017-02-27T12:19:21.000Z</pubTime>
         
         <tag>Hexo </tag>
          
@@ -466,6 +446,46 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/02/27/Hexo-Next-Theme-Beautify-and-LaTeX-Unsupport-Fix/</loc>
+    <lastmod>2017-09-02T04:38:29.067Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo - Next 主题美化和 Latex 不支持的 Bug 处理</title>
+        <pubTime>2017-02-27T05:45:14.000Z</pubTime>
+        
+        <tag>Hexo </tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://ucasfl.me/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/08/07/Find-and-Search-Part2/</loc>
+    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
+    <data>
+        <display>
+        <title>查找和搜索-Part2</title>
+        <pubTime>2017-08-07T04:51:24.000Z</pubTime>
+        
+        <tag>Data-Structures </tag>
+         
+         
+           
+             
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/03/18/Vim-Beginner-Tutorial/</loc>
     <lastmod>2017-09-02T04:38:29.063Z</lastmod>
     <data>
@@ -506,12 +526,12 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/08/08/Inner-Sort/</loc>
+    <loc>http://ucasfl.me/2017/08/05/Find-and-Search-Part1/</loc>
     <lastmod>2017-09-02T04:38:29.063Z</lastmod>
     <data>
         <display>
-        <title>内部排序</title>
-        <pubTime>2017-08-08T04:51:50.000Z</pubTime>
+        <title>查找和搜索-Part1</title>
+        <pubTime>2017-08-05T04:51:20.000Z</pubTime>
         
         <tag>Data-Structures </tag>
          
@@ -519,6 +539,26 @@
            
              
               <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/05/20/the-Asciinema-Tutorial-in-Linux/</loc>
+    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
+    <data>
+        <display>
+        <title>如何在 Linux 中使用 Asciinema 进行录制和回放终端会话</title>
+        <pubTime>2017-05-20T09:20:11.000Z</pubTime>
+        
+        <tag>Asciinema/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
           
         </display>
     </data>
@@ -566,92 +606,12 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/05/20/the-Asciinema-Tutorial-in-Linux/</loc>
+    <loc>http://ucasfl.me/2017/08/08/Inner-Sort/</loc>
     <lastmod>2017-09-02T04:38:29.063Z</lastmod>
     <data>
         <display>
-        <title>如何在 Linux 中使用 Asciinema 进行录制和回放终端会话</title>
-        <pubTime>2017-05-20T09:20:11.000Z</pubTime>
-        
-        <tag>Asciinema/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/08/05/Find-and-Search-Part1/</loc>
-    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
-    <data>
-        <display>
-        <title>查找和搜索-Part1</title>
-        <pubTime>2017-08-05T04:51:20.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/08/07/Find-and-Search-Part2/</loc>
-    <lastmod>2017-09-02T04:38:29.063Z</lastmod>
-    <data>
-        <display>
-        <title>查找和搜索-Part2</title>
-        <pubTime>2017-08-07T04:51:24.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/03/27/String-Part2/</loc>
-    <lastmod>2017-09-02T04:38:29.059Z</lastmod>
-    <data>
-        <display>
-        <title>串 - Part 2</title>
-        <pubTime>2017-03-27T00:50:38.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/03/16/Stack/</loc>
-    <lastmod>2017-09-02T04:38:29.059Z</lastmod>
-    <data>
-        <display>
-        <title>栈</title>
-        <pubTime>2017-03-16T00:12:58.000Z</pubTime>
+        <title>内部排序</title>
+        <pubTime>2017-08-08T04:51:50.000Z</pubTime>
         
         <tag>Data-Structures </tag>
          
@@ -706,19 +666,39 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2016/09/30/Scientific-Audio-Work-Part2/</loc>
-    <lastmod>2017-09-02T04:38:29.051Z</lastmod>
+    <loc>http://ucasfl.me/2017/03/27/String-Part2/</loc>
+    <lastmod>2017-09-02T04:38:29.059Z</lastmod>
     <data>
         <display>
-        <title>科学音频处理（二）：如何使用 Octave 对音频文件进行基本数学信号处理</title>
-        <pubTime>2016-09-30T09:30:13.000Z</pubTime>
+        <title>串 - Part 2</title>
+        <pubTime>2017-03-27T00:50:38.000Z</pubTime>
         
-        <tag>Octave/Translated </tag>
+        <tag>Data-Structures </tag>
          
          
            
              
-              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/03/16/Stack/</loc>
+    <lastmod>2017-09-02T04:38:29.059Z</lastmod>
+    <data>
+        <display>
+        <title>栈</title>
+        <pubTime>2017-03-16T00:12:58.000Z</pubTime>
+        
+        <tag>Data-Structures </tag>
+         
+         
+           
+             
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
           
         </display>
     </data>
@@ -746,26 +726,6 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2016/09/24/Speed-LibreOffice-With-4-Tips/</loc>
-    <lastmod>2017-09-02T04:38:29.051Z</lastmod>
-    <data>
-        <display>
-        <title>如何用四个简单的步骤加速 LibreOffice</title>
-        <pubTime>2016-09-24T09:41:37.000Z</pubTime>
-        
-        <tag>LibreOffice/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="LibreOffice" url="http://ucasfl.me/categories/LibreOffice/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ucasfl.me/2016/09/25/Ohm-Using-200-JavaScripts-Create-Your-Own-Compiler/</loc>
     <lastmod>2017-09-02T04:38:29.051Z</lastmod>
     <data>
@@ -779,6 +739,46 @@
            
              
               <breadCrumb title="JavaScript" url="http://ucasfl.me/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/09/30/Scientific-Audio-Work-Part2/</loc>
+    <lastmod>2017-09-02T04:38:29.051Z</lastmod>
+    <data>
+        <display>
+        <title>科学音频处理（二）：如何使用 Octave 对音频文件进行基本数学信号处理</title>
+        <pubTime>2016-09-30T09:30:13.000Z</pubTime>
+        
+        <tag>Octave/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/09/24/Speed-LibreOffice-With-4-Tips/</loc>
+    <lastmod>2017-09-02T04:38:29.051Z</lastmod>
+    <data>
+        <display>
+        <title>如何用四个简单的步骤加速 LibreOffice</title>
+        <pubTime>2016-09-24T09:41:37.000Z</pubTime>
+        
+        <tag>LibreOffice/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="LibreOffice" url="http://ucasfl.me/categories/LibreOffice/"/>
           
         </display>
     </data>
@@ -826,26 +826,6 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/06/04/Linux-Command-of-popd-and-pushd/</loc>
-    <lastmod>2017-09-02T04:38:29.047Z</lastmod>
-    <data>
-        <display>
-        <title>在 Linux 中使用 Pushd 和 Popd 命令来进行高效的目录导航</title>
-        <pubTime>2017-06-04T09:32:01.000Z</pubTime>
-        
-        <tag>Pushd/Popd/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ucasfl.me/2017/06/05/Linux-Command-of-comm/</loc>
     <lastmod>2017-09-02T04:38:29.047Z</lastmod>
     <data>
@@ -866,19 +846,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/04/22/the-Error-Summary-of-C-Pointer-Part2/</loc>
-    <lastmod>2017-09-02T04:38:29.043Z</lastmod>
+    <loc>http://ucasfl.me/2017/06/04/Linux-Command-of-popd-and-pushd/</loc>
+    <lastmod>2017-09-02T04:38:29.047Z</lastmod>
     <data>
         <display>
-        <title>再谈 C 语言中的指针</title>
-        <pubTime>2017-04-22T06:59:08.000Z</pubTime>
+        <title>在 Linux 中使用 Pushd 和 Popd 命令来进行高效的目录导航</title>
+        <pubTime>2017-06-04T09:32:01.000Z</pubTime>
         
-        <tag>C/Pointer </tag>
+        <tag>Pushd/Popd/Translated </tag>
          
          
            
              
-              <breadCrumb title="C/C++" url="http://ucasfl.me/categories/C-C/"/>
+              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
           
         </display>
     </data>
@@ -906,39 +886,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2016/12/24/How-to-Auto-Perform-Security-Update-in-Ubuntu-and-Debian/</loc>
-    <lastmod>2017-09-02T04:38:29.039Z</lastmod>
+    <loc>http://ucasfl.me/2017/04/22/the-Error-Summary-of-C-Pointer-Part2/</loc>
+    <lastmod>2017-09-02T04:38:29.043Z</lastmod>
     <data>
         <display>
-        <title>如何在 Debian 和 Ubuntu 系统上自动安装安全更新</title>
-        <pubTime>2016-12-24T10:22:53.000Z</pubTime>
+        <title>再谈 C 语言中的指针</title>
+        <pubTime>2017-04-22T06:59:08.000Z</pubTime>
         
-        <tag>Ubunntu/Translated </tag>
+        <tag>C/Pointer </tag>
          
          
            
              
-              <breadCrumb title="Ubuntu" url="http://ucasfl.me/categories/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/05/11/Graph-Part1/</loc>
-    <lastmod>2017-09-02T04:38:29.039Z</lastmod>
-    <data>
-        <display>
-        <title>图-Part1</title>
-        <pubTime>2017-05-11T08:07:46.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+              <breadCrumb title="C/C++" url="http://ucasfl.me/categories/C-C/"/>
           
         </display>
     </data>
@@ -966,6 +926,46 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/05/11/Graph-Part1/</loc>
+    <lastmod>2017-09-02T04:38:29.039Z</lastmod>
+    <data>
+        <display>
+        <title>图-Part1</title>
+        <pubTime>2017-05-11T08:07:46.000Z</pubTime>
+        
+        <tag>Data-Structures </tag>
+         
+         
+           
+             
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/12/24/How-to-Auto-Perform-Security-Update-in-Ubuntu-and-Debian/</loc>
+    <lastmod>2017-09-02T04:38:29.039Z</lastmod>
+    <data>
+        <display>
+        <title>如何在 Debian 和 Ubuntu 系统上自动安装安全更新</title>
+        <pubTime>2016-12-24T10:22:53.000Z</pubTime>
+        
+        <tag>Ubunntu/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Ubuntu" url="http://ucasfl.me/categories/Ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/04/15/Array-and-Table/</loc>
     <lastmod>2017-09-02T04:38:29.039Z</lastmod>
     <data>
@@ -979,6 +979,26 @@
            
              
               <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/06/04/4-Best-Library-of-Python-for-Build-Good-cli-ui/</loc>
+    <lastmod>2017-09-02T04:38:29.031Z</lastmod>
+    <data>
+        <display>
+        <title>4 个用于构建优秀的命令行用户界面的 Python 库</title>
+        <pubTime>2017-06-04T09:34:33.000Z</pubTime>
+        
+        <tag>Python/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
           
         </display>
     </data>
@@ -1046,26 +1066,6 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/06/04/4-Best-Library-of-Python-for-Build-Good-cli-ui/</loc>
-    <lastmod>2017-09-02T04:38:29.031Z</lastmod>
-    <data>
-        <display>
-        <title>4 个用于构建优秀的命令行用户界面的 Python 库</title>
-        <pubTime>2017-06-04T09:34:33.000Z</pubTime>
-        
-        <tag>Python/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ucasfl.me/2017/05/28/Linfo-A-Application-Which-Can-Show-the-Status-of-Server/</loc>
     <lastmod>2017-09-02T04:38:29.027Z</lastmod>
     <data>
@@ -1079,46 +1079,6 @@
            
              
               <breadCrumb title="Server" url="http://ucasfl.me/categories/Server/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/11/08/Wire-A-Open-Source-Chat-APP-for-Linux/</loc>
-    <lastmod>2017-09-02T04:38:29.019Z</lastmod>
-    <data>
-        <display>
-        <title>Wire：一个极酷、专注于个人隐私的开源聊天应用程序已经来到了 Linux 上</title>
-        <pubTime>2016-11-08T10:02:29.000Z</pubTime>
-        
-        <tag>Wire/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/</loc>
-    <lastmod>2017-09-02T04:38:29.019Z</lastmod>
-    <data>
-        <display>
-        <title>递归实现平衡二叉树的插入、删除、合并和分裂</title>
-        <pubTime>2017-06-19T08:39:12.000Z</pubTime>
-        
-        <tag>AVL-Tree </tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithms" url="http://ucasfl.me/categories/Algorithms/"/>
           
         </display>
     </data>
@@ -1146,6 +1106,26 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2016/11/08/Wire-A-Open-Source-Chat-APP-for-Linux/</loc>
+    <lastmod>2017-09-02T04:38:29.019Z</lastmod>
+    <data>
+        <display>
+        <title>Wire：一个极酷、专注于个人隐私的开源聊天应用程序已经来到了 Linux 上</title>
+        <pubTime>2016-11-08T10:02:29.000Z</pubTime>
+        
+        <tag>Wire/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/</loc>
     <lastmod>2017-09-02T04:38:29.019Z</lastmod>
     <data>
@@ -1166,6 +1146,26 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/06/19/Using-Recursive-Method-to-Finish-the-Join-Split-of-AVL-Tree/</loc>
+    <lastmod>2017-09-02T04:38:29.019Z</lastmod>
+    <data>
+        <display>
+        <title>递归实现平衡二叉树的插入、删除、合并和分裂</title>
+        <pubTime>2017-06-19T08:39:12.000Z</pubTime>
+        
+        <tag>AVL-Tree </tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithms" url="http://ucasfl.me/categories/Algorithms/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2016/12/22/Snow/</loc>
     <lastmod>2017-09-02T04:38:29.019Z</lastmod>
     <data>
@@ -1179,46 +1179,6 @@
            
              
               <breadCrumb title="Essay" url="http://ucasfl.me/categories/Essay/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/02/28/SqList/</loc>
-    <lastmod>2017-09-02T04:38:29.003Z</lastmod>
-    <data>
-        <display>
-        <title>顺序线性表</title>
-        <pubTime>2017-02-28T10:45:44.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/04/09/How-to-Install-Devuan-Linux/</loc>
-    <lastmod>2017-09-02T04:38:29.003Z</lastmod>
-    <data>
-        <display>
-        <title>如何安装 Debian 的非 Systemd 复刻版本 Devuan Linux</title>
-        <pubTime>2017-04-09T12:26:57.000Z</pubTime>
-        
-        <tag>Devuan-Linux/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
           
         </display>
     </data>
@@ -1266,6 +1226,46 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/02/28/SqList/</loc>
+    <lastmod>2017-09-02T04:38:29.003Z</lastmod>
+    <data>
+        <display>
+        <title>顺序线性表</title>
+        <pubTime>2017-02-28T10:45:44.000Z</pubTime>
+        
+        <tag>Data-Structures </tag>
+         
+         
+           
+             
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/04/09/How-to-Install-Devuan-Linux/</loc>
+    <lastmod>2017-09-02T04:38:29.003Z</lastmod>
+    <data>
+        <display>
+        <title>如何安装 Debian 的非 Systemd 复刻版本 Devuan Linux</title>
+        <pubTime>2017-04-09T12:26:57.000Z</pubTime>
+        
+        <tag>Devuan-Linux/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/02/20/How-to-Hidden-File-and-Dir-Without-Rename/</loc>
     <lastmod>2017-09-02T04:38:28.991Z</lastmod>
     <data>
@@ -1306,26 +1306,6 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/03/19/How-to-Install-Latest-Python3.6-in-Linux/</loc>
-    <lastmod>2017-09-02T04:38:28.987Z</lastmod>
-    <data>
-        <display>
-        <title>如何在 Linux 中安装最新的 Python 3.6 版本</title>
-        <pubTime>2017-03-19T11:29:39.000Z</pubTime>
-        
-        <tag>Python/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ucasfl.me/2017/03/06/Intel-Assembly-Instructions-Manual/</loc>
     <lastmod>2017-09-02T04:38:28.987Z</lastmod>
     <data>
@@ -1346,112 +1326,12 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/03/09/How-to-Install-MariaDB-10-in-Debian-and-Ubuntu/</loc>
-    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
+    <loc>http://ucasfl.me/2017/03/19/How-to-Install-Latest-Python3.6-in-Linux/</loc>
+    <lastmod>2017-09-02T04:38:28.987Z</lastmod>
     <data>
         <display>
-        <title>如何在 Debian 和 Ubuntu 上安装 MariaDB 10</title>
-        <pubTime>2017-03-09T08:27:59.000Z</pubTime>
-        
-        <tag>MariaDB/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="MariaDB" url="http://ucasfl.me/categories/MariaDB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/02/26/How-to-Spend-Old-Ubunntu-System/</loc>
-    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
-    <data>
-        <display>
-        <title>加速老旧 Ubuntu 系统的技巧</title>
-        <pubTime>2017-02-26T11:39:40.000Z</pubTime>
-        
-        <tag>Ubuntu/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Ubuntu" url="http://ucasfl.me/categories/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/11/21/How-to-Recover-a-Deleted-File-in-Linux/</loc>
-    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
-    <data>
-        <display>
-        <title>如何在 Linux 中恢复一个删除了的文件</title>
-        <pubTime>2016-11-21T10:06:25.000Z</pubTime>
-        
-        <tag>file-manage/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/03/18/How-to-Install-and-configure-FTP-in-Ubuntu/</loc>
-    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
-    <data>
-        <display>
-        <title>如何在 Ubuntu 下安装和配置 FTP 服务器</title>
-        <pubTime>2017-03-18T02:13:07.000Z</pubTime>
-        
-        <tag>FTP/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="FTP" url="http://ucasfl.me/categories/FTP/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/03/24/Install-Ubuntu-in-Seperate-Root-and-Home-Drive/</loc>
-    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
-    <data>
-        <display>
-        <title>在独立的 Root 和 Home 硬盘驱动器上安装 Ubuntu</title>
-        <pubTime>2017-03-24T09:54:10.000Z</pubTime>
-        
-        <tag>Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Ubuntu" url="http://ucasfl.me/categories/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/12/31/How-to-Install-PyCharm-in-Linux/</loc>
-    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
-    <data>
-        <display>
-        <title>如何在 Linux 下安装 PyCharm</title>
-        <pubTime>2016-12-31T10:20:19.000Z</pubTime>
+        <title>如何在 Linux 中安装最新的 Python 3.6 版本</title>
+        <pubTime>2017-03-19T11:29:39.000Z</pubTime>
         
         <tag>Python/Translated </tag>
          
@@ -1486,6 +1366,106 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2016/11/21/How-to-Recover-a-Deleted-File-in-Linux/</loc>
+    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
+    <data>
+        <display>
+        <title>如何在 Linux 中恢复一个删除了的文件</title>
+        <pubTime>2016-11-21T10:06:25.000Z</pubTime>
+        
+        <tag>file-manage/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/12/31/How-to-Install-PyCharm-in-Linux/</loc>
+    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
+    <data>
+        <display>
+        <title>如何在 Linux 下安装 PyCharm</title>
+        <pubTime>2016-12-31T10:20:19.000Z</pubTime>
+        
+        <tag>Python/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/02/26/How-to-Spend-Old-Ubunntu-System/</loc>
+    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
+    <data>
+        <display>
+        <title>加速老旧 Ubuntu 系统的技巧</title>
+        <pubTime>2017-02-26T11:39:40.000Z</pubTime>
+        
+        <tag>Ubuntu/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Ubuntu" url="http://ucasfl.me/categories/Ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/03/09/How-to-Install-MariaDB-10-in-Debian-and-Ubuntu/</loc>
+    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
+    <data>
+        <display>
+        <title>如何在 Debian 和 Ubuntu 上安装 MariaDB 10</title>
+        <pubTime>2017-03-09T08:27:59.000Z</pubTime>
+        
+        <tag>MariaDB/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="MariaDB" url="http://ucasfl.me/categories/MariaDB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/03/24/Install-Ubuntu-in-Seperate-Root-and-Home-Drive/</loc>
+    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
+    <data>
+        <display>
+        <title>在独立的 Root 和 Home 硬盘驱动器上安装 Ubuntu</title>
+        <pubTime>2017-03-24T09:54:10.000Z</pubTime>
+        
+        <tag>Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Ubuntu" url="http://ucasfl.me/categories/Ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/04/15/How-to-Enable-Desktop-Share-in-Ubuntu-and-Linux-Mint/</loc>
     <lastmod>2017-09-02T04:38:28.983Z</lastmod>
     <data>
@@ -1506,79 +1486,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2016/12/06/Install-Patch-or-Auto-Update-in-CentOS-and-RHEL/</loc>
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    <loc>http://ucasfl.me/2017/03/18/How-to-Install-and-configure-FTP-in-Ubuntu/</loc>
+    <lastmod>2017-09-02T04:38:28.983Z</lastmod>
     <data>
         <display>
-        <title>在 CentOS 和 RHEL 系统上安装安全补丁或自动更新</title>
-        <pubTime>2016-12-06T10:25:11.000Z</pubTime>
+        <title>如何在 Ubuntu 下安装和配置 FTP 服务器</title>
+        <pubTime>2017-03-18T02:13:07.000Z</pubTime>
         
-        <tag>CentOS/Trarnslated </tag>
+        <tag>FTP/Translated </tag>
          
          
            
              
-              <breadCrumb title="CentOS" url="http://ucasfl.me/categories/CentOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/11/24/XFCE-New-Features/</loc>
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    <data>
-        <display>
-        <title>桌面新增‘免打扰’模式以及单一应用通知设置的新特性</title>
-        <pubTime>2016-11-24T10:08:11.000Z</pubTime>
-        
-        <tag>Xfce/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Xfce" url="http://ucasfl.me/categories/Xfce/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/03/18/Queue/</loc>
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    <data>
-        <display>
-        <title>队列</title>
-        <pubTime>2017-03-18T12:04:54.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/09/21/Install-XFCE4-in-Ubuntu-16-04-and-Fedora-22-24/</loc>
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    <data>
-        <display>
-        <title>如何在 Ubuntu 16.04 和 Fedora 22-24 上安装最新的 XFCE 桌面</title>
-        <pubTime>2016-09-21T09:44:24.000Z</pubTime>
-        
-        <tag>Xfce/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Xfce" url="http://ucasfl.me/categories/Xfce/"/>
+              <breadCrumb title="FTP" url="http://ucasfl.me/categories/FTP/"/>
           
         </display>
     </data>
@@ -1606,59 +1526,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/03/18/Free-Command-in-Linux/</loc>
+    <loc>http://ucasfl.me/2017/03/18/Vim-Shortcut-Sheet/</loc>
     <lastmod>2017-09-02T04:38:28.979Z</lastmod>
     <data>
         <display>
-        <title>Free：一个在 Linux 中检查内存使用情况的标准命令</title>
-        <pubTime>2017-03-18T02:15:31.000Z</pubTime>
+        <title>Vim 快捷键速查表</title>
+        <pubTime>2017-03-18T07:35:23.000Z</pubTime>
         
-        <tag>Linux/Translated </tag>
+        <tag>Vim/transshipment </tag>
          
          
            
              
-              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/11/04/Using-Docker-for-NET-Core-in-Linux/</loc>
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    <data>
-        <display>
-        <title>通过 Docker 在 Linux 上托管 .NET Core</title>
-        <pubTime>2016-11-04T10:00:09.000Z</pubTime>
-        
-        <tag>Docker/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Docker" url="http://ucasfl.me/categories/Docker/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/</loc>
-    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
-    <data>
-        <display>
-        <title>不常见但是很有用的 GCC 命令行选项（二）</title>
-        <pubTime>2016-12-13T10:28:13.000Z</pubTime>
-        
-        <tag>gcc/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Gcc" url="http://ucasfl.me/categories/Gcc/"/>
+              <breadCrumb title="Vim" url="http://ucasfl.me/categories/Vim/"/>
           
         </display>
     </data>
@@ -1686,19 +1566,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/03/18/Vim-Shortcut-Sheet/</loc>
+    <loc>http://ucasfl.me/2017/03/18/Queue/</loc>
     <lastmod>2017-09-02T04:38:28.979Z</lastmod>
     <data>
         <display>
-        <title>Vim 快捷键速查表</title>
-        <pubTime>2017-03-18T07:35:23.000Z</pubTime>
+        <title>队列</title>
+        <pubTime>2017-03-18T12:04:54.000Z</pubTime>
         
-        <tag>Vim/transshipment </tag>
+        <tag>Data-Structures </tag>
          
          
            
              
-              <breadCrumb title="Vim" url="http://ucasfl.me/categories/Vim/"/>
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
           
         </display>
     </data>
@@ -1706,19 +1586,119 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/06/07/main-in-Python/</loc>
-    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
+    <loc>http://ucasfl.me/2016/11/24/XFCE-New-Features/</loc>
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
     <data>
         <display>
-        <title>Python 中的 __Main__</title>
-        <pubTime>2017-06-07T06:38:12.000Z</pubTime>
+        <title>桌面新增‘免打扰’模式以及单一应用通知设置的新特性</title>
+        <pubTime>2016-11-24T10:08:11.000Z</pubTime>
         
-        <tag>Python/main </tag>
+        <tag>Xfce/Translated </tag>
          
          
            
              
-              <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
+              <breadCrumb title="Xfce" url="http://ucasfl.me/categories/Xfce/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/12/06/Install-Patch-or-Auto-Update-in-CentOS-and-RHEL/</loc>
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    <data>
+        <display>
+        <title>在 CentOS 和 RHEL 系统上安装安全补丁或自动更新</title>
+        <pubTime>2016-12-06T10:25:11.000Z</pubTime>
+        
+        <tag>CentOS/Trarnslated </tag>
+         
+         
+           
+             
+              <breadCrumb title="CentOS" url="http://ucasfl.me/categories/CentOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/11/04/Using-Docker-for-NET-Core-in-Linux/</loc>
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    <data>
+        <display>
+        <title>通过 Docker 在 Linux 上托管 .NET Core</title>
+        <pubTime>2016-11-04T10:00:09.000Z</pubTime>
+        
+        <tag>Docker/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Docker" url="http://ucasfl.me/categories/Docker/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/03/18/Free-Command-in-Linux/</loc>
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    <data>
+        <display>
+        <title>Free：一个在 Linux 中检查内存使用情况的标准命令</title>
+        <pubTime>2017-03-18T02:15:31.000Z</pubTime>
+        
+        <tag>Linux/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/</loc>
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    <data>
+        <display>
+        <title>不常见但是很有用的 GCC 命令行选项（二）</title>
+        <pubTime>2016-12-13T10:28:13.000Z</pubTime>
+        
+        <tag>gcc/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Gcc" url="http://ucasfl.me/categories/Gcc/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/09/21/Install-XFCE4-in-Ubuntu-16-04-and-Fedora-22-24/</loc>
+    <lastmod>2017-09-02T04:38:28.979Z</lastmod>
+    <data>
+        <display>
+        <title>如何在 Ubuntu 16.04 和 Fedora 22-24 上安装最新的 XFCE 桌面</title>
+        <pubTime>2016-09-21T09:44:24.000Z</pubTime>
+        
+        <tag>Xfce/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Xfce" url="http://ucasfl.me/categories/Xfce/"/>
           
         </display>
     </data>
@@ -1739,6 +1719,64 @@
            
              
               <breadCrumb title="Open-Source" url="http://ucasfl.me/categories/Open-Source/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/</loc>
+    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
+    <data>
+        <display>
+        <title>pyDash：一个基于 Web 的 Linux 性能监测工具</title>
+        <pubTime>2017-05-01T09:48:02.000Z</pubTime>
+        
+        <tag>pyDash/Translatd </tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/06/17/no-zuo-no-die/</loc>
+    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
+    <data>
+        <display>
+        <title>No Zuo, No Die</title>
+        <pubTime>2017-06-17T13:45:34.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Essay" url="http://ucasfl.me/categories/Essay/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/06/07/main-in-Python/</loc>
+    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
+    <data>
+        <display>
+        <title>Python 中的 __Main__</title>
+        <pubTime>2017-06-07T06:38:12.000Z</pubTime>
+        
+        <tag>Python/main </tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
           
         </display>
     </data>
@@ -1786,77 +1824,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/05/01/pyDash-A-Linux-Perfomance-Monitor-Tool-Based-Web/</loc>
-    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
-    <data>
-        <display>
-        <title>pyDash：一个基于 Web 的 Linux 性能监测工具</title>
-        <pubTime>2017-05-01T09:48:02.000Z</pubTime>
-        
-        <tag>pyDash/Translatd </tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/06/17/no-zuo-no-die/</loc>
-    <lastmod>2017-09-02T04:38:28.975Z</lastmod>
-    <data>
-        <display>
-        <title>No Zuo, No Die</title>
-        <pubTime>2017-06-17T13:45:34.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="Essay" url="http://ucasfl.me/categories/Essay/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/01/26/5-Practical-Skills-of-Vim-for-Experienced-Users/</loc>
+    <loc>http://ucasfl.me/2017/03/05/Linux-Command-Line-learning-notes-Part2/</loc>
     <lastmod>2017-09-02T04:38:28.971Z</lastmod>
     <data>
         <display>
-        <title>5 个针对有经验用户的 Vim 实用技巧</title>
-        <pubTime>2017-01-26T10:30:05.000Z</pubTime>
+        <title>《Linux 命令行大全》学习笔记 - Part 2</title>
+        <pubTime>2017-03-05T05:02:11.000Z</pubTime>
         
-        <tag>Vim/Translated </tag>
+        <tag>Reading-Summary </tag>
          
          
            
              
-              <breadCrumb title="Vim" url="http://ucasfl.me/categories/Vim/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/05/28/From-Ctex-to-TeXlive/</loc>
-    <lastmod>2017-09-02T04:38:28.971Z</lastmod>
-    <data>
-        <display>
-        <title>Ctex 到 TexLive</title>
-        <pubTime>2017-05-28T06:44:47.000Z</pubTime>
-        
-        <tag>Latex/TexLive </tag>
-         
-         
-           
-             
-              <breadCrumb title="LaTex" url="http://ucasfl.me/categories/LaTex/"/>
+              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
           
         </display>
     </data>
@@ -1904,6 +1884,46 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/05/28/From-Ctex-to-TeXlive/</loc>
+    <lastmod>2017-09-02T04:38:28.971Z</lastmod>
+    <data>
+        <display>
+        <title>Ctex 到 TexLive</title>
+        <pubTime>2017-05-28T06:44:47.000Z</pubTime>
+        
+        <tag>Latex/TexLive </tag>
+         
+         
+           
+             
+              <breadCrumb title="LaTex" url="http://ucasfl.me/categories/LaTex/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/01/26/5-Practical-Skills-of-Vim-for-Experienced-Users/</loc>
+    <lastmod>2017-09-02T04:38:28.971Z</lastmod>
+    <data>
+        <display>
+        <title>5 个针对有经验用户的 Vim 实用技巧</title>
+        <pubTime>2017-01-26T10:30:05.000Z</pubTime>
+        
+        <tag>Vim/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Vim" url="http://ucasfl.me/categories/Vim/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/04/29/Recursive-Theorem/</loc>
     <lastmod>2017-09-02T04:38:28.971Z</lastmod>
     <data>
@@ -1917,26 +1937,6 @@
            
              
               <breadCrumb title="Algorithms" url="http://ucasfl.me/categories/Algorithms/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/03/05/Linux-Command-Line-learning-notes-Part2/</loc>
-    <lastmod>2017-09-02T04:38:28.971Z</lastmod>
-    <data>
-        <display>
-        <title>《Linux 命令行大全》学习笔记 - Part 2</title>
-        <pubTime>2017-03-05T05:02:11.000Z</pubTime>
-        
-        <tag>Reading-Summary </tag>
-         
-         
-           
-             
-              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
           
         </display>
     </data>
@@ -1964,46 +1964,6 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/03/15/Linux-Comman-Shutdown-Command/</loc>
-    <lastmod>2017-09-02T04:38:28.959Z</lastmod>
-    <data>
-        <display>
-        <title>Linux 常用关机命令总结</title>
-        <pubTime>2017-03-15T06:57:53.000Z</pubTime>
-        
-        <tag>Linux/transshipment </tag>
-         
-         
-           
-             
-              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/09/19/4-Best%20-Load-Program-for-Linux/</loc>
-    <lastmod>2017-09-02T04:38:28.959Z</lastmod>
-    <data>
-        <display>
-        <title>4 个最好的 Linux 引导程序</title>
-        <pubTime>2016-09-19T09:36:37.000Z</pubTime>
-        
-        <tag>Linux/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ucasfl.me/2017/06/18/Name-Conflict-in-Python/</loc>
     <lastmod>2017-09-02T04:38:28.959Z</lastmod>
     <data>
@@ -2017,26 +1977,6 @@
            
              
               <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/03/02/Link-List/</loc>
-    <lastmod>2017-09-02T04:38:28.959Z</lastmod>
-    <data>
-        <display>
-        <title>链式线性表</title>
-        <pubTime>2017-03-02T07:58:45.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
           
         </display>
     </data>
@@ -2064,6 +2004,66 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2016/09/19/4-Best%20-Load-Program-for-Linux/</loc>
+    <lastmod>2017-09-02T04:38:28.959Z</lastmod>
+    <data>
+        <display>
+        <title>4 个最好的 Linux 引导程序</title>
+        <pubTime>2016-09-19T09:36:37.000Z</pubTime>
+        
+        <tag>Linux/Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/03/15/Linux-Comman-Shutdown-Command/</loc>
+    <lastmod>2017-09-02T04:38:28.959Z</lastmod>
+    <data>
+        <display>
+        <title>Linux 常用关机命令总结</title>
+        <pubTime>2017-03-15T06:57:53.000Z</pubTime>
+        
+        <tag>Linux/transshipment </tag>
+         
+         
+           
+             
+              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/03/02/Link-List/</loc>
+    <lastmod>2017-09-02T04:38:28.959Z</lastmod>
+    <data>
+        <display>
+        <title>链式线性表</title>
+        <pubTime>2017-03-02T07:58:45.000Z</pubTime>
+        
+        <tag>Data-Structures </tag>
+         
+         
+           
+             
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/05/23/8-Excellent-Open-Source-Markdown-Editor/</loc>
     <lastmod>2017-09-02T04:38:28.959Z</lastmod>
     <data>
@@ -2077,6 +2077,26 @@
            
              
               <breadCrumb title="Markdown" url="http://ucasfl.me/categories/Markdown/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/05/06/Tree-Part1/</loc>
+    <lastmod>2017-09-02T04:38:28.955Z</lastmod>
+    <data>
+        <display>
+        <title>树-Part1</title>
+        <pubTime>2017-05-06T07:01:22.000Z</pubTime>
+        
+        <tag>Data-Structures </tag>
+         
+         
+           
+             
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
           
         </display>
     </data>
@@ -2124,19 +2144,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/02/03/Linux-Command-Line-learnig-notes-Part1/</loc>
+    <loc>http://ucasfl.me/2017/02/13/Goodbye-for-Goodbye/</loc>
     <lastmod>2017-09-02T04:38:28.955Z</lastmod>
     <data>
         <display>
-        <title>《Linux 命令行大全》学习笔记 - Part 1</title>
-        <pubTime>2017-02-03T13:12:16.000Z</pubTime>
+        <title>再见，为了再见</title>
+        <pubTime>2017-02-13T15:38:20.000Z</pubTime>
         
-        <tag>Reading-Summary </tag>
+        <tag>Time </tag>
          
          
            
              
-              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
+              <breadCrumb title="Essay" url="http://ucasfl.me/categories/Essay/"/>
           
         </display>
     </data>
@@ -2164,19 +2184,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/05/06/Tree-Part1/</loc>
+    <loc>http://ucasfl.me/2017/02/03/Linux-Command-Line-learnig-notes-Part1/</loc>
     <lastmod>2017-09-02T04:38:28.955Z</lastmod>
     <data>
         <display>
-        <title>树-Part1</title>
-        <pubTime>2017-05-06T07:01:22.000Z</pubTime>
+        <title>《Linux 命令行大全》学习笔记 - Part 1</title>
+        <pubTime>2017-02-03T13:12:16.000Z</pubTime>
         
-        <tag>Data-Structures </tag>
+        <tag>Reading-Summary </tag>
          
          
            
              
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+              <breadCrumb title="Command" url="http://ucasfl.me/categories/Command/"/>
           
         </display>
     </data>
@@ -2184,19 +2204,19 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/02/13/Goodbye-for-Goodbye/</loc>
-    <lastmod>2017-09-02T04:38:28.955Z</lastmod>
+    <loc>http://ucasfl.me/2017/05/11/Graph-Part2/</loc>
+    <lastmod>2017-09-02T04:38:28.947Z</lastmod>
     <data>
         <display>
-        <title>再见，为了再见</title>
-        <pubTime>2017-02-13T15:38:20.000Z</pubTime>
+        <title>图-Part2</title>
+        <pubTime>2017-05-11T08:32:48.000Z</pubTime>
         
-        <tag>Time </tag>
+        <tag>Data-Structures </tag>
          
          
            
              
-              <breadCrumb title="Essay" url="http://ucasfl.me/categories/Essay/"/>
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
           
         </display>
     </data>
@@ -2244,26 +2264,6 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/05/11/Graph-Part2/</loc>
-    <lastmod>2017-09-02T04:38:28.947Z</lastmod>
-    <data>
-        <display>
-        <title>图-Part2</title>
-        <pubTime>2017-05-11T08:32:48.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ucasfl.me/2017/04/13/Ubuntu-17.04-Released/</loc>
     <lastmod>2017-09-02T04:38:28.943Z</lastmod>
     <data>
@@ -2277,46 +2277,6 @@
            
              
               <breadCrumb title="Linux-Distributions" url="http://ucasfl.me/categories/Linux-Distributions/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2016/09/19/Talk-of-the-Daughter-Linus/</loc>
-    <lastmod>2017-09-02T04:38:28.939Z</lastmod>
-    <data>
-        <display>
-        <title>Linus 之女谈计算机、大学、女权主义和提升技术界的多元化</title>
-        <pubTime>2016-09-19T08:48:56.000Z</pubTime>
-        
-        <tag>Linus/Translated </tag>
-         
-         
-           
-             
-              <breadCrumb title="Open-Source" url="http://ucasfl.me/categories/Open-Source/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/05/06/Tree-Part2/</loc>
-    <lastmod>2017-09-02T04:38:28.939Z</lastmod>
-    <data>
-        <display>
-        <title>树-Part2</title>
-        <pubTime>2017-05-06T07:52:46.000Z</pubTime>
-        
-        <tag>Data-Structures </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
           
         </display>
     </data>
@@ -2344,6 +2304,26 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/02/14/10-Top-Open-Source-Projects-of-2016/</loc>
+    <lastmod>2017-09-02T04:38:28.939Z</lastmod>
+    <data>
+        <display>
+        <title>2016 年十大顶级开源项目</title>
+        <pubTime>2017-02-14T10:37:24.000Z</pubTime>
+        
+        <tag>Translated </tag>
+         
+         
+           
+             
+              <breadCrumb title="Open-Source" url="http://ucasfl.me/categories/Open-Source/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/06/07/Start-Machine-Learning-with-Python/</loc>
     <lastmod>2017-09-02T04:38:28.939Z</lastmod>
     <data>
@@ -2364,14 +2344,34 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/02/14/10-Top-Open-Source-Projects-of-2016/</loc>
+    <loc>http://ucasfl.me/2017/05/06/Tree-Part2/</loc>
     <lastmod>2017-09-02T04:38:28.939Z</lastmod>
     <data>
         <display>
-        <title>2016 年十大顶级开源项目</title>
-        <pubTime>2017-02-14T10:37:24.000Z</pubTime>
+        <title>树-Part2</title>
+        <pubTime>2017-05-06T07:52:46.000Z</pubTime>
         
-        <tag>Translated </tag>
+        <tag>Data-Structures </tag>
+         
+         
+           
+             
+              <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2016/09/19/Talk-of-the-Daughter-Linus/</loc>
+    <lastmod>2017-09-02T04:38:28.939Z</lastmod>
+    <data>
+        <display>
+        <title>Linus 之女谈计算机、大学、女权主义和提升技术界的多元化</title>
+        <pubTime>2016-09-19T08:48:56.000Z</pubTime>
+        
+        <tag>Linus/Translated </tag>
          
          
            

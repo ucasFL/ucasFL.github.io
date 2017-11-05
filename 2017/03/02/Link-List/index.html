@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,7 +51,22 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Data-Structures," />
@@ -53,11 +76,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -102,19 +120,31 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -141,7 +171,16 @@
 
 
 
-  <title> 链式线性表 | 春暖花开 </title>
+  <title>链式线性表 | 春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,22 +190,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,28 +237,8 @@
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -244,41 +248,9 @@
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -302,47 +274,41 @@
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/02/Link-List/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/02/Link-List/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
+                  <header class="post-header">
 
 
 
-                  <h1 class="post-title" itemprop="name headline">
+                    <h1 class="post-title" itemprop="name headline">链式线性表</h1>
 
 
-
-                    链式线性表
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T15:58:45+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T15:58:45+08:00">
                 2017/03/02
               </time>
 
@@ -350,48 +316,43 @@
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Structures/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
+                      </span>
 
 
 
 
-
-
-
-
-                    <span id="/2017/03/02/Link-List/" class="leancloud_visitors" data-flag-title="链式线性表">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                      <a href="/2017/03/02/Link-List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/03/02/Link-List/" itemprop="commentsCount"></span>
+                </a>
+                      </span>
 
 
 
@@ -400,122 +361,86 @@
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
-
-                  <h3 id="线性表的链式表示和实现"><a href="#线性表的链式表示和实现" class="headerlink" title="线性表的链式表示和实现"></a>线性表的链式表示和实现</h3>
-                  <ul>
-                    <li>线性表的链式存储是指用一组任意的 ( 连续的或不连续的 ) 存储单元存储线性表中的数据元素；</li>
-                    <li>为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；</li>
-                  </ul>
-                  <h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4>
-                  <ul>
-                    <li>单链表：每一个结点只包含一个指向直接后继的指针域；</li>
-                    <li>双向链表：每一个结点包含两个指针域,其一指向直接后继,另一指向直接前驱；</li>
-                    <li>循环链表：整个链表的指针域链接成一个或多个环；</li>
-                    <li>双向循环链表：将头结点和尾结点链接起来的双向链表；</li>
-                  </ul>
-                  <a id="more"></a>
-                  <p>为操作方便,总是在链表的第一个结点之前附设一个头结点:头结点的数据域可以不存储任何信息 ( 或存储链表长度等信息 ),头结点的指针域存储指向第一个结点的指针 ( 即第一个结点的存储位置 )。</p>
-                  <h3 id="C-语言实现"><a href="#C-语言实现" class="headerlink" title="C 语言实现"></a>C 语言实现</h3>
-                  <figure class="highlight xl">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line"><span class="comment">//宏定义</span></div><div class="line">#define OK <span class="number">1</span></div><div class="line">#define ERROR <span class="number">0</span></div><div class="line">#define OVERFLOW -<span class="number">1</span></div><div class="line">#define LESS -<span class="number">1</span></div><div class="line">#define GREATER <span class="number">1</span></div><div class="line"></div><div class="line">#define LIST_INIT_SIZE <span class="number">100</span>    <span class="comment">//线性表存储空间的初始分配量</span></div><div class="line">#define LISTINCREMENT <span class="number">10</span>     <span class="comment">//线性表存储空间的分配增量</span></div><div class="line"></div><div class="line">typedef int Status;</div><div class="line">typedef int ElemType;</div><div class="line"></div><div class="line"><span class="comment">//结点的类型定义</span></div><div class="line">typedef struct Lnode&#123;</div><div class="line">  ElemType <span class="keyword">data</span>; <span class="comment">/* 数据域,保存结点的值 */</span></div><div class="line">  struct Lnode *next; <span class="comment">/* 指针域 */</span></div><div class="line">  &#125;Lnode, LinkList;<span class="comment">/* 结点的类型 */</span></div><div class="line"></div><div class="line"><span class="comment">//结点赋值</span></div><div class="line">LNode *p;</div><div class="line">p=(LNode*)malloc(sizeof(LNode));</div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">data</span>=20; p-&gt;</span>next=NULL ;</div><div class="line"></div><div class="line"><span class="comment">//创建单链表</span></div><div class="line">LinkList *CreateList_L(int n) &#123;</div><div class="line"><span class="comment">// 逆序输入随机生成的 n 个元素的值</span></div><div class="line"><span class="comment">// 建立带表头结点的单链表 L</span></div><div class="line">LinkList *L,*p; int i;</div><div class="line"><span class="comment">// 先建立一个带头结点的空单链表</span></div><div class="line">L = (LinkList *)malloc(sizeof(LNode));</div><div class="line">L-&gt;next = NULL;</div><div class="line"><span class="keyword">for</span> (i=n; i&gt;<span class="number">0</span>; --i) &#123;</div><div class="line">p = (LinkList *)malloc(sizeof(LNode)); <span class="comment">// 生成新结点</span></div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="keyword">data</span> =random(<span class="number">200</span>);<span class="comment">// 随机生成一个 200 以内的数字</span></div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span> = L-&gt;</span><span class="function"><span class="title">next</span>; L-&gt;</span>next = p; <span class="comment">// 插入到表头</span></div><div class="line">&#125;</div><div class="line">return L;</div><div class="line">&#125; <span class="comment">// CreateList_L</span></div><div class="line"></div><div class="line"><span class="comment">//单链表的插入</span></div><div class="line">Status ListInsert_L(LinkList *L, int i, ElemType e) &#123;</div><div class="line">  <span class="comment">// 在带头结点的单链表 L 的第 i 个元素之前插入元素e</span></div><div class="line">  LinkList *p, *s;</div><div class="line">  p = L;</div><div class="line">  int j = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (p &amp;&amp; j &lt; i-<span class="number">1</span>) &#123;<span class="comment">// 寻找第 i-1 个结点度、</span></div><div class="line">    <span class="function"><span class="title">p</span> = p-&gt;</span>next；</div><div class="line">    ++j;</div><div class="line">   &#125;</div><div class="line"><span class="comment">// i 小于 1( 导致 j&gt;i-1 成立 ) 或者大于表长 ( 导致 p 为 NULL)</span></div><div class="line">  <span class="keyword">if</span>(!p || j &gt; i-<span class="number">1</span>)</div><div class="line">     return ERROR;</div><div class="line">  s = (LinkList *)malloc(sizeof(LNode)); <span class="comment">// 生成新结点</span></div><div class="line">  <span class="function"><span class="title">s</span>-&gt;</span><span class="keyword">data</span> = e;</div><div class="line">  <span class="function"><span class="title">s</span>-&gt;</span><span class="function"><span class="title">next</span> = p-&gt;</span>next; <span class="comment">// 插入 L 中</span></div><div class="line">  <span class="function"><span class="title">p</span>-&gt;</span>next = s;</div><div class="line">  return OK;</div><div class="line">&#125; <span class="comment">// LinstInsert_L</span></div><div class="line"></div><div class="line"><span class="comment">//单链表的删除</span></div><div class="line">Status ListDelete_L(LinkList *L, int i, ElemType *e) &#123;<span class="comment">// 在带头结点的单链表 L 中删除第 i 个元素,并由 e 返回其值</span></div><div class="line">  int j = <span class="number">0</span>;</div><div class="line">  LinkList *p,*q;</div><div class="line">  p = L;</div><div class="line">  <span class="function"><span class="title">while</span> (p-&gt;</span>next &amp;&amp; j &lt; i-<span class="number">1</span>) &#123;</div><div class="line">    <span class="comment">// 寻找第 i 个结点,并令 p 指向其前趋</span></div><div class="line">    <span class="function"><span class="title">p</span> = p-&gt;</span>next; ++j;</div><div class="line">   &#125;</div><div class="line">    <span class="comment">// i 小于 1( 导致 j&gt;i-1 成立 ) 或者大于表长 ( 导致 p-&gt;next 为 NULL)</span></div><div class="line">  <span class="function"><span class="title">if</span> (!(p-&gt;</span>next) || j &gt; i-<span class="number">1</span>)</div><div class="line">      return ERROR;</div><div class="line">  <span class="function"><span class="title">q</span> = p-&gt;</span>next;</div><div class="line">  <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span> = q-&gt;</span>next; <span class="comment">// 删除并释放结点</span></div><div class="line">  <span class="function"><span class="title">e</span> = q-&gt;</span><span class="keyword">data</span>;</div><div class="line">  free(q);</div><div class="line">  return OK;</div><div class="line">&#125; <span class="comment">// ListDelete_L</span></div><div class="line"></div><div class="line"><span class="comment">//单链表查找</span></div><div class="line">Status GetElem_L(LinkList *L,int i, ElemType *e) &#123;</div><div class="line"><span class="comment">// L 为带头结点的单链表的头指针</span></div><div class="line"><span class="comment">// 当第 i 个元素存在时,其值赋给 e 并返回 OK ,否则返回 ERROR</span></div><div class="line"><span class="comment">// 初始化, p 指向第一个结点, j 为计数器</span></div><div class="line">   LinkList *p;</div><div class="line">   <span class="function"><span class="title">p</span> = L-&gt;</span>next;</div><div class="line">   int j = <span class="number">1</span>;</div><div class="line">   <span class="keyword">while</span> (p &amp;&amp; j&lt;i) &#123;</div><div class="line">  <span class="comment">// 顺指针向后查找,直到 p 指向第 i 个元素或 p 为空</span></div><div class="line">      <span class="function"><span class="title">p</span> = p-&gt;</span>next;</div><div class="line">      ++j;</div><div class="line">    &#125;</div><div class="line">   <span class="keyword">if</span> ( !p || j&gt;i )</div><div class="line">      return ERROR; <span class="comment">// 第 i 个元素不存在</span></div><div class="line">   *<span class="function"><span class="title">e</span> = p-&gt;</span><span class="keyword">data</span>; <span class="comment">// 取第 i 个元素</span></div><div class="line">   return OK;</div><div class="line">&#125; <span class="comment">// GetElem_L</span></div><div class="line"></div><div class="line"><span class="comment">//合并有序链表</span></div><div class="line">LinkList *MergeList_L(LinkList *La, LinkList *Lb) &#123;</div><div class="line"><span class="comment">// 合并 两非递减单链表 La 和 Lb ,成新的单链表 Lc , Lc的元素也按值非递减排列。 pa, pb 为两个链表的当前结点。</span></div><div class="line">   LinkList *Lc, *pa, *pb, *pc; <span class="comment">//pc 为合并后链表的最后一个结点</span></div><div class="line">   <span class="function"><span class="title">pa</span> = La-&gt;</span>next;</div><div class="line">   <span class="function"><span class="title">pb</span> = Lb-&gt;</span>next;</div><div class="line">   Lc = pc = La; <span class="comment">// 用 La 的头结点作为 Lc 的头结点</span></div><div class="line">   <span class="keyword">while</span> (pa &amp;&amp; pb) &#123;</div><div class="line">     <span class="function"><span class="title">if</span> (pa-&gt;</span><span class="function"><span class="title">data</span> &lt;= pb-&gt;</span><span class="keyword">data</span>) &#123;</div><div class="line">       <span class="function"><span class="title">pc</span>-&gt;</span>next = pa;</div><div class="line">       pc = pa;</div><div class="line">       <span class="function"><span class="title">pa</span> = pa-&gt;</span>next;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">else</span> &#123;</div><div class="line">       <span class="function"><span class="title">pc</span>-&gt;</span>next = pb;</div><div class="line">       pc = pb;</div><div class="line">       <span class="function"><span class="title">pb</span> = pb-&gt;</span>next;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">   <span class="function"><span class="title">pc</span>-&gt;</span>next = pa ? pa : pb; <span class="comment">// 插入剩余段</span></div><div class="line">   free(Lb); <span class="comment">// 释放 Lb 的头结点</span></div><div class="line">   Return Lc;</div><div class="line">&#125; <span class="comment">// MergeList_L</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>当前链表存在的问题：</p>
-                  <ul>
-                    <li>链表的表长是隐含的；</li>
-                    <li>若要在链表的最后一个元素之后插入元素,那么要遍历整个链表；</li>
-                    <li>结点的当前位置很重要；</li>
-                  </ul>
-                  <p>改进的措施：</p>
-                  <ul>
-                    <li>增加变量,分别表示:表长、表尾、当前位置；</li>
-                    <li>将操作中的参数“位序 i ” 改为“当前位置”；</li>
-                  </ul>
-                  <figure class="highlight rust">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="comment">//改进的单链表</span></div><div class="line"></div><div class="line"><span class="comment">// 结点类型</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span></span> &#123;</div><div class="line">  ElemType data;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span></span> *next;</div><div class="line">  &#125; Link, Position;</div><div class="line"></div><div class="line"><span class="comment">// 链表类型</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  <span class="comment">// head, tail 分别指向头结点和最后一个结点的指针</span></div><div class="line">  Link *head, *tail;</div><div class="line"><span class="comment">// current 指向当前被访问的结点的指针</span></div><div class="line"><span class="comment">// Link *current; // 其初始位置指向头结点</span></div><div class="line"><span class="comment">// int curpos; // 指示当前指针位置 , 初值为 0</span></div><div class="line">  <span class="keyword">int</span> len;</div><div class="line"><span class="comment">// 指示链表长度</span></div><div class="line">&#125; LinkList;</div><div class="line"></div><div class="line"><span class="comment">//构造新链表</span></div><div class="line">LinkList *InitList()&#123;</div><div class="line">  LinkList *L; Link *p;</div><div class="line">  L=(LinkList *)malloc(<span class="keyword">sizeof</span>(LinkList));</div><div class="line">  <span class="keyword">if</span> (!L)</div><div class="line">    <span class="keyword">return</span> NULL;</div><div class="line">  p=(Link *)malloc(<span class="keyword">sizeof</span>(LNode));</div><div class="line">  <span class="keyword">if</span>(!p)</div><div class="line">    <span class="keyword">return</span> NULL;</div><div class="line">  L-&gt;len=<span class="number">0</span>;</div><div class="line">  L-&gt;head=L-&gt;tail=p;</div><div class="line">  <span class="keyword">return</span> L;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使得 p 指向 L 的第 i 个结点,并返回 p</span></div><div class="line">Link *LocatePos(LinkList *L, <span class="keyword">int</span> i)&#123;</div><div class="line">  Link *cur; <span class="keyword">int</span> j=<span class="number">1</span>;</div><div class="line">  cur=L-&gt;head;</div><div class="line">  <span class="keyword">while</span>(cur &amp;&amp; j&lt;=i) &#123; <span class="comment">// 寻找第 i 个结点</span></div><div class="line">     cur=cur-&gt;next;</div><div class="line">     j++;</div><div class="line">   &#125;</div><div class="line">  <span class="keyword">if</span> (!cur)</div><div class="line">     <span class="keyword">return</span> NULL;</div><div class="line">  <span class="keyword">return</span> cur;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 将 s 所指结点插入在链表 L 的 h 所指的结点之后</span></div><div class="line">Status InsAfter (LinkList *L, Link *h, Link *s)&#123;</div><div class="line">  <span class="keyword">if</span>(!L-&gt;head) <span class="keyword">return</span> ERROR;</div><div class="line">  L-&gt;len++;</div><div class="line">  <span class="keyword">if</span> (L-&gt;tail==h)</div><div class="line">     L-&gt;tail=s;</div><div class="line">  s-&gt;next=h-&gt;next;</div><div class="line">  h-&gt;next=s;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在链表L的第i个结点前插入元素</span></div><div class="line">Status ListInsert_L(LinkList *L, <span class="keyword">int</span> i, ElemType e)&#123;</div><div class="line">   <span class="comment">// 在链表 L 的第 i 个结点之前插入元素 e</span></div><div class="line">   Link *p,*s;</div><div class="line">   <span class="keyword">int</span> j=<span class="number">0</span>;</div><div class="line">   p=L-&gt;head;</div><div class="line">   <span class="keyword">while</span> (p &amp;&amp; j&lt;i-<span class="number">1</span>) &#123;<span class="comment">// 寻找第 i-1 个结点</span></div><div class="line">     p=p-&gt;next;j++;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">if</span>(!p || j&gt;i-<span class="number">1</span>) <span class="keyword">return</span> ERROR;</div><div class="line">   s= MakeNode(e);</div><div class="line">   <span class="keyword">if</span> (!s) <span class="keyword">return</span> ERROR;</div><div class="line">   <span class="keyword">if</span>(L-&gt;tail==p)</div><div class="line">      L-&gt;tail=s;</div><div class="line">   L-&gt;len++;</div><div class="line">   s-&gt;next=p-&gt;next;</div><div class="line">   p-&gt;next=s;</div><div class="line">   <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//单链表运用-一元多项式</span></div><div class="line"><span class="comment">// 用带头结点的有序链表表示多项式</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span>&#123;</div><div class="line"><span class="keyword">int</span> c; <span class="comment">// 多项式,系数, 可以用 float 类型</span></div><div class="line"><span class="keyword">int</span> e; <span class="comment">// 多项式,指数</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span> *next;</div><div class="line">&#125;Polynomial;</div><div class="line"></div><div class="line"><span class="comment">//创建一元多项式</span></div><div class="line"><span class="comment">// 输入 m 项的系数和指数,建立表示一元多项式的有序链表P</span></div><div class="line">Polynomial *Create(<span class="keyword">int</span> m)&#123;</div><div class="line">  Polynomial *head,*p,*q; <span class="keyword">int</span> i;</div><div class="line"><span class="comment">// 生成头结点</span></div><div class="line">  p=head=(Polynomial*) malloc(<span class="keyword">sizeof</span>(Polynomial));</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=m;i++)&#123; <span class="comment">// 依次输入 m 个非零项</span></div><div class="line">     q=(Polynomial *)malloc(<span class="keyword">sizeof</span>(Polynomial));</div><div class="line">     scanf(“%d %d”,&amp;q-&gt;c,&amp;q-&gt;e);</div><div class="line">     p-&gt;next = q;</div><div class="line">     p=q;</div><div class="line">   &#125;</div><div class="line">  p-&gt;next=NULL;</div><div class="line">  <span class="keyword">return</span> head;</div><div class="line">&#125; <span class="comment">// Create</span></div><div class="line"></div><div class="line"><span class="comment">//多项式相加</span></div><div class="line">void Plus(Polynomial *pa,Polynomial *pb)&#123;</div><div class="line">  Polynomial*h,*p1,*p2,*q;</div><div class="line">  h=pa; p1=pa-&gt;next;p2=pb-&gt;next; <span class="comment">//p1,p2 分别指向 pa 和 pb 的第一个结点</span></div><div class="line">  <span class="keyword">while</span>(p1!=NULL &amp;&amp; p2!=NULL)</div><div class="line">  switch(Compare(p1-&gt;e, p2-&gt;e)) &#123;</div><div class="line">  case <span class="number">1</span>: &#123; <span class="comment">//p1 所指结点的指数值大,将 p2 的结点连接到 h</span></div><div class="line">     h-&gt;next=p2;</div><div class="line">     h=p2;</div><div class="line">     p2=p2-&gt;next;</div><div class="line">     <span class="keyword">break</span>;</div><div class="line">   &#125;</div><div class="line">  case -<span class="number">1</span>: &#123;<span class="comment">//p2 所指结点的指数大,将 p1 的结点连接到 h</span></div><div class="line">     h-&gt;next=p1;</div><div class="line">     h=p1;</div><div class="line">     p1=p1-&gt;next;</div><div class="line">     <span class="keyword">break</span>;</div><div class="line">   &#125;</div><div class="line">  case <span class="number">0</span>: &#123; <span class="comment">// p1, p2 的指数一样大</span></div><div class="line">    <span class="keyword">if</span>(p1-&gt;c + p2-&gt;c !=<span class="number">0</span>) &#123; <span class="comment">// 系数相加,和不为 0 ,修改 p1 的系数</span></div><div class="line">       p1-&gt;c =p1-&gt;c +p2-&gt;c;</div><div class="line">       h-&gt;next=p1; h=p1; p1=p1-&gt;next;</div><div class="line">       q=p2; p2=p2-&gt;next; free(q);</div><div class="line">  &#125;</div><div class="line">    <span class="keyword">else</span> &#123; <span class="comment">// 系数相加,和为 0 ,则去掉结点</span></div><div class="line">       q=p1;p1=p1-&gt;next;free(q);</div><div class="line">       q=p2;p2=p2-&gt;next;free(q);</div><div class="line">  &#125;</div><div class="line">  Status Compare(<span class="keyword">int</span> a,<span class="keyword">int</span> b)&#123;</div><div class="line">  <span class="keyword">if</span>(a&gt;b) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">if</span>(a&lt;b) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">  <span class="keyword">if</span>(p1!=NULL)</div><div class="line">     h-&gt;next =p1;</div><div class="line">  <span class="keyword">else</span></div><div class="line">     h-&gt;next= p2;</div><div class="line">  free(pb);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//单链表的 C 数组实现:静态链表</span></div><div class="line"></div><div class="line">#define MAXSIZE <span class="number">1000</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">SLinked</span></span>&#123;</div><div class="line">ElemType data;</div><div class="line"><span class="keyword">int</span> cur;</div><div class="line">&#125; SLinkedList[MAXSIZE];</div><div class="line">SLinkedList s;</div><div class="line"></div><div class="line"><span class="comment">//静态链表初始化</span></div><div class="line">void InitList(SLinkedList space)&#123;</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;MAXSIZE-<span class="number">1</span>;i++)</div><div class="line">     space[i].cur=i+<span class="number">1</span>;</div><div class="line">   space[MAXSIZE-<span class="number">1</span>].cur=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 创建一个含有 n 个结点的静态链表,返回表头在存储数组的位置</span></div><div class="line"><span class="keyword">int</span> CreateList(SLinkedList space,<span class="keyword">int</span> n)&#123;</div><div class="line">    <span class="keyword">int</span> head,k,s,i;</div><div class="line">    k=AllocNode(space); <span class="comment">// 从空闲链表中取得一个空结点</span></div><div class="line">    head=k;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">       s=AllocNode(space);</div><div class="line">       scanf(<span class="string">"%d"</span>,&amp;space[s].data);</div><div class="line">       space[k].cur=s;</div><div class="line">       k=s;</div><div class="line">     &#125;</div><div class="line">    space[k].cur=<span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//从空闲链表中分配一个结点和释放一个结点</span></div><div class="line"><span class="comment">// 若空闲链表非空,则返回分配的结点下标,否则返回 0</span></div><div class="line"><span class="keyword">int</span> AllocNode(SLinkedList space)&#123;</div><div class="line"><span class="keyword">int</span> i;</div><div class="line">i=space[<span class="number">0</span>].cur;</div><div class="line"><span class="keyword">if</span>(i==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">space[<span class="number">0</span>].cur=space[i].cur;</div><div class="line"><span class="keyword">return</span> i;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 将下标为 i 的空闲结点回收到备用链表</span></div><div class="line">void FreeNode(SLinkedList space,<span class="keyword">int</span> i)&#123;</div><div class="line">space[i].cur=space[<span class="number">0</span>].cur;</div><div class="line">space[<span class="number">0</span>].cur=i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 在以 head 为表头的静态链表中,在第 i 个结点之前插入一个值为 x 的新结点</span></div><div class="line"><span class="keyword">int</span> Insert(SLinkedList space,<span class="keyword">int</span> head,<span class="keyword">int</span> i,ElemType x)&#123;</div><div class="line">  <span class="keyword">int</span> j,k,m;</div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  k=head;j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (k!=<span class="number">0</span> &amp;&amp; j&lt;i-<span class="number">1</span>)&#123; <span class="comment">// 查找第 i-1 个结点</span></div><div class="line">     j++;k=space[k].cur;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(k==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  m=AllocNode(space); <span class="comment">// 从空闲链表中获取结点, m 为该结点下标</span></div><div class="line">  <span class="keyword">if</span> (m!=<span class="number">0</span>)&#123;</div><div class="line">    space[m].data=x;</div><div class="line">    space[m].cur=space[k].cur;</div><div class="line">    space[k].cur=m;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 在以 head 为表头的静态链表中,删除第 i 个结点</span></div><div class="line"><span class="keyword">int</span> Delete(SLinkedList space,<span class="keyword">int</span> head,<span class="keyword">int</span> i, ElemType *e)&#123;</div><div class="line">  <span class="keyword">int</span> j,k,m; <span class="keyword">if</span>(i&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  k=head;j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (k!=<span class="number">0</span> &amp;&amp; j &lt;i-<span class="number">1</span>)&#123; <span class="comment">// 查找第 i-1 个结点</span></div><div class="line">    j++;k=space[k].cur;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(k==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  m=space[k].cur;</div><div class="line">  space[k].cur=space[m].cur;</div><div class="line">  *e=space[m].data;</div><div class="line">  FreeNode(space,m);</div><div class="line">  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在以 head 为表头的静态链表中,确定第 1 个值为 x</span></div><div class="line">的结点的位置</div><div class="line"><span class="comment">// 若找到,则返回它在存储数组中的位置,否则返回 0</span></div><div class="line"><span class="keyword">int</span> Locate(SLinkedList space, <span class="keyword">int</span> head,ElemType x)&#123;</div><div class="line">   <span class="keyword">int</span> k;</div><div class="line">   k=space[head].cur; <span class="comment">// k 指示静态链表中的第一个结点</span></div><div class="line">   <span class="keyword">while</span>(k!=<span class="number">0</span> &amp;&amp; space[k].data!=x)</div><div class="line">   k=space[k].cur; <span class="comment">// 顺链查找</span></div><div class="line">   <span class="keyword">return</span> k;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//集合合并</span></div><div class="line">void MergeAB(SLinkedList A, <span class="keyword">int</span> ha,SLinkedList B, <span class="keyword">int</span> hb)&#123;</div><div class="line">  <span class="keyword">int</span> i,j,k,m;</div><div class="line">  ElemType x;</div><div class="line">  j=B[hb].cur;</div><div class="line">  <span class="keyword">while</span>(j!=<span class="number">0</span>)&#123; <span class="comment">// 对 hb 中的每个结点,进行下面的步骤</span></div><div class="line">    x=B[j].data;</div><div class="line">    i=Locate(A,ha,x); <span class="comment">// 链表 ha 中查找有无 hb 中的元素</span></div><div class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>)</div><div class="line">       Insert(A,ha,<span class="number">1</span>,x); <span class="comment">// 将该元素插入 ha ,成为 ha的第一个元素</span></div><div class="line">   <span class="keyword">else</span> &#123; <span class="comment">// ha 有 hb 中的元素,则将该元素从 ha 中删除</span></div><div class="line">      m=<span class="number">0</span>;k=ha;</div><div class="line">      <span class="keyword">while</span>(k!=i)&#123;</div><div class="line">       m++;k=A[k].cur;</div><div class="line">     &#125;</div><div class="line">      Delete(A,ha,m,&amp;x);</div><div class="line">    &#125;</div><div class="line">   j=B[j].cur;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>双向链表：构成链表的每个结点中设立两个指针域,一个指向其直接前趋的指针域 prior ,一个指向其直接后继的指针域 next；</p>
-                  <figure class="highlight xl">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">typedef struct node &#123;</div><div class="line">   ElemType <span class="keyword">data</span> ;</div><div class="line">   struct node *prior , *next ;</div><div class="line">&#125; DoubleLinkedList;</div><div class="line"></div><div class="line"><span class="comment">//创建长度为n的双向链表</span></div><div class="line">DoubleLinkedList *CreateDoubleLinkedList(int n)&#123;   </div><div class="line">   DoubleLinkedList *head,*p,*s; int i;</div><div class="line">   <span class="comment">// 创建头结点</span></div><div class="line">   p=head=(DoubleLinkedList *)malloc(sizeof(DoubleLinkedList));</div><div class="line">   <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">     s=(DoubleLinkedList *) malloc(sizeof(DoubleLinkedList));</div><div class="line">     <span class="function"><span class="title">scanf</span>("%d",&amp;s-&gt;</span><span class="keyword">data</span>);</div><div class="line">     <span class="function"><span class="title">s</span>-&gt;</span><span class="function"><span class="title">prior</span>=p; p-&gt;</span>next=s; p=s;</div><div class="line">   &#125;</div><div class="line">   <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span>= head; head-&gt;</span>prior = p;</div><div class="line">   return head;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在双向链表中查找第 1 个值为 e 的结点</span></div><div class="line">DoubleLinkedList *Locate(DoubleLinkedList *head,ElemType e)&#123;</div><div class="line">  DoubleLinkedList *p;</div><div class="line">  <span class="function"><span class="title">p</span>=head-&gt;</span>next; <span class="comment">//p 指向第一个结点</span></div><div class="line">  <span class="function"><span class="title">while</span>(p!=head &amp;&amp; p-&gt;</span><span class="keyword">data</span> !=e)</div><div class="line">    <span class="function"><span class="title">p</span>=p-&gt;</span>next;</div><div class="line">  <span class="keyword">if</span>(p==head) return NULL;</div><div class="line">  <span class="keyword">else</span> return p;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在双向链表中查找第 1 个值为 e 的结点</span></div><div class="line"><span class="comment">// 返回指向第 i 个结点的指针</span></div><div class="line">DoubleLinkedList *GetElemP(DoubleLinkedList *head,int i) &#123;</div><div class="line">  DoubleLinkedList *p;int j;</div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span>) return <span class="number">0</span>;</div><div class="line">  <span class="function"><span class="title">p</span>=head-&gt;</span>next; <span class="comment">// 初始化, p 指向第一个结点</span></div><div class="line">  j=<span class="number">1</span>; <span class="comment">//j 为计数器</span></div><div class="line">  <span class="keyword">while</span>(p!=head &amp;&amp; j&lt;i)&#123;</div><div class="line">  <span class="comment">// 顺指针向后查找,直到 p 指向第 i 个结点或 p 为空</span></div><div class="line">      <span class="function"><span class="title">p</span>=p-&gt;</span>next; j++;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(p==head &amp;&amp; j&lt;i) return NULL; <span class="comment">// 第 i 个元素不存在</span></div><div class="line">  return p;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在双向链表第 i 个结点之前插入元素 e</span></div><div class="line">int InsertElem(DoubleLinkedList *head,int i,ElemType e)&#123;</div><div class="line">  DoubleLinkedList *p,*q;int j;</div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span>) return <span class="number">0</span>; <span class="comment">// i 的合法值为 1≤i≤ 表长 +1</span></div><div class="line">  p=head;j=<span class="number">0</span>;</div><div class="line">  <span class="function"><span class="title">while</span>(p-&gt;</span>next!=head &amp;&amp; j&lt;i-<span class="number">1</span>)&#123; <span class="comment">// 在 L 中确定第 i 个元素的位置指针 p</span></div><div class="line">    <span class="function"><span class="title">p</span>=p-&gt;</span>next;j++;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="title">if</span>(p-&gt;</span><span class="function"><span class="title">next</span>!=head || (p-&gt;</span>next == head &amp;&amp; j==i-<span class="number">1</span>))&#123;</div><div class="line">    q=(DoubleLinkedList *)malloc(sizeof(DoubleLinkedList));</div><div class="line">    <span class="function"><span class="title">q</span>-&gt;</span><span class="keyword">data</span>=e;</div><div class="line">    <span class="function"><span class="title">q</span>-&gt;</span><span class="function"><span class="title">next</span>=p-&gt;</span><span class="function"><span class="title">next</span>; q-&gt;</span>prior=p;</div><div class="line">    <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span>-&gt;</span><span class="function"><span class="title">prior</span>=q; p-&gt;</span>next=q;</div><div class="line">    return <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> return <span class="number">0</span>; <span class="comment">// 第 i 个元素不存在</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在双向链表中删除第 i 个结点</span></div><div class="line"><span class="comment">// 当第 i 个结点存在时,删除它并返回其值,否则返回 NULL</span></div><div class="line">int DeleteNode(DoubleLinkedList *head,int i,ElemType *e)&#123;</div><div class="line">  DoubleLinkedList *p,*q;</div><div class="line">  int j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span>) return <span class="number">0</span>;</div><div class="line">  <span class="function"><span class="title">p</span>=head-&gt;</span>next; <span class="comment">// p 指向第一个结点</span></div><div class="line">  <span class="keyword">while</span>(p != head &amp;&amp; j&lt;i)&#123;</div><div class="line"><span class="comment">// 顺指针向后查找,直到 p 指向第 i 个结点或 p 为空</span></div><div class="line">     <span class="function"><span class="title">p</span>=p-&gt;</span>next;</div><div class="line">     j++;</div><div class="line">   &#125;</div><div class="line">  <span class="keyword">if</span>(p ==head &amp;&amp; j&lt;i ) return <span class="number">0</span>; <span class="comment">// 第 i 个结点不存在</span></div><div class="line">  <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">prior</span>-&gt;</span><span class="function"><span class="title">next</span>=p-&gt;</span>next;</div><div class="line">  <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span>-&gt;</span><span class="function"><span class="title">prior</span>=p-&gt;</span>prior;</div><div class="line">  *<span class="function"><span class="title">e</span>=p-&gt;</span><span class="keyword">data</span>;</div><div class="line">  free(p);</div><div class="line">  return <span class="number">1</span>;</div><div class="line">&#125;</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-
-                </div>
-
-                <div>
+                    </div>
+                  </header>
 
 
 
 
-                </div>
 
-                <div>
-
+                  <div class="post-body" itemprop="articleBody">
 
 
 
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-                  <div class="post-tags">
-
-                    <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
+                    <h3 id="线性表的链式表示和实现"><a href="#线性表的链式表示和实现" class="headerlink" title="线性表的链式表示和实现"></a>线性表的链式表示和实现</h3>
+                    <ul>
+                      <li>线性表的链式存储是指用一组任意的 ( 连续的或不连续的 ) 存储单元存储线性表中的数据元素；</li>
+                      <li>为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；</li>
+                    </ul>
+                    <h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4>
+                    <ul>
+                      <li>单链表：每一个结点只包含一个指向直接后继的指针域；</li>
+                      <li>双向链表：每一个结点包含两个指针域,其一指向直接后继,另一指向直接前驱；</li>
+                      <li>循环链表：整个链表的指针域链接成一个或多个环；</li>
+                      <li>双向循环链表：将头结点和尾结点链接起来的双向链表；</li>
+                    </ul>
+                    <a id="more"></a>
+                    <p>为操作方便,总是在链表的第一个结点之前附设一个头结点:头结点的数据域可以不存储任何信息 ( 或存储链表长度等信息 ),头结点的指针域存储指向第一个结点的指针 ( 即第一个结点的存储位置 )。</p>
+                    <h3 id="C-语言实现"><a href="#C-语言实现" class="headerlink" title="C 语言实现"></a>C 语言实现</h3>
+                    <figure class="highlight xl">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line"><span class="comment">//宏定义</span></div><div class="line">#define OK <span class="number">1</span></div><div class="line">#define ERROR <span class="number">0</span></div><div class="line">#define OVERFLOW -<span class="number">1</span></div><div class="line">#define LESS -<span class="number">1</span></div><div class="line">#define GREATER <span class="number">1</span></div><div class="line"></div><div class="line">#define LIST_INIT_SIZE <span class="number">100</span>    <span class="comment">//线性表存储空间的初始分配量</span></div><div class="line">#define LISTINCREMENT <span class="number">10</span>     <span class="comment">//线性表存储空间的分配增量</span></div><div class="line"></div><div class="line">typedef int Status;</div><div class="line">typedef int ElemType;</div><div class="line"></div><div class="line"><span class="comment">//结点的类型定义</span></div><div class="line">typedef struct Lnode&#123;</div><div class="line">  ElemType <span class="keyword">data</span>; <span class="comment">/* 数据域,保存结点的值 */</span></div><div class="line">  struct Lnode *next; <span class="comment">/* 指针域 */</span></div><div class="line">  &#125;Lnode, LinkList;<span class="comment">/* 结点的类型 */</span></div><div class="line"></div><div class="line"><span class="comment">//结点赋值</span></div><div class="line">LNode *p;</div><div class="line">p=(LNode*)malloc(sizeof(LNode));</div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">data</span>=20; p-&gt;</span>next=NULL ;</div><div class="line"></div><div class="line"><span class="comment">//创建单链表</span></div><div class="line">LinkList *CreateList_L(int n) &#123;</div><div class="line"><span class="comment">// 逆序输入随机生成的 n 个元素的值</span></div><div class="line"><span class="comment">// 建立带表头结点的单链表 L</span></div><div class="line">LinkList *L,*p; int i;</div><div class="line"><span class="comment">// 先建立一个带头结点的空单链表</span></div><div class="line">L = (LinkList *)malloc(sizeof(LNode));</div><div class="line">L-&gt;next = NULL;</div><div class="line"><span class="keyword">for</span> (i=n; i&gt;<span class="number">0</span>; --i) &#123;</div><div class="line">p = (LinkList *)malloc(sizeof(LNode)); <span class="comment">// 生成新结点</span></div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="keyword">data</span> =random(<span class="number">200</span>);<span class="comment">// 随机生成一个 200 以内的数字</span></div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span> = L-&gt;</span><span class="function"><span class="title">next</span>; L-&gt;</span>next = p; <span class="comment">// 插入到表头</span></div><div class="line">&#125;</div><div class="line">return L;</div><div class="line">&#125; <span class="comment">// CreateList_L</span></div><div class="line"></div><div class="line"><span class="comment">//单链表的插入</span></div><div class="line">Status ListInsert_L(LinkList *L, int i, ElemType e) &#123;</div><div class="line">  <span class="comment">// 在带头结点的单链表 L 的第 i 个元素之前插入元素e</span></div><div class="line">  LinkList *p, *s;</div><div class="line">  p = L;</div><div class="line">  int j = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (p &amp;&amp; j &lt; i-<span class="number">1</span>) &#123;<span class="comment">// 寻找第 i-1 个结点度、</span></div><div class="line">    <span class="function"><span class="title">p</span> = p-&gt;</span>next；</div><div class="line">    ++j;</div><div class="line">   &#125;</div><div class="line"><span class="comment">// i 小于 1( 导致 j&gt;i-1 成立 ) 或者大于表长 ( 导致 p 为 NULL)</span></div><div class="line">  <span class="keyword">if</span>(!p || j &gt; i-<span class="number">1</span>)</div><div class="line">     return ERROR;</div><div class="line">  s = (LinkList *)malloc(sizeof(LNode)); <span class="comment">// 生成新结点</span></div><div class="line">  <span class="function"><span class="title">s</span>-&gt;</span><span class="keyword">data</span> = e;</div><div class="line">  <span class="function"><span class="title">s</span>-&gt;</span><span class="function"><span class="title">next</span> = p-&gt;</span>next; <span class="comment">// 插入 L 中</span></div><div class="line">  <span class="function"><span class="title">p</span>-&gt;</span>next = s;</div><div class="line">  return OK;</div><div class="line">&#125; <span class="comment">// LinstInsert_L</span></div><div class="line"></div><div class="line"><span class="comment">//单链表的删除</span></div><div class="line">Status ListDelete_L(LinkList *L, int i, ElemType *e) &#123;<span class="comment">// 在带头结点的单链表 L 中删除第 i 个元素,并由 e 返回其值</span></div><div class="line">  int j = <span class="number">0</span>;</div><div class="line">  LinkList *p,*q;</div><div class="line">  p = L;</div><div class="line">  <span class="function"><span class="title">while</span> (p-&gt;</span>next &amp;&amp; j &lt; i-<span class="number">1</span>) &#123;</div><div class="line">    <span class="comment">// 寻找第 i 个结点,并令 p 指向其前趋</span></div><div class="line">    <span class="function"><span class="title">p</span> = p-&gt;</span>next; ++j;</div><div class="line">   &#125;</div><div class="line">    <span class="comment">// i 小于 1( 导致 j&gt;i-1 成立 ) 或者大于表长 ( 导致 p-&gt;next 为 NULL)</span></div><div class="line">  <span class="function"><span class="title">if</span> (!(p-&gt;</span>next) || j &gt; i-<span class="number">1</span>)</div><div class="line">      return ERROR;</div><div class="line">  <span class="function"><span class="title">q</span> = p-&gt;</span>next;</div><div class="line">  <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span> = q-&gt;</span>next; <span class="comment">// 删除并释放结点</span></div><div class="line">  <span class="function"><span class="title">e</span> = q-&gt;</span><span class="keyword">data</span>;</div><div class="line">  free(q);</div><div class="line">  return OK;</div><div class="line">&#125; <span class="comment">// ListDelete_L</span></div><div class="line"></div><div class="line"><span class="comment">//单链表查找</span></div><div class="line">Status GetElem_L(LinkList *L,int i, ElemType *e) &#123;</div><div class="line"><span class="comment">// L 为带头结点的单链表的头指针</span></div><div class="line"><span class="comment">// 当第 i 个元素存在时,其值赋给 e 并返回 OK ,否则返回 ERROR</span></div><div class="line"><span class="comment">// 初始化, p 指向第一个结点, j 为计数器</span></div><div class="line">   LinkList *p;</div><div class="line">   <span class="function"><span class="title">p</span> = L-&gt;</span>next;</div><div class="line">   int j = <span class="number">1</span>;</div><div class="line">   <span class="keyword">while</span> (p &amp;&amp; j&lt;i) &#123;</div><div class="line">  <span class="comment">// 顺指针向后查找,直到 p 指向第 i 个元素或 p 为空</span></div><div class="line">      <span class="function"><span class="title">p</span> = p-&gt;</span>next;</div><div class="line">      ++j;</div><div class="line">    &#125;</div><div class="line">   <span class="keyword">if</span> ( !p || j&gt;i )</div><div class="line">      return ERROR; <span class="comment">// 第 i 个元素不存在</span></div><div class="line">   *<span class="function"><span class="title">e</span> = p-&gt;</span><span class="keyword">data</span>; <span class="comment">// 取第 i 个元素</span></div><div class="line">   return OK;</div><div class="line">&#125; <span class="comment">// GetElem_L</span></div><div class="line"></div><div class="line"><span class="comment">//合并有序链表</span></div><div class="line">LinkList *MergeList_L(LinkList *La, LinkList *Lb) &#123;</div><div class="line"><span class="comment">// 合并 两非递减单链表 La 和 Lb ,成新的单链表 Lc , Lc的元素也按值非递减排列。 pa, pb 为两个链表的当前结点。</span></div><div class="line">   LinkList *Lc, *pa, *pb, *pc; <span class="comment">//pc 为合并后链表的最后一个结点</span></div><div class="line">   <span class="function"><span class="title">pa</span> = La-&gt;</span>next;</div><div class="line">   <span class="function"><span class="title">pb</span> = Lb-&gt;</span>next;</div><div class="line">   Lc = pc = La; <span class="comment">// 用 La 的头结点作为 Lc 的头结点</span></div><div class="line">   <span class="keyword">while</span> (pa &amp;&amp; pb) &#123;</div><div class="line">     <span class="function"><span class="title">if</span> (pa-&gt;</span><span class="function"><span class="title">data</span> &lt;= pb-&gt;</span><span class="keyword">data</span>) &#123;</div><div class="line">       <span class="function"><span class="title">pc</span>-&gt;</span>next = pa;</div><div class="line">       pc = pa;</div><div class="line">       <span class="function"><span class="title">pa</span> = pa-&gt;</span>next;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">else</span> &#123;</div><div class="line">       <span class="function"><span class="title">pc</span>-&gt;</span>next = pb;</div><div class="line">       pc = pb;</div><div class="line">       <span class="function"><span class="title">pb</span> = pb-&gt;</span>next;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">   <span class="function"><span class="title">pc</span>-&gt;</span>next = pa ? pa : pb; <span class="comment">// 插入剩余段</span></div><div class="line">   free(Lb); <span class="comment">// 释放 Lb 的头结点</span></div><div class="line">   Return Lc;</div><div class="line">&#125; <span class="comment">// MergeList_L</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>当前链表存在的问题：</p>
+                    <ul>
+                      <li>链表的表长是隐含的；</li>
+                      <li>若要在链表的最后一个元素之后插入元素,那么要遍历整个链表；</li>
+                      <li>结点的当前位置很重要；</li>
+                    </ul>
+                    <p>改进的措施：</p>
+                    <ul>
+                      <li>增加变量,分别表示:表长、表尾、当前位置；</li>
+                      <li>将操作中的参数“位序 i ” 改为“当前位置”；</li>
+                    </ul>
+                    <figure class="highlight rust">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="comment">//改进的单链表</span></div><div class="line"></div><div class="line"><span class="comment">// 结点类型</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span></span> &#123;</div><div class="line">  ElemType data;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span></span> *next;</div><div class="line">  &#125; Link, Position;</div><div class="line"></div><div class="line"><span class="comment">// 链表类型</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  <span class="comment">// head, tail 分别指向头结点和最后一个结点的指针</span></div><div class="line">  Link *head, *tail;</div><div class="line"><span class="comment">// current 指向当前被访问的结点的指针</span></div><div class="line"><span class="comment">// Link *current; // 其初始位置指向头结点</span></div><div class="line"><span class="comment">// int curpos; // 指示当前指针位置 , 初值为 0</span></div><div class="line">  <span class="keyword">int</span> len;</div><div class="line"><span class="comment">// 指示链表长度</span></div><div class="line">&#125; LinkList;</div><div class="line"></div><div class="line"><span class="comment">//构造新链表</span></div><div class="line">LinkList *InitList()&#123;</div><div class="line">  LinkList *L; Link *p;</div><div class="line">  L=(LinkList *)malloc(<span class="keyword">sizeof</span>(LinkList));</div><div class="line">  <span class="keyword">if</span> (!L)</div><div class="line">    <span class="keyword">return</span> NULL;</div><div class="line">  p=(Link *)malloc(<span class="keyword">sizeof</span>(LNode));</div><div class="line">  <span class="keyword">if</span>(!p)</div><div class="line">    <span class="keyword">return</span> NULL;</div><div class="line">  L-&gt;len=<span class="number">0</span>;</div><div class="line">  L-&gt;head=L-&gt;tail=p;</div><div class="line">  <span class="keyword">return</span> L;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使得 p 指向 L 的第 i 个结点,并返回 p</span></div><div class="line">Link *LocatePos(LinkList *L, <span class="keyword">int</span> i)&#123;</div><div class="line">  Link *cur; <span class="keyword">int</span> j=<span class="number">1</span>;</div><div class="line">  cur=L-&gt;head;</div><div class="line">  <span class="keyword">while</span>(cur &amp;&amp; j&lt;=i) &#123; <span class="comment">// 寻找第 i 个结点</span></div><div class="line">     cur=cur-&gt;next;</div><div class="line">     j++;</div><div class="line">   &#125;</div><div class="line">  <span class="keyword">if</span> (!cur)</div><div class="line">     <span class="keyword">return</span> NULL;</div><div class="line">  <span class="keyword">return</span> cur;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 将 s 所指结点插入在链表 L 的 h 所指的结点之后</span></div><div class="line">Status InsAfter (LinkList *L, Link *h, Link *s)&#123;</div><div class="line">  <span class="keyword">if</span>(!L-&gt;head) <span class="keyword">return</span> ERROR;</div><div class="line">  L-&gt;len++;</div><div class="line">  <span class="keyword">if</span> (L-&gt;tail==h)</div><div class="line">     L-&gt;tail=s;</div><div class="line">  s-&gt;next=h-&gt;next;</div><div class="line">  h-&gt;next=s;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在链表L的第i个结点前插入元素</span></div><div class="line">Status ListInsert_L(LinkList *L, <span class="keyword">int</span> i, ElemType e)&#123;</div><div class="line">   <span class="comment">// 在链表 L 的第 i 个结点之前插入元素 e</span></div><div class="line">   Link *p,*s;</div><div class="line">   <span class="keyword">int</span> j=<span class="number">0</span>;</div><div class="line">   p=L-&gt;head;</div><div class="line">   <span class="keyword">while</span> (p &amp;&amp; j&lt;i-<span class="number">1</span>) &#123;<span class="comment">// 寻找第 i-1 个结点</span></div><div class="line">     p=p-&gt;next;j++;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">if</span>(!p || j&gt;i-<span class="number">1</span>) <span class="keyword">return</span> ERROR;</div><div class="line">   s= MakeNode(e);</div><div class="line">   <span class="keyword">if</span> (!s) <span class="keyword">return</span> ERROR;</div><div class="line">   <span class="keyword">if</span>(L-&gt;tail==p)</div><div class="line">      L-&gt;tail=s;</div><div class="line">   L-&gt;len++;</div><div class="line">   s-&gt;next=p-&gt;next;</div><div class="line">   p-&gt;next=s;</div><div class="line">   <span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//单链表运用-一元多项式</span></div><div class="line"><span class="comment">// 用带头结点的有序链表表示多项式</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span>&#123;</div><div class="line"><span class="keyword">int</span> c; <span class="comment">// 多项式,系数, 可以用 float 类型</span></div><div class="line"><span class="keyword">int</span> e; <span class="comment">// 多项式,指数</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span> *next;</div><div class="line">&#125;Polynomial;</div><div class="line"></div><div class="line"><span class="comment">//创建一元多项式</span></div><div class="line"><span class="comment">// 输入 m 项的系数和指数,建立表示一元多项式的有序链表P</span></div><div class="line">Polynomial *Create(<span class="keyword">int</span> m)&#123;</div><div class="line">  Polynomial *head,*p,*q; <span class="keyword">int</span> i;</div><div class="line"><span class="comment">// 生成头结点</span></div><div class="line">  p=head=(Polynomial*) malloc(<span class="keyword">sizeof</span>(Polynomial));</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=m;i++)&#123; <span class="comment">// 依次输入 m 个非零项</span></div><div class="line">     q=(Polynomial *)malloc(<span class="keyword">sizeof</span>(Polynomial));</div><div class="line">     scanf(“%d %d”,&amp;q-&gt;c,&amp;q-&gt;e);</div><div class="line">     p-&gt;next = q;</div><div class="line">     p=q;</div><div class="line">   &#125;</div><div class="line">  p-&gt;next=NULL;</div><div class="line">  <span class="keyword">return</span> head;</div><div class="line">&#125; <span class="comment">// Create</span></div><div class="line"></div><div class="line"><span class="comment">//多项式相加</span></div><div class="line">void Plus(Polynomial *pa,Polynomial *pb)&#123;</div><div class="line">  Polynomial*h,*p1,*p2,*q;</div><div class="line">  h=pa; p1=pa-&gt;next;p2=pb-&gt;next; <span class="comment">//p1,p2 分别指向 pa 和 pb 的第一个结点</span></div><div class="line">  <span class="keyword">while</span>(p1!=NULL &amp;&amp; p2!=NULL)</div><div class="line">  switch(Compare(p1-&gt;e, p2-&gt;e)) &#123;</div><div class="line">  case <span class="number">1</span>: &#123; <span class="comment">//p1 所指结点的指数值大,将 p2 的结点连接到 h</span></div><div class="line">     h-&gt;next=p2;</div><div class="line">     h=p2;</div><div class="line">     p2=p2-&gt;next;</div><div class="line">     <span class="keyword">break</span>;</div><div class="line">   &#125;</div><div class="line">  case -<span class="number">1</span>: &#123;<span class="comment">//p2 所指结点的指数大,将 p1 的结点连接到 h</span></div><div class="line">     h-&gt;next=p1;</div><div class="line">     h=p1;</div><div class="line">     p1=p1-&gt;next;</div><div class="line">     <span class="keyword">break</span>;</div><div class="line">   &#125;</div><div class="line">  case <span class="number">0</span>: &#123; <span class="comment">// p1, p2 的指数一样大</span></div><div class="line">    <span class="keyword">if</span>(p1-&gt;c + p2-&gt;c !=<span class="number">0</span>) &#123; <span class="comment">// 系数相加,和不为 0 ,修改 p1 的系数</span></div><div class="line">       p1-&gt;c =p1-&gt;c +p2-&gt;c;</div><div class="line">       h-&gt;next=p1; h=p1; p1=p1-&gt;next;</div><div class="line">       q=p2; p2=p2-&gt;next; free(q);</div><div class="line">  &#125;</div><div class="line">    <span class="keyword">else</span> &#123; <span class="comment">// 系数相加,和为 0 ,则去掉结点</span></div><div class="line">       q=p1;p1=p1-&gt;next;free(q);</div><div class="line">       q=p2;p2=p2-&gt;next;free(q);</div><div class="line">  &#125;</div><div class="line">  Status Compare(<span class="keyword">int</span> a,<span class="keyword">int</span> b)&#123;</div><div class="line">  <span class="keyword">if</span>(a&gt;b) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">if</span>(a&lt;b) <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">  <span class="keyword">if</span>(p1!=NULL)</div><div class="line">     h-&gt;next =p1;</div><div class="line">  <span class="keyword">else</span></div><div class="line">     h-&gt;next= p2;</div><div class="line">  free(pb);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//单链表的 C 数组实现:静态链表</span></div><div class="line"></div><div class="line">#define MAXSIZE <span class="number">1000</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">SLinked</span></span>&#123;</div><div class="line">ElemType data;</div><div class="line"><span class="keyword">int</span> cur;</div><div class="line">&#125; SLinkedList[MAXSIZE];</div><div class="line">SLinkedList s;</div><div class="line"></div><div class="line"><span class="comment">//静态链表初始化</span></div><div class="line">void InitList(SLinkedList space)&#123;</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;MAXSIZE-<span class="number">1</span>;i++)</div><div class="line">     space[i].cur=i+<span class="number">1</span>;</div><div class="line">   space[MAXSIZE-<span class="number">1</span>].cur=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 创建一个含有 n 个结点的静态链表,返回表头在存储数组的位置</span></div><div class="line"><span class="keyword">int</span> CreateList(SLinkedList space,<span class="keyword">int</span> n)&#123;</div><div class="line">    <span class="keyword">int</span> head,k,s,i;</div><div class="line">    k=AllocNode(space); <span class="comment">// 从空闲链表中取得一个空结点</span></div><div class="line">    head=k;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">       s=AllocNode(space);</div><div class="line">       scanf(<span class="string">"%d"</span>,&amp;space[s].data);</div><div class="line">       space[k].cur=s;</div><div class="line">       k=s;</div><div class="line">     &#125;</div><div class="line">    space[k].cur=<span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//从空闲链表中分配一个结点和释放一个结点</span></div><div class="line"><span class="comment">// 若空闲链表非空,则返回分配的结点下标,否则返回 0</span></div><div class="line"><span class="keyword">int</span> AllocNode(SLinkedList space)&#123;</div><div class="line"><span class="keyword">int</span> i;</div><div class="line">i=space[<span class="number">0</span>].cur;</div><div class="line"><span class="keyword">if</span>(i==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">space[<span class="number">0</span>].cur=space[i].cur;</div><div class="line"><span class="keyword">return</span> i;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 将下标为 i 的空闲结点回收到备用链表</span></div><div class="line">void FreeNode(SLinkedList space,<span class="keyword">int</span> i)&#123;</div><div class="line">space[i].cur=space[<span class="number">0</span>].cur;</div><div class="line">space[<span class="number">0</span>].cur=i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 在以 head 为表头的静态链表中,在第 i 个结点之前插入一个值为 x 的新结点</span></div><div class="line"><span class="keyword">int</span> Insert(SLinkedList space,<span class="keyword">int</span> head,<span class="keyword">int</span> i,ElemType x)&#123;</div><div class="line">  <span class="keyword">int</span> j,k,m;</div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  k=head;j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (k!=<span class="number">0</span> &amp;&amp; j&lt;i-<span class="number">1</span>)&#123; <span class="comment">// 查找第 i-1 个结点</span></div><div class="line">     j++;k=space[k].cur;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(k==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  m=AllocNode(space); <span class="comment">// 从空闲链表中获取结点, m 为该结点下标</span></div><div class="line">  <span class="keyword">if</span> (m!=<span class="number">0</span>)&#123;</div><div class="line">    space[m].data=x;</div><div class="line">    space[m].cur=space[k].cur;</div><div class="line">    space[k].cur=m;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 在以 head 为表头的静态链表中,删除第 i 个结点</span></div><div class="line"><span class="keyword">int</span> Delete(SLinkedList space,<span class="keyword">int</span> head,<span class="keyword">int</span> i, ElemType *e)&#123;</div><div class="line">  <span class="keyword">int</span> j,k,m; <span class="keyword">if</span>(i&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  k=head;j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span> (k!=<span class="number">0</span> &amp;&amp; j &lt;i-<span class="number">1</span>)&#123; <span class="comment">// 查找第 i-1 个结点</span></div><div class="line">    j++;k=space[k].cur;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(k==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  m=space[k].cur;</div><div class="line">  space[k].cur=space[m].cur;</div><div class="line">  *e=space[m].data;</div><div class="line">  FreeNode(space,m);</div><div class="line">  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在以 head 为表头的静态链表中,确定第 1 个值为 x</span></div><div class="line">的结点的位置</div><div class="line"><span class="comment">// 若找到,则返回它在存储数组中的位置,否则返回 0</span></div><div class="line"><span class="keyword">int</span> Locate(SLinkedList space, <span class="keyword">int</span> head,ElemType x)&#123;</div><div class="line">   <span class="keyword">int</span> k;</div><div class="line">   k=space[head].cur; <span class="comment">// k 指示静态链表中的第一个结点</span></div><div class="line">   <span class="keyword">while</span>(k!=<span class="number">0</span> &amp;&amp; space[k].data!=x)</div><div class="line">   k=space[k].cur; <span class="comment">// 顺链查找</span></div><div class="line">   <span class="keyword">return</span> k;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//集合合并</span></div><div class="line">void MergeAB(SLinkedList A, <span class="keyword">int</span> ha,SLinkedList B, <span class="keyword">int</span> hb)&#123;</div><div class="line">  <span class="keyword">int</span> i,j,k,m;</div><div class="line">  ElemType x;</div><div class="line">  j=B[hb].cur;</div><div class="line">  <span class="keyword">while</span>(j!=<span class="number">0</span>)&#123; <span class="comment">// 对 hb 中的每个结点,进行下面的步骤</span></div><div class="line">    x=B[j].data;</div><div class="line">    i=Locate(A,ha,x); <span class="comment">// 链表 ha 中查找有无 hb 中的元素</span></div><div class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>)</div><div class="line">       Insert(A,ha,<span class="number">1</span>,x); <span class="comment">// 将该元素插入 ha ,成为 ha的第一个元素</span></div><div class="line">   <span class="keyword">else</span> &#123; <span class="comment">// ha 有 hb 中的元素,则将该元素从 ha 中删除</span></div><div class="line">      m=<span class="number">0</span>;k=ha;</div><div class="line">      <span class="keyword">while</span>(k!=i)&#123;</div><div class="line">       m++;k=A[k].cur;</div><div class="line">     &#125;</div><div class="line">      Delete(A,ha,m,&amp;x);</div><div class="line">    &#125;</div><div class="line">   j=B[j].cur;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>双向链表：构成链表的每个结点中设立两个指针域,一个指向其直接前趋的指针域 prior ,一个指向其直接后继的指针域 next；</p>
+                    <figure class="highlight xl">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">typedef struct node &#123;</div><div class="line">   ElemType <span class="keyword">data</span> ;</div><div class="line">   struct node *prior , *next ;</div><div class="line">&#125; DoubleLinkedList;</div><div class="line"></div><div class="line"><span class="comment">//创建长度为n的双向链表</span></div><div class="line">DoubleLinkedList *CreateDoubleLinkedList(int n)&#123;   </div><div class="line">   DoubleLinkedList *head,*p,*s; int i;</div><div class="line">   <span class="comment">// 创建头结点</span></div><div class="line">   p=head=(DoubleLinkedList *)malloc(sizeof(DoubleLinkedList));</div><div class="line">   <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">     s=(DoubleLinkedList *) malloc(sizeof(DoubleLinkedList));</div><div class="line">     <span class="function"><span class="title">scanf</span>("%d",&amp;s-&gt;</span><span class="keyword">data</span>);</div><div class="line">     <span class="function"><span class="title">s</span>-&gt;</span><span class="function"><span class="title">prior</span>=p; p-&gt;</span>next=s; p=s;</div><div class="line">   &#125;</div><div class="line">   <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span>= head; head-&gt;</span>prior = p;</div><div class="line">   return head;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在双向链表中查找第 1 个值为 e 的结点</span></div><div class="line">DoubleLinkedList *Locate(DoubleLinkedList *head,ElemType e)&#123;</div><div class="line">  DoubleLinkedList *p;</div><div class="line">  <span class="function"><span class="title">p</span>=head-&gt;</span>next; <span class="comment">//p 指向第一个结点</span></div><div class="line">  <span class="function"><span class="title">while</span>(p!=head &amp;&amp; p-&gt;</span><span class="keyword">data</span> !=e)</div><div class="line">    <span class="function"><span class="title">p</span>=p-&gt;</span>next;</div><div class="line">  <span class="keyword">if</span>(p==head) return NULL;</div><div class="line">  <span class="keyword">else</span> return p;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在双向链表中查找第 1 个值为 e 的结点</span></div><div class="line"><span class="comment">// 返回指向第 i 个结点的指针</span></div><div class="line">DoubleLinkedList *GetElemP(DoubleLinkedList *head,int i) &#123;</div><div class="line">  DoubleLinkedList *p;int j;</div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span>) return <span class="number">0</span>;</div><div class="line">  <span class="function"><span class="title">p</span>=head-&gt;</span>next; <span class="comment">// 初始化, p 指向第一个结点</span></div><div class="line">  j=<span class="number">1</span>; <span class="comment">//j 为计数器</span></div><div class="line">  <span class="keyword">while</span>(p!=head &amp;&amp; j&lt;i)&#123;</div><div class="line">  <span class="comment">// 顺指针向后查找,直到 p 指向第 i 个结点或 p 为空</span></div><div class="line">      <span class="function"><span class="title">p</span>=p-&gt;</span>next; j++;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(p==head &amp;&amp; j&lt;i) return NULL; <span class="comment">// 第 i 个元素不存在</span></div><div class="line">  return p;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在双向链表第 i 个结点之前插入元素 e</span></div><div class="line">int InsertElem(DoubleLinkedList *head,int i,ElemType e)&#123;</div><div class="line">  DoubleLinkedList *p,*q;int j;</div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span>) return <span class="number">0</span>; <span class="comment">// i 的合法值为 1≤i≤ 表长 +1</span></div><div class="line">  p=head;j=<span class="number">0</span>;</div><div class="line">  <span class="function"><span class="title">while</span>(p-&gt;</span>next!=head &amp;&amp; j&lt;i-<span class="number">1</span>)&#123; <span class="comment">// 在 L 中确定第 i 个元素的位置指针 p</span></div><div class="line">    <span class="function"><span class="title">p</span>=p-&gt;</span>next;j++;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="title">if</span>(p-&gt;</span><span class="function"><span class="title">next</span>!=head || (p-&gt;</span>next == head &amp;&amp; j==i-<span class="number">1</span>))&#123;</div><div class="line">    q=(DoubleLinkedList *)malloc(sizeof(DoubleLinkedList));</div><div class="line">    <span class="function"><span class="title">q</span>-&gt;</span><span class="keyword">data</span>=e;</div><div class="line">    <span class="function"><span class="title">q</span>-&gt;</span><span class="function"><span class="title">next</span>=p-&gt;</span><span class="function"><span class="title">next</span>; q-&gt;</span>prior=p;</div><div class="line">    <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span>-&gt;</span><span class="function"><span class="title">prior</span>=q; p-&gt;</span>next=q;</div><div class="line">    return <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> return <span class="number">0</span>; <span class="comment">// 第 i 个元素不存在</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在双向链表中删除第 i 个结点</span></div><div class="line"><span class="comment">// 当第 i 个结点存在时,删除它并返回其值,否则返回 NULL</span></div><div class="line">int DeleteNode(DoubleLinkedList *head,int i,ElemType *e)&#123;</div><div class="line">  DoubleLinkedList *p,*q;</div><div class="line">  int j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span>) return <span class="number">0</span>;</div><div class="line">  <span class="function"><span class="title">p</span>=head-&gt;</span>next; <span class="comment">// p 指向第一个结点</span></div><div class="line">  <span class="keyword">while</span>(p != head &amp;&amp; j&lt;i)&#123;</div><div class="line"><span class="comment">// 顺指针向后查找,直到 p 指向第 i 个结点或 p 为空</span></div><div class="line">     <span class="function"><span class="title">p</span>=p-&gt;</span>next;</div><div class="line">     j++;</div><div class="line">   &#125;</div><div class="line">  <span class="keyword">if</span>(p ==head &amp;&amp; j&lt;i ) return <span class="number">0</span>; <span class="comment">// 第 i 个结点不存在</span></div><div class="line">  <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">prior</span>-&gt;</span><span class="function"><span class="title">next</span>=p-&gt;</span>next;</div><div class="line">  <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">next</span>-&gt;</span><span class="function"><span class="title">prior</span>=p-&gt;</span>prior;</div><div class="line">  *<span class="function"><span class="title">e</span>=p-&gt;</span><span class="keyword">data</span>;</div><div class="line">  free(p);</div><div class="line">  return <span class="number">1</span>;</div><div class="line">&#125;</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
 
                   </div>
 
@@ -525,76 +450,56 @@
 
 
 
-                  <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
 
-                      <a href="/2017/02/28/SqList/" rel="next" title="顺序线性表">
+
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/Data-Structures/" rel="tag"># Data-Structures</a>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/2017/02/28/SqList/" rel="next" title="顺序线性表">
                 <i class="fa fa-chevron-left"></i> 顺序线性表
               </a>
 
-                    </div>
+                      </div>
 
-                    <span class="post-nav-divider"></span>
+                      <span class="post-nav-divider"></span>
 
-                    <div class="post-nav-prev post-nav-item">
+                      <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2017/03/04/Hexo-Domain-Bound/" rel="prev" title="Hexo博客域名绑定">
+                        <a href="/2017/03/04/Hexo-Domain-Bound/" rel="prev" title="Hexo博客域名绑定">
                 Hexo博客域名绑定 <i class="fa fa-chevron-right"></i>
               </a>
 
+                      </div>
                     </div>
-                  </div>
 
 
 
 
-                </footer>
+                  </footer>
+                </div>
+
+
+
               </article>
 
 
 
-
-
-
               <div class="post-spread">
-
-
-                <div class="bdsharebuttonbox">
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                  window._bd_share_config = {
-                    "common": {
-                      "bdText": "",
-                      "bdMini": "2",
-                      "bdMiniList": false,
-                      "bdPic": ""
-                    },
-                    "share": {
-                      "bdSize": "16",
-                      "bdStyle": "0"
-                    },
-                    "image": {
-                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-                      "viewText": "分享到：",
-                      "viewSize": "16"
-                    }
-                  }
-                </script>
-
-                <script>
-                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-                </script>
-
 
               </div>
             </div>
@@ -605,13 +510,19 @@
 
 
 
+
+
           <div class="comments" id="comments">
+
+            <div id="gitment-container"></div>
 
           </div>
 
 
-        </div>
 
+
+
+        </div>
 
 
 
@@ -624,6 +535,7 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
@@ -633,124 +545,79 @@
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview">
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview sidebar-panel">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -786,66 +653,37 @@
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -860,9 +698,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -891,56 +729,70 @@
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -968,6 +820,8 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -977,275 +831,14 @@
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -1256,11 +849,3 @@
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>

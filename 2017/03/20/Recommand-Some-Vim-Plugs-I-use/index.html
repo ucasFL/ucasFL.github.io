@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,7 +51,22 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Vim," />
@@ -53,11 +76,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -110,19 +128,31 @@ Vim 简介
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -149,7 +179,16 @@ Vim 简介
 
 
 
-  <title> 安利一波正在使用的 Vim 插件和配色 | 春暖花开 </title>
+  <title>安利一波正在使用的 Vim 插件和配色 | 春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,22 +198,7 @@ Vim 简介
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -221,28 +245,8 @@ Vim 简介
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -252,41 +256,9 @@ Vim 简介
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -310,47 +282,41 @@ Vim 简介
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/20/Recommand-Some-Vim-Plugs-I-use/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/20/Recommand-Some-Vim-Plugs-I-use/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
+                  <header class="post-header">
 
 
 
-                  <h1 class="post-title" itemprop="name headline">
+                    <h1 class="post-title" itemprop="name headline">安利一波正在使用的 Vim 插件和配色</h1>
 
 
-
-                    安利一波正在使用的 Vim 插件和配色
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T23:08:43+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T23:08:43+08:00">
                 2017/03/20
               </time>
 
@@ -358,48 +324,43 @@ Vim 简介
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Vim/" itemprop="url" rel="index">
                     <span itemprop="name">Vim</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
+                      </span>
 
 
 
 
-
-
-
-
-                    <span id="/2017/03/20/Recommand-Some-Vim-Plugs-I-use/" class="leancloud_visitors" data-flag-title="安利一波正在使用的 Vim 插件和配色">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                      <a href="/2017/03/20/Recommand-Some-Vim-Plugs-I-use/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/03/20/Recommand-Some-Vim-Plugs-I-use/" itemprop="commentsCount"></span>
+                </a>
+                      </span>
 
 
 
@@ -408,420 +369,60 @@ Vim 简介
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
+                    </div>
+                  </header>
 
-                  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
-                  <p>文章更新，我的$Vim$效果图：</p>
-                  <p><img src="/photos/blog9/vim.png" alt=""></p>
-                  <p><img src="/photos/blog9/vimc.png" alt=""></p>
-                  <p><img src="/photos/blog9/vim1.gif" alt=""></p>
-                  <p><img src="/photos/blog9/vim2.gif" alt=""></p>
-                  <h3 id="Vim-简介"><a href="#Vim-简介" class="headerlink" title="Vim 简介"></a>Vim 简介</h3>
-                  <p>略……</p>
-                  <p>请转到<a href="http://baike.baidu.com/link?url=ZXT5VOyDh5H0UAwPeUuLbRpPI-m8sjqYwrWqusbNTPITByHsgmaFZ77aOJf3yzB8Vqj1qq6Q_lw_tEh4MXg26q" target="_blank" rel="external">百度百科</a><br>
-                    <a id="more"></a>
-                  </p>
-                  <p>如果从来没使用过 Vim，可以先看一下我的其他关于 Vim 使用的博客：</p>
-                  <ul>
-                    <li><a href="http://ucasfl.me/2017/03/18/Vim-%E5%88%9D%E5%AD%A6%E8%80%85%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Vim 初学者入门指南</a></li>
-                    <li><a href="http://ucasfl.me/2017/03/18/Vim-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5%E8%A1%A8/">Vim 快捷键速查表</a></li>
-                    <li><a href="http://ucasfl.me/2017/01/27/3-%E4%B8%AA%E9%92%88%E5%AF%B9%E9%AB%98%E7%BA%A7%E7%94%A8%E6%88%B7%E7%9A%84-Vim-%E7%BC%96%E8%BE%91%E5%99%A8%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">3 个针对高级用户的 Vim 编辑器实用技巧</a></li>
-                    <li><a href="http://ucasfl.me/2017/01/26/5-%E4%B8%AA%E9%92%88%E5%AF%B9%E6%9C%89%E7%BB%8F%E9%AA%8C%E7%94%A8%E6%88%B7%E7%9A%84-Vim-%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">5 个针对有经验用户的 Vim 实用技巧</a></li>
-                  </ul>
-                  <h3 id="插件介绍"><a href="#插件介绍" class="headerlink" title="插件介绍"></a>插件介绍</h3>
-                  <p>我目前正在使用的 Vim 插件有：</p>
-                  <ul>
-                    <li>pathogen</li>
-                    <li>auto-pairs</li>
-                    <li>nerdcommenter</li>
-                    <li>nerdtree</li>
-                    <li>supertab</li>
-                    <li>syntastic</li>
-                    <li>tagbar-master</li>
-                    <li>vim-powerline</li>
-                    <li>xptemplate</li>
-                    <li>ctrlp</li>
-                    <li>quick-scope</li>
-                    <li>YoucompleteMe</li>
-                  </ul>
-                  <h4 id="pathogen"><a href="#pathogen" class="headerlink" title="pathogen"></a>pathogen</h4>
-                  <p>为什么先说这一个呢，因为它是一个管理 Vim 插件的插件。当安装了这个插件以后，安装别的插件就变得非常简单了.</p>
-                  <p>安装方法：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="built_in">mkdir</span> -<span class="keyword">p</span> ~/.<span class="keyword">vim</span>/autoload ~/.<span class="keyword">vim</span>/bundle</div><div class="line">curl -LSso ~/.<span class="keyword">vim</span>/autoload/pathogen.<span class="keyword">vim</span> http<span class="variable">s:</span>//tpo.<span class="keyword">pe</span>/pathogen.<span class="keyword">vim</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>然后，把下面这行代码添加到 vimrc 文件中：</p>
-                  <figure class="highlight autoit">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="built_in">execute</span> pathogen<span class="meta">#infect()</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>如果你还没有 vimrc 文件，那么，先创建一个 vimrc 文件：</p>
-                  <figure class="highlight nginx">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="attribute">vim</span> ~/.vimrc</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>然后把下面的内容添加到文件中：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">execute</span> pathogen#infect()</div><div class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>当这个插件安装好以后，安装别的插件就很简单了，只需要进入 <code>.vim/bundle/</code> 文件夹中，然后，把需要安装的插件克隆下来就可以了。</p>
-                  <p>该插件托管在 <a href="https://github.com/tpope/vim-pathogen" target="_blank" rel="external">GitHub</a>。</p>
-                  <h4 id="auto-pairs"><a href="#auto-pairs" class="headerlink" title="auto-pairs"></a>auto-pairs</h4>
-                  <p>该插件说简单点就是实现括号、引号的自动补全，安装好以后就可以用了，没什么特别的地方。</p>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/jiangmiao/auto-pairs.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>该插件的更多用法请看插件在 GitHub 上的<a href="https://github.com/jiangmiao/auto-pairs" target="_blank" rel="external">README</a></p>
-                  <h4 id="nerdcommenter"><a href="#nerdcommenter" class="headerlink" title="nerdcommenter"></a>nerdcommenter</h4>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> ~/.<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/scrooloose/nerdcommenter.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>该插件用于把代码注释了或给代码添加注释。</p>
-                  <p>首先，它的快捷键中用到了 <code>\</code>,但这样用起来很不习惯，可以把 <code>\</code> 换成 <code>,</code>,只需要在 vimrc 文件中加上下面这行代码：</p>
-                  <figure class="highlight bash">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="built_in">let</span> mapleader=<span class="string">","</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>注释代码： <code>,-cc</code> ，即先按下 <code>,</code>然后再连按两次 <code>c</code>，如果要注释多行,可以在前面加上数字指明行数，比如要注释当前行和之后的 4 行，可以先按下 <code>5</code>，然后再按下 <code>,-cc</code>；</p>
-                  <p>再行末给代码添加注释：<code>,cA</code> ，即先按下 <code>,</code> 然后再按下<code>c</code>，再按下<code>A</code>，之后直接进入插入模式，可以开始添加注释。</p>
-                  <h5 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h5>
-                  <ol>
-                    <li>,cc 注释当前行和选中行；</li>
-                    <li>,cn 没有发现和,cc有区别； </li>
-                    <li>,c&lt;空格&gt; 如果被选区域有部分被注释，则对被选区域执行取消注释操作，其它情况执行反转注释操作；</li>
-                    <li>,cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释；</li>
-                    <li>,ci 执行反转注释操作，选中区域注释部分取消注释，非注释部分添加注释；</li>
-                    <li>,cs 添加性感的注释，代码开头介绍部分通常使用该注释；</li>
-                    <li>,cy 添加注释，并复制被添加注释的部分；</li>
-                    <li>,c$ 注释当前光标到改行结尾的内容；</li>
-                    <li>,cA 跳转到该行结尾添加注释，并进入编辑模式； </li>
-                    <li>,ca 转换注释的方式，比如： /**/和//； </li>
-                    <li>,cl ,cb 左对齐和左右对其，左右对齐主要针对/**/； </li>
-                    <li>,cu 取消注释；</li>
-                  </ol>
-                  <p>更多用法请访问<a href="https://github.com/scrooloose/nerdcommenter" target="_blank" rel="external">GitHub</a>。</p>
-                  <h4 id="nerdtree"><a href="#nerdtree" class="headerlink" title="nerdtree"></a>nerdtree</h4>
-                  <p>nerdtree 是一个文件管理插件</p>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/scrooloose/nerdtree.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>键位设置，假设你想把
-                    <f5>设置为 nerdtree 的启动键，那么只需把下面一行内容加入 vimrc 文件中：</f5>
-                  </p>
-                  <figure class="highlight elixir">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">map &lt;F5&gt; <span class="symbol">:NERDTreeToggle&lt;CR&gt;</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>vim 没有指定文件为参数时自动打开 nerdtree：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">autocmd</span> StdinReadPre * <span class="keyword">let</span> <span class="variable">s:std_in</span>=<span class="number">1</span></div><div class="line"><span class="keyword">autocmd</span> VimEnter * <span class="keyword">if</span> <span class="built_in">argc</span>() == <span class="number">0</span> &amp;&amp; !exists(<span class="string">"s:std_in"</span>) | NERDTree | <span class="keyword">endif</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>在一个目录中打开 vim 时自动打开 nerdtree：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">autocmd</span> StdinReadPre * <span class="keyword">let</span> <span class="variable">s:std_in</span>=<span class="number">1</span></div><div class="line"><span class="keyword">autocmd</span> VimEnter * <span class="keyword">if</span> <span class="built_in">argc</span>() == <span class="number">1</span> &amp;&amp; <span class="built_in">isdirectory</span>(<span class="built_in">argv</span>()[<span class="number">0</span>]) &amp;&amp; !exists(<span class="string">"s:std_in"</span>) | <span class="keyword">exe</span> <span class="string">'NERDTree'</span> <span class="built_in">argv</span>()[<span class="number">0</span>] | <span class="keyword">wincmd</span> <span class="keyword">p</span> | <span class="keyword">ene</span> | <span class="keyword">endif</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>注：上面所展示的内容都是加入 vimrc 文件中。</p>
-                  <p>下面，是一些默认键位：</p>
-                  <ul>
-                    <li>和编辑文件一样，通过h j k l移动光标定位；</li>
-                    <li>o 打开关闭文件或者目录，如果是文件的话，光标出现在打开的文件中；</li>
-                    <li>go 效果同上，不过光标保持在文件目录里，类似预览文件内容的功能；</li>
-                    <li>i和s可以水平分割或纵向分割窗口打开文件，前面加g类似go的功能；</li>
-                    <li>t 在标签页中打开；</li>
-                    <li>T 在后台标签页中打开；</li>
-                    <li>p 到上层目录；</li>
-                    <li>P 到根目录；</li>
-                    <li>K 到同目录第一个节点；</li>
-                    <li>J 到同目录最后一个节点；</li>
-                    <li>m 显示文件系统菜单（添加、删除、移动操作）；</li>
-                    <li>? 帮助；</li>
-                    <li>q 关闭；</li>
-                    <li>窗口间移动：Ctrl+ww，即先按下 Ctrl ，再连按两次 ww；</li>
-                  </ul>
-                  <p>不过我觉得比较常用的就只有: Ctrl+ww , q , o , go , i , s , F5 这几个；</p>
-                  <p>更多信息，请访问 <a href="https://github.com/scrooloose/nerdtree" target="_blank" rel="external">GitHub</a>。</p>
-                  <h4 id="supertab"><a href="#supertab" class="headerlink" title="supertab"></a>supertab</h4>
-                  <p>supertab 是一个补全插件，它能够自动补全之前输入过的东西，比如变量名，函数名等，输入过一次以后之后只需输入几个字母，然后按 Tab 键就可以自动补全。</p>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/ervandew/supertab.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>它的用法很简单，就只需要按下 Tab 键就可以了。</p>
-                  <p>访问 <a href="https://github.com/ervandew/supertab" target="_blank" rel="external">GitHub 仓库</a>。</p>
-                  <h4 id="syntastic"><a href="#syntastic" class="headerlink" title="syntastic"></a>syntastic</h4>
-                  <p>syntastic 是一个检查语法错误的插件。</p>
-                  <p>当文件保存以后，有语法错误的行，会在左测栏标记出红色，当把光标移动到该行时，会在底部状态栏下面显示错误信息。</p>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone --depth=<span class="number">1</span> http<span class="variable">s:</span>//github.<span class="keyword">com</span>/<span class="keyword">vim</span>-syntastic/syntastic.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>访问 <a href="https://github.com/vim-syntastic/syntastic" target="_blank" rel="external">GitHub 仓库</a>。</p>
-                  <h4 id="tagbar"><a href="#tagbar" class="headerlink" title="tagbar"></a>tagbar</h4>
-                  <p>tagbar 可以快速浏览当前文件中的所有函数，定义的结构等</p>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/majutsushi/tagbar.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>设置默认键位：</p>
-                  <figure class="highlight elixir">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">nmap &lt;F7&gt; <span class="symbol">:TagbarToggle&lt;CR&gt;</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>将上面这行内容加入 vimrc 文件中以后，在文件中按 F7 键就可以浏览　Tag，再次按下退出。</p>
-                  <p>访问 <a href="https://github.com/majutsushi/tagbar" target="_blank" rel="external">github 仓库</a>。</p>
-                  <h4 id="TagHighlight"><a href="#TagHighlight" class="headerlink" title="TagHighlight"></a>TagHighlight</h4>
-                  <p>TagHighlight 插件能够高亮显示文件中的所有变量名，自定义函数，类型名等。</p>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/magic-dot-<span class="keyword">files</span>/TagHighlight.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>使用：保存文件，然后在 vim 的 Normal 模式下输入 :UpdateTypesFile 命令。</p>
-                  <p>更新 helptags，在 vim 中运行上面的命令:<br>
-                    <figure class="highlight less">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="selector-pseudo">:call</span> <span class="selector-tag">pathogen</span><span class="selector-id">#helptags</span>()</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                  </p>
-                  <p>访问 <a href="https://github.com/magic-dot-files/TagHighlight" target="_blank" rel="external">GitHub 仓库</a>。</p>
-                  <h4 id="vim-powerline"><a href="#vim-powerline" class="headerlink" title="vim-powerline"></a>vim-powerline</h4>
-                  <p>vim-powerline 是一个强大的显示 vim 状态栏的插件。</p>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/Lokaltog/<span class="keyword">vim</span>-powerline.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>访问 <a href="https://github.com/Lokaltog/vim-powerline" target="_blank" rel="external">GitHub 仓库</a></p>
-                  <h4 id="xptemplate"><a href="#xptemplate" class="headerlink" title="xptemplate"></a>xptemplate</h4>
-                  <p>到了最后一个-xptemplate，该插件是一个强大的代码段补全插件。</p>
-                  <p>安装：</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/drmingdrmer/xptemplate.git</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>当输入一个词比如 for 以后按下 ctrl+\ 就可以补全 for 循环，然后光标出现在第一个输入的地方，输入好以后按下 Tab 键到达下一个需要输入的地方。</p>
-                  <p>因为我不喜欢它的默认键位： Ctrl+\ ，所以重新设置了一个默认键位，本来想设置为 Tab 键，但由于 Tab 键已经被 supertab 占用了，所有就设置为 F3 。</p>
-                  <p>在 vimrc 文件中加入下面一行内容：</p>
-                  <figure class="highlight vbnet">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">let</span> g:xptemplate_key = <span class="comment">'<span class="doctag">&lt;F3&gt;</span>'</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>现在，xptemplate 的默认键位就变成 F3 了。</p>
-                  <p>访问 <a href="https://github.com/drmingdrmer/xptemplate" target="_blank" rel="external">GitHub 仓库</a>。</p>
-                  <h4 id="ctrlp"><a href="#ctrlp" class="headerlink" title="ctrlp"></a>ctrlp</h4>
-                  <p>一个查找文件的插件。</p>
-                  <p>安装：</p>
-                  <figure class="highlight stylus">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">cd ~/.vim/bundle</div><div class="line">git clone git@github<span class="selector-class">.com</span>:kien/ctrlp<span class="selector-class">.vim</span><span class="selector-class">.git</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>用法：</p>
-                  <ul>
-                    <li>Ctrl+p：进入文件查找模式；</li>
-                    <li>ESC：退出；</li>
-                    <li>F5：清除当前目录下的缓存，获取新的结构；</li>
-                    <li>Ctrl+f/Ctrl+b：在各个模式间转换；</li>
-                    <li>Ctrl+d：使用文件名搜索代替全路径搜索；</li>
-                    <li>Ctrl+r：使用正则模式；</li>
-                    <li>Ctrl+j/Ctrl+k：上下选择文件；</li>
-                    <li>Ctrl+t：在新的 Tab 打开选择的文件；</li>
-                    <li>Ctrl+v/Ctrl+x：在新的窗口垂直/水平打开文件；</li>
-                    <li>Ctrl+y：创建一个新的文件（先输入文件名，然后按下 Ctrl+y）；</li>
-                    <li>Ctrl+z：标记或取消标记多个文件，然后使用 Ctrl+o 打开；</li>
-                  </ul>
-                  <p>访问 <a href="https://github.com/kien/ctrlp.vim" target="_blank" rel="external">GitHub</a></p>
-                  <h4 id="quick-scope"><a href="#quick-scope" class="headerlink" title="quick-scope"></a>quick-scope</h4>
-                  <p>不太懂该插件怎么用，只知道安装后单词首字母被标出。<br>安装：<br>
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                    <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
+                    <p>文章更新，我的$Vim$效果图：</p>
+                    <p><img src="/photos/blog9/vim.png" alt=""></p>
+                    <p><img src="/photos/blog9/vimc.png" alt=""></p>
+                    <p><img src="/photos/blog9/vim1.gif" alt=""></p>
+                    <p><img src="/photos/blog9/vim2.gif" alt=""></p>
+                    <h3 id="Vim-简介"><a href="#Vim-简介" class="headerlink" title="Vim 简介"></a>Vim 简介</h3>
+                    <p>略……</p>
+                    <p>请转到<a href="http://baike.baidu.com/link?url=ZXT5VOyDh5H0UAwPeUuLbRpPI-m8sjqYwrWqusbNTPITByHsgmaFZ77aOJf3yzB8Vqj1qq6Q_lw_tEh4MXg26q" target="_blank" rel="external">百度百科</a><br>
+                      <a id="more"></a>
+                    </p>
+                    <p>如果从来没使用过 Vim，可以先看一下我的其他关于 Vim 使用的博客：</p>
+                    <ul>
+                      <li><a href="http://ucasfl.me/2017/03/18/Vim-%E5%88%9D%E5%AD%A6%E8%80%85%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Vim 初学者入门指南</a></li>
+                      <li><a href="http://ucasfl.me/2017/03/18/Vim-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5%E8%A1%A8/">Vim 快捷键速查表</a></li>
+                      <li><a href="http://ucasfl.me/2017/01/27/3-%E4%B8%AA%E9%92%88%E5%AF%B9%E9%AB%98%E7%BA%A7%E7%94%A8%E6%88%B7%E7%9A%84-Vim-%E7%BC%96%E8%BE%91%E5%99%A8%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">3 个针对高级用户的 Vim 编辑器实用技巧</a></li>
+                      <li><a href="http://ucasfl.me/2017/01/26/5-%E4%B8%AA%E9%92%88%E5%AF%B9%E6%9C%89%E7%BB%8F%E9%AA%8C%E7%94%A8%E6%88%B7%E7%9A%84-Vim-%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">5 个针对有经验用户的 Vim 实用技巧</a></li>
+                    </ul>
+                    <h3 id="插件介绍"><a href="#插件介绍" class="headerlink" title="插件介绍"></a>插件介绍</h3>
+                    <p>我目前正在使用的 Vim 插件有：</p>
+                    <ul>
+                      <li>pathogen</li>
+                      <li>auto-pairs</li>
+                      <li>nerdcommenter</li>
+                      <li>nerdtree</li>
+                      <li>supertab</li>
+                      <li>syntastic</li>
+                      <li>tagbar-master</li>
+                      <li>vim-powerline</li>
+                      <li>xptemplate</li>
+                      <li>ctrlp</li>
+                      <li>quick-scope</li>
+                      <li>YoucompleteMe</li>
+                    </ul>
+                    <h4 id="pathogen"><a href="#pathogen" class="headerlink" title="pathogen"></a>pathogen</h4>
+                    <p>为什么先说这一个呢，因为它是一个管理 Vim 插件的插件。当安装了这个插件以后，安装别的插件就变得非常简单了.</p>
+                    <p>安装方法：</p>
                     <figure class="highlight vim">
                       <table>
                         <tr>
@@ -829,79 +430,403 @@ Vim 简介
                             <pre><div class="line">1</div><div class="line">2</div></pre>
                           </td>
                           <td class="code">
-                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/unblevable/quick-scope.git</div></pre>
+                            <pre><div class="line"><span class="built_in">mkdir</span> -<span class="keyword">p</span> ~/.<span class="keyword">vim</span>/autoload ~/.<span class="keyword">vim</span>/bundle</div><div class="line">curl -LSso ~/.<span class="keyword">vim</span>/autoload/pathogen.<span class="keyword">vim</span> http<span class="variable">s:</span>//tpo.<span class="keyword">pe</span>/pathogen.<span class="keyword">vim</span></div></pre>
                           </td>
                         </tr>
                       </table>
                     </figure>
-                  </p>
-                  <p>访问 <a href="https://github.com/unblevable/quick-scope" target="_blank" rel="external">GitHub</a></p>
-                  <h4 id="Youcompleteme"><a href="#Youcompleteme" class="headerlink" title="Youcompleteme"></a>Youcompleteme</h4>
-                  <p>这是一个很强大的工具，集成了上面 supertab 和 syntastic 等差件的功能，不过安装起来比较麻烦，当然，网上也有很多安装教程，可自行搜索。</p>
-                  <h4 id="Vim-配色"><a href="#Vim-配色" class="headerlink" title="Vim 配色"></a>Vim 配色</h4>
-                  <p>对于一个好的编辑器来说，配色也很重要，目前我使用的 <a href="https://github.com/tpope/vim-vividchalk" target="_blank" rel="external">vividchalk</a>，之前很长一段时间都使用<a href="https://github.com/tomasr/molokai" target="_blank" rel="external">molokai</a></p>
-                  <p>两个配色都很不错。</p>
-                  <h3 id="我的-vimrc-文件"><a href="#我的-vimrc-文件" class="headerlink" title="我的 vimrc 文件"></a>我的 vimrc 文件</h3>
-                  <p>最后，把我的 vimrc 文件粘贴在下面：<br>或者也可在<a href="https://github.com/ucasFL/my_vimrc" target="_blank" rel="external">GitHub</a>上查看</p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"></div><div class="line">runtime! debian.<span class="keyword">vim</span></div><div class="line"><span class="comment">" Uncomment the next line to make Vim more Vi-compatible</span></div><div class="line"><span class="comment">" <span class="doctag">NOTE:</span> debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous</span></div><div class="line"><span class="comment">" options, so any other options should be set AFTER setting 'compatible'.</span></div><div class="line"><span class="comment">"set compatible</span></div><div class="line"><span class="comment">" Vim5 and later versions support syntax highlighting. Uncommenting the next</span></div><div class="line"><span class="comment">" line enables syntax highlighting by default.</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">"syntax"</span>)</div><div class="line">  <span class="keyword">syntax</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="comment">" If using a dark background within the editing area and syntax highlighting</span></div><div class="line"><span class="comment">" turn on this option as well</span></div><div class="line"><span class="comment">"set background=dark</span></div><div class="line"><span class="comment">" Uncomment the following to have Vim jump to the last position when</span></div><div class="line"><span class="comment">" reopening a file</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">"autocmd"</span>)</div><div class="line">  <span class="keyword">au</span> BufReadPost * <span class="keyword">if</span> <span class="built_in">line</span>(<span class="string">"'\""</span>) &gt; <span class="number">1</span> &amp;&amp; <span class="built_in">line</span>(<span class="string">"'\""</span>) &lt;= <span class="built_in">line</span>(<span class="string">"$"</span>) | <span class="keyword">exe</span> <span class="string">"normal! g'\""</span> | <span class="keyword">endif</span></div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="comment">" Uncomment the following to have Vim load indentation rules and plugins</span></div><div class="line"><span class="comment">" according to the detected filetype.</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">"autocmd"</span>)</div><div class="line">  <span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="comment">" The following are commented out as they cause vim to behave a lot</span></div><div class="line"><span class="comment">" differently from regular Vi. They are highly recommended though.</span></div><div class="line"><span class="string">"set showcmd		"</span> Show (partial) <span class="keyword">command</span> in status <span class="built_in">line</span>.</div><div class="line"><span class="string">"set showmatch		"</span> Show matching brackets.</div><div class="line"><span class="string">"set ignorecase		"</span> Do case insensitive matching</div><div class="line"><span class="string">"set smartcase		"</span> Do smart case matching</div><div class="line"><span class="string">"set incsearch		"</span> Incremental <span class="built_in">search</span></div><div class="line"><span class="string">"set autowrite		"</span> Automatically save before commands like :<span class="keyword">next</span> <span class="built_in">and</span> :<span class="keyword">make</span></div><div class="line"><span class="string">"set hidden		"</span> Hide <span class="keyword">buffers</span> when they are abandoned</div><div class="line"><span class="string">"set mouse=a		"</span> Enable mouse usage (<span class="keyword">all</span> modes)</div><div class="line"><span class="comment">" Source a global configuration file if available</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">filereadable</span>(<span class="string">"/etcimimrc.local"</span>)</div><div class="line">  <span class="keyword">source</span> /etcimimrc.local</div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="keyword">set</span> tabstop=<span class="number">4</span></div><div class="line"><span class="keyword">set</span> softtabstop=<span class="number">4</span></div><div class="line"><span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span></div><div class="line"><span class="keyword">set</span> autoindent</div><div class="line"><span class="keyword">set</span> <span class="built_in">cindent</span></div><div class="line"><span class="keyword">set</span> cinoptions=&#123;<span class="number">0</span>,<span class="number">1</span>s,t0,n-<span class="number">2</span>,p2s,(<span class="number">03</span>s,=,<span class="number">5</span>s,&gt;<span class="number">1</span>s,=<span class="number">1</span>s,:<span class="number">1</span>s</div><div class="line"><span class="keyword">set</span> <span class="keyword">nu</span></div><div class="line"><span class="keyword">if</span> &amp;term==<span class="string">"xterm"</span></div><div class="line"><span class="keyword">set</span> t_Co=<span class="number">8</span></div><div class="line"><span class="keyword">set</span> t_Sb=^[[<span class="number">4</span>%dm</div><div class="line"><span class="keyword">set</span> t_Sf=^[[<span class="number">3</span>%dm</div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="keyword">set</span> fileencodings=utf-<span class="number">8</span>,gb2312,gb18030,gbk,ucs-bom,cp836,latin1</div><div class="line"><span class="keyword">execute</span> pathogen#infect()</div><div class="line"><span class="comment">"let g:vim_markdown_frontmatter=1</span></div><div class="line"><span class="comment">"let g:molokai_original = 1</span></div><div class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;F7&gt;</span> :TagbarToggle<span class="symbol">&lt;CR&gt;</span> </div><div class="line"><span class="keyword">set</span> pastetoggle=<span class="symbol">&lt;F7&gt;</span> <span class="comment">"粘贴时保持缩进</span></div><div class="line"><span class="keyword">filetype</span> plugin <span class="keyword">on</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDCompactSexyComs</span> = <span class="number">1</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDDefaultAlign</span> = <span class="string">'left'</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDAltDelims_java</span> = <span class="number">1</span></div><div class="line"><span class="comment">"let g:NERDCustomDelimiters = &#123; 'c': &#123; 'left': '/*','right': '*/'  &#125;  &#125;</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDCustomDelimiters</span> = &#123; <span class="string">'c'</span>:&#123;<span class="string">'left'</span>: <span class="string">'//'</span>,<span class="string">'right'</span>:<span class="string">''</span>&#125; &#125;</div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDCommentEmptyLines</span> = <span class="number">1</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDTrimTrailingWhitespace</span> = <span class="number">1</span></div><div class="line"><span class="keyword">let</span> mapleader=<span class="string">","</span>  <span class="comment">"将nerdcommter的默认换行键改为,</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:xptemplate_key</span> = <span class="string">'&lt;F3&gt;'</span>  <span class="comment">"设置F3为xpcomplate默认键位</span></div><div class="line"><span class="keyword">autocmd</span> StdinReadPre * <span class="keyword">let</span> <span class="variable">s:std_in</span>=<span class="number">1</span> <span class="comment">"启动vim没有文件时自动启动nerdtree</span></div><div class="line"><span class="keyword">autocmd</span> VimEnter * <span class="keyword">if</span> <span class="built_in">argc</span>() == <span class="number">0</span> &amp;&amp; !exists(<span class="string">"s:std_in"</span>) | NERDTree | <span class="keyword">endif</span></div><div class="line"><span class="keyword">autocmd</span> StdinReadPre * <span class="keyword">let</span> <span class="variable">s:std_in</span>=<span class="number">1</span></div><div class="line"><span class="keyword">autocmd</span> VimEnter * <span class="keyword">if</span> <span class="built_in">argc</span>() == <span class="number">1</span> &amp;&amp; <span class="built_in">isdirectory</span>(<span class="built_in">argv</span>()[<span class="number">0</span>]) &amp;&amp; !exists(<span class="string">"s:std_in"</span>) | <span class="keyword">exe</span> <span class="string">'NERDTree'</span> <span class="built_in">argv</span>()[<span class="number">0</span>] | <span class="keyword">wincmd</span> <span class="keyword">p</span> | <span class="keyword">ene</span> | <span class="keyword">endif</span>   <span class="comment">"vim在目录中打开时自动启动nerdtree</span></div><div class="line"><span class="keyword">map</span> <span class="symbol">&lt;F5&gt;</span> :NERDTreeToggle<span class="symbol">&lt;CR&gt;</span> <span class="comment">"按F5启动nerdtree</span></div><div class="line"><span class="keyword">autocmd</span> bufenter * <span class="keyword">if</span> (<span class="built_in">winnr</span>(<span class="string">"$"</span>) == <span class="number">1</span> &amp;&amp; <span class="built_in">exists</span>(<span class="string">"b:NERDTree"</span>) &amp;&amp; <span class="variable">b:NERDTree</span>.isTabTree()) | q | <span class="keyword">endif</span> <span class="comment">"当只剩下nerdtree时自动关闭窗口</span></div><div class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;F8&gt;</span> :SCCompile<span class="symbol">&lt;cr&gt;</span> </div><div class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;F9&gt;</span> :SCCompileRun<span class="symbol">&lt;cr&gt;</span></div><div class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></div><div class="line"><span class="string">"   "</span> Javascript <span class="keyword">syntax</span> hightlight</div><div class="line"><span class="keyword">syntax</span> enable</div><div class="line"><span class="comment">"</span></div><div class="line"><span class="comment">" Set syntax highlighting for specific file types</span></div><div class="line"><span class="keyword">autocmd</span> BufRead,BufNewFile Appraisals <span class="keyword">set</span> <span class="keyword">filetype</span>=<span class="keyword">ruby</span></div><div class="line"><span class="keyword">autocmd</span> BufRead,BufNewFile *.md <span class="keyword">set</span> <span class="keyword">filetype</span>=markdown</div><div class="line"><span class="keyword">autocmd</span> Syntax javascript <span class="keyword">set</span> <span class="keyword">syntax</span>=jquery</div><div class="line"><span class="comment">" Highlight current line</span></div><div class="line"><span class="keyword">au</span> WinLeave * <span class="keyword">set</span> nocursorline nocursorcolumn</div><div class="line"><span class="keyword">au</span> WinEnter * <span class="keyword">set</span> cursorline cursorcolumn</div><div class="line"><span class="keyword">set</span> cursorline cursorcolumn</div><div class="line"></div><div class="line"><span class="comment">"powerline</span></div><div class="line"><span class="keyword">set</span> guifont=PowerlineSymbols\ <span class="keyword">for</span>\ Powerline</div><div class="line"><span class="keyword">set</span> nocompatible</div><div class="line"><span class="keyword">set</span> t_Co=<span class="number">256</span></div><div class="line"><span class="keyword">set</span> encoding=utf-<span class="number">8</span></div><div class="line"><span class="keyword">set</span> laststatus=<span class="number">2</span></div><div class="line"><span class="keyword">set</span> fillchars+=<span class="keyword">st</span><span class="variable">l:</span>\ ,stlnc:\</div><div class="line">  </div><div class="line"><span class="keyword">let</span> <span class="variable">g:ycm_server_python_interpreter</span>=<span class="string">'/usr/bin/python'</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:ycm_global_ycm_extra_conf</span>=<span class="string">'~/.vim/.ycm_extra_conf.py'</span></div><div class="line"></div><div class="line"><span class="comment">"colorscheme molokai</span></div><div class="line"><span class="comment">"let g:rehash256 = 1</span></div><div class="line"><span class="keyword">colorscheme</span> vividchalk</div><div class="line"><span class="comment">"colorscheme Tomorrow</span></div><div class="line"><span class="comment">"colorscheme Tomorrow-Night</span></div><div class="line"><span class="comment">"上面为四个不同配色，可使用其中任何一个</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="配置脚本"><a href="#配置脚本" class="headerlink" title="配置脚本"></a>配置脚本</h3>
-                  <p><a href="/scripts/vim_config.sh">下载自动配置脚本。</a> </p>
-                  <p>或直接在命令行执行下面的命令：</p>
-                  <p><code>curl http://ucasfl.me/scripts/vim_config.sh | bash</code></p>
-                  <p>该脚本可配置上面除了 Youcompleteme 之后的所有插件和配色。</p>
-
-                </div>
-
-                <div>
-
-
-
-
-                </div>
-
-                <div>
-
-
-
-
-                </div>
-
-
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-                  <div class="post-tags">
-
-                    <a href="/tags/Vim/" rel="tag"># Vim</a>
+                    <p>然后，把下面这行代码添加到 vimrc 文件中：</p>
+                    <figure class="highlight autoit">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="built_in">execute</span> pathogen<span class="meta">#infect()</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>如果你还没有 vimrc 文件，那么，先创建一个 vimrc 文件：</p>
+                    <figure class="highlight nginx">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="attribute">vim</span> ~/.vimrc</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>然后把下面的内容添加到文件中：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">execute</span> pathogen#infect()</div><div class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>当这个插件安装好以后，安装别的插件就很简单了，只需要进入 <code>.vim/bundle/</code> 文件夹中，然后，把需要安装的插件克隆下来就可以了。</p>
+                    <p>该插件托管在 <a href="https://github.com/tpope/vim-pathogen" target="_blank" rel="external">GitHub</a>。</p>
+                    <h4 id="auto-pairs"><a href="#auto-pairs" class="headerlink" title="auto-pairs"></a>auto-pairs</h4>
+                    <p>该插件说简单点就是实现括号、引号的自动补全，安装好以后就可以用了，没什么特别的地方。</p>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/jiangmiao/auto-pairs.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>该插件的更多用法请看插件在 GitHub 上的<a href="https://github.com/jiangmiao/auto-pairs" target="_blank" rel="external">README</a></p>
+                    <h4 id="nerdcommenter"><a href="#nerdcommenter" class="headerlink" title="nerdcommenter"></a>nerdcommenter</h4>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> ~/.<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/scrooloose/nerdcommenter.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>该插件用于把代码注释了或给代码添加注释。</p>
+                    <p>首先，它的快捷键中用到了 <code>\</code>,但这样用起来很不习惯，可以把 <code>\</code> 换成 <code>,</code>,只需要在 vimrc 文件中加上下面这行代码：</p>
+                    <figure class="highlight bash">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="built_in">let</span> mapleader=<span class="string">","</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>注释代码： <code>,-cc</code> ，即先按下 <code>,</code>然后再连按两次 <code>c</code>，如果要注释多行,可以在前面加上数字指明行数，比如要注释当前行和之后的 4 行，可以先按下 <code>5</code>，然后再按下 <code>,-cc</code>；</p>
+                    <p>再行末给代码添加注释：<code>,cA</code> ，即先按下 <code>,</code> 然后再按下<code>c</code>，再按下<code>A</code>，之后直接进入插入模式，可以开始添加注释。</p>
+                    <h5 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h5>
+                    <ol>
+                      <li>,cc 注释当前行和选中行；</li>
+                      <li>,cn 没有发现和,cc有区别； </li>
+                      <li>,c&lt;空格&gt; 如果被选区域有部分被注释，则对被选区域执行取消注释操作，其它情况执行反转注释操作；</li>
+                      <li>,cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释；</li>
+                      <li>,ci 执行反转注释操作，选中区域注释部分取消注释，非注释部分添加注释；</li>
+                      <li>,cs 添加性感的注释，代码开头介绍部分通常使用该注释；</li>
+                      <li>,cy 添加注释，并复制被添加注释的部分；</li>
+                      <li>,c$ 注释当前光标到改行结尾的内容；</li>
+                      <li>,cA 跳转到该行结尾添加注释，并进入编辑模式； </li>
+                      <li>,ca 转换注释的方式，比如： /**/和//； </li>
+                      <li>,cl ,cb 左对齐和左右对其，左右对齐主要针对/**/； </li>
+                      <li>,cu 取消注释；</li>
+                    </ol>
+                    <p>更多用法请访问<a href="https://github.com/scrooloose/nerdcommenter" target="_blank" rel="external">GitHub</a>。</p>
+                    <h4 id="nerdtree"><a href="#nerdtree" class="headerlink" title="nerdtree"></a>nerdtree</h4>
+                    <p>nerdtree 是一个文件管理插件</p>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/scrooloose/nerdtree.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>键位设置，假设你想把
+                      <f5>设置为 nerdtree 的启动键，那么只需把下面一行内容加入 vimrc 文件中：</f5>
+                    </p>
+                    <figure class="highlight elixir">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">map &lt;F5&gt; <span class="symbol">:NERDTreeToggle&lt;CR&gt;</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>vim 没有指定文件为参数时自动打开 nerdtree：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">autocmd</span> StdinReadPre * <span class="keyword">let</span> <span class="variable">s:std_in</span>=<span class="number">1</span></div><div class="line"><span class="keyword">autocmd</span> VimEnter * <span class="keyword">if</span> <span class="built_in">argc</span>() == <span class="number">0</span> &amp;&amp; !exists(<span class="string">"s:std_in"</span>) | NERDTree | <span class="keyword">endif</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>在一个目录中打开 vim 时自动打开 nerdtree：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">autocmd</span> StdinReadPre * <span class="keyword">let</span> <span class="variable">s:std_in</span>=<span class="number">1</span></div><div class="line"><span class="keyword">autocmd</span> VimEnter * <span class="keyword">if</span> <span class="built_in">argc</span>() == <span class="number">1</span> &amp;&amp; <span class="built_in">isdirectory</span>(<span class="built_in">argv</span>()[<span class="number">0</span>]) &amp;&amp; !exists(<span class="string">"s:std_in"</span>) | <span class="keyword">exe</span> <span class="string">'NERDTree'</span> <span class="built_in">argv</span>()[<span class="number">0</span>] | <span class="keyword">wincmd</span> <span class="keyword">p</span> | <span class="keyword">ene</span> | <span class="keyword">endif</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>注：上面所展示的内容都是加入 vimrc 文件中。</p>
+                    <p>下面，是一些默认键位：</p>
+                    <ul>
+                      <li>和编辑文件一样，通过h j k l移动光标定位；</li>
+                      <li>o 打开关闭文件或者目录，如果是文件的话，光标出现在打开的文件中；</li>
+                      <li>go 效果同上，不过光标保持在文件目录里，类似预览文件内容的功能；</li>
+                      <li>i和s可以水平分割或纵向分割窗口打开文件，前面加g类似go的功能；</li>
+                      <li>t 在标签页中打开；</li>
+                      <li>T 在后台标签页中打开；</li>
+                      <li>p 到上层目录；</li>
+                      <li>P 到根目录；</li>
+                      <li>K 到同目录第一个节点；</li>
+                      <li>J 到同目录最后一个节点；</li>
+                      <li>m 显示文件系统菜单（添加、删除、移动操作）；</li>
+                      <li>? 帮助；</li>
+                      <li>q 关闭；</li>
+                      <li>窗口间移动：Ctrl+ww，即先按下 Ctrl ，再连按两次 ww；</li>
+                    </ul>
+                    <p>不过我觉得比较常用的就只有: Ctrl+ww , q , o , go , i , s , F5 这几个；</p>
+                    <p>更多信息，请访问 <a href="https://github.com/scrooloose/nerdtree" target="_blank" rel="external">GitHub</a>。</p>
+                    <h4 id="supertab"><a href="#supertab" class="headerlink" title="supertab"></a>supertab</h4>
+                    <p>supertab 是一个补全插件，它能够自动补全之前输入过的东西，比如变量名，函数名等，输入过一次以后之后只需输入几个字母，然后按 Tab 键就可以自动补全。</p>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/ervandew/supertab.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>它的用法很简单，就只需要按下 Tab 键就可以了。</p>
+                    <p>访问 <a href="https://github.com/ervandew/supertab" target="_blank" rel="external">GitHub 仓库</a>。</p>
+                    <h4 id="syntastic"><a href="#syntastic" class="headerlink" title="syntastic"></a>syntastic</h4>
+                    <p>syntastic 是一个检查语法错误的插件。</p>
+                    <p>当文件保存以后，有语法错误的行，会在左测栏标记出红色，当把光标移动到该行时，会在底部状态栏下面显示错误信息。</p>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone --depth=<span class="number">1</span> http<span class="variable">s:</span>//github.<span class="keyword">com</span>/<span class="keyword">vim</span>-syntastic/syntastic.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>访问 <a href="https://github.com/vim-syntastic/syntastic" target="_blank" rel="external">GitHub 仓库</a>。</p>
+                    <h4 id="tagbar"><a href="#tagbar" class="headerlink" title="tagbar"></a>tagbar</h4>
+                    <p>tagbar 可以快速浏览当前文件中的所有函数，定义的结构等</p>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/majutsushi/tagbar.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>设置默认键位：</p>
+                    <figure class="highlight elixir">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">nmap &lt;F7&gt; <span class="symbol">:TagbarToggle&lt;CR&gt;</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>将上面这行内容加入 vimrc 文件中以后，在文件中按 F7 键就可以浏览　Tag，再次按下退出。</p>
+                    <p>访问 <a href="https://github.com/majutsushi/tagbar" target="_blank" rel="external">github 仓库</a>。</p>
+                    <h4 id="TagHighlight"><a href="#TagHighlight" class="headerlink" title="TagHighlight"></a>TagHighlight</h4>
+                    <p>TagHighlight 插件能够高亮显示文件中的所有变量名，自定义函数，类型名等。</p>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/magic-dot-<span class="keyword">files</span>/TagHighlight.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>使用：保存文件，然后在 vim 的 Normal 模式下输入 :UpdateTypesFile 命令。</p>
+                    <p>更新 helptags，在 vim 中运行上面的命令:<br>
+                      <figure class="highlight less">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><div class="line">1</div></pre>
+                            </td>
+                            <td class="code">
+                              <pre><div class="line"><span class="selector-pseudo">:call</span> <span class="selector-tag">pathogen</span><span class="selector-id">#helptags</span>()</div></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>访问 <a href="https://github.com/magic-dot-files/TagHighlight" target="_blank" rel="external">GitHub 仓库</a>。</p>
+                    <h4 id="vim-powerline"><a href="#vim-powerline" class="headerlink" title="vim-powerline"></a>vim-powerline</h4>
+                    <p>vim-powerline 是一个强大的显示 vim 状态栏的插件。</p>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/Lokaltog/<span class="keyword">vim</span>-powerline.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>访问 <a href="https://github.com/Lokaltog/vim-powerline" target="_blank" rel="external">GitHub 仓库</a></p>
+                    <h4 id="xptemplate"><a href="#xptemplate" class="headerlink" title="xptemplate"></a>xptemplate</h4>
+                    <p>到了最后一个-xptemplate，该插件是一个强大的代码段补全插件。</p>
+                    <p>安装：</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/drmingdrmer/xptemplate.git</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>当输入一个词比如 for 以后按下 ctrl+\ 就可以补全 for 循环，然后光标出现在第一个输入的地方，输入好以后按下 Tab 键到达下一个需要输入的地方。</p>
+                    <p>因为我不喜欢它的默认键位： Ctrl+\ ，所以重新设置了一个默认键位，本来想设置为 Tab 键，但由于 Tab 键已经被 supertab 占用了，所有就设置为 F3 。</p>
+                    <p>在 vimrc 文件中加入下面一行内容：</p>
+                    <figure class="highlight vbnet">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">let</span> g:xptemplate_key = <span class="comment">'<span class="doctag">&lt;F3&gt;</span>'</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>现在，xptemplate 的默认键位就变成 F3 了。</p>
+                    <p>访问 <a href="https://github.com/drmingdrmer/xptemplate" target="_blank" rel="external">GitHub 仓库</a>。</p>
+                    <h4 id="ctrlp"><a href="#ctrlp" class="headerlink" title="ctrlp"></a>ctrlp</h4>
+                    <p>一个查找文件的插件。</p>
+                    <p>安装：</p>
+                    <figure class="highlight stylus">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">cd ~/.vim/bundle</div><div class="line">git clone git@github<span class="selector-class">.com</span>:kien/ctrlp<span class="selector-class">.vim</span><span class="selector-class">.git</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>用法：</p>
+                    <ul>
+                      <li>Ctrl+p：进入文件查找模式；</li>
+                      <li>ESC：退出；</li>
+                      <li>F5：清除当前目录下的缓存，获取新的结构；</li>
+                      <li>Ctrl+f/Ctrl+b：在各个模式间转换；</li>
+                      <li>Ctrl+d：使用文件名搜索代替全路径搜索；</li>
+                      <li>Ctrl+r：使用正则模式；</li>
+                      <li>Ctrl+j/Ctrl+k：上下选择文件；</li>
+                      <li>Ctrl+t：在新的 Tab 打开选择的文件；</li>
+                      <li>Ctrl+v/Ctrl+x：在新的窗口垂直/水平打开文件；</li>
+                      <li>Ctrl+y：创建一个新的文件（先输入文件名，然后按下 Ctrl+y）；</li>
+                      <li>Ctrl+z：标记或取消标记多个文件，然后使用 Ctrl+o 打开；</li>
+                    </ul>
+                    <p>访问 <a href="https://github.com/kien/ctrlp.vim" target="_blank" rel="external">GitHub</a></p>
+                    <h4 id="quick-scope"><a href="#quick-scope" class="headerlink" title="quick-scope"></a>quick-scope</h4>
+                    <p>不太懂该插件怎么用，只知道安装后单词首字母被标出。<br>安装：<br>
+                      <figure class="highlight vim">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><div class="line">1</div><div class="line">2</div></pre>
+                            </td>
+                            <td class="code">
+                              <pre><div class="line"><span class="keyword">cd</span> .<span class="keyword">vim</span>/bundle</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/unblevable/quick-scope.git</div></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>访问 <a href="https://github.com/unblevable/quick-scope" target="_blank" rel="external">GitHub</a></p>
+                    <h4 id="Youcompleteme"><a href="#Youcompleteme" class="headerlink" title="Youcompleteme"></a>Youcompleteme</h4>
+                    <p>这是一个很强大的工具，集成了上面 supertab 和 syntastic 等差件的功能，不过安装起来比较麻烦，当然，网上也有很多安装教程，可自行搜索。</p>
+                    <h4 id="Vim-配色"><a href="#Vim-配色" class="headerlink" title="Vim 配色"></a>Vim 配色</h4>
+                    <p>对于一个好的编辑器来说，配色也很重要，目前我使用的 <a href="https://github.com/tpope/vim-vividchalk" target="_blank" rel="external">vividchalk</a>，之前很长一段时间都使用<a href="https://github.com/tomasr/molokai" target="_blank" rel="external">molokai</a></p>
+                    <p>两个配色都很不错。</p>
+                    <h3 id="我的-vimrc-文件"><a href="#我的-vimrc-文件" class="headerlink" title="我的 vimrc 文件"></a>我的 vimrc 文件</h3>
+                    <p>最后，把我的 vimrc 文件粘贴在下面：<br>或者也可在<a href="https://github.com/ucasFL/my_vimrc" target="_blank" rel="external">GitHub</a>上查看</p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"></div><div class="line">runtime! debian.<span class="keyword">vim</span></div><div class="line"><span class="comment">" Uncomment the next line to make Vim more Vi-compatible</span></div><div class="line"><span class="comment">" <span class="doctag">NOTE:</span> debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous</span></div><div class="line"><span class="comment">" options, so any other options should be set AFTER setting 'compatible'.</span></div><div class="line"><span class="comment">"set compatible</span></div><div class="line"><span class="comment">" Vim5 and later versions support syntax highlighting. Uncommenting the next</span></div><div class="line"><span class="comment">" line enables syntax highlighting by default.</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">"syntax"</span>)</div><div class="line">  <span class="keyword">syntax</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="comment">" If using a dark background within the editing area and syntax highlighting</span></div><div class="line"><span class="comment">" turn on this option as well</span></div><div class="line"><span class="comment">"set background=dark</span></div><div class="line"><span class="comment">" Uncomment the following to have Vim jump to the last position when</span></div><div class="line"><span class="comment">" reopening a file</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">"autocmd"</span>)</div><div class="line">  <span class="keyword">au</span> BufReadPost * <span class="keyword">if</span> <span class="built_in">line</span>(<span class="string">"'\""</span>) &gt; <span class="number">1</span> &amp;&amp; <span class="built_in">line</span>(<span class="string">"'\""</span>) &lt;= <span class="built_in">line</span>(<span class="string">"$"</span>) | <span class="keyword">exe</span> <span class="string">"normal! g'\""</span> | <span class="keyword">endif</span></div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="comment">" Uncomment the following to have Vim load indentation rules and plugins</span></div><div class="line"><span class="comment">" according to the detected filetype.</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">"autocmd"</span>)</div><div class="line">  <span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="comment">" The following are commented out as they cause vim to behave a lot</span></div><div class="line"><span class="comment">" differently from regular Vi. They are highly recommended though.</span></div><div class="line"><span class="string">"set showcmd		"</span> Show (partial) <span class="keyword">command</span> in status <span class="built_in">line</span>.</div><div class="line"><span class="string">"set showmatch		"</span> Show matching brackets.</div><div class="line"><span class="string">"set ignorecase		"</span> Do case insensitive matching</div><div class="line"><span class="string">"set smartcase		"</span> Do smart case matching</div><div class="line"><span class="string">"set incsearch		"</span> Incremental <span class="built_in">search</span></div><div class="line"><span class="string">"set autowrite		"</span> Automatically save before commands like :<span class="keyword">next</span> <span class="built_in">and</span> :<span class="keyword">make</span></div><div class="line"><span class="string">"set hidden		"</span> Hide <span class="keyword">buffers</span> when they are abandoned</div><div class="line"><span class="string">"set mouse=a		"</span> Enable mouse usage (<span class="keyword">all</span> modes)</div><div class="line"><span class="comment">" Source a global configuration file if available</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">filereadable</span>(<span class="string">"/etcimimrc.local"</span>)</div><div class="line">  <span class="keyword">source</span> /etcimimrc.local</div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="keyword">set</span> tabstop=<span class="number">4</span></div><div class="line"><span class="keyword">set</span> softtabstop=<span class="number">4</span></div><div class="line"><span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span></div><div class="line"><span class="keyword">set</span> autoindent</div><div class="line"><span class="keyword">set</span> <span class="built_in">cindent</span></div><div class="line"><span class="keyword">set</span> cinoptions=&#123;<span class="number">0</span>,<span class="number">1</span>s,t0,n-<span class="number">2</span>,p2s,(<span class="number">03</span>s,=,<span class="number">5</span>s,&gt;<span class="number">1</span>s,=<span class="number">1</span>s,:<span class="number">1</span>s</div><div class="line"><span class="keyword">set</span> <span class="keyword">nu</span></div><div class="line"><span class="keyword">if</span> &amp;term==<span class="string">"xterm"</span></div><div class="line"><span class="keyword">set</span> t_Co=<span class="number">8</span></div><div class="line"><span class="keyword">set</span> t_Sb=^[[<span class="number">4</span>%dm</div><div class="line"><span class="keyword">set</span> t_Sf=^[[<span class="number">3</span>%dm</div><div class="line"><span class="keyword">endif</span></div><div class="line"><span class="keyword">set</span> fileencodings=utf-<span class="number">8</span>,gb2312,gb18030,gbk,ucs-bom,cp836,latin1</div><div class="line"><span class="keyword">execute</span> pathogen#infect()</div><div class="line"><span class="comment">"let g:vim_markdown_frontmatter=1</span></div><div class="line"><span class="comment">"let g:molokai_original = 1</span></div><div class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;F7&gt;</span> :TagbarToggle<span class="symbol">&lt;CR&gt;</span> </div><div class="line"><span class="keyword">set</span> pastetoggle=<span class="symbol">&lt;F7&gt;</span> <span class="comment">"粘贴时保持缩进</span></div><div class="line"><span class="keyword">filetype</span> plugin <span class="keyword">on</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDCompactSexyComs</span> = <span class="number">1</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDDefaultAlign</span> = <span class="string">'left'</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDAltDelims_java</span> = <span class="number">1</span></div><div class="line"><span class="comment">"let g:NERDCustomDelimiters = &#123; 'c': &#123; 'left': '/*','right': '*/'  &#125;  &#125;</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDCustomDelimiters</span> = &#123; <span class="string">'c'</span>:&#123;<span class="string">'left'</span>: <span class="string">'//'</span>,<span class="string">'right'</span>:<span class="string">''</span>&#125; &#125;</div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDCommentEmptyLines</span> = <span class="number">1</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:NERDTrimTrailingWhitespace</span> = <span class="number">1</span></div><div class="line"><span class="keyword">let</span> mapleader=<span class="string">","</span>  <span class="comment">"将nerdcommter的默认换行键改为,</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:xptemplate_key</span> = <span class="string">'&lt;F3&gt;'</span>  <span class="comment">"设置F3为xpcomplate默认键位</span></div><div class="line"><span class="keyword">autocmd</span> StdinReadPre * <span class="keyword">let</span> <span class="variable">s:std_in</span>=<span class="number">1</span> <span class="comment">"启动vim没有文件时自动启动nerdtree</span></div><div class="line"><span class="keyword">autocmd</span> VimEnter * <span class="keyword">if</span> <span class="built_in">argc</span>() == <span class="number">0</span> &amp;&amp; !exists(<span class="string">"s:std_in"</span>) | NERDTree | <span class="keyword">endif</span></div><div class="line"><span class="keyword">autocmd</span> StdinReadPre * <span class="keyword">let</span> <span class="variable">s:std_in</span>=<span class="number">1</span></div><div class="line"><span class="keyword">autocmd</span> VimEnter * <span class="keyword">if</span> <span class="built_in">argc</span>() == <span class="number">1</span> &amp;&amp; <span class="built_in">isdirectory</span>(<span class="built_in">argv</span>()[<span class="number">0</span>]) &amp;&amp; !exists(<span class="string">"s:std_in"</span>) | <span class="keyword">exe</span> <span class="string">'NERDTree'</span> <span class="built_in">argv</span>()[<span class="number">0</span>] | <span class="keyword">wincmd</span> <span class="keyword">p</span> | <span class="keyword">ene</span> | <span class="keyword">endif</span>   <span class="comment">"vim在目录中打开时自动启动nerdtree</span></div><div class="line"><span class="keyword">map</span> <span class="symbol">&lt;F5&gt;</span> :NERDTreeToggle<span class="symbol">&lt;CR&gt;</span> <span class="comment">"按F5启动nerdtree</span></div><div class="line"><span class="keyword">autocmd</span> bufenter * <span class="keyword">if</span> (<span class="built_in">winnr</span>(<span class="string">"$"</span>) == <span class="number">1</span> &amp;&amp; <span class="built_in">exists</span>(<span class="string">"b:NERDTree"</span>) &amp;&amp; <span class="variable">b:NERDTree</span>.isTabTree()) | q | <span class="keyword">endif</span> <span class="comment">"当只剩下nerdtree时自动关闭窗口</span></div><div class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;F8&gt;</span> :SCCompile<span class="symbol">&lt;cr&gt;</span> </div><div class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;F9&gt;</span> :SCCompileRun<span class="symbol">&lt;cr&gt;</span></div><div class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></div><div class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></div><div class="line"><span class="string">"   "</span> Javascript <span class="keyword">syntax</span> hightlight</div><div class="line"><span class="keyword">syntax</span> enable</div><div class="line"><span class="comment">"</span></div><div class="line"><span class="comment">" Set syntax highlighting for specific file types</span></div><div class="line"><span class="keyword">autocmd</span> BufRead,BufNewFile Appraisals <span class="keyword">set</span> <span class="keyword">filetype</span>=<span class="keyword">ruby</span></div><div class="line"><span class="keyword">autocmd</span> BufRead,BufNewFile *.md <span class="keyword">set</span> <span class="keyword">filetype</span>=markdown</div><div class="line"><span class="keyword">autocmd</span> Syntax javascript <span class="keyword">set</span> <span class="keyword">syntax</span>=jquery</div><div class="line"><span class="comment">" Highlight current line</span></div><div class="line"><span class="keyword">au</span> WinLeave * <span class="keyword">set</span> nocursorline nocursorcolumn</div><div class="line"><span class="keyword">au</span> WinEnter * <span class="keyword">set</span> cursorline cursorcolumn</div><div class="line"><span class="keyword">set</span> cursorline cursorcolumn</div><div class="line"></div><div class="line"><span class="comment">"powerline</span></div><div class="line"><span class="keyword">set</span> guifont=PowerlineSymbols\ <span class="keyword">for</span>\ Powerline</div><div class="line"><span class="keyword">set</span> nocompatible</div><div class="line"><span class="keyword">set</span> t_Co=<span class="number">256</span></div><div class="line"><span class="keyword">set</span> encoding=utf-<span class="number">8</span></div><div class="line"><span class="keyword">set</span> laststatus=<span class="number">2</span></div><div class="line"><span class="keyword">set</span> fillchars+=<span class="keyword">st</span><span class="variable">l:</span>\ ,stlnc:\</div><div class="line">  </div><div class="line"><span class="keyword">let</span> <span class="variable">g:ycm_server_python_interpreter</span>=<span class="string">'/usr/bin/python'</span></div><div class="line"><span class="keyword">let</span> <span class="variable">g:ycm_global_ycm_extra_conf</span>=<span class="string">'~/.vim/.ycm_extra_conf.py'</span></div><div class="line"></div><div class="line"><span class="comment">"colorscheme molokai</span></div><div class="line"><span class="comment">"let g:rehash256 = 1</span></div><div class="line"><span class="keyword">colorscheme</span> vividchalk</div><div class="line"><span class="comment">"colorscheme Tomorrow</span></div><div class="line"><span class="comment">"colorscheme Tomorrow-Night</span></div><div class="line"><span class="comment">"上面为四个不同配色，可使用其中任何一个</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="配置脚本"><a href="#配置脚本" class="headerlink" title="配置脚本"></a>配置脚本</h3>
+                    <p><a href="/scripts/vim_config.sh">下载自动配置脚本。</a> </p>
+                    <p>或直接在命令行执行下面的命令：</p>
+                    <p><code>curl http://ucasfl.me/scripts/vim_config.sh | bash</code></p>
+                    <p>该脚本可配置上面除了 Youcompleteme 之后的所有插件和配色。</p>
 
                   </div>
 
@@ -911,76 +836,56 @@ Vim 简介
 
 
 
-                  <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
 
-                      <a href="/2017/03/19/How-to-Install-Latest-Python3.6-in-Linux/" rel="next" title="如何在 Linux 中安装最新的 Python 3.6 版本">
+
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/Vim/" rel="tag"># Vim</a>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/2017/03/19/How-to-Install-Latest-Python3.6-in-Linux/" rel="next" title="如何在 Linux 中安装最新的 Python 3.6 版本">
                 <i class="fa fa-chevron-left"></i> 如何在 Linux 中安装最新的 Python 3.6 版本
               </a>
 
-                    </div>
+                      </div>
 
-                    <span class="post-nav-divider"></span>
+                      <span class="post-nav-divider"></span>
 
-                    <div class="post-nav-prev post-nav-item">
+                      <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2017/03/22/String-Part1/" rel="prev" title="串-Part1">
+                        <a href="/2017/03/22/String-Part1/" rel="prev" title="串-Part1">
                 串-Part1 <i class="fa fa-chevron-right"></i>
               </a>
 
+                      </div>
                     </div>
-                  </div>
 
 
 
 
-                </footer>
+                  </footer>
+                </div>
+
+
+
               </article>
 
 
 
-
-
-
               <div class="post-spread">
-
-
-                <div class="bdsharebuttonbox">
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                  window._bd_share_config = {
-                    "common": {
-                      "bdText": "",
-                      "bdMini": "2",
-                      "bdMiniList": false,
-                      "bdPic": ""
-                    },
-                    "share": {
-                      "bdSize": "16",
-                      "bdStyle": "0"
-                    },
-                    "image": {
-                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-                      "viewText": "分享到：",
-                      "viewSize": "16"
-                    }
-                  }
-                </script>
-
-                <script>
-                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-                </script>
-
 
               </div>
             </div>
@@ -991,13 +896,19 @@ Vim 简介
 
 
 
+
+
           <div class="comments" id="comments">
+
+            <div id="gitment-container"></div>
 
           </div>
 
 
-        </div>
 
+
+
+        </div>
 
 
 
@@ -1010,6 +921,7 @@ Vim 简介
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
@@ -1019,124 +931,79 @@ Vim 简介
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview">
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview sidebar-panel">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -1192,66 +1059,37 @@ Vim 简介
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -1266,9 +1104,9 @@ Vim 简介
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -1297,56 +1135,70 @@ Vim 简介
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1374,6 +1226,8 @@ Vim 简介
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -1383,275 +1237,14 @@ Vim 简介
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -1662,11 +1255,3 @@ Vim 简介
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>

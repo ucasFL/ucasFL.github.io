@@ -1,21 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -43,7 +51,22 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Asciinema/Translated," />
@@ -53,11 +76,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -86,19 +104,31 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Pisces',
+      scheme: 'Muse',
+      version: '5.1.3',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
-        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": true
+        "scrollpercent": false,
+        "onmobile": false
       },
       fancybox: true,
-      motion: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
       duoshuo: {
-        userId: 'undefined',
+        userId: '0',
         author: '博主'
       },
       algolia: {
@@ -125,7 +155,16 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
-  <title> 如何在 Linux 中使用 Asciinema 进行录制和回放终端会话 | 春暖花开 </title>
+  <title>如何在 Linux 中使用 Asciinema 进行录制和回放终端会话 | 春暖花开</title>
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,22 +174,7 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -197,28 +221,8 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
             </li>
 
 
-            <li class="menu-item menu-item-categories">
-              <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-            </li>
-
-
-            <li class="menu-item menu-item-about">
-              <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-            </li>
-
-
             <li class="menu-item menu-item-archives">
-              <a href="/archives" rel="section">
+              <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -228,41 +232,9 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
-            <li class="menu-item menu-item-search">
-
-              <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-            </li>
-
           </ul>
 
 
-
-          <div class="site-search">
-
-            <div class="popup local-search-popup">
-              <div class="local-search-header clearfix">
-                <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-                <div class="local-search-input-wrapper">
-                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-                </div>
-              </div>
-              <div id="local-search-result"></div>
-            </div>
-
-
-
-          </div>
 
         </nav>
 
@@ -286,47 +258,41 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/20/the-Asciinema-Tutorial-in-Linux/">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
 
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/05/20/the-Asciinema-Tutorial-in-Linux/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Flynn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
-                </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="春暖花开">
+    </span>
 
 
-                <header class="post-header">
+                  <header class="post-header">
 
 
 
-                  <h1 class="post-title" itemprop="name headline">
+                    <h1 class="post-title" itemprop="name headline">如何在 Linux 中使用 Asciinema 进行录制和回放终端会话</h1>
 
 
-
-                    如何在 Linux 中使用 Asciinema 进行录制和回放终端会话
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
+                    <div class="post-meta">
+                      <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">发表于</span>
+                      <span class="post-meta-item-text">发表于</span>
 
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T17:20:11+08:00">
+                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T17:20:11+08:00">
                 2017/05/20
               </time>
 
@@ -334,48 +300,43 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
-                    </span>
+                      </span>
 
 
-                    <span class="post-category">
+                      <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                    <span class="post-meta-item-icon">
+                      <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                    <span class="post-meta-item-text">分类于</span>
+                      <span class="post-meta-item-text">分类于</span>
 
 
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
-                    </a>
-                    </span>
+                      </a>
+                      </span>
 
 
 
 
-                    </span>
+                      </span>
 
 
 
 
-
-
-
-
-                    <span id="/2017/05/20/the-Asciinema-Tutorial-in-Linux/" class="leancloud_visitors" data-flag-title="如何在 Linux 中使用 Asciinema 进行录制和回放终端会话">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
+                      <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                      <a href="/2017/05/20/the-Asciinema-Tutorial-in-Linux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/05/20/the-Asciinema-Tutorial-in-Linux/" itemprop="commentsCount"></span>
+                </a>
+                      </span>
 
 
 
@@ -384,454 +345,418 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
 
 
 
 
-
-                  <p><img src="https://linuxconfig.org/images/asciimena-video-example.jpg?58942057" alt=""></p>
-                  <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3>
-                  <p>Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它可以录制、回放和分享 JSON 格式的终端会话记录。与一些桌面录制器，比如 Recordmydesktop、Simplescreenrecorder、Vokoscreen 或 Kazam 相比，Asciinema 最主要的优点是，它能够以通过 ASCII 文本以及 ANSI 转义码编码来录制所有的标准终端输入、输出和错误信息。</p>
-                  <p>事实上，即使是很长的终端会话，录制出的 JSON 格式文件也非常小。另外，JSON 格式使得用户可以利用简单的文件转化器，将输出的 JSON 格式文件嵌入到 HTML 代码中，然后分享到公共网站或者使用 asciinema 账户分享到 Asciinema.org 。最后，如果你的终端会话中有一些错误，并且你还懂一些 ASCI 转义码语法，那么你可以使用任何编辑器来修改你的已录制终端会话。</p>
-                  <a id="more"></a>
-                  <p><strong>难易程度：</strong></p>
-                  <p>很简单！</p>
-                  <p><strong>标准终端：</strong></p>
-                  <ul>
-                    <li><strong>#</strong> - 给定命令需要以 root 用户权限运行或者使用 <code>sudo</code> 命令</li>
-                    <li><strong>$</strong> - 给定命令以常规权限用户运行</li>
-                  </ul>
-                  <h3 id="从软件库安装"><a href="#从软件库安装" class="headerlink" title="从软件库安装"></a>从软件库安装</h3>
-                  <p>通常， asciinema 可以使用你的发行版的软件库进行安装。但是，如果不可以使用系统的软件库进行安装或者你想安装最新的版本，那么，你可以像下面的“从源代码安装”部分所描述的那样，使用 Linuxbrew 包管理器来执行 Asciinema 安装。</p>
-                  <p><strong>在 Arch Linux 上安装：</strong></p>
-                  <figure class="highlight vala">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="meta"># pacman -S asciinema</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p><strong>在 Debian 上安装：</strong></p>
-                  <figure class="highlight vala">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="meta"># apt install asciinema</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p><strong>在 Ubuntu 上安装：</strong></p>
-                  <figure class="highlight cmake">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ sudo apt <span class="keyword">install</span> asciinema</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p><strong>在 Fedora 上安装：</strong></p>
-                  <figure class="highlight cmake">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ sudo dnf <span class="keyword">install</span> asciinema</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="从源代码安装"><a href="#从源代码安装" class="headerlink" title="从源代码安装"></a>从源代码安装</h3>
-                  <p>最简单并且值得推荐的方式是使用 Linuxbrew 包管理器，从源代码安装最新版本的 Asciinema 。</p>
-                  <h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h4>
-                  <p>下面列出的前提条件是安装 Linuxbrew 和 Asciinema 需要满足的依赖关系：</p>
-                  <ul>
-                    <li>git</li>
-                    <li>gcc</li>
-                    <li>make</li>
-                    <li>ruby</li>
-                  </ul>
-                  <p>在安装 Linuxbrew 之前，请确保上面的这些包都已经安装在了你的 Linux 系统中。</p>
-                  <p><strong>在 Arch Linux 上安装 ruby：</strong></p>
-                  <figure class="highlight vala">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="meta"># pacman -S git gcc make ruby</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p><strong>在 Debian 上安装 ruby：</strong></p>
-                  <figure class="highlight vala">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="meta"># apt install git gcc make ruby</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p><strong>在 Ubuntu 上安装 ruby：</strong></p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ sudo apt install git gcc <span class="keyword">make</span> <span class="keyword">ruby</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p><strong>在 Fedora 上安装 ruby：</strong></p>
-                  <figure class="highlight vim">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ sudo dnf install git gcc <span class="keyword">make</span> <span class="keyword">ruby</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p><strong>在 CentOS 上安装 ruby：</strong></p>
-                  <figure class="highlight vala">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="meta"># yum install git gcc make ruby</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h4 id="安装-Linuxbrew"><a href="#安装-Linuxbrew" class="headerlink" title="安装 Linuxbrew"></a>安装 Linuxbrew</h4>
-                  <p>Linuxbrew 包管理器是苹果的 MacOS 操作系统很受欢迎的 Homebrew 包管理器的一个复刻版本。还没发布多久，Homebrew 就以容易使用而著称。如果你想使用 Linuxbrew 来安装 Asciinema，那么，请运行下面命令在你的 Linux 版本上安装 Linuxbrew：</p>
-                  <figure class="highlight bash">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)</span>"</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>现在，Linuxbrew 已经安装到了目录 <code>$HOME/.linuxbrew/</code> 下。剩下需要做的就是使它成为可执行 <code>PATH</code> 环境变量的一部分。</p>
-                  <figure class="highlight julia">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ echo '<span class="keyword">export</span> PATH=<span class="string">"<span class="variable">$HOME</span>/.linuxbrew/bin:<span class="variable">$PATH</span>"</span>' &gt;&gt;~/.bash_profile</div><div class="line">$ . ~/.bash_profile</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>为了确认 Linuxbrew 是否已经安装好，你可以使用 <code>brew</code> 命令来查看它的版本：</p>
-                  <figure class="highlight lsl">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ brew --version</div><div class="line">Homebrew <span class="number">1.1</span><span class="number">.7</span></div><div class="line">Homebrew/homebrew-core (git revision <span class="number">5229</span>; last commit <span class="number">2017</span><span class="number">-02</span><span class="number">-02</span>)</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h4 id="安装-Asciinema"><a href="#安装-Asciinema" class="headerlink" title="安装 Asciinema"></a>安装 Asciinema</h4>
-                  <p>安装好 Linuxbrew 以后，安装 Asciinema 就变得无比容易了：</p>
-                  <figure class="highlight mipsasm">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ <span class="keyword">brew </span><span class="keyword">install </span>asciinema</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>检查 Asciinema 是否安装正确：</p>
-                  <figure class="highlight lsl">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ asciinema --version</div><div class="line">asciinema <span class="number">1.3</span><span class="number">.0</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="录制终端会话"><a href="#录制终端会话" class="headerlink" title="录制终端会话"></a>录制终端会话</h3>
-                  <p>经过一番辛苦的安装工作以后，是时候来干一些有趣的事情了。Asciinema 是一个非常容易使用的软件。事实上，目前的 1.3 版本只有很少的几个可用命令行选项，其中一个是 <code>--help</code> 。</p>
-                  <p>我们首先使用 <code>rec</code> 选项来录制终端会话。下面的命令将会开始录制终端会话，之后，你将会有一个选项来丢弃已录制记录或者把它上传到 asciinema.org 网站以便将来参考。</p>
-                  <figure class="highlight elixir">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="variable">$ </span>asciinema rec</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>运行上面的命令以后，你会注意到， Asciinema 已经开始录制终端会话了，你可以按下 <code>CTRL+D</code> 快捷键或执行 <code>exit</code> 命令来停止录制。如果你使用的是 Debian/Ubuntu/Mint Linux 系统，你可以像下面这样尝试进行第一次 asciinema 录制：</p>
-                  <figure class="highlight elixir">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="variable">$ </span>su</div><div class="line"><span class="symbol">Password:</span></div><div class="line"><span class="comment"># apt install sl</span></div><div class="line"><span class="comment"># exit</span></div><div class="line"><span class="variable">$ </span>sl</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>一旦输入最后一个 <code>exit</code> 命令以后，将会询问你：</p>
-                  <figure class="highlight awk">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ <span class="keyword">exit</span></div><div class="line">~ Asciicast recording finished.</div><div class="line">~ Press &lt;Enter&gt; to upload, &lt;Ctrl-C&gt; to cancel.</div><div class="line"></div><div class="line">https:<span class="regexp">//</span>asciinema.org<span class="regexp">/a/</span><span class="number">7</span>lw94ys68gsgr1yzdtzwijxm4</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>如果你不想上传你的私密命令行技巧到 asciinema.org 网站，那么有一个选项可以把 Asciinema 记录以 JSON 格式保存为本地文件。比如，下面的 asciinema 记录将被存为 <code>/tmp/my_rec.json</code>：</p>
-                  <figure class="highlight awk">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ asciinema rec <span class="regexp">/tmp/my</span>_rec.json</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>另一个非常有用的 asciinema 特性是时间微调。如果你的键盘输入速度很慢，或者你在进行多任务，输入命令和执行命令之间的时间会比较长。Asciinema 会记录你的实时按键时间，这意味着每一个停顿都将反映在最终视频的长度上。可以使用 <code>-w</code> 选项来缩短按键的时间间隔。比如，下面的命令将按键的时间间隔缩短为 0.2 秒：</p>
-                  <figure class="highlight elixir">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="variable">$ </span>asciinema rec -w <span class="number">0</span>.<span class="number">2</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="回放已录制终端会话"><a href="#回放已录制终端会话" class="headerlink" title="回放已录制终端会话"></a>回放已录制终端会话</h3>
-                  <p>有两种方式可以来回放已录制会话。第一种方式是直接从 asciinema.org 网站上播放终端会话。这意味着，你之前已经把录制会话上传到了 asciinema.org 网站，并且需要提供有效链接：</p>
-                  <figure class="highlight gams">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="symbol">$</span> asciinema play https:<span class="comment">//asciinema.org/a/7lw94ys68gsgr1yzdtzwijxm4</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>另外，你也可以使用本地存储的 JSON 文件：</p>
-                  <figure class="highlight awk">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ asciinema play <span class="regexp">/tmp/my</span>_rec.json</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>如果要使用 <code>wget</code> 命令来下载之前的上传记录，只需在链接的后面加上 <code>.json</code>：</p>
-                  <figure class="highlight stylus">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ wget -<span class="selector-tag">q</span> -O steam_locomotive<span class="selector-class">.json</span> https:<span class="comment">//asciinema.org/a/7lw94ys68gsgr1yzdtzwijxm4.json</span></div><div class="line">$ asciinema play steam_locomotive.json</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <h3 id="将视频嵌入-HTML"><a href="#将视频嵌入-HTML" class="headerlink" title="将视频嵌入 HTML"></a>将视频嵌入 HTML</h3>
-                  <p>最后，asciinema 还带有一个独立的 JavaScript 播放器。这意味者你可以很容易的在你的网站上分享终端会话记录。下面，使用一段简单的 <code>index.html</code> 代码来说明这个方法。首先，下载所有必要的东西：</p>
-                  <figure class="highlight stylus">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ cd /tmp/</div><div class="line">$ mkdir steam_locomotive</div><div class="line">$ cd steam_locomotive/</div><div class="line">$ wget -<span class="selector-tag">q</span> -O steam_locomotive<span class="selector-class">.json</span> https:<span class="comment">//asciinema.org/a/7lw94ys68gsgr1yzdtzwijxm4.json</span></div><div class="line">$ wget -<span class="selector-tag">q</span> https:<span class="comment">//github.com/asciinema/asciinema-player/releases/download/v2.4.0/asciinema-player.css</span></div><div class="line">$ wget -<span class="selector-tag">q</span> https:<span class="comment">//github.com/asciinema/asciinema-player/releases/download/v2.4.0/asciinema-player.js</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>之后，创建一个新的包含下面这些内容的 <code>/tmp/steam_locomotive/index.html</code> 文件：</p>
-                  <figure class="highlight xml">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"./asciinema-player.css"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">asciinema-player</span> <span class="attr">src</span>=<span class="string">"./steam_locomotive.json"</span> <span class="attr">cols</span>=<span class="string">"80"</span> <span class="attr">rows</span>=<span class="string">"24"</span>&gt;</span><span class="tag">&lt;/<span class="name">asciinema-player</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./asciinema-player.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>完成以后，打开你的网页浏览器，按下 <code>CTRL+O</code> 来打开新创建的 <code>/tmp/steam_locomotive/index.html</code> 文件。</p>
-                  <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3>
-                  <p>正如前面所说的，使用 asciinema 录制器来录制终端会话最主要的优点是它的输出文件非常小，这使得你的视频很容易分享出去。上面的例子产生了一个包含 58472 个字符的文件，它是一个只有 58 KB 大 小的 22 秒终端会话视频。如果我们查看输出的 JSON 文件，会发现甚至这个数字已经非常大了，这主要是因为一个 “蒸汽机车” 已经跑过了终端。这个长度的正常终端会话一般会产生一个更小的输出文件。</p>
-                  <p>下次，当你想要在一个论坛上询问关于 Linux 配置的问题，并且很难描述你的问题的时候，只需运行下面的命令：</p>
-                  <figure class="highlight elixir">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="variable">$ </span>asciinema rec</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>然后把最后的链接贴到论坛的帖子里。</p>
-                  <h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3>
-                  <h4 id="在-UTF-8-环境下运行-asciinema"><a href="#在-UTF-8-环境下运行-asciinema" class="headerlink" title="在 UTF-8 环境下运行 asciinema"></a>在 UTF-8 环境下运行 asciinema</h4>
-                  <p>错误信息：</p>
-                  <figure class="highlight livecodeserver">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">asciinema needs <span class="keyword">a</span> UTF<span class="number">-8</span> native locale <span class="built_in">to</span> run. Check <span class="keyword">the</span> output <span class="keyword">of</span> `locale` <span class="keyword">command</span>.</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <p>解决方法：<br>生成并导出 UTF-8 语言环境。例如：</p>
-                  <figure class="highlight stylus">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line">$ localedef -c -f UTF-<span class="number">8</span> -<span class="selector-tag">i</span> en_US en_US<span class="selector-class">.UTF-8</span></div><div class="line">$ export LC_ALL=en_US.UTF-<span class="number">8</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
-                  <hr>
-                  <p>via: <a href="https://linuxconfig.org/record-and-replay-terminal-session-with-asciinema-on-linux" target="_blank" rel="external">https://linuxconfig.org/record-and-replay-terminal-session-with-asciinema-on-linux</a></p>
-                  <p>作者：<a href="https://linuxconfig.org/record-and-replay-terminal-session-with-asciinema-on-linux" target="_blank" rel="external">Lubos Rendek</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：
-                    <a
-                      href="https://github.com/wxy" target="_blank" rel="external">wxy</a>
-                  </p>
-                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
-
-                </div>
-
-                <div>
+                    </div>
+                  </header>
 
 
 
 
-                </div>
 
-                <div>
-
+                  <div class="post-body" itemprop="articleBody">
 
 
 
-                </div>
 
 
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-                <script>
-                  var gitment = new Gitment({
-                    id: , // 可选。默认为 location.href
-                    owner: ucasFL,
-                    repo: BlogComment,
-                    oauth: {
-                      client_id: ef399b43f01e072241fd,
-                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                    },
-                  })
-                  gitment.render('container')
-                </script>
-
-
-                <footer class="post-footer">
-
-                  <div class="post-tags">
-
-                    <a href="/tags/Asciinema-Translated/" rel="tag"># Asciinema/Translated</a>
+                    <p><img src="https://linuxconfig.org/images/asciimena-video-example.jpg?58942057" alt=""></p>
+                    <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3>
+                    <p>Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它可以录制、回放和分享 JSON 格式的终端会话记录。与一些桌面录制器，比如 Recordmydesktop、Simplescreenrecorder、Vokoscreen 或 Kazam 相比，Asciinema 最主要的优点是，它能够以通过 ASCII 文本以及 ANSI 转义码编码来录制所有的标准终端输入、输出和错误信息。</p>
+                    <p>事实上，即使是很长的终端会话，录制出的 JSON 格式文件也非常小。另外，JSON 格式使得用户可以利用简单的文件转化器，将输出的 JSON 格式文件嵌入到 HTML 代码中，然后分享到公共网站或者使用 asciinema 账户分享到 Asciinema.org 。最后，如果你的终端会话中有一些错误，并且你还懂一些 ASCI 转义码语法，那么你可以使用任何编辑器来修改你的已录制终端会话。</p>
+                    <a id="more"></a>
+                    <p><strong>难易程度：</strong></p>
+                    <p>很简单！</p>
+                    <p><strong>标准终端：</strong></p>
+                    <ul>
+                      <li><strong>#</strong> - 给定命令需要以 root 用户权限运行或者使用 <code>sudo</code> 命令</li>
+                      <li><strong>$</strong> - 给定命令以常规权限用户运行</li>
+                    </ul>
+                    <h3 id="从软件库安装"><a href="#从软件库安装" class="headerlink" title="从软件库安装"></a>从软件库安装</h3>
+                    <p>通常， asciinema 可以使用你的发行版的软件库进行安装。但是，如果不可以使用系统的软件库进行安装或者你想安装最新的版本，那么，你可以像下面的“从源代码安装”部分所描述的那样，使用 Linuxbrew 包管理器来执行 Asciinema 安装。</p>
+                    <p><strong>在 Arch Linux 上安装：</strong></p>
+                    <figure class="highlight vala">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="meta"># pacman -S asciinema</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p><strong>在 Debian 上安装：</strong></p>
+                    <figure class="highlight vala">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="meta"># apt install asciinema</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p><strong>在 Ubuntu 上安装：</strong></p>
+                    <figure class="highlight cmake">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ sudo apt <span class="keyword">install</span> asciinema</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p><strong>在 Fedora 上安装：</strong></p>
+                    <figure class="highlight cmake">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ sudo dnf <span class="keyword">install</span> asciinema</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="从源代码安装"><a href="#从源代码安装" class="headerlink" title="从源代码安装"></a>从源代码安装</h3>
+                    <p>最简单并且值得推荐的方式是使用 Linuxbrew 包管理器，从源代码安装最新版本的 Asciinema 。</p>
+                    <h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h4>
+                    <p>下面列出的前提条件是安装 Linuxbrew 和 Asciinema 需要满足的依赖关系：</p>
+                    <ul>
+                      <li>git</li>
+                      <li>gcc</li>
+                      <li>make</li>
+                      <li>ruby</li>
+                    </ul>
+                    <p>在安装 Linuxbrew 之前，请确保上面的这些包都已经安装在了你的 Linux 系统中。</p>
+                    <p><strong>在 Arch Linux 上安装 ruby：</strong></p>
+                    <figure class="highlight vala">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="meta"># pacman -S git gcc make ruby</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p><strong>在 Debian 上安装 ruby：</strong></p>
+                    <figure class="highlight vala">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="meta"># apt install git gcc make ruby</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p><strong>在 Ubuntu 上安装 ruby：</strong></p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ sudo apt install git gcc <span class="keyword">make</span> <span class="keyword">ruby</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p><strong>在 Fedora 上安装 ruby：</strong></p>
+                    <figure class="highlight vim">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ sudo dnf install git gcc <span class="keyword">make</span> <span class="keyword">ruby</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p><strong>在 CentOS 上安装 ruby：</strong></p>
+                    <figure class="highlight vala">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="meta"># yum install git gcc make ruby</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h4 id="安装-Linuxbrew"><a href="#安装-Linuxbrew" class="headerlink" title="安装 Linuxbrew"></a>安装 Linuxbrew</h4>
+                    <p>Linuxbrew 包管理器是苹果的 MacOS 操作系统很受欢迎的 Homebrew 包管理器的一个复刻版本。还没发布多久，Homebrew 就以容易使用而著称。如果你想使用 Linuxbrew 来安装 Asciinema，那么，请运行下面命令在你的 Linux 版本上安装 Linuxbrew：</p>
+                    <figure class="highlight bash">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)</span>"</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>现在，Linuxbrew 已经安装到了目录 <code>$HOME/.linuxbrew/</code> 下。剩下需要做的就是使它成为可执行 <code>PATH</code> 环境变量的一部分。</p>
+                    <figure class="highlight julia">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ echo '<span class="keyword">export</span> PATH=<span class="string">"<span class="variable">$HOME</span>/.linuxbrew/bin:<span class="variable">$PATH</span>"</span>' &gt;&gt;~/.bash_profile</div><div class="line">$ . ~/.bash_profile</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>为了确认 Linuxbrew 是否已经安装好，你可以使用 <code>brew</code> 命令来查看它的版本：</p>
+                    <figure class="highlight lsl">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ brew --version</div><div class="line">Homebrew <span class="number">1.1</span><span class="number">.7</span></div><div class="line">Homebrew/homebrew-core (git revision <span class="number">5229</span>; last commit <span class="number">2017</span><span class="number">-02</span><span class="number">-02</span>)</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h4 id="安装-Asciinema"><a href="#安装-Asciinema" class="headerlink" title="安装 Asciinema"></a>安装 Asciinema</h4>
+                    <p>安装好 Linuxbrew 以后，安装 Asciinema 就变得无比容易了：</p>
+                    <figure class="highlight mipsasm">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ <span class="keyword">brew </span><span class="keyword">install </span>asciinema</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>检查 Asciinema 是否安装正确：</p>
+                    <figure class="highlight lsl">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ asciinema --version</div><div class="line">asciinema <span class="number">1.3</span><span class="number">.0</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="录制终端会话"><a href="#录制终端会话" class="headerlink" title="录制终端会话"></a>录制终端会话</h3>
+                    <p>经过一番辛苦的安装工作以后，是时候来干一些有趣的事情了。Asciinema 是一个非常容易使用的软件。事实上，目前的 1.3 版本只有很少的几个可用命令行选项，其中一个是 <code>--help</code> 。</p>
+                    <p>我们首先使用 <code>rec</code> 选项来录制终端会话。下面的命令将会开始录制终端会话，之后，你将会有一个选项来丢弃已录制记录或者把它上传到 asciinema.org 网站以便将来参考。</p>
+                    <figure class="highlight elixir">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="variable">$ </span>asciinema rec</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>运行上面的命令以后，你会注意到， Asciinema 已经开始录制终端会话了，你可以按下 <code>CTRL+D</code> 快捷键或执行 <code>exit</code> 命令来停止录制。如果你使用的是 Debian/Ubuntu/Mint Linux 系统，你可以像下面这样尝试进行第一次 asciinema 录制：</p>
+                    <figure class="highlight elixir">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="variable">$ </span>su</div><div class="line"><span class="symbol">Password:</span></div><div class="line"><span class="comment"># apt install sl</span></div><div class="line"><span class="comment"># exit</span></div><div class="line"><span class="variable">$ </span>sl</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>一旦输入最后一个 <code>exit</code> 命令以后，将会询问你：</p>
+                    <figure class="highlight awk">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ <span class="keyword">exit</span></div><div class="line">~ Asciicast recording finished.</div><div class="line">~ Press &lt;Enter&gt; to upload, &lt;Ctrl-C&gt; to cancel.</div><div class="line"></div><div class="line">https:<span class="regexp">//</span>asciinema.org<span class="regexp">/a/</span><span class="number">7</span>lw94ys68gsgr1yzdtzwijxm4</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>如果你不想上传你的私密命令行技巧到 asciinema.org 网站，那么有一个选项可以把 Asciinema 记录以 JSON 格式保存为本地文件。比如，下面的 asciinema 记录将被存为 <code>/tmp/my_rec.json</code>：</p>
+                    <figure class="highlight awk">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ asciinema rec <span class="regexp">/tmp/my</span>_rec.json</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>另一个非常有用的 asciinema 特性是时间微调。如果你的键盘输入速度很慢，或者你在进行多任务，输入命令和执行命令之间的时间会比较长。Asciinema 会记录你的实时按键时间，这意味着每一个停顿都将反映在最终视频的长度上。可以使用 <code>-w</code> 选项来缩短按键的时间间隔。比如，下面的命令将按键的时间间隔缩短为 0.2 秒：</p>
+                    <figure class="highlight elixir">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="variable">$ </span>asciinema rec -w <span class="number">0</span>.<span class="number">2</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="回放已录制终端会话"><a href="#回放已录制终端会话" class="headerlink" title="回放已录制终端会话"></a>回放已录制终端会话</h3>
+                    <p>有两种方式可以来回放已录制会话。第一种方式是直接从 asciinema.org 网站上播放终端会话。这意味着，你之前已经把录制会话上传到了 asciinema.org 网站，并且需要提供有效链接：</p>
+                    <figure class="highlight gams">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="symbol">$</span> asciinema play https:<span class="comment">//asciinema.org/a/7lw94ys68gsgr1yzdtzwijxm4</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>另外，你也可以使用本地存储的 JSON 文件：</p>
+                    <figure class="highlight awk">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ asciinema play <span class="regexp">/tmp/my</span>_rec.json</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>如果要使用 <code>wget</code> 命令来下载之前的上传记录，只需在链接的后面加上 <code>.json</code>：</p>
+                    <figure class="highlight stylus">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ wget -<span class="selector-tag">q</span> -O steam_locomotive<span class="selector-class">.json</span> https:<span class="comment">//asciinema.org/a/7lw94ys68gsgr1yzdtzwijxm4.json</span></div><div class="line">$ asciinema play steam_locomotive.json</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="将视频嵌入-HTML"><a href="#将视频嵌入-HTML" class="headerlink" title="将视频嵌入 HTML"></a>将视频嵌入 HTML</h3>
+                    <p>最后，asciinema 还带有一个独立的 JavaScript 播放器。这意味者你可以很容易的在你的网站上分享终端会话记录。下面，使用一段简单的 <code>index.html</code> 代码来说明这个方法。首先，下载所有必要的东西：</p>
+                    <figure class="highlight stylus">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ cd /tmp/</div><div class="line">$ mkdir steam_locomotive</div><div class="line">$ cd steam_locomotive/</div><div class="line">$ wget -<span class="selector-tag">q</span> -O steam_locomotive<span class="selector-class">.json</span> https:<span class="comment">//asciinema.org/a/7lw94ys68gsgr1yzdtzwijxm4.json</span></div><div class="line">$ wget -<span class="selector-tag">q</span> https:<span class="comment">//github.com/asciinema/asciinema-player/releases/download/v2.4.0/asciinema-player.css</span></div><div class="line">$ wget -<span class="selector-tag">q</span> https:<span class="comment">//github.com/asciinema/asciinema-player/releases/download/v2.4.0/asciinema-player.js</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>之后，创建一个新的包含下面这些内容的 <code>/tmp/steam_locomotive/index.html</code> 文件：</p>
+                    <figure class="highlight xml">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"./asciinema-player.css"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">asciinema-player</span> <span class="attr">src</span>=<span class="string">"./steam_locomotive.json"</span> <span class="attr">cols</span>=<span class="string">"80"</span> <span class="attr">rows</span>=<span class="string">"24"</span>&gt;</span><span class="tag">&lt;/<span class="name">asciinema-player</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./asciinema-player.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>完成以后，打开你的网页浏览器，按下 <code>CTRL+O</code> 来打开新创建的 <code>/tmp/steam_locomotive/index.html</code> 文件。</p>
+                    <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3>
+                    <p>正如前面所说的，使用 asciinema 录制器来录制终端会话最主要的优点是它的输出文件非常小，这使得你的视频很容易分享出去。上面的例子产生了一个包含 58472 个字符的文件，它是一个只有 58 KB 大 小的 22 秒终端会话视频。如果我们查看输出的 JSON 文件，会发现甚至这个数字已经非常大了，这主要是因为一个 “蒸汽机车” 已经跑过了终端。这个长度的正常终端会话一般会产生一个更小的输出文件。</p>
+                    <p>下次，当你想要在一个论坛上询问关于 Linux 配置的问题，并且很难描述你的问题的时候，只需运行下面的命令：</p>
+                    <figure class="highlight elixir">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="variable">$ </span>asciinema rec</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>然后把最后的链接贴到论坛的帖子里。</p>
+                    <h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3>
+                    <h4 id="在-UTF-8-环境下运行-asciinema"><a href="#在-UTF-8-环境下运行-asciinema" class="headerlink" title="在 UTF-8 环境下运行 asciinema"></a>在 UTF-8 环境下运行 asciinema</h4>
+                    <p>错误信息：</p>
+                    <figure class="highlight livecodeserver">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">asciinema needs <span class="keyword">a</span> UTF<span class="number">-8</span> native locale <span class="built_in">to</span> run. Check <span class="keyword">the</span> output <span class="keyword">of</span> `locale` <span class="keyword">command</span>.</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>解决方法：<br>生成并导出 UTF-8 语言环境。例如：</p>
+                    <figure class="highlight stylus">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">$ localedef -c -f UTF-<span class="number">8</span> -<span class="selector-tag">i</span> en_US en_US<span class="selector-class">.UTF-8</span></div><div class="line">$ export LC_ALL=en_US.UTF-<span class="number">8</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <hr>
+                    <p>via: <a href="https://linuxconfig.org/record-and-replay-terminal-session-with-asciinema-on-linux" target="_blank" rel="external">https://linuxconfig.org/record-and-replay-terminal-session-with-asciinema-on-linux</a></p>
+                    <p>作者：<a href="https://linuxconfig.org/record-and-replay-terminal-session-with-asciinema-on-linux" target="_blank" rel="external">Lubos Rendek</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：
+                      <a
+                        href="https://github.com/wxy" target="_blank" rel="external">wxy</a>
+                    </p>
+                    <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
 
                   </div>
 
@@ -841,76 +766,56 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
-                  <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
 
-                      <a href="/2017/05/20/Text-Specific-Setting-in-Vim/" rel="next" title="如何在 Vim 中使用模式行进行文本特定设置">
+
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/Asciinema-Translated/" rel="tag"># Asciinema/Translated</a>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/2017/05/20/Text-Specific-Setting-in-Vim/" rel="next" title="如何在 Vim 中使用模式行进行文本特定设置">
                 <i class="fa fa-chevron-left"></i> 如何在 Vim 中使用模式行进行文本特定设置
               </a>
 
-                    </div>
+                      </div>
 
-                    <span class="post-nav-divider"></span>
+                      <span class="post-nav-divider"></span>
 
-                    <div class="post-nav-prev post-nav-item">
+                      <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2017/05/23/8-Excellent-Open-Source-Markdown-Editor/" rel="prev" title="8 个优秀的开源 Markdown 编辑器">
+                        <a href="/2017/05/23/8-Excellent-Open-Source-Markdown-Editor/" rel="prev" title="8 个优秀的开源 Markdown 编辑器">
                 8 个优秀的开源 Markdown 编辑器 <i class="fa fa-chevron-right"></i>
               </a>
 
+                      </div>
                     </div>
-                  </div>
 
 
 
 
-                </footer>
+                  </footer>
+                </div>
+
+
+
               </article>
 
 
 
-
-
-
               <div class="post-spread">
-
-
-                <div class="bdsharebuttonbox">
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                  window._bd_share_config = {
-                    "common": {
-                      "bdText": "",
-                      "bdMini": "2",
-                      "bdMiniList": false,
-                      "bdPic": ""
-                    },
-                    "share": {
-                      "bdSize": "16",
-                      "bdStyle": "0"
-                    },
-                    "image": {
-                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-                      "viewText": "分享到：",
-                      "viewSize": "16"
-                    }
-                  }
-                </script>
-
-                <script>
-                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-                </script>
-
 
               </div>
             </div>
@@ -921,13 +826,19 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
+
+
           <div class="comments" id="comments">
+
+            <div id="gitment-container"></div>
 
           </div>
 
 
-        </div>
 
+
+
+        </div>
 
 
 
@@ -940,6 +851,7 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
         </div>
 
         <aside id="sidebar" class="sidebar">
+
           <div class="sidebar-inner">
 
 
@@ -949,124 +861,79 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview">
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview sidebar-panel">
-              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
-                <p class="site-author-name" itemprop="name">Flynn</p>
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-
-              </div>
-              <nav class="site-state motion-element">
-
-
-                <div class="site-state-item site-state-posts">
-                  <a href="/archives">
-                <span class="site-state-item-count">119</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+                  <p class="site-author-name" itemprop="name">Flynn</p>
+                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
                 </div>
 
+                <nav class="site-state motion-element">
 
 
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-                </div>
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+                  </div>
 
 
 
-                <div class="site-state-item site-state-tags">
 
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
                   <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
+                </a>
+                  </div>
+
+
+                </nav>
+
+
+                <div class="feed-link motion-element">
+                  <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+                </div>
+
+
+                <div class="links-of-author motion-element">
 
                 </div>
 
 
-              </nav>
 
 
-              <div class="feed-link motion-element">
-                <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-              </div>
-
-
-              <div class="links-of-author motion-element">
-
-
-                <span class="links-of-author-item">
-                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-
-                <span class="links-of-author-item">
-                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-
-
-              </div>
-
-
-
-              <div class="cc-license motion-element" itemprop="license">
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-              </div>
-
-
-
-
-              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-                <div class="links-of-blogroll-title">
-                  <i class="fa  fa-fw fa-globe"></i> 友情链接
-                </div>
-                <ul class="links-of-blogroll-list">
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
-                  </li>
-
-                  <li class="links-of-blogroll-item">
-                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
-                  </li>
-
-                </ul>
-              </div>
 
 
 
 
 
+              </div>
             </section>
 
 
@@ -1114,66 +981,37 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
         </aside>
 
 
-        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-        <div class="widget-wrap">
-          <h3 class="widget-title">Tag Cloud</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-            <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-          </div>
-        </div>
-
-
-
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-
-          &copy; 2016 -
-          <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn
+          <span class="author" itemprop="copyrightHolder">Flynn</span>
 
 
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
-
-          </span>
-        </div>
-
-        <div class="powered-by">
-          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-        </div>
-
-        <div class="theme-info">
-          主题 -
-          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
         </div>
 
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-        </script>
 
-        <script>
-          (function() {
-            var bp = document.createElement('script');
-            bp.src = '//push.zhanzhang.baidu.com/push.js';
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-          })();
-        </script>
+
+        <span class="post-meta-divider">|</span>
+
+
+
+        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+
+
 
 
 
@@ -1188,9 +1026,9 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
-      <span id="scrollpercent"><span>0</span>%</span>
-
     </div>
+
+
 
 
   </div>
@@ -1219,56 +1057,70 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
+
+
+
+
+
+
+
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+
+
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1296,6 +1148,8 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -1305,275 +1159,14 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 
 
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function(xmlResponse) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $("entry", xmlResponse).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function() {
-            var matchcounts = 0;
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if (data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if (index_title >= 0 || index_content >= 0) {
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g, "");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if (start < 0) {
-                      start = 0;
-                    }
-                    if (start == 0) {
-                      end = 50;
-                    }
-                    if (end > content.length) {
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword) {
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content + "...</p>"
-                  }
-                  str += "</li>";
-                }
-              })
-            };
-            str += "</ul>";
-            if (matchcounts == 0) {
-              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            }
-            if (keywords == "") {
-              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e) {
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e) {
-      e.stopPropagation();
-    });
-  </script>
-
-
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-      <script>
-        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
-      </script>
-      <script>
-        function showTime(Counter) {
-          var query = new AV.Query(Counter);
-          var entries = [];
-          var $visitors = $(".leancloud_visitors");
-
-          $visitors.each(function() {
-            entries.push($(this).attr("id").trim());
-          });
-
-          query.containedIn('url', entries);
-          query.find()
-            .done(function(results) {
-              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-              if (results.length === 0) {
-                $visitors.find(COUNT_CONTAINER_REF).text(0);
-                return;
-              }
-
-              for (var i = 0; i < results.length; i++) {
-                var item = results[i];
-                var url = item.get('url');
-                var time = item.get('time');
-                var element = document.getElementById(url);
-
-                $(element).find(COUNT_CONTAINER_REF).text(time);
-              }
-              for (var i = 0; i < entries.length; i++) {
-                var url = entries[i];
-                var element = document.getElementById(url);
-                var countSpan = $(element).find(COUNT_CONTAINER_REF);
-                if (countSpan.text() == '') {
-                  countSpan.text(0);
-                }
-              }
-            })
-            .fail(function(object, error) {
-              console.log("Error: " + error.code + " " + error.message);
-            });
-        }
-
-        function addCount(Counter) {
-          var $visitors = $(".leancloud_visitors");
-          var url = $visitors.attr('id').trim();
-          var title = $visitors.attr('data-flag-title').trim();
-          var query = new AV.Query(Counter);
-
-          query.equalTo("url", url);
-          query.find({
-            success: function(results) {
-              if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                  success: function(counter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                  },
-                  error: function(counter, error) {
-                    console.log('Failed to save Visitor num, with error message: ' + error.message);
-                  }
-                });
-              } else {
-                var newcounter = new Counter();
-                /* Set ACL */
-                var acl = new AV.ACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                newcounter.setACL(acl);
-                /* End Set ACL */
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                  success: function(newcounter) {
-                    var $element = $(document.getElementById(url));
-                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                  },
-                  error: function(newcounter, error) {
-                    console.log('Failed to create');
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.log('Error:' + error.code + " " + error.message);
-            }
-          });
-        }
-
-        $(function() {
-          var Counter = AV.Object.extend("Counter");
-          if ($('.leancloud_visitors').length == 1) {
-            addCount(Counter);
-          } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-          }
-        });
-      </script>
-
-
-
-
-      <script>
-        (function() {
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();
-      </script>
+
+
+
+
+
+
+
 
 
 
@@ -1584,11 +1177,3 @@ Asciinema 是一个轻量并且非常高效的终端会话录制器。使用它�
 </body>
 
 </html>
-<!-- 动态背景 -->
-
-<script type="text/javascript" src="/js/src/particle.js"></script>
-
-<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
-
-<!-- 小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>
