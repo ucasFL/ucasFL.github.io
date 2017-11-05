@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-11-05T12:50:32.548Z</updated>
+  <updated>2017-11-05T12:53:59.485Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -17,19 +17,19 @@
   
   <entry>
     <title>Gitment Test</title>
-    <link href="http://ucasfl.me/2017/11/05/test/"/>
-    <id>http://ucasfl.me/2017/11/05/test/</id>
-    <published>2017-11-05T12:49:12.000Z</published>
-    <updated>2017-11-05T12:50:32.548Z</updated>
+    <link href="http://ucasfl.me/2017/11/05/Gitment-test/"/>
+    <id>http://ucasfl.me/2017/11/05/Gitment-test/</id>
+    <published>2017-11-05T12:53:16.000Z</published>
+    <updated>2017-11-05T12:53:59.485Z</updated>
     
-    <content type="html"><![CDATA[<p>Just a gitment Test!</p>
+    <content type="html"><![CDATA[<p>Just a Test</p>
 <p>
   <div id="container"></div>
 </p>
 <p>
-  <link rel="stylesheet" href="../source/gitment/default.css">
+  <link rel="stylesheet" href="/source/gitment/default.css">
 </p>
-<script src="../source/gitment/gitment.browser.js"></script>
+<script src="/source/gitment/gitment.browser.js"></script>
 <script>
   var gitment = new Gitment({
     owner: 'ucasFL',
@@ -44,14 +44,14 @@
     
     <summary type="html">
     
-      &lt;p&gt;Just a gitment Test!&lt;/p&gt;
+      &lt;p&gt;Just a Test&lt;/p&gt;
 &lt;p&gt;
   &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
 &lt;/p&gt;
 &lt;p&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;../source/gitment/default.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/source/gitment/default.css&quot;&gt;
 &lt;/p&gt;
-&lt;s
+&lt;script src=&quot;
     
     </summary>
     
