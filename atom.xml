@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-11-02T16:12:49.183Z</updated>
+  <updated>2017-11-05T05:41:22.416Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gitment Test</title>
+    <link href="http://ucasfl.me/2017/11/05/Gitment-test/"/>
+    <id>http://ucasfl.me/2017/11/05/Gitment-test/</id>
+    <published>2017-11-05T05:40:13.000Z</published>
+    <updated>2017-11-05T05:41:22.416Z</updated>
+    
+    <content type="html"><![CDATA[<p>This page have gitment.</p>
+<p>
+  <div id="container"></div>
+</p>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+<script>
+  var gitment = new Gitment({
+    id: , // 可选。默认为 location.href
+    owner: ucasFL,
+    repo: BlogComment,
+    oauth: {
+      client_id: ef399b43f01e072241fd,
+      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
+    },
+  })
+  gitment.render('container')
+</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This page have gitment.&lt;/p&gt;
+&lt;p&gt;
+  &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://imsun.github.io/gitment/style/defa
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>在 Linux 中如何通过命令行开启或禁用触摸板</title>
@@ -4252,74 +4293,6 @@
     
     
       <category term="Data-Structures" scheme="http://ucasfl.me/tags/Data-Structures/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>局部变量的栈溢出</title>
-    <link href="http://ucasfl.me/2017/07/28/Stack-Over-Flow-in-Function/"/>
-    <id>http://ucasfl.me/2017/07/28/Stack-Over-Flow-in-Function/</id>
-    <published>2017-07-28T13:47:54.000Z</published>
-    <updated>2017-09-02T04:38:28.939Z</updated>
-    
-    <content type="html"><![CDATA[<p>先上代码：</p>
-<figure class="highlight c++">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">10000000</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">bool</span> Tree[MAX_N] = &#123;<span class="literal">false</span>&#125;;<span class="comment">//全局变量</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> depth, balls;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; depth &gt;&gt; balls;</div><div class="line">	 </div><div class="line">	<span class="keyword">int</span> ind = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> last = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>( ind ++ &lt; balls )&#123;</div><div class="line">		<span class="keyword">int</span> curr = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; depth; ++i )&#123;</div><div class="line">			<span class="keyword">if</span>( <span class="literal">false</span> == Tree[curr] )&#123;</div><div class="line">				curr = curr*<span class="number">2</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				curr = curr*<span class="number">2</span> + <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			Tree[curr] = !Tree[curr];</div><div class="line">			last = curr;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; last &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><em>代码1</em></p>
-<a id="more"></a>
-<figure class="highlight c++">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">10000000</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">bool</span> Tree[MAX_N] = &#123;<span class="literal">false</span>&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> depth, balls;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; depth &gt;&gt; balls;</div><div class="line">    <span class="keyword">bool</span> Tree[MAX_N] = &#123;<span class="literal">false</span>&#125;;<span class="comment">//局部变量</span></div><div class="line">	 </div><div class="line">	<span class="keyword">int</span> ind = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> last = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>( ind ++ &lt; balls )&#123;</div><div class="line">		<span class="keyword">int</span> curr = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; depth; ++i )&#123;</div><div class="line">			<span class="keyword">if</span>( <span class="literal">false</span> == Tree[curr] )&#123;</div><div class="line">				curr = curr*<span class="number">2</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				curr = curr*<span class="number">2</span> + <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			Tree[curr] = !Tree[curr];</div><div class="line">			last = curr;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; last &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><em>代码2</em></p>
-<p>观察<em>代码1</em>和<em>代码2</em>，二者只有一个区别，前者<code>Tree</code>为全局变量，而后者为局部变量。一般来说，我们可能觉得两个函数运行的时候不会有什么不同，然而却出现不同的结果：</p>
-<p><em>代码1</em>能正确运行，<em>代码2</em>：</p>
-<p><img src="/photos/stack/1.png" alt=""></p>
-<p>惊喜不惊喜，意外不意外！</p>
-<p>我们知道，<strong>在内存中，全局变量存于全局变量区，而局部变量位于栈中，函数以栈帧的形式存储。</strong>相对来说，全局变量区空间较大，而栈空间较小，因此便导致了<em>代码2</em>的栈溢出，而<em>代码1</em>则正常。</p>
-<p><img src="/photos/stack/2.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;先上代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight c++&quot;&gt;
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;td class=&quot;gutter&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;code&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;meta-string&quot;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; MAX_N = &lt;span class=&quot;number&quot;&gt;10000000&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;bool&lt;/span&gt; Tree[MAX_N] = &amp;#123;&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&amp;#125;;&lt;span class=&quot;comment&quot;&gt;//全局变量&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; depth, balls;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;cin&lt;/span&gt; &amp;gt;&amp;gt; depth &amp;gt;&amp;gt; balls;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	 &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; ind = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; last = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;( ind ++ &amp;lt; balls )&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; curr = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ( &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; depth; ++i )&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;( &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt; == Tree[curr] )&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				curr = curr*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				curr = curr*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			Tree[curr] = !Tree[curr];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			last = curr;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; last &amp;lt;&amp;lt; &lt;span class=&quot;built_in&quot;&gt;endl&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-&lt;/figure&gt;
-&lt;p&gt;&lt;em&gt;代码1&lt;/em&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
-    
-    
-      <category term="Stack-Over-Flow" scheme="http://ucasfl.me/tags/Stack-Over-Flow/"/>
     
   </entry>
   

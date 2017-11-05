@@ -1,29 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
 
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-
 
 
 
@@ -51,22 +43,7 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Linux/Translated," />
@@ -76,6 +53,11 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -102,31 +84,19 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Muse',
-      version: '5.1.3',
+      scheme: 'Pisces',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
+        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": false,
-        "onmobile": false
+        "scrollpercent": true
       },
       fancybox: true,
-      tabs: true,
-      motion: {
-        "enable": true,
-        "async": false,
-        "transition": {
-          "post_block": "fadeIn",
-          "post_header": "slideDownIn",
-          "post_body": "slideDownIn",
-          "coll_header": "slideLeftIn",
-          "sidebar": "slideUpIn"
-        }
-      },
+      motion: true,
       duoshuo: {
-        userId: '0',
+        userId: 'undefined',
         author: '博主'
       },
       algolia: {
@@ -153,16 +123,7 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-  <title>Free：一个在 Linux 中检查内存使用情况的标准命令 | 春暖花开</title>
-
-
-
-
-
-
-
-
-
+  <title> Free：一个在 Linux 中检查内存使用情况的标准命令 | 春暖花开 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -172,7 +133,22 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-  <div class="container sidebar-position-left page-post-detail">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -219,8 +195,28 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
             </li>
 
 
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
             <li class="menu-item menu-item-archives">
-              <a href="/archives/" rel="section">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -230,9 +226,41 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
           </ul>
 
 
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
 
         </nav>
 
@@ -256,41 +284,47 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/18/Free-Command-in-Linux/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/03/18/Free-Command-in-Linux/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">Free：一个在 Linux 中检查内存使用情况的标准命令</h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+                    Free：一个在 Linux 中检查内存使用情况的标准命令
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-18T10:15:31+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-18T10:15:31+08:00">
                 2017/03/18
               </time>
 
@@ -298,43 +332,30 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Command/" itemprop="url" rel="index">
                     <span itemprop="name">Command</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-                      <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                      <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                      <a href="/2017/03/18/Free-Command-in-Linux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/03/18/Free-Command-in-Linux/" itemprop="commentsCount"></span>
-                </a>
-                      </span>
+                    </span>
 
 
 
@@ -343,218 +364,253 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
+                    <span id="/2017/03/18/Free-Command-in-Linux/" class="leancloud_visitors" data-flag-title="Free：一个在 Linux 中检查内存使用情况的标准命令">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
 
-                    </div>
-                  </header>
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
-                  <div class="post-body" itemprop="articleBody">
+                  <p>我们都知道， IT 基础设施方面的大多数服务器（包括世界顶级的超级计算机）都运行在 Linux 平台上，因为和其他操作系统相比， Linux 更加灵活。有的操作系统对于一些微乎其微的改动和补丁更新都需要重启，但是 Linux 不需要，只有对于一些关键补丁的更新， Linux 才会需要重启。</p>
+                  <p>Linux 系统管理员面临的一大挑战是如何在没有任何停机时间的情况下维护系统的良好运行。管理内存使用是 Linux 管理员又一个具有挑战性的任务。<code>free</code> 是 Linux 中一个标准的并且被广泛使用的命令，它被用来分析内存统计（空闲和已用）。今天，我们将要讨论 <code>free</code> 命令以及它的一些有用选项。</p>
+                  <p>推荐文章：</p>
+                  <ul>
+                    <li><a href="http://www.2daygeek.com/smem-linux-memory-usage-statistics-reporting-tool/" target="_blank" rel="external">smem － Linux 内存报告/统计工具</a></li>
+                    <li><a href="http://www.2daygeek.com/linux-vmstat-command-examples-tool-report-virtual-memory-statistics/" target="_blank" rel="external">vmstat － 一个报告虚拟内存统计的标准而又漂亮的工具</a></li>
+                  </ul>
+                  <h3 id="Free-命令是什么"><a href="#Free-命令是什么" class="headerlink" title="Free 命令是什么"></a>Free 命令是什么</h3>
+                  <p>free 命令能够显示系统中物理上的空闲（free）和已用（used）内存，还有交换（swap）内存，同时，也能显示被内核使用的缓冲（buffers）和缓存（caches）。这些信息是通过解析文件 <code>/proc/meninfo</code> 而收集到的。</p>
+                  <h3 id="显示系统内存"><a href="#显示系统内存" class="headerlink" title="显示系统内存"></a>显示系统内存</h3>
+                  <p>不带任何选项运行 <code>free</code> 命令会显示系统内存，包括空闲（free）、已用（used）、交换（swap）、缓冲（buffers）、缓存（caches）和交换（swap）的内存总数。</p>
+                  <figure class="highlight tap">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># free</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32869744 </span> <span class="number"> 25434276 </span>  <span class="number"> 7435468 </span>        <span class="number"> 0 </span>   <span class="number"> 412032 </span>  23361716</div><div class="line">-/+ buffers/cache:   <span class="number"> 1660528 </span>  31209216</div><div class="line">Swap:     <span class="number"> 4095992 </span>        <span class="number"> 0 </span>   4095992</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <a id="more"></a>
+                  <p>输出有三行：</p>
+                  <ul>
+                    <li>第一行：表明全部内存、已用内存、空闲内存、共用内存（主要被 tmpfs（<code>/proc/meninfo</code> 中的 <code>Shmem</code> 项）使用）、用于缓冲的内存以及缓存内容大小。
+                      <ul>
+                        <li>全部：全部已安装内存（<code>/proc/meminfo</code> 中的 <code>MemTotal</code> 项）</li>
+                        <li>已用：已用内存（全部计算 － 空间＋缓冲＋缓存）</li>
+                        <li>空闲：未使用内存（<code>/proc/meminfo</code> 中的 <code>MemFree</code> 项）</li>
+                        <li>共用：主要被 tmpfs 使用的内存（<code>/proc/meminfo</code> 中的 <code>Shmem</code> 项）</li>
+                        <li>缓冲：被内核缓冲使用的内存（<code>/proc/meminfo</code> 中的 <code>Buffers</code> 项）</li>
+                        <li>缓存：被页面缓存和 slab 使用的内存（<code>/proc/meminfo</code> 中的 <code>Cached</code> 和 <code>SSReclaimable</code> 项）</li>
+                      </ul>
+                    </li>
+                    <li>第二行：表明已用和空闲的缓冲/缓存</li>
+                    <li>第三行：表明总交换内存（<code>/proc/meminfo</code> 中的 <code>SwapTotal</code> 项）、空闲内存（<code>/proc/meminfo</code> 中的 <code>SwapFree</code> 项）和已用交换内存。</li>
+                  </ul>
+                  <h3 id="以-MB-为单位显示系统内存"><a href="#以-MB-为单位显示系统内存" class="headerlink" title="以 MB 为单位显示系统内存"></a>以 MB 为单位显示系统内存</h3>
+                  <p>默认情况下， <code>free</code> 命令以 <code>KB - Kilobytes</code> 为单位输出系统内存，这对于绝大多数管理员来说会有一点迷糊（当系统内存很大的时候，我们中的许多人需要把输出转化为以 MB 为单位，从而才能够理解内存大小）。为了避免这个迷惑，我们在 ‘free’ 命令后面加上 <code>-m</code> 选项，就可以立即得到以 ‘MB - Megabytes’ 为单位的输出。</p>
+                  <figure class="highlight tap">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># free -m</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:        <span class="number"> 32099 </span>    <span class="number"> 24838 </span>     <span class="number"> 7261 </span>        <span class="number"> 0 </span>      <span class="number"> 402 </span>     22814</div><div class="line">-/+ buffers/cache:      <span class="number"> 1621 </span>     30477</div><div class="line">Swap:        <span class="number"> 3999 </span>        <span class="number"> 0 </span>      3999</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>如何从上面的输出中检查剩余多少空闲内存？主要基于已用（used）和空闲（free）两列。你可能在想，你只有很低的空闲内存，因为它只有 <code>10%</code>， 为什么？</p>
+                  <ul>
+                    <li>全部实际可用内存 ＝ （全部内存 － 第 2 行的已用内存）
+                      <ul>
+                        <li>全部内存 ＝ 32099</li>
+                        <li>实际已用内存 ＝ 1621 （ = 全部内存 - 缓冲 - 缓存）</li>
+                      </ul>
+                    </li>
+                    <li>全部实际可用内存 ＝ 30477</li>
+                  </ul>
+                  <p>如果你的 Linux 版本是最新的，那么有一个查看实际空闲内存的选项，叫做可用（<code>available</code>） ，对于旧的版本，请看显示 <code>-/+ buffers/cache</code> 那一行对应的空闲（<code>free</code>）一列。</p>
+                  <p>如何从上面的输出中检查有多少实际已用内存？基于已用（used）和空闲（free）一列。你可能想，你已经使用了超过 <code>95%</code> 的内存。</p>
+                  <ul>
+                    <li>全部实际已用内存 ＝ 第一列已用 － （第一列缓冲 ＋ 第一列缓存）
+                      <ul>
+                        <li>已用内存 ＝ 24838</li>
+                        <li>已用缓冲 ＝ 402</li>
+                        <li>已用缓存 ＝ 22814</li>
+                      </ul>
+                    </li>
+                    <li>全部实际已用内存 ＝ 1621</li>
+                  </ul>
+                  <h3 id="以-GB-为单位显示内存"><a href="#以-GB-为单位显示内存" class="headerlink" title="以 GB 为单位显示内存"></a>以 GB 为单位显示内存</h3>
+                  <p>默认情况下， <code>free</code> 命令会以 <code>KB - kilobytes</code> 为单位显示输出，这对于大多数管理员来说会有一些迷惑，所以我们使用上面的选项来获得以 <code>MB - Megabytes</code> 为单位的输出。但是，当服务器的内存很大（超过 100 GB 或 200 GB）时，上面的选项也会让人很迷惑。所以，在这个时候，我们可以在 <code>free</code> 命令后面加上 <code>-g</code>                    选项，从而立即得到以 <code>GB - Gigabytes</code> 为单位的输出。</p>
+                  <figure class="highlight tap">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># free -g</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:           <span class="number"> 31 </span>       <span class="number"> 24 </span>        <span class="number"> 7 </span>        <span class="number"> 0 </span>        <span class="number"> 0 </span>        22</div><div class="line">-/+ buffers/cache:         <span class="number"> 1 </span>        29</div><div class="line">Swap:           <span class="number"> 3 </span>        <span class="number"> 0 </span>         3</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="显示全部内存行"><a href="#显示全部内存行" class="headerlink" title="显示全部内存行"></a>显示全部内存行</h3>
+                  <p>默认情况下， <code>free</code> 命令的输出只有三行（内存、缓冲/缓存以及交换）。为了统一以单独一行显示（全部（内存＋交换）、已用（内存＋（已用－缓冲/缓存）＋交换）以及空闲（内存＋（已用－缓冲/缓存）＋交换），在 ‘free’ 命令后面加上 <code>-t</code> 选项。</p>
+                  <figure class="highlight dns">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"># free -t</div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:      <span class="number">32869744</span>   <span class="number">25434276</span>    <span class="number">7435468</span>          <span class="number">0</span>     <span class="number">412032</span>   <span class="number">23361716</span></div><div class="line">-/+ buffers/cache:    <span class="number">1660528</span>   <span class="number">31209216</span></div><div class="line">Swap:      <span class="number">4095992</span>          <span class="number">0</span>    <span class="number">4095992</span></div><div class="line">Total:    <span class="number">36965736</span>   <span class="number">27094804</span>   <span class="number">42740676</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="按延迟运行-free-命令以便更好的统计"><a href="#按延迟运行-free-命令以便更好的统计" class="headerlink" title="按延迟运行 free 命令以便更好的统计"></a>按延迟运行 free 命令以便更好的统计</h3>
+                  <p>默认情况下， free 命令只会显示一次统计输出，这是不足够进一步排除故障的，所以，可以通过添加延迟（延迟是指在几秒后再次更新）来定期统计内存活动。如果你想以两秒的延迟运行 free 命令，可以使用下面的命令（如果你想要更多的延迟，你可以按照你的意愿更改数值）。</p>
+                  <p>下面的命令将会每 2 秒运行一次直到你退出：</p>
+                  <figure class="highlight tap">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># free -s 2</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25935844 </span>  <span class="number"> 6913548 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1120624 </span>  31728768</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25935288 </span>  <span class="number"> 6914104 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1120068 </span>  31729324</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25934968 </span>  <span class="number"> 6914424 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1119748 </span>  31729644</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="按延迟和具体次数运行-free-命令"><a href="#按延迟和具体次数运行-free-命令" class="headerlink" title="按延迟和具体次数运行 free 命令"></a>按延迟和具体次数运行 free 命令</h3>
+                  <p>另外，你可以按延迟和具体次数运行 free 命令，一旦达到某个次数，便自动退出。</p>
+                  <p>下面的命令将会每 2 秒运行一次 free 命令，计数 5 次以后自动退出。</p>
+                  <figure class="highlight tap">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># free -s 2 -c 5</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931052 </span>  <span class="number"> 6918340 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1115832 </span>  31733560</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931192 </span>  <span class="number"> 6918200 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1115972 </span>  31733420</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931348 </span>  <span class="number"> 6918044 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1116128 </span>  31733264</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931316 </span>  <span class="number"> 6918076 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1116096 </span>  31733296</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931308 </span>  <span class="number"> 6918084 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1116088 </span>  31733304</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="人类可读格式"><a href="#人类可读格式" class="headerlink" title="人类可读格式"></a>人类可读格式</h3>
+                  <p>为了以人类可读的格式输出，在 <code>free</code> 命令的后面加上 <code>-h</code> 选项，和其他选项比如 <code>-m</code> 和 <code>-g</code> 相比，这将会更人性化输出（自动使用 GB 和 MB 单位）。</p>
+                  <figure class="highlight mipsasm">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># free -h</span></div><div class="line">              total        used        free      <span class="keyword">shared </span> <span class="keyword">buff/cache </span>  available</div><div class="line"><span class="symbol">Mem:</span>           <span class="number">2</span>.<span class="number">0</span>G        <span class="number">1</span>.<span class="number">6</span>G        <span class="number">138</span>M         <span class="number">20</span>M        <span class="number">188</span>M        <span class="number">161</span>M</div><div class="line"><span class="keyword">Swap: </span>         <span class="number">2</span>.<span class="number">0</span>G        <span class="number">1</span>.<span class="number">8</span>G        <span class="number">249</span>M</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="取消缓冲区和缓存内存输出"><a href="#取消缓冲区和缓存内存输出" class="headerlink" title="取消缓冲区和缓存内存输出"></a>取消缓冲区和缓存内存输出</h3>
+                  <p>默认情况下， <code>缓冲/缓存</code> 内存输出是同时输出的。为了取消缓冲和缓存内存的输出，可以在 <code>free</code> 命令后面加上 <code>-w</code> 选项。（该选项在版本 3.3.12 上可用）</p>
+                  <p>注意比较上面有<code>缓冲/缓存</code>的输出。</p>
+                  <figure class="highlight css">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"># <span class="selector-tag">free</span> <span class="selector-tag">-wh</span></div><div class="line">              <span class="selector-tag">total</span>        <span class="selector-tag">used</span>        <span class="selector-tag">free</span>      <span class="selector-tag">shared</span>     <span class="selector-tag">buffers</span>       <span class="selector-tag">cache</span>   <span class="selector-tag">available</span></div><div class="line"><span class="selector-tag">Mem</span>:           2<span class="selector-class">.0G</span>        1<span class="selector-class">.6G</span>        137<span class="selector-tag">M</span>         20<span class="selector-tag">M</span>        8<span class="selector-class">.1M</span>        183<span class="selector-tag">M</span>        163<span class="selector-tag">M</span></div><div class="line"><span class="selector-tag">Swap</span>:          2<span class="selector-class">.0G</span>        1<span class="selector-class">.8G</span>        249<span class="selector-tag">M</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="显示最低和最高的内存统计"><a href="#显示最低和最高的内存统计" class="headerlink" title="显示最低和最高的内存统计"></a>显示最低和最高的内存统计</h3>
+                  <p>默认情况下， <code>free</code> 命令不会显示最低和最高的内存统计。为了显示最低和最高的内存统计，在 free 命令后面加上 <code>-l</code> 选项。</p>
+                  <figure class="highlight tap">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># free -l</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931336 </span>  <span class="number"> 6918056 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632808</div><div class="line">Low:     <span class="number"> 32849392 </span> <span class="number"> 25931336 </span>   6918056</div><div class="line">High:           <span class="number"> 0 </span>        <span class="number"> 0 </span>         0</div><div class="line">-/+ buffers/cache:   <span class="number"> 1116104 </span>  31733288</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="阅读关于-free-命令的更过信息"><a href="#阅读关于-free-命令的更过信息" class="headerlink" title="阅读关于 free 命令的更过信息"></a>阅读关于 free 命令的更过信息</h3>
+                  <p>如果你想了解 free 命令的更多可用选项，只需查看其 man 手册。</p>
+                  <figure class="highlight vala">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="meta"># free --help</span></div><div class="line">or</div><div class="line"><span class="meta"># man free</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <hr>
+                  <p>via: <a href="http://www.2daygeek.com/free-command-to-check-memory-usage-statistics-in-linux/" target="_blank" rel="external">http://www.2daygeek.com/free-command-to-check-memory-usage-statistics-in-linux/</a></p>
+                  <p>作者：<a href="http://www.2daygeek.com/author/magesh/" target="_blank" rel="external">MAGESH MARUTHAMUTHU</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank"
+                      rel="external">wxy</a></p>
+                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+
+                </div>
+
+                <div>
 
 
 
 
+                </div>
 
-                    <p>我们都知道， IT 基础设施方面的大多数服务器（包括世界顶级的超级计算机）都运行在 Linux 平台上，因为和其他操作系统相比， Linux 更加灵活。有的操作系统对于一些微乎其微的改动和补丁更新都需要重启，但是 Linux 不需要，只有对于一些关键补丁的更新， Linux 才会需要重启。</p>
-                    <p>Linux 系统管理员面临的一大挑战是如何在没有任何停机时间的情况下维护系统的良好运行。管理内存使用是 Linux 管理员又一个具有挑战性的任务。<code>free</code> 是 Linux 中一个标准的并且被广泛使用的命令，它被用来分析内存统计（空闲和已用）。今天，我们将要讨论 <code>free</code> 命令以及它的一些有用选项。</p>
-                    <p>推荐文章：</p>
-                    <ul>
-                      <li><a href="http://www.2daygeek.com/smem-linux-memory-usage-statistics-reporting-tool/" target="_blank" rel="external">smem － Linux 内存报告/统计工具</a></li>
-                      <li><a href="http://www.2daygeek.com/linux-vmstat-command-examples-tool-report-virtual-memory-statistics/" target="_blank" rel="external">vmstat － 一个报告虚拟内存统计的标准而又漂亮的工具</a></li>
-                    </ul>
-                    <h3 id="Free-命令是什么"><a href="#Free-命令是什么" class="headerlink" title="Free 命令是什么"></a>Free 命令是什么</h3>
-                    <p>free 命令能够显示系统中物理上的空闲（free）和已用（used）内存，还有交换（swap）内存，同时，也能显示被内核使用的缓冲（buffers）和缓存（caches）。这些信息是通过解析文件 <code>/proc/meninfo</code> 而收集到的。</p>
-                    <h3 id="显示系统内存"><a href="#显示系统内存" class="headerlink" title="显示系统内存"></a>显示系统内存</h3>
-                    <p>不带任何选项运行 <code>free</code> 命令会显示系统内存，包括空闲（free）、已用（used）、交换（swap）、缓冲（buffers）、缓存（caches）和交换（swap）的内存总数。</p>
-                    <figure class="highlight tap">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="comment"># free</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32869744 </span> <span class="number"> 25434276 </span>  <span class="number"> 7435468 </span>        <span class="number"> 0 </span>   <span class="number"> 412032 </span>  23361716</div><div class="line">-/+ buffers/cache:   <span class="number"> 1660528 </span>  31209216</div><div class="line">Swap:     <span class="number"> 4095992 </span>        <span class="number"> 0 </span>   4095992</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <a id="more"></a>
-                    <p>输出有三行：</p>
-                    <ul>
-                      <li>第一行：表明全部内存、已用内存、空闲内存、共用内存（主要被 tmpfs（<code>/proc/meninfo</code> 中的 <code>Shmem</code> 项）使用）、用于缓冲的内存以及缓存内容大小。
-                        <ul>
-                          <li>全部：全部已安装内存（<code>/proc/meminfo</code> 中的 <code>MemTotal</code> 项）</li>
-                          <li>已用：已用内存（全部计算 － 空间＋缓冲＋缓存）</li>
-                          <li>空闲：未使用内存（<code>/proc/meminfo</code> 中的 <code>MemFree</code> 项）</li>
-                          <li>共用：主要被 tmpfs 使用的内存（<code>/proc/meminfo</code> 中的 <code>Shmem</code> 项）</li>
-                          <li>缓冲：被内核缓冲使用的内存（<code>/proc/meminfo</code> 中的 <code>Buffers</code> 项）</li>
-                          <li>缓存：被页面缓存和 slab 使用的内存（<code>/proc/meminfo</code> 中的 <code>Cached</code> 和 <code>SSReclaimable</code> 项）</li>
-                        </ul>
-                      </li>
-                      <li>第二行：表明已用和空闲的缓冲/缓存</li>
-                      <li>第三行：表明总交换内存（<code>/proc/meminfo</code> 中的 <code>SwapTotal</code> 项）、空闲内存（<code>/proc/meminfo</code> 中的 <code>SwapFree</code> 项）和已用交换内存。</li>
-                    </ul>
-                    <h3 id="以-MB-为单位显示系统内存"><a href="#以-MB-为单位显示系统内存" class="headerlink" title="以 MB 为单位显示系统内存"></a>以 MB 为单位显示系统内存</h3>
-                    <p>默认情况下， <code>free</code> 命令以 <code>KB - Kilobytes</code> 为单位输出系统内存，这对于绝大多数管理员来说会有一点迷糊（当系统内存很大的时候，我们中的许多人需要把输出转化为以 MB 为单位，从而才能够理解内存大小）。为了避免这个迷惑，我们在 ‘free’ 命令后面加上 <code>-m</code> 选项，就可以立即得到以 ‘MB - Megabytes’ 为单位的输出。</p>
-                    <figure class="highlight tap">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="comment"># free -m</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:        <span class="number"> 32099 </span>    <span class="number"> 24838 </span>     <span class="number"> 7261 </span>        <span class="number"> 0 </span>      <span class="number"> 402 </span>     22814</div><div class="line">-/+ buffers/cache:      <span class="number"> 1621 </span>     30477</div><div class="line">Swap:        <span class="number"> 3999 </span>        <span class="number"> 0 </span>      3999</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <p>如何从上面的输出中检查剩余多少空闲内存？主要基于已用（used）和空闲（free）两列。你可能在想，你只有很低的空闲内存，因为它只有 <code>10%</code>， 为什么？</p>
-                    <ul>
-                      <li>全部实际可用内存 ＝ （全部内存 － 第 2 行的已用内存）
-                        <ul>
-                          <li>全部内存 ＝ 32099</li>
-                          <li>实际已用内存 ＝ 1621 （ = 全部内存 - 缓冲 - 缓存）</li>
-                        </ul>
-                      </li>
-                      <li>全部实际可用内存 ＝ 30477</li>
-                    </ul>
-                    <p>如果你的 Linux 版本是最新的，那么有一个查看实际空闲内存的选项，叫做可用（<code>available</code>） ，对于旧的版本，请看显示 <code>-/+ buffers/cache</code> 那一行对应的空闲（<code>free</code>）一列。</p>
-                    <p>如何从上面的输出中检查有多少实际已用内存？基于已用（used）和空闲（free）一列。你可能想，你已经使用了超过 <code>95%</code> 的内存。</p>
-                    <ul>
-                      <li>全部实际已用内存 ＝ 第一列已用 － （第一列缓冲 ＋ 第一列缓存）
-                        <ul>
-                          <li>已用内存 ＝ 24838</li>
-                          <li>已用缓冲 ＝ 402</li>
-                          <li>已用缓存 ＝ 22814</li>
-                        </ul>
-                      </li>
-                      <li>全部实际已用内存 ＝ 1621</li>
-                    </ul>
-                    <h3 id="以-GB-为单位显示内存"><a href="#以-GB-为单位显示内存" class="headerlink" title="以 GB 为单位显示内存"></a>以 GB 为单位显示内存</h3>
-                    <p>默认情况下， <code>free</code> 命令会以 <code>KB - kilobytes</code> 为单位显示输出，这对于大多数管理员来说会有一些迷惑，所以我们使用上面的选项来获得以 <code>MB - Megabytes</code> 为单位的输出。但是，当服务器的内存很大（超过 100 GB 或 200 GB）时，上面的选项也会让人很迷惑。所以，在这个时候，我们可以在 <code>free</code> 命令后面加上 <code>-g</code>                      选项，从而立即得到以 <code>GB - Gigabytes</code> 为单位的输出。</p>
-                    <figure class="highlight tap">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="comment"># free -g</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:           <span class="number"> 31 </span>       <span class="number"> 24 </span>        <span class="number"> 7 </span>        <span class="number"> 0 </span>        <span class="number"> 0 </span>        22</div><div class="line">-/+ buffers/cache:         <span class="number"> 1 </span>        29</div><div class="line">Swap:           <span class="number"> 3 </span>        <span class="number"> 0 </span>         3</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="显示全部内存行"><a href="#显示全部内存行" class="headerlink" title="显示全部内存行"></a>显示全部内存行</h3>
-                    <p>默认情况下， <code>free</code> 命令的输出只有三行（内存、缓冲/缓存以及交换）。为了统一以单独一行显示（全部（内存＋交换）、已用（内存＋（已用－缓冲/缓存）＋交换）以及空闲（内存＋（已用－缓冲/缓存）＋交换），在 ‘free’ 命令后面加上 <code>-t</code> 选项。</p>
-                    <figure class="highlight dns">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"># free -t</div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:      <span class="number">32869744</span>   <span class="number">25434276</span>    <span class="number">7435468</span>          <span class="number">0</span>     <span class="number">412032</span>   <span class="number">23361716</span></div><div class="line">-/+ buffers/cache:    <span class="number">1660528</span>   <span class="number">31209216</span></div><div class="line">Swap:      <span class="number">4095992</span>          <span class="number">0</span>    <span class="number">4095992</span></div><div class="line">Total:    <span class="number">36965736</span>   <span class="number">27094804</span>   <span class="number">42740676</span></div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="按延迟运行-free-命令以便更好的统计"><a href="#按延迟运行-free-命令以便更好的统计" class="headerlink" title="按延迟运行 free 命令以便更好的统计"></a>按延迟运行 free 命令以便更好的统计</h3>
-                    <p>默认情况下， free 命令只会显示一次统计输出，这是不足够进一步排除故障的，所以，可以通过添加延迟（延迟是指在几秒后再次更新）来定期统计内存活动。如果你想以两秒的延迟运行 free 命令，可以使用下面的命令（如果你想要更多的延迟，你可以按照你的意愿更改数值）。</p>
-                    <p>下面的命令将会每 2 秒运行一次直到你退出：</p>
-                    <figure class="highlight tap">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="comment"># free -s 2</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25935844 </span>  <span class="number"> 6913548 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1120624 </span>  31728768</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25935288 </span>  <span class="number"> 6914104 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1120068 </span>  31729324</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25934968 </span>  <span class="number"> 6914424 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1119748 </span>  31729644</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="按延迟和具体次数运行-free-命令"><a href="#按延迟和具体次数运行-free-命令" class="headerlink" title="按延迟和具体次数运行 free 命令"></a>按延迟和具体次数运行 free 命令</h3>
-                    <p>另外，你可以按延迟和具体次数运行 free 命令，一旦达到某个次数，便自动退出。</p>
-                    <p>下面的命令将会每 2 秒运行一次 free 命令，计数 5 次以后自动退出。</p>
-                    <figure class="highlight tap">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="comment"># free -s 2 -c 5</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931052 </span>  <span class="number"> 6918340 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1115832 </span>  31733560</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931192 </span>  <span class="number"> 6918200 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1115972 </span>  31733420</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931348 </span>  <span class="number"> 6918044 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1116128 </span>  31733264</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931316 </span>  <span class="number"> 6918076 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1116096 </span>  31733296</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div><div class="line"></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931308 </span>  <span class="number"> 6918084 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632796</div><div class="line">-/+ buffers/cache:   <span class="number"> 1116088 </span>  31733304</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="人类可读格式"><a href="#人类可读格式" class="headerlink" title="人类可读格式"></a>人类可读格式</h3>
-                    <p>为了以人类可读的格式输出，在 <code>free</code> 命令的后面加上 <code>-h</code> 选项，和其他选项比如 <code>-m</code> 和 <code>-g</code> 相比，这将会更人性化输出（自动使用 GB 和 MB 单位）。</p>
-                    <figure class="highlight mipsasm">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="comment"># free -h</span></div><div class="line">              total        used        free      <span class="keyword">shared </span> <span class="keyword">buff/cache </span>  available</div><div class="line"><span class="symbol">Mem:</span>           <span class="number">2</span>.<span class="number">0</span>G        <span class="number">1</span>.<span class="number">6</span>G        <span class="number">138</span>M         <span class="number">20</span>M        <span class="number">188</span>M        <span class="number">161</span>M</div><div class="line"><span class="keyword">Swap: </span>         <span class="number">2</span>.<span class="number">0</span>G        <span class="number">1</span>.<span class="number">8</span>G        <span class="number">249</span>M</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="取消缓冲区和缓存内存输出"><a href="#取消缓冲区和缓存内存输出" class="headerlink" title="取消缓冲区和缓存内存输出"></a>取消缓冲区和缓存内存输出</h3>
-                    <p>默认情况下， <code>缓冲/缓存</code> 内存输出是同时输出的。为了取消缓冲和缓存内存的输出，可以在 <code>free</code> 命令后面加上 <code>-w</code> 选项。（该选项在版本 3.3.12 上可用）</p>
-                    <p>注意比较上面有<code>缓冲/缓存</code>的输出。</p>
-                    <figure class="highlight css">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"># <span class="selector-tag">free</span> <span class="selector-tag">-wh</span></div><div class="line">              <span class="selector-tag">total</span>        <span class="selector-tag">used</span>        <span class="selector-tag">free</span>      <span class="selector-tag">shared</span>     <span class="selector-tag">buffers</span>       <span class="selector-tag">cache</span>   <span class="selector-tag">available</span></div><div class="line"><span class="selector-tag">Mem</span>:           2<span class="selector-class">.0G</span>        1<span class="selector-class">.6G</span>        137<span class="selector-tag">M</span>         20<span class="selector-tag">M</span>        8<span class="selector-class">.1M</span>        183<span class="selector-tag">M</span>        163<span class="selector-tag">M</span></div><div class="line"><span class="selector-tag">Swap</span>:          2<span class="selector-class">.0G</span>        1<span class="selector-class">.8G</span>        249<span class="selector-tag">M</span></div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="显示最低和最高的内存统计"><a href="#显示最低和最高的内存统计" class="headerlink" title="显示最低和最高的内存统计"></a>显示最低和最高的内存统计</h3>
-                    <p>默认情况下， <code>free</code> 命令不会显示最低和最高的内存统计。为了显示最低和最高的内存统计，在 free 命令后面加上 <code>-l</code> 选项。</p>
-                    <figure class="highlight tap">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="comment"># free -l</span></div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:     <span class="number"> 32849392 </span> <span class="number"> 25931336 </span>  <span class="number"> 6918056 </span>      <span class="number"> 188 </span>   <span class="number"> 182424 </span>  24632808</div><div class="line">Low:     <span class="number"> 32849392 </span> <span class="number"> 25931336 </span>   6918056</div><div class="line">High:           <span class="number"> 0 </span>        <span class="number"> 0 </span>         0</div><div class="line">-/+ buffers/cache:   <span class="number"> 1116104 </span>  31733288</div><div class="line">Swap:    <span class="number"> 20970492 </span>        <span class="number"> 0 </span>  20970492</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="阅读关于-free-命令的更过信息"><a href="#阅读关于-free-命令的更过信息" class="headerlink" title="阅读关于 free 命令的更过信息"></a>阅读关于 free 命令的更过信息</h3>
-                    <p>如果你想了解 free 命令的更多可用选项，只需查看其 man 手册。</p>
-                    <figure class="highlight vala">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="meta"># free --help</span></div><div class="line">or</div><div class="line"><span class="meta"># man free</span></div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <hr>
-                    <p>via: <a href="http://www.2daygeek.com/free-command-to-check-memory-usage-statistics-in-linux/" target="_blank" rel="external">http://www.2daygeek.com/free-command-to-check-memory-usage-statistics-in-linux/</a></p>
-                    <p>作者：<a href="http://www.2daygeek.com/author/magesh/" target="_blank" rel="external">MAGESH MARUTHAMUTHU</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank"
-                        rel="external">wxy</a></p>
-                    <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Linux-Translated/" rel="tag"># Linux/Translated</a>
 
                   </div>
 
@@ -564,56 +620,76 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
 
-
-
-                  <footer class="post-footer">
-
-                    <div class="post-tags">
-
-                      <a href="/tags/Linux-Translated/" rel="tag"># Linux/Translated</a>
-
-                    </div>
-
-
-
-
-
-
-
-                    <div class="post-nav">
-                      <div class="post-nav-next post-nav-item">
-
-                        <a href="/2017/03/18/How-to-Install-and-configure-FTP-in-Ubuntu/" rel="next" title="如何在 Ubuntu 下安装和配置 FTP 服务器">
+                      <a href="/2017/03/18/How-to-Install-and-configure-FTP-in-Ubuntu/" rel="next" title="如何在 Ubuntu 下安装和配置 FTP 服务器">
                 <i class="fa fa-chevron-left"></i> 如何在 Ubuntu 下安装和配置 FTP 服务器
               </a>
 
-                      </div>
+                    </div>
 
-                      <span class="post-nav-divider"></span>
+                    <span class="post-nav-divider"></span>
 
-                      <div class="post-nav-prev post-nav-item">
+                    <div class="post-nav-prev post-nav-item">
 
-                        <a href="/2017/03/18/Vim-Beginner-Tutorial/" rel="prev" title="Vim 初学者入门指南">
+                      <a href="/2017/03/18/Vim-Beginner-Tutorial/" rel="prev" title="Vim 初学者入门指南">
                 Vim 初学者入门指南 <i class="fa fa-chevron-right"></i>
               </a>
 
-                      </div>
                     </div>
+                  </div>
 
 
 
 
-                  </footer>
-                </div>
-
-
-
+                </footer>
               </article>
 
 
 
+
+
+
               <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
 
               </div>
             </div>
@@ -624,19 +700,13 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-
-
           <div class="comments" id="comments">
-
-            <div id="gitment-container"></div>
 
           </div>
 
 
-
-
-
         </div>
+
 
 
 
@@ -649,7 +719,6 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
         </div>
 
         <aside id="sidebar" class="sidebar">
-
           <div class="sidebar-inner">
 
 
@@ -659,79 +728,124 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+              <li class="sidebar-nav-overview" data-target="site-overview">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview-wrap sidebar-panel">
-              <div class="site-overview">
-                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
 
-                  <p class="site-author-name" itemprop="name">Flynn</p>
-                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-                </div>
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
 
-                <nav class="site-state motion-element">
-
-
-                  <div class="site-state-item site-state-posts">
-
-                    <a href="/archives/">
-              
-                  <span class="site-state-item-count">119</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-                  </div>
+              </div>
+              <nav class="site-state motion-element">
 
 
-
-
-
-                  <div class="site-state-item site-state-categories">
-                    <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-                  </div>
-
-
-
-
-
-                  <div class="site-state-item site-state-tags">
-                    <a href="/tags/index.html">
-                  <span class="site-state-item-count">69</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-                  </div>
-
-
-                </nav>
-
-
-                <div class="feed-link motion-element">
-                  <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-name">日志</span>
               </a>
                 </div>
 
 
-                <div class="links-of-author motion-element">
 
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
                 </div>
 
 
 
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
 
 
+              </nav>
 
 
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
 
 
               </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
             </section>
 
 
@@ -772,37 +886,66 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
         </aside>
 
 
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+          </div>
+        </div>
+
+
+
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn</span>
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+          </span>
+        </div>
+
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
+
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
         </div>
 
 
-        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-
-        <span class="post-meta-divider">|</span>
-
-
-
-        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
-
-
-
-
-
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
@@ -817,9 +960,9 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
+      <span id="scrollpercent"><span>0</span>%</span>
+
     </div>
-
-
 
 
   </div>
@@ -848,70 +991,56 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-
-
-
-
-
-
-
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -939,8 +1068,6 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -950,14 +1077,275 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-
-
-
-
-
-
-
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
 
 
 
@@ -968,3 +1356,11 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 </body>
 
 </html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

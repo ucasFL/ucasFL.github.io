@@ -1,29 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
 
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-
 
 
 
@@ -51,22 +43,7 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="file-manage/Translated," />
@@ -76,6 +53,11 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -110,31 +92,19 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Muse',
-      version: '5.1.3',
+      scheme: 'Pisces',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
+        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": false,
-        "onmobile": false
+        "scrollpercent": true
       },
       fancybox: true,
-      tabs: true,
-      motion: {
-        "enable": true,
-        "async": false,
-        "transition": {
-          "post_block": "fadeIn",
-          "post_header": "slideDownIn",
-          "post_body": "slideDownIn",
-          "coll_header": "slideLeftIn",
-          "sidebar": "slideUpIn"
-        }
-      },
+      motion: true,
       duoshuo: {
-        userId: '0',
+        userId: 'undefined',
         author: '博主'
       },
       algolia: {
@@ -161,16 +131,7 @@
 
 
 
-  <title>如何不用重命名在文件管理器中隐藏文件和文件夹 | 春暖花开</title>
-
-
-
-
-
-
-
-
-
+  <title> 如何不用重命名在文件管理器中隐藏文件和文件夹 | 春暖花开 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -180,7 +141,22 @@
 
 
 
-  <div class="container sidebar-position-left page-post-detail">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,8 +203,28 @@
             </li>
 
 
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
             <li class="menu-item menu-item-archives">
-              <a href="/archives/" rel="section">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -238,9 +234,41 @@
 
 
 
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
           </ul>
 
 
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
 
         </nav>
 
@@ -264,41 +292,47 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/02/20/How-to-Hidden-File-and-Dir-Without-Rename/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/02/20/How-to-Hidden-File-and-Dir-Without-Rename/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">如何不用重命名在文件管理器中隐藏文件和文件夹</h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+                    如何不用重命名在文件管理器中隐藏文件和文件夹
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T18:43:16+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T18:43:16+08:00">
                 2017/02/20
               </time>
 
@@ -306,43 +340,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Command/" itemprop="url" rel="index">
                     <span itemprop="name">Command</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-                      <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                      <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                      <a href="/2017/02/20/How-to-Hidden-File-and-Dir-Without-Rename/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/02/20/How-to-Hidden-File-and-Dir-Without-Rename/" itemprop="commentsCount"></span>
-                </a>
-                      </span>
+                    </span>
 
 
 
@@ -351,150 +372,185 @@
 
 
 
+                    <span id="/2017/02/20/How-to-Hidden-File-and-Dir-Without-Rename/" class="leancloud_visitors" data-flag-title="如何不用重命名在文件管理器中隐藏文件和文件夹">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
 
-                    </div>
-                  </header>
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
-                  <div class="post-body" itemprop="articleBody">
-
-
-
-
-
-                    <p>如果一个系统被多个用户使用，你或许出于个人原因想在文件管理器中隐藏一些文件或文件夹不让其他人看到（绝大多数用户不会对 Linux 系统进行深入了解，所以他们只会看到文件管理器列出的文件和文件夹），我们有三种方法可以来做这件事。此外，（除了隐藏）你还可以使用密码保护文件或文件夹。在这个教程中，我们将讨论如何用非重命名的方法在文件管理器中隐藏文件和文件夹。</p>
-                    <p>我们都知道，通过以 <code>点</code>（“.”）前缀重命名一个文件或文件夹的方式，可以在 Linux 中将该文件或文件夹隐藏。但这不是隐藏文件或文件夹的正确/高效方式。一些文件管理器也隐藏文件名以波浪号（“~”）结尾的文件，那些文件被认为是备份文件。</p>
-                    <p>在文件管理器中隐藏文件或文件夹的三种方法：</p>
-                    <ul>
-                      <li>给文件或文件夹名添加一个 <code>点</code>（“.”）前缀。</li>
-                      <li>创建一个叫做 <code>.hidden</code> 的文件，然后把需要隐藏的文件或文件夹加到里面。</li>
-                      <li>使用 Nautilus Hide 扩展</li>
-                    </ul>
-                    <a id="more"></a>
-                    <h3 id="通过点（“-”）前缀隐藏文件或文件夹"><a href="#通过点（“-”）前缀隐藏文件或文件夹" class="headerlink" title="通过点（“.”）前缀隐藏文件或文件夹"></a>通过点（“.”）前缀隐藏文件或文件夹</h3>
-                    <p>这是每个人都知道的方法，因为默认情况下文件管理器和终端都不会显示以点（“.”）作为前缀的文件或文件夹。要隐藏一个现有文件，我们必须重命名它。这种方法并不总是一个好主意。我不推荐这种方法，在紧急情况下你可以使用这种方法，但不要特意这样做。</p>
-                    <p>为了测试，我将创建一个叫做 <code>.magi</code> 的新文件夹。看下面的输出，当我使用 <code>ls -lh</code> 命令时，不会显示以<code>点</code>（“.”）作为前缀的文件或文件夹。在文件管理器中你也可以看到相同的结果。</p>
-                    <figure class="highlight stata">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"># <span class="keyword">mkdir</span> .magi</div><div class="line"></div><div class="line"># <span class="keyword">ls</span> -lh</div><div class="line"><span class="keyword">total</span> 36K</div><div class="line">-rw-r--r-- 1 magi magi  32K <span class="keyword">Dec</span> 28 03:29 nmon-old</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <p>文件管理器查看。</p>
-                    <p><a href="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-1a.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-1a.png" alt="">
+                  <p>如果一个系统被多个用户使用，你或许出于个人原因想在文件管理器中隐藏一些文件或文件夹不让其他人看到（绝大多数用户不会对 Linux 系统进行深入了解，所以他们只会看到文件管理器列出的文件和文件夹），我们有三种方法可以来做这件事。此外，（除了隐藏）你还可以使用密码保护文件或文件夹。在这个教程中，我们将讨论如何用非重命名的方法在文件管理器中隐藏文件和文件夹。</p>
+                  <p>我们都知道，通过以 <code>点</code>（“.”）前缀重命名一个文件或文件夹的方式，可以在 Linux 中将该文件或文件夹隐藏。但这不是隐藏文件或文件夹的正确/高效方式。一些文件管理器也隐藏文件名以波浪号（“~”）结尾的文件，那些文件被认为是备份文件。</p>
+                  <p>在文件管理器中隐藏文件或文件夹的三种方法：</p>
+                  <ul>
+                    <li>给文件或文件夹名添加一个 <code>点</code>（“.”）前缀。</li>
+                    <li>创建一个叫做 <code>.hidden</code> 的文件，然后把需要隐藏的文件或文件夹加到里面。</li>
+                    <li>使用 Nautilus Hide 扩展</li>
+                  </ul>
+                  <a id="more"></a>
+                  <h3 id="通过点（“-”）前缀隐藏文件或文件夹"><a href="#通过点（“-”）前缀隐藏文件或文件夹" class="headerlink" title="通过点（“.”）前缀隐藏文件或文件夹"></a>通过点（“.”）前缀隐藏文件或文件夹</h3>
+                  <p>这是每个人都知道的方法，因为默认情况下文件管理器和终端都不会显示以点（“.”）作为前缀的文件或文件夹。要隐藏一个现有文件，我们必须重命名它。这种方法并不总是一个好主意。我不推荐这种方法，在紧急情况下你可以使用这种方法，但不要特意这样做。</p>
+                  <p>为了测试，我将创建一个叫做 <code>.magi</code> 的新文件夹。看下面的输出，当我使用 <code>ls -lh</code> 命令时，不会显示以<code>点</code>（“.”）作为前缀的文件或文件夹。在文件管理器中你也可以看到相同的结果。</p>
+                  <figure class="highlight stata">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"># <span class="keyword">mkdir</span> .magi</div><div class="line"></div><div class="line"># <span class="keyword">ls</span> -lh</div><div class="line"><span class="keyword">total</span> 36K</div><div class="line">-rw-r--r-- 1 magi magi  32K <span class="keyword">Dec</span> 28 03:29 nmon-old</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>文件管理器查看。</p>
+                  <p><a href="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-1a.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-1a.png" alt="">
 </a></p>
-                    <p>为了澄清一下，我在 ls 命令后面加上 <code>-a</code> 选项来列出被隐藏文件（是的，现在我可以看到文件名 .magi 了）。</p>
-                    <figure class="highlight tap">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="comment"># ls -la</span></div><div class="line">total 52</div><div class="line">drwxr-xr-x <span class="number"> 4 </span>magi magi <span class="number"> 4096 </span>Feb<span class="number"> 12 </span>01:09 .</div><div class="line">drwxr-xr-x<span class="number"> 24 </span>magi magi <span class="number"> 4096 </span>Feb<span class="number"> 11 </span>23:41 ..</div><div class="line">drwxr-xr-x <span class="number"> 2 </span>magi magi <span class="number"> 4096 </span>Feb<span class="number"> 12 </span>01:09 .magi</div><div class="line">-rw-r--r-- <span class="number"> 1 </span>magi magi<span class="number"> 32387 </span>Dec<span class="number"> 28 </span>03:29 nmon-old</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <p>为了查看文件管理器中的被隐藏文件，只需按 <code>Ctrl+h</code> 快捷键，再次按 <code>Ctrl+h</code> 又可以把这些文件隐藏。</p>
-                    <p><a href="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-2a.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-2a.png" alt="">
+                  <p>为了澄清一下，我在 ls 命令后面加上 <code>-a</code> 选项来列出被隐藏文件（是的，现在我可以看到文件名 .magi 了）。</p>
+                  <figure class="highlight tap">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># ls -la</span></div><div class="line">total 52</div><div class="line">drwxr-xr-x <span class="number"> 4 </span>magi magi <span class="number"> 4096 </span>Feb<span class="number"> 12 </span>01:09 .</div><div class="line">drwxr-xr-x<span class="number"> 24 </span>magi magi <span class="number"> 4096 </span>Feb<span class="number"> 11 </span>23:41 ..</div><div class="line">drwxr-xr-x <span class="number"> 2 </span>magi magi <span class="number"> 4096 </span>Feb<span class="number"> 12 </span>01:09 .magi</div><div class="line">-rw-r--r-- <span class="number"> 1 </span>magi magi<span class="number"> 32387 </span>Dec<span class="number"> 28 </span>03:29 nmon-old</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>为了查看文件管理器中的被隐藏文件，只需按 <code>Ctrl+h</code> 快捷键，再次按 <code>Ctrl+h</code> 又可以把这些文件隐藏。</p>
+                  <p><a href="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-2a.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-2a.png" alt="">
 </a></p>
-                    <h3 id="用非重命名方法，通过-“-hidden”-文件的帮助隐藏文件或文件夹"><a href="#用非重命名方法，通过-“-hidden”-文件的帮助隐藏文件或文件夹" class="headerlink" title="用非重命名方法，通过 “.hidden” 文件的帮助隐藏文件或文件夹"></a>用非重命名方法，通过 “.hidden” 文件的帮助隐藏文件或文件夹</h3>
-                    <p>如果你想用非重命名的方法隐藏一个文件，或者一些应用不允许重命名。在这种情况下，你可以使用 <code>.hidden</code> 文件，它可能是最适合你的选择。</p>
-                    <p>一些文件管理器，比如 Nautilus、Nemo、Caja 和 Thunar，提供了一种很原始的方法来隐藏文件，不需要重命名。怎样做？只需在想要隐藏文件的地方创建一个叫做 <code>.hidden</code> 的文件，然后把想隐藏的文件和文件夹列表一行一个地加进来。最后，刷新文件夹，那些文件将不显示出来。</p>
-                    <p>为了测试，我将在同一目录下创建一个叫做 <code>.hidden</code> 的文件和两个分别叫做 <code>2g</code>、<code>2daygeek</code> 的文件/文件夹，然后把它们加到 <code>.hidden</code> 文件中。</p>
-                    <figure class="highlight vala">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="meta"># touch 2g</span></div><div class="line"><span class="meta"># mkdir 2daygeek</span></div><div class="line"></div><div class="line"><span class="meta"># nano .hidden</span></div><div class="line"><span class="number">2</span>g</div><div class="line"><span class="number">2</span>daygeek</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <p>将两个文件加到 <code>.hidden</code> 文件之前。</p>
-                    <p><a href="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-5.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-5.png" alt="">
+                  <h3 id="用非重命名方法，通过-“-hidden”-文件的帮助隐藏文件或文件夹"><a href="#用非重命名方法，通过-“-hidden”-文件的帮助隐藏文件或文件夹" class="headerlink" title="用非重命名方法，通过 “.hidden” 文件的帮助隐藏文件或文件夹"></a>用非重命名方法，通过 “.hidden” 文件的帮助隐藏文件或文件夹</h3>
+                  <p>如果你想用非重命名的方法隐藏一个文件，或者一些应用不允许重命名。在这种情况下，你可以使用 <code>.hidden</code> 文件，它可能是最适合你的选择。</p>
+                  <p>一些文件管理器，比如 Nautilus、Nemo、Caja 和 Thunar，提供了一种很原始的方法来隐藏文件，不需要重命名。怎样做？只需在想要隐藏文件的地方创建一个叫做 <code>.hidden</code> 的文件，然后把想隐藏的文件和文件夹列表一行一个地加进来。最后，刷新文件夹，那些文件将不显示出来。</p>
+                  <p>为了测试，我将在同一目录下创建一个叫做 <code>.hidden</code> 的文件和两个分别叫做 <code>2g</code>、<code>2daygeek</code> 的文件/文件夹，然后把它们加到 <code>.hidden</code> 文件中。</p>
+                  <figure class="highlight vala">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="meta"># touch 2g</span></div><div class="line"><span class="meta"># mkdir 2daygeek</span></div><div class="line"></div><div class="line"><span class="meta"># nano .hidden</span></div><div class="line"><span class="number">2</span>g</div><div class="line"><span class="number">2</span>daygeek</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>将两个文件加到 <code>.hidden</code> 文件之前。</p>
+                  <p><a href="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-5.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-5.png" alt="">
 </a></p>
-                    <p>将两个文件加到 .hidden 文件之后。</p>
-                    <p><a href="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-6.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-6.png" alt="">
+                  <p>将两个文件加到 .hidden 文件之后。</p>
+                  <p><a href="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-6.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-6.png" alt="">
 </a></p>
-                    <p>通过按 <code>Ctrl+h</code> 显示所有文件。</p>
-                    <p><a href="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-7.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-7.png" alt="">
+                  <p>通过按 <code>Ctrl+h</code> 显示所有文件。</p>
+                  <p><a href="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-7.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-7.png" alt="">
 </a></p>
-                    <h3 id="Nautilus-Hide-扩展"><a href="#Nautilus-Hide-扩展" class="headerlink" title="Nautilus Hide 扩展"></a>Nautilus Hide 扩展</h3>
-                    <p><a href="https://github.com/brunonova/nautilus-hide" target="_blank" rel="external">Nautilus Hide</a> 是针对 Nautilus 文件管理器的一个简单的 Python 扩展，它在右键菜单中增加了隐藏或显示被隐藏文件的选项。</p>
-                    <p>要在 Ubuntu 及其衍生版上安装 Nautilus 和 Namo 的 Hide 扩展，我们可以在 Ubuntu 及其衍生版上通过运行下面的命令：</p>
-                    <figure class="highlight elixir">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="variable">$ </span>sudo apt install nautilus-hide</div><div class="line"><span class="variable">$ </span>nautilus -q</div><div class="line"></div><div class="line"><span class="variable">$ </span>sudo apt install nemo-hide</div><div class="line"><span class="variable">$ </span>nemo -q</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <p>对于基于 DEB 的系统，可以按照下面的步骤安装 Nautilus Hide 扩展：</p>
-                    <figure class="highlight elixir">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"><span class="variable">$ </span>sudo apt install cmake gettext python-nautilus xdotool</div><div class="line"><span class="variable">$ </span>mkdir build</div><div class="line"><span class="variable">$ </span>cd build</div><div class="line"><span class="variable">$ </span>cmake ..</div><div class="line"><span class="variable">$ </span>sudo make</div><div class="line"><span class="variable">$ </span>sudo make install</div><div class="line"><span class="variable">$ </span>nautilus -q</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <p>对于基于 RPM 的系统，按照下面的步骤安装 Nautilus Hide 扩展：</p>
-                    <figure class="highlight ruby">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line">$ sudo [yum<span class="params">|dnf|</span>zypper] install cmake gettext nautilus-python xdotool</div><div class="line">$ mkdir build</div><div class="line">$ cd build</div><div class="line">$ cmake ..</div><div class="line">$ sudo make</div><div class="line">$ sudo make install</div><div class="line">$ nautilus -q</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <p>这个扩展其实就是简单的使用 <code>.hidden</code> 文件来隐藏文件。当你选择隐藏一个文件时，它的名字就加入到 <code>.hidden</code> 文件。当你选择对它解除隐藏（为解除隐藏，按 <code>Ctrl+h</code> 快捷键来显示包括点（“.”）前缀在内的所有文件，然后选择<ruby>解除隐藏文件<rt>Unhide Files</rt></ruby>）时，它的名字就从 <code>.hidden</code> 文件中移除（当把所有列在
-                      <code>.hidden</code> 文件中的文件都解除隐藏以后， <code>.hidden</code> 文件也就随之消失了）。如果文件没有被隐藏/显示，请按 F5 来刷新文件夹。</p>
-                    <p>你可能会问，方法二也能完成相同的事情，为什么我还要安装 Nautilus Hide 扩展。在方法二中，我需要在要隐藏文件的地方手动创建一个 <code>.hidden</code> 文件，然后必须把需要隐藏的文件加到其中，但在这儿一切都是自动的。简单的右键单击，然后选择隐藏或取消隐藏（如果 <code>.hidden</code> 文件还不存在，它会自动创建 ）。</p>
-                    <p>使用 Nautilus Hide 扩展来隐藏一个文件。</p>
-                    <p>看下面的屏幕截图，我们使用 Nautilus Hide 扩展来隐藏一个文件。</p>
-                    <p><a href="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-3a.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-3a.png" alt="">
+                  <h3 id="Nautilus-Hide-扩展"><a href="#Nautilus-Hide-扩展" class="headerlink" title="Nautilus Hide 扩展"></a>Nautilus Hide 扩展</h3>
+                  <p><a href="https://github.com/brunonova/nautilus-hide" target="_blank" rel="external">Nautilus Hide</a> 是针对 Nautilus 文件管理器的一个简单的 Python 扩展，它在右键菜单中增加了隐藏或显示被隐藏文件的选项。</p>
+                  <p>要在 Ubuntu 及其衍生版上安装 Nautilus 和 Namo 的 Hide 扩展，我们可以在 Ubuntu 及其衍生版上通过运行下面的命令：</p>
+                  <figure class="highlight elixir">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="variable">$ </span>sudo apt install nautilus-hide</div><div class="line"><span class="variable">$ </span>nautilus -q</div><div class="line"></div><div class="line"><span class="variable">$ </span>sudo apt install nemo-hide</div><div class="line"><span class="variable">$ </span>nemo -q</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>对于基于 DEB 的系统，可以按照下面的步骤安装 Nautilus Hide 扩展：</p>
+                  <figure class="highlight elixir">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="variable">$ </span>sudo apt install cmake gettext python-nautilus xdotool</div><div class="line"><span class="variable">$ </span>mkdir build</div><div class="line"><span class="variable">$ </span>cd build</div><div class="line"><span class="variable">$ </span>cmake ..</div><div class="line"><span class="variable">$ </span>sudo make</div><div class="line"><span class="variable">$ </span>sudo make install</div><div class="line"><span class="variable">$ </span>nautilus -q</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>对于基于 RPM 的系统，按照下面的步骤安装 Nautilus Hide 扩展：</p>
+                  <figure class="highlight ruby">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">$ sudo [yum<span class="params">|dnf|</span>zypper] install cmake gettext nautilus-python xdotool</div><div class="line">$ mkdir build</div><div class="line">$ cd build</div><div class="line">$ cmake ..</div><div class="line">$ sudo make</div><div class="line">$ sudo make install</div><div class="line">$ nautilus -q</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>这个扩展其实就是简单的使用 <code>.hidden</code> 文件来隐藏文件。当你选择隐藏一个文件时，它的名字就加入到 <code>.hidden</code> 文件。当你选择对它解除隐藏（为解除隐藏，按 <code>Ctrl+h</code> 快捷键来显示包括点（“.”）前缀在内的所有文件，然后选择<ruby>解除隐藏文件<rt>Unhide Files</rt></ruby>）时，它的名字就从 <code>.hidden</code> 文件中移除（当把所有列在
+                    <code>.hidden</code> 文件中的文件都解除隐藏以后， <code>.hidden</code> 文件也就随之消失了）。如果文件没有被隐藏/显示，请按 F5 来刷新文件夹。</p>
+                  <p>你可能会问，方法二也能完成相同的事情，为什么我还要安装 Nautilus Hide 扩展。在方法二中，我需要在要隐藏文件的地方手动创建一个 <code>.hidden</code> 文件，然后必须把需要隐藏的文件加到其中，但在这儿一切都是自动的。简单的右键单击，然后选择隐藏或取消隐藏（如果 <code>.hidden</code> 文件还不存在，它会自动创建 ）。</p>
+                  <p>使用 Nautilus Hide 扩展来隐藏一个文件。</p>
+                  <p>看下面的屏幕截图，我们使用 Nautilus Hide 扩展来隐藏一个文件。</p>
+                  <p><a href="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-3a.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2017/02/hide-files-and-folders-in-file-manager-without-renaming-linux-3a.png" alt="">
 </a></p>
-                    <p>使用 Nautilus Hide 扩展来解除文件隐藏。</p>
-                    <p>看下面的屏幕截图，我们使用 Nautilus Hide 扩展解除对一个文件的隐藏（通过按 <code>Ctrl+h</code>， 你可以查看所有的被隐藏文件和文件夹）。</p>
-                    <p><a href="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-4.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-4.png" alt="">
+                  <p>使用 Nautilus Hide 扩展来解除文件隐藏。</p>
+                  <p>看下面的屏幕截图，我们使用 Nautilus Hide 扩展解除对一个文件的隐藏（通过按 <code>Ctrl+h</code>， 你可以查看所有的被隐藏文件和文件夹）。</p>
+                  <p><a href="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-4.png" target="_blank" rel="external"><br> <img src="http://www.2daygeek.com/wp-content/uploads/2020/08/hide-files-and-folders-in-file-manager-without-renaming-linux-4.png" alt="">
 </a></p>
-                    <hr>
-                    <p>via: <a href="http://www.2daygeek.com/how-to-hide-files-and-folders-in-file-manager-without-renaming/" target="_blank" rel="external">http://www.2daygeek.com/how-to-hide-files-and-folders-in-file-manager-without-renaming/</a></p>
-                    <p>作者：<a href="http://www.2daygeek.com/how-to-hide-files-and-folders-in-file-manager-without-renaming/" target="_blank" rel="external">MAGESH MARUTHAMUTHU</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：
-                      <a
-                        href="https://github.com/jasminepeng" target="_blank" rel="external">jasminepeng</a>
-                    </p>
-                    <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+                  <hr>
+                  <p>via: <a href="http://www.2daygeek.com/how-to-hide-files-and-folders-in-file-manager-without-renaming/" target="_blank" rel="external">http://www.2daygeek.com/how-to-hide-files-and-folders-in-file-manager-without-renaming/</a></p>
+                  <p>作者：<a href="http://www.2daygeek.com/how-to-hide-files-and-folders-in-file-manager-without-renaming/" target="_blank" rel="external">MAGESH MARUTHAMUTHU</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：
+                    <a
+                      href="https://github.com/jasminepeng" target="_blank" rel="external">jasminepeng</a>
+                  </p>
+                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/file-manage-Translated/" rel="tag"># file-manage/Translated</a>
 
                   </div>
 
@@ -504,56 +560,76 @@
 
 
 
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
 
-
-
-                  <footer class="post-footer">
-
-                    <div class="post-tags">
-
-                      <a href="/tags/file-manage-Translated/" rel="tag"># file-manage/Translated</a>
-
-                    </div>
-
-
-
-
-
-
-
-                    <div class="post-nav">
-                      <div class="post-nav-next post-nav-item">
-
-                        <a href="/2017/02/17/How-to-Install-SSH-in-Kali-Linux/" rel="next" title="如何在 Kali Linux 上安装 SSH 服务">
+                      <a href="/2017/02/17/How-to-Install-SSH-in-Kali-Linux/" rel="next" title="如何在 Kali Linux 上安装 SSH 服务">
                 <i class="fa fa-chevron-left"></i> 如何在 Kali Linux 上安装 SSH 服务
               </a>
 
-                      </div>
+                    </div>
 
-                      <span class="post-nav-divider"></span>
+                    <span class="post-nav-divider"></span>
 
-                      <div class="post-nav-prev post-nav-item">
+                    <div class="post-nav-prev post-nav-item">
 
-                        <a href="/2017/02/25/the-ADB-tool-Tutorial-for-Ubuntu/" rel="prev" title="如何在 Ubuntu 上使用 ADB 备份 Android 数据">
+                      <a href="/2017/02/25/the-ADB-tool-Tutorial-for-Ubuntu/" rel="prev" title="如何在 Ubuntu 上使用 ADB 备份 Android 数据">
                 如何在 Ubuntu 上使用 ADB 备份 Android 数据 <i class="fa fa-chevron-right"></i>
               </a>
 
-                      </div>
                     </div>
+                  </div>
 
 
 
 
-                  </footer>
-                </div>
-
-
-
+                </footer>
               </article>
 
 
 
+
+
+
               <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
 
               </div>
             </div>
@@ -564,19 +640,13 @@
 
 
 
-
-
           <div class="comments" id="comments">
-
-            <div id="gitment-container"></div>
 
           </div>
 
 
-
-
-
         </div>
+
 
 
 
@@ -589,7 +659,6 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
-
           <div class="sidebar-inner">
 
 
@@ -599,79 +668,124 @@
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+              <li class="sidebar-nav-overview" data-target="site-overview">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview-wrap sidebar-panel">
-              <div class="site-overview">
-                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
 
-                  <p class="site-author-name" itemprop="name">Flynn</p>
-                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-                </div>
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
 
-                <nav class="site-state motion-element">
-
-
-                  <div class="site-state-item site-state-posts">
-
-                    <a href="/archives/">
-              
-                  <span class="site-state-item-count">119</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-                  </div>
+              </div>
+              <nav class="site-state motion-element">
 
 
-
-
-
-                  <div class="site-state-item site-state-categories">
-                    <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-                  </div>
-
-
-
-
-
-                  <div class="site-state-item site-state-tags">
-                    <a href="/tags/index.html">
-                  <span class="site-state-item-count">69</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-                  </div>
-
-
-                </nav>
-
-
-                <div class="feed-link motion-element">
-                  <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-name">日志</span>
               </a>
                 </div>
 
 
-                <div class="links-of-author motion-element">
 
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
                 </div>
 
 
 
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
 
 
+              </nav>
 
 
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
 
 
               </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
             </section>
 
 
@@ -704,37 +818,66 @@
         </aside>
 
 
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+          </div>
+        </div>
+
+
+
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn</span>
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+          </span>
+        </div>
+
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
+
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
         </div>
 
 
-        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-
-        <span class="post-meta-divider">|</span>
-
-
-
-        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
-
-
-
-
-
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
@@ -749,9 +892,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
+      <span id="scrollpercent"><span>0</span>%</span>
+
     </div>
-
-
 
 
   </div>
@@ -780,70 +923,56 @@
 
 
 
-
-
-
-
-
-
-
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -871,8 +1000,6 @@
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -882,14 +1009,275 @@
 
 
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-
-
-
-
-
-
-
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
 
 
 
@@ -900,3 +1288,11 @@
 </body>
 
 </html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

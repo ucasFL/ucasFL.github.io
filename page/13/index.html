@@ -1,29 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
 
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-
 
 
 
@@ -51,31 +43,21 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Flynn,ucasFL" />
 
 
 
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -98,31 +80,19 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Muse',
-      version: '5.1.3',
+      scheme: 'Pisces',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
+        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": false,
-        "onmobile": false
+        "scrollpercent": true
       },
       fancybox: true,
-      tabs: true,
-      motion: {
-        "enable": true,
-        "async": false,
-        "transition": {
-          "post_block": "fadeIn",
-          "post_header": "slideDownIn",
-          "post_body": "slideDownIn",
-          "coll_header": "slideLeftIn",
-          "sidebar": "slideUpIn"
-        }
-      },
+      motion: true,
       duoshuo: {
-        userId: '0',
+        userId: 'undefined',
         author: '博主'
       },
       algolia: {
@@ -149,16 +119,7 @@
 
 
 
-  <title>春暖花开</title>
-
-
-
-
-
-
-
-
-
+  <title> 春暖花开 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -168,8 +129,24 @@
 
 
 
-  <div class="container sidebar-position-left 
-  page-home">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,8 +193,28 @@
             </li>
 
 
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
             <li class="menu-item menu-item-archives">
-              <a href="/archives/" rel="section">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -227,9 +224,41 @@
 
 
 
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
           </ul>
 
 
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
 
         </nav>
 
@@ -253,43 +282,213 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/24/How-to-Auto-Perform-Security-Update-in-Ubuntu-and-Debian/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/22/Snow/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">
-
-                      <a class="post-title-link" href="/2016/12/22/Snow/" itemprop="url">认真的雪</a></h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+
+                    <a class="post-title-link" href="/2016/12/24/How-to-Auto-Perform-Security-Update-in-Ubuntu-and-Debian/" itemprop="url">
+                  如何在 Debian 和 Ubuntu 系统上自动安装安全更新
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-22T20:30:51+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-24T18:22:53+08:00">
+                2016/12/24
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ubuntu/" itemprop="url" rel="index">
+                    <span itemprop="name">Ubuntu</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+
+
+
+
+                    <span id="/2016/12/24/How-to-Auto-Perform-Security-Update-in-Ubuntu-and-Debian/" class="leancloud_visitors" data-flag-title="如何在 Debian 和 Ubuntu 系统上自动安装安全更新">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                  <p>之前已经说过，一些最优秀的系统管理员看上去（注意这里使用的词是 seem（看上去））总是很“懒”的，这句话我再同意不过了。</p>
+                  <p>虽然这句话听起来有点荒谬，但我敢打赌在大多数情况下它是对的－不是因为他们不去做他们原本应该做的事情，而是因为他们已经让系统自动去完成这样的事情了。</p>
+                  <p>对于 Linux 系统来说，一个最关键的需求是为相应的 Linux 版本保持更新最新的安全补丁。</p>
+                  <p>在这篇文章中，我们将讨论如何在 Debian 和 Ubuntu 系统上进行设置，从而实现自动安装或更新重要的安装包或补丁。</p>
+                  <p>其他的 Linux 版本：<a href="https://linux.cn/article-8015-1.html">CentOS/RHEL 配置自动安装安全更新</a></p>
+                  <p>不必多说，为了执行这篇文章中所讲到的任务，你需要有超级用户特权。</p>
+                  <!--noindex-->
+                  <div class="post-button text-center">
+                    <a class="btn" href="/2016/12/24/How-to-Auto-Perform-Security-Update-in-Ubuntu-and-Debian/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                  </div>
+                  <!--/noindex-->
+
+
+                </div>
+
+                <div>
+
+                </div>
+
+                <div>
+
+                </div>
+
+
+                <footer class="post-footer">
+
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/22/Snow/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
+                <header class="post-header">
+
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+
+                    <a class="post-title-link" href="/2016/12/22/Snow/" itemprop="url">
+                  认真的雪
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-22T20:30:51+08:00">
                 2016/12/22
               </time>
 
@@ -297,35 +496,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Essay/" itemprop="url" rel="index">
                     <span itemprop="name">Essay</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-
+                    </span>
 
 
 
@@ -334,63 +528,73 @@
 
 
 
+                    <span id="/2016/12/22/Snow/" class="leancloud_visitors" data-flag-title="认真的雪">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
 
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-                    </div>
-                  </header>
-
-
-
-
-
-                  <div class="post-body" itemprop="articleBody">
-
-
-
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
-                    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=169185&auto=0&height=66"></iframe>
 
-                    <p><img src="/photos/blog6/1.jpeg" alt="pic"></p>
-                    <p>雪下地那么深<br>下得那么认真<br>倒映出我躺在雪中的伤痕</p>
-                    <p>夜深人静<br>那是爱情<br>偷偷地控制着我的心<br>提醒我<br>爱你要随时待命 </p>
-                    <!--noindex-->
-                    <div class="post-button text-center">
-                      <a class="btn" href="/2016/12/22/Snow/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                    </div>
-                    <!--/noindex-->
+
+
 
 
                   </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
+                  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=169185&auto=0&height=66"></iframe>
+
+                  <p><img src="/photos/blog6/1.jpeg" alt="pic"></p>
+                  <p>雪下地那么深<br>下得那么认真<br>倒映出我躺在雪中的伤痕</p>
+                  <p>夜深人静<br>那是爱情<br>偷偷地控制着我的心<br>提醒我<br>爱你要随时待命 </p>
+                  <!--noindex-->
+                  <div class="post-button text-center">
+                    <a class="btn" href="/2016/12/22/Snow/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                  </div>
+                  <!--/noindex-->
 
 
+                </div>
 
+                <div>
 
-                  <footer class="post-footer">
+                </div>
 
+                <div>
 
-
-
-
-
-
-
-                    <div class="post-eof"></div>
-
-                  </footer>
                 </div>
 
 
+                <footer class="post-footer">
 
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
               </article>
 
 
@@ -403,43 +607,50 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">
-
-                      <a class="post-title-link" href="/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/" itemprop="url">用带有 Amazon Cognito Identity SDK 的 Webpack 打包 JavaScript</a></h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+
+                    <a class="post-title-link" href="/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/" itemprop="url">
+                  用带有 Amazon Cognito Identity SDK 的 Webpack 打包 JavaScript
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-22T18:16:35+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-22T18:16:35+08:00">
                 2016/12/22
               </time>
 
@@ -447,35 +658,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/JavaScript/" itemprop="url" rel="index">
                     <span itemprop="name">JavaScript</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-
+                    </span>
 
 
 
@@ -484,63 +690,73 @@
 
 
 
+                    <span id="/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/" class="leancloud_visitors" data-flag-title="用带有 Amazon Cognito Identity SDK 的 Webpack 打包 JavaScript">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
 
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-                    </div>
-                  </header>
-
-
-
-
-
-                  <div class="post-body" itemprop="articleBody">
-
-
-
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
-                    <p>这篇文章针对开发和部署基于 JavaScript 的应用（服务器端的 Node.js 或者客户端）的各种经验水平的开发者，通过本文，你将看到如何把 AWS SDK， Amazon Cognito Identity SDK 嵌入到 JavaScript 中，以及如何使用流行的 <a href="https://webpack.github.io/">webpack</a> 模块打包器。</p>
-                    <p>2016 年 7 月， AWS <a href="https://blogs.aws.amazon.com/security/post/Tx13NVD4AWG9QK9/Amazon-Cognito-Your-User-Pools-is-Now-Generally-Available">推出了 Amazon Cognito 用户库（user pool）</a>，这个新特性极大的方便了开发者在移动和 Web 应用程序上添加注册和登录功能。为了让开发者更容易在自己的应用程序中实现用户库功能，我们也发布了
-                      <a href="https://github.com/aws/amazon-cognito-identity-js">用于 JavaScript 的 Amazon Cognito Identity SDK</a>。</p>
-                    <p>Amazon Cognito 用户库可以让你在移动和 Web 应用程序上添加用户注册和登录功能更加容易。全托管用户库可以扩展到数以百万计的用户，你可以在每个 AWS 账户下有多重目录。创建一个用户库只需要几分钟的时间，并且你可以决定当一个新用户在你的应用程序或服务上注册时哪些属性（包括地址、邮箱、电话号码以及自定义属性）是强制的，哪些是可选择的。你的应用程序也可以指定所需的密码强度，指定用户需要进行多因素认证（MFA），以及通过电话号码或者邮件地址来验证新用户，从而进一步加强应用程序的安全性。</p>
-                    <p>如果你是首次接触用于 JavaScript 的 Amazon Cognito Identity SDK，那么请先阅读<a href="http://mobile.awsblog.com/post/Tx2O14ZY8A5LFHT/Accessing-Your-User-Pools-using-the-Amazon-Cognito-Identity-SDK-for-JavaScript">这篇 AWS 文章</a>作为开始。</p>
-                    <!--noindex-->
-                    <div class="post-button text-center">
-                      <a class="btn" href="/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                    </div>
-                    <!--/noindex-->
+
+
+
 
 
                   </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
+                  <p>这篇文章针对开发和部署基于 JavaScript 的应用（服务器端的 Node.js 或者客户端）的各种经验水平的开发者，通过本文，你将看到如何把 AWS SDK， Amazon Cognito Identity SDK 嵌入到 JavaScript 中，以及如何使用流行的 <a href="https://webpack.github.io/">webpack</a> 模块打包器。</p>
+                  <p>2016 年 7 月， AWS <a href="https://blogs.aws.amazon.com/security/post/Tx13NVD4AWG9QK9/Amazon-Cognito-Your-User-Pools-is-Now-Generally-Available">推出了 Amazon Cognito 用户库（user pool）</a>，这个新特性极大的方便了开发者在移动和 Web 应用程序上添加注册和登录功能。为了让开发者更容易在自己的应用程序中实现用户库功能，我们也发布了
+                    <a href="https://github.com/aws/amazon-cognito-identity-js">用于 JavaScript 的 Amazon Cognito Identity SDK</a>。</p>
+                  <p>Amazon Cognito 用户库可以让你在移动和 Web 应用程序上添加用户注册和登录功能更加容易。全托管用户库可以扩展到数以百万计的用户，你可以在每个 AWS 账户下有多重目录。创建一个用户库只需要几分钟的时间，并且你可以决定当一个新用户在你的应用程序或服务上注册时哪些属性（包括地址、邮箱、电话号码以及自定义属性）是强制的，哪些是可选择的。你的应用程序也可以指定所需的密码强度，指定用户需要进行多因素认证（MFA），以及通过电话号码或者邮件地址来验证新用户，从而进一步加强应用程序的安全性。</p>
+                  <p>如果你是首次接触用于 JavaScript 的 Amazon Cognito Identity SDK，那么请先阅读<a href="http://mobile.awsblog.com/post/Tx2O14ZY8A5LFHT/Accessing-Your-User-Pools-using-the-Amazon-Cognito-Identity-SDK-for-JavaScript">这篇 AWS 文章</a>作为开始。</p>
+                  <!--noindex-->
+                  <div class="post-button text-center">
+                    <a class="btn" href="/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                  </div>
+                  <!--/noindex-->
 
 
+                </div>
 
+                <div>
 
-                  <footer class="post-footer">
+                </div>
 
+                <div>
 
-
-
-
-
-
-
-                    <div class="post-eof"></div>
-
-                  </footer>
                 </div>
 
 
+                <footer class="post-footer">
 
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
               </article>
 
 
@@ -553,43 +769,50 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/20/the-Error-Summary-of-C-Pointer-Part1/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/20/the-Error-Summary-of-C-Pointer-Part1/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">
-
-                      <a class="post-title-link" href="/2016/12/20/the-Error-Summary-of-C-Pointer-Part1/" itemprop="url">C 语言指针误用总结</a></h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+
+                    <a class="post-title-link" href="/2016/12/20/the-Error-Summary-of-C-Pointer-Part1/" itemprop="url">
+                  C 语言指针误用总结
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T14:07:41+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T14:07:41+08:00">
                 2016/12/20
               </time>
 
@@ -597,35 +820,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/C-C/" itemprop="url" rel="index">
                     <span itemprop="name">C/C++</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-
+                    </span>
 
 
 
@@ -634,67 +852,77 @@
 
 
 
+                    <span id="/2016/12/20/the-Error-Summary-of-C-Pointer-Part1/" class="leancloud_visitors" data-flag-title="C 语言指针误用总结">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
 
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-                    </div>
-                  </header>
-
-
-
-
-
-                  <div class="post-body" itemprop="articleBody">
-
-
-
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
-                    <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
-                    <p>一早上的时间折腾在一个很简单的题上，最后发现是指针误用，差点吓得我以后都不敢再用指针了，故作此总结。</p>
-                    <p>在这儿，我把问题简化，只看关键出错地方。</p>
-                    <h3 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h3>
-                    <p>首先，我们看一下， C 语言中的<em>指针</em>是什么：指针是一个保存变量地址的变量，它同时也是一个变量。</p>
-                    <p>看下面一行代码：</p>
-                    <pre><code>char *str=&quot;hello,world!&quot;
-</code></pre>
-                    <p>这行代码表示，<em>str</em> 是一个指针，它指向一个字符串（实际上是指向字符串的第一个字符）。<br>
-                      <!--noindex-->
-                      <div class="post-button text-center">
-                        <a class="btn" href="/2016/12/20/the-Error-Summary-of-C-Pointer-Part1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                      </div>
-                      <!--/noindex-->
+
+
+
 
 
                   </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
+                  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
+                  <p>一早上的时间折腾在一个很简单的题上，最后发现是指针误用，差点吓得我以后都不敢再用指针了，故作此总结。</p>
+                  <p>在这儿，我把问题简化，只看关键出错地方。</p>
+                  <h3 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h3>
+                  <p>首先，我们看一下， C 语言中的<em>指针</em>是什么：指针是一个保存变量地址的变量，它同时也是一个变量。</p>
+                  <p>看下面一行代码：</p>
+                  <pre><code>char *str=&quot;hello,world!&quot;
+</code></pre>
+                  <p>这行代码表示，<em>str</em> 是一个指针，它指向一个字符串（实际上是指向字符串的第一个字符）。<br>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2016/12/20/the-Error-Summary-of-C-Pointer-Part1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                    </div>
+                    <!--/noindex-->
 
 
+                </div>
 
+                <div>
 
-                  <footer class="post-footer">
+                </div>
 
+                <div>
 
-
-
-
-
-
-
-                    <div class="post-eof"></div>
-
-                  </footer>
                 </div>
 
 
+                <footer class="post-footer">
 
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
               </article>
 
 
@@ -707,43 +935,50 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/19/the-Solution-of-sudo-apt-update-Failed/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/19/the-Solution-of-sudo-apt-update-Failed/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">
-
-                      <a class="post-title-link" href="/2016/12/19/the-Solution-of-sudo-apt-update-Failed/" itemprop="url">Sudo Apt Update失败的解决办法</a></h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+
+                    <a class="post-title-link" href="/2016/12/19/the-Solution-of-sudo-apt-update-Failed/" itemprop="url">
+                  Sudo Apt Update失败的解决办法
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-19T16:23:02+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-19T16:23:02+08:00">
                 2016/12/19
               </time>
 
@@ -751,35 +986,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-
+                    </span>
 
 
 
@@ -788,62 +1018,72 @@
 
 
 
+                    <span id="/2016/12/19/the-Solution-of-sudo-apt-update-Failed/" class="leancloud_visitors" data-flag-title="Sudo Apt Update失败的解决办法">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
 
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-                    </div>
-                  </header>
-
-
-
-
-
-                  <div class="post-body" itemprop="articleBody">
-
-
-
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
-                    <p>在 <em>ubuntu</em> 系统上，当我们通过 <em>apt</em> 软件包安装新的软件时，都要先进行软件包更新：</p>
-                    <pre><code>~$ sudo apt update
-</code></pre>
-                    <p>但有时候，会出现 <strong>error</strong>， 如下图所示：<br>
-                      <!--noindex-->
-                      <div class="post-button text-center">
-                        <a class="btn" href="/2016/12/19/the-Solution-of-sudo-apt-update-Failed/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                      </div>
-                      <!--/noindex-->
+
+
+
 
 
                   </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
+                  <p>在 <em>ubuntu</em> 系统上，当我们通过 <em>apt</em> 软件包安装新的软件时，都要先进行软件包更新：</p>
+                  <pre><code>~$ sudo apt update
+</code></pre>
+                  <p>但有时候，会出现 <strong>error</strong>， 如下图所示：<br>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2016/12/19/the-Solution-of-sudo-apt-update-Failed/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                    </div>
+                    <!--/noindex-->
 
 
+                </div>
 
+                <div>
 
-                  <footer class="post-footer">
+                </div>
 
+                <div>
 
-
-
-
-
-
-
-                    <div class="post-eof"></div>
-
-                  </footer>
                 </div>
 
 
+                <footer class="post-footer">
 
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
               </article>
 
 
@@ -856,43 +1096,50 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/18/Hexo-Blog-Build-with-GitHub/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/18/Hexo-Blog-Build-with-GitHub/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">
-
-                      <a class="post-title-link" href="/2016/12/18/Hexo-Blog-Build-with-GitHub/" itemprop="url">个人博客搭建：GitHub+Hexo</a></h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+
+                    <a class="post-title-link" href="/2016/12/18/Hexo-Blog-Build-with-GitHub/" itemprop="url">
+                  个人博客搭建：GitHub+Hexo
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-18T12:06:50+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-18T12:06:50+08:00">
                 2016/12/18
               </time>
 
@@ -900,35 +1147,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Hexo/" itemprop="url" rel="index">
                     <span itemprop="name">Hexo</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-
+                    </span>
 
 
 
@@ -937,72 +1179,82 @@
 
 
 
+                    <span id="/2016/12/18/Hexo-Blog-Build-with-GitHub/" class="leancloud_visitors" data-flag-title="个人博客搭建：GitHub+Hexo">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
 
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-                    </div>
-                  </header>
-
-
-
-
-
-                  <div class="post-body" itemprop="articleBody">
-
-
-
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
-                    <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
-                    <p>既然是技术性文章，就不多说废话，直接进入正题。</p>
-                    <p>我们想干的事情是利用 <em>GitHub+Hexo</em> 搭建一个比较个性化的个人博客。</p>
-                    <p>本文中用到的工具有：</p>
-                    <ul>
-                      <li>Linux(是操作系统就行)</li>
-                      <li>GitHub</li>
-                      <li>Hexo</li>
-                      <li>Git</li>
-                      <li>Nodejs</li>
-                      <li>Markdown(写博客）</li>
-                    </ul>
-                    <p>不知道这些东西是什么？干嘛的？问我不如问百度。</p>
-                    <h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3>
-                    <!--noindex-->
-                    <div class="post-button text-center">
-                      <a class="btn" href="/2016/12/18/Hexo-Blog-Build-with-GitHub/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                    </div>
-                    <!--/noindex-->
+
+
+
 
 
                   </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
+                  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
+                  <p>既然是技术性文章，就不多说废话，直接进入正题。</p>
+                  <p>我们想干的事情是利用 <em>GitHub+Hexo</em> 搭建一个比较个性化的个人博客。</p>
+                  <p>本文中用到的工具有：</p>
+                  <ul>
+                    <li>Linux(是操作系统就行)</li>
+                    <li>GitHub</li>
+                    <li>Hexo</li>
+                    <li>Git</li>
+                    <li>Nodejs</li>
+                    <li>Markdown(写博客）</li>
+                  </ul>
+                  <p>不知道这些东西是什么？干嘛的？问我不如问百度。</p>
+                  <h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3>
+                  <!--noindex-->
+                  <div class="post-button text-center">
+                    <a class="btn" href="/2016/12/18/Hexo-Blog-Build-with-GitHub/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                  </div>
+                  <!--/noindex-->
 
 
+                </div>
 
+                <div>
 
-                  <footer class="post-footer">
+                </div>
 
+                <div>
 
-
-
-
-
-
-
-                    <div class="post-eof"></div>
-
-                  </footer>
                 </div>
 
 
+                <footer class="post-footer">
 
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
               </article>
 
 
@@ -1015,43 +1267,50 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">
-
-                      <a class="post-title-link" href="/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/" itemprop="url">用数据科学搭建一个实时推荐引擎</a></h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+
+                    <a class="post-title-link" href="/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/" itemprop="url">
+                  用数据科学搭建一个实时推荐引擎
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-14T18:14:40+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-14T18:14:40+08:00">
                 2016/12/14
               </time>
 
@@ -1059,35 +1318,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Science/" itemprop="url" rel="index">
                     <span itemprop="name">Data-Science</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-
+                    </span>
 
 
 
@@ -1096,69 +1350,79 @@
 
 
 
+                    <span id="/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/" class="leancloud_visitors" data-flag-title="用数据科学搭建一个实时推荐引擎">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
 
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-                    </div>
-                  </header>
-
-
-
-
-
-                  <div class="post-body" itemprop="articleBody">
-
-
-
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
-                    <p>编者注：本文是 2016 年 4 月 Nicole Whilte 在欧洲 <a href="http://graphconnect.com/">GraphConnect</a> 时所作。这儿我们快速回顾一下她所涉及的内容：</p>
-                    <ul>
-                      <li>图数据库推荐基础</li>
-                      <li>社会化推荐</li>
-                      <li>相似性推荐</li>
-                      <li>集群推荐</li>
-                    </ul>
-                    <p>今天我们将要讨论的内容是数据科学和图推荐（graph recommendations）：</p>
-                    <p>我在 <a href="http://neo4j.com/product/">Neo4j</a> 任职已经两年了，但实际上我已经使用 Neo4j 和 <a href="http://neo4j.com/blog/why-database-query-language-matters/#cypher">Cypher</a> 工作三年了。当我首次发现这个特别的图数据库（graph database）的时候，我还是一个研究生，那时候我在奥斯丁的德克萨斯大学攻读关于社交网络的统计学硕士学位。</p>
-                    <p><a href="https://neo4j.com/use-cases/real-time-recommendation-engine/">实时推荐引擎</a>是 Neo4j 中最广泛的用途之一，也是使它如此强大并且容易使用的原因之一。为了探索这个东西，我将通过使用示例数据集来阐述如何将统计学方法并入这些引擎中。</p>
-                    <p>第一个很简单 - 将 Cypher 用于社交推荐。接下来，我们将看一看相似性推荐，这涉及到可被计算的相似性度量，最后探索的是集群推荐。</p>
-                    <!--noindex-->
-                    <div class="post-button text-center">
-                      <a class="btn" href="/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                    </div>
-                    <!--/noindex-->
+
+
+
 
 
                   </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
+                  <p>编者注：本文是 2016 年 4 月 Nicole Whilte 在欧洲 <a href="http://graphconnect.com/">GraphConnect</a> 时所作。这儿我们快速回顾一下她所涉及的内容：</p>
+                  <ul>
+                    <li>图数据库推荐基础</li>
+                    <li>社会化推荐</li>
+                    <li>相似性推荐</li>
+                    <li>集群推荐</li>
+                  </ul>
+                  <p>今天我们将要讨论的内容是数据科学和图推荐（graph recommendations）：</p>
+                  <p>我在 <a href="http://neo4j.com/product/">Neo4j</a> 任职已经两年了，但实际上我已经使用 Neo4j 和 <a href="http://neo4j.com/blog/why-database-query-language-matters/#cypher">Cypher</a> 工作三年了。当我首次发现这个特别的图数据库（graph database）的时候，我还是一个研究生，那时候我在奥斯丁的德克萨斯大学攻读关于社交网络的统计学硕士学位。</p>
+                  <p><a href="https://neo4j.com/use-cases/real-time-recommendation-engine/">实时推荐引擎</a>是 Neo4j 中最广泛的用途之一，也是使它如此强大并且容易使用的原因之一。为了探索这个东西，我将通过使用示例数据集来阐述如何将统计学方法并入这些引擎中。</p>
+                  <p>第一个很简单 - 将 Cypher 用于社交推荐。接下来，我们将看一看相似性推荐，这涉及到可被计算的相似性度量，最后探索的是集群推荐。</p>
+                  <!--noindex-->
+                  <div class="post-button text-center">
+                    <a class="btn" href="/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                  </div>
+                  <!--/noindex-->
 
 
+                </div>
 
+                <div>
 
-                  <footer class="post-footer">
+                </div>
 
+                <div>
 
-
-
-
-
-
-
-                    <div class="post-eof"></div>
-
-                  </footer>
                 </div>
 
 
+                <footer class="post-footer">
 
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
               </article>
 
 
@@ -1171,43 +1435,50 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">
-
-                      <a class="post-title-link" href="/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/" itemprop="url">不常见但是很有用的 GCC 命令行选项（二）</a></h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+
+                    <a class="post-title-link" href="/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/" itemprop="url">
+                  不常见但是很有用的 GCC 命令行选项（二）
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-13T18:28:13+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-13T18:28:13+08:00">
                 2016/12/13
               </time>
 
@@ -1215,35 +1486,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Gcc/" itemprop="url" rel="index">
                     <span itemprop="name">Gcc</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-
+                    </span>
 
 
 
@@ -1252,240 +1518,73 @@
 
 
 
+                    <span id="/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/" class="leancloud_visitors" data-flag-title="不常见但是很有用的 GCC 命令行选项（二）">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
 
+                    <span class="post-meta-item-text">阅读次数 </span>
 
-                    </div>
-                  </header>
-
-
-
-
-
-                  <div class="post-body" itemprop="articleBody">
-
-
-
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
-                    <p>gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。</p>
-                    <p>在这个系列的文章中，我们集中于一些不常用但是很有用的 gcc 命令行选项，在<a href="https://linux.cn/article-8025-1.html">第一节</a>已经讲到几个这样的命令行选项。</p>
-                    <p>不知道你是否能够回想起，在这个系列教程的第一部分的开始，我简要的提到了开发者们通常用来生成警告的 <code>-Wall</code> 选项，并不包括一些特殊的警告。如果你不了解这些特殊警告，并且不知道如何生成它们，不用担心，我将在这篇文章中详细讲解关于它们所有的细节。</p>
-                    <p>除此以外，这篇文章也将涉及与浮点值相关的 gcc 警告选项，以及在 gcc 命令行选项列表变得很大的时候如何更好的管理它们。</p>
-                    <p>在继续之前，请记住，这个教程中的所有例子、命令和指令都已在 Ubuntu 16.04 LTS 操作系统和 gcc 5.4.0 上测试过。</p>
-                    <!--noindex-->
-                    <div class="post-button text-center">
-                      <a class="btn" href="/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                    </div>
-                    <!--/noindex-->
+
+
+
 
 
                   </div>
+                </header>
 
 
 
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
 
-
-                  <footer class="post-footer">
-
-
-
-
-
-
-
-
-                    <div class="post-eof"></div>
-
-                  </footer>
-                </div>
-
-
-
-              </article>
-
-
-
-
-
-
-
-
-
-
-
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/12/06/Install-Patch-or-Auto-Update-in-CentOS-and-RHEL/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
-
-
-                  <header class="post-header">
-
-
-
-                    <h1 class="post-title" itemprop="name headline">
-
-                      <a class="post-title-link" href="/2016/12/06/Install-Patch-or-Auto-Update-in-CentOS-and-RHEL/" itemprop="url">在 CentOS 和 RHEL 系统上安装安全补丁或自动更新</a></h1>
-
-
-                    <div class="post-meta">
-                      <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-
-                      <span class="post-meta-item-text">发表于</span>
-
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-06T18:25:11+08:00">
-                2016/12/06
-              </time>
-
-
-
-
-
-                      </span>
-
-
-                      <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-
-                      <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-
-                      <span class="post-meta-item-text">分类于</span>
-
-
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CentOS/" itemprop="url" rel="index">
-                    <span itemprop="name">CentOS</span>
-                      </a>
-                      </span>
-
-
-
-
-                      </span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                  </header>
-
-
-
-
-
-                  <div class="post-body" itemprop="articleBody">
-
-
-
-
-
-
-                    <p>在 Linux 系统上，一个最重要的需求就是为相应的 Linux 版本定期安装最新的安全补丁，或者更新。</p>
-                    <p>在之前的文章中，我们分享了<a href="http://www.tecmint.com/auto-install-security-updates-on-debian-and-ubuntu/">如何在 Debian/Ubuntu 上配置自动安全更新</a>，在这篇文章中，我们将分享如何在 CentOS/RHEL 7/6 版本中设置在需要时自动更新重要的安全补丁。</p>
-                    <p>和它同一家族的其它 Linux 版本（Fedora 或 Scientific Linux）中可以用类似的方法进行配置。</p>
-                    <h3 id="在-CentOS-RHEL-系统上配置自动安全更新"><a href="#在-CentOS-RHEL-系统上配置自动安全更新" class="headerlink" title="在 CentOS/RHEL 系统上配置自动安全更新"></a>在 CentOS/RHEL 系统上配置自动安全更新</h3>
-                    <p>在 CentOS/RHEL 7/6 系统上，你需要安装下面的安装包：</p>
-                    <figure class="highlight stata">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line"># yum <span class="keyword">update</span> -y &amp;&amp; yum install yum-cron -<span class="built_in">y</span></div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="在-CentOS-RHEL-7-系统上启用自动安全更新"><a href="#在-CentOS-RHEL-7-系统上启用自动安全更新" class="headerlink" title="在 CentOS/RHEL 7　系统上启用自动安全更新"></a>在 CentOS/RHEL 7　系统上启用自动安全更新</h3>
-                    <p>安装完成以后，打开 <code>/etc/yum/yum-cron.conf</code>，然后找到下面这些行内容，你必须确保它们的值和下面展示的一样<br>
-                      <figure class="highlight ini">
-                        <table>
-                          <tr>
-                            <td class="gutter">
-                              <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-                            </td>
-                            <td class="code">
-                              <pre><div class="line"><span class="attr">update_cmd</span> = security</div><div class="line"><span class="attr">update_messages</span> = <span class="literal">yes</span></div><div class="line"><span class="attr">download_updates</span> = <span class="literal">yes</span></div><div class="line"><span class="attr">apply_updates</span> = <span class="literal">yes</span></div></pre>
-                            </td>
-                          </tr>
-                        </table>
-                      </figure>
-                    </p>
-                    <!--noindex-->
-                    <div class="post-button text-center">
-                      <a class="btn" href="/2016/12/06/Install-Patch-or-Auto-Update-in-CentOS-and-RHEL/#more" rel="contents">
+                  <p>gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。</p>
+                  <p>在这个系列的文章中，我们集中于一些不常用但是很有用的 gcc 命令行选项，在<a href="https://linux.cn/article-8025-1.html">第一节</a>已经讲到几个这样的命令行选项。</p>
+                  <p>不知道你是否能够回想起，在这个系列教程的第一部分的开始，我简要的提到了开发者们通常用来生成警告的 <code>-Wall</code> 选项，并不包括一些特殊的警告。如果你不了解这些特殊警告，并且不知道如何生成它们，不用担心，我将在这篇文章中详细讲解关于它们所有的细节。</p>
+                  <p>除此以外，这篇文章也将涉及与浮点值相关的 gcc 警告选项，以及在 gcc 命令行选项列表变得很大的时候如何更好的管理它们。</p>
+                  <p>在继续之前，请记住，这个教程中的所有例子、命令和指令都已在 Ubuntu 16.04 LTS 操作系统和 gcc 5.4.0 上测试过。</p>
+                  <!--noindex-->
+                  <div class="post-button text-center">
+                    <a class="btn" href="/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
-                    </div>
-                    <!--/noindex-->
-
-
                   </div>
+                  <!--/noindex-->
 
 
+                </div>
 
+                <div>
 
+                </div>
 
+                <div>
 
-
-
-
-
-                  <footer class="post-footer">
-
-
-
-
-
-
-
-
-                    <div class="post-eof"></div>
-
-                  </footer>
                 </div>
 
 
+                <footer class="post-footer">
 
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
               </article>
 
 
@@ -1511,6 +1610,7 @@
 
 
 
+
         <div class="sidebar-toggle">
           <div class="sidebar-toggle-line-wrap">
             <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -1520,80 +1620,124 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
-
           <div class="sidebar-inner">
 
 
 
 
 
-            <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-              <div class="site-overview">
-                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <section class="site-overview sidebar-panel sidebar-panel-active">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
 
-                  <p class="site-author-name" itemprop="name">Flynn</p>
-                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-                </div>
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
 
-                <nav class="site-state motion-element">
-
-
-                  <div class="site-state-item site-state-posts">
-
-                    <a href="/archives/">
-              
-                  <span class="site-state-item-count">119</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-                  </div>
+              </div>
+              <nav class="site-state motion-element">
 
 
-
-
-
-                  <div class="site-state-item site-state-categories">
-                    <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-                  </div>
-
-
-
-
-
-                  <div class="site-state-item site-state-tags">
-                    <a href="/tags/index.html">
-                  <span class="site-state-item-count">69</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-                  </div>
-
-
-                </nav>
-
-
-                <div class="feed-link motion-element">
-                  <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-name">日志</span>
               </a>
                 </div>
 
 
-                <div class="links-of-author motion-element">
 
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
                 </div>
 
 
 
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
 
 
+              </nav>
 
 
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
 
 
               </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
             </section>
 
 
@@ -1604,37 +1748,66 @@
         </aside>
 
 
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+          </div>
+        </div>
+
+
+
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn</span>
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+          </span>
+        </div>
+
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
+
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
         </div>
 
 
-        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-
-        <span class="post-meta-divider">|</span>
-
-
-
-        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
-
-
-
-
-
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
@@ -1649,9 +1822,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
+      <span id="scrollpercent"><span>0</span>%</span>
+
     </div>
-
-
 
 
   </div>
@@ -1680,49 +1853,33 @@
 
 
 
-
-
-
-
-
-
-
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
@@ -1730,16 +1887,18 @@
 
 
 
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1767,8 +1926,6 @@
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -1778,14 +1935,275 @@
 
 
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-
-
-
-
-
-
-
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
 
 
 
@@ -1796,3 +2214,11 @@
 </body>
 
 </html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

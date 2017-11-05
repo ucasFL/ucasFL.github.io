@@ -1,29 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
 
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-
 
 
 
@@ -51,22 +43,7 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="terminator/Translated," />
@@ -76,6 +53,11 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -109,31 +91,19 @@
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Muse',
-      version: '5.1.3',
+      scheme: 'Pisces',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
+        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": false,
-        "onmobile": false
+        "scrollpercent": true
       },
       fancybox: true,
-      tabs: true,
-      motion: {
-        "enable": true,
-        "async": false,
-        "transition": {
-          "post_block": "fadeIn",
-          "post_header": "slideDownIn",
-          "post_body": "slideDownIn",
-          "coll_header": "slideLeftIn",
-          "sidebar": "slideUpIn"
-        }
-      },
+      motion: true,
       duoshuo: {
-        userId: '0',
+        userId: 'undefined',
         author: '博主'
       },
       algolia: {
@@ -160,16 +130,7 @@
 
 
 
-  <title>10 个常见的 Linux 终端仿真器 | 春暖花开</title>
-
-
-
-
-
-
-
-
-
+  <title> 10 个常见的 Linux 终端仿真器 | 春暖花开 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -179,7 +140,22 @@
 
 
 
-  <div class="container sidebar-position-left page-post-detail">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,8 +202,28 @@
             </li>
 
 
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
             <li class="menu-item menu-item-archives">
-              <a href="/archives/" rel="section">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -237,9 +233,41 @@
 
 
 
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
           </ul>
 
 
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
 
         </nav>
 
@@ -263,41 +291,47 @@
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/04/05/10-Common-Linux-Teminator/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/04/05/10-Common-Linux-Teminator/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">10 个常见的 Linux 终端仿真器</h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+                    10 个常见的 Linux 终端仿真器
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T21:23:58+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T21:23:58+08:00">
                 2017/04/05
               </time>
 
@@ -305,43 +339,30 @@
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/terminator/" itemprop="url" rel="index">
                     <span itemprop="name">terminator</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-                      <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                      <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                      <a href="/2017/04/05/10-Common-Linux-Teminator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/04/05/10-Common-Linux-Teminator/" itemprop="commentsCount"></span>
-                </a>
-                      </span>
+                    </span>
 
 
 
@@ -350,119 +371,154 @@
 
 
 
+                    <span id="/2017/04/05/10-Common-Linux-Teminator/" class="leancloud_visitors" data-flag-title="10 个常见的 Linux 终端仿真器">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
 
-                    </div>
-                  </header>
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
-                  <div class="post-body" itemprop="articleBody">
-
-
-
-
-
-                    <p><a href="http://www.linuxandubuntu.com/home/10-best-linux-terminals-for-ubuntu-and-fedora" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/10-best-linux-terminals_orig.jpg" alt="10 Best Linux Terminals">
+                  <p><a href="http://www.linuxandubuntu.com/home/10-best-linux-terminals-for-ubuntu-and-fedora" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/10-best-linux-terminals_orig.jpg" alt="10 Best Linux Terminals">
 </a></p>
-                    <p>对于 Linux 用户来说，最重要的应用程序之一就是终端仿真器。它允许每个用户获得对 shell 的访问。而 Bash 是 Linux 和 UNIX 发行版中最常用的 shell，它很强大，对于新手和高级用户来说，掌握 bash 都很有必要。因此，在这篇文章中，你可以了解 Linux 用户有哪些优秀的终端仿真器可以选择。</p>
-                    <a id="more"></a>
-                    <h3 id="1、Terminator"><a href="#1、Terminator" class="headerlink" title="1、Terminator"></a>1、Terminator</h3>
-                    <p>这个项目的目标是创造一个能够很好排列终端的有用工具。它受到一些如 gnome-multi-term、quadkonsole 等程序的启发，重点是以网格的形式排列终端。</p>
-                    <h4 id="特性浏览"><a href="#特性浏览" class="headerlink" title="特性浏览"></a>特性浏览</h4>
-                    <ul>
-                      <li>以网格形式排列终端</li>
-                      <li>Tab 设定</li>
-                      <li>通过拖放重新排布终端</li>
-                      <li>大量的快捷键</li>
-                      <li>通过 GUI 参数编辑器保存多个布局和配置文件</li>
-                      <li>同时对任意组合的终端进行输入</li>
-                    </ul>
-                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/terminator-linux-terminals_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/published/terminator-linux-terminals.png?1487082905" alt="terminator linux terminals">
+                  <p>对于 Linux 用户来说，最重要的应用程序之一就是终端仿真器。它允许每个用户获得对 shell 的访问。而 Bash 是 Linux 和 UNIX 发行版中最常用的 shell，它很强大，对于新手和高级用户来说，掌握 bash 都很有必要。因此，在这篇文章中，你可以了解 Linux 用户有哪些优秀的终端仿真器可以选择。</p>
+                  <a id="more"></a>
+                  <h3 id="1、Terminator"><a href="#1、Terminator" class="headerlink" title="1、Terminator"></a>1、Terminator</h3>
+                  <p>这个项目的目标是创造一个能够很好排列终端的有用工具。它受到一些如 gnome-multi-term、quadkonsole 等程序的启发，重点是以网格的形式排列终端。</p>
+                  <h4 id="特性浏览"><a href="#特性浏览" class="headerlink" title="特性浏览"></a>特性浏览</h4>
+                  <ul>
+                    <li>以网格形式排列终端</li>
+                    <li>Tab 设定</li>
+                    <li>通过拖放重新排布终端</li>
+                    <li>大量的快捷键</li>
+                    <li>通过 GUI 参数编辑器保存多个布局和配置文件</li>
+                    <li>同时对任意组合的终端进行输入</li>
+                  </ul>
+                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/terminator-linux-terminals_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/published/terminator-linux-terminals.png?1487082905" alt="terminator linux terminals">
 </a></p>
-                    <p>你可以通过下面的命令安装 Terminator：</p>
-                    <figure class="highlight actionscript">
-                      <table>
-                        <tr>
-                          <td class="gutter">
-                            <pre><div class="line">1</div></pre>
-                          </td>
-                          <td class="code">
-                            <pre><div class="line">sudo apt-<span class="keyword">get</span> install terminator</div></pre>
-                          </td>
-                        </tr>
-                      </table>
-                    </figure>
-                    <h3 id="2、Tilda-－-一个可以下拉的终端"><a href="#2、Tilda-－-一个可以下拉的终端" class="headerlink" title="2、Tilda － 一个可以下拉的终端"></a>2、Tilda － 一个可以下拉的终端</h3>
-                    <p><strong>Tilda</strong> 的独特之处在于它不像一个普通的窗口，相反，你可以使用一个特殊的热键从屏幕的顶部拉下和收回它。<br>另外，Tilda 是高度可配置的，可以自定义绑定热键，改变外观，以及其他许多能够影响 Tilda 特性的选项。</p>
-                    <p>在 Ubuntu 和 Fedora 上都可以使用包管理器安装 Tilda，当然，你也可以查看它的 <a href="https://github.com/lanoxx/tilda" target="_blank" rel="external">GitHub 仓库</a>。</p>
-                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/tilda-linux-terminal_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/tilda-linux-terminal_orig.png" alt="tilda linux terminal">
+                  <p>你可以通过下面的命令安装 Terminator：</p>
+                  <figure class="highlight actionscript">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">sudo apt-<span class="keyword">get</span> install terminator</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="2、Tilda-－-一个可以下拉的终端"><a href="#2、Tilda-－-一个可以下拉的终端" class="headerlink" title="2、Tilda － 一个可以下拉的终端"></a>2、Tilda － 一个可以下拉的终端</h3>
+                  <p><strong>Tilda</strong> 的独特之处在于它不像一个普通的窗口，相反，你可以使用一个特殊的热键从屏幕的顶部拉下和收回它。<br>另外，Tilda 是高度可配置的，可以自定义绑定热键，改变外观，以及其他许多能够影响 Tilda 特性的选项。</p>
+                  <p>在 Ubuntu 和 Fedora 上都可以使用包管理器安装 Tilda，当然，你也可以查看它的 <a href="https://github.com/lanoxx/tilda" target="_blank" rel="external">GitHub 仓库</a>。</p>
+                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/tilda-linux-terminal_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/tilda-linux-terminal_orig.png" alt="tilda linux terminal">
 </a></p>
-                    <h3 id="3、Guake"><a href="#3、Guake" class="headerlink" title="3、Guake"></a>3、Guake</h3>
-                    <p>Guake 是一个和 Tilda 或 yakuake 类似的下拉式终端仿真器。如果你知道一些关于 Python、Git 和 GTK 的知识的话，你可以给 Guake 添加一些新的特性。<br>​<br>Guake 在许多发行版上均可用，所以如果你想安装它，你可以查看你的版本仓库。</p>
-                    <h4 id="特性浏览-1"><a href="#特性浏览-1" class="headerlink" title="特性浏览"></a>特性浏览</h4>
-                    <ul>
-                      <li>轻量</li>
-                      <li>简单易用且优雅</li>
-                      <li>将终端自然地集成到 GUI 之中</li>
-                      <li>当你使用的时候出现，一旦按下预定义热键便消失（默认情况下是 F12）</li>
-                      <li>支持Compiz 透明</li>
-                      <li>多重 Tab</li>
-                      <li>丰富的调色板</li>
-                      <li>还有更多……</li>
-                    </ul>
-                    <p>主页: <a href="http://guake-project.org/" target="_blank" rel="external">http://guake-project.org/</a></p>
-                    <h3 id="4、ROXTerm"><a href="#4、ROXTerm" class="headerlink" title="4、ROXTerm"></a>4、ROXTerm</h3>
-                    <p>如果你正在寻找一个轻量型、高度可定制的终端仿真器，那么 ROXTerm 就是专门为你准备的。这是一个旨在提供和 gnome-terminal 相似特性的终端仿真器，它们都基于相同的 VTE 库。它的最初设计是只占用很小的资源并且能够快速启动，它具有比 gnome-terminal 更强的可配置性，更加针对经常使用终端的 “Power” 用户。</p>
-                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/roxterm-linux-terminal_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/roxterm-linux-terminal_orig.png" alt="roxterm linux terminal">
+                  <h3 id="3、Guake"><a href="#3、Guake" class="headerlink" title="3、Guake"></a>3、Guake</h3>
+                  <p>Guake 是一个和 Tilda 或 yakuake 类似的下拉式终端仿真器。如果你知道一些关于 Python、Git 和 GTK 的知识的话，你可以给 Guake 添加一些新的特性。<br>​<br>Guake 在许多发行版上均可用，所以如果你想安装它，你可以查看你的版本仓库。</p>
+                  <h4 id="特性浏览-1"><a href="#特性浏览-1" class="headerlink" title="特性浏览"></a>特性浏览</h4>
+                  <ul>
+                    <li>轻量</li>
+                    <li>简单易用且优雅</li>
+                    <li>将终端自然地集成到 GUI 之中</li>
+                    <li>当你使用的时候出现，一旦按下预定义热键便消失（默认情况下是 F12）</li>
+                    <li>支持Compiz 透明</li>
+                    <li>多重 Tab</li>
+                    <li>丰富的调色板</li>
+                    <li>还有更多……</li>
+                  </ul>
+                  <p>主页: <a href="http://guake-project.org/" target="_blank" rel="external">http://guake-project.org/</a></p>
+                  <h3 id="4、ROXTerm"><a href="#4、ROXTerm" class="headerlink" title="4、ROXTerm"></a>4、ROXTerm</h3>
+                  <p>如果你正在寻找一个轻量型、高度可定制的终端仿真器，那么 ROXTerm 就是专门为你准备的。这是一个旨在提供和 gnome-terminal 相似特性的终端仿真器，它们都基于相同的 VTE 库。它的最初设计是只占用很小的资源并且能够快速启动，它具有比 gnome-terminal 更强的可配置性，更加针对经常使用终端的 “Power” 用户。</p>
+                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/roxterm-linux-terminal_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/roxterm-linux-terminal_orig.png" alt="roxterm linux terminal">
 </a></p>
-                    <p><a href="http://roxterm.sourceforge.net/index.php?page=index&amp;lang=en" target="_blank" rel="external">http://roxterm.sourceforge.net/index.php?page=index&amp;lang=en</a></p>
-                    <h3 id="5、XTerm"><a href="#5、XTerm" class="headerlink" title="5、XTerm"></a>5、XTerm</h3>
-                    <p>Xterm 是 Linux 和 UNIX 系统上最受欢迎的终端仿真器，因为它是 X 窗口系统的默认终端仿真器，并且很轻量、很简单。</p>
-                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/xterm-linux-terminal_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/published/xterm-linux-terminal.png?1487083067" alt="xterm linux terminal">
+                  <p><a href="http://roxterm.sourceforge.net/index.php?page=index&amp;lang=en" target="_blank" rel="external">http://roxterm.sourceforge.net/index.php?page=index&amp;lang=en</a></p>
+                  <h3 id="5、XTerm"><a href="#5、XTerm" class="headerlink" title="5、XTerm"></a>5、XTerm</h3>
+                  <p>Xterm 是 Linux 和 UNIX 系统上最受欢迎的终端仿真器，因为它是 X 窗口系统的默认终端仿真器，并且很轻量、很简单。</p>
+                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/xterm-linux-terminal_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/published/xterm-linux-terminal.png?1487083067" alt="xterm linux terminal">
 </a></p>
-                    <h3 id="6、Eterm"><a href="#6、Eterm" class="headerlink" title="6、Eterm"></a>6、Eterm</h3>
-                    <p>如果你正在寻找一个漂亮、强大的终端仿真器，那么 Eterm 是你最好的选择。Eterm 是一个彩色 vt102 终端仿真器，被当作是 Xterm 的替代品。它按照自由选择的哲学思想进行设计，将尽可能多的权利、灵活性和自由交到用户手中。</p>
-                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/etern-linux-terminal_orig.jpg" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/published/etern-linux-terminal.jpg?1487083129" alt="etern linux terminal">
+                  <h3 id="6、Eterm"><a href="#6、Eterm" class="headerlink" title="6、Eterm"></a>6、Eterm</h3>
+                  <p>如果你正在寻找一个漂亮、强大的终端仿真器，那么 Eterm 是你最好的选择。Eterm 是一个彩色 vt102 终端仿真器，被当作是 Xterm 的替代品。它按照自由选择的哲学思想进行设计，将尽可能多的权利、灵活性和自由交到用户手中。</p>
+                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/etern-linux-terminal_orig.jpg" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/published/etern-linux-terminal.jpg?1487083129" alt="etern linux terminal">
 </a></p>
-                    <p>官网： <a href="http://www.eterm.org/" target="_blank" rel="external">http://www.eterm.org/</a></p>
-                    <h3 id="7、Gnome-Terminal"><a href="#7、Gnome-Terminal" class="headerlink" title="7、Gnome Terminal"></a>7、Gnome Terminal</h3>
-                    <p>Gnome Terminal 是最受欢迎的终端仿真器之一，它被许多 Linux 用户使用，因为它默认安装在 Gnome 桌面环境中，而 Gnome 桌面很常用。它有许多特性并且支持大量主题。</p>
-                    <p>在许多 Linux 发行版中都默认安装有 Gnome Terminal，但你如果没有的话，也可以使用你的包管理器来安装它。</p>
-                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/gnome-terminal_orig.jpg" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/gnome-terminal_orig.jpg" alt="gnome terminal">
+                  <p>官网： <a href="http://www.eterm.org/" target="_blank" rel="external">http://www.eterm.org/</a></p>
+                  <h3 id="7、Gnome-Terminal"><a href="#7、Gnome-Terminal" class="headerlink" title="7、Gnome Terminal"></a>7、Gnome Terminal</h3>
+                  <p>Gnome Terminal 是最受欢迎的终端仿真器之一，它被许多 Linux 用户使用，因为它默认安装在 Gnome 桌面环境中，而 Gnome 桌面很常用。它有许多特性并且支持大量主题。</p>
+                  <p>在许多 Linux 发行版中都默认安装有 Gnome Terminal，但你如果没有的话，也可以使用你的包管理器来安装它。</p>
+                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/gnome-terminal_orig.jpg" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/gnome-terminal_orig.jpg" alt="gnome terminal">
 </a></p>
-                    <h3 id="8、Sakura"><a href="#8、Sakura" class="headerlink" title="8、Sakura"></a>8、Sakura</h3>
-                    <p>Sakura 是一个基于 GTK 和 VTE 的终端仿真器。它是一个只有很少依赖的终端仿真器，所以你不需要先安装一个完整的 GNOME 桌面才能有一个像样的终端仿真器。</p>
-                    <p>你可以使用你的包管理器来安装它，因为 Sakura 在绝大多数发行版中都是可用的。</p>
-                    <h3 id="9、LilyTerm"><a href="#9、LilyTerm" class="headerlink" title="9、LilyTerm"></a>9、LilyTerm</h3>
-                    <p>LilyTerm 是一个基于 libvte 的终端仿真器，旨在快速和轻量，是 GPLv3 授权许可的。</p>
-                    <h4 id="特性浏览-2"><a href="#特性浏览-2" class="headerlink" title="特性浏览"></a>特性浏览</h4>
-                    <ul>
-                      <li>低资源占用</li>
-                      <li>多重 Tab</li>
-                      <li>配色方案丰富</li>
-                      <li>支持超链接</li>
-                      <li>支持全屏</li>
-                      <li>还有更多的……</li>
-                    </ul>
-                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/lilyterm-linux-terminal_orig.jpg" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/published/lilyterm-linux-terminal.jpg?1487083285" alt="lilyterm linux terminal">
+                  <h3 id="8、Sakura"><a href="#8、Sakura" class="headerlink" title="8、Sakura"></a>8、Sakura</h3>
+                  <p>Sakura 是一个基于 GTK 和 VTE 的终端仿真器。它是一个只有很少依赖的终端仿真器，所以你不需要先安装一个完整的 GNOME 桌面才能有一个像样的终端仿真器。</p>
+                  <p>你可以使用你的包管理器来安装它，因为 Sakura 在绝大多数发行版中都是可用的。</p>
+                  <h3 id="9、LilyTerm"><a href="#9、LilyTerm" class="headerlink" title="9、LilyTerm"></a>9、LilyTerm</h3>
+                  <p>LilyTerm 是一个基于 libvte 的终端仿真器，旨在快速和轻量，是 GPLv3 授权许可的。</p>
+                  <h4 id="特性浏览-2"><a href="#特性浏览-2" class="headerlink" title="特性浏览"></a>特性浏览</h4>
+                  <ul>
+                    <li>低资源占用</li>
+                    <li>多重 Tab</li>
+                    <li>配色方案丰富</li>
+                    <li>支持超链接</li>
+                    <li>支持全屏</li>
+                    <li>还有更多的……</li>
+                  </ul>
+                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/lilyterm-linux-terminal_orig.jpg" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/published/lilyterm-linux-terminal.jpg?1487083285" alt="lilyterm linux terminal">
 </a></p>
-                    <h3 id="10、Konsole"><a href="#10、Konsole" class="headerlink" title="10、Konsole"></a>10、Konsole</h3>
-                    <p>如果你是一名 KDE 或 Plasma 用户，那么你一定知道 Konsole，因为它是 KDE 桌面的默认终端仿真器，也是我最喜爱的终端仿真器之一，因为它很舒适易用。</p>
-                    <p>它在 Ubuntu 和 fedora 上均可用，但如果你在使用 Ubuntu (Unity)，那么你需要选择别的终端仿真器，或者你可以考虑使用 Kubuntu 。</p>
-                    <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/konsole-linux-terminal_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/editor/konsole-linux-terminal.png?1487083345" alt="konsole linux terminal">
+                  <h3 id="10、Konsole"><a href="#10、Konsole" class="headerlink" title="10、Konsole"></a>10、Konsole</h3>
+                  <p>如果你是一名 KDE 或 Plasma 用户，那么你一定知道 Konsole，因为它是 KDE 桌面的默认终端仿真器，也是我最喜爱的终端仿真器之一，因为它很舒适易用。</p>
+                  <p>它在 Ubuntu 和 fedora 上均可用，但如果你在使用 Ubuntu (Unity)，那么你需要选择别的终端仿真器，或者你可以考虑使用 Kubuntu 。</p>
+                  <p><a href="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/konsole-linux-terminal_orig.png" target="_blank" rel="external"><br><img src="http://www.linuxandubuntu.com/uploads/2/1/1/5/21152474/editor/konsole-linux-terminal.png?1487083345" alt="konsole linux terminal">
 </a></p>
-                    <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3>
-                    <p>我们是 Linux 用户，根据自己的需求，可以有许多选择来挑选更好的应用。因此，你可以选择<strong>最好的终端</strong>来满足个人需求，虽然你也可以选择另一个 shell 来满足个人需求，比如你也可以使用 fish shell。</p>
-                    <hr>
-                    <p>via: <a href="http://www.linuxandubuntu.com/home/10-best-linux-terminals-for-ubuntu-and-fedora" target="_blank" rel="external">http://www.linuxandubuntu.com/home/10-best-linux-terminals-for-ubuntu-and-fedora</a></p>
-                    <p>作者：<a href="https://disqus.com/by/MohdSohail1/" target="_blank" rel="external">Mohd Sohail</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/jasminepeng" target="_blank"
-                        rel="external">jasminepeng</a></p>
-                    <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+                  <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3>
+                  <p>我们是 Linux 用户，根据自己的需求，可以有许多选择来挑选更好的应用。因此，你可以选择<strong>最好的终端</strong>来满足个人需求，虽然你也可以选择另一个 shell 来满足个人需求，比如你也可以使用 fish shell。</p>
+                  <hr>
+                  <p>via: <a href="http://www.linuxandubuntu.com/home/10-best-linux-terminals-for-ubuntu-and-fedora" target="_blank" rel="external">http://www.linuxandubuntu.com/home/10-best-linux-terminals-for-ubuntu-and-fedora</a></p>
+                  <p>作者：<a href="https://disqus.com/by/MohdSohail1/" target="_blank" rel="external">Mohd Sohail</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/jasminepeng" target="_blank"
+                      rel="external">jasminepeng</a></p>
+                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/terminator-Translated/" rel="tag"># terminator/Translated</a>
 
                   </div>
 
@@ -472,56 +528,76 @@
 
 
 
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
 
-
-
-                  <footer class="post-footer">
-
-                    <div class="post-tags">
-
-                      <a href="/tags/terminator-Translated/" rel="tag"># terminator/Translated</a>
-
-                    </div>
-
-
-
-
-
-
-
-                    <div class="post-nav">
-                      <div class="post-nav-next post-nav-item">
-
-                        <a href="/2017/03/27/String-Part2/" rel="next" title="串 - Part 2">
+                      <a href="/2017/03/27/String-Part2/" rel="next" title="串 - Part 2">
                 <i class="fa fa-chevron-left"></i> 串 - Part 2
               </a>
 
-                      </div>
+                    </div>
 
-                      <span class="post-nav-divider"></span>
+                    <span class="post-nav-divider"></span>
 
-                      <div class="post-nav-prev post-nav-item">
+                    <div class="post-nav-prev post-nav-item">
 
-                        <a href="/2017/04/05/Text-Select-and-Use-Flag-in-Vim/" rel="prev" title="如何在 Vim 中进行文本选择操作和使用标志">
+                      <a href="/2017/04/05/Text-Select-and-Use-Flag-in-Vim/" rel="prev" title="如何在 Vim 中进行文本选择操作和使用标志">
                 如何在 Vim 中进行文本选择操作和使用标志 <i class="fa fa-chevron-right"></i>
               </a>
 
-                      </div>
                     </div>
+                  </div>
 
 
 
 
-                  </footer>
-                </div>
-
-
-
+                </footer>
               </article>
 
 
 
+
+
+
               <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
 
               </div>
             </div>
@@ -532,19 +608,13 @@
 
 
 
-
-
           <div class="comments" id="comments">
-
-            <div id="gitment-container"></div>
 
           </div>
 
 
-
-
-
         </div>
+
 
 
 
@@ -557,7 +627,6 @@
         </div>
 
         <aside id="sidebar" class="sidebar">
-
           <div class="sidebar-inner">
 
 
@@ -567,79 +636,124 @@
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
                 文章目录
               </li>
-              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+              <li class="sidebar-nav-overview" data-target="site-overview">
                 站点概览
               </li>
             </ul>
 
 
-            <section class="site-overview-wrap sidebar-panel">
-              <div class="site-overview">
-                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
 
-                  <p class="site-author-name" itemprop="name">Flynn</p>
-                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-                </div>
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
 
-                <nav class="site-state motion-element">
-
-
-                  <div class="site-state-item site-state-posts">
-
-                    <a href="/archives/">
-              
-                  <span class="site-state-item-count">119</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-                  </div>
+              </div>
+              <nav class="site-state motion-element">
 
 
-
-
-
-                  <div class="site-state-item site-state-categories">
-                    <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-                  </div>
-
-
-
-
-
-                  <div class="site-state-item site-state-tags">
-                    <a href="/tags/index.html">
-                  <span class="site-state-item-count">69</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-                  </div>
-
-
-                </nav>
-
-
-                <div class="feed-link motion-element">
-                  <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-name">日志</span>
               </a>
                 </div>
 
 
-                <div class="links-of-author motion-element">
 
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
                 </div>
 
 
 
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
 
 
+              </nav>
 
 
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
 
 
               </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
             </section>
 
 
@@ -692,37 +806,66 @@
         </aside>
 
 
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+          </div>
+        </div>
+
+
+
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn</span>
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+          </span>
+        </div>
+
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
+
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
         </div>
 
 
-        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-
-        <span class="post-meta-divider">|</span>
-
-
-
-        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
-
-
-
-
-
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
@@ -737,9 +880,9 @@
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
+      <span id="scrollpercent"><span>0</span>%</span>
+
     </div>
-
-
 
 
   </div>
@@ -768,70 +911,56 @@
 
 
 
-
-
-
-
-
-
-
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -859,8 +988,6 @@
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -870,14 +997,275 @@
 
 
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-
-
-
-
-
-
-
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
 
 
 
@@ -888,3 +1276,11 @@
 </body>
 
 </html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

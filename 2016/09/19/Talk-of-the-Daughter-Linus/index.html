@@ -1,29 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
 
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-
 
 
 
@@ -51,22 +43,7 @@
 
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Linus/Translated," />
@@ -76,6 +53,11 @@
 
 
   <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
 
 
 
@@ -112,31 +94,19 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
-      scheme: 'Muse',
-      version: '5.1.3',
+      scheme: 'Pisces',
       sidebar: {
         "position": "left",
         "display": "post",
         "offset": 12,
+        "offset_float": 0,
         "b2t": false,
-        "scrollpercent": false,
-        "onmobile": false
+        "scrollpercent": true
       },
       fancybox: true,
-      tabs: true,
-      motion: {
-        "enable": true,
-        "async": false,
-        "transition": {
-          "post_block": "fadeIn",
-          "post_header": "slideDownIn",
-          "post_body": "slideDownIn",
-          "coll_header": "slideLeftIn",
-          "sidebar": "slideUpIn"
-        }
-      },
+      motion: true,
       duoshuo: {
-        userId: '0',
+        userId: 'undefined',
         author: '博主'
       },
       algolia: {
@@ -163,16 +133,7 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
-  <title>Linus 之女谈计算机、大学、女权主义和提升技术界的多元化 | 春暖花开</title>
-
-
-
-
-
-
-
-
-
+  <title> Linus 之女谈计算机、大学、女权主义和提升技术界的多元化 | 春暖花开 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -182,7 +143,22 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
-  <div class="container sidebar-position-left page-post-detail">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -229,8 +205,28 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
             </li>
 
 
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
             <li class="menu-item menu-item-archives">
-              <a href="/archives/" rel="section">
+              <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -240,9 +236,41 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
           </ul>
 
 
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
 
         </nav>
 
@@ -266,41 +294,47 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
-              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/09/19/Talk-of-the-Daughter-Linus/">
 
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
 
-
-                <div class="post-block">
-                  <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2016/09/19/Talk-of-the-Daughter-Linus/">
-
-                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Flynn">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
     </span>
-
-                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="春暖花开">
-    </span>
+                </span>
 
 
-                  <header class="post-header">
+                <header class="post-header">
 
 
 
-                    <h1 class="post-title" itemprop="name headline">Linus 之女谈计算机、大学、女权主义和提升技术界的多元化</h1>
+                  <h1 class="post-title" itemprop="name headline">
 
 
-                    <div class="post-meta">
-                      <span class="post-time">
+
+                    Linus 之女谈计算机、大学、女权主义和提升技术界的多元化
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">发表于</span>
+                    <span class="post-meta-item-text">发表于</span>
 
-                      <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-19T16:48:56+08:00">
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-19T16:48:56+08:00">
                 2016/09/19
               </time>
 
@@ -308,43 +342,30 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
-                      </span>
+                    </span>
 
 
-                      <span class="post-category">
+                    <span class="post-category">
             
               <span class="post-meta-divider">|</span>
 
-                      <span class="post-meta-item-icon">
+                    <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
 
-                      <span class="post-meta-item-text">分类于</span>
+                    <span class="post-meta-item-text">分类于</span>
 
 
-                      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Open-Source/" itemprop="url" rel="index">
                     <span itemprop="name">Open-Source</span>
-                      </a>
-                      </span>
+                    </a>
+                    </span>
 
 
 
 
-                      </span>
-
-
-
-
-                      <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                      <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                      <a href="/2016/09/19/Talk-of-the-Daughter-Linus/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2016/09/19/Talk-of-the-Daughter-Linus/" itemprop="commentsCount"></span>
-                </a>
-                      </span>
+                    </span>
 
 
 
@@ -353,66 +374,101 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
+                    <span id="/2016/09/19/Talk-of-the-Daughter-Linus/" class="leancloud_visitors" data-flag-title="Linus 之女谈计算机、大学、女权主义和提升技术界的多元化">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
 
 
 
 
-                    </div>
-                  </header>
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
 
 
 
 
 
-                  <div class="post-body" itemprop="articleBody">
+                  <p><img src="http://opensource.com/sites/default/files/styles/image-full-size/public/images/life/osdc-lead-patriciatorvalds.png" alt="Image by : Photo by Becky Svartström. Modified by Opensource.com. CC BY-SA 4.0"></p>
+                  <p><em>图片来源：照片来自 Becky Svartström， Opensource.com 修改</em></p>
+                  <p>Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开源领域。</p>
+                  <p><img src="http://opensource.com/sites/default/files/images/life-uploads/ptorvalds.png" alt=""></p>
+                  <p>在她 18 岁的时候，Patricia 已经是一个有多项技术成就、拥有开源行业经验的女权主义者，而且她已经把目标放在进入杜克大学普拉特工程学院的新学期上了。当时她以实习生的身份在位于美国奥勒冈州伯特兰市的 <a href="https://puppetlabs.com/" target="_blank" rel="external">Puppet 实验室</a>工作。但不久后，她就将前往北卡罗纳州的达拉莫，开始秋季学期的大学学习。</p>
+                  <a id="more"></a>
+                  <p>在这次独家采访中，Patricia 谈到了使她对计算机科学与工程学感兴趣的（剧透警告：不是因为她的父亲）原因，她所在高中学校在技术教学上所采取的“正确”方法，女权主义在她的生活中扮演的重要角色，以及对技术缺乏多元化的思考。</p>
+                  <p><img src="http://opensource.com/sites/default/files/images/life/Interview%20banner%20Q%26A.png" alt=""></p>
+                  <p>###是什么使你对学习计算机科学与工程学发生兴趣？###</p>
+                  <p>我在技术方面的兴趣主要来自于高中时代。我曾一度想投身于生物学，这种想法一直维持到大约大学二年级的时候。大二结束以后，我在波特兰 <a href="http://www.va.gov/" target="_blank" rel="external">VA</a> 做网页设计实习生。与此同时，我参加了一个叫做“探索冒险家（Exploratory Ventures，XV）”的工程学课程，在我大二学年的后期，我们把一个水下机器人送入了太平洋。但是，转折点大概是在我大三学年的中期被授予“
+                    <a
+                      href="https://www.aspirations.org/" target="_blank" rel="external">NCWIT 的计算机之理想</a>”奖的地区冠军和全国亚军的时候出现的（LCTT 译注：NCWIT - National Center for Women &amp; IT，女性与 IT 国家中心）。</p>
+                  <p>这个奖项的获得让我感觉到确立了自己的兴趣。当然，我认为最重要的部分是我加入到一个由所有获奖者组成的 Facebook 群。女孩们获奖很难想象，因此我们彼此非常支持。由于在 XV 和 <a href="http://www.va.gov/" target="_blank" rel="external">VA</a> 的工作，我在获奖前就已经确实对计算机科学发生了兴趣，但是和这些女孩们的交谈更加坚定了这份兴趣，使之更加强烈。再后来，后期大三、大四年级的时候执教 XV
+                    也使我体会到工程学和计算机科学的乐趣。</p>
+                  <p>###你打算学习什么？你已经知道自己毕业后想干什么了吗？###</p>
+                  <p>我希望要么主修机械，要么是电子和计算机工程学，以及计算机科学，并且辅修女性学。毕业以后，我希望在一个支持社会公益或者为其创造技术的公司工作，或者自己开公司。</p>
+                  <p>###我的女儿在高中有一门 Visual Basic 的编程课。她是整个班上唯一的一个女生，并且以困扰和痛苦的经历结束了这门课程。你的经历是什么样的呢？###</p>
+                  <p>我的高中在高年级的时候开设了计算机科学的课程，我也学习了 Visual Basic！这门课不是很糟糕，但我的确是 20 多个人的班级里仅有的三四个女生之一。其他的计算机课程似乎也有相似的性别比例差异。然而，我所在的高中极其小，并且老师对技术包容性非常支持，所以我并没有感到困扰。希望在未来的一些年里这些课程会变得更加多样化。</p>
+                  <p>###你的学校做了哪些促进技术的举措？它们如何能够变得更好？###</p>
+                  <p>我的高中学校给了我们长时间接触计算机的机会，老师们会突然在不相关的课程上安排技术相关的任务，有几次我们还为社会实践课程建了一个网站，我认为这很棒，因为它使我们每一个人都能接触到技术。机器人俱乐部也很活跃并且资金充足，但是非常小，不过我不是其中的成员。学校的技术/工程学项目中一个非常重要的组成部分是一门叫做”<a href="http://exploratoryventures.com/" target="_blank" rel="external">探索冒险家（Exploratory Ventures）</a>“的由学生自己教的工程学课程，这是一门需要亲自动手的课程，并且每年换一个工程学或者计算机科学方面的难题。我和我的一个同学在这儿教了两年，在课程结束以后，有学生上来告诉我他们对从事工程学或者计算机科学发生了兴趣。</p>
+                  <p>然而，我的高中没有特别的关注于让年轻女性加入到这些课程中来，并且在人种上也没有呈现多样化。计算机的课程和俱乐部大量的主要成员都是男性白人学生。这的确应该需要有所改善。</p>
+                  <p>###在成长过程中，你如何在家运用技术？###</p>
+                  <p>老实说，小的时候，我使用我的上机时间（<a href="https://plus.google.com/+LinusTorvalds/about" target="_blank" rel="external">我的父亲 Linus</a> 设置了一个跟踪装置，当我们上网一个小时就会断线）来玩<a href="http://www.neopets.com/" target="_blank" rel="external">尼奥宠物</a>和或者相似的游戏。我想我本可以搞乱跟踪装置或者在不连接网络的情况下玩游戏，但我没有这样做。我有时候也会和我的父亲做一些小的科学项目，我还记得有一次我和他在电脑终端上打印出几千个“Hello
+                    world”。但是大多数时候，我都是和我的妹妹一起玩网络游戏，直到高中的时候才开始学习计算机。
+                  </p>
+                  <p>###你在高中学校的女权俱乐部很活跃，从这份经历中你学到了什么？现在对你来说什么女权问题是最重要的？###</p>
+                  <p>在高中二年级的后期，我和我的朋友一起建立了女权俱乐部。刚开始，我们受到了很多人对俱乐部的排斥，并且这从来就没有完全消失过。到我们毕业的时候，女权主义思想已经彻底成为了学校文化的一部分。我们在学校做的女权主义工作通常是在一些比较直接的方面，并集中于像着装要求这样一些问题。</p>
+                  <p>就我个人来说，我更关注于新女性主义（ intersectional feminism），这是一种致力于（消除）其它方面压迫（比如，种族歧视和阶级压迫等）的女权主义。Facebook 上的 <a href="https://www.facebook.com/guerrillafeminism" target="_blank" rel="external">Gurrilla Feminism</a> 专页是新女性主义一个非常好的例子，并且我从中学到了很多。我目前管理着波特兰分会。</p>
+                  <p>在技术多样性方面女权主义对我也非常重要，尽管作为一名和技术世界有很强联系的高年级白人女性，女权主义问题对我产生的影响相比其他人来说少得多，我所参与的新女性主义也是同样的。<a href="https://modelviewculture.com/" target="_blank" rel="external">《Model View Culture》</a>的出版非常鼓舞我，谢谢 Shanley Kane 所做的这一切。</p>
+                  <p>###你会给想教他们的孩子学习编程的父母什么样的建议？###</p>
+                  <p>老实说，从没有人推着我学习计算机科学或者工程学。正如我前面说的，在很长一段时间里，我想成为一名遗传学家。大二结束的那个夏天，我在 <a href="http://www.va.gov/" target="_blank" rel="external">VA</a> 做了一个夏天的网页设计实习生，这彻底改变了我之前的想法。所以我不知道我是否能够充分回答这个问题。</p>
+                  <p>我的确认为真正的兴趣很重要。如果在我 12 岁的时候，我的父亲让我坐在一台电脑前，教我配置一台网站服务器，我认为我不会对计算机科学感兴趣。相反，我的父母给了我很多可以支配的自由时间让我去做自己想做的事情，绝大多数时候是我在为我的尼奥宠物游戏编写糟糕的 HTML 网站。比我小的妹妹们没有一个对工程学或计算机科学感兴趣，我的父母也不在乎。我感到很幸运的是我的父母给了我和我的妹妹们鼓励和资源去探索自己的兴趣。</p>
+                  <p>仍然要讲的是，在我成长过程中我也常说未来职业生涯要“像我爹一样”，尽管那时我还不知道我父亲是干什么的，只知道他有一个很酷的工作。另外，中学的时候有一次我告诉我的父亲这件事，然后他没有发表什么看法只是告诉我高中的时候不要想这事。所以我猜想这从一定程度上鼓励了我。</p>
+                  <p>###对于开源社区的领导者们，你有什么建议给他们来吸引和维持更加多元化的贡献者？###</p>
+                  <p>我实际上在开源社区并不是特别积极和活跃，我更喜欢和其它女性讨论计算机。我是“<a href="https://www.aspirations.org/" target="_blank" rel="external">NCWIT 的计算机之理想</a>”成员之一，这是我对技术持久感到兴趣的一个重要方面，同样也包括 Facebook 的”<a href="https://www.facebook.com/groups/LadiesStormHackathons/"
+                      target="_blank" rel="external">Ladies Storm Hackathons</a>” 群。</p>
+                  <p>我认为对于吸引和留住那些天才而形形色色的贡献者，安全的空间很重要。我曾经看到过在一些开源社区有人发表关于女性歧视和种族主义的评论，当人们指出这一问题随后该人就被解职了。我认为要维持一个专业的社区必须就骚扰事件和不正当行为有一个高标准。当然，人们已经有而且还会有，关于在开源社区或其他任何社区能够表达什么意见的更多的观点。然而，如果社区领导人真的想吸引和留住形形色色的天才们，他们必须创造一个安全的空间并且以高标准要求社区成员们。</p>
+                  <p>我也觉得一些社区领导者不明白多元化的价值。很容易觉得在技术上是唯才是举的，并且这个原因有一些是技术上不处于中心位置的人是他们不在意的，问题来自于发展的早期。他们争论如果一个人在自己的工作上做得很好，那么他的性别或者民族还有性取向这些情况都变得不重要了。这很容易反驳，但我不想看到为这些错误找的理由。我认为多元化的缺失是一个错误，我们应该为之负责并尽力去改善这件事。</p>
+                  <hr>
+                  <p>via: <a href="http://opensource.com/life/15/8/patricia-torvalds-interview" target="_blank" rel="external">http://opensource.com/life/15/8/patricia-torvalds-interview</a></p>
+                  <p>作者：<a href="http://opensource.com/users/rikki-endsley" target="_blank" rel="external">Rikki Endsley</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/LinuxBars"
+                      target="_blank" rel="external">LinuxBars</a>, <a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
+                  <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创翻译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+
+                </div>
+
+                <div>
 
 
 
 
+                </div>
 
-                    <p><img src="http://opensource.com/sites/default/files/styles/image-full-size/public/images/life/osdc-lead-patriciatorvalds.png" alt="Image by : Photo by Becky Svartström. Modified by Opensource.com. CC BY-SA 4.0"></p>
-                    <p><em>图片来源：照片来自 Becky Svartström， Opensource.com 修改</em></p>
-                    <p>Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开源领域。</p>
-                    <p><img src="http://opensource.com/sites/default/files/images/life-uploads/ptorvalds.png" alt=""></p>
-                    <p>在她 18 岁的时候，Patricia 已经是一个有多项技术成就、拥有开源行业经验的女权主义者，而且她已经把目标放在进入杜克大学普拉特工程学院的新学期上了。当时她以实习生的身份在位于美国奥勒冈州伯特兰市的 <a href="https://puppetlabs.com/" target="_blank" rel="external">Puppet 实验室</a>工作。但不久后，她就将前往北卡罗纳州的达拉莫，开始秋季学期的大学学习。</p>
-                    <a id="more"></a>
-                    <p>在这次独家采访中，Patricia 谈到了使她对计算机科学与工程学感兴趣的（剧透警告：不是因为她的父亲）原因，她所在高中学校在技术教学上所采取的“正确”方法，女权主义在她的生活中扮演的重要角色，以及对技术缺乏多元化的思考。</p>
-                    <p><img src="http://opensource.com/sites/default/files/images/life/Interview%20banner%20Q%26A.png" alt=""></p>
-                    <p>###是什么使你对学习计算机科学与工程学发生兴趣？###</p>
-                    <p>我在技术方面的兴趣主要来自于高中时代。我曾一度想投身于生物学，这种想法一直维持到大约大学二年级的时候。大二结束以后，我在波特兰 <a href="http://www.va.gov/" target="_blank" rel="external">VA</a> 做网页设计实习生。与此同时，我参加了一个叫做“探索冒险家（Exploratory Ventures，XV）”的工程学课程，在我大二学年的后期，我们把一个水下机器人送入了太平洋。但是，转折点大概是在我大三学年的中期被授予“
-                      <a
-                        href="https://www.aspirations.org/" target="_blank" rel="external">NCWIT 的计算机之理想</a>”奖的地区冠军和全国亚军的时候出现的（LCTT 译注：NCWIT - National Center for Women &amp; IT，女性与 IT 国家中心）。</p>
-                    <p>这个奖项的获得让我感觉到确立了自己的兴趣。当然，我认为最重要的部分是我加入到一个由所有获奖者组成的 Facebook 群。女孩们获奖很难想象，因此我们彼此非常支持。由于在 XV 和 <a href="http://www.va.gov/" target="_blank" rel="external">VA</a> 的工作，我在获奖前就已经确实对计算机科学发生了兴趣，但是和这些女孩们的交谈更加坚定了这份兴趣，使之更加强烈。再后来，后期大三、大四年级的时候执教
-                      XV 也使我体会到工程学和计算机科学的乐趣。</p>
-                    <p>###你打算学习什么？你已经知道自己毕业后想干什么了吗？###</p>
-                    <p>我希望要么主修机械，要么是电子和计算机工程学，以及计算机科学，并且辅修女性学。毕业以后，我希望在一个支持社会公益或者为其创造技术的公司工作，或者自己开公司。</p>
-                    <p>###我的女儿在高中有一门 Visual Basic 的编程课。她是整个班上唯一的一个女生，并且以困扰和痛苦的经历结束了这门课程。你的经历是什么样的呢？###</p>
-                    <p>我的高中在高年级的时候开设了计算机科学的课程，我也学习了 Visual Basic！这门课不是很糟糕，但我的确是 20 多个人的班级里仅有的三四个女生之一。其他的计算机课程似乎也有相似的性别比例差异。然而，我所在的高中极其小，并且老师对技术包容性非常支持，所以我并没有感到困扰。希望在未来的一些年里这些课程会变得更加多样化。</p>
-                    <p>###你的学校做了哪些促进技术的举措？它们如何能够变得更好？###</p>
-                    <p>我的高中学校给了我们长时间接触计算机的机会，老师们会突然在不相关的课程上安排技术相关的任务，有几次我们还为社会实践课程建了一个网站，我认为这很棒，因为它使我们每一个人都能接触到技术。机器人俱乐部也很活跃并且资金充足，但是非常小，不过我不是其中的成员。学校的技术/工程学项目中一个非常重要的组成部分是一门叫做”<a href="http://exploratoryventures.com/" target="_blank" rel="external">探索冒险家（Exploratory Ventures）</a>“的由学生自己教的工程学课程，这是一门需要亲自动手的课程，并且每年换一个工程学或者计算机科学方面的难题。我和我的一个同学在这儿教了两年，在课程结束以后，有学生上来告诉我他们对从事工程学或者计算机科学发生了兴趣。</p>
-                    <p>然而，我的高中没有特别的关注于让年轻女性加入到这些课程中来，并且在人种上也没有呈现多样化。计算机的课程和俱乐部大量的主要成员都是男性白人学生。这的确应该需要有所改善。</p>
-                    <p>###在成长过程中，你如何在家运用技术？###</p>
-                    <p>老实说，小的时候，我使用我的上机时间（<a href="https://plus.google.com/+LinusTorvalds/about" target="_blank" rel="external">我的父亲 Linus</a> 设置了一个跟踪装置，当我们上网一个小时就会断线）来玩<a href="http://www.neopets.com/" target="_blank" rel="external">尼奥宠物</a>和或者相似的游戏。我想我本可以搞乱跟踪装置或者在不连接网络的情况下玩游戏，但我没有这样做。我有时候也会和我的父亲做一些小的科学项目，我还记得有一次我和他在电脑终端上打印出几千个“Hello
-                      world”。但是大多数时候，我都是和我的妹妹一起玩网络游戏，直到高中的时候才开始学习计算机。
-                    </p>
-                    <p>###你在高中学校的女权俱乐部很活跃，从这份经历中你学到了什么？现在对你来说什么女权问题是最重要的？###</p>
-                    <p>在高中二年级的后期，我和我的朋友一起建立了女权俱乐部。刚开始，我们受到了很多人对俱乐部的排斥，并且这从来就没有完全消失过。到我们毕业的时候，女权主义思想已经彻底成为了学校文化的一部分。我们在学校做的女权主义工作通常是在一些比较直接的方面，并集中于像着装要求这样一些问题。</p>
-                    <p>就我个人来说，我更关注于新女性主义（ intersectional feminism），这是一种致力于（消除）其它方面压迫（比如，种族歧视和阶级压迫等）的女权主义。Facebook 上的 <a href="https://www.facebook.com/guerrillafeminism" target="_blank" rel="external">Gurrilla Feminism</a> 专页是新女性主义一个非常好的例子，并且我从中学到了很多。我目前管理着波特兰分会。</p>
-                    <p>在技术多样性方面女权主义对我也非常重要，尽管作为一名和技术世界有很强联系的高年级白人女性，女权主义问题对我产生的影响相比其他人来说少得多，我所参与的新女性主义也是同样的。<a href="https://modelviewculture.com/" target="_blank" rel="external">《Model View Culture》</a>的出版非常鼓舞我，谢谢 Shanley Kane 所做的这一切。</p>
-                    <p>###你会给想教他们的孩子学习编程的父母什么样的建议？###</p>
-                    <p>老实说，从没有人推着我学习计算机科学或者工程学。正如我前面说的，在很长一段时间里，我想成为一名遗传学家。大二结束的那个夏天，我在 <a href="http://www.va.gov/" target="_blank" rel="external">VA</a> 做了一个夏天的网页设计实习生，这彻底改变了我之前的想法。所以我不知道我是否能够充分回答这个问题。</p>
-                    <p>我的确认为真正的兴趣很重要。如果在我 12 岁的时候，我的父亲让我坐在一台电脑前，教我配置一台网站服务器，我认为我不会对计算机科学感兴趣。相反，我的父母给了我很多可以支配的自由时间让我去做自己想做的事情，绝大多数时候是我在为我的尼奥宠物游戏编写糟糕的 HTML 网站。比我小的妹妹们没有一个对工程学或计算机科学感兴趣，我的父母也不在乎。我感到很幸运的是我的父母给了我和我的妹妹们鼓励和资源去探索自己的兴趣。</p>
-                    <p>仍然要讲的是，在我成长过程中我也常说未来职业生涯要“像我爹一样”，尽管那时我还不知道我父亲是干什么的，只知道他有一个很酷的工作。另外，中学的时候有一次我告诉我的父亲这件事，然后他没有发表什么看法只是告诉我高中的时候不要想这事。所以我猜想这从一定程度上鼓励了我。</p>
-                    <p>###对于开源社区的领导者们，你有什么建议给他们来吸引和维持更加多元化的贡献者？###</p>
-                    <p>我实际上在开源社区并不是特别积极和活跃，我更喜欢和其它女性讨论计算机。我是“<a href="https://www.aspirations.org/" target="_blank" rel="external">NCWIT 的计算机之理想</a>”成员之一，这是我对技术持久感到兴趣的一个重要方面，同样也包括 Facebook 的”<a href="https://www.facebook.com/groups/LadiesStormHackathons/"
-                        target="_blank" rel="external">Ladies Storm Hackathons</a>” 群。</p>
-                    <p>我认为对于吸引和留住那些天才而形形色色的贡献者，安全的空间很重要。我曾经看到过在一些开源社区有人发表关于女性歧视和种族主义的评论，当人们指出这一问题随后该人就被解职了。我认为要维持一个专业的社区必须就骚扰事件和不正当行为有一个高标准。当然，人们已经有而且还会有，关于在开源社区或其他任何社区能够表达什么意见的更多的观点。然而，如果社区领导人真的想吸引和留住形形色色的天才们，他们必须创造一个安全的空间并且以高标准要求社区成员们。</p>
-                    <p>我也觉得一些社区领导者不明白多元化的价值。很容易觉得在技术上是唯才是举的，并且这个原因有一些是技术上不处于中心位置的人是他们不在意的，问题来自于发展的早期。他们争论如果一个人在自己的工作上做得很好，那么他的性别或者民族还有性取向这些情况都变得不重要了。这很容易反驳，但我不想看到为这些错误找的理由。我认为多元化的缺失是一个错误，我们应该为之负责并尽力去改善这件事。</p>
-                    <hr>
-                    <p>via: <a href="http://opensource.com/life/15/8/patricia-torvalds-interview" target="_blank" rel="external">http://opensource.com/life/15/8/patricia-torvalds-interview</a></p>
-                    <p>作者：<a href="http://opensource.com/users/rikki-endsley" target="_blank" rel="external">Rikki Endsley</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/LinuxBars"
-                        target="_blank" rel="external">LinuxBars</a>, <a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-                    <p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创翻译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Linus-Translated/" rel="tag"># Linus/Translated</a>
 
                   </div>
 
@@ -422,52 +478,72 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
-
-
-
-                  <footer class="post-footer">
-
-                    <div class="post-tags">
-
-                      <a href="/tags/Linus-Translated/" rel="tag"># Linus/Translated</a>
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
 
                     </div>
 
+                    <span class="post-nav-divider"></span>
 
+                    <div class="post-nav-prev post-nav-item">
 
-
-
-
-
-                    <div class="post-nav">
-                      <div class="post-nav-next post-nav-item">
-
-                      </div>
-
-                      <span class="post-nav-divider"></span>
-
-                      <div class="post-nav-prev post-nav-item">
-
-                        <a href="/2016/09/19/4-Best -Load-Program-for-Linux/" rel="prev" title="4 个最好的 Linux 引导程序">
+                      <a href="/2016/09/19/4-Best -Load-Program-for-Linux/" rel="prev" title="4 个最好的 Linux 引导程序">
                 4 个最好的 Linux 引导程序 <i class="fa fa-chevron-right"></i>
               </a>
 
-                      </div>
                     </div>
+                  </div>
 
 
 
 
-                  </footer>
-                </div>
-
-
-
+                </footer>
               </article>
 
 
 
+
+
+
               <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
 
               </div>
             </div>
@@ -478,19 +554,13 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
-
-
           <div class="comments" id="comments">
-
-            <div id="gitment-container"></div>
 
           </div>
 
 
-
-
-
         </div>
+
 
 
 
@@ -503,80 +573,124 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
         </div>
 
         <aside id="sidebar" class="sidebar">
-
           <div class="sidebar-inner">
 
 
 
 
 
-            <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-              <div class="site-overview">
-                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <section class="site-overview sidebar-panel sidebar-panel-active">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
 
-                  <p class="site-author-name" itemprop="name">Flynn</p>
-                  <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
-                </div>
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
 
-                <nav class="site-state motion-element">
-
-
-                  <div class="site-state-item site-state-posts">
-
-                    <a href="/archives/">
-              
-                  <span class="site-state-item-count">119</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-                  </div>
+              </div>
+              <nav class="site-state motion-element">
 
 
-
-
-
-                  <div class="site-state-item site-state-categories">
-                    <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-                  </div>
-
-
-
-
-
-                  <div class="site-state-item site-state-tags">
-                    <a href="/tags/index.html">
-                  <span class="site-state-item-count">69</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-                  </div>
-
-
-                </nav>
-
-
-                <div class="feed-link motion-element">
-                  <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-name">日志</span>
               </a>
                 </div>
 
 
-                <div class="links-of-author motion-element">
 
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
                 </div>
 
 
 
+                <div class="site-state-item site-state-tags">
+
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+
+                </div>
 
 
+              </nav>
 
 
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
 
 
               </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
             </section>
 
 
@@ -587,37 +701,66 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
         </aside>
 
 
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADB-Translated/">ADB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL-Tree/">AVL-Tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asciinema-Translated/">Asciinema/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Assembly/">Assembly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Section/">C Section</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Pointer/">C/Pointer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS-Trarnslated/">CentOS/Trarnslated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compiler-LLVM/">Compiler LLVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D/">D</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structures/">Data-Structures</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-science-Translated/">Data-science/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devuan-Linux-Translated/">Devuan-Linux/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Translated/">Docker/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FTP-Translated/">FTP/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fedora/">Fedora</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileSystem-Linux/">FileSystem Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-chrome-proxy/">Google-chrome proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-table/">Hash-table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Blog/">Hexo-Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS-Translated/">JS/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KDE-Translated/">KDE/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex-TexLive/">Latex/TexLive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LibreOffice-Translated/">LibreOffice/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linfo-Translated/">Linfo/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linus-Translated/">Linus/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-touchpad/">Linux touchpad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Desktop-Share-Translated/">Linux-Desktop-Share/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Translated/">Linux/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-transshipment/">Linux/transshipment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MariaDB-Translated/">MariaDB/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown-Translated/">Markdown/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyCLI-Translated/">MyCLI/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMAP-Translateed/">NMAP/Translateed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octave-Translated/">Octave/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSource-Translated/">OpenSource/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pushd-Popd-Translated/">Pushd/Popd/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-cheat-sheet/">Python cheat-sheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-mode-Translated/">Python-mode/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-MySQL/">Python/MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-Translated/">Python/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-machine-learning/">Python/machine learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-main/">Python/main</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-name/">Python/name</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading-Summary/">Reading-Summary</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursive-theorem/">Recursive-theorem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH-Translated/">SSH/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack-Over-Flow/">Stack-Over-Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Static-variables/">Static-variables</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translated/">Translated</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubunntu-Translated/">Ubunntu/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu-Translated/">Ubuntu/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-Translated/">Vim/Translated</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim-transshipment/">Vim/transshipment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wire-Translated/">Wire/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xfce-Translated/">Xfce/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comm-Translated/">comm/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-Translated/">command/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-manage-Translated/">file-manage/Translated</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcc-Translated/">gcc/Translated</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/primer-of-SE/">primer-of-SE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyDash-Translatd/">pyDash/Translatd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminator-Translated/">terminator/Translated</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+          </div>
+        </div>
+
+
+
 
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
-          <span class="author" itemprop="copyrightHolder">Flynn</span>
+          <span class="author" itemprop="copyrightHolder">Flynn
 
 
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+          </span>
+        </div>
+
+        <div class="powered-by">
+          由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+        </div>
+
+        <div class="theme-info">
+          主题 -
+          <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
         </div>
 
 
-        <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+        &nbsp;&nbsp;|&nbsp;&nbsp;本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
 
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
 
-
-        <span class="post-meta-divider">|</span>
-
-
-
-        <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
-
-
-
-
-
-
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
 
 
 
@@ -632,9 +775,9 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
 
+      <span id="scrollpercent"><span>0</span>%</span>
+
     </div>
-
-
 
 
   </div>
@@ -663,70 +806,56 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
-
-
-
-
-
-
-
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
-
-
   <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
 
 
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
 
 
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
 
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
 
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -754,8 +883,6 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 
 
@@ -765,14 +892,275 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 
 
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-
-
-
-
-
-
-
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
 
 
 
@@ -783,3 +1171,11 @@ Patricia Torvalds 暂时还不像她的父亲 Linus 一样闻名于 Linux 和开
 </body>
 
 </html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
