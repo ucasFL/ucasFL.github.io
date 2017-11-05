@@ -606,6 +606,25 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
                 </div>
 
 
+                <div id="container"></div>
+                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+
+                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+                <script>
+                  var gitment = new Gitment({
+                    id: , // 可选。默认为 location.href
+                    owner: ucasFL,
+                    repo: BlogComment,
+                    oauth: {
+                      client_id: ef399b43f01e072241fd,
+                      client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
+                    },
+                  })
+                  gitment.render('container')
+                </script>
+
+
                 <footer class="post-footer">
 
                   <div class="post-tags">
@@ -649,23 +668,7 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-              <div id="container"></div>
-              <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 
-              <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
-              <script>
-                var gitment = new Gitment({
-                  id: , // 可选。默认为 location.href
-                  owner: ucasFL,
-                  repo: BlogComment,
-                  oauth: {
-                    client_id: ef399b43f01e072241fd,
-                    client_secret: 9258 aef304e43fda24e51941bb0bbfc167e4e0a5,
-                  },
-                })
-                gitment.render('container')
-              </script>
 
               <div class="post-spread">
 
@@ -717,8 +720,6 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
           <div class="comments" id="comments">
-
-            <div id="uyan_frame"></div>
 
           </div>
 
@@ -1082,14 +1083,6 @@ Linux 系统管理员面临的一大挑战是如何在没有任何停机时间�
 
 
 
-
-
-
-
-
-  <!-- UY BEGIN -->
-  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147761"></script>
-  <!-- UY END -->
 
 
 
