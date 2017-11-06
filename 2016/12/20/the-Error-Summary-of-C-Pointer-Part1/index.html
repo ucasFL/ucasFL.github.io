@@ -66,43 +66,25 @@
 
   <meta name="description" content="前言
 一早上的时间折腾在一个很简单的题上，最后发现是指针误用，差点吓得我以后都不敢再用指针了，故作此总结。
-在这儿，我把问题简化，只看关键出错地方。
-正题
-首先，我们看一下， C 语言中的指针是什么：指针是一个保存变量地址的变量，它同时也是一个变量。
-看下面一行代码：
-char *str=&amp;quot;hello,world!&amp;quot;
-
-这行代码表示，str 是一个指针，它指向一个字符串（实际上">
+在这儿，我把问题简化，只看关键出错地方。">
   <meta property="og:type" content="article">
   <meta property="og:title" content="C 语言指针误用总结">
   <meta property="og:url" content="http://ucasfl.me/2016/12/20/the-Error-Summary-of-C-Pointer-Part1/index.html">
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="前言
 一早上的时间折腾在一个很简单的题上，最后发现是指针误用，差点吓得我以后都不敢再用指针了，故作此总结。
-在这儿，我把问题简化，只看关键出错地方。
-正题
-首先，我们看一下， C 语言中的指针是什么：指针是一个保存变量地址的变量，它同时也是一个变量。
-看下面一行代码：
-char *str=&amp;quot;hello,world!&amp;quot;
-
-这行代码表示，str 是一个指针，它指向一个字符串（实际上">
+在这儿，我把问题简化，只看关键出错地方。">
   <meta property="og:image" content="http://ucasfl.me/photos/blog5/2.png">
   <meta property="og:image" content="http://ucasfl.me/photos/blog5/1.png">
   <meta property="og:image" content="http://ucasfl.me/photos/blog5/3.png">
   <meta property="og:image" content="http://ucasfl.me/photos/blog5/4.png">
   <meta property="og:image" content="http://ucasfl.me/photos/blog5/5.png">
-  <meta property="og:updated_time" content="2017-11-05T11:35:43.266Z">
+  <meta property="og:updated_time" content="2017-11-06T09:06:10.407Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="C 语言指针误用总结">
   <meta name="twitter:description" content="前言
 一早上的时间折腾在一个很简单的题上，最后发现是指针误用，差点吓得我以后都不敢再用指针了，故作此总结。
-在这儿，我把问题简化，只看关键出错地方。
-正题
-首先，我们看一下， C 语言中的指针是什么：指针是一个保存变量地址的变量，它同时也是一个变量。
-看下面一行代码：
-char *str=&amp;quot;hello,world!&amp;quot;
-
-这行代码表示，str 是一个指针，它指向一个字符串（实际上">
+在这儿，我把问题简化，只看关键出错地方。">
   <meta name="twitter:image" content="http://ucasfl.me/photos/blog5/2.png">
 
 
@@ -433,13 +415,14 @@ char *str=&amp;quot;hello,world!&amp;quot;
                   <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
                   <p>一早上的时间折腾在一个很简单的题上，最后发现是指针误用，差点吓得我以后都不敢再用指针了，故作此总结。</p>
                   <p>在这儿，我把问题简化，只看关键出错地方。</p>
+                  <a id="more"></a>
                   <h3 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h3>
                   <p>首先，我们看一下， C 语言中的<em>指针</em>是什么：指针是一个保存变量地址的变量，它同时也是一个变量。</p>
                   <p>看下面一行代码：</p>
                   <pre><code>char *str=&quot;hello,world!&quot;
 </code></pre>
-                  <p>这行代码表示，<em>str</em> 是一个指针，它指向一个字符串（实际上是指向字符串的第一个字符）。<br>
-                    <a id="more"></a><br>如果想把该字符串输出，我们可以：</p>
+                  <p>这行代码表示，<em>str</em> 是一个指针，它指向一个字符串（实际上是指向字符串的第一个字符）。</p>
+                  <p>如果想把该字符串输出，我们可以：</p>
                   <pre><code>printf(&quot;%s\n&quot;,str);
 </code></pre>
                   <p>重点来了，因为对该知识点的错误理解，造成了第一个致命错误，看下面两段代码：</p>
@@ -522,8 +505,8 @@ char *str=&amp;quot;hello,world!&amp;quot;
 
                     <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2016/12/22/Amazon-Cognito-Identity-SDK-webpack/" rel="prev" title="用带有 Amazon Cognito Identity SDK 的 Webpack 打包 JavaScript">
-                用带有 Amazon Cognito Identity SDK 的 Webpack 打包 JavaScript <i class="fa fa-chevron-right"></i>
+                      <a href="/2016/12/24/How-to-Auto-Perform-Security-Update-in-Ubuntu-and-Debian/" rel="prev" title="如何在 Debian 和 Ubuntu 系统上自动安装安全更新">
+                如何在 Debian 和 Ubuntu 系统上自动安装安全更新 <i class="fa fa-chevron-right"></i>
               </a>
 
                     </div>
@@ -636,7 +619,7 @@ char *str=&amp;quot;hello,world!&amp;quot;
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -645,7 +628,7 @@ char *str=&amp;quot;hello,world!&amp;quot;
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -654,7 +637,7 @@ char *str=&amp;quot;hello,world!&amp;quot;
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

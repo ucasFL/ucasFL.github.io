@@ -84,7 +84,7 @@
     
       用户存储请求的分配量的大小分布
       用户存储分配请求和释放请求的频率">
-  <meta property="og:updated_time" content="2017-11-05T11:21:48.912Z">
+  <meta property="og:updated_time" content="2017-11-06T07:29:55.544Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="动态存储管理">
   <meta name="twitter:description" content="存储空间的分配和管理
@@ -450,13 +450,23 @@
                   <p>方式2：用户程序一旦运行结束,便将它所占的内存区释放成为空闲块,同时,每当新用户请求分配内存时,需查找整个内存区中所有空闲块,并从中找出一个合适的空闲块分配之。</p>
                   <h3 id="可利用空间表"><a href="#可利用空间表" class="headerlink" title="可利用空间表"></a>可利用空间表</h3>
                   <ul>
-                    <li>可利用空间表 / 存储池:包含所有可分配的空闲块</li>
+                    <li>
+                      <p>可利用空间表 / 存储池:包含所有可分配的空闲块</p>
+                    </li>
+                    <li>
+                      <p>– 当用户请求分配时,系统从可利用空间表中删除一个结点分配之</p>
+                    </li>
+                    <li>
+                      <p>– 当用户释放其所占内存时,系统即回收并将它插入到可利用空间表中</p>
+                    </li>
+                    <li>
+                      <p>可利用空间表的组织方式</p>
+                    </li>
+                    <li>
+                      <p>– 目录表</p>
+                    </li>
+                    <li>– 链表方式</li>
                   </ul>
-                  <p>​ – 当用户请求分配时,系统从可利用空间表中删除一个结点分配之<br>​ – 当用户释放其所占内存时,系统即回收并将它插入到可利用空间表中</p>
-                  <ul>
-                    <li>可利用空间表的组织方式</li>
-                  </ul>
-                  <p>​ – 目录表<br>​ – 链表方式</p>
                   <h3 id="链式可利用空间表的分配方式"><a href="#链式可利用空间表的分配方式" class="headerlink" title="链式可利用空间表的分配方式"></a>链式可利用空间表的分配方式</h3>
                   <ul>
                     <li>当可利用空间表以链表方式组织时,每个空闲块就是链表中的一个结点<br>– 分配时:从链表中找到一个合适的结点加以分配,然后将该结点删除之;<br>– 回收时:将空闲块插入到链表中。</li>
@@ -502,14 +512,14 @@
                     <li>在回收块时易于判别在物理位置上与其相邻的内存区域是否为空闲块,以便于将所有地址连续的空闲存储区合并成一个尽可能大的空闲块</li>
                   </ul>
                   <p>可利用空间表的节点结构：</p>
-                  <figure class="highlight c">
+                  <figure class="highlight arduino">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> word &#123;</div><div class="line"><span class="keyword">union</span> &#123;</div><div class="line"><span class="comment">// 头部域,指向前驱结点</span></div><div class="line">  <span class="keyword">struct</span> word *llink;</div><div class="line"><span class="comment">// 尾部域,指向本结点的头部</span></div><div class="line">  <span class="keyword">struct</span> word *uplink;</div><div class="line">&#125;;</div><div class="line">  <span class="keyword">int</span> tag; <span class="comment">//0 :空闲; 1 :占用</span></div><div class="line">  <span class="keyword">int</span> size;</div><div class="line"><span class="comment">// 头部域,指向后继结点</span></div><div class="line">  <span class="keyword">struct</span> word *rlink;</div><div class="line"><span class="comment">//OtherType other;</span></div><div class="line">&#125;WORD, head, foot, *Space;</div><div class="line"><span class="comment">// 指向 p 所指结点的底部</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FootLoc(p) (p+p-&gt;size-1)</span></div><div class="line"><span class="function">Space <span class="title">FootLoc</span><span class="params">(Space p)</span> </span>&#123;</div><div class="line">  <span class="keyword">char</span> *q; Space f;</div><div class="line">  q=(<span class="keyword">char</span> *)p;</div><div class="line">  f=(Space)(q+<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*p-&gt;size-<span class="keyword">sizeof</span>(foot));</div><div class="line">  <span class="keyword">return</span> f;</div><div class="line">&#125;</div></pre>
+                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="keyword">word</span> &#123;</div><div class="line"><span class="keyword">union</span> &#123;</div><div class="line"><span class="comment">// 头部域,指向前驱结点</span></div><div class="line">  <span class="keyword">struct</span> <span class="keyword">word</span> *llink;</div><div class="line"><span class="comment">// 尾部域,指向本结点的头部</span></div><div class="line">  <span class="keyword">struct</span> <span class="keyword">word</span> *uplink;</div><div class="line">&#125;;</div><div class="line">  <span class="keyword">int</span> tag; <span class="comment">//0 :空闲; 1 :占用</span></div><div class="line">  <span class="keyword">int</span> <span class="built_in">size</span>;</div><div class="line"><span class="comment">// 头部域,指向后继结点</span></div><div class="line">  <span class="keyword">struct</span> <span class="keyword">word</span> *rlink;</div><div class="line"><span class="comment">//OtherType other;</span></div><div class="line">&#125;WORD, head, foot, *Space;</div><div class="line"><span class="comment">// 指向 p 所指结点的底部</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FootLoc(p) (p+p-&gt;size-1)</span></div><div class="line">Space FootLoc(Space p) &#123;</div><div class="line">  <span class="keyword">char</span> *q; Space f;</div><div class="line">  q=(<span class="keyword">char</span> *)p;</div><div class="line">  f=(Space)(q+<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*p-&gt;<span class="built_in">size</span>-<span class="keyword">sizeof</span>(foot));</div><div class="line">  <span class="built_in">return</span> f;</div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -529,14 +539,14 @@
                     <li>作用:提高查找空闲块的速度,防止小容量结点聚集</li>
                   </ul>
                   <h3 id="分配算法：首次拟合法"><a href="#分配算法：首次拟合法" class="headerlink" title="分配算法：首次拟合法"></a>分配算法：首次拟合法</h3>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> e = <span class="number">16</span>; <span class="comment">// 不保留小于等于 e 的剩余量</span></div><div class="line"><span class="comment">// 若有不小于 n 的空闲块,则分配相应的存储块,并返</span></div><div class="line">回其首地址, 否则返回 <span class="function"><span class="literal">NULL</span></span></div><div class="line">Space <span class="title">AllocBoundTag</span><span class="params">(Space pav, <span class="keyword">int</span> n)</span> &#123;</div><div class="line">  Space p;</div><div class="line"><span class="comment">// 查找不小于 n 的空闲块</span></div><div class="line">  <span class="keyword">for</span> (p=pav; p &amp;&amp; p-&gt;size&lt;n &amp;&amp; p-&gt;rlink!=pav; p=p-&gt;rlink);</div><div class="line">  <span class="keyword">if</span> (!p || p-&gt;size&lt;n) <span class="keyword">return</span> <span class="literal">NULL</span>; <span class="comment">// 找不到,返回空指针</span></div><div class="line">  <span class="keyword">else</span> &#123; <span class="comment">// p 指向找到的空闲块</span></div><div class="line">    Space f = FootLoc(p); <span class="comment">// f 指向底部</span></div><div class="line">    pav = p-&gt;rlink;</div><div class="line"><span class="comment">// pav 指向 *p 结点的后继结点</span></div><div class="line">    <span class="keyword">if</span> (p-&gt;size-n &lt;= e) &#123; <span class="comment">// 整块分配,不保留小于等于 e 的剩余量</span></div><div class="line">      <span class="keyword">if</span> (pav==p) pav = <span class="literal">NULL</span>; <span class="comment">// 可利用空间表变为空表</span></div><div class="line">      <span class="keyword">else</span> &#123; <span class="comment">// 在表中删除分配的结点</span></div><div class="line">        pav-&gt;llink = p-&gt;llink; p-&gt;llink-&gt;rlink = pav;</div><div class="line">      &#125;</div><div class="line">      p-&gt;tag = f-&gt;tag = <span class="number">1</span>; <span class="comment">// 修改分配结点的头部和底部标志</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123; <span class="comment">// 分配该块的后 n 个字</span></div><div class="line">      f-&gt;tag = <span class="number">1</span>; <span class="comment">// 修改分配块的底部标志</span></div><div class="line">      p-&gt;size -= n; <span class="comment">// 置剩余块大小</span></div><div class="line">      f = FootLoc(p); <span class="comment">// 指向剩余块底部</span></div><div class="line">      f-&gt;tag = <span class="number">0</span>; f-&gt;uplink = p; <span class="comment">// 设置剩余块底部</span></div><div class="line">      p = f+<span class="number">1</span>; <span class="comment">// 指向分配块头部</span></div><div class="line">      p-&gt;tag = <span class="number">1</span>; p-&gt;size = n; <span class="comment">// 设置分配块头部</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> p; <span class="comment">// 返回分配块首地址</span></div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">// AllocBoundTag</span></div></pre>
+                          <pre><div class="line">const int e = <span class="number">16</span>; <span class="comment">// 不保留小于等于 e 的剩余量</span></div><div class="line"><span class="comment">// 若有不小于 n 的空闲块,则分配相应的存储块,并返</span></div><div class="line">回其首地址, 否则返回 NULL</div><div class="line">Space AllocBoundTag(Space pav, int n) &#123;</div><div class="line">  Space p;</div><div class="line"><span class="comment">// 查找不小于 n 的空闲块</span></div><div class="line">  <span class="function"><span class="title">for</span> (p=pav; p &amp;&amp; p-&gt;</span><span class="function"><span class="title">size</span>&lt;n &amp;&amp; p-&gt;</span><span class="function"><span class="title">rlink</span>!=pav; p=p-&gt;</span>rlink);</div><div class="line">  <span class="function"><span class="title">if</span> (!p || p-&gt;</span>size&lt;n) return NULL; <span class="comment">// 找不到,返回空指针</span></div><div class="line">  <span class="keyword">else</span> &#123; <span class="comment">// p 指向找到的空闲块</span></div><div class="line">    Space f = FootLoc(p); <span class="comment">// f 指向底部</span></div><div class="line">    <span class="function"><span class="title">pav</span> = p-&gt;</span>rlink;</div><div class="line"><span class="comment">// pav 指向 *p 结点的后继结点</span></div><div class="line">    <span class="function"><span class="title">if</span> (p-&gt;</span>size-n &lt;= e) &#123; <span class="comment">// 整块分配,不保留小于等于 e 的剩余量</span></div><div class="line">      <span class="keyword">if</span> (pav==p) pav = NULL; <span class="comment">// 可利用空间表变为空表</span></div><div class="line">      <span class="keyword">else</span> &#123; <span class="comment">// 在表中删除分配的结点</span></div><div class="line">        <span class="function"><span class="title">pav</span>-&gt;</span><span class="function"><span class="title">llink</span> = p-&gt;</span><span class="function"><span class="title">llink</span>; p-&gt;</span><span class="function"><span class="title">llink</span>-&gt;</span>rlink = pav;</div><div class="line">      &#125;</div><div class="line">      <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">tag</span> = f-&gt;</span>tag = <span class="number">1</span>; <span class="comment">// 修改分配结点的头部和底部标志</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123; <span class="comment">// 分配该块的后 n 个字</span></div><div class="line">      <span class="function"><span class="title">f</span>-&gt;</span>tag = <span class="number">1</span>; <span class="comment">// 修改分配块的底部标志</span></div><div class="line">      <span class="function"><span class="title">p</span>-&gt;</span>size -= n; <span class="comment">// 置剩余块大小</span></div><div class="line">      f = FootLoc(p); <span class="comment">// 指向剩余块底部</span></div><div class="line">      <span class="function"><span class="title">f</span>-&gt;</span><span class="function"><span class="title">tag</span> = 0; f-&gt;</span>uplink = p; <span class="comment">// 设置剩余块底部</span></div><div class="line">      p = f+<span class="number">1</span>; <span class="comment">// 指向分配块头部</span></div><div class="line">      <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">tag</span> = 1; p-&gt;</span>size = n; <span class="comment">// 设置分配块头部</span></div><div class="line">    &#125;</div><div class="line">    return p; <span class="comment">// 返回分配块首地址</span></div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">// AllocBoundTag</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -546,14 +556,14 @@
                   <ul>
                     <li>释放块的左、右邻块均为占用块:将被释放块简单地插入到空闲块链表中即可</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">p-&gt;tag=<span class="number">0</span> ; FootLoc(p)-&gt;uplink=p;</div><div class="line">FootLoc(p)-&gt;tag=<span class="number">0</span>;</div><div class="line"><span class="keyword">if</span> ( !pav )</div><div class="line">pav=p-&gt;llink=p-&gt;rlink=p; <span class="comment">// 第一个空闲块</span></div><div class="line"><span class="keyword">else</span> &#123;<span class="comment">// 刚释放的空闲结点是插在 pav 之前,并成为 pav</span></div><div class="line">q=pav-&gt;llink; p-&gt;rlink=pav ;</div><div class="line">p-&gt;llink=q ; q-&gt;rlink=pav-&gt;llink=p ;</div><div class="line">pav=p ; <span class="comment">//pav 指向刚释放的空闲结点</span></div><div class="line"><span class="comment">// 成为下次分配最先查询的结点</span></div><div class="line">&#125;</div></pre>
+                          <pre><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">tag</span>=0 ; FootLoc(p)-&gt;</span>uplink=p;</div><div class="line">F<span class="function"><span class="title">ootLoc</span>(p)-&gt;</span>tag=<span class="number">0</span>;</div><div class="line"><span class="keyword">if</span> ( !pav )</div><div class="line"><span class="function"><span class="title">pav</span>=p-&gt;</span><span class="function"><span class="title">llink</span>=p-&gt;</span>rlink=p; <span class="comment">// 第一个空闲块</span></div><div class="line"><span class="keyword">else</span> &#123;<span class="comment">// 刚释放的空闲结点是插在 pav 之前,并成为 pav</span></div><div class="line"><span class="function"><span class="title">q</span>=pav-&gt;</span><span class="function"><span class="title">llink</span>; p-&gt;</span>rlink=pav ;</div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">llink</span>=q ; q-&gt;</span><span class="function"><span class="title">rlink</span>=pav-&gt;</span>llink=p ;</div><div class="line">pav=p ; <span class="comment">//pav 指向刚释放的空闲结点</span></div><div class="line"><span class="comment">// 成为下次分配最先查询的结点</span></div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -562,14 +572,14 @@
                   <ul>
                     <li>释放块的左邻块空闲而右邻块为占用:和左邻块合并成一个大的空闲块结点,改变左邻块的 size 域及重新设置 ( 合并后 ) 结点的底部</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">n=p-&gt;size;</div><div class="line">s=(p<span class="number">-1</span>)-&gt;uplink; s-&gt;size+=n; <span class="comment">// 设置新空闲块大小</span></div><div class="line">f=FootLoc(p); f-&gt;uplink=s; f-&gt;tag=<span class="number">0</span>; <span class="comment">// 设置新空闲块底部</span></div></pre>
+                          <pre><div class="line"><span class="function"><span class="title">n</span>=p-&gt;</span>size;</div><div class="line"><span class="function"><span class="title">s</span>=(p-1)-&gt;</span><span class="function"><span class="title">uplink</span>; s-&gt;</span>size+=n; <span class="comment">// 设置新空闲块大小</span></div><div class="line"><span class="function"><span class="title">f</span>=FootLoc(p); f-&gt;</span><span class="function"><span class="title">uplink</span>=s; f-&gt;</span>tag=<span class="number">0</span>; <span class="comment">// 设置新空闲块底部</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -577,14 +587,14 @@
                   <ul>
                     <li>释放块的左邻占用而右邻空闲:和右邻块合并成一个大的空闲块结点,改变右邻块的 size 域及重新设置( 合并后 ) 结点的头部</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">t= FootLoc(p)+<span class="number">1</span>; p-&gt;tag=<span class="number">0</span>; q=t-&gt;llink;</div><div class="line">p-&gt;llink=q; q-&gt;rlink=p ; <span class="comment">// 设置空闲块的前驱</span></div><div class="line">q1=t-&gt;rlink ; p-&gt;rlink=q1 ; q1-&gt;llink=p ;</div><div class="line">p-&gt;size+=t-&gt;size; <span class="comment">// 设置新空闲块大小</span></div><div class="line">FootLoc(t)-&gt;uplink=p ; <span class="comment">// 底部指针指向新结点的头部</span></div></pre>
+                          <pre><div class="line"><span class="function"><span class="title">t</span>= FootLoc(p)+1; p-&gt;</span><span class="function"><span class="title">tag</span>=0; q=t-&gt;</span>llink;</div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">llink</span>=q; q-&gt;</span>rlink=p ; <span class="comment">// 设置空闲块的前驱</span></div><div class="line"><span class="function"><span class="title">q1</span>=t-&gt;</span><span class="function"><span class="title">rlink</span> ; p-&gt;</span><span class="function"><span class="title">rlink</span>=q1 ; q1-&gt;</span>llink=p ;</div><div class="line"><span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">size</span>+=t-&gt;</span>size; <span class="comment">// 设置新空闲块大小</span></div><div class="line">F<span class="function"><span class="title">ootLoc</span>(t)-&gt;</span>uplink=p ; <span class="comment">// 底部指针指向新结点的头部</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -593,14 +603,14 @@
                   <ul>
                     <li>释放块的左、右邻块均为空闲块:和左、右邻块合并成一个大的空闲块结点,改变左邻块的 size 域及重新设置 ( 合并后 ) 结点的底部</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">n=p-&gt;size;</div><div class="line">s=(p<span class="number">-1</span>)-&gt;uplink;<span class="comment">//s 指向左邻块</span></div><div class="line">t= FootLoc(p)+<span class="number">1</span>; <span class="comment">//t 指向右邻块 , p+p-&gt;size</span></div><div class="line">s-&gt;size +=n+t-&gt;size; <span class="comment">// 设置新空闲结点的大小</span></div><div class="line"><span class="comment">// 在空闲链表中,删除右邻空闲块</span></div><div class="line">q=t-&gt;llink; q1=t-&gt;rlink; <span class="comment">// 修改右邻原来的关系</span></div><div class="line">q-&gt;rlink=q1; q1-&gt;llink=q ;</div><div class="line">FootLoc(t)-&gt;uplink=s; <span class="comment">// 新结点底部指针指向其头部</span></div></pre>
+                          <pre><div class="line"><span class="function"><span class="title">n</span>=p-&gt;</span>size;</div><div class="line"><span class="function"><span class="title">s</span>=(p-1)-&gt;</span>uplink;<span class="comment">//s 指向左邻块</span></div><div class="line"><span class="function"><span class="title">t</span>= FootLoc(p)+1; //t 指向右邻块 , p+p-&gt;</span>size</div><div class="line"><span class="function"><span class="title">s</span>-&gt;</span><span class="function"><span class="title">size</span> +=n+t-&gt;</span>size; <span class="comment">// 设置新空闲结点的大小</span></div><div class="line"><span class="comment">// 在空闲链表中,删除右邻空闲块</span></div><div class="line"><span class="function"><span class="title">q</span>=t-&gt;</span><span class="function"><span class="title">llink</span>; q1=t-&gt;</span>rlink; <span class="comment">// 修改右邻原来的关系</span></div><div class="line"><span class="function"><span class="title">q</span>-&gt;</span><span class="function"><span class="title">rlink</span>=q1; q1-&gt;</span>llink=q ;</div><div class="line">F<span class="function"><span class="title">ootLoc</span>(t)-&gt;</span>uplink=s; <span class="comment">// 新结点底部指针指向其头部</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -617,7 +627,7 @@
                     </li>
                   </ul>
                   <p>可利用空间表的结构:</p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -630,14 +640,14 @@
                     </table>
                   </figure>
                   <h4 id="伙伴系统的分配算法"><a href="#伙伴系统的分配算法" class="headerlink" title="伙伴系统的分配算法"></a>伙伴系统的分配算法</h4>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function">WORD_b* <span class="title">AllocBuddy</span> <span class="params">(FreeList avail[], <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"><span class="comment">// avail[0..m] 为可利用空间表, n 为申请分配量,若有不小于n 的空闲块,则分配相应的存储块,并返回其首地址;否则返回 NULL</span></div><div class="line">  WORD_b *pa, *pre, *suc, *pi;</div><div class="line"><span class="comment">// 查找满足分配要求的子表</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;=m &amp;&amp; (!avail[k].first ||avail[k].nodesize&lt;n+<span class="number">1</span>);k++) ;</div><div class="line">  <span class="keyword">if</span> (k&gt;m) <span class="keyword">return</span> <span class="literal">NULL</span>; <span class="comment">// 分配失败</span></div><div class="line">  <span class="keyword">else</span> &#123; <span class="comment">// 进行分配</span></div><div class="line">    pa = avail[k].first; <span class="comment">// 指向可分配子表的第一个结点</span></div><div class="line"><span class="comment">// 分别指向前驱和后继</span></div><div class="line">    pre = pa-&gt;llink; suc = pa-&gt;rlink;</div><div class="line">    <span class="keyword">if</span> (pa==suc)</div><div class="line">      avail[k].first = <span class="literal">NULL</span>; <span class="comment">// 分配后该子表变成空表</span></div><div class="line">    <span class="keyword">else</span> &#123; <span class="comment">// 从子表删去 *pa 结点</span></div><div class="line">      pre-&gt;rlink = suc; suc-&gt;llink = pre;</div><div class="line">      avail[k].first = suc;</div><div class="line">    &#125;</div><div class="line"><span class="comment">// 将剩余块插入相应子表</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; avail[k-i].nodesize&gt;=n+<span class="number">1</span>; ++i) &#123;</div><div class="line">      pi = pa+(<span class="keyword">int</span>)<span class="built_in">pow</span>(<span class="number">2</span>, (k-i)); pi-&gt;rlink = pi;</div><div class="line">      pi-&gt;llink = pi; pi-&gt;tag = <span class="number">0</span>; pi-&gt;kval = k-i;</div><div class="line">      avail[k-i].first = pi; </div><div class="line">    &#125;</div><div class="line">    pa-&gt;tag = <span class="number">1</span>; pa-&gt;kval = k-(--i);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> pa;</div><div class="line">&#125; <span class="comment">// AllocBuddy</span></div></pre>
+                          <pre><div class="line">WORD_b* AllocBuddy (FreeList avail[], int n) &#123;</div><div class="line"><span class="comment">// avail[0..m] 为可利用空间表, n 为申请分配量,若有不小于n 的空闲块,则分配相应的存储块,并返回其首地址;否则返回 NULL</span></div><div class="line">  WORD_b *pa, *pre, *suc, *<span class="built_in">pi</span>;</div><div class="line"><span class="comment">// 查找满足分配要求的子表</span></div><div class="line">  <span class="keyword">for</span> (int k=<span class="number">0</span>; k&lt;=m &amp;&amp; (!avail[k].first ||avail[k].nodesize&lt;n+<span class="number">1</span>);k++) ;</div><div class="line">  <span class="keyword">if</span> (k&gt;m) return NULL; <span class="comment">// 分配失败</span></div><div class="line">  <span class="keyword">else</span> &#123; <span class="comment">// 进行分配</span></div><div class="line">    pa = avail[k].first; <span class="comment">// 指向可分配子表的第一个结点</span></div><div class="line"><span class="comment">// 分别指向前驱和后继</span></div><div class="line">    <span class="function"><span class="title">pre</span> = pa-&gt;</span><span class="function"><span class="title">llink</span>; suc = pa-&gt;</span>rlink;</div><div class="line">    <span class="keyword">if</span> (pa==suc)</div><div class="line">      avail[k].first = NULL; <span class="comment">// 分配后该子表变成空表</span></div><div class="line">    <span class="keyword">else</span> &#123; <span class="comment">// 从子表删去 *pa 结点</span></div><div class="line">      <span class="function"><span class="title">pre</span>-&gt;</span><span class="function"><span class="title">rlink</span> = suc; suc-&gt;</span>llink = pre;</div><div class="line">      avail[k].first = suc;</div><div class="line">    &#125;</div><div class="line"><span class="comment">// 将剩余块插入相应子表</span></div><div class="line">    <span class="keyword">for</span> (int i=<span class="number">1</span>; avail[k-i].nodesize&gt;=n+<span class="number">1</span>; ++i) &#123;</div><div class="line">      <span class="function"><span class="title">pi</span> = pa+(int)pow(2, (k-i)); <span class="built_in">pi</span>-&gt;</span>rlink = <span class="built_in">pi</span>;</div><div class="line">      <span class="function"><span class="title">pi</span>-&gt;</span><span class="function"><span class="title">llink</span> = <span class="built_in">pi</span>; <span class="built_in">pi</span>-&gt;</span><span class="function"><span class="title">tag</span> = 0; <span class="built_in">pi</span>-&gt;</span>kval = k-i;</div><div class="line">      avail[k-i].first = <span class="built_in">pi</span>; </div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="title">pa</span>-&gt;</span><span class="function"><span class="title">tag</span> = 1; pa-&gt;</span>kval = k-(--i);</div><div class="line">  &#125;</div><div class="line">  return pa;</div><div class="line">&#125; <span class="comment">// AllocBuddy</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -843,7 +853,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -852,7 +862,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -861,7 +871,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

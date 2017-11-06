@@ -66,38 +66,32 @@
 
   <meta name="description" content="图的结点排序:拓扑排序
 拓扑排序 (Topological Sort) :由某个集合上的一个偏序得到该集合上的一个全序的操作。
-集合上的关系:集合 A 上的关系是从 A 到 A 的关系($A\times A$)。
+集合上的关系:集合 A 上的关系是从 A 到 A 的关系(A x A)。
 
   自反性
   对称性与非对称性
-  传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。
-
-可以用有向无环图 (Directed Acycli">
+  传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。">
   <meta property="og:type" content="article">
   <meta property="og:title" content="图-Part2">
   <meta property="og:url" content="http://ucasfl.me/2017/05/11/Graph-Part2/index.html">
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="图的结点排序:拓扑排序
 拓扑排序 (Topological Sort) :由某个集合上的一个偏序得到该集合上的一个全序的操作。
-集合上的关系:集合 A 上的关系是从 A 到 A 的关系($A\times A$)。
+集合上的关系:集合 A 上的关系是从 A 到 A 的关系(A x A)。
 
   自反性
   对称性与非对称性
-  传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。
-
-可以用有向无环图 (Directed Acycli">
-  <meta property="og:updated_time" content="2017-11-05T11:24:34.540Z">
+  传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。">
+  <meta property="og:updated_time" content="2017-11-06T08:29:56.692Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="图-Part2">
   <meta name="twitter:description" content="图的结点排序:拓扑排序
 拓扑排序 (Topological Sort) :由某个集合上的一个偏序得到该集合上的一个全序的操作。
-集合上的关系:集合 A 上的关系是从 A 到 A 的关系($A\times A$)。
+集合上的关系:集合 A 上的关系是从 A 到 A 的关系(A x A)。
 
   自反性
   对称性与非对称性
-  传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。
-
-可以用有向无环图 (Directed Acycli">
+  传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。">
 
 
 
@@ -426,16 +420,16 @@
 
                   <h3 id="图的结点排序-拓扑排序"><a href="#图的结点排序-拓扑排序" class="headerlink" title="图的结点排序:拓扑排序"></a>图的结点排序:拓扑排序</h3>
                   <p>拓扑排序 (Topological Sort) :由某个集合上的一个偏序得到该集合上的一个全序的操作。</p>
-                  <p>集合上的关系:集合 A 上的关系是从 A 到 A 的关系($A\times A$)。</p>
+                  <p>集合上的关系:集合 A 上的关系是从 A 到 A 的关系(A x A)。</p>
                   <ul>
                     <li>自反性</li>
                     <li>对称性与非对称性</li>
                     <li>传递性 偏序是指集合中仅有部分元素之间可以比较,而全序是指集合中任意两个元素之间都可以比较。</li>
                   </ul>
+                  <a id="more"></a>
                   <p>可以用有向无环图 (Directed Acycling Graph)表示集合元素以及元素之间的关系。<br>DAG :图中没有回路 ( 环 ) 的有向图</p>
                   <p>AOV 网 (Activity On Vertex Network) :在有向图中,用顶点表示活动,用有向边表示活动之间的优先关系。</p>
                   <p>DAG/AOV 网的拓扑排序：<br>DAG/AOV 网的拓扑排序:构造 AOV 网中顶点的一个拓扑线性序列 (v’1 ,v’2 , ⋯ ,v’n ) ,使得该线性序列不仅保持原来有向图中顶点之间的优先关系,而且对原图中没有优先关系的顶点之间也建立一种 ( 人为的 ) 优先关系。</p>
-                  <a id="more"></a>
                   <h4 id="拓扑排序算法"><a href="#拓扑排序算法" class="headerlink" title="拓扑排序算法"></a>拓扑排序算法</h4>
                   <ul>
                     <li>在 AOV 网中选择一个没有前驱的顶点并输出</li>
@@ -451,7 +445,7 @@
                     <li>设立堆栈,用来暂存入度为 0 的顶点 ( 即无前驱顶点 )</li>
                     <li>删除以该顶点为尾的弧:弧头顶点的入度减 1</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -466,7 +460,7 @@
                   <p>拓扑排序:算法时间复杂度分析</p>
                   <p>设 AOV 网有 n 个顶点, e 条边,则算法的主要执行是:<br>– 统计各顶点的入度:时间复杂度是 O(n+e) ;<br>– 入度为 0 的顶点入栈:时间复杂度是 O(n) ;<br>– 排序过程:顶点入栈和出栈操作执行 n 次,入度减 1 的操作共执行 e 次,时间复杂度是 O(n+e) ;<br>因此,整个算法的时间复杂度是 O(n+e) 。</p>
                   <p>拓扑排序应用：</p>
-                  <p>应用 1 :图的回路 ( 环 ) 的检查方法:对有向图的顶点进行拓扑排序,若所有顶点都在其拓扑有序序列中,则无环。+</p>
+                  <p>应用 1 :图的回路 ( 环 ) 的检查方法:对有向图的顶点进行拓扑排序,若所有顶点都在其拓扑有序序列中,则无环。</p>
                   <p>应用 2 :工程执行顺序 / 课程先修顺序:对 AOV 网的顶点进行拓扑排序。</p>
                   <h3 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h3>
                   <p>对无向图 G=(V , E) ,若任意vi , vj 属于V , vi和 vj 都是连通的 ( 指从 vi 到 vj 有路径存在 ),则称图 G 是连通图 (connected graph) ,否则称为非连通图。</p>
@@ -488,7 +482,7 @@
                     <li>若是非连通图,需从图中多个顶点出发。每次从一个新顶点出发所访问的顶点集序列恰好是这个连通分量的顶点集。</li>
                   </ul>
                   <p>无向非连通图的生成森林</p>
-                  <p>若 G=(V,E) 是无向非连通图,那么,对图进行遍历,可得到若干个连通分量的顶点集: V1(G), V2(G),…, Vn(G) 和相应所经过的边集: T1(G), T2(G), …, Tn(G)<br>上述顶点集和对应的边集组成的二元组 Gi=(Vi(G),Ti(G))(1 ≦ i ≦ n) 是对应的图的连通分量的生成树,所有这些生成树构成了原来非连通图的生成森林。</p>
+                  <p>若 G=(V,E) 是无向非连通图,那么,对图进行遍历,可得到若干个连通分量的顶点集: V1(G), V2(G),…, Vn(G) 和相应所经过的边集: T1(G), T2(G), …, Tn(G)<br>上述顶点集和对应的边集组成的二元组 Gi=(Vi(G),Ti(G))(1 &lt;= i &lt;= n) 是对应的图的连通分量的生成树,所有这些生成树构成了原来非连通图的生成森林。</p>
                   <h4 id="求无向非连通图的生成森林"><a href="#求无向非连通图的生成森林" class="headerlink" title="求无向非连通图的生成森林"></a>求无向非连通图的生成森林</h4>
                   <ul>
                     <li>构造无向非连通图的深度优先生成森林算法</li>
@@ -499,14 +493,14 @@
                   </ul>
                   <p>– 首先从某个顶点 V 出发,建立生成树树根结点,然后再分别以 V 的邻接点为始点,建立相应的子生成树,并将其作为 V 结点的子树链接到 V 结点上。<br>– 算法是一个递归算法。　</p>
                   <p>算法实现：</p>
-                  <figure class="highlight c">
+                  <figure class="highlight rust">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_VERTEX_NUM 30</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> ElemType;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> node &#123;</div><div class="line">  <span class="keyword">int</span> vindex; <span class="comment">// 邻接点在头结点数组中的位置 ( 下标 )</span></div><div class="line">  <span class="keyword">struct</span> node *next;<span class="comment">// 指向下一个表结点</span></div><div class="line">&#125;node, NodeLink; <span class="comment">// 表结点类型定义</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</div><div class="line">  <span class="keyword">int</span> vexnum,edgenum,kind; <span class="comment">// 图的顶点数、边数、种类标志</span></div><div class="line">  <span class="keyword">struct</span> &#123;</div><div class="line">    ElemType vertex;</div><div class="line">    NodeLink *first;<span class="comment">// 指向第一个表结点</span></div><div class="line">    &#125;v[MAX_VERTEX_NUM];</div><div class="line">&#125;AGraph;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> cstree &#123;</div><div class="line">  ElemType data;</div><div class="line">  <span class="keyword">struct</span> CSNode *firstchild,*nextsibling;</div><div class="line">&#125;CSNode, *CSTree;</div><div class="line"><span class="function">CSTree <span class="title">DFSForest</span><span class="params">(AGraph *g)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i; CSTree p,q,t; t=<span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;g-&gt;vexnum;i++)</div><div class="line">    visited[i]=<span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;g-&gt;vexnum;i++)</div><div class="line">    <span class="keyword">if</span>(!visited[i]) &#123;</div><div class="line">        <span class="comment">// 第 i 个顶点为新的生成树的根结点</span></div><div class="line">        p=(CSTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(cstree)); <span class="comment">// 分配根结点</span></div><div class="line">        p-&gt;data=GetVex(g,i);<span class="comment">// 给该结点赋值</span></div><div class="line">        p-&gt;firstchild=<span class="literal">NULL</span>;</div><div class="line">        p-&gt;nextsibling=<span class="literal">NULL</span>;</div><div class="line">        <span class="keyword">if</span>(!t)</div><div class="line">          t=p; <span class="comment">//p 是第一棵生成树的根 (t 的根 )</span></div><div class="line">        <span class="keyword">else</span> <span class="comment">// 其它生成树的根 , 成为前一棵的根的兄弟</span></div><div class="line">          q-&gt;nextsibling=p;</div><div class="line">        q=p;<span class="comment">//q 指示当前生成树的根</span></div><div class="line">        DFSTree(g,i,p);<span class="comment">// 建立以 p 为根的生成树</span></div><div class="line">        &#125;<span class="comment">//if</span></div><div class="line">  <span class="keyword">return</span> t;</div><div class="line">&#125; <span class="comment">// DFSForest</span></div><div class="line"><span class="comment">// 从第 x 个顶点出发递归地深度优先遍历图 G</span></div><div class="line"><span class="comment">// 建立以 t 为根的生成树</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTree</span><span class="params">(AGraph *g,<span class="keyword">int</span> x,CSTree t)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> first=<span class="number">1</span>;</div><div class="line">  CSTree p,q; NodeLink *u;</div><div class="line">  visited[x]=<span class="number">1</span>;</div><div class="line">  u=g-&gt;v[x].first;</div><div class="line">  <span class="keyword">while</span>(u)&#123;</div><div class="line">    <span class="keyword">if</span>(!visited[u-&gt;vindex])&#123;</div><div class="line">      <span class="comment">// 为 u 生成 生成树 t 的结点 p</span></div><div class="line">      p= (CSTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(cstree));</div><div class="line">      p-&gt;data=GetVex(g,u-&gt;vindex);</div><div class="line">      p-&gt;firstchild=<span class="literal">NULL</span>;p-&gt;nextsibling=<span class="literal">NULL</span>;</div><div class="line">      <span class="keyword">if</span>(first) &#123; <span class="comment">//u 是 x 的第一个未被访问的邻接顶点</span></div><div class="line">        t-&gt;firstchild = p;</div><div class="line">        first=<span class="number">0</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">else</span> &#123; <span class="comment">//u 是 x 的其它未被访问的邻接顶点</span></div><div class="line">        <span class="comment">// 那么, p 是上一邻接顶点的右兄弟结点</span></div><div class="line">        q-&gt;nextsibling= p;</div><div class="line">      &#125;</div><div class="line">      q=p;</div><div class="line">      DFSTree(g,u-&gt;vindex,q);</div><div class="line">    &#125;</div><div class="line">    u=u-&gt;next;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre>
+                          <pre><div class="line">#define MAX_VERTEX_NUM <span class="number">30</span></div><div class="line">typedef <span class="keyword">char</span> ElemType;</div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span> &#123;</div><div class="line">  <span class="keyword">int</span> vindex; <span class="comment">// 邻接点在头结点数组中的位置 ( 下标 )</span></div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span> *next;<span class="comment">// 指向下一个表结点</span></div><div class="line">&#125;node, NodeLink; <span class="comment">// 表结点类型定义</span></div><div class="line">typedef <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">  <span class="keyword">int</span> vexnum,edgenum,kind; <span class="comment">// 图的顶点数、边数、种类标志</span></div><div class="line">  <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">    ElemType vertex;</div><div class="line">    NodeLink *first;<span class="comment">// 指向第一个表结点</span></div><div class="line">    &#125;v[MAX_VERTEX_NUM];</div><div class="line">&#125;AGraph;</div><div class="line">typedef <span class="class"><span class="keyword">struct</span> <span class="title">cstree</span></span> &#123;</div><div class="line">  ElemType data;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span></span> *firstchild,*nextsibling;</div><div class="line">&#125;CSNode, *CSTree;</div><div class="line">CSTree DFSForest(AGraph *g) &#123;</div><div class="line">  <span class="keyword">int</span> i; CSTree p,q,t; t=NULL;</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;g-&gt;vexnum;i++)</div><div class="line">    visited[i]=<span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;g-&gt;vexnum;i++)</div><div class="line">    <span class="keyword">if</span>(!visited[i]) &#123;</div><div class="line">        <span class="comment">// 第 i 个顶点为新的生成树的根结点</span></div><div class="line">        p=(CSTree)malloc(<span class="keyword">sizeof</span>(cstree)); <span class="comment">// 分配根结点</span></div><div class="line">        p-&gt;data=GetVex(g,i);<span class="comment">// 给该结点赋值</span></div><div class="line">        p-&gt;firstchild=NULL;</div><div class="line">        p-&gt;nextsibling=NULL;</div><div class="line">        <span class="keyword">if</span>(!t)</div><div class="line">          t=p; <span class="comment">//p 是第一棵生成树的根 (t 的根 )</span></div><div class="line">        <span class="keyword">else</span> <span class="comment">// 其它生成树的根 , 成为前一棵的根的兄弟</span></div><div class="line">          q-&gt;nextsibling=p;</div><div class="line">        q=p;<span class="comment">//q 指示当前生成树的根</span></div><div class="line">        DFSTree(g,i,p);<span class="comment">// 建立以 p 为根的生成树</span></div><div class="line">        &#125;<span class="comment">//if</span></div><div class="line">  <span class="keyword">return</span> t;</div><div class="line">&#125; <span class="comment">// DFSForest</span></div><div class="line"><span class="comment">// 从第 x 个顶点出发递归地深度优先遍历图 G</span></div><div class="line"><span class="comment">// 建立以 t 为根的生成树</span></div><div class="line">void DFSTree(AGraph *g,<span class="keyword">int</span> x,CSTree t) &#123;</div><div class="line">  <span class="keyword">int</span> first=<span class="number">1</span>;</div><div class="line">  CSTree p,q; NodeLink *u;</div><div class="line">  visited[x]=<span class="number">1</span>;</div><div class="line">  u=g-&gt;v[x].first;</div><div class="line">  <span class="keyword">while</span>(u)&#123;</div><div class="line">    <span class="keyword">if</span>(!visited[u-&gt;vindex])&#123;</div><div class="line">      <span class="comment">// 为 u 生成 生成树 t 的结点 p</span></div><div class="line">      p= (CSTree)malloc(<span class="keyword">sizeof</span>(cstree));</div><div class="line">      p-&gt;data=GetVex(g,u-&gt;vindex);</div><div class="line">      p-&gt;firstchild=NULL;p-&gt;nextsibling=NULL;</div><div class="line">      <span class="keyword">if</span>(first) &#123; <span class="comment">//u 是 x 的第一个未被访问的邻接顶点</span></div><div class="line">        t-&gt;firstchild = p;</div><div class="line">        first=<span class="number">0</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">else</span> &#123; <span class="comment">//u 是 x 的其它未被访问的邻接顶点</span></div><div class="line">        <span class="comment">// 那么, p 是上一邻接顶点的右兄弟结点</span></div><div class="line">        q-&gt;nextsibling= p;</div><div class="line">      &#125;</div><div class="line">      q=p;</div><div class="line">      DFSTree(g,u-&gt;vindex,q);</div><div class="line">    &#125;</div><div class="line">    u=u-&gt;next;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -523,7 +517,7 @@
                     <li>重复步骤 (4) ,直到 G’ 中的所有顶点都被访问。</li>
                   </ol>
                   <p>算法实现：</p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -549,7 +543,7 @@
                   </ul>
                   <p>定义:</p>
                   <ul>
-                    <li>low(v) = Min{visited[v], low[w], visited[k] }</li>
+                    <li><code>low(v) = Min{visited[v], low[w], visited[k] }</code></li>
                     <li>其中</li>
                   </ul>
                   <p>– 顶点 w 是生成树上顶点 v 的孩子<br>– 顶点 k 是生成树上和顶点 v 由回边相联接的祖先<br>– visited 记录深度优先遍历时的访问次序</p>
@@ -560,16 +554,16 @@
                   <ul>
                     <li>visited[v] 的值改为遍历过程中顶点的访问次序,该次序记录在 count 值中</li>
                     <li>遍历过程中,求得 low[v]=Min{visited[v],low[w],visited[k]}</li>
-                    <li>从子树遍历返回时,判别 low[w]≥visited[v]</li>
+                    <li>从子树遍历返回时,判别 low[w] &gt;= visited[v]</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="comment">//查找并输出连通图 G 上的全部关节点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">FindArticul</span><span class="params">(AGraph *g)</span> </span>&#123;</div><div class="line">  <span class="comment">// 连通图 g 以邻接表作存储结构</span></div><div class="line">  <span class="comment">// 全局变量 count 对访问计数</span></div><div class="line">  <span class="keyword">int</span> v; <span class="keyword">struct</span> ArcNode *p;</div><div class="line">  <span class="comment">// 设定邻接表上 0 号顶点为生成树的根</span></div><div class="line">  count=<span class="number">1</span>; visited[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">  <span class="comment">// 其余顶点尚未访问</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;g-&gt;vexnum; ++i) visited[i] = <span class="number">0</span>;</div><div class="line">  p = g-&gt;vertices[<span class="number">0</span>].firstarc;</div><div class="line">  <span class="keyword">if</span>(p) &#123;</div><div class="line">    v = p-&gt;adjvex;<span class="comment">// 从第 v 顶点出发深度优先查找关节点</span></div><div class="line">    DFSArticul(g, v);</div><div class="line">    <span class="keyword">if</span> (count &lt; g-&gt;vexnum) &#123;  <span class="comment">// 生成树的根有至少两棵子树</span></div><div class="line">      <span class="comment">// 根是关节点,输出</span></div><div class="line">      <span class="built_in">printf</span> (<span class="number">0</span>, g-&gt;vertices[<span class="number">0</span>].data);</div><div class="line">      <span class="keyword">while</span> (p-&gt;nextarc) &#123; <span class="comment">// 寻找还没有访问到的节点</span></div><div class="line">        p = p-&gt;nextarc; v = p-&gt;adjvex;</div><div class="line">          <span class="keyword">if</span> (visited[v]==<span class="number">0</span>) DFSArticul(g, v);</div><div class="line">      &#125;<span class="comment">//while</span></div><div class="line">    &#125;<span class="comment">//if</span></div><div class="line">  &#125;<span class="comment">//if(p)</span></div><div class="line">&#125; <span class="comment">// FindArticul</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSArticul</span><span class="params">(AGraph *g, <span class="keyword">int</span> v0 )</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> min, w; <span class="keyword">struct</span> ArcNode *p;<span class="comment">//v0 是第 count 个访问的顶点</span></div><div class="line">  visited[v0] = min = ++count;</div><div class="line">  <span class="keyword">for</span> (p=g-&gt;vertices[v0].firstarc; p!=<span class="literal">NULL</span>;p=p-&gt;nextarc) &#123;</div><div class="line">    <span class="comment">// 检查 v0 的每个邻接顶点</span></div><div class="line">    w = p-&gt;adjvex; <span class="comment">// w 为 v0 的邻接顶点</span></div><div class="line">    <span class="keyword">if</span> (visited[w] == <span class="number">0</span>) &#123;</div><div class="line">      <span class="comment">// w 未曾被访问,是 v0 的孩子</span></div><div class="line">      DFSArticul(g, w); <span class="comment">// 返回前求得 low[w]</span></div><div class="line">      <span class="keyword">if</span> (low[w] &lt; min) min = low[w];</div><div class="line">      <span class="comment">// 从子树返回时判断 v0 是否是关节点</span></div><div class="line">      <span class="keyword">if</span> (low[w] &gt;= visited[v0])</div><div class="line">      <span class="comment">// 输出关节点</span></div><div class="line">      <span class="built_in">printf</span>(v0, g-&gt;vertices[v0].data);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="comment">//w 是回边上的顶点</span></div><div class="line">    <span class="keyword">if</span> (visited[w] &lt; min)</div><div class="line">    <span class="comment">//w 已被访问, w 是 v0 在生成树上的祖先</span></div><div class="line">    min = visited[w];</div><div class="line">  &#125;<span class="comment">//for</span></div><div class="line">  low[v0] = min;</div><div class="line">&#125; <span class="comment">// DFSArticul</span></div></pre>
+                          <pre><div class="line"><span class="comment">//查找并输出连通图 G 上的全部关节点</span></div><div class="line">void FindArticul(AGraph *g) &#123;</div><div class="line">  <span class="comment">// 连通图 g 以邻接表作存储结构</span></div><div class="line">  <span class="comment">// 全局变量 count 对访问计数</span></div><div class="line">  int v; struct ArcNode *p;</div><div class="line">  <span class="comment">// 设定邻接表上 0 号顶点为生成树的根</span></div><div class="line">  count=<span class="number">1</span>; visited[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">  <span class="comment">// 其余顶点尚未访问</span></div><div class="line">  <span class="function"><span class="title">for</span> (int i=1; i&lt;g-&gt;</span>vexnum; ++i) visited[i] = <span class="number">0</span>;</div><div class="line">  <span class="function"><span class="title">p</span> = g-&gt;</span>vertices[<span class="number">0</span>].firstarc;</div><div class="line">  <span class="keyword">if</span>(p) &#123;</div><div class="line">    <span class="function"><span class="title">v</span> = p-&gt;</span>adjvex;<span class="comment">// 从第 v 顶点出发深度优先查找关节点</span></div><div class="line">    DFSArticul(g, v);</div><div class="line">    <span class="function"><span class="title">if</span> (count &lt; g-&gt;</span>vexnum) &#123;  <span class="comment">// 生成树的根有至少两棵子树</span></div><div class="line">      <span class="comment">// 根是关节点,输出</span></div><div class="line">      <span class="function"><span class="title">printf</span> (0, g-&gt;</span>vertices[<span class="number">0</span>].<span class="keyword">data</span>);</div><div class="line">      <span class="function"><span class="title">while</span> (p-&gt;</span>nextarc) &#123; <span class="comment">// 寻找还没有访问到的节点</span></div><div class="line">        <span class="function"><span class="title">p</span> = p-&gt;</span><span class="function"><span class="title">nextarc</span>; v = p-&gt;</span>adjvex;</div><div class="line">          <span class="keyword">if</span> (visited[v]==<span class="number">0</span>) DFSArticul(g, v);</div><div class="line">      &#125;<span class="comment">//while</span></div><div class="line">    &#125;<span class="comment">//if</span></div><div class="line">  &#125;<span class="comment">//if(p)</span></div><div class="line">&#125; <span class="comment">// FindArticul</span></div><div class="line">void DFSArticul(AGraph *g, int v0 ) &#123;</div><div class="line">  int min, w; struct ArcNode *p;<span class="comment">//v0 是第 count 个访问的顶点</span></div><div class="line">  visited[v0] = min = ++count;</div><div class="line">  <span class="function"><span class="title">for</span> (p=g-&gt;</span><span class="function"><span class="title">vertices</span>[v0].firstarc; p!=NULL;p=p-&gt;</span>nextarc) &#123;</div><div class="line">    <span class="comment">// 检查 v0 的每个邻接顶点</span></div><div class="line">    <span class="function"><span class="title">w</span> = p-&gt;</span>adjvex; <span class="comment">// w 为 v0 的邻接顶点</span></div><div class="line">    <span class="keyword">if</span> (visited[w] == <span class="number">0</span>) &#123;</div><div class="line">      <span class="comment">// w 未曾被访问,是 v0 的孩子</span></div><div class="line">      DFSArticul(g, w); <span class="comment">// 返回前求得 low[w]</span></div><div class="line">      <span class="keyword">if</span> (low[w] &lt; min) min = low[w];</div><div class="line">      <span class="comment">// 从子树返回时判断 v0 是否是关节点</span></div><div class="line">      <span class="keyword">if</span> (low[w] &gt;= visited[v0])</div><div class="line">      <span class="comment">// 输出关节点</span></div><div class="line">      <span class="function"><span class="title">printf</span>(v0, g-&gt;</span>vertices[v0].<span class="keyword">data</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="comment">//w 是回边上的顶点</span></div><div class="line">    <span class="keyword">if</span> (visited[w] &lt; min)</div><div class="line">    <span class="comment">//w 已被访问, w 是 v0 在生成树上的祖先</span></div><div class="line">    min = visited[w];</div><div class="line">  &#125;<span class="comment">//for</span></div><div class="line">  low[v0] = min;</div><div class="line">&#125; <span class="comment">// DFSArticul</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -597,7 +591,7 @@
                   <p>算法实现：</p>
                   <p>设用数组 ( 邻接矩阵 ) 表示图<br>– 若两个顶点之间不存在边,则对应的权值设为指定的最大值</p>
                   <p>所构造的最小生成树用一维数组存储其 n-1 条边</p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -610,7 +604,7 @@
                     </table>
                   </figure>
                   <p>Prim 算法的时间复杂度分析:</p>
-                  <p>设带权连通图有 n 个顶点,则算法的主要执行是二重循环:<br>– 求 closedge 中权值最小的边,频度为 n-1<br>– 修改 closedge 数组,频度为 n+</p>
+                  <p>设带权连通图有 n 个顶点,则算法的主要执行是二重循环:<br>– 求 closedge 中权值最小的边,频度为 n-1<br>– 修改 closedge 数组,频度为 n</p>
                   <p>因此,整个算法的时间复杂度是 O(n^2 ) ,与边的数目无关。</p>
                   <p>
                     <div id="container"></div>
@@ -789,7 +783,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -798,7 +792,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -807,7 +801,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

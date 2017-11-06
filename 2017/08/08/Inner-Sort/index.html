@@ -69,7 +69,7 @@
   排序:将一组杂乱无章的数据按一定的规律顺次排列起来。
 
 假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :
-Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }">
+Kp1 &amp;lt;= Kp2 &amp;lt;= …&amp;lt;= Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp">
   <meta property="og:type" content="article">
   <meta property="og:title" content="内部排序">
   <meta property="og:url" content="http://ucasfl.me/2017/08/08/Inner-Sort/index.html">
@@ -79,8 +79,8 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
   排序:将一组杂乱无章的数据按一定的规律顺次排列起来。
 
 假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :
-Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }">
-  <meta property="og:updated_time" content="2017-11-05T11:27:36.907Z">
+Kp1 &amp;lt;= Kp2 &amp;lt;= …&amp;lt;= Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp">
+  <meta property="og:updated_time" content="2017-11-06T08:51:30.489Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="内部排序">
   <meta name="twitter:description" content="排序
@@ -88,7 +88,7 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
   排序:将一组杂乱无章的数据按一定的规律顺次排列起来。
 
 假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :
-Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }">
+Kp1 &amp;lt;= Kp2 &amp;lt;= …&amp;lt;= Kpn按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp">
 
 
 
@@ -420,15 +420,15 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>排序:将一组杂乱无章的数据按一定的规律顺次排列起来。</li>
                   </ul>
                   <p>假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :</p>
-                  <p>Kp1≤Kp2≤…≤Kpn<br>按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }的操作称作排序。</p>
+                  <p>Kp1 &lt;= Kp2 &lt;= …&lt;= Kpn<br>按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }的操作称作排序。</p>
+                  <a id="more"></a>
                   <ul>
                     <li>排序算法的稳定性 : 当输入含重复关键字时,重复元素在输入、输出序列中的相对次序是否保持不变。</li>
                     <li>内排序与外排序 : 内排序是指在 整个排序过程 数据元素全部存放在内存、 不需要访问外存便能完成 的排序, 称此类排序为内部排序 ; 反之,若参加排序的记录数量很大 ,不能同时存放在内存,必须根据排序过程的要求,不断在内、外存之间移动的排序, 称为外部排序。</li>
                     <li>排序算法的分类 :内部排序算法很多。但就其全面性能而言,很难认为哪种方法是最好的。没一种方法都有各自的优缺点,适合在不同环境下使用。插入排序、交换排序、选择排序、归并排序、计数排序等等 &lt; 按排序过程中依据的不同原则 &gt;</li>
                   </ul>
-                  <a id="more"></a>
                   <p><strong>待排记录数据类型定义</strong></p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -450,14 +450,14 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                   <ul>
                     <li>若整趟扫描都没有进行交换，则排序完成。</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight processing">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(Elem R[ ], <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">   i = n;<span class="comment">//首先从n位置排序</span></div><div class="line">   <span class="keyword">bool</span> sorted = <span class="literal">false</span>;</div><div class="line">   <span class="keyword">while</span> (!sorted) &#123;<span class="comment">//第[i..n]大元素已排序，寻找 第i-1大元素</span></div><div class="line">         sorted = <span class="literal">true</span>;</div><div class="line">         <span class="keyword">for</span> (j = <span class="number">1</span>;  j &lt; i;  j++) <span class="comment">//从[1..i-1]寻找第i-1大元素</span></div><div class="line">             <span class="keyword">if</span> (R[j+<span class="number">1</span>].key &lt; R[j].key) &#123; <span class="comment">//将大的记录向后移</span></div><div class="line">                  Swap(R[j], R[j+<span class="number">1</span>]);</div><div class="line">                  sorted = <span class="literal">false</span>;  <span class="comment">//记下进行交换的记录位置</span></div><div class="line">             &#125; <span class="comment">//if</span></div><div class="line">         i -= <span class="number">1</span>;</div><div class="line">   &#125; <span class="comment">// while</span></div><div class="line">&#125; <span class="comment">// BubbleSort</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(Elem R[ ], <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">   <span class="keyword">int</span> i = n;<span class="comment">//首先从n位置排序</span></div><div class="line">   <span class="keyword">while</span> (i &gt;<span class="number">1</span>) &#123;<span class="comment">//第[i..n]大元素已排序，寻找 第i-1大元素</span></div><div class="line">         <span class="keyword">int</span>  lastExchangeIndex = <span class="number">1</span>;</div><div class="line">         <span class="keyword">for</span> (j = <span class="number">1</span>;  j &lt; i;  j++) <span class="comment">//从[1..i-1]寻找第i-1大元素</span></div><div class="line">             <span class="keyword">if</span> (R[j+<span class="number">1</span>].key &lt; R[j].key) &#123; <span class="comment">//将大的记录向后移</span></div><div class="line">                  Swap(R[j], R[j+<span class="number">1</span>]);</div><div class="line">                  lastExchangeIndex = j;  <span class="comment">//记下进行交换的记录位置</span></div><div class="line">             &#125; <span class="comment">//if</span></div><div class="line">         i = lastExchangeIndex; <span class="comment">//本趟进行过交换的最后一个记录的位置</span></div><div class="line">   &#125; <span class="comment">// while</span></div><div class="line">&#125; <span class="comment">// BubbleSort</span></div></pre>
+                          <pre><div class="line"><span class="keyword">void</span> BubbleSort(Elem R[ ], <span class="built_in">int</span> n) &#123;</div><div class="line">   i = n;<span class="comment">//首先从n位置排序</span></div><div class="line">   bool sorted = <span class="keyword">false</span>;</div><div class="line">   <span class="keyword">while</span> (!sorted) &#123;<span class="comment">//第[i..n]大元素已排序，寻找 第i-1大元素</span></div><div class="line">         sorted = <span class="keyword">true</span>;</div><div class="line">         <span class="keyword">for</span> (j = <span class="number">1</span>;  j &lt; i;  j++) <span class="comment">//从[1..i-1]寻找第i-1大元素</span></div><div class="line">             <span class="keyword">if</span> (R[j+<span class="number">1</span>].<span class="built_in">key</span> &lt; R[j].<span class="built_in">key</span>) &#123; <span class="comment">//将大的记录向后移</span></div><div class="line">                  Swap(R[j], R[j+<span class="number">1</span>]);</div><div class="line">                  sorted = <span class="keyword">false</span>;  <span class="comment">//记下进行交换的记录位置</span></div><div class="line">             &#125; <span class="comment">//if</span></div><div class="line">         i -= <span class="number">1</span>;</div><div class="line">   &#125; <span class="comment">// while</span></div><div class="line">&#125; <span class="comment">// BubbleSort</span></div><div class="line"></div><div class="line"><span class="keyword">void</span> BubbleSort(Elem R[ ], <span class="built_in">int</span> n) &#123;</div><div class="line">   <span class="built_in">int</span> i = n;<span class="comment">//首先从n位置排序</span></div><div class="line">   <span class="keyword">while</span> (i &gt;<span class="number">1</span>) &#123;<span class="comment">//第[i..n]大元素已排序，寻找 第i-1大元素</span></div><div class="line">         <span class="built_in">int</span>  lastExchangeIndex = <span class="number">1</span>;</div><div class="line">         <span class="keyword">for</span> (j = <span class="number">1</span>;  j &lt; i;  j++) <span class="comment">//从[1..i-1]寻找第i-1大元素</span></div><div class="line">             <span class="keyword">if</span> (R[j+<span class="number">1</span>].<span class="built_in">key</span> &lt; R[j].<span class="built_in">key</span>) &#123; <span class="comment">//将大的记录向后移</span></div><div class="line">                  Swap(R[j], R[j+<span class="number">1</span>]);</div><div class="line">                  lastExchangeIndex = j;  <span class="comment">//记下进行交换的记录位置</span></div><div class="line">             &#125; <span class="comment">//if</span></div><div class="line">         i = lastExchangeIndex; <span class="comment">//本趟进行过交换的最后一个记录的位置</span></div><div class="line">   &#125; <span class="comment">// while</span></div><div class="line">&#125; <span class="comment">// BubbleSort</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -476,14 +476,14 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>归并排序算法的复杂度为 O(nlogn)</li>
                     <li>关键在于 merge 的实现</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight processing">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergesort</span> <span class="params">(<span class="keyword">int</span> low, <span class="keyword">int</span> hi )</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (hi-lo&lt;<span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span>; <span class="comment">// 单个元素区间自然有序</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    mi = (low+hi)/<span class="number">2</span>; <span class="comment">// 以中点为界</span></div><div class="line">    mergesort (low, mi); <span class="comment">// 将前半段排序</span></div><div class="line">    mergesort (mi+<span class="number">1</span>, hi); <span class="comment">// 对后半段排序</span></div><div class="line">    Merge (low, mi, hi); <span class="comment">// 归并</span></div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">// Msort</span></div><div class="line"></div><div class="line"><span class="comment">//二路归并算法</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span> <span class="params">(<span class="keyword">int</span> low, <span class="keyword">int</span> mi, <span class="keyword">int</span> hi)</span> </span>&#123;</div><div class="line">  RcdType *A = elements+low;</div><div class="line">  <span class="keyword">int</span> lb = mi-low; </div><div class="line">  RcdType *B = <span class="keyword">new</span> RcdType[<span class="number">1b</span>];</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;lb; B[i] = A[i++]);</div><div class="line">  <span class="keyword">int</span> lc = hi-mi;</div><div class="line">  RcdType *C = elements+mi;</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>, j=<span class="number">0</span>, k=<span class="number">0</span>; j&lt;lb || k&lt;lc; ) &#123;</div><div class="line">    <span class="keyword">if</span> ( (j&lt;lb) &amp;&amp; (lc&lt;=k || B[j].key&lt;=C[k].key) )</div><div class="line">      A[i++] = B[j++];</div><div class="line">    <span class="keyword">if</span> ( (k&lt;lc) &amp;&amp; (lb&lt;=j || C[k].key&lt;B[j].key) )</div><div class="line">      A[i++] =C[k++];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">delete</span>(B);</div><div class="line">&#125;<span class="comment">//Merge</span></div></pre>
+                          <pre><div class="line"><span class="keyword">void</span> mergesort (<span class="built_in">int</span> low, <span class="built_in">int</span> hi ) &#123;</div><div class="line">  <span class="keyword">if</span> (hi-lo&lt;<span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span>; <span class="comment">// 单个元素区间自然有序</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    mi = (low+hi)/<span class="number">2</span>; <span class="comment">// 以中点为界</span></div><div class="line">    mergesort (low, mi); <span class="comment">// 将前半段排序</span></div><div class="line">    mergesort (mi+<span class="number">1</span>, hi); <span class="comment">// 对后半段排序</span></div><div class="line">    Merge (low, mi, hi); <span class="comment">// 归并</span></div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">// Msort</span></div><div class="line"></div><div class="line"><span class="comment">//二路归并算法</span></div><div class="line"><span class="keyword">void</span> Merge (<span class="built_in">int</span> low, <span class="built_in">int</span> mi, <span class="built_in">int</span> hi) &#123;</div><div class="line">  RcdType *A = elements+low;</div><div class="line">  <span class="built_in">int</span> lb = mi-low; </div><div class="line">  RcdType *B = <span class="keyword">new</span> RcdType[<span class="number">1</span>b];</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;lb; B[i] = A[i++]);</div><div class="line">  <span class="built_in">int</span> lc = hi-mi;</div><div class="line">  RcdType *C = elements+mi;</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>, j=<span class="number">0</span>, k=<span class="number">0</span>; j&lt;lb || k&lt;lc; ) &#123;</div><div class="line">    <span class="keyword">if</span> ( (j&lt;lb) &amp;&amp; (lc&lt;=k || B[j].<span class="built_in">key</span>&lt;=C[k].<span class="built_in">key</span>) )</div><div class="line">      A[i++] = B[j++];</div><div class="line">    <span class="keyword">if</span> ( (k&lt;lc) &amp;&amp; (lb&lt;=j || C[k].<span class="built_in">key</span>&lt;B[j].<span class="built_in">key</span>) )</div><div class="line">      A[i++] =C[k++];</div><div class="line">  &#125;</div><div class="line">  delete(B);</div><div class="line">&#125;<span class="comment">//Merge</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -513,14 +513,14 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>迭代: 处理 e=L[r]，在 sorted 中确定当前元素 e 的适当位置,插入 e ,得到有序的 L[0, r]</li>
                     <li>不变性:随着 r 的递增, L[0, r) 始终有序,直到 r =n, L 即为整体有序</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight processing">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertionSort</span> <span class="params">( SqList &amp;L )</span> </span>&#123;</div><div class="line"><span class="comment">// 对顺序表 L 作插入排序</span></div><div class="line">  <span class="keyword">for</span> ( i=<span class="number">2</span>; i&lt;=L.length; ++i ) <span class="comment">// 逐个将 i 插入已排好 [1..i-1] 中</span></div><div class="line">    <span class="keyword">if</span> (L.r[i].key &lt; L.r[i<span class="number">-1</span>].key) &#123; <span class="comment">// 只有小于时需要改变位置</span></div><div class="line">      p = search(L.r[i], i, L);</div><div class="line">      L.r[p] = L.r[i];</div><div class="line">    &#125;</div><div class="line">&#125; <span class="comment">// InsertSort</span></div></pre>
+                          <pre><div class="line"><span class="keyword">void</span> InsertionSort ( SqList &amp;L ) &#123;</div><div class="line"><span class="comment">// 对顺序表 L 作插入排序</span></div><div class="line">  <span class="keyword">for</span> ( i=<span class="number">2</span>; i&lt;=L.length; ++i ) <span class="comment">// 逐个将 i 插入已排好 [1..i-1] 中</span></div><div class="line">    <span class="keyword">if</span> (L.r[i].<span class="built_in">key</span> &lt; L.r[i<span class="number">-1</span>].<span class="built_in">key</span>) &#123; <span class="comment">// 只有小于时需要改变位置</span></div><div class="line">      p = search(L.r[i], i, L);</div><div class="line">      L.r[p] = L.r[i];</div><div class="line">    &#125;</div><div class="line">&#125; <span class="comment">// InsertSort</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -534,7 +534,7 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>起泡排序之所以需要O(n2)时间，是因为为挑选每个当前最大的元素M，需做O(n)次比较和O(n)次交换</li>
                     <li>实际上经过O(n)次比较确定M后，一次交换足矣</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -561,15 +561,17 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                   </ul>
                   <p>更新:唯上一优胜者的祖先,才有必要重新参加比赛，只需从其所在叶节点出发,逐层上溯直到树根。</p>
                   <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3>
-                  <p>堆是满足下列性质的数列：${r_1, r_2, …, r_n}$</p>
-                  <p>$$\text{小顶堆}=\begin{cases} r<em>i\le r</em>{2i}\r<em>i \le r</em>{2i+1}\end{cases}$$</p>
-                  <p>$$\text{大顶堆}=\begin{cases}r<em>i \ge r</em>{2i}\r<em>i \ge r</em>{2i+1}\end{cases}$$</p>
+                  <p>堆是满足下列性质的数列：<code>{r1, r2, ..., rn}</code></p>
+                  <ul>
+                    <li>大顶堆　<code>r_i &gt;= r_2i, r_i &gt;= r_2i+1</code></li>
+                    <li>小顶堆　<code>r_i &lt;= r_2i, r_i &lt;= r_2i+1</code></li>
+                  </ul>
                   <p>堆的结构性 :</p>
                   <ul>
                     <li>逻辑上:等同于完全二叉树</li>
                     <li>物理上:直接借助顺序存储实现</li>
                   </ul>
-                  <p>堆的堆序性：堆是符合这样定义的一棵有局部顺序的线性化完全二叉树：$K[i]\le K[parent(i)]$或$K[i]\ge K[parent(i)]$</p>
+                  <p>堆的堆序性：堆是符合这样定义的一棵有局部顺序的线性化完全二叉树：<code>K[i]\le K[parent(i)]</code>或$K[i]\ge K[parent(i)]`</p>
                   <p><strong>优先级队列(PQ priority queue)</strong></p>
                   <p>队列的一种，不过它可以按照自定义的一种方式（数据的优先级）来对队列中的数据进行态的访问，以方便快速求取最大优先级的数据。</p>
                   <ul>
@@ -590,14 +592,14 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>堆是一棵完全树,必平衡,故 e 的祖先至多 o(logn)</li>
                   </ul>
                   <p>所以，通过上滤,可在 O(logn) 时间内插入一个新节点,并整体的重新调整为堆。</p>
-                  <figure class="highlight c">
+                  <figure class="highlight glsl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="comment">//插入和上滤</span></div><div class="line">Insert(Sqlist  &amp;heap,   RedType e)&#123;</div><div class="line">  heap.r[heap.length] = e;      </div><div class="line">  heap.length += <span class="number">1</span>;</div><div class="line">  percolateUp(heap, heap.length);</div><div class="line">&#125; </div><div class="line">percolateUp(Sqlist &amp;heap, <span class="keyword">int</span> i)&#123;</div><div class="line">  <span class="keyword">while</span> ( ParentValid(i) )&#123;</div><div class="line">    j = Parent（i）；</div><div class="line">      <span class="keyword">if</span> ( heap.r[i].key &gt; heap.r[j].key )  </div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      swap(heap.r[i], heap.r[j]);  i = j;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre>
+                          <pre><div class="line"><span class="comment">//插入和上滤</span></div><div class="line">Insert(Sqlist  &amp;heap,   RedType e)&#123;</div><div class="line">  heap.r[heap.<span class="built_in">length</span>] = e;      </div><div class="line">  heap.<span class="built_in">length</span> += <span class="number">1</span>;</div><div class="line">  percolateUp(heap, heap.<span class="built_in">length</span>);</div><div class="line">&#125; </div><div class="line">percolateUp(Sqlist &amp;heap, <span class="type">int</span> i)&#123;</div><div class="line">  <span class="keyword">while</span> ( ParentValid(i) )&#123;</div><div class="line">    j = Parent（i）；</div><div class="line">      <span class="keyword">if</span> ( heap.r[i].key &gt; heap.r[j].key )  </div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      swap(heap.r[i], heap.r[j]);  i = j;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -614,14 +616,14 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>自上而下的上滤</li>
                     <li>建堆可以是一个从空堆开始,依次插入各元素。</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight gcode">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">Heapify(Sqlist &amp;L)&#123;</div><div class="line">  <span class="keyword">for</span> (i =<span class="number">1</span>; i&lt;L.length; i++)</div><div class="line">    percolateUp(L, i) ; <span class="comment">// 经上滤插入各节点</span></div><div class="line">&#125;</div></pre>
+                          <pre><div class="line">Heapify<span class="comment">(Sqlist &amp;L)</span>&#123;</div><div class="line">  for <span class="comment">(i =1; i&lt;L.length; i++)</span></div><div class="line">    percolateUp<span class="comment">(L, i)</span> ; <span class="comment">// 经上滤插入各节点</span></div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -632,14 +634,14 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>给定堆 H0 、 H1 和节点 P,为了得到堆 H0 UPU H1 ,只需将 ra(H0的堆顶) 和 rb(H1的堆顶) 当作 P 的孩子,对 p 下滤</li>
                     <li>从下向上,子堆逐层合并</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight glsl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">Heapify(Sqlist &amp;L)&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = L.length/<span class="number">2</span>; i&gt;<span class="number">0</span>; i--)</div><div class="line">    percolateDown(L, i) ; <span class="comment">// 下滤各内部节点</span></div><div class="line">&#125;</div></pre>
+                          <pre><div class="line">Heapify(Sqlist &amp;L)&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = L.<span class="built_in">length</span>/<span class="number">2</span>; i&gt;<span class="number">0</span>; i--)</div><div class="line">    percolateDown(L, i) ; <span class="comment">// 下滤各内部节点</span></div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -647,7 +649,7 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                   <p>效率：时间复杂度为O(n)</p>
                   <p><strong>堆排序即是利用堆的特性,不断输出当前最小( 大 ) 值,从而实现对序列进行排序的一种排序方法。</strong></p>
                   <p><strong>堆排序是不稳定的排序算法。</strong></p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -670,14 +672,14 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>节点分布偏向左侧</li>
                     <li>合并操作只涉及右侧</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="comment">//左式堆的合并</span></div><div class="line"><span class="function">BiNode *<span class="title">Merge</span><span class="params">(BiNode *a, *b)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> ( !a)</div><div class="line">      <span class="keyword">return</span> b;</div><div class="line">    <span class="keyword">if</span> (!b)</div><div class="line">      <span class="keyword">return</span> a;</div><div class="line">    <span class="keyword">if</span> ( a-&gt;data&lt;=b-&gt;data ) </div><div class="line">      swap( b, a);<span class="comment">//一般确保b不大，确保堆序性</span></div><div class="line">    a-&gt;rchild = merge(a-rchild, b); <span class="comment">//将a的右子堆与b合并</span></div><div class="line">    a-&gt;rchild-&gt;parent = a;<span class="comment">//更新父子关系</span></div><div class="line">    <span class="keyword">if</span> ( !a-&gt;lchild || a-&gt;lchild-&gt;NPL &lt; a-&gt;rchild-&gt;NPL )</div><div class="line">       swap( a-&gt;lchild, a-&gt;rchild );</div><div class="line">    a-&gt;NLP = a-&gt;rc ? A-&gt;rchild-&gt;NPL+<span class="number">1</span>: <span class="number">1</span>;<span class="comment">//更新父节点的NPL</span></div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左式堆的插入 insert( )</span></div><div class="line"><span class="function">BiNode *<span class="title">insert</span><span class="params">(BiNode *a, e)</span></span>&#123;</div><div class="line">  BiNode *v = <span class="keyword">new</span> BiNode(e);</div><div class="line">  root= merge(a, v);</div><div class="line">  root-&gt;parent = <span class="literal">NULL</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左式堆的最大元素的删除DelMax</span></div><div class="line"><span class="function">BiNode *<span class="title">insert</span><span class="params">(BiNode *root)</span></span>&#123;</div><div class="line">  BiNode *lHeap = root-&gt;lChild ;BiNode *rHeap = root-&gt;rChild;</div><div class="line">  e = root-&gt;data;</div><div class="line">  <span class="keyword">delete</span> root;</div><div class="line">  root = merge( lHeap,rHeap);</div><div class="line">  <span class="keyword">if</span> ( root ) </div><div class="line">    root-&gt;parent = <span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">return</span> e;</div><div class="line">&#125;</div></pre>
+                          <pre><div class="line"><span class="comment">//左式堆的合并</span></div><div class="line">BiNode *Merge(BiNode *a, *b)&#123;</div><div class="line">    <span class="keyword">if</span> ( !a)</div><div class="line">      return b;</div><div class="line">    <span class="keyword">if</span> (!b)</div><div class="line">      return a;</div><div class="line">    <span class="function"><span class="title">if</span> ( a-&gt;</span><span class="function"><span class="title">data</span>&lt;=b-&gt;</span><span class="keyword">data</span> ) </div><div class="line">      swap( b, a);<span class="comment">//一般确保b不大，确保堆序性</span></div><div class="line">    <span class="function"><span class="title">a</span>-&gt;</span>rchild = merge(a-rchild, b); <span class="comment">//将a的右子堆与b合并</span></div><div class="line">    <span class="function"><span class="title">a</span>-&gt;</span><span class="function"><span class="title">rchild</span>-&gt;</span>parent = a;<span class="comment">//更新父子关系</span></div><div class="line">    <span class="function"><span class="title">if</span> ( !a-&gt;</span><span class="function"><span class="title">lchild</span> || a-&gt;</span><span class="function"><span class="title">lchild</span>-&gt;</span>NPL &lt; <span class="function"><span class="title">a</span>-&gt;</span><span class="function"><span class="title">rchild</span>-&gt;</span>NPL )</div><div class="line">       <span class="function"><span class="title">swap</span>( a-&gt;</span><span class="function"><span class="title">lchild</span>, a-&gt;</span>rchild );</div><div class="line">    <span class="function"><span class="title">a</span>-&gt;</span>NLP = <span class="function"><span class="title">a</span>-&gt;</span><span class="function"><span class="title">rc</span> ? A-&gt;</span><span class="function"><span class="title">rchild</span>-&gt;</span>NPL+<span class="number">1</span>: <span class="number">1</span>;<span class="comment">//更新父节点的NPL</span></div><div class="line">    return a;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左式堆的插入 insert( )</span></div><div class="line">BiNode *insert(BiNode *a, e)&#123;</div><div class="line">  BiNode *v = new BiNode(e);</div><div class="line">  root= merge(a, v);</div><div class="line">  <span class="function"><span class="title">root</span>-&gt;</span>parent = NULL;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左式堆的最大元素的删除DelMax</span></div><div class="line">BiNode *insert(BiNode *root)&#123;</div><div class="line">  B<span class="function"><span class="title">iNode</span> *lHeap = root-&gt;</span><span class="function"><span class="title">lChild</span> ;BiNode *rHeap = root-&gt;</span>rChild;</div><div class="line">  <span class="function"><span class="title">e</span> = root-&gt;</span><span class="keyword">data</span>;</div><div class="line">  delete root;</div><div class="line">  root = merge( lHeap,rHeap);</div><div class="line">  <span class="keyword">if</span> ( root ) </div><div class="line">    <span class="function"><span class="title">root</span>-&gt;</span>parent = NULL;</div><div class="line">  return e;</div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -690,28 +692,28 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>平凡解:当只剩单个元素时,本身就是解</li>
                     <li>QuickSort 的难点在于“分” [ 归并排序 ]</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight processing">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QSort</span> <span class="params">(RedType &amp; R[],  <span class="keyword">int</span> s,  <span class="keyword">int</span>  t )</span> </span>&#123;</div><div class="line">    <span class="comment">// 对记录序列R[s..t]进行快速排序</span></div><div class="line">    <span class="keyword">if</span> (s &lt; t<span class="number">-1</span>) &#123;             <span class="comment">// 长度大于1</span></div><div class="line">        pivotloc = Partition(R, s, t); <span class="comment">// 对 R[s..t] 进行一次划分</span></div><div class="line">        QSort(R, s, pivotloc<span class="number">-1</span>);  <span class="comment">// 对低子序列递归排序</span></div><div class="line">        QSort(R, pivotloc+<span class="number">1</span>, t); <span class="comment">// 对高子序列递归排序</span></div><div class="line">    &#125;</div><div class="line">&#125; <span class="comment">// QSort</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">( SqList &amp; L)</span> </span>&#123;</div><div class="line">      <span class="comment">// 对顺序表进行快速排序</span></div><div class="line">       QSort(L.r, <span class="number">1</span>, L.length);</div><div class="line">&#125; <span class="comment">// QuickSort</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span> <span class="params">(RedType&amp; R[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</div><div class="line">  pivotkey = R[low].key; <span class="comment">// 枢轴</span></div><div class="line">  <span class="keyword">while</span> (low&lt;high) &#123;</div><div class="line">    <span class="keyword">while</span> (low&lt;high &amp;&amp; R[high].key&gt;=pivotkey)</div><div class="line">      --high;</div><div class="line">    R[low]=R[high];</div><div class="line">    <span class="keyword">while</span> (low&lt;high &amp;&amp; R[low].key&lt;=pivotkey)</div><div class="line">      ++low;</div><div class="line">    R[high]=R[low];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> low;<span class="comment">// 返回枢轴所在位置</span></div><div class="line">&#125; <span class="comment">// Partition</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition2</span> <span class="params">(RedType&amp; R[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</div><div class="line">  pivotkey = R[low].key; <span class="comment">// 枢轴</span></div><div class="line">  mid = low;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> k = low+<span class="number">1</span>; k&lt;=high; k++)</div><div class="line">    <span class="keyword">if</span> (R[k].key&lt;pivotkey)</div><div class="line">      swap(R[++mid], R[k]);</div><div class="line">  swap(R[low], R[mid]);</div><div class="line"><span class="keyword">return</span> mid;<span class="comment">// 返回枢轴所在位置</span></div><div class="line">&#125; <span class="comment">// Partition例:</span></div></pre>
+                          <pre><div class="line"><span class="keyword">void</span> QSort (RedType &amp; R[],  <span class="built_in">int</span> s,  <span class="built_in">int</span>  t ) &#123;</div><div class="line">    <span class="comment">// 对记录序列R[s..t]进行快速排序</span></div><div class="line">    <span class="keyword">if</span> (s &lt; t<span class="number">-1</span>) &#123;             <span class="comment">// 长度大于1</span></div><div class="line">        pivotloc = Partition(R, s, t); <span class="comment">// 对 R[s..t] 进行一次划分</span></div><div class="line">        QSort(R, s, pivotloc<span class="number">-1</span>);  <span class="comment">// 对低子序列递归排序</span></div><div class="line">        QSort(R, pivotloc+<span class="number">1</span>, t); <span class="comment">// 对高子序列递归排序</span></div><div class="line">    &#125;</div><div class="line">&#125; <span class="comment">// QSort</span></div><div class="line"><span class="keyword">void</span> QuickSort( SqList &amp; L) &#123;</div><div class="line">      <span class="comment">// 对顺序表进行快速排序</span></div><div class="line">       QSort(L.r, <span class="number">1</span>, L.length);</div><div class="line">&#125; <span class="comment">// QuickSort</span></div><div class="line"><span class="built_in">int</span> Partition (RedType&amp; R[], <span class="built_in">int</span> low, <span class="built_in">int</span> high) &#123;</div><div class="line">  pivotkey = R[low].<span class="built_in">key</span>; <span class="comment">// 枢轴</span></div><div class="line">  <span class="keyword">while</span> (low&lt;high) &#123;</div><div class="line">    <span class="keyword">while</span> (low&lt;high &amp;&amp; R[high].<span class="built_in">key</span>&gt;=pivotkey)</div><div class="line">      --high;</div><div class="line">    R[low]=R[high];</div><div class="line">    <span class="keyword">while</span> (low&lt;high &amp;&amp; R[low].<span class="built_in">key</span>&lt;=pivotkey)</div><div class="line">      ++low;</div><div class="line">    R[high]=R[low];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> low;<span class="comment">// 返回枢轴所在位置</span></div><div class="line">&#125; <span class="comment">// Partition</span></div><div class="line"><span class="built_in">int</span> Partition2 (RedType&amp; R[], <span class="built_in">int</span> low, <span class="built_in">int</span> high) &#123;</div><div class="line">  pivotkey = R[low].<span class="built_in">key</span>; <span class="comment">// 枢轴</span></div><div class="line">  mid = low;</div><div class="line">  <span class="keyword">for</span> (<span class="built_in">int</span> k = low+<span class="number">1</span>; k&lt;=high; k++)</div><div class="line">    <span class="keyword">if</span> (R[k].<span class="built_in">key</span>&lt;pivotkey)</div><div class="line">      swap(R[++mid], R[k]);</div><div class="line">  swap(R[low], R[mid]);</div><div class="line"><span class="keyword">return</span> mid;<span class="comment">// 返回枢轴所在位置</span></div><div class="line">&#125; <span class="comment">// Partition例:</span></div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
                   <h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3>
                   <p>又称“缩小增量排序”，将记录序列分成若干子序列，分别对每个子序列进行插入排序。</p>
-                  <figure class="highlight c">
+                  <figure class="highlight processing">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span> <span class="params">(SqList &amp;L, <span class="keyword">int</span> dlta[], <span class="keyword">int</span> t)</span></span>&#123;</div><div class="line"><span class="comment">// 增量序列为 dlta[] 的希尔排序,序列长为 t</span></div><div class="line">  <span class="keyword">for</span> (k=<span class="number">0</span>; k&lt;t; ++t)</div><div class="line">    ShellInsert(L, dlta[k]);</div><div class="line">&#125; <span class="comment">// ShellSort</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellInsert</span> <span class="params">( SqList &amp;L, <span class="keyword">int</span> dk )</span> </span>&#123;</div><div class="line">  <span class="keyword">for</span> ( i=dk+<span class="number">1</span>; i&lt;=n; ++i )<span class="comment">// 对每个元素在当前增量子序列中排序</span></div><div class="line">    <span class="keyword">if</span> ( L.r[i].key&lt; L.r[i-dk].key) &#123;<span class="comment">// 在子序列中用直接插入法排序当前元素</span></div><div class="line">      L.r[<span class="number">0</span>] = L.r[i];</div><div class="line">      <span class="keyword">for</span> (j=i-dk; j&gt;<span class="number">0</span>&amp;&amp;(L.r[<span class="number">0</span>].key&lt;L.r[j].key); j-=dk)</div><div class="line">        L.r[j+dk] = L.r[j]; <span class="comment">// 记录后移,查找插入位置</span></div><div class="line">      L.r[j+dk] = L.r[<span class="number">0</span>]; <span class="comment">// 插入</span></div><div class="line">    &#125; <span class="comment">// if</span></div><div class="line">&#125; <span class="comment">// ShellInsert</span></div></pre>
+                          <pre><div class="line"><span class="keyword">void</span> ShellSort (SqList &amp;L, <span class="built_in">int</span> dlta[], <span class="built_in">int</span> t)&#123;</div><div class="line"><span class="comment">// 增量序列为 dlta[] 的希尔排序,序列长为 t</span></div><div class="line">  <span class="keyword">for</span> (k=<span class="number">0</span>; k&lt;t; ++t)</div><div class="line">    ShellInsert(L, dlta[k]);</div><div class="line">&#125; <span class="comment">// ShellSort</span></div><div class="line"><span class="keyword">void</span> ShellInsert ( SqList &amp;L, <span class="built_in">int</span> dk ) &#123;</div><div class="line">  <span class="keyword">for</span> ( i=dk+<span class="number">1</span>; i&lt;=n; ++i )<span class="comment">// 对每个元素在当前增量子序列中排序</span></div><div class="line">    <span class="keyword">if</span> ( L.r[i].<span class="built_in">key</span>&lt; L.r[i-dk].<span class="built_in">key</span>) &#123;<span class="comment">// 在子序列中用直接插入法排序当前元素</span></div><div class="line">      L.r[<span class="number">0</span>] = L.r[i];</div><div class="line">      <span class="keyword">for</span> (j=i-dk; j&gt;<span class="number">0</span>&amp;&amp;(L.r[<span class="number">0</span>].<span class="built_in">key</span>&lt;L.r[j].<span class="built_in">key</span>); j-=dk)</div><div class="line">        L.r[j+dk] = L.r[j]; <span class="comment">// 记录后移,查找插入位置</span></div><div class="line">      L.r[j+dk] = L.r[<span class="number">0</span>]; <span class="comment">// 插入</span></div><div class="line">    &#125; <span class="comment">// if</span></div><div class="line">&#125; <span class="comment">// ShellInsert</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -725,15 +727,15 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                   <h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3>
                   <p>基数排序是一种借助“多关键字排序”的思想来实现“单关键字排序”的内部排序算法。</p>
                   <p>实现多关键字排序通常有两种作法 :</p>
-                  <p>关键字${K^0&gt;K^1&gt;…&gt;K^{d-1}}$</p>
+                  <p>关键字<code>{K^0&gt;K^1&gt;...&gt;K^{d-1}}</code></p>
                   <ul>
                     <li>最高位优先 MSD 法 (Most Significant Digit first ) </li>
                   </ul>
-                  <p>先对 K 进行排序,按 $K^0$ 的不同值将记录序列分成若干子序列之后,分别对 $K^1$ 进行排,…,最后对最次位关键字排序。</p>
+                  <p>先对 <code>K^0</code> 进行排序,按 <code>K^0</code>$的不同值将记录序列分成若干子序列之后,分别对 $<code>K^1</code>进行排,…,最后对最次位关键字排序。</p>
                   <ul>
                     <li>最低位优先 LSD 法 (Least Significant Digit first)</li>
                   </ul>
-                  <p>先对$ K^{d-1}$ 进行排序,然后对$ K^{d-2}$ 进行排序, …, 最后对最主位关键字 $K^0 $排序。</p>
+                  <p>先对<code>K^{d-1}</code> 进行排序,然后对<code>K^{d-2}</code> 进行排序, …, 最后对最主位关键字 <code>K^0</code>排序。</p>
                   <p><strong>对比</strong></p>
                   <p>最高位优先法</p>
                   <ul>
@@ -753,7 +755,7 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
                     <li>对每个关键字位均重复 2) 和 3) 两步。</li>
                   </ol>
                   <p><strong>链表基数排序算法</strong></p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -1031,7 +1033,7 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -1040,7 +1042,7 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -1049,7 +1051,7 @@ Kp1≤Kp2≤…≤Kpn按此固有关系将上式记录序列重新排列,即使�
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

@@ -64,22 +64,18 @@
 
 
 
-  <meta name="description" content="本文旨在高屋建瓴地来讨论 Linux 文件系统概念，而不是对某种特定的文件系统，比如 EXT4 是如何工作的进行具体的描述。另外，本文也不是一个文件系统命令的教程。
-每台通用计算机都需要将各种数据存储在硬盘驱动器（HDD）或其他类似设备上，比如 USB 存储器。这样做有两个原因。首先，当计算机关闭以后，内存（RAM）会失去存于它里面的内容。尽管存在非易失类型的 RAM，在计算机断电以后还能把数据">
+  <meta name="description" content="本文旨在高屋建瓴地来讨论 Linux 文件系统概念，而不是对某种特定的文件系统，比如 EXT4 是如何工作的进行具体的描述。另外，本文也不是一个文件系统命令的教程。">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Linux 文件系统概览">
   <meta property="og:url" content="http://ucasfl.me/2017/09/23/Introduction-to-Linux-FileSystem/index.html">
   <meta property="og:site_name" content="春暖花开">
-  <meta property="og:description" content="本文旨在高屋建瓴地来讨论 Linux 文件系统概念，而不是对某种特定的文件系统，比如 EXT4 是如何工作的进行具体的描述。另外，本文也不是一个文件系统命令的教程。
-每台通用计算机都需要将各种数据存储在硬盘驱动器（HDD）或其他类似设备上，比如 USB 存储器。这样做有两个原因。首先，当计算机关闭以后，内存（RAM）会失去存于它里面的内容。尽管存在非易失类型的 RAM，在计算机断电以后还能把数据">
-  <meta property="og:image" content="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/community-penguins-osdc-lead.png?itok=BmqsAF4A">
+  <meta property="og:description" content="本文旨在高屋建瓴地来讨论 Linux 文件系统概念，而不是对某种特定的文件系统，比如 EXT4 是如何工作的进行具体的描述。另外，本文也不是一个文件系统命令的教程。">
   <meta property="og:image" content="https://opensource.com/sites/default/files/filesystem_diagram.png">
-  <meta property="og:updated_time" content="2017-11-05T11:28:22.827Z">
+  <meta property="og:updated_time" content="2017-11-06T08:53:19.531Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Linux 文件系统概览">
-  <meta name="twitter:description" content="本文旨在高屋建瓴地来讨论 Linux 文件系统概念，而不是对某种特定的文件系统，比如 EXT4 是如何工作的进行具体的描述。另外，本文也不是一个文件系统命令的教程。
-每台通用计算机都需要将各种数据存储在硬盘驱动器（HDD）或其他类似设备上，比如 USB 存储器。这样做有两个原因。首先，当计算机关闭以后，内存（RAM）会失去存于它里面的内容。尽管存在非易失类型的 RAM，在计算机断电以后还能把数据">
-  <meta name="twitter:image" content="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/community-penguins-osdc-lead.png?itok=BmqsAF4A">
+  <meta name="twitter:description" content="本文旨在高屋建瓴地来讨论 Linux 文件系统概念，而不是对某种特定的文件系统，比如 EXT4 是如何工作的进行具体的描述。另外，本文也不是一个文件系统命令的教程。">
+  <meta name="twitter:image" content="https://opensource.com/sites/default/files/filesystem_diagram.png">
 
 
 
@@ -406,12 +402,11 @@
 
 
 
-                  <p><img src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/community-penguins-osdc-lead.png?itok=BmqsAF4A" alt="Introduction to Linux filesystems" title="Introduction to Linux filesystems"></p>
                   <p>本文旨在高屋建瓴地来讨论 Linux 文件系统概念，而不是对某种特定的文件系统，比如 EXT4 是如何工作的进行具体的描述。另外，本文也不是一个文件系统命令的教程。</p>
+                  <a id="more"></a>
                   <p>每台通用计算机都需要将各种数据存储在硬盘驱动器（HDD）或其他类似设备上，比如 USB 存储器。这样做有两个原因。首先，当计算机关闭以后，内存（RAM）会失去存于它里面的内容。尽管存在非易失类型的 RAM，在计算机断电以后还能把数据存储下来（比如采用 USB 闪存和固态硬盘的闪存），但是，闪存和标准的、易失性的 RAM，比如 DDR3 以及其他相似类型的 RAM 相比，要贵很多。</p>
                   <p>数据需要存储在硬盘驱动上的另一个原因是，即使是标准的 RAM 也要比普通硬盘贵得多。尽管 RAM 和硬盘的价格都在迅速下降，但是 RAM 的价格依旧在以字节为单位来计算。让我们进行一个以字节为单位的快速计算：基于 16 GB 大的 RAM 的价格和 2 TB 大的硬盘驱动的价格。计算显示 RAM 的价格大约比硬盘驱动贵 71 倍。今天，一个典型的 RAM 的价格大约是 0.000000004373750 美元/每字节。</p>
                   <p>直观的展示一下在很久以前 RAM 的价格，在计算机发展的非常早的时期，其中一种类型的 RAM 是基于在 CRT 屏幕上的点。这种 RAM 非常昂贵，大约 1 美元/每字节。</p>
-                  <a id="more"></a>
                   <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3>
                   <p>你可能听过其他人以各种不同和令人迷惑的方式谈论过文件系统。文件系统这个单词本身有多重含义，你需要从一个讨论或文件的上下文中理解它的正确含义。</p>
                   <p>我将根据我所观察到的在不同情况下使用“文件系统”这个词来定义它的不同含义。注意，尽管我试图遵循标准的“官方”含义，但是我打算基于它的不同用法来定义这个术语（如下）。这就是说我将在本文的后续章节中进行更详细的探讨。</p>
@@ -740,7 +735,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -749,7 +744,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -758,7 +753,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

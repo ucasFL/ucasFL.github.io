@@ -580,14 +580,6 @@
 
                   <p><img src="https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg" alt="了解在编译器的世界里前端和后端的新意义"></p>
                   <p>简单说来，一个<ruby>编译器<rt>compiler</rt></ruby>不过是一个可以翻译其他程序的程序。传统的编译器可以把源代码翻译成你的计算机能够理解的可执行机器代码。（一些编译器将源代码翻译成别的程序语言，这样的编译器称为源到源翻译器或<ruby>转化器<rt>transpilers</rt></ruby>。）<a href="http://llvm.org/">LLVM</a> 是一个广泛使用的编译器项目，包含许多模块化的编译工具。</p>
-                  <p>传统的编译器设计包含三个部分：</p>
-                  <p><img src="https://nicoleorchard.com/img/blog/compilers/compiler1.jpg" alt=""></p>
-                  <ul>
-                    <li><ruby>前端<rt>Frontend</rt></ruby>将源代码翻译为<ruby>中间表示<rt>intermediate representation </rt></ruby> (IR)* 。<a href="http://clang.llvm.org/">clang</a> 是 LLVM 中用于 C 家族语言的前端工具。</li>
-                    <li><ruby>优化器<rt>Optimizer</rt></ruby>分析 IR 然后将其转化为更高效的形式。<a href="http://llvm.org/docs/CommandGuide/opt.html">opt</a> 是 LLVM 的优化工具。</li>
-                    <li><ruby>后端<rt>Backend</rt></ruby>通过将 IR 映射到目标硬件指令集从而生成机器代码。<a href="http://llvm.org/docs/CommandGuide/llc.html">llc</a> 是 LLVM 的后端工具。</li>
-                  </ul>
-                  <p>注：LLVM 的 IR 是一种和汇编类似的低级语言。然而，它抽离了特定硬件信息。</p>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/09/12/Introduction-to-Compiler/#more" rel="contents">
@@ -905,7 +897,6 @@
 
 
                   <p>探索<ruby>哈希表<rt>hash table</rt></ruby>的世界并理解其底层的机制是非常有趣的，并且将会受益匪浅。所以，让我们了解它，并从头开始探索吧。</p>
-                  <p>哈希表是许多现代软件应用程序中一种常见的数据结构。它提供了类似字典的功能，使你能够在其中执行插入、删除和删除等操作。这么说吧，比如我想找出“苹果”的定义是什么，并且我知道该定义被存储在了我定义的哈希表中。我将查询我的哈希表来得到定义。它在哈希表内的记录看起来可能像：<code>&quot;苹果&quot; =&gt; &quot;一种拥有水果之王之称的绿色水果&quot;</code>。这里，“苹果”是我的关键字，而“一种拥有水果之王之称的水果”是与之关联的值。</p>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/09/02/Hash-Tables/#more" rel="contents">
@@ -1066,9 +1057,6 @@
                   <p><img src="https://i1.wp.com/www.ossblog.org/wp-content/uploads/2017/03/Ruby-Montage.png?w=565&amp;ssl=1" alt=""></p>
                   <h3 id="开源的-Ruby-书籍"><a href="#开源的-Ruby-书籍" class="headerlink" title="开源的 Ruby 书籍"></a>开源的 Ruby 书籍</h3>
                   <p>Ruby 是由 Yukihiro “Matz” Matsumoto 开发的一门通用目的、脚本化、结构化、灵活且完全面向对象的编程语言。它具有一个完全动态类型系统，这意味着它的大多数类型检查是在运行的时候进行，而非编译的时候。因此程序员不必过分担心是整数类型还是字符串类型。Ruby 会自动进行内存管理，它具有许多和 Python、Perl、Lisp、Ada、Eiffel 和 Smalltalk 相同的特性。</p>
-                  <p>Ruby on Rails 框架对于 Ruby 的流行起到了重要作用，它是一个全栈 Web 框架，目前已被用来创建许多受欢迎的应用，包括 Basecamp、GitHub、Shopify、Airbnb、Twitch、SoundCloud、Hulu、Zendesk、Square 和 Highise 。</p>
-                  <p>Ruby 具有很高的可移植性性，在 Linux、Windows、Mac OS X、Cygwin、FreeBSD、NetBSD、OpenBSD、BSD/OS、Solaris、Tru64 UNIX、HP-UX 以及其他许多系统上均可运行。目前，Ruby 在 TIOBE 编程社区排名 12 。</p>
-                  <p>这篇文章有 9 本很优秀的推荐书籍，有针对包括初学者、中级程序员和高级程序员的书籍。当然，所有的书籍都是在开源许可下发布的。</p>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/09/02/Open-Source-Ruby-Books/#more" rel="contents">
@@ -1232,11 +1220,6 @@
                     <li>价格较低</li>
                     <li>永久的存储能力</li>
                   </ul>
-                  <p>缺点:</p>
-                  <ul>
-                    <li>访问外存储器上的数据比访问内存要慢5 ~ 6 个数量级</li>
-                  </ul>
-                  <p>因此，要求我们在开发系统时必须考虑如何使外存访<br>问次数达到最少。</p>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/08/08/External-Sort/#more" rel="contents">
@@ -1399,12 +1382,7 @@
                     <li>排序:将一组杂乱无章的数据按一定的规律顺次排列起来。</li>
                   </ul>
                   <p>假设含 n 个记录的序列为 { R1, R2, … , Rn }其相应的关键字序列为 { K1, K2, … , Kn }这些关键字相互之间可以进行比较,即在它们之间存在着这样一个关系 :</p>
-                  <p>Kp1≤Kp2≤…≤Kpn<br>按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }的操作称作排序。</p>
-                  <ul>
-                    <li>排序算法的稳定性 : 当输入含重复关键字时,重复元素在输入、输出序列中的相对次序是否保持不变。</li>
-                    <li>内排序与外排序 : 内排序是指在 整个排序过程 数据元素全部存放在内存、 不需要访问外存便能完成 的排序, 称此类排序为内部排序 ; 反之,若参加排序的记录数量很大 ,不能同时存放在内存,必须根据排序过程的要求,不断在内、外存之间移动的排序, 称为外部排序。</li>
-                    <li>排序算法的分类 :内部排序算法很多。但就其全面性能而言,很难认为哪种方法是最好的。没一种方法都有各自的优缺点,适合在不同环境下使用。插入排序、交换排序、选择排序、归并排序、计数排序等等 &lt; 按排序过程中依据的不同原则 &gt;</li>
-                  </ul>
+                  <p>Kp1 &lt;= Kp2 &lt;= …&lt;= Kpn<br>按此固有关系将上式记录序列重新排列,即使序列成为一个按关键字排序的 序列:{ Rp1, Rp2, … , Rpn }的操作称作排序。</p>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/08/08/Inner-Sort/#more" rel="contents">
@@ -1570,19 +1548,6 @@
                     <li>( 多叉 ) 度大于 2 的树，每个结点的最大度与关键字的“基”有关</li>
                     <li>( 排序 ) 键树被约定为是一棵有序树,即同一层中兄弟结点之间依所含符号自左至右有序,并约定结束符‘ $’ 小于任何其它符号。</li>
                   </ul>
-                  <p><strong>键树的存储结构:双链树</strong></p>
-                  <figure class="highlight c">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> DLTNode &#123;</div><div class="line">  <span class="keyword">char</span> symbol;</div><div class="line">  <span class="keyword">struct</span> DLTNode *next; <span class="comment">// 指向兄弟结点的指针</span></div><div class="line">  NodeKind kind;</div><div class="line">  <span class="keyword">union</span> &#123;</div><div class="line">    Record *infoptr; <span class="comment">// 叶子结点内的记录指针</span></div><div class="line">    <span class="keyword">struct</span> DLTNode *first;</div><div class="line"><span class="comment">// 分支结点内的孩子链指针</span></div><div class="line">  &#125;</div><div class="line">&#125; DLTNode, *DLTree; <span class="comment">// 双链树的类型</span></div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/08/07/Find-and-Search-Part3/#more" rel="contents">
@@ -1625,7 +1590,7 @@
             <nav class="pagination">
               <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span>
               <a
-                class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+                class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
             </nav>
 
 
@@ -1669,7 +1634,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -1678,7 +1643,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -1687,7 +1652,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

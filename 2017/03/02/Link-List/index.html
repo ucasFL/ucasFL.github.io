@@ -67,11 +67,7 @@
   <meta name="description" content="线性表的链式表示和实现
 
   线性表的链式存储是指用一组任意的 ( 连续的或不连续的 ) 存储单元存储线性表中的数据元素；
-  为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；
-
-分类
-
-  单链表：每一个结点只包含一个指向直接后继的指针域；">
+  为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；">
   <meta property="og:type" content="article">
   <meta property="og:title" content="链式线性表">
   <meta property="og:url" content="http://ucasfl.me/2017/03/02/Link-List/index.html">
@@ -79,22 +75,14 @@
   <meta property="og:description" content="线性表的链式表示和实现
 
   线性表的链式存储是指用一组任意的 ( 连续的或不连续的 ) 存储单元存储线性表中的数据元素；
-  为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；
-
-分类
-
-  单链表：每一个结点只包含一个指向直接后继的指针域；">
-  <meta property="og:updated_time" content="2017-11-05T11:28:48.171Z">
+  为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；">
+  <meta property="og:updated_time" content="2017-11-06T08:13:53.346Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="链式线性表">
   <meta name="twitter:description" content="线性表的链式表示和实现
 
   线性表的链式存储是指用一组任意的 ( 连续的或不连续的 ) 存储单元存储线性表中的数据元素；
-  为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；
-
-分类
-
-  单链表：每一个结点只包含一个指向直接后继的指针域；">
+  为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；">
 
 
 
@@ -426,6 +414,7 @@
                     <li>线性表的链式存储是指用一组任意的 ( 连续的或不连续的 ) 存储单元存储线性表中的数据元素；</li>
                     <li>为了正确表示数据元素与其直接后续数据元素之间的逻辑关系，在存储每个元素值的同时，还必须存储指示其直接后继的地址 ( 或位置 )，称为指针 (pointer) 或链 (link)，这两部分组成了链表中的结点；</li>
                   </ul>
+                  <a id="more"></a>
                   <h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4>
                   <ul>
                     <li>单链表：每一个结点只包含一个指向直接后继的指针域；</li>
@@ -433,7 +422,6 @@
                     <li>循环链表：整个链表的指针域链接成一个或多个环；</li>
                     <li>双向循环链表：将头结点和尾结点链接起来的双向链表；</li>
                   </ul>
-                  <a id="more"></a>
                   <p>为操作方便,总是在链表的第一个结点之前附设一个头结点:头结点的数据域可以不存储任何信息 ( 或存储链表长度等信息 ),头结点的指针域存储指向第一个结点的指针 ( 即第一个结点的存储位置 )。</p>
                   <h3 id="C-语言实现"><a href="#C-语言实现" class="headerlink" title="C 语言实现"></a>C 语言实现</h3>
                   <figure class="highlight xl">
@@ -471,7 +459,7 @@
                       </tr>
                     </table>
                   </figure>
-                  <p>双向链表：构成链表的每个结点中设立两个指针域,一个指向其直接前趋的指针域 prior ,一个指向其直接后继的指针域 next；</p>
+                  <p>双向链表：构成链表的每个结点中设立两个指针域,一个指向其直接前趋的指针域 <code>prior</code> ,一个指向其直接后继的指针域 <code>next</code>；</p>
                   <figure class="highlight xl">
                     <table>
                       <tr>
@@ -547,8 +535,8 @@
 
                     <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2017/03/04/Hexo-Domain-Bound/" rel="prev" title="Hexo博客域名绑定">
-                Hexo博客域名绑定 <i class="fa fa-chevron-right"></i>
+                      <a href="/2017/03/05/Linux-Command-Line-learning-notes-Part2/" rel="prev" title="《Linux 命令行大全》学习笔记 - Part 2">
+                《Linux 命令行大全》学习笔记 - Part 2 <i class="fa fa-chevron-right"></i>
               </a>
 
                     </div>
@@ -661,7 +649,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -670,7 +658,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -679,7 +667,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

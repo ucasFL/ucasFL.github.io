@@ -64,20 +64,17 @@
 
 
 
-  <meta name="description" content="在这篇文章中，我将展示如何在 CentOS/RHEL 7、Debian 以及它的衍生版本比如 Ubuntu（最新的 Ubuntu 16.04 LTS 版本已经安装了最新的 Python 版本）或 Linux Mint 上安装和使用 Python 3.x 。我们的重点是安装可用于命令行的核心语言工具。
-然后，我们也会阐述如何安装 Python IDLE － 一个基于 GUI 的工具，它允许我们运行">
+  <meta name="description" content="在这篇文章中，我将展示如何在 CentOS/RHEL 7、Debian 以及它的衍生版本比如 Ubuntu（最新的 Ubuntu 16.04 LTS 版本已经安装了最新的 Python 版本）或 Linux Mint 上安装和使用 Python 3.x 。我们的重点是安装可用于命令行的核心语言工具。">
   <meta property="og:type" content="article">
   <meta property="og:title" content="如何在 Linux 中安装最新的 Python 3.6 版本">
   <meta property="og:url" content="http://ucasfl.me/2017/03/19/How-to-Install-Latest-Python3.6-in-Linux/index.html">
   <meta property="og:site_name" content="春暖花开">
-  <meta property="og:description" content="在这篇文章中，我将展示如何在 CentOS/RHEL 7、Debian 以及它的衍生版本比如 Ubuntu（最新的 Ubuntu 16.04 LTS 版本已经安装了最新的 Python 版本）或 Linux Mint 上安装和使用 Python 3.x 。我们的重点是安装可用于命令行的核心语言工具。
-然后，我们也会阐述如何安装 Python IDLE － 一个基于 GUI 的工具，它允许我们运行">
+  <meta property="og:description" content="在这篇文章中，我将展示如何在 CentOS/RHEL 7、Debian 以及它的衍生版本比如 Ubuntu（最新的 Ubuntu 16.04 LTS 版本已经安装了最新的 Python 版本）或 Linux Mint 上安装和使用 Python 3.x 。我们的重点是安装可用于命令行的核心语言工具。">
   <meta property="og:image" content="http://www.tecmint.com/wp-content/uploads/2017/03/Check-Python-Version-in-Linux.png">
-  <meta property="og:updated_time" content="2017-11-05T11:26:48.691Z">
+  <meta property="og:updated_time" content="2017-11-06T06:09:24.771Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="如何在 Linux 中安装最新的 Python 3.6 版本">
-  <meta name="twitter:description" content="在这篇文章中，我将展示如何在 CentOS/RHEL 7、Debian 以及它的衍生版本比如 Ubuntu（最新的 Ubuntu 16.04 LTS 版本已经安装了最新的 Python 版本）或 Linux Mint 上安装和使用 Python 3.x 。我们的重点是安装可用于命令行的核心语言工具。
-然后，我们也会阐述如何安装 Python IDLE － 一个基于 GUI 的工具，它允许我们运行">
+  <meta name="twitter:description" content="在这篇文章中，我将展示如何在 CentOS/RHEL 7、Debian 以及它的衍生版本比如 Ubuntu（最新的 Ubuntu 16.04 LTS 版本已经安装了最新的 Python 版本）或 Linux Mint 上安装和使用 Python 3.x 。我们的重点是安装可用于命令行的核心语言工具。">
   <meta name="twitter:image" content="http://www.tecmint.com/wp-content/uploads/2017/03/Check-Python-Version-in-Linux.png">
 
 
@@ -406,13 +403,13 @@
 
 
                   <p>在这篇文章中，我将展示如何在 CentOS/RHEL 7、Debian 以及它的衍生版本比如 Ubuntu（最新的 Ubuntu 16.04 LTS 版本已经安装了最新的 Python 版本）或 Linux Mint 上安装和使用 Python 3.x 。我们的重点是安装可用于命令行的核心语言工具。</p>
+                  <a id="more"></a>
                   <p>然后，我们也会阐述如何安装 Python IDLE － 一个基于 GUI 的工具，它允许我们运行 Python 代码和创建独立函数。</p>
                   <h3 id="在-Linux-中安装-Python-3-6"><a href="#在-Linux-中安装-Python-3-6" class="headerlink" title="在 Linux 中安装 Python 3.6"></a>在 Linux 中安装 Python 3.6</h3>
                   <p>在我写这篇文章的时候（2017 年三月中旬），在 CentOS 和 Debian 8 中可用的最新 Python 版本分别是 Python 3.4 和 Python 3.5 。</p>
                   <p>虽然我们可以使用 <a href="http://www.tecmint.com/20-linux-yum-yellowdog-updater-modified-commands-for-package-mangement/" target="_blank" rel="external">yum</a> 和 <a href="http://www.tecmint.com/linux-package-management/" target="_blank" rel="external">aptitude</a>（或
                     <a href="http://www.tecmint.com/useful-basic-commands-of-apt-get-and-apt-cache-for-package-management/" target="_blank" rel="external">apt-get</a>）安装核心安装包以及它们的依赖，但在这儿，我将阐述如何使用源代码进行安装。</p>
                   <p>为什么？理由很简单：这样我们能够获取语言的最新的稳定发行版（3.6），并且提供了一种和 Linux 版本无关的安装方法。</p>
-                  <a id="more"></a>
                   <p>在 CentOS 7 中安装 Python 之前，请确保系统中已经有了所有必要的开发依赖：</p>
                   <figure class="highlight vala">
                     <table>
@@ -514,10 +511,6 @@
                   <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
                   <p>在这篇文章中，我们阐述了如何从源代码安装最新的 Python 稳定版本。</p>
                   <p>最后但不是不重要，如果你之前使用 Python 2，那么你可能需要看一下 <a href="https://docs.python.org/3.6/library/2to3.html" target="_blank" rel="external">从 Python 2 迁移到 Python 3 的官方文档</a>。这是一个可以读入 Python 2 代码，然后转化为有效的 Python 3 代码的程序。</p>
-                  <p>你有任何关于这篇文章的问题或想法吗？请使用下面的评论栏与我们联系</p>
-                  <hr>
-                  <p>作者简介：</p>
-                  <p>Gabriel Cánepa - 一位来自阿根廷圣路易斯梅塞德斯镇 (Villa Mercedes, San Luis, Argentina) 的 GNU/Linux 系统管理员，Web 开发者。就职于一家世界领先级的消费品公司，乐于在每天的工作中能使用 FOSS 工具来提高生产力。</p>
                   <hr>
                   <p>via: <a href="http://www.tecmint.com/install-python-in-linux/" target="_blank" rel="external">http://www.tecmint.com/install-python-in-linux/</a></p>
                   <p>作者：<a href="http://www.tecmint.com/author/gacanepa/" target="_blank" rel="external">Gabriel Cánepa</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank"
@@ -700,7 +693,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -709,7 +702,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -718,7 +711,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

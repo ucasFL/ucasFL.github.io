@@ -70,9 +70,7 @@
   若相等,继续逐个比较后续字符;
   若不等,则从主串 S 的 (pos+1) 字符起,重新与 P 第 1 个字符比较。
 
-直到主串 S 的一个连续子串字符序列与模式串 P 相等。这时匹配成功,返回 S 与 P匹配的子序列第一个字符的序号,否则,匹配失败,返回值 0 。
-KMP 算法
-每当一趟匹配过">
+直到主串 S 的一个连续子串字符序列与模式串 P 相等。这时匹配成功,返回 S 与 P匹配的子序列第一个字符的序号,否则,匹配失败,返回值 0 。">
   <meta property="og:type" content="article">
   <meta property="og:title" content="串 - Part 2">
   <meta property="og:url" content="http://ucasfl.me/2017/03/27/String-Part2/index.html">
@@ -83,10 +81,8 @@ KMP 算法
   若相等,继续逐个比较后续字符;
   若不等,则从主串 S 的 (pos+1) 字符起,重新与 P 第 1 个字符比较。
 
-直到主串 S 的一个连续子串字符序列与模式串 P 相等。这时匹配成功,返回 S 与 P匹配的子序列第一个字符的序号,否则,匹配失败,返回值 0 。
-KMP 算法
-每当一趟匹配过">
-  <meta property="og:updated_time" content="2017-11-05T11:34:39.794Z">
+直到主串 S 的一个连续子串字符序列与模式串 P 相等。这时匹配成功,返回 S 与 P匹配的子序列第一个字符的序号,否则,匹配失败,返回值 0 。">
+  <meta property="og:updated_time" content="2017-11-06T09:14:07.382Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="串 - Part 2">
   <meta name="twitter:description" content="Brute-force 算法
@@ -95,9 +91,7 @@ KMP 算法
   若相等,继续逐个比较后续字符;
   若不等,则从主串 S 的 (pos+1) 字符起,重新与 P 第 1 个字符比较。
 
-直到主串 S 的一个连续子串字符序列与模式串 P 相等。这时匹配成功,返回 S 与 P匹配的子序列第一个字符的序号,否则,匹配失败,返回值 0 。
-KMP 算法
-每当一趟匹配过">
+直到主串 S 的一个连续子串字符序列与模式串 P 相等。这时匹配成功,返回 S 与 P匹配的子序列第一个字符的序号,否则,匹配失败,返回值 0 。">
 
 
 
@@ -431,6 +425,7 @@ KMP 算法
                     <li>若不等,则从主串 S 的 (pos+1) 字符起,重新与 P 第 1 个字符比较。</li>
                   </ul>
                   <p>直到主串 S 的一个连续子串字符序列与模式串 P 相等。这时匹配成功,返回 S 与 P匹配的子序列第一个字符的序号,否则,匹配失败,返回值 0 。</p>
+                  <a id="more"></a>
                   <h3 id="KMP-算法"><a href="#KMP-算法" class="headerlink" title="KMP 算法"></a>KMP 算法</h3>
                   <p>每当一趟匹配过程中出现字符比较不相等时,不回溯主串指针,而是将模式串向右滑动恰当位置,继续比较。</p>
                   <ul>
@@ -439,7 +434,6 @@ KMP 算法
                     <li>提高了模式匹配效率</li>
                     <li>令主串的长度是 n ,模式串的长度是 m ,则算法的时间复杂度: O(m+n)</li>
                   </ul>
-                  <a id="more"></a>
                   <h4 id="引入-next-数组-next-特征向量"><a href="#引入-next-数组-next-特征向量" class="headerlink" title="引入 next 数组/next 特征向量"></a>引入 next 数组/next 特征向量</h4>
                   <ul>
                     <li>
@@ -449,11 +443,11 @@ KMP 算法
                       <p>当模式串 P 中第 j 个字符与主串 S 中相应字符失配时,在下一次匹配中,模式串 P 应当由 next[j] 位置的字符与主串中刚失配的字符重新继续进行比较；</p>
                     </li>
                   </ul>
-                  <p>$next $数组的定义 / 给定模式串 P：<br>设模式串 $P = p_0 p<em>1 … p</em>{m-2} p_{m-1}$<br>• 令 $$SetX={0&lt;k&lt;j | P[0..k) = P[j-k .. j)}$<br>• $ext[j] = max (SetX)</p>
+                  <p>$next $数组的定义 / 给定模式串 P：<br>设模式串 $P = p_0 p<em>1 … p</em>{m-2} p_{m-1}$<br>• 令 <code>SetX={0&lt;k&lt;j | P[0..k) = P[j-k .. j)}</code><br>• <code>ext[j] = max (SetX)</code></p>
                   <p>令 next[j] = k ,表示在模式串 P 的 P[0,j) 中,自匹配的真前缀和真后缀最大长度为 k：<br>那么, next[j+1]= ?分两种情况:</p>
                   <ul>
-                    <li>情况 1 :当 $P[j] = P[k] , next[j+1] = next[j]+1$，即$next[j+1]=k+1$；</li>
-                    <li>情况 2 :当 P[j] ≠ P[k] ,next[j+1] 等于 在$ P[0..next[j]) $的真前缀与 P[0..j+1) 中真后缀匹配的最大长度，即 $next[j+1]=next[…next[j]…] +1$；</li>
+                    <li>情况 1 :当 <code>P[j] = P[k] , next[j+1] = next[j]+1</code>，即<code>next[j+1]=k+1</code>；</li>
+                    <li>情况 2 :当 P[j] ≠ P[k] ,next[j+1] 等于 在<code>P[0..next[j])</code>的真前缀与 P[0..j+1) 中真后缀匹配的最大长度，即 <code>next[j+1]=next[...next[j]...] +1</code>；</li>
                   </ul>
                   <h3 id="C-语言实现"><a href="#C-语言实现" class="headerlink" title="C 语言实现"></a>C 语言实现</h3>
                   <figure class="highlight hsp">
@@ -674,7 +668,7 @@ KMP 算法
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -683,7 +677,7 @@ KMP 算法
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -692,7 +686,7 @@ KMP 算法
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

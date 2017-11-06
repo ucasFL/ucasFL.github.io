@@ -64,22 +64,16 @@
 
 
 
-  <meta name="description" content="gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。
-在这个系列的文章中，我们集中于一些不常用但是很有用的 gcc 命令行选项，在第一节已经讲到几个这样的命令行选项。
-不知道你是否能够回想起，在这个系列">
+  <meta name="description" content="gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。">
   <meta property="og:type" content="article">
   <meta property="og:title" content="不常见但是很有用的 GCC 命令行选项（二）">
   <meta property="og:url" content="http://ucasfl.me/2016/12/13/Uncomman-But-Useful-gcc-Command-Line-Options-2/index.html">
   <meta property="og:site_name" content="春暖花开">
-  <meta property="og:description" content="gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。
-在这个系列的文章中，我们集中于一些不常用但是很有用的 gcc 命令行选项，在第一节已经讲到几个这样的命令行选项。
-不知道你是否能够回想起，在这个系列">
-  <meta property="og:updated_time" content="2017-11-05T11:37:03.818Z">
+  <meta property="og:description" content="gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。">
+  <meta property="og:updated_time" content="2017-11-06T09:21:24.689Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="不常见但是很有用的 GCC 命令行选项（二）">
-  <meta name="twitter:description" content="gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。
-在这个系列的文章中，我们集中于一些不常用但是很有用的 gcc 命令行选项，在第一节已经讲到几个这样的命令行选项。
-不知道你是否能够回想起，在这个系列">
+  <meta name="twitter:description" content="gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。">
 
 
 
@@ -407,11 +401,11 @@
 
 
                   <p>gcc 编译器提供了几乎数不清的命令行选项列表。当然，没有人会使用过或者精通它所有的命令行选项，但是有一些命令行选项是每一个 gcc 用户都应该知道的 - 即使不是必须知道。它们中有一些很常用，其他一些不太常用，但不常用并不意味着它们的用处没前者大。</p>
+                  <a id="more"></a>
                   <p>在这个系列的文章中，我们集中于一些不常用但是很有用的 gcc 命令行选项，在<a href="https://linux.cn/article-8025-1.html" target="_blank" rel="external">第一节</a>已经讲到几个这样的命令行选项。</p>
                   <p>不知道你是否能够回想起，在这个系列教程的第一部分的开始，我简要的提到了开发者们通常用来生成警告的 <code>-Wall</code> 选项，并不包括一些特殊的警告。如果你不了解这些特殊警告，并且不知道如何生成它们，不用担心，我将在这篇文章中详细讲解关于它们所有的细节。</p>
                   <p>除此以外，这篇文章也将涉及与浮点值相关的 gcc 警告选项，以及在 gcc 命令行选项列表变得很大的时候如何更好的管理它们。</p>
                   <p>在继续之前，请记住，这个教程中的所有例子、命令和指令都已在 Ubuntu 16.04 LTS 操作系统和 gcc 5.4.0 上测试过。</p>
-                  <a id="more"></a>
                   <h3 id="生成-Wall-选项不包括的警告"><a href="#生成-Wall-选项不包括的警告" class="headerlink" title="生成 -Wall 选项不包括的警告"></a>生成 -Wall 选项不包括的警告</h3>
                   <p>尽管 gcc 编译器的 <code>-Wall</code> 选项涵盖了绝大多数警告标记，依然有一些警告不能生成。为了生成它们，请使用 <code>-Wextra</code> 选项。</p>
                   <p>比如，下面的代码：</p>
@@ -657,8 +651,8 @@
                   <div class="post-nav">
                     <div class="post-nav-next post-nav-item">
 
-                      <a href="/2016/12/06/Install-Patch-or-Auto-Update-in-CentOS-and-RHEL/" rel="next" title="在 CentOS 和 RHEL 系统上安装安全补丁或自动更新">
-                <i class="fa fa-chevron-left"></i> 在 CentOS 和 RHEL 系统上安装安全补丁或自动更新
+                      <a href="/2016/11/21/How-to-Recover-a-Deleted-File-in-Linux/" rel="next" title="如何在 Linux 中恢复一个删除了的文件">
+                <i class="fa fa-chevron-left"></i> 如何在 Linux 中恢复一个删除了的文件
               </a>
 
                     </div>
@@ -781,7 +775,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -790,7 +784,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -799,7 +793,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

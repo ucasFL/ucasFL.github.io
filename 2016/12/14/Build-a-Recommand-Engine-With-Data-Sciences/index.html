@@ -69,10 +69,7 @@
   图数据库推荐基础
   社会化推荐
   相似性推荐
-  集群推荐
-
-今天我们将要讨论的内容是数据科学和图推荐（graph recommendations）：
-我在 Neo4j 任职已经两年了，但实际上我已经使用 Neo4j 和 Cypher 工作三年">
+  集群推荐">
   <meta property="og:type" content="article">
   <meta property="og:title" content="用数据科学搭建一个实时推荐引擎">
   <meta property="og:url" content="http://ucasfl.me/2016/12/14/Build-a-Recommand-Engine-With-Data-Sciences/index.html">
@@ -82,10 +79,7 @@
   图数据库推荐基础
   社会化推荐
   相似性推荐
-  集群推荐
-
-今天我们将要讨论的内容是数据科学和图推荐（graph recommendations）：
-我在 Neo4j 任职已经两年了，但实际上我已经使用 Neo4j 和 Cypher 工作三年">
+  集群推荐">
   <meta property="og:image" content="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816214938/recommendation-engine-data-science-nicole-white-graphconnect-768x432.png">
   <meta property="og:image" content="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215426/food-drink-real-time-recommendation-engine-parameters-768x208.png">
   <meta property="og:image" content="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816215537/cypher-query-dfw-food-drink-real-time-recommendations-768x364.png">
@@ -109,7 +103,7 @@
   <meta property="og:image" content="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816221913/clustering-recommendation-engine-data-model-768x401.png">
   <meta property="og:image" content="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816222009/clustering-recommendation-engine-parameters-768x259.png">
   <meta property="og:image" content="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816222045/cluster-recommendation-engine-cypher-query-example-768x385.png">
-  <meta property="og:updated_time" content="2017-11-05T11:21:24.872Z">
+  <meta property="og:updated_time" content="2017-11-06T06:12:56.783Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="用数据科学搭建一个实时推荐引擎">
   <meta name="twitter:description" content="编者注：本文是 2016 年 4 月 Nicole Whilte 在欧洲 GraphConnect 时所作。这儿我们快速回顾一下她所涉及的内容：
@@ -117,10 +111,7 @@
   图数据库推荐基础
   社会化推荐
   相似性推荐
-  集群推荐
-
-今天我们将要讨论的内容是数据科学和图推荐（graph recommendations）：
-我在 Neo4j 任职已经两年了，但实际上我已经使用 Neo4j 和 Cypher 工作三年">
+  集群推荐">
   <meta name="twitter:image" content="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816214938/recommendation-engine-data-science-nicole-white-graphconnect-768x432.png">
 
 
@@ -455,12 +446,12 @@
                     <li>相似性推荐</li>
                     <li>集群推荐</li>
                   </ul>
+                  <a id="more"></a>
                   <p>今天我们将要讨论的内容是数据科学和图推荐（graph recommendations）：</p>
                   <p>我在 <a href="http://neo4j.com/product/" target="_blank" rel="external">Neo4j</a> 任职已经两年了，但实际上我已经使用 Neo4j 和 <a href="http://neo4j.com/blog/why-database-query-language-matters/#cypher" target="_blank" rel="external">Cypher</a> 工作三年了。当我首次发现这个特别的图数据库（graph
                     database）的时候，我还是一个研究生，那时候我在奥斯丁的德克萨斯大学攻读关于社交网络的统计学硕士学位。</p>
                   <p><a href="https://neo4j.com/use-cases/real-time-recommendation-engine/" target="_blank" rel="external">实时推荐引擎</a>是 Neo4j 中最广泛的用途之一，也是使它如此强大并且容易使用的原因之一。为了探索这个东西，我将通过使用示例数据集来阐述如何将统计学方法并入这些引擎中。</p>
                   <p>第一个很简单 - 将 Cypher 用于社交推荐。接下来，我们将看一看相似性推荐，这涉及到可被计算的相似性度量，最后探索的是集群推荐。</p>
-                  <a id="more"></a>
                   <h3 id="图数据库推荐基础"><a href="#图数据库推荐基础" class="headerlink" title="图数据库推荐基础"></a>图数据库推荐基础</h3>
                   <p>下面的数据集包含所有达拉斯 Fort Worth 国际机场的餐饮场所，达拉斯 Fort Worth 国际机场是美国主要的机场枢纽之一：</p>
                   <p><img src="https://s3.amazonaws.com/dev.assets.neo4j.com/wp-content/uploads/20160816214938/recommendation-engine-data-science-nicole-white-graphconnect-768x432.png" alt=""></p>
@@ -607,7 +598,7 @@
 
                     <div class="post-nav-prev post-nav-item">
 
-                      <a href="/2016/12/18/Hexo-Blog-Build-with-GitHub/" rel="prev" title="个人博客搭建：GitHub+Hexo">
+                      <a href="/2016/12/18/Deploy-Blog-with-Hexo-and-GitHub-Pages/" rel="prev" title="个人博客搭建：GitHub+Hexo">
                 个人博客搭建：GitHub+Hexo <i class="fa fa-chevron-right"></i>
               </a>
 
@@ -721,7 +712,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -730,7 +721,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -739,7 +730,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

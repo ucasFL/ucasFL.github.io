@@ -411,17 +411,6 @@
                     <li>Solution: 平衡二叉排序树 (Balanced Binary Sort Tree) ,由 Adelson-Velskii 和 Landis于 1962 年提出的,故称 AVL 树</li>
                     <li>变种:红黑树,树堆,伸展树</li>
                   </ul>
-                  <p><strong>基本概念</strong></p>
-                  <p>平衡二叉树 (Balanced Binary Tree 或 Height-Balanced Tree) 或者是空树,或者是满足下列性质的二叉树</p>
-                  <ul>
-                    <li>左子树和右子树深度之差的绝对值不大于 1</li>
-                    <li>左子树和右子树也都是平衡二叉树</li>
-                  </ul>
-                  <p>结点的平衡因子 (Balance Factor) :该结点的右子树的深度减去其左子树深度</p>
-                  <ul>
-                    <li>平衡二叉树上每个结点的平衡因子只可能是 1 、 0和 -1</li>
-                    <li>平衡二叉排序树 (Balanced Binary Sort Tree) :一棵二叉树既是二叉排序树又是平衡二叉树</li>
-                  </ul>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/08/07/Find-and-Search-Part2/#more" rel="contents">
@@ -585,23 +574,6 @@
                     <li>关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素</li>
                   </ul>
                   <p>– 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字<br>– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字</p>
-                  <h4 id="关键字类型"><a href="#关键字类型" class="headerlink" title="关键字类型"></a>关键字类型</h4>
-                  <ul>
-                    <li>数据元素的关键字:其类型通常是可以进行比较运算的类型</li>
-                    <li>典型的关键字类型</li>
-                  </ul>
-                  <figure class="highlight c">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">float</span> KeyType ;</div><div class="line"><span class="comment">// 实型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> KeyType ; <span class="comment">// 整型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> KeyType ; <span class="comment">// 字符串型</span></div><div class="line">• 数据元素类型</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> RecType &#123;</div><div class="line">KeyType key ; <span class="comment">// 关键字域</span></div><div class="line">... ... <span class="comment">// 其他域</span></div><div class="line">&#125; ElemType;</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/08/05/Find-and-Search-Part1/#more" rel="contents">
@@ -1281,7 +1253,7 @@
 
                   <h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3>
                   <p>静态变量的关键字为 <code>static</code> ，采用静态存储方式，一般的声明如：</p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -1293,14 +1265,6 @@
                       </tr>
                     </table>
                   </figure>
-                  <p>静态变量的一些特点：</p>
-                  <ul>
-                    <li><strong>静态局部变量在函数内定义，但不像自动变量那样，当调用时就存在，退出函数时就消失。静态局部变量始终存在着，也就是说它的生存期为整个源程序。</strong></li>
-                    <li><strong>静态局部变量的生存期虽然为整个源程序，但是其作用域仍与自动变量相同，即只能在定义该变量的函数内使用该变量。退出该函数后， 尽管该变量还继续存在，但不能使用它。</strong></li>
-                    <li>允许对构造类静态局部量赋初值。若未赋以初值，则由系统自动赋值。数值型变量自动赋初值0，字符型变量赋空字符。</li>
-                    <li>对基本类型的静态局部变量若在说明时未赋以初值，则系统自动赋予0值。而对自动变量不赋初值，则其值是不定的。 根据静态局部变量的特点， 可以看出它是一种生存期为整个源文件的量。<strong>虽然离开定义它的函数后不能使用，但如再次调用定义它的函数时，它又可继续使用， 而且保存了前次被调用后留下的值。</strong> 因此，当多次调用一个函数且要求在调用之间保留某些变量的值时，可考虑采用静态局部变量。</li>
-                  </ul>
-                  <p>尽管如此，全局静态变量和局部静态变量还有一些区别。</p>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/06/19/The-Static-Variables-in-C/#more" rel="contents">
@@ -1625,22 +1589,6 @@
 
                   <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
                   <p>今天中午正在吃饭，一位外校的学妹突然发微信问关于 <code>Python</code> 的编程题，其实很简单，但中间却出了一些意料不到的差错。</p>
-                  <h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3>
-                  <p>学妹问的其中一个题是利用 <code>random</code> 函数连续取 100 个随机数，统计其中小于 0.2 的随机数个数。这题很简单，毕竟该学妹并不是计算机系的，所以不会也算正常吧。</p>
-                  <p>我们知道，<code>random</code> 函数是 Python 内建的 <code>random</code> 模块中的一个函数，可直接调用该模块来用。它能够产生区间 0~1 之间的随机数。</p>
-                  <p>下面是我写的代码：</p>
-                  <figure class="highlight python">
-                    <table>
-                      <tr>
-                        <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre>
-                        </td>
-                        <td class="code">
-                          <pre><div class="line"><span class="comment">#!/home/fenglv/FILE/anaconda2/bin/python</span></div><div class="line"><span class="keyword">import</span> random <span class="keyword">as</span> rd</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">less</span><span class="params">()</span>:</span></div><div class="line">    num = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">        value = rd.random()</div><div class="line">        <span class="keyword">if</span> value &lt; <span class="number">0.2</span>:</div><div class="line">            num += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> num</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">print</span> less()</div></pre>
-                        </td>
-                      </tr>
-                    </table>
-                  </figure>
                   <!--noindex-->
                   <div class="post-button text-center">
                     <a class="btn" href="/2017/06/18/Name-Conflict-in-Python/#more" rel="contents">
@@ -1683,7 +1631,7 @@
             <nav class="pagination">
               <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a>
               <span
-                class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+                class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
             </nav>
 
 
@@ -1727,7 +1675,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -1736,7 +1684,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -1745,7 +1693,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

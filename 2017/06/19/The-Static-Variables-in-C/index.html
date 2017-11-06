@@ -73,14 +73,7 @@
         1
       
       
-        static int a;//a 为一个静态变量
-      
-    
-  
-
-静态变量的一些特点：
-
-  静态局部变量在函数内定义，但不像自动变量那样，当调用时就存在，退出函数时就消失。静态局部变量始终存在着，也就是说它">
+        static int a;//a 为一个静态变量">
   <meta property="og:type" content="article">
   <meta property="og:title" content="C 语言中的静态变量">
   <meta property="og:url" content="http://ucasfl.me/2017/06/19/The-Static-Variables-in-C/index.html">
@@ -94,15 +87,8 @@
         1
       
       
-        static int a;//a 为一个静态变量
-      
-    
-  
-
-静态变量的一些特点：
-
-  静态局部变量在函数内定义，但不像自动变量那样，当调用时就存在，退出函数时就消失。静态局部变量始终存在着，也就是说它">
-  <meta property="og:updated_time" content="2017-11-05T11:36:27.846Z">
+        static int a;//a 为一个静态变量">
+  <meta property="og:updated_time" content="2017-11-06T06:38:00.137Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="C 语言中的静态变量">
   <meta name="twitter:description" content="静态变量
@@ -114,14 +100,7 @@
         1
       
       
-        static int a;//a 为一个静态变量
-      
-    
-  
-
-静态变量的一些特点：
-
-  静态局部变量在函数内定义，但不像自动变量那样，当调用时就存在，退出函数时就消失。静态局部变量始终存在着，也就是说它">
+        static int a;//a 为一个静态变量">
 
 
 
@@ -450,7 +429,7 @@
 
                   <h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3>
                   <p>静态变量的关键字为 <code>static</code> ，采用静态存储方式，一般的声明如：</p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -462,6 +441,7 @@
                       </tr>
                     </table>
                   </figure>
+                  <a id="more"></a>
                   <p>静态变量的一些特点：</p>
                   <ul>
                     <li><strong>静态局部变量在函数内定义，但不像自动变量那样，当调用时就存在，退出函数时就消失。静态局部变量始终存在着，也就是说它的生存期为整个源程序。</strong></li>
@@ -470,7 +450,6 @@
                     <li>对基本类型的静态局部变量若在说明时未赋以初值，则系统自动赋予0值。而对自动变量不赋初值，则其值是不定的。 根据静态局部变量的特点， 可以看出它是一种生存期为整个源文件的量。<strong>虽然离开定义它的函数后不能使用，但如再次调用定义它的函数时，它又可继续使用， 而且保存了前次被调用后留下的值。</strong> 因此，当多次调用一个函数且要求在调用之间保留某些变量的值时，可考虑采用静态局部变量。</li>
                   </ul>
                   <p>尽管如此，全局静态变量和局部静态变量还有一些区别。</p>
-                  <a id="more"></a>
                   <h3 id="全局静态变量"><a href="#全局静态变量" class="headerlink" title="全局静态变量"></a>全局静态变量</h3>
                   <p>尽管全局静态变量的生命周期为整个源程序，<strong>但是，当一个源程序由多个源文件组成时，非静态的全局变量在各个源文件中都是有效的。 而静态全局变量则限制了其作用域， 即只在定义该变量的源文件内有效， 在同一源程序的其它源文件中不能使用它。</strong></p>
                   <h3 id="局部静态变量"><a href="#局部静态变量" class="headerlink" title="局部静态变量"></a>局部静态变量</h3>
@@ -478,28 +457,28 @@
                   <p><strong>如果在一个递归函数中，当递归调用时，需要静态变量保存之前的值，而每次在主函数中调用该递归函数，都需要将该静态变量赋一个固定的初值，那么可以多加一个参数来实现。</strong></p>
                   <p>下面是一个例子。通过中序遍历一个平衡二叉排序树来获取一个递增序列，将该序列存于一个数组中，并得到数组的最后一个元素下标。</p>
                   <p>第一种实现：</p>
-                  <figure class="highlight c">
+                  <figure class="highlight processing">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last)</span></span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, key, last, ++ restore))&#123;</div><div class="line">			key[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, key, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div></pre>
+                          <pre><div class="line"><span class="built_in">int</span> inorder(BiTree T, <span class="built_in">int</span> <span class="built_in">key</span>[], <span class="built_in">int</span> *last)&#123;</div><div class="line">	<span class="keyword">static</span> <span class="built_in">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, <span class="built_in">key</span>, last, ++ restore))&#123;</div><div class="line">			<span class="built_in">key</span>[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, <span class="built_in">key</span>, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
                   <p><strong>如果在主函数中，该函数仅调用一次，那么像这样写没有任何问题。但是，如果主函数中多次调用了该递归函数，那么之后的调用 <code>i</code> 的初值遍不是 0 ，而这儿我们需要在是 0 ，当每次在主函数中调用时。</strong></p>
                   <p>我们可以通过添加一个参数来保证每次在主函数中调用该递归函数时，<code>i</code> 的初值均为 0：</p>
-                  <figure class="highlight c">
+                  <figure class="highlight processing">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">inorder</span><span class="params">(BiTree T, <span class="keyword">int</span> key[], <span class="keyword">int</span> *last, <span class="keyword">int</span> restore)</span></span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (!restore)</div><div class="line">	  i = <span class="number">0</span>;<span class="comment">//when everytime call the function in main function, restore i to zero</span></div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, key, last, ++ restore))&#123;</div><div class="line">			key[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, key, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div></pre>
+                          <pre><div class="line"><span class="built_in">int</span> inorder(BiTree T, <span class="built_in">int</span> <span class="built_in">key</span>[], <span class="built_in">int</span> *last, <span class="built_in">int</span> restore)&#123;</div><div class="line">	<span class="keyword">static</span> <span class="built_in">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (!restore)</div><div class="line">	  i = <span class="number">0</span>;<span class="comment">//when everytime call the function in main function, restore i to zero</span></div><div class="line">	<span class="keyword">if</span>(!T)</div><div class="line">	  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (inorder(T-&gt;lchild, <span class="built_in">key</span>, last, ++ restore))&#123;</div><div class="line">			<span class="built_in">key</span>[i++] = T-&gt;data;<span class="comment">//get array list</span></div><div class="line">			<span class="keyword">if</span> (inorder(T-&gt;rchild, <span class="built_in">key</span>, last, ++ restore))&#123;</div><div class="line">				*last = i - <span class="number">1</span>;<span class="comment">// get the length-1 of list</span></div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//inorder</span></div></pre>
                         </td>
                       </tr>
                     </table>
@@ -682,7 +661,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -691,7 +670,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -700,7 +679,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

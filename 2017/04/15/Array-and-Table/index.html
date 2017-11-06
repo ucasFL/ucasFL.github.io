@@ -72,7 +72,7 @@
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="数组的类型定义　
 数组是几乎所有程序设计语言都设定为固有类型的一种数据类型。从线性结构看,数组类型可以看作是数据元素本身还是线性结构的一个数据结构。">
-  <meta property="og:updated_time" content="2017-11-05T11:20:59.677Z">
+  <meta property="og:updated_time" content="2017-11-06T06:36:44.913Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="数组和广义表">
   <meta name="twitter:description" content="数组的类型定义　
@@ -406,11 +406,11 @@
                   <h3 id="数组的类型定义"><a href="#数组的类型定义" class="headerlink" title="数组的类型定义　"></a>数组的类型定义　</h3>
                   <p>数组是几乎所有程序设计语言都设定为固有类型的一种数据类型。从线性结构看,数组类型可以看作是数据元素本身还是线性结构的一个数据结构。</p>
                   <a id="more"></a>
-                  <p>n 维数组的特点是每一个数据元素受 n 个线性关系的约束,可以有多个直接前驱和多个直接后继 ;</p>
+                  <p><code>n</code> 维数组的特点是每一个数据元素受 <code>n</code> 个线性关系的约束,可以有多个直接前驱和多个直接后继 ;</p>
                   <p>数组元素的下标一般具有固定的下界和上界,因此它比其他复杂的非线性结构简单。</p>
                   <ul>
                     <li>一维数组常被称为向量( Vector )；</li>
-                    <li>二维数组 A[m][n] 可看成是由 m 个行向量组成的向量,也可看成是由 n 个列向量组成的向量；</li>
+                    <li>二维数组 <code>A[m][n]</code> 可看成是由 <code>m</code> 个行向量组成的向量,也可看成是由 <code>n</code> 个列向量组成的向量；</li>
                     <li>一个二维数组类型可以定义为其分量类型为一维数组类型的一维数组类型；</li>
                   </ul>
                   <h3 id="数组的顺序表示和实现："><a href="#数组的顺序表示和实现：" class="headerlink" title="数组的顺序表示和实现："></a>数组的顺序表示和实现：</h3>
@@ -419,7 +419,7 @@
                     <li>以行序为主序；</li>
                     <li>以列序为主序；</li>
                   </ul>
-                  <p>数组元素的存储位置是其下标($j_1 , j_2 , ….j_n$ ) 的线性函数。一旦确定了数组的各维的阶数, $c_i$就是常数。所以存取数组中任一元素的时间相等。我们称具有这一特点的存储结构为随机存储结构。</p>
+                  <p>数组元素的存储位置是其下标<code>(j1 , j2 , ....,jn)</code> 的线性函数。一旦确定了数组的各维的阶数, <code>ci</code> 就是常数。所以存取数组中任一元素的时间相等。我们称具有这一特点的存储结构为随机存储结构。</p>
                   <figure class="highlight zephir">
                     <table>
                       <tr>
@@ -437,15 +437,11 @@
                   <p>假若值相同的元素或者零元素在矩阵中的分布有一定规律,则我们称此类矩阵为特殊矩阵;反之,称为稀疏矩阵。</p>
                   <p>特殊矩阵的压缩存储主要是针对阶数很高的特殊矩阵。为节省存储空间,对可以不存储的元素,如零元素或对称元素,不再存储。</p>
                   <h4 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h4>
-                  <p>对称矩阵中的元素关于主对角线对称, $a<em>{ij} = a</em>{ji} , 0 \le i,j \le n-1$</p>
+                  <p>对称矩阵中的元素关于主对角线对称, <code>aij = aji , 0 &lt;= i,j &lt;= n-1</code>。</p>
                   <p>为节约存储,只存对角线及对角线以上的元素,或者只存对角线或对角线以下的元素。前者称为上三角矩阵,后者称为下三角矩阵。</p>
                   <h4 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h4>
-                  <p>三对角矩阵中除主对角线及在主对角线上 下最临近的两条对角线上的元素外,所有其它元素均为 0 。总共有$3n-2$个非零元素。</p>
-                  <p>在三条对角线上的元素 $a_{ij}$满足$$0 \le i\le n-1, i-1\le j \le i+1$$</p>
-                  <p>在一维数组 B 中 $A[i][j]$ 在第 $i$ 行,它前面有 $3\times i-1$个非零元素 , 在本行中第 $j$ 列前面有 $j-i+1$ 个,所以元素 $A[i][j] $在 B 中位置为$$ k = 2\times i + j$$</p>
-                  <p>若已知三对角矩阵中某元素 $A[i][j]$在数组 $B[ ] $存放于第 $k$ 个位置,则有<br>$$i =\frac{k+1}{3},<br>j = k - 2 \times i$$</p>
+                  <p>三对角矩阵中除主对角线及在主对角线上 下最临近的两条对角线上的元素外,所有其它元素均为<code>0</code> 。总共有 <code>3n - 2</code>个非零元素。</p>
                   <h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3>
-                  <p>假设 $m$ 行 $n$ 列的矩阵含 $t$ 个非零元素,令$$e = \frac{t}{m\times n}$$ 称$e$为稀疏因子,通常认为 $e \le 0.05$ 的矩阵为稀疏矩阵。</p>
                   <p>以常规方法,即以二维数组表示高阶的稀疏矩阵时产生的问题 :</p>
                   <ol>
                     <li>零值元素占了很大空间;</li>
@@ -455,10 +451,9 @@
                   <ol>
                     <li>尽可能少存或不存零值元素 ;</li>
                     <li>尽可能减少没有实际意义的运算 ;</li>
-                    <li>操作方便;即:能尽可能快地找到与下标值 (i, j) 对应的元素 ;能尽可能快地找到同一行或同一列的非零值元。</li>
+                    <li>操作方便;即:能尽可能快地找到与下标值 <code>(i, j)</code> 对应的元素 ;能尽可能快地找到同一行或同一列的非零值元。</li>
                   </ol>
-                  <p>在存储稀疏矩阵时,为节省存储空间,应只存储非零元素。但由于非零元素的分布一般没有规律,故在存储非零元素时,必须记下它所在的行和列的位置 ( i, j ) 。</p>
-                  <p>每一个三元组 $(i, j, a_{ij} )$ 唯一确定了矩阵 A 的一个非零元素。因此,稀疏矩阵可由表示非零元的一系列三元组及其行列数唯一确定。</p>
+                  <p>在存储稀疏矩阵时,为节省存储空间,应只存储非零元素。但由于非零元素的分布一般没有规律,故在存储非零元素时,必须记下它所在的行和列的位置 <code>( i, j )</code> 。</p>
                   <p>基于三元组表示的稀疏矩阵的压缩存储方法:</p>
                   <ul>
                     <li>三元组顺序表；</li>
@@ -480,7 +475,7 @@
                   </figure>
                   <h3 id="行逻辑联接的顺序表"><a href="#行逻辑联接的顺序表" class="headerlink" title="行逻辑联接的顺序表"></a>行逻辑联接的顺序表</h3>
                   <p>三元组顺序表又称有序的双下标法,它的特点是,非零元在表中按行序有序存储,因此便于进行依行顺序处理的矩阵运算。然而,若需随机存取某一行中的非零元,则需从头开始进行查找。</p>
-                  <p>修改前述的稀疏矩阵的结构定义,增加一个数据成员rpos ,指示各行第一个非零元素的位置。</p>
+                  <p>修改前述的稀疏矩阵的结构定义,增加一个数据成员<code>rpos</code> ,指示各行第一个非零元素的位置。</p>
                   <figure class="highlight rust">
                     <table>
                       <tr>
@@ -495,7 +490,7 @@
                   </figure>
                   <h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3>
                   <p>当矩阵的非零元个数和位置在操作中变化较大时 [ 例如矩阵的加法 ] ,就不宜采用顺序存储结构来表示三元组的线性表,而是采用链式存储结构表示三元组的线性表。</p>
-                  <p>每个非零元由一个含 5 个域的节点表示( i , j, e, right, down )：</p>
+                  <p>每个非零元由一个含 <code>5</code>个域的节点表示<code>( i , j, e, right, down )</code>：</p>
                   <figure class="highlight xl">
                     <table>
                       <tr>
@@ -509,13 +504,8 @@
                     </table>
                   </figure>
                   <h3 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h3>
-                  <p>广义表是线性表的推广。</p>
-                  <ul>
-                    <li>广义表是递归定义的线性结构。</li>
-                    <li>广义表是 $n (n \ge 0 )$ 个表元素组成的有限序列,记作$LS (a_1 , a_2 , a_3 , …, a_n )$</li>
-                  </ul>
-                  <p>其中,$LS$ 是表名; $a_i$ 是表元素,可以是广义表(称为子表),也可以是数据元素(称为原子)。$n$ 为表的长度。 $n = 0$ 的广义表为空表。</p>
-                  <p>当 $LS$ 非空时,即 $n &gt; 0$ 时,表的第一个表元素称为广义表的表头( head ), 而其它表元素组成的表称为广义表的表尾( tail )。</p>
+                  <p>广义表是递归定义的线性结构。</p>
+                  <p>当 <code>LS</code> 非空时, 表的第一个表元素称为广义表的表头<code>( head )</code>, 而其它表元素组成的表称为广义表的表尾<code>( tail )</code>。</p>
                   <h3 id="广义表的存储结构"><a href="#广义表的存储结构" class="headerlink" title="广义表的存储结构"></a>广义表的存储结构</h3>
                   <p>广义表的数据元素具有不同的结构,且是一个带深度的层次结构。因此难以用顺序存储结构来存放,而是采用链式存储结构。</p>
                   <p>构造存储结构的两种分析方法 :</p>
@@ -565,17 +555,17 @@
                   <h3 id="广义表操作得递归函数"><a href="#广义表操作得递归函数" class="headerlink" title="广义表操作得递归函数"></a>广义表操作得递归函数</h3>
                   <p>利用递归算法分而治之的思想,递归算法设计中的关键问题是,如何将 一个子问题的解组合成原问题的解。</p>
                   <h4 id="求广义表的深度"><a href="#求广义表的深度" class="headerlink" title="求广义表的深度"></a>求广义表的深度</h4>
-                  <p>将广义表 $LS (a_1 , a_2 , a_3 , …, a_n )$ 分解成 $n$ 个子表,分别 ( 递归 ) 求得每个子表的深度 。</p>
+                  <p>将广义表 <code>LS (a1 , a2 , a3 , ..., an )</code> 分解成 <code>n</code> 个子表,分别 ( 递归 ) 求得每个子表的深度 。</p>
                   <p>广义表的深度 =Max { 子表的深度 } +1</p>
                   <p>DEPTH(LS)的递归定义：</p>
                   <p>基本项</p>
                   <ul>
-                    <li>当 LS 为空表时，DEPTH(LS) = 1;</li>
-                    <li>当 LS 为原子时，DEPTH(LS) = 0;</li>
+                    <li>当 <code>LS</code> 为空表时，<code>DEPTH(LS) = 1</code>;</li>
+                    <li>当 <code>LS</code> 为原子时，<code>DEPTH(LS) = 0</code>;</li>
                   </ul>
                   <p>归纳项</p>
                   <ul>
-                    <li>DEPTH(LS) = 1 + Max{DEPTH(ai)} i = 1,2,…,n</li>
+                    <li><code>DEPTH(LS) = 1 + Max{DEPTH(ai)} i = 1,2,...,n</code></li>
                   </ul>
                   <figure class="highlight arduino">
                     <table>
@@ -594,12 +584,12 @@
                   <p>新的广义表由新的表头和表尾构成。</p>
                   <p>基本项 :</p>
                   <ul>
-                    <li>InitGList(NEWLS) 当LS 为空表</li>
+                    <li><code>InitGList(NEWLS)</code> 当<code>LS</code> 为空表</li>
                   </ul>
                   <p>递归项:</p>
                   <ul>
-                    <li>COPY(表头) { 复制表头 }</li>
-                    <li>COPY(表尾) { 复制表尾 }</li>
+                    <li><code>COPY</code>(表头) { 复制表头 }</li>
+                    <li><code>COPY</code>(表尾) { 复制表尾 }</li>
                   </ul>
                   <figure class="highlight xl">
                     <table>
@@ -679,8 +669,8 @@
                   <div class="post-nav">
                     <div class="post-nav-next post-nav-item">
 
-                      <a href="/2017/04/13/Ubuntu-17.04-Released/" rel="next" title="Ubuntu 17.04（Zesty Zapus）正式发布，可以下载使用了">
-                <i class="fa fa-chevron-left"></i> Ubuntu 17.04（Zesty Zapus）正式发布，可以下载使用了
+                      <a href="/2017/04/12/NMAP-Comman-Scan-Introduction-2/" rel="next" title="NMAP 常用扫描简介（二）">
+                <i class="fa fa-chevron-left"></i> NMAP 常用扫描简介（二）
               </a>
 
                     </div>
@@ -803,7 +793,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -812,7 +802,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -821,7 +811,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

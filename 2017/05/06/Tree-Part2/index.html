@@ -91,7 +91,7 @@
       
         #define MAX_TREE_SIZE 100typedef struct PTNode&amp;#123;//节点结构  TElemType data;　  int parent;//双亲位置域&amp;#125">
   <meta property="og:image" content="http://ucasfl.me/photos/blog11/1.png">
-  <meta property="og:updated_time" content="2017-11-05T11:36:47.810Z">
+  <meta property="og:updated_time" content="2017-11-06T09:21:09.845Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="树-Part2">
   <meta name="twitter:description" content="树与森林
@@ -435,7 +435,7 @@
                   <h3 id="树与森林"><a href="#树与森林" class="headerlink" title="树与森林"></a>树与森林</h3>
                   <p>树的三种存储表示方法：</p>
                   <p>双亲表示法：顺序存储，设置一个指示器指示双亲位置。</p>
-                  <figure class="highlight c">
+                  <figure class="highlight cpp">
                     <table>
                       <tr>
                         <td class="gutter">
@@ -449,14 +449,14 @@
                   </figure>
                   <a id="more"></a>
                   <p>孩子表示法：把每个节点的孩子节点排列起来，看成一个线性表，且以单链表做存储结构。则 n 个节点有 n 个孩子链表，n 个头指针又组成一个线性表。</p>
-                  <figure class="highlight c">
+                  <figure class="highlight objectivec">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> CTNode&#123;</div><div class="line">  <span class="keyword">int</span> child;</div><div class="line">  <span class="keyword">struct</span> CTNode *next;</div><div class="line">&#125;*ChildPtr, CTNode;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</div><div class="line">  TElemType data;+</div><div class="line">  ChildPtr firstchild; <span class="comment">//孩子链表头指针</span></div><div class="line">&#125;CTBox;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</div><div class="line">  CTBox nodes[MAX_TREE_SIZE];</div><div class="line">  <span class="keyword">int</span> n, r;</div><div class="line">&#125;CTree;</div></pre>
+                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="built_in">CTNode</span>&#123;</div><div class="line">  <span class="keyword">int</span> child;</div><div class="line">  <span class="keyword">struct</span> <span class="built_in">CTNode</span> *next;</div><div class="line">&#125;*ChildPtr, <span class="built_in">CTNode</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</div><div class="line">  TElemType data;+</div><div class="line">  ChildPtr firstchild; <span class="comment">//孩子链表头指针</span></div><div class="line">&#125;<span class="built_in">CTBox</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</div><div class="line">  <span class="built_in">CTBox</span> nodes[MAX_TREE_SIZE];</div><div class="line">  <span class="keyword">int</span> n, r;</div><div class="line">&#125;<span class="built_in">CTree</span>;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -466,14 +466,14 @@
                     <li>firstChild 指向该结点的第一个子女结点。无序树时,可任意指定一个结点为第一个女。</li>
                     <li>nextSibling 指向该结点的下一个兄弟。任一结点在存储时总是有顺序的。若想找某结点的所有子女,可先找 firstChild, 再反复用 nextSibling 沿链扫描。</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight thrift">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> CSNode&#123;</div><div class="line">  TElemType data;</div><div class="line">  <span class="keyword">struct</span> CSNode *firstchild, *nextsibling;</div><div class="line">&#125; CSNode, *CSTree;</div></pre>
+                          <pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span></span>&#123;</div><div class="line">  TElemType data;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span> *firstchild, *nextsibling;</span></div><div class="line">&#125; CSNode, *CSTree;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -501,40 +501,40 @@
                     <li>令 S 中每个元素各自形成一个只含单个元素的子集,记为 S1 ,…, Sn。</li>
                     <li>依次扫描 m 个偶对,对每个扫描的偶对( x , y ),判定 x 和 y 所属的子集。假设 x∈Si , y∈Sj ,若 Si≠Sj ,则将 Si并入 Sj 并置 Si 为空(或将 Sj 并入 Si 并置 Sj 为空)。当 m 个偶对都被处理后,S1 , S2 ,… ,Sn 中所有非空子集即为 S 的 R 等价类。</li>
                   </ul>
-                  <figure class="highlight c">
+                  <figure class="highlight zephir">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="comment">//采用树的双亲表示法作为存储结构</span></div><div class="line"><span class="keyword">typedef</span> PTree MFSet; <span class="comment">//PTree 的定义见上面定义</span></div><div class="line"><span class="comment">//查找函数</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">find_mfset</span><span class="params">(MFSet S, <span class="keyword">int</span> i)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>( i &lt; <span class="number">1</span> || i &gt; S.n)</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  <span class="keyword">for</span>(j = i; S.nodes[j].parent &gt; <span class="number">0</span>; j = S.node.parent);</div><div class="line">  <span class="keyword">return</span> j;</div><div class="line">&#125;<span class="comment">//find_mfset</span></div><div class="line"><span class="comment">//归并函数</span></div><div class="line"><span class="function">Status <span class="title">merge_mfset</span><span class="params">(MFSet *S, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</div><div class="line">  <span class="comment">//求并集 Si 并 Sj</span></div><div class="line">  <span class="comment">//S-&gt;node[i]和S-&gt;node[j]为两个不相交的子集 Si, Sj 的根节点</span></div><div class="line">  <span class="keyword">if</span>( i &lt; <span class="number">1</span> || i &gt; S-&gt;n || j &lt; <span class="number">1</span> || j &gt; S-&gt;n)</div><div class="line">     <span class="keyword">return</span> ERROR;</div><div class="line">  S-&gt;node[i]-&gt;parent = j;</div><div class="line">&#125;</div></pre>
+                          <pre><div class="line"><span class="comment">//采用树的双亲表示法作为存储结构</span></div><div class="line">typedef PTree MFSet; <span class="comment">//PTree 的定义见上面定义</span></div><div class="line"><span class="comment">//查找函数</span></div><div class="line"><span class="keyword">int</span> find_mfset(MFSet S, <span class="keyword">int</span> i)&#123;</div><div class="line">  <span class="keyword">if</span>( i &lt; <span class="number">1</span> || i &gt; S.n)</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  <span class="keyword">for</span>(j = i; S.nodes[j].<span class="keyword">parent</span> &gt; <span class="number">0</span>; j = S.node.<span class="keyword">parent</span>);</div><div class="line">  <span class="keyword">return</span> j;</div><div class="line">&#125;<span class="comment">//find_mfset</span></div><div class="line"><span class="comment">//归并函数</span></div><div class="line">Status merge_mfset(MFSet *S, <span class="keyword">int</span> i, <span class="keyword">int</span> j)&#123;</div><div class="line">  <span class="comment">//求并集 Si 并 Sj</span></div><div class="line">  <span class="comment">//S-&gt;node[i]和S-&gt;node[j]为两个不相交的子集 Si, Sj 的根节点</span></div><div class="line">  <span class="keyword">if</span>( i &lt; <span class="number">1</span> || i &gt; S-&gt;n || j &lt; <span class="number">1</span> || j &gt; S-&gt;n)</div><div class="line">     <span class="keyword">return</span> ERROR;</div><div class="line">  S-&gt;node[i]-&gt;parent = j;</div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
                   <p><strong>merge 算法改进：令成员少的指向成员多的，同时，需修改存储结构，令根节点的 parent 域存储子集中所含成员数目的负值。</strong></p>
-                  <figure class="highlight c">
+                  <figure class="highlight crmsh">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">mix_mfset</span><span class="params">(MFset *S, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(i &lt; <span class="number">1</span>|| i &gt; S-&gt;n || j &lt; <span class="number">1</span> || j &gt; S-&gt;n)</div><div class="line">     <span class="keyword">return</span> ERROR;</div><div class="line">  <span class="keyword">if</span>(S-&gt;node[i]-&gt;parent &gt; S-&gt;node[j]-&gt;parent)&#123;</div><div class="line">    <span class="comment">//Si 的成员比 Sj 少</span></div><div class="line">    S-&gt;node[j]-&gt;parent += S-&gt;node[i]-&gt;parent;+</div><div class="line">    S-&gt;node[i]-&gt;parent = j;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    S-&gt;node[i]-&gt;parent += S-&gt;node[j]-&gt;parent;</div><div class="line">    S-&gt;node[j]-&gt;parent = i;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> OK;</div><div class="line">&#125;<span class="comment">//mix_mfset</span></div></pre>
+                          <pre><div class="line">void mix_mfset(MFset *S, int i, int j)&#123;</div><div class="line">  if(i <span class="tag">&lt; 1|| i &gt;</span> S-&gt;n || j <span class="tag">&lt; 1 || j &gt;</span> S-&gt;n)</div><div class="line">     return ERROR;</div><div class="line">  if(S-&gt;<span class="keyword">node</span><span class="title">[i</span>]-&gt;parent &gt; S-&gt;<span class="keyword">node</span><span class="title">[j</span>]-&gt;parent)&#123;</div><div class="line">    //Si 的成员比 Sj 少</div><div class="line">    S-&gt;<span class="keyword">node</span><span class="title">[j</span>]-&gt;parent += S-&gt;<span class="keyword">node</span><span class="title">[i</span>]-&gt;parent;+</div><div class="line">    S-&gt;<span class="keyword">node</span><span class="title">[i</span>]-&gt;parent = j;</div><div class="line">  &#125;</div><div class="line">  else&#123;</div><div class="line">    S-&gt;<span class="keyword">node</span><span class="title">[i</span>]-&gt;parent += S-&gt;<span class="keyword">node</span><span class="title">[j</span>]-&gt;parent;</div><div class="line">    S-&gt;<span class="keyword">node</span><span class="title">[j</span>]-&gt;parent = i;</div><div class="line">  &#125;</div><div class="line">  return OK;</div><div class="line">&#125;//mix_mfset</div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
                   <p>随着子集的依次合并,树的深度不断增大。为改善此种情况,当所需确定的元素 i 不在树的第二层时,可通过 “ 压缩路径 “ 功能缩短元素到达根结点的路径。</p>
-                  <figure class="highlight c">
+                  <figure class="highlight xl">
                     <table>
                       <tr>
                         <td class="gutter">
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fix_mfset</span><span class="params">(MFSet *S, <span class="keyword">int</span> i)</span></span>&#123;</div><div class="line">  <span class="comment">//确定 i 所在子集,将从 i 至根路径上所有结点变为根的孩子结点</span></div><div class="line">  <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;S.n)<span class="keyword">return</span><span class="number">-1</span>; <span class="comment">//i 不是 S 中的任何子集的元素  for(j=i ; S-&gt;nodes[j]-&gt;parent&gt;0 ; j=S-&gt;nodes[j]-&gt;parent);</span></div><div class="line">  <span class="keyword">for</span>(k=i;k !=j;k=t)&#123;</div><div class="line">    t=S-&gt;nodes [ k ]-&gt;parent;</div><div class="line">    S-&gt;nodes [ k ]-&gt;parent=j;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> j;</div><div class="line">&#125;</div></pre>
+                          <pre><div class="line">int fix_mfset(MFSet *S, int i)&#123;</div><div class="line">  <span class="comment">//确定 i 所在子集,将从 i 至根路径上所有结点变为根的孩子结点</span></div><div class="line">  <span class="function"><span class="title">if</span>(i&lt;1 || i&gt;S.n)return-1; //i 不是 S 中的任何子集的元素  <span class="keyword">for</span>(j=i ; S-&gt;</span><span class="function"><span class="title">nodes</span>[j]-&gt;</span><span class="function"><span class="title">parent</span>&gt;0 ; j=S-&gt;</span><span class="function"><span class="title">nodes</span>[j]-&gt;</span>parent);</div><div class="line">  <span class="keyword">for</span>(k=i;k !=j;k=t)&#123;</div><div class="line">    <span class="function"><span class="title">t</span>=S-&gt;</span><span class="function"><span class="title">nodes</span> [ k ]-&gt;</span>parent;</div><div class="line">    S-&gt;<span class="function"><span class="title">nodes</span> [ k ]-&gt;</span>parent=j;</div><div class="line">  &#125;</div><div class="line">  return j;</div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -769,7 +769,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -778,7 +778,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -787,7 +787,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>
