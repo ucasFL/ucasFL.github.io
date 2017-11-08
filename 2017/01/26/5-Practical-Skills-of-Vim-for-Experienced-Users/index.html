@@ -885,17 +885,17 @@ Vim 编辑器提供了很多的特性，要想全部掌握它们很困难。然�
           本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
         </div>
 
-        <div>
-          <span>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>  </span>
-          <span> <script type="text/javascript">  
-document.write('您的IP: ' + returnCitySN["cip"])
-&nbsp;&nbsp;|&nbsp;&nbsp; document.write('您来自: ' +　returnCitySN["cname"])  
-</script></span>
-        </div>
 
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
         </script>
+
+        <div><span>
+ <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
+ <script type="text/javascript">  
+ document.write('您的 IP: ' + returnCitySN["cip"] + ' 您来自: ' + returnCitySN["cname"]);
+</script>
+</span>
+        </div>
 
         <script>
           (function() {
