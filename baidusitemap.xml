@@ -3,8 +3,48 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/11/12/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/</loc>
+    <lastmod>2017-11-12T16:29:22.965Z</lastmod>
+    <data>
+        <display>
+        <title>以图像识别为例 - 使用 Keras 来优化神经网络</title>
+        <pubTime>2017-11-12T04:10:14.000Z</pubTime>
+        
+        <tag>Keras translation </tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine-Learning" url="http://ucasfl.me/categories/Machine-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/</loc>
+    <lastmod>2017-11-12T16:28:55.689Z</lastmod>
+    <data>
+        <display>
+        <title>使用 Tensorflow 实现神经网络</title>
+        <pubTime>2017-11-12T04:09:50.000Z</pubTime>
+        
+        <tag>Tensorflow translation </tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine-Learning" url="http://ucasfl.me/categories/Machine-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/03/20/Recommand-Some-Vim-Plugins-I-use/</loc>
-    <lastmod>2017-11-07T16:28:19.110Z</lastmod>
+    <lastmod>2017-11-12T16:28:38.149Z</lastmod>
     <data>
         <display>
         <title>安利一波正在使用的 Vim 插件和配色</title>

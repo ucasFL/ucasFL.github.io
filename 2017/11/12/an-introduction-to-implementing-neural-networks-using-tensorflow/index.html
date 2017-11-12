@@ -1,0 +1,1691 @@
+<!doctype html>
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tensorflow translation," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+  <meta name="description" content="简介
+If you have been following Data Science / Machine Learning, you just can’t miss the buzz around Deep Learning and Neural Networks. Organizations are looking for people with Deep Learning skills whe">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="使用 Tensorflow 实现神经网络">
+  <meta property="og:url" content="http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="简介
+If you have been following Data Science / Machine Learning, you just can’t miss the buzz around Deep Learning and Neural Networks. Organizations are looking for people with Deep Learning skills whe">
+  <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1-1024x576.jpg">
+  <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif">
+  <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif">
+  <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png">
+  <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one-1024x353.png">
+  <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/8.png">
+  <meta property="og:updated_time" content="2017-11-12T16:28:55.689Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用 Tensorflow 实现神经网络">
+  <meta name="twitter:description" content="简介
+If you have been following Data Science / Machine Learning, you just can’t miss the buzz around Deep Learning and Neural Networks. Organizations are looking for people with Deep Learning skills whe">
+  <meta name="twitter:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1-1024x576.jpg">
+
+
+
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/" />
+
+
+
+
+
+  <title> 使用 Tensorflow 实现神经网络 | 春暖花开 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
+
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">春暖花开</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+            </div>
+
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-tags">
+              <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+            </li>
+
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
+
+        </nav>
+
+
+
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+
+
+            <div id="posts" class="posts-expand">
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
+                <header class="post-header">
+
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    使用 Tensorflow 实现神经网络
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T12:09:50+08:00">
+                2017/11/12
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine-Learning</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+
+
+
+
+                    <span id="/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/" class="leancloud_visitors" data-flag-title="使用 Tensorflow 实现神经网络">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2>
+                  <p>If you have been following Data Science / Machine Learning, you just can’t miss the buzz around Deep Learning and Neural Networks. Organizations are looking for people with Deep Learning skills wherever they can. From running competitions
+                    to open sourcing projects and paying big bonuses, people are trying every possible thing to tap into this limited pool of talent. Self driving engineers are being hunted by the big guns in automobile industry, as the industry stands
+                    on the brink of biggest disruption it faced in last few decades!</p>
+                  <a id="more"></a>
+                  <p>If you are excited by the prospects deep learning has to offer, but have not started your journey yet – I am here to enable it. Starting with this article, I will write a series of articles on deep learning covering the popular Deep
+                    Learning libraries and their hands-on implementation.</p>
+                  <p>In this article, I will introduce TensorFlow to you. After reading this article you will be able to understand application of neural networks and use TensorFlow to solve a real life problem. This article will require you to know the
+                    basics of neural networks and have familiarity with programming. Although the code in this article is in python, I have focused on the concepts and stayed as language-agnostic as possible.</p>
+                  <p>Let’s get started!</p>
+                  <p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1.jpg" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1-1024x576.jpg" alt="TensorFlow"></a></p>
+                  <h2 id="When-to-apply-Neural-Networks"><a href="#When-to-apply-Neural-Networks" class="headerlink" title="When to apply Neural Networks ?"></a>When to apply Neural Networks ?</h2>
+                  <p>Neural Networks have been in the spotlight for quite some time now. For a more detailed explanation on neural network and deep learning <a href="https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/"
+                      target="_blank" rel="external">read here</a>. Its “deeper” versions are making tremendous breakthroughs in many fields such as image recognition, speech and natural language processing etc.</p>
+                  <p>The main question that arises is when to and when not to apply neural networks? This field is like a gold mine right now, with many discoveries uncovered everyday. And to be a part of this “gold rush”, you have to keep a few things in
+                    mind:</p>
+                  <ul>
+                    <li><strong>Firstly, neural networks require clear and informative data (and mostly big data) to train.</strong> Try to imagine Neural Networks as a child. It first observes how its parent walks. Then it tries to walk on its own, and with
+                      its every step, the child learns how to perform a particular task. It may fall a few times, but after few unsuccessful attempts, it learns how to walk. If you don’t let it walk, it might not ever learn how to walk. The more exposure
+                      you can provide to the child, the better it is.</li>
+                    <li><strong>It is prudent to use Neural Networks for complex problems such as image processing. </strong>Neural nets belong to a class of algorithms called representation learning algorithms. These algorithms break down complex problems
+                      into simpler form so that they become understandable (or “representable”). Think of it as chewing food before you gulp. This would be harder for traditional (non-representation learning) algorithms.</li>
+                    <li><strong>When you have appropriate type of neural network to solve the problem. </strong>Each problem has its own twists. So the data decides the way you solve the problem. For example, if the problem is of sequence generation, recurrent
+                      neural networks are more suitable. Whereas, if it is image related problem, you would probably be better of taking convolutional neural networks for a change.</li>
+                    <li><strong>Last but not the least,</strong> <strong>hardware</strong> <strong>requirements are essential for running a deep neural network model. </strong>Neural nets were “discovered” long ago, but they are shining in the recent years
+                      for the main reason that computational resources are better and more powerful. If you want to solve a real life problem with these networks, get ready to buy some high-end hardware!</li>
+                  </ul>
+                  <h2 id="General-way-to-solve-problems-with-Neural-Networks"><a href="#General-way-to-solve-problems-with-Neural-Networks" class="headerlink" title="General way to solve problems with Neural Networks"></a>General way to solve problems with Neural Networks</h2>
+                  <p>Neural networks is a special type of machine learning (ML) algorithm. So as every ML algorithm, it follows the usual ML workflow of data preprocessing, model building and model evaluation. For the sake of conciseness, I have listed out
+                    a TO DO list of how to approach a Neural Network problem.</p>
+                  <ul>
+                    <li>Check if it is a problem where Neural Network gives you uplift over traditional algorithms (refer to the checklist in the section above)</li>
+                    <li>Do a survey of which Neural Network architecture is most suitable for the required problem</li>
+                    <li>Define Neural Network architecture through which ever language / library you choose.</li>
+                    <li>Convert data to right format and divide it in batches</li>
+                    <li>Pre-process the data according to your needs</li>
+                    <li>Augment Data to increase size and make better trained models</li>
+                    <li>Feed batches to Neural Network</li>
+                    <li>Train and monitor changes in training and validation data sets</li>
+                    <li>Test your model, and save it for future use</li>
+                  </ul>
+                  <p>For this article, I will be focusing on image data. So let us understand that first before we delve into TensorFlow.</p>
+                  <h2 id="Understanding-Image-data-and-popular-libraries-to-solve-it"><a href="#Understanding-Image-data-and-popular-libraries-to-solve-it" class="headerlink" title="Understanding Image data and popular libraries to solve it"></a>Understanding Image data and popular libraries to solve it</h2>
+                  <p>Images are mostly arranged as 3-D arrays, with the dimensions referring to height, width and color channel. For example, if you take a screenshot of your PC at this moment, it would be first convert into a 3-D array and then compress
+                    it ‘.jpeg’ or ‘.png’ file formats.</p>
+                  <p>While these images are pretty easy to understand to a human, a computer has a hard time to understand them. This phenomenon is called “Semantic gap”. Our brain can look at the image and understand the complete picture in a few seconds.
+                    On the other hand, computer sees image as just an array of numbers. So the problem is how to we explain this image to the machine?</p>
+                  <p>In early days, people tried to break down the image into “understandable” format for the machine like a “template”. For example, a face always has a specific structure which is somewhat preserved in every human, such as the position
+                    of eyes, nose or the shape of our face. But this method would be tedious, because when the number of objects to recognise would increase, the “templates” would not hold.</p>
+                  <p>Fast forward to 2012, a deep neural network architecture won the ImageNet challenge, a prestigious challenge to recognise objects from natural scenes. It continued to reign its sovereignty in all the upcoming ImageNet challenges, thus
+                    proving the usefulness to solve image problems.</p>
+                  <p>So which library / language do people normally use to solve image recognition problems? One <a href="https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/" target="_blank" rel="external">recent survey</a> I did that most of
+                    the popular deep learning libraries have interface for Python, followed by Lua, Java and Matlab. The most popular libraries, to name a few, are:</p>
+                  <ul>
+                    <li><a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">Caffe</a></li>
+                    <li><a href="http://deeplearning4j.org/" target="_blank" rel="external">DeepLearning4j</a></li>
+                    <li><a href="https://www.tensorflow.org/" target="_blank" rel="external">TensorFlow</a></li>
+                    <li><a href="http://www.deeplearning.net/software/theano" target="_blank" rel="external">Theano</a></li>
+                    <li><a href="http://torch.ch/" target="_blank" rel="external">Torch</a></li>
+                  </ul>
+                  <p>Now, that you understand how an image is stored and which are the common libraries used, let us look at what TensorFlow has to offer.</p>
+                  <h2 id="What-is-TensorFlow"><a href="#What-is-TensorFlow" class="headerlink" title="What is TensorFlow?"></a>What is TensorFlow?</h2>
+                  <p>Lets start with the official definition,</p>
+                  <blockquote>
+                    <p>“TensorFlow is an open source software library for numerical computation using dataflow graphs. Nodes in the graph represents mathematical operations, while graph edges represent multi-dimensional data arrays (aka tensors) communicated
+                      between them. The flexible architecture allows you to deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API.”</p>
+                  </blockquote>
+                  <p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif" alt="tensors_flowing"></a>
+                    <a
+                      href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif" alt="tensors_flowing"></a>
+                  </p>
+                  <p>If that sounds a bit scary – don’t worry. Here is my simple definition – look at TensorFlow as nothing but numpy with a twist. If you have worked on numpy before, understanding TensorFlow will be a piece of cake! A major difference between
+                    numpy and TensorFlow is that TensorFlow follows a lazy programming paradigm. It first builds a graph of all the operation to be done, and then when a “session” is called, it “runs” the graph. It’s built to be scalable, by changing
+                    internal data representation to tensors (aka multi-dimensional arrays). Building a computational graph can be considered as the main ingredient of TensorFlow. To know more about mathematical constitution of a computational graph, read
+                    <a href="http://colah.github.io/posts/2015-08-Backprop/" target="_blank" rel="external">this article</a>.</p>
+                  <p>It’s easy to classify TensorFlow as a neural network library, but it’s not just that. Yes, it was designed to be a powerful neural network library. But it has the power to do much more than that. You can build other machine learning
+                    algorithms on it such as decision trees or k-Nearest Neighbors. You can literally do everything you normally would do in numpy! It’s aptly called “numpy on steroids”</p>
+                  <p>The advantages of using TensorFlow are:</p>
+                  <ul>
+                    <li><strong>It has an intuitive construct</strong>, because as the name suggests it has <em>“flow of tensors”. </em>You can easily visualize each and every part of the graph.</li>
+                    <li><strong>Easily train on cpu/gpu for distributed computing</strong></li>
+                    <li><strong>Platform flexibility</strong>. You can run the models wherever you want, whether it is on mobile, server or PC.</li>
+                  </ul>
+                  <h2 id="A-typical-“flow”-of-TensorFlow"><a href="#A-typical-“flow”-of-TensorFlow" class="headerlink" title="A typical “flow” of TensorFlow"></a>A typical “flow” of TensorFlow</h2>
+                  <p>Every library has its own “implementation details”, i.e. a way to write which follows its coding paradigm. For example, when implementing scikit-learn, you first create object of the desired algorithm, then build a model on train and
+                    get predictions on test set, something like this:</p>
+                  <figure class="highlight nix">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># define hyperparamters of ML algorithm</span></div><div class="line"><span class="attr">clf</span> = svm.SVC(<span class="attr">gamma=0.001,</span> <span class="attr">C=100.)</span></div><div class="line"><span class="comment"># train </span></div><div class="line">clf.fit(X, y)</div><div class="line"><span class="comment"># test </span></div><div class="line">clf.predict(X_test)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>As I said earlier, TensorFlow follows a lazy approach. The usual workflow of running a program in TensorFlow is as follows:</p>
+                  <ul>
+                    <li><strong>Build a computational graph, </strong>this can be any mathematical operation TensorFlow supports.</li>
+                    <li><strong>Initialize variables, </strong>to compile the variables defined previously<em>**</em></li>
+                    <li><strong>Create session, </strong>this is where the magic starts!<em>**</em></li>
+                    <li><strong>Run graph in session, </strong>the compiled graph is passed to the session, which starts its execution. <em>**</em></li>
+                    <li><strong>Close session, </strong>shutdown the session.</li>
+                  </ul>
+                  <p>Few terminologies used in TensoFlow;</p>
+                  <ul>
+                    <li>
+                      <figure class="highlight lasso">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><div class="line">1</div></pre>
+                            </td>
+                            <td class="code">
+                              <pre><div class="line">placeholder: A way <span class="keyword">to</span> feed <span class="built_in">data</span> <span class="keyword">into</span> the graphs</div></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </li>
+                    <li>
+                      <figure class="highlight vim">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><div class="line">1</div></pre>
+                            </td>
+                            <td class="code">
+                              <pre><div class="line">feed_dic<span class="variable">t:</span> A dictionary <span class="keyword">to</span> pass numeric <span class="built_in">values</span> <span class="keyword">to</span> computational graph</div></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </li>
+                  </ul>
+                  <p>Lets write a small program to add two numbers!</p>
+                  <figure class="highlight vim">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"># import tensorflow</div><div class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line"></div><div class="line"># build computational graph</div><div class="line"><span class="keyword">a</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"></div><div class="line">addition = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">a</span>, <span class="keyword">b</span>)</div><div class="line"></div><div class="line"># initialize variables</div><div class="line">init = <span class="keyword">tf</span>.initialize_all_variables()</div><div class="line"></div><div class="line"># create session <span class="built_in">and</span> run the graph</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    sess.run(init)</div><div class="line">    <span class="keyword">print</span> <span class="string">"Addition: %i"</span> % sess.run(addition, feed_dict=&#123;<span class="variable">a:</span> <span class="number">2</span>, <span class="variable">b:</span> <span class="number">3</span>&#125;)</div><div class="line"></div><div class="line"># <span class="keyword">close</span> session</div><div class="line">sess.<span class="keyword">close</span>()</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h2 id="Implementing-Neural-Network-in-TensorFlow"><a href="#Implementing-Neural-Network-in-TensorFlow" class="headerlink" title="Implementing Neural Network in TensorFlow"></a>Implementing Neural Network in TensorFlow</h2>
+                  <p><em>Note: We could have used a different neural network architecture to solve this problem, but for the sake of simplicity, we settle on feed forward multilayer perceptron with an in depth implementation.</em></p>
+                  <p>Let us remember what we learned about neural networks first.</p>
+                  <p>A typical implementation of Neural Network would be as follows:</p>
+                  <ul>
+                    <li>Define Neural Network architecture to be compiled</li>
+                    <li>Transfer data to your model</li>
+                    <li>Under the hood, the data is first divided into batches, so that it can be ingested. The batches are first preprocessed, augmented and then fed into Neural Network for training</li>
+                    <li>The model then gets trained incrementally</li>
+                    <li>Display the accuracy for a specific number of timesteps</li>
+                    <li>After training save the model for future use</li>
+                    <li>Test the model on a new data and check how it performs</li>
+                  </ul>
+                  <p>Here we solve our deep learning practice problem – <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="external">Identify the Digits</a>. Let’s for a moment take a look at
+                    our problem statement.</p>
+                  <p>Our problem is an image recognition, to identify digits from a given 28 x 28 image. We have a subset of images for training and the rest for testing our model. So first, download the train and test files. The dataset contains a zipped
+                    file of all the images in the dataset and both the train.csv and test.csv have the name of corresponding train and test images. Any additional features are not provided in the datasets, just the raw images are provided in ‘.png’ format.</p>
+                  <p>As you know we will use TensorFlow to make a neural network model. So you should first install TensorFlow in your system. Refer the<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md"
+                      target="_blank" rel="external"> official installation guide</a> for installation, as per your system specifications.</p>
+                  <p>We will follow the template as described above. Create a Jupyter notebook with python 2.7 kernel and follow the steps below.</p>
+                  <ul>
+                    <li>Let’s import all the required modules</li>
+                  </ul>
+                  <figure class="highlight elm">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">%pylab inline</div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="title">from</span> scipy.misc <span class="keyword">import</span> imread</div><div class="line"><span class="title">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>Let’s set a seed value, so that we can control our models randomness</li>
+                  </ul>
+                  <figure class="highlight ini">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment"># To stop potential randomness</span></div><div class="line"><span class="attr">seed</span> = <span class="number">128</span></div><div class="line"><span class="attr">rng</span> = np.random.RandomState(seed)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>The first step is to set directory paths, for safekeeping!</li>
+                  </ul>
+                  <figure class="highlight lua">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">root_dir = <span class="built_in">os</span>.path.abspath(<span class="string">'../..'</span>)</div><div class="line">data_dir = <span class="built_in">os</span>.path.join(root_dir, <span class="string">'data'</span>)</div><div class="line">sub_dir = <span class="built_in">os</span>.path.join(root_dir, <span class="string">'sub'</span>)</div><div class="line"></div><div class="line"># check <span class="keyword">for</span> existence</div><div class="line"><span class="built_in">os</span>.path.exists(root_dir)</div><div class="line"><span class="built_in">os</span>.path.exists(data_dir)</div><div class="line"><span class="built_in">os</span>.path.exists(sub_dir)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>Now let us read our datasets. These are in .csv formats, and have a filename along with the appropriate labels</li>
+                  </ul>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">train = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'train.csv'</span>))</div><div class="line">test = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Test.csv'</span>))</div><div class="line"></div><div class="line">sample_submission = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Sample_Submission.csv'</span>))</div><div class="line"></div><div class="line">train.head()</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>filename</th>
+                        <th>label</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>0</td>
+                        <td>0.png</td>
+                        <td>4</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>1.png</td>
+                        <td>9</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>2.png</td>
+                        <td>1</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>3.png</td>
+                        <td>7</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>4.png</td>
+                        <td>3</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <ul>
+                    <li>Let us see what our data looks like! We read our image and display it.</li>
+                  </ul>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">img_name = rng.choice(train.filename)</div><div class="line">filepath = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'train'</span>, img_name)</div><div class="line"></div><div class="line"><span class="selector-tag">img</span> = imread(filepath, flatten=True)</div><div class="line"></div><div class="line">pylab.imshow(<span class="selector-tag">img</span>, cmap=<span class="string">'gray'</span>)</div><div class="line">pylab.axis(<span class="string">'off'</span>)</div><div class="line">pylab.show()</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png" alt="3"></a></p>
+                  <p>The above image is represented as numpy array, as seen below</p>
+                  <p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one.png" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one-1024x353.png" alt="one"></a></p>
+                  <ul>
+                    <li>For easier data manipulation, let’s store all our images as numpy arrays</li>
+                  </ul>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">temp = []</div><div class="line"><span class="keyword">for</span> img_name <span class="keyword">in</span> train<span class="selector-class">.filename</span>:</div><div class="line">    image_path = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'train'</span>, img_name)</div><div class="line">    <span class="selector-tag">img</span> = imread(image_path, flatten=True)</div><div class="line">    <span class="selector-tag">img</span> = <span class="selector-tag">img</span>.astype(<span class="string">'float32'</span>)</div><div class="line">    temp.append(img)</div><div class="line">    </div><div class="line">train_x = np.stack(temp)</div><div class="line"></div><div class="line">temp = []</div><div class="line"><span class="keyword">for</span> img_name <span class="keyword">in</span> test<span class="selector-class">.filename</span>:</div><div class="line">    image_path = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'test'</span>, img_name)</div><div class="line">    <span class="selector-tag">img</span> = imread(image_path, flatten=True)</div><div class="line">    <span class="selector-tag">img</span> = <span class="selector-tag">img</span>.astype(<span class="string">'float32'</span>)</div><div class="line">    temp.append(img)</div><div class="line">    </div><div class="line">test_x = np.stack(temp)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>As this is a typical ML problem, to test the proper functioning of our model we create a validation set. Let’s take a split size of 70:30 for train set vs validation set</li>
+                  </ul>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">split_size = int(train_x<span class="selector-class">.shape</span>[<span class="number">0</span>]*<span class="number">0.7</span>)</div><div class="line"></div><div class="line">train_x, val_x = train_x[:split_size], train_x[split_size:]</div><div class="line">train_y, val_y = train<span class="selector-class">.label</span><span class="selector-class">.values</span>[:split_size], train<span class="selector-class">.label</span><span class="selector-class">.values</span>[split_size:]</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>Now we define some helper functions, which we use later on, in our programs</li>
+                  </ul>
+                  <figure class="highlight python">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dense_to_one_hot</span><span class="params">(labels_dense, num_classes=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="string">"""Convert class labels from scalars to one-hot vectors"""</span></div><div class="line">    num_labels = labels_dense.shape[<span class="number">0</span>]</div><div class="line">    index_offset = np.arange(num_labels) * num_classes</div><div class="line">    labels_one_hot = np.zeros((num_labels, num_classes))</div><div class="line">    labels_one_hot.flat[index_offset + labels_dense.ravel()] = <span class="number">1</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> labels_one_hot</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">preproc</span><span class="params">(unclean_batch_x)</span>:</span></div><div class="line">    <span class="string">"""Convert values to range 0-1"""</span></div><div class="line">    temp_batch = unclean_batch_x / unclean_batch_x.max()</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> temp_batch</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_creator</span><span class="params">(batch_size, dataset_length, dataset_name)</span>:</span></div><div class="line">    <span class="string">"""Create batch with random samples and return appropriate format"""</span></div><div class="line">    batch_mask = rng.choice(dataset_length, batch_size)</div><div class="line">    </div><div class="line">    batch_x = eval(dataset_name + <span class="string">'_x'</span>)[[batch_mask]].reshape(<span class="number">-1</span>, input_num_units)</div><div class="line">    batch_x = preproc(batch_x)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> dataset_name == <span class="string">'train'</span>:</div><div class="line">        batch_y = eval(dataset_name).ix[batch_mask, <span class="string">'label'</span>].values</div><div class="line">        batch_y = dense_to_one_hot(batch_y)</div><div class="line">        </div><div class="line">    <span class="keyword">return</span> batch_x, batch_y</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>Now comes the main part! Let us define our neural network architecture. We define a neural network with 3 layers; input, hidden and output. The number of neurons in input and output are fixed, as the input is our 28 x 28 image and
+                      the output is a 10 x 1 vector representing the class. We take 500 neurons in the hidden layer. This number can vary according to your need. We also assign values to remaining variables. Read the <a href="https://www.analyticsvidhya.com/blog/2016/03/introduction-deep-learning-fundamentals-neural-networks/"
+                        target="_blank" rel="external">article on fundamentals of neural network</a> to know more in depth of how it works.</li>
+                  </ul>
+                  <figure class="highlight nix">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">### set all variables</span></div><div class="line"></div><div class="line"><span class="comment"># number of neurons in each layer</span></div><div class="line"><span class="attr">input_num_units</span> = <span class="number">28</span>*<span class="number">28</span></div><div class="line"><span class="attr">hidden_num_units</span> = <span class="number">500</span></div><div class="line"><span class="attr">output_num_units</span> = <span class="number">10</span></div><div class="line"></div><div class="line"><span class="comment"># define placeholders</span></div><div class="line"><span class="attr">x</span> = tf.placeholder(tf.float32, [None, input_num_units])</div><div class="line"><span class="attr">y</span> = tf.placeholder(tf.float32, [None, output_num_units])</div><div class="line"></div><div class="line"><span class="comment"># set remaining variables</span></div><div class="line"><span class="attr">epochs</span> = <span class="number">5</span></div><div class="line"><span class="attr">batch_size</span> = <span class="number">128</span></div><div class="line"><span class="attr">learning_rate</span> = <span class="number">0.01</span></div><div class="line"></div><div class="line"><span class="comment">### define weights and biases of the neural network (refer this article if you don't understand the terminologies)</span></div><div class="line"></div><div class="line"><span class="attr">weights</span> = &#123;</div><div class="line">    'hidden': tf.Variable(tf.random_normal([input_num_units, hidden_num_units], <span class="attr">seed=seed)),</span></div><div class="line">    'output': tf.Variable(tf.random_normal([hidden_num_units, output_num_units], <span class="attr">seed=seed))</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="attr">biases</span> = &#123;</div><div class="line">    'hidden': tf.Variable(tf.random_normal([hidden_num_units], <span class="attr">seed=seed)),</span></div><div class="line">    'output': tf.Variable(tf.random_normal([output_num_units], <span class="attr">seed=seed))</span></div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>Now create our neural networks computational graph</li>
+                  </ul>
+                  <figure class="highlight ini">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="attr">hidden_layer</span> = tf.add(tf.matmul(x, weights[<span class="string">'hidden'</span>]), biases[<span class="string">'hidden'</span>])</div><div class="line"><span class="attr">hidden_layer</span> = tf.nn.relu(hidden_layer)</div><div class="line"></div><div class="line"><span class="attr">output_layer</span> = tf.matmul(hidden_layer, weights[<span class="string">'output'</span>]) + biases[<span class="string">'output'</span>]</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>Also, we need to define cost of our neural network</li>
+                  </ul>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">cost = tf.reduce_mean(tf<span class="selector-class">.nn</span><span class="selector-class">.softmax_cross_entropy_with_logits</span>(output_layer, y))</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>And set the optimizer, i.e. our backpropogation algorithm. Here we use <a href="https://arxiv.org/abs/1412.6980" target="_blank" rel="external">Adam</a>, which is an efficient variant of Gradient Descent algorithm. There are a number
+                      of other optimizers available in tensorflow (refer
+                      <a href="https://www.tensorflow.org/versions/r0.11/api_docs/python/train.html#optimizers" target="_blank" rel="external">here</a>)</li>
+                  </ul>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">optimizer = tf<span class="selector-class">.train</span><span class="selector-class">.AdamOptimizer</span>(learning_rate=learning_rate).minimize(cost)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>After defining our neural network architecture, let’s initialize all the variables</li>
+                  </ul>
+                  <figure class="highlight ini">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="attr">init</span> = tf.initialize_all_variables()</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>Now let us create a session, and run our neural network in the session. We also validate our models accuracy on validation set that we created</li>
+                  </ul>
+                  <figure class="highlight vim">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    # create initialized variables</div><div class="line">    sess.run(init)</div><div class="line">    </div><div class="line">    ### <span class="keyword">for</span> each epoch, <span class="keyword">do</span>:</div><div class="line">    ###   <span class="keyword">for</span> each batch, <span class="keyword">do</span>:</div><div class="line">    ###     create <span class="keyword">pre</span>-processed batch</div><div class="line">    ###     run optimizer by feeding batch</div><div class="line">    ###     <span class="keyword">find</span> cost <span class="built_in">and</span> reiterate <span class="keyword">to</span> minimize</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> epoch in <span class="built_in">range</span>(epochs):</div><div class="line">        avg_cost = <span class="number">0</span></div><div class="line">        total_batch = <span class="keyword">int</span>(train.shape[<span class="number">0</span>]/batch_size)</div><div class="line">        <span class="keyword">for</span> i in <span class="built_in">range</span>(total_batch):</div><div class="line">            batch_x, batch_y = batch_creator(batch_size, train_x.shape[<span class="number">0</span>], <span class="string">'train'</span>)</div><div class="line">            _, <span class="keyword">c</span> = sess.run([optimizer, cost], feed_dict = &#123;<span class="keyword">x</span>: batch_x, <span class="keyword">y</span>: batch_y&#125;)</div><div class="line">            </div><div class="line">            avg_cost += <span class="keyword">c</span> / total_batch</div><div class="line">            </div><div class="line">        <span class="keyword">print</span> <span class="string">"Epoch:"</span>, (epoch+<span class="number">1</span>), <span class="string">"cost ="</span>, <span class="string">"&#123;:.5f&#125;"</span>.format(avg_cost)</div><div class="line">    </div><div class="line">    <span class="keyword">print</span> <span class="string">"\nTraining complete!"</span></div><div class="line">    </div><div class="line">    </div><div class="line">    # <span class="keyword">find</span> predictions <span class="keyword">on</span> val <span class="keyword">set</span></div><div class="line">    pred_temp = <span class="keyword">tf</span>.equal(<span class="keyword">tf</span>.argmax(output_layer, <span class="number">1</span>), <span class="keyword">tf</span>.argmax(<span class="keyword">y</span>, <span class="number">1</span>))</div><div class="line">    accuracy = <span class="keyword">tf</span>.reduce_mean(<span class="keyword">tf</span>.cast(pred_temp, <span class="string">"float"</span>))</div><div class="line">    <span class="keyword">print</span> <span class="string">"Validation Accuracy:"</span>, accuracy.<span class="built_in">eval</span>(&#123;<span class="keyword">x</span>: val_x.reshape(-<span class="number">1</span>, input_num_units), <span class="keyword">y</span>: dense_to_one_hot(val_y)&#125;)</div><div class="line">    </div><div class="line">    predict = <span class="keyword">tf</span>.argmax(output_layer, <span class="number">1</span>)</div><div class="line">    pred = predict.<span class="built_in">eval</span>(&#123;<span class="keyword">x</span>: test_x.reshape(-<span class="number">1</span>, input_num_units)&#125;)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>This will be the output of the above code</p>
+                  <figure class="highlight http">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="attribute">Epoch</span>: 1 cost = 8.93566</div><div class="line"><span class="attribute">Epoch</span>: 2 cost = 1.82103</div><div class="line"><span class="attribute">Epoch</span>: 3 cost = 0.98648</div><div class="line"><span class="attribute">Epoch</span>: 4 cost = 0.57141</div><div class="line"><span class="attribute">Epoch</span>: 5 cost = 0.44550</div><div class="line"></div><div class="line"><span class="css"><span class="selector-tag">Training</span> <span class="selector-tag">complete</span>!</span></div><div class="line"><span class="selector-tag">Validation</span> <span class="selector-tag">Accuracy</span>: 0<span class="selector-class">.952823</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <ul>
+                    <li>To test our model with our own eyes, let’s visualize its predictions</li>
+                  </ul>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">img_name = rng.choice(test.filename)</div><div class="line">filepath = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'test'</span>, img_name)</div><div class="line"></div><div class="line"><span class="selector-tag">img</span> = imread(filepath, flatten=True)</div><div class="line"></div><div class="line">test_index = int(img_name.split(<span class="string">'.'</span>)[<span class="number">0</span>]) - <span class="number">49000</span></div><div class="line"></div><div class="line">print <span class="string">"Prediction is: "</span>, pred[test_index]</div><div class="line"></div><div class="line">pylab.imshow(<span class="selector-tag">img</span>, cmap=<span class="string">'gray'</span>)</div><div class="line">pylab.axis(<span class="string">'off'</span>)</div><div class="line">pylab.show()</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>Prediction is: 8</p>
+                  <p><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/8.png" alt=""></p>
+                  <ul>
+                    <li>We see that our model performance is pretty good! Now let’s create a submission</li>
+                  </ul>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">sample_submission<span class="selector-class">.filename</span> = test<span class="selector-class">.filename</span></div><div class="line"></div><div class="line"> sample_submission<span class="selector-class">.label</span> = pred</div><div class="line"></div><div class="line">sample_submission.to_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(sub_dir, <span class="string">'sub01.csv'</span>), index=False)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>And done! We just created our own trained neural network! </p>
+                  <h2 id="Limitations-of-TensorFlow"><a href="#Limitations-of-TensorFlow" class="headerlink" title="Limitations of TensorFlow"></a>Limitations of TensorFlow</h2>
+                  <ul>
+                    <li>Even though TensorFlow is powerful, it’s still a low level library. For example, it can be considered as a machine level language. But for most of the purpose, you need modularity and high level interface such as keras</li>
+                    <li>It’s still in development, so much more awesomeness to come!</li>
+                    <li>It depends on your hardware specs, the more the merrier</li>
+                    <li>Still not an API for many languages.</li>
+                    <li>There are still many things yet to be included in TensorFlow, such as OpenCL support.</li>
+                  </ul>
+                  <p>Most of the above mentioned are in the sights of TensorFlow developers. They have made a roadmap for specifying how the library should be developed in the future.</p>
+                  <h2 id="TensorFlow-vs-Other-Libraries"><a href="#TensorFlow-vs-Other-Libraries" class="headerlink" title="TensorFlow vs. Other Libraries"></a>TensorFlow vs. Other Libraries</h2>
+                  <p>TensorFlow is built on similar principles as Theano and Torch of using mathematical computational graphs. But with the additional support of distributed computing, TensorFlow comes out to be better at solving complex problems. Also deployment
+                    of TensorFlow models is already supported which makes it easier to use for industrial purposes, giving a fight to commercial libraries such as Deeplearning4j, H2O and Turi. TensorFlow has APIs for Python, C++ and Matlab. There’s also
+                    a recent surge for support for other languages such as Ruby and R. So, TensorFlow is trying to have a universal language support. </p>
+                  <h2 id="Where-to-go-from-here"><a href="#Where-to-go-from-here" class="headerlink" title="Where to go from here?"></a>Where to go from here?</h2>
+                  <p>So you saw how to build a simple neural network with TensorFlow. This code is meant for people to understand how to get started implementing TensorFlow, so take it with a pinch of salt. Remember that to solve more complex real life problems,
+                    you have to tweak the code a little bit.</p>
+                  <p>Many of the above functions can be abstracted to give a seamless end-to-end workflow. If you have worked with scikit-learn, you might know how a high level library abstracts “under the hood” implementations to give end-users a more easier
+                    interface. Although TensorFlow has most of the implementations already abstracted, high level libraries are emerging such as TF-slim and TFlearn.</p>
+                  <h2 id="Useful-Resources"><a href="#Useful-Resources" class="headerlink" title="Useful Resources"></a>Useful Resources</h2>
+                  <ul>
+                    <li><a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="external">TensorFlow official repository</a></li>
+                    <li>Rajat Monga (TensorFlow technical lead) <a href="https://youtu.be/wmw8Bbb_eIE" target="_blank" rel="external">“TensorFlow for everyone”</a> video</li>
+                    <li><a href="https://github.com/jtoy/awesome-tensorflow/#github-projects" target="_blank" rel="external">A curated list of dedicated resources</a></li>
+                  </ul>
+                  <h2 id="End-Notes"><a href="#End-Notes" class="headerlink" title="End Notes"></a>End Notes</h2>
+                  <p>I hope you found this article helpful. Now, it’s time for you to practice and read as much as you can. Good luck! If you follow a different approach / package / library to get started with Neural Networks, I’d love to interact with you
+                    in comments. If you have any more suggestions, drop in your comments below. And to gain expertise in working in neural network don’t forget to try out our deep learning practice problem – <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/"
+                      target="_blank" rel="external">Identify the Digits</a>.</p>
+                  <h3 id="You-can-test-your-skills-and-knowledge-Check-out-Live-Competitions-and-compete-with-best-Data-Scientists-from-all-over-the-world"><a href="#You-can-test-your-skills-and-knowledge-Check-out-Live-Competitions-and-compete-with-best-Data-Scientists-from-all-over-the-world" class="headerlink" title="You can test your skills and knowledge. Check out Live Competitions and compete with best Data Scientists from all over the world."></a>You
+                    can test your skills and knowledge. Check out <a href="http://datahack.analyticsvidhya.com/contest/all" target="_blank" rel="external">Live Competitions</a> and compete with best Data Scientists from all over the world.</h3>
+                  <p>原文链接：<a href="https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/" target="_blank" rel="external">https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/</a></p>
+                  <p>翻译：<a href="https://fenglv.ac.cn" target="_blank" rel="external">Flynn</a></p>
+                  <p>
+                    <div id="container"></div>
+                  </p>
+                  <p>
+                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                  </p>
+                  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                  <script>
+                    var gitment = new Gitment({
+                      owner: 'ucasFL',
+                      repo: 'BlogComments',
+                      oauth: {
+
+                        client_id: 'ef399b43f01e072241fd',
+                        client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+                      },
+                    })
+                    gitment.render('container');
+                  </script>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Tensorflow-translation/" rel="tag"># Tensorflow translation</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/" rel="next" title="在 Linux 中如何通过命令行开启或禁用触摸板">
+                <i class="fa fa-chevron-left"></i> 在 Linux 中如何通过命令行开启或禁用触摸板
+              </a>
+
+                    </div>
+
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                      <a href="/2017/11/12/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/" rel="prev" title="以图像识别为例 - 使用 Keras 来优化神经网络">
+                以图像识别为例 - 使用 Keras 来优化神经网络 <i class="fa fa-chevron-right"></i>
+              </a>
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          </div>
+        </div>
+
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
+
+
+
+
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
+
+
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
+
+
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ilovezyq.win" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#When-to-apply-Neural-Networks"><span class="nav-number">2.</span> <span class="nav-text">When to apply Neural Networks ?</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#General-way-to-solve-problems-with-Neural-Networks"><span class="nav-number">3.</span> <span class="nav-text">General way to solve problems with Neural Networks</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Understanding-Image-data-and-popular-libraries-to-solve-it"><span class="nav-number">4.</span> <span class="nav-text">Understanding Image data and popular libraries to solve it</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-TensorFlow"><span class="nav-number">5.</span> <span class="nav-text">What is TensorFlow?</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#A-typical-“flow”-of-TensorFlow"><span class="nav-number">6.</span> <span class="nav-text">A typical “flow” of TensorFlow</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Implementing-Neural-Network-in-TensorFlow"><span class="nav-number">7.</span> <span class="nav-text">Implementing Neural Network in TensorFlow</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Limitations-of-TensorFlow"><span class="nav-number">8.</span> <span class="nav-text">Limitations of TensorFlow</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow-vs-Other-Libraries"><span class="nav-number">9.</span> <span class="nav-text">TensorFlow vs. Other Libraries</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Where-to-go-from-here"><span class="nav-number">10.</span> <span class="nav-text">Where to go from here?</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Useful-Resources"><span class="nav-number">11.</span> <span class="nav-text">Useful Resources</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#End-Notes"><span class="nav-number">12.</span> <span class="nav-text">End Notes</span></a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-3"><a class="nav-link" href="#You-can-test-your-skills-and-knowledge-Check-out-Live-Competitions-and-compete-with-best-Data-Scientists-from-all-over-the-world"><span class="nav-number">12.1.</span> <span class="nav-text">You
+  can test your skills and knowledge. Check out Live Competitions and compete with best Data Scientists from all over the world.</span></a></li>
+                      </ol>
+                    </li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
+          </div>
+        </aside>
+        <script type="text/javascript" src="/js/src/op.js"></script>
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2017</span>
+          <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+          <span> <span><a href="https://fenglv.ac.cn">Flynn</a></span>
+          </span>
+        </div>
+
+
+
+        <div>
+          本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        </div>
+
+
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
+
+
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
+
+
+
+
+
+
+
+      </div>
+    </footer>
+
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
+  </div>
+
+
+
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
