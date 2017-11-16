@@ -65,24 +65,24 @@
 
 
   <meta name="description" content="简介
-If you have been following Data Science / Machine Learning, you just can’t miss the buzz around Deep Learning and Neural Networks. Organizations are looking for people with Deep Learning skills whe">
+如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！">
   <meta property="og:type" content="article">
   <meta property="og:title" content="使用 Tensorflow 实现神经网络">
   <meta property="og:url" content="http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/index.html">
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="简介
-If you have been following Data Science / Machine Learning, you just can’t miss the buzz around Deep Learning and Neural Networks. Organizations are looking for people with Deep Learning skills whe">
+如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！">
   <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1-1024x576.jpg">
   <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif">
   <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif">
   <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png">
   <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one-1024x353.png">
   <meta property="og:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/8.png">
-  <meta property="og:updated_time" content="2017-11-12T16:28:55.689Z">
+  <meta property="og:updated_time" content="2017-11-16T03:08:53.045Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="使用 Tensorflow 实现神经网络">
   <meta name="twitter:description" content="简介
-If you have been following Data Science / Machine Learning, you just can’t miss the buzz around Deep Learning and Neural Networks. Organizations are looking for people with Deep Learning skills whe">
+如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！">
   <meta name="twitter:image" content="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1-1024x576.jpg">
 
 
@@ -411,58 +411,41 @@ If you have been following Data Science / Machine Learning, you just can’t mis
 
 
                   <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2>
-                  <p>If you have been following Data Science / Machine Learning, you just can’t miss the buzz around Deep Learning and Neural Networks. Organizations are looking for people with Deep Learning skills wherever they can. From running competitions
-                    to open sourcing projects and paying big bonuses, people are trying every possible thing to tap into this limited pool of talent. Self driving engineers are being hunted by the big guns in automobile industry, as the industry stands
-                    on the brink of biggest disruption it faced in last few decades!</p>
+                  <p>如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！</p>
                   <a id="more"></a>
-                  <p>If you are excited by the prospects deep learning has to offer, but have not started your journey yet – I am here to enable it. Starting with this article, I will write a series of articles on deep learning covering the popular Deep
-                    Learning libraries and their hands-on implementation.</p>
-                  <p>In this article, I will introduce TensorFlow to you. After reading this article you will be able to understand application of neural networks and use TensorFlow to solve a real life problem. This article will require you to know the
-                    basics of neural networks and have familiarity with programming. Although the code in this article is in python, I have focused on the concepts and stayed as language-agnostic as possible.</p>
-                  <p>Let’s get started!</p>
+                  <p>如果你对深度学习的前景感到兴奋，但还没有开始你的旅途，那么我将会开启你的旅程。从这篇文章开始，我将会写一系列关于深度学习的文章，包括最受欢迎的深度学习库和它们的实现。</p>
+                  <p>在这篇文章中，我将会向你介绍 Tensorflow。读完这篇文章以后，你将会了解神经网络的应用，并且能够使用 TensorFlow 来解决实际生活中的问题。阅读本文前，你需要了解神经网络的基本知识并且对编程比较熟悉。虽然本文中使用的语言是 Python，但我关注得更多的是概念，并且尽可能保持语言的不可知性。</p>
+                  <p>让我们开始吧！</p>
                   <p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1.jpg" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1-1024x576.jpg" alt="TensorFlow"></a></p>
-                  <h2 id="When-to-apply-Neural-Networks"><a href="#When-to-apply-Neural-Networks" class="headerlink" title="When to apply Neural Networks ?"></a>When to apply Neural Networks ?</h2>
-                  <p>Neural Networks have been in the spotlight for quite some time now. For a more detailed explanation on neural network and deep learning <a href="https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/"
-                      target="_blank" rel="external">read here</a>. Its “deeper” versions are making tremendous breakthroughs in many fields such as image recognition, speech and natural language processing etc.</p>
-                  <p>The main question that arises is when to and when not to apply neural networks? This field is like a gold mine right now, with many discoveries uncovered everyday. And to be a part of this “gold rush”, you have to keep a few things in
-                    mind:</p>
+                  <h2 id="何时使用神经网络？"><a href="#何时使用神经网络？" class="headerlink" title="何时使用神经网络？"></a>何时使用神经网络？</h2>
+                  <p>神经网络成为人们的关注点已经有很长的一段时间了。如果你想了解关于神经网络和深度学习的更详细的解释，请阅读<a href="https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/" target="_blank" rel="external">这篇文章</a>。它的 “depper” 版本在图像识别、语音和自然语言处理等许多领域都取得了巨大的突破。</p>
+                  <p>最主要的问题是什么时候使用神经网络，什么时候不用？这个领域就像现在的金矿一样，每天都会有许多新的发现。为了成为一个“淘金热”分子，你需要记住下面这些事情：</p>
                   <ul>
-                    <li><strong>Firstly, neural networks require clear and informative data (and mostly big data) to train.</strong> Try to imagine Neural Networks as a child. It first observes how its parent walks. Then it tries to walk on its own, and with
-                      its every step, the child learns how to perform a particular task. It may fall a few times, but after few unsuccessful attempts, it learns how to walk. If you don’t let it walk, it might not ever learn how to walk. The more exposure
-                      you can provide to the child, the better it is.</li>
-                    <li><strong>It is prudent to use Neural Networks for complex problems such as image processing. </strong>Neural nets belong to a class of algorithms called representation learning algorithms. These algorithms break down complex problems
-                      into simpler form so that they become understandable (or “representable”). Think of it as chewing food before you gulp. This would be harder for traditional (non-representation learning) algorithms.</li>
-                    <li><strong>When you have appropriate type of neural network to solve the problem. </strong>Each problem has its own twists. So the data decides the way you solve the problem. For example, if the problem is of sequence generation, recurrent
-                      neural networks are more suitable. Whereas, if it is image related problem, you would probably be better of taking convolutional neural networks for a change.</li>
-                    <li><strong>Last but not the least,</strong> <strong>hardware</strong> <strong>requirements are essential for running a deep neural network model. </strong>Neural nets were “discovered” long ago, but they are shining in the recent years
-                      for the main reason that computational resources are better and more powerful. If you want to solve a real life problem with these networks, get ready to buy some high-end hardware!</li>
+                    <li><strong>首先，神经网络需要清晰而详实的数据（主要是大数据）来进行训练</strong>。如果把神经网络想象成一个孩子，他首先需要观察他的父母如何走路，然后尝试独立行走，用他的每一步，学会如何来完成一个特定的任务。他可能会跌倒几次，但经过几次失败的尝试，他便学会了如何走路。如果你不让他自己尝试，那么他可能永远也不能学会走路。你给他接触的越多，那么他就会学得越好。</li>
+                    <li><strong>使用神经网络来处理一些复杂的问题，比如图像处理是明智的。</strong>神经网络属于一类称为表示学习算法的算法类。这些算法将复杂的问题分解成简单的形式，从而使它们能够理解（或“表示“）。就像你在吃东西的时候，需要先把食物嚼碎，然后才咽下。这比传统（非表示学习）算法更加困难。</li>
+                    <li><strong>什么时候你能够拥有合适的神经网络来解决问题？</strong>每个问题都有它的困难之处。所以，数据决定了解决问题的方式。比如，如果问题是序列生成，那么递归神经网络更加合适。然而，如果是图像相关的问题，那么改用卷积神经网络会更好。</li>
+                    <li><strong>最后，但不是不重要，硬件需求对于运行一个深度神经网络模型是至关重要的。</strong>神经网络模型在很早之前就有了，但是在近些年才开始活跃起来，主要原因就是计算资源更好，更强大了。如果你想用神经网络来解决现实生活中的问题，请准备购买一些高端的硬件设备。</li>
                   </ul>
-                  <h2 id="General-way-to-solve-problems-with-Neural-Networks"><a href="#General-way-to-solve-problems-with-Neural-Networks" class="headerlink" title="General way to solve problems with Neural Networks"></a>General way to solve problems with Neural Networks</h2>
-                  <p>Neural networks is a special type of machine learning (ML) algorithm. So as every ML algorithm, it follows the usual ML workflow of data preprocessing, model building and model evaluation. For the sake of conciseness, I have listed out
-                    a TO DO list of how to approach a Neural Network problem.</p>
+                  <h2 id="使用神经网络来解决问题的通常手段"><a href="#使用神经网络来解决问题的通常手段" class="headerlink" title="使用神经网络来解决问题的通常手段"></a>使用神经网络来解决问题的通常手段</h2>
+                  <p>神经网络是一种特殊的机器学习（ML）算法。就像每一个机器学习算法一样，你需要按照通常的机器学习工作流程来进行数据预处理，模型建立和模型评估。为了简单起见，我在下面列出了一个处理神经网络问题的清单：</p>
                   <ul>
-                    <li>Check if it is a problem where Neural Network gives you uplift over traditional algorithms (refer to the checklist in the section above)</li>
-                    <li>Do a survey of which Neural Network architecture is most suitable for the required problem</li>
-                    <li>Define Neural Network architecture through which ever language / library you choose.</li>
-                    <li>Convert data to right format and divide it in batches</li>
-                    <li>Pre-process the data according to your needs</li>
-                    <li>Augment Data to increase size and make better trained models</li>
-                    <li>Feed batches to Neural Network</li>
-                    <li>Train and monitor changes in training and validation data sets</li>
-                    <li>Test your model, and save it for future use</li>
+                    <li>思考一下，使用神经网络算法来处理该问题是否比用传统算法更好（参考上面章节的清单）</li>
+                    <li>调查一下，待解决的问题使用哪种神经网络更适合</li>
+                    <li>使用你选择的语言/库来定义神经网络结构</li>
+                    <li>将数据转化为正确的格式并进行数据划分</li>
+                    <li>根据你的需要对数据进行预处理</li>
+                    <li>添加数据来增大数据量从而更好的训练模型</li>
+                    <li>将数据”喂给”神经网络进行训练</li>
+                    <li>训练并监测训练过程中的变化和验证数据集的变化</li>
+                    <li>测试你的模型，并将它保存下来以便将来使用</li>
                   </ul>
-                  <p>For this article, I will be focusing on image data. So let us understand that first before we delve into TensorFlow.</p>
-                  <h2 id="Understanding-Image-data-and-popular-libraries-to-solve-it"><a href="#Understanding-Image-data-and-popular-libraries-to-solve-it" class="headerlink" title="Understanding Image data and popular libraries to solve it"></a>Understanding Image data and popular libraries to solve it</h2>
-                  <p>Images are mostly arranged as 3-D arrays, with the dimensions referring to height, width and color channel. For example, if you take a screenshot of your PC at this moment, it would be first convert into a 3-D array and then compress
-                    it ‘.jpeg’ or ‘.png’ file formats.</p>
-                  <p>While these images are pretty easy to understand to a human, a computer has a hard time to understand them. This phenomenon is called “Semantic gap”. Our brain can look at the image and understand the complete picture in a few seconds.
-                    On the other hand, computer sees image as just an array of numbers. So the problem is how to we explain this image to the machine?</p>
-                  <p>In early days, people tried to break down the image into “understandable” format for the machine like a “template”. For example, a face always has a specific structure which is somewhat preserved in every human, such as the position
-                    of eyes, nose or the shape of our face. But this method would be tedious, because when the number of objects to recognise would increase, the “templates” would not hold.</p>
-                  <p>Fast forward to 2012, a deep neural network architecture won the ImageNet challenge, a prestigious challenge to recognise objects from natural scenes. It continued to reign its sovereignty in all the upcoming ImageNet challenges, thus
-                    proving the usefulness to solve image problems.</p>
-                  <p>So which library / language do people normally use to solve image recognition problems? One <a href="https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/" target="_blank" rel="external">recent survey</a> I did that most of
-                    the popular deep learning libraries have interface for Python, followed by Lua, Java and Matlab. The most popular libraries, to name a few, are:</p>
+                  <p>在这篇文章中，我将重点放在图像数据上。所以在开始探讨 TensorFlow 之前，让我们先理解一下图像数据。</p>
+                  <h2 id="图像数据以及常用于解决图像问题的库"><a href="#图像数据以及常用于解决图像问题的库" class="headerlink" title="图像数据以及常用于解决图像问题的库"></a>图像数据以及常用于解决图像问题的库</h2>
+                  <p>图像数据通常以三维数据的形式排序，每一维分别代表高、宽和颜色通道。比如，此时你在你的电脑上截一张图，它将会先转化为一个三维数组，然后再压缩成 <code>.jpeg</code> 或 <code>.png</code> 文件格式。</p>
+                  <p>虽然这些图像对于人类来说很容易理解，但是计算机却很难理解它们。这种现象被称为“语义鸿沟”。我们的大脑能够在几秒钟的时间内看到图像并理解完整的图像，然而，计算机却只是把图像看成一组数字。所以问题是如何向计算机解释图片？</p>
+                  <p>在早期时候，人们试图将图像分解成机器“可理解”的形式，就像一个模板一样。比如，人脸总是有一种特定的结构，这种结构在每个人中都有一定的保留，例如眼睛、鼻子或脸的形状。但是这种方法很乏味，因为当要识别的对象数量增加时，“模板”就不能保存了。</p>
+                  <p>快速前进到 2012 年，一个深度神经网络赢得了 <code>ImageNet</code> 挑战，这是一个根据自然场景来识别对象的著名挑战。在所有随即到来的 <code>ImageNet</code> 挑战中，它持续占领统治地位，从而证明了用它来解决图像问题的有用性。</p>
+                  <p>所以，人们通常使用哪种语言（库）来解决图像识别问题呢？在一个<a href="https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/" target="_blank" rel="external">最近的调查中</a>，我发现绝大多数受欢迎的深度学习库都有 Python 接口，紧跟着的是 Lua、Java 和 Matlab 。下面是一些最受欢迎的库：</p>
                   <ul>
                     <li><a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">Caffe</a></li>
                     <li><a href="http://deeplearning4j.org/" target="_blank" rel="external">DeepLearning4j</a></li>
@@ -470,32 +453,27 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     <li><a href="http://www.deeplearning.net/software/theano" target="_blank" rel="external">Theano</a></li>
                     <li><a href="http://torch.ch/" target="_blank" rel="external">Torch</a></li>
                   </ul>
-                  <p>Now, that you understand how an image is stored and which are the common libraries used, let us look at what TensorFlow has to offer.</p>
-                  <h2 id="What-is-TensorFlow"><a href="#What-is-TensorFlow" class="headerlink" title="What is TensorFlow?"></a>What is TensorFlow?</h2>
-                  <p>Lets start with the official definition,</p>
+                  <p>现在，你已经知道了一张图像是如何存储的，并且知道了常用的库。下面，让我们来看一下 TensorFlow 能够为我们提供什么。 </p>
+                  <h2 id="TensorFlow-是什么？"><a href="#TensorFlow-是什么？" class="headerlink" title="TensorFlow 是什么？"></a>TensorFlow 是什么？</h2>
+                  <p>我们先看一下官方的定义：</p>
                   <blockquote>
-                    <p>“TensorFlow is an open source software library for numerical computation using dataflow graphs. Nodes in the graph represents mathematical operations, while graph edges represent multi-dimensional data arrays (aka tensors) communicated
-                      between them. The flexible architecture allows you to deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API.”</p>
+                    <p>“TensorFlow 是一个使用数据流图来进行数值计算的开源软件库。图中的节点表示数学运算，而图中的边表示在节点之间进行传递的多维数据数组（又叫做张量）。灵活的架构允许你在桌面、服务器或移动设备上通过一个单一的 API 使用一个或多个 CPU 或 GPU 部署进行计算。”</p>
                   </blockquote>
                   <p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif" alt="tensors_flowing"></a>
                     <a
                       href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif" alt="tensors_flowing"></a>
                   </p>
-                  <p>If that sounds a bit scary – don’t worry. Here is my simple definition – look at TensorFlow as nothing but numpy with a twist. If you have worked on numpy before, understanding TensorFlow will be a piece of cake! A major difference between
-                    numpy and TensorFlow is that TensorFlow follows a lazy programming paradigm. It first builds a graph of all the operation to be done, and then when a “session” is called, it “runs” the graph. It’s built to be scalable, by changing
-                    internal data representation to tensors (aka multi-dimensional arrays). Building a computational graph can be considered as the main ingredient of TensorFlow. To know more about mathematical constitution of a computational graph, read
-                    <a href="http://colah.github.io/posts/2015-08-Backprop/" target="_blank" rel="external">this article</a>.</p>
-                  <p>It’s easy to classify TensorFlow as a neural network library, but it’s not just that. Yes, it was designed to be a powerful neural network library. But it has the power to do much more than that. You can build other machine learning
-                    algorithms on it such as decision trees or k-Nearest Neighbors. You can literally do everything you normally would do in numpy! It’s aptly called “numpy on steroids”</p>
-                  <p>The advantages of using TensorFlow are:</p>
+                  <p>如果这听起来很让人迷糊，别担心，下面是我的简单定义：你可以简单的把 TensorFlow 看成一个扭曲的 <code>numpy</code>。如果你过去接触过 <code>numpy</code>，那么理解 TensorFlow 就非常简单了。numpy 和 TensorFlow 之间最主要的区别就是 TensorFLow 使用一种惰性的编程范式。它首先搭建一个把所有操作都定义好了的图，然后，当一个“会话“被调用时，它就会开始”运行“这个图。这个图是可扩展的，只需要改变内部张量（又叫做多维数组）的数据表示即可。构建计算图可以看作是使用
+                    TensorFlow 的主要工作。如果想了解更多关于计算图的数学组成，请阅读<a href="http://colah.github.io/posts/2015-08-Backprop/" target="_blank" rel="external">这篇文章</a>。</p>
+                  <p>我们很容易把 TensorFlow 归为一个神经网络库，但它不仅仅是这样。的确，它是一个非常强大的神经网络库。但是，它还能够做更多的事情。你可以使用它来构建其他机器学习算法，比如决策树或 K-近邻算法。你可以用它来完成任何你通常用 numpy 来完成的事情。因此它又被形象地称为 “NumPy 类固醇”。</p>
+                  <p>使用 TensorFlow 的优点有：</p>
                   <ul>
-                    <li><strong>It has an intuitive construct</strong>, because as the name suggests it has <em>“flow of tensors”. </em>You can easily visualize each and every part of the graph.</li>
-                    <li><strong>Easily train on cpu/gpu for distributed computing</strong></li>
-                    <li><strong>Platform flexibility</strong>. You can run the models wherever you want, whether it is on mobile, server or PC.</li>
+                    <li><strong>它具有一个直观的结构。</strong>顾名思义它具有”张量流“。你可以轻松的可视化图的每一个部分。</li>
+                    <li><strong>对于分布式计算，很容易在 CPU/GPU 上面进行训练。</strong></li>
+                    <li><strong>平台灵活性。</strong>你可以在任何地方运行你的模型，移动设备、服务器或 PC 。</li>
                   </ul>
-                  <h2 id="A-typical-“flow”-of-TensorFlow"><a href="#A-typical-“flow”-of-TensorFlow" class="headerlink" title="A typical “flow” of TensorFlow"></a>A typical “flow” of TensorFlow</h2>
-                  <p>Every library has its own “implementation details”, i.e. a way to write which follows its coding paradigm. For example, when implementing scikit-learn, you first create object of the desired algorithm, then build a model on train and
-                    get predictions on test set, something like this:</p>
+                  <h2 id="一个典型的-TensorFlow-”流“"><a href="#一个典型的-TensorFlow-”流“" class="headerlink" title="一个典型的 TensorFlow ”流“"></a>一个典型的 TensorFlow ”流“</h2>
+                  <p>每个库都有自己的”实现细节“，即一种遵循其编码范式的编写方式。例如，在实现 <code>scikit-learn</code> 时，你首先创建一个需要的算法对象，然后构建一个训练模型，进而对测试集进行预测，看起来就像下面这样：</p>
                   <figure class="highlight nix">
                     <table>
                       <tr>
@@ -503,51 +481,51 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="comment"># define hyperparamters of ML algorithm</span></div><div class="line"><span class="attr">clf</span> = svm.SVC(<span class="attr">gamma=0.001,</span> <span class="attr">C=100.)</span></div><div class="line"><span class="comment"># train </span></div><div class="line">clf.fit(X, y)</div><div class="line"><span class="comment"># test </span></div><div class="line">clf.predict(X_test)</div></pre>
+                          <pre><div class="line"><span class="comment"># 定义机器学习算法的 hyperparamters</span></div><div class="line"><span class="attr">clf</span> = svm.SVC(<span class="attr">gamma=0.001,</span> <span class="attr">C=100.)</span></div><div class="line"><span class="comment"># 训练</span></div><div class="line">clf.fit(X, y)</div><div class="line"><span class="comment"># 测试</span></div><div class="line">clf.predict(X_test)</div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
-                  <p>As I said earlier, TensorFlow follows a lazy approach. The usual workflow of running a program in TensorFlow is as follows:</p>
+                  <p>正如前面说过的，TensorFlow 遵循一种惰性的编程范式。在 TensorFlow 中运行一个程序的通常工作流如下：</p>
                   <ul>
-                    <li><strong>Build a computational graph, </strong>this can be any mathematical operation TensorFlow supports.</li>
-                    <li><strong>Initialize variables, </strong>to compile the variables defined previously<em>**</em></li>
-                    <li><strong>Create session, </strong>this is where the magic starts!<em>**</em></li>
-                    <li><strong>Run graph in session, </strong>the compiled graph is passed to the session, which starts its execution. <em>**</em></li>
-                    <li><strong>Close session, </strong>shutdown the session.</li>
+                    <li><strong>构建一个计算图</strong>，它可以是 TensorFlow 支持的任意一种数学操作。</li>
+                    <li><strong>初始化变量</strong>，编译之前定义的变量</li>
+                    <li><strong>创建会话</strong>，这是魔法开始的地方</li>
+                    <li><strong>在会话中运行图</strong>，编译后的图传到会话中，然后会话开始执行</li>
+                    <li><strong>关闭会话</strong></li>
                   </ul>
-                  <p>Few terminologies used in TensoFlow;</p>
+                  <p>TensorFlow 中使用的几个术语：</p>
                   <ul>
                     <li>
-                      <figure class="highlight lasso">
+                      <figure class="highlight">
                         <table>
                           <tr>
                             <td class="gutter">
                               <pre><div class="line">1</div></pre>
                             </td>
                             <td class="code">
-                              <pre><div class="line">placeholder: A way <span class="keyword">to</span> feed <span class="built_in">data</span> <span class="keyword">into</span> the graphs</div></pre>
+                              <pre><div class="line">占位符：一种将数据输入图表的方法</div></pre>
                             </td>
                           </tr>
                         </table>
                       </figure>
                     </li>
                     <li>
-                      <figure class="highlight vim">
+                      <figure class="highlight avrasm">
                         <table>
                           <tr>
                             <td class="gutter">
                               <pre><div class="line">1</div></pre>
                             </td>
                             <td class="code">
-                              <pre><div class="line">feed_dic<span class="variable">t:</span> A dictionary <span class="keyword">to</span> pass numeric <span class="built_in">values</span> <span class="keyword">to</span> computational graph</div></pre>
+                              <pre><div class="line"><span class="symbol">feed_dict:</span> 一个将数组传递给计算图的字典</div></pre>
                             </td>
                           </tr>
                         </table>
                       </figure>
                     </li>
                   </ul>
-                  <p>Lets write a small program to add two numbers!</p>
+                  <p>让我们写一个小程序并添加两个数字！</p>
                   <figure class="highlight vim">
                     <table>
                       <tr>
@@ -555,48 +533,45 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"># import tensorflow</div><div class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line"></div><div class="line"># build computational graph</div><div class="line"><span class="keyword">a</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"></div><div class="line">addition = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">a</span>, <span class="keyword">b</span>)</div><div class="line"></div><div class="line"># initialize variables</div><div class="line">init = <span class="keyword">tf</span>.initialize_all_variables()</div><div class="line"></div><div class="line"># create session <span class="built_in">and</span> run the graph</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    sess.run(init)</div><div class="line">    <span class="keyword">print</span> <span class="string">"Addition: %i"</span> % sess.run(addition, feed_dict=&#123;<span class="variable">a:</span> <span class="number">2</span>, <span class="variable">b:</span> <span class="number">3</span>&#125;)</div><div class="line"></div><div class="line"># <span class="keyword">close</span> session</div><div class="line">sess.<span class="keyword">close</span>()</div></pre>
+                          <pre><div class="line"># 导入 TensorFlow</div><div class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line"></div><div class="line"># 搭建计算图</div><div class="line"><span class="keyword">a</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"></div><div class="line">addition = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">a</span>, <span class="keyword">b</span>)</div><div class="line"></div><div class="line"># 初始化变量</div><div class="line">init = <span class="keyword">tf</span>.initialize_all_variables()</div><div class="line"></div><div class="line"># 创建会话并运行图</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    sess.run(init)</div><div class="line">    <span class="keyword">print</span> <span class="string">"Addition: %i"</span> % sess.run(addition, feed_dict=&#123;<span class="variable">a:</span> <span class="number">2</span>, <span class="variable">b:</span> <span class="number">3</span>&#125;)</div><div class="line"></div><div class="line"># 关闭会话</div><div class="line">sess.<span class="keyword">close</span>()</div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
-                  <h2 id="Implementing-Neural-Network-in-TensorFlow"><a href="#Implementing-Neural-Network-in-TensorFlow" class="headerlink" title="Implementing Neural Network in TensorFlow"></a>Implementing Neural Network in TensorFlow</h2>
-                  <p><em>Note: We could have used a different neural network architecture to solve this problem, but for the sake of simplicity, we settle on feed forward multilayer perceptron with an in depth implementation.</em></p>
-                  <p>Let us remember what we learned about neural networks first.</p>
-                  <p>A typical implementation of Neural Network would be as follows:</p>
+                  <h2 id="在-TensorFlow-中实现神经网络"><a href="#在-TensorFlow-中实现神经网络" class="headerlink" title="在 TensorFlow 中实现神经网络"></a>在 TensorFlow 中实现神经网络</h2>
+                  <p><em>注意：我们可以使用不同的神经网络结构来解决问题，但为了简单起见，在这儿，我们致力于一个前馈多层感知机的深层实现。</em></p>
+                  <p>让我们首先记住我们学到的关于神经网络的知识。</p>
+                  <p>一个典型的神经网络实现如下：</p>
                   <ul>
-                    <li>Define Neural Network architecture to be compiled</li>
-                    <li>Transfer data to your model</li>
-                    <li>Under the hood, the data is first divided into batches, so that it can be ingested. The batches are first preprocessed, augmented and then fed into Neural Network for training</li>
-                    <li>The model then gets trained incrementally</li>
-                    <li>Display the accuracy for a specific number of timesteps</li>
-                    <li>After training save the model for future use</li>
-                    <li>Test the model on a new data and check how it performs</li>
+                    <li>定义需要编译的神经网络结构</li>
+                    <li>将数据传输到模型</li>
+                    <li>在后台，数据首先被分成批，以便进行摄取，首先对批数据进行预处理，扩充，然后送入神经网络进行训练</li>
+                    <li>神经网络模型进行增量训练</li>
+                    <li>在特定时间显示准确率</li>
+                    <li>训练过后，保存模型，以便日后再次使用</li>
+                    <li>用新数据测试模型并检查它是如何执行的</li>
                   </ul>
-                  <p>Here we solve our deep learning practice problem – <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="external">Identify the Digits</a>. Let’s for a moment take a look at
-                    our problem statement.</p>
-                  <p>Our problem is an image recognition, to identify digits from a given 28 x 28 image. We have a subset of images for training and the rest for testing our model. So first, download the train and test files. The dataset contains a zipped
-                    file of all the images in the dataset and both the train.csv and test.csv have the name of corresponding train and test images. Any additional features are not provided in the datasets, just the raw images are provided in ‘.png’ format.</p>
-                  <p>As you know we will use TensorFlow to make a neural network model. So you should first install TensorFlow in your system. Refer the<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md"
-                      target="_blank" rel="external"> official installation guide</a> for installation, as per your system specifications.</p>
-                  <p>We will follow the template as described above. Create a Jupyter notebook with python 2.7 kernel and follow the steps below.</p>
+                  <p>在这儿，我们解决深度学习实践问题 - <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="external">识别数字</a>。让我们先看一下问题陈述。</p>
+                  <p>这是一个图像识别问题，从一个给定的 <code>28x28</code> 的图像中识别数字。我们将所有图像的一个子集用于训练，剩余部分用于测试模型。首先，下载训练和测试文件。数据集包含一个所有图像的压缩文件，以及名字和训练/测试图像相对应的 <code>train.csv</code> 和 <code>test.csv</code> 文件。在数据集中没有提供任何额外的特征，只提供了 <code>.png</code> 格式的原始图像。</p>
+                  <p>正如你所知道的，我们将使用 TensorFlow 来搭建一个神经网络模型。所以你首先需要在你的系统上安装 TensorFlow。请参考<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md" target="_blank" rel="external">官方安装指南</a>，根据你的系统进行安装。</p>
+                  <p>我们将按照上面描述的步骤来搭建神经网络。首先，使用 Python 2.7 核来创建一个 Jupyter notebook，后续步骤如下：</p>
                   <ul>
-                    <li>Let’s import all the required modules</li>
+                    <li>首先导入所有需要的模块：</li>
                   </ul>
-                  <figure class="highlight elm">
+                  <figure class="highlight haskell">
                     <table>
                       <tr>
                         <td class="gutter">
-                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">%pylab inline</div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="title">from</span> scipy.misc <span class="keyword">import</span> imread</div><div class="line"><span class="title">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div></pre>
+                          <pre><div class="line"><span class="meta"># pylab inline</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="title">from</span> scipy.misc <span class="keyword">import</span> imread</div><div class="line"><span class="title">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
                   <ul>
-                    <li>Let’s set a seed value, so that we can control our models randomness</li>
+                    <li>让我们设置一个种子值，从而我们能够控制模型的随机性</li>
                   </ul>
                   <figure class="highlight ini">
                     <table>
@@ -611,7 +586,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>The first step is to set directory paths, for safekeeping!</li>
+                    <li>第一步是设置目录路径，以便安全保存！</li>
                   </ul>
                   <figure class="highlight lua">
                     <table>
@@ -626,7 +601,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>Now let us read our datasets. These are in .csv formats, and have a filename along with the appropriate labels</li>
+                    <li>现在，让我们读入数据集。数据集是 <code>.csv</code> 文件格式的，并且有一个伴有合适标签的名字。</li>
                   </ul>
                   <figure class="highlight stylus">
                     <table>
@@ -644,8 +619,8 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     <thead>
                       <tr>
                         <th></th>
-                        <th>filename</th>
-                        <th>label</th>
+                        <th>文件名</th>
+                        <th>标签</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -677,7 +652,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </tbody>
                   </table>
                   <ul>
-                    <li>Let us see what our data looks like! We read our image and display it.</li>
+                    <li>让我们看一下我们的数据长什么样！读取图片并显示：</li>
                   </ul>
                   <figure class="highlight stylus">
                     <table>
@@ -692,10 +667,10 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png" alt="3"></a></p>
-                  <p>The above image is represented as numpy array, as seen below</p>
+                  <p>上面的图片表示为 numpy 数组，就是下面这样：</p>
                   <p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one.png" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one-1024x353.png" alt="one"></a></p>
                   <ul>
-                    <li>For easier data manipulation, let’s store all our images as numpy arrays</li>
+                    <li>为了使数据操作更简单，我们把所有图像存为 numpy 数组：</li>
                   </ul>
                   <figure class="highlight stylus">
                     <table>
@@ -710,7 +685,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>As this is a typical ML problem, to test the proper functioning of our model we create a validation set. Let’s take a split size of 70:30 for train set vs validation set</li>
+                    <li>因为这是一个典型的机器学习问题，为了测试模型的正常功能，我们需要创建一个验证集。我们将数据按 <code>7:3</code> 分为训练集和验证集。</li>
                   </ul>
                   <figure class="highlight stylus">
                     <table>
@@ -725,7 +700,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>Now we define some helper functions, which we use later on, in our programs</li>
+                    <li>现在，在程序中定义一些我们在后面将会用到的有用函数：</li>
                   </ul>
                   <figure class="highlight python">
                     <table>
@@ -740,9 +715,8 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>Now comes the main part! Let us define our neural network architecture. We define a neural network with 3 layers; input, hidden and output. The number of neurons in input and output are fixed, as the input is our 28 x 28 image and
-                      the output is a 10 x 1 vector representing the class. We take 500 neurons in the hidden layer. This number can vary according to your need. We also assign values to remaining variables. Read the <a href="https://www.analyticsvidhya.com/blog/2016/03/introduction-deep-learning-fundamentals-neural-networks/"
-                        target="_blank" rel="external">article on fundamentals of neural network</a> to know more in depth of how it works.</li>
+                    <li>现在，到了主要部分。让我们首先来定义神经网络的结构。我们定义一个三层神经网络：输入层、隐含层和输出层。输入层和输出层的神经元数目是固定的，因为输入就是一个 <code>28x28</code> 的图像，输出就是一个 <code>10x1</code> 的表示类别的向量。在隐含层中，我们设置 500 个神经元，这个数目可以根据你的需要来设置。同时，我们也需要对其余变量赋值。阅读<a href="https://www.analyticsvidhya.com/blog/2016/03/introduction-deep-learning-fundamentals-neural-networks/"
+                        target="_blank" rel="external">神经网络基础</a>这篇文章来深入了解它是如何工作的。</li>
                   </ul>
                   <figure class="highlight nix">
                     <table>
@@ -757,7 +731,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>Now create our neural networks computational graph</li>
+                    <li>现在，开始创建神经网络计算图：</li>
                   </ul>
                   <figure class="highlight ini">
                     <table>
@@ -772,7 +746,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>Also, we need to define cost of our neural network</li>
+                    <li>我们也需要定义神经网络的损失（cost）：</li>
                   </ul>
                   <figure class="highlight stylus">
                     <table>
@@ -781,15 +755,14 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                           <pre><div class="line">1</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line">cost = tf.reduce_mean(tf<span class="selector-class">.nn</span><span class="selector-class">.softmax_cross_entropy_with_logits</span>(output_layer, y))</div></pre>
+                          <pre><div class="line">cost =　tf.reduce_mean(tf<span class="selector-class">.nn</span><span class="selector-class">.softmax_cross_entropy_with_logits</span>(output_layer, y))</div></pre>
                         </td>
                       </tr>
                     </table>
                   </figure>
                   <ul>
-                    <li>And set the optimizer, i.e. our backpropogation algorithm. Here we use <a href="https://arxiv.org/abs/1412.6980" target="_blank" rel="external">Adam</a>, which is an efficient variant of Gradient Descent algorithm. There are a number
-                      of other optimizers available in tensorflow (refer
-                      <a href="https://www.tensorflow.org/versions/r0.11/api_docs/python/train.html#optimizers" target="_blank" rel="external">here</a>)</li>
+                    <li>设置优化算法，比如后向传播算法（BP 算法）。在这儿，我们使用 <a href="https://arxiv.org/abs/1412.6980" target="_blank" rel="external">Adam</a>，这是一个高效的梯度下降算法的变种。在 TensorFlow 中还有许多可用的优化算法（参考<a href="https://www.tensorflow.org/versions/r0.11/api_docs/python/train.html#optimizers"
+                        target="_blank" rel="external">这儿</a>）</li>
                   </ul>
                   <figure class="highlight stylus">
                     <table>
@@ -804,7 +777,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>After defining our neural network architecture, let’s initialize all the variables</li>
+                    <li>定义好神经网络结构之后，初始化所有变量：</li>
                   </ul>
                   <figure class="highlight ini">
                     <table>
@@ -819,7 +792,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>Now let us create a session, and run our neural network in the session. We also validate our models accuracy on validation set that we created</li>
+                    <li>现在，创建一个会话，在会话中运行我们的神经网络。同时，使用我们已经创建好的验证集来验证我们的模型：</li>
                   </ul>
                   <figure class="highlight vim">
                     <table>
@@ -833,7 +806,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                       </tr>
                     </table>
                   </figure>
-                  <p>This will be the output of the above code</p>
+                  <p>上面代码的输出如下：</p>
                   <figure class="highlight http">
                     <table>
                       <tr>
@@ -847,7 +820,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     </table>
                   </figure>
                   <ul>
-                    <li>To test our model with our own eyes, let’s visualize its predictions</li>
+                    <li>为了使用我们的眼睛来测试模型，让我们来看一些它的预测结果：</li>
                   </ul>
                   <figure class="highlight stylus">
                     <table>
@@ -864,7 +837,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                   <p>Prediction is: 8</p>
                   <p><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/8.png" alt=""></p>
                   <ul>
-                    <li>We see that our model performance is pretty good! Now let’s create a submission</li>
+                    <li>我们看到模型的性能非常好。现在我们来创建一个子会话：</li>
                   </ul>
                   <figure class="highlight stylus">
                     <table>
@@ -878,39 +851,37 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                       </tr>
                     </table>
                   </figure>
-                  <p>And done! We just created our own trained neural network! </p>
-                  <h2 id="Limitations-of-TensorFlow"><a href="#Limitations-of-TensorFlow" class="headerlink" title="Limitations of TensorFlow"></a>Limitations of TensorFlow</h2>
+                  <p>到现在，我们就把已经训练好的神经网络保存下来了。</p>
+                  <h2 id="TensorFlow-的局限性"><a href="#TensorFlow-的局限性" class="headerlink" title="TensorFlow 的局限性"></a>TensorFlow 的局限性</h2>
                   <ul>
-                    <li>Even though TensorFlow is powerful, it’s still a low level library. For example, it can be considered as a machine level language. But for most of the purpose, you need modularity and high level interface such as keras</li>
-                    <li>It’s still in development, so much more awesomeness to come!</li>
-                    <li>It depends on your hardware specs, the more the merrier</li>
-                    <li>Still not an API for many languages.</li>
-                    <li>There are still many things yet to be included in TensorFlow, such as OpenCL support.</li>
+                    <li>尽管 TensorFlow 很强大，但它依旧是一个低级库，打个比方，你可以把它看出一个机器级语言。但是大多数情况下，你需要模块化和高层次的接口，比如 keras 这样的库便能够提供。</li>
+                    <li>TensorFlow 目前仍然在开发中，因此未来还会有很多令人激动的东西到来。</li>
+                    <li>TensorFlow 依赖于你的硬件配置，硬件配置越高越好。</li>
+                    <li>对于许多语言，TensorFlow 还没有 API.</li>
+                    <li>TensorFlow 中还有许多东西需要实现，比如 OpenCL 的支持。</li>
                   </ul>
-                  <p>Most of the above mentioned are in the sights of TensorFlow developers. They have made a roadmap for specifying how the library should be developed in the future.</p>
-                  <h2 id="TensorFlow-vs-Other-Libraries"><a href="#TensorFlow-vs-Other-Libraries" class="headerlink" title="TensorFlow vs. Other Libraries"></a>TensorFlow vs. Other Libraries</h2>
-                  <p>TensorFlow is built on similar principles as Theano and Torch of using mathematical computational graphs. But with the additional support of distributed computing, TensorFlow comes out to be better at solving complex problems. Also deployment
-                    of TensorFlow models is already supported which makes it easier to use for industrial purposes, giving a fight to commercial libraries such as Deeplearning4j, H2O and Turi. TensorFlow has APIs for Python, C++ and Matlab. There’s also
-                    a recent surge for support for other languages such as Ruby and R. So, TensorFlow is trying to have a universal language support. </p>
-                  <h2 id="Where-to-go-from-here"><a href="#Where-to-go-from-here" class="headerlink" title="Where to go from here?"></a>Where to go from here?</h2>
-                  <p>So you saw how to build a simple neural network with TensorFlow. This code is meant for people to understand how to get started implementing TensorFlow, so take it with a pinch of salt. Remember that to solve more complex real life problems,
-                    you have to tweak the code a little bit.</p>
-                  <p>Many of the above functions can be abstracted to give a seamless end-to-end workflow. If you have worked with scikit-learn, you might know how a high level library abstracts “under the hood” implementations to give end-users a more easier
-                    interface. Although TensorFlow has most of the implementations already abstracted, high level libraries are emerging such as TF-slim and TFlearn.</p>
-                  <h2 id="Useful-Resources"><a href="#Useful-Resources" class="headerlink" title="Useful Resources"></a>Useful Resources</h2>
+                  <p>上面提到的内容大多数是站在 TensorFlow 开发者的角度的。他们已经制定了一个路线图来说明将来这个库应该如何发展。</p>
+                  <h2 id="TensorFlow-vs-其他库"><a href="#TensorFlow-vs-其他库" class="headerlink" title="TensorFlow vs. 其他库"></a>TensorFlow vs. 其他库</h2>
+                  <p>TensorFlow 是以和 Theano 和 Torch 相似的原则构建的，都是使用数学计算图。但是由于具有分布式计算的支持，TensorFlow 对于解决复杂的问题表现得更好。同时，由于已经支持 TensorFlow 模型的部署（即开源免费），这使得在工业上使用更加容易，对 Deeplearning4j、H2O 和 Turi 这些商业库造成了竞争威胁。TensorFlow 有 Python、C++ 和 Matlab 的 API，接下来可能将要有对其他语言的支持，比如
+                    Ruby 和 R。所以，TensorFlow 正在试图成为具有普遍语言的机器学习库。
+                  </p>
+                  <h2 id="接下来往哪走"><a href="#接下来往哪走" class="headerlink" title="接下来往哪走"></a>接下来往哪走</h2>
+                  <p>你已经看到了如何使用 TensorFlow 来建立一个简单的神经网路。这个代码对于来理解如何开始实现 TensorFlow 是有意义的，所以不要小瞧它。但是请记住现实生活需要解决的问题将会更加复杂，你需要稍微修改一下代码。</p>
+                  <p>上面的许多函数能够被抽象出来，以提供无缝的端到端工作流。如果你使用过 scikit-learn，那么你可能知道一个高级库是如何抽象出底层实现，然后给终端用户提供一个更加简单的接口的。虽然 TensorFlow 已经抽象出了大多数的实现，但高级库正在出现，比如 TF-slim 和 TFlearn 。</p>
+                  <h2 id="有用的资源"><a href="#有用的资源" class="headerlink" title="有用的资源"></a>有用的资源</h2>
                   <ul>
-                    <li><a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="external">TensorFlow official repository</a></li>
-                    <li>Rajat Monga (TensorFlow technical lead) <a href="https://youtu.be/wmw8Bbb_eIE" target="_blank" rel="external">“TensorFlow for everyone”</a> video</li>
-                    <li><a href="https://github.com/jtoy/awesome-tensorflow/#github-projects" target="_blank" rel="external">A curated list of dedicated resources</a></li>
+                    <li><a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="external">TensorFlow 官方仓库</a></li>
+                    <li>Rajat Monga (TensorFlow 技术引导) <a href="https://youtu.be/wmw8Bbb_eIE" target="_blank" rel="external">“TensorFlow for everyone”</a> 视频</li>
+                    <li>一个专用资源列表](<a href="https://github.com/jtoy/awesome-tensorflow/#github-projects" target="_blank" rel="external">https://github.com/jtoy/awesome-tensorflow/#github-projects</a>)</li>
                   </ul>
-                  <h2 id="End-Notes"><a href="#End-Notes" class="headerlink" title="End Notes"></a>End Notes</h2>
-                  <p>I hope you found this article helpful. Now, it’s time for you to practice and read as much as you can. Good luck! If you follow a different approach / package / library to get started with Neural Networks, I’d love to interact with you
-                    in comments. If you have any more suggestions, drop in your comments below. And to gain expertise in working in neural network don’t forget to try out our deep learning practice problem – <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/"
-                      target="_blank" rel="external">Identify the Digits</a>.</p>
-                  <h3 id="You-can-test-your-skills-and-knowledge-Check-out-Live-Competitions-and-compete-with-best-Data-Scientists-from-all-over-the-world"><a href="#You-can-test-your-skills-and-knowledge-Check-out-Live-Competitions-and-compete-with-best-Data-Scientists-from-all-over-the-world" class="headerlink" title="You can test your skills and knowledge. Check out Live Competitions and compete with best Data Scientists from all over the world."></a>You
-                    can test your skills and knowledge. Check out <a href="http://datahack.analyticsvidhya.com/contest/all" target="_blank" rel="external">Live Competitions</a> and compete with best Data Scientists from all over the world.</h3>
-                  <p>原文链接：<a href="https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/" target="_blank" rel="external">https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/</a></p>
-                  <p>翻译：<a href="https://fenglv.ac.cn" target="_blank" rel="external">Flynn</a></p>
+                  <h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2>
+                  <p>我希望你觉得这篇文章很有帮助，现在，是时候来进行更多的练习和阅读了。Good luck！如果你使用一个不同的方法/包/库来实现神经网络，那么我很愿意在评论中跟你互动。如果你有什么建议，也请在评论中告知。为了让自己对神经网络的使用更加熟练，请不要忘记尝试解决我们的深度学习练习问题 - <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/"
+                      target="_blank" rel="external">数字识别</a>。</p>
+                  <p>你可以测试你的技能和知识。查看 <a href="http://datahack.analyticsvidhya.com/contest/all" target="_blank" rel="external">Live Competitions</a>，来和世界上最优秀的数据科学家进行比赛。</p>
+                  <blockquote>
+                    <p>原文链接：<a href="https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/" target="_blank" rel="external">https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/</a></p>
+                    <p>翻译：<a href="https://fenglv.ac.cn" target="_blank" rel="external">Flynn</a></p>
+                  </blockquote>
                   <p>
                     <div id="container"></div>
                   </p>
@@ -974,10 +945,6 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                     <span class="post-nav-divider"></span>
 
                     <div class="post-nav-prev post-nav-item">
-
-                      <a href="/2017/11/12/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/" rel="prev" title="以图像识别为例 - 使用 Keras 来优化神经网络">
-                以图像识别为例 - 使用 Keras 来优化神经网络 <i class="fa fa-chevron-right"></i>
-              </a>
 
                     </div>
                   </div>
@@ -1089,7 +1056,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-count">88</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -1107,7 +1074,7 @@ If you have been following Data Science / Machine Learning, you just can’t mis
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>
@@ -1203,22 +1170,17 @@ If you have been following Data Science / Machine Learning, you just can’t mis
                 <div class="post-toc-content">
                   <ol class="nav">
                     <li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#When-to-apply-Neural-Networks"><span class="nav-number">2.</span> <span class="nav-text">When to apply Neural Networks ?</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#General-way-to-solve-problems-with-Neural-Networks"><span class="nav-number">3.</span> <span class="nav-text">General way to solve problems with Neural Networks</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Understanding-Image-data-and-popular-libraries-to-solve-it"><span class="nav-number">4.</span> <span class="nav-text">Understanding Image data and popular libraries to solve it</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-TensorFlow"><span class="nav-number">5.</span> <span class="nav-text">What is TensorFlow?</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#A-typical-“flow”-of-TensorFlow"><span class="nav-number">6.</span> <span class="nav-text">A typical “flow” of TensorFlow</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Implementing-Neural-Network-in-TensorFlow"><span class="nav-number">7.</span> <span class="nav-text">Implementing Neural Network in TensorFlow</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Limitations-of-TensorFlow"><span class="nav-number">8.</span> <span class="nav-text">Limitations of TensorFlow</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow-vs-Other-Libraries"><span class="nav-number">9.</span> <span class="nav-text">TensorFlow vs. Other Libraries</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Where-to-go-from-here"><span class="nav-number">10.</span> <span class="nav-text">Where to go from here?</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#Useful-Resources"><span class="nav-number">11.</span> <span class="nav-text">Useful Resources</span></a></li>
-                    <li class="nav-item nav-level-2"><a class="nav-link" href="#End-Notes"><span class="nav-number">12.</span> <span class="nav-text">End Notes</span></a>
-                      <ol class="nav-child">
-                        <li class="nav-item nav-level-3"><a class="nav-link" href="#You-can-test-your-skills-and-knowledge-Check-out-Live-Competitions-and-compete-with-best-Data-Scientists-from-all-over-the-world"><span class="nav-number">12.1.</span> <span class="nav-text">You
-  can test your skills and knowledge. Check out Live Competitions and compete with best Data Scientists from all over the world.</span></a></li>
-                      </ol>
-                    </li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#何时使用神经网络？"><span class="nav-number">2.</span> <span class="nav-text">何时使用神经网络？</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#使用神经网络来解决问题的通常手段"><span class="nav-number">3.</span> <span class="nav-text">使用神经网络来解决问题的通常手段</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#图像数据以及常用于解决图像问题的库"><span class="nav-number">4.</span> <span class="nav-text">图像数据以及常用于解决图像问题的库</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow-是什么？"><span class="nav-number">5.</span> <span class="nav-text">TensorFlow 是什么？</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#一个典型的-TensorFlow-”流“"><span class="nav-number">6.</span> <span class="nav-text">一个典型的 TensorFlow ”流“</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#在-TensorFlow-中实现神经网络"><span class="nav-number">7.</span> <span class="nav-text">在 TensorFlow 中实现神经网络</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow-的局限性"><span class="nav-number">8.</span> <span class="nav-text">TensorFlow 的局限性</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow-vs-其他库"><span class="nav-number">9.</span> <span class="nav-text">TensorFlow vs. 其他库</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#接下来往哪走"><span class="nav-number">10.</span> <span class="nav-text">接下来往哪走</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#有用的资源"><span class="nav-number">11.</span> <span class="nav-text">有用的资源</span></a></li>
+                    <li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">12.</span> <span class="nav-text">结束语</span></a></li>
                   </ol>
                 </div>
 

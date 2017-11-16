@@ -3,28 +3,8 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/11/12/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/</loc>
-    <lastmod>2017-11-12T16:29:22.965Z</lastmod>
-    <data>
-        <display>
-        <title>以图像识别为例 - 使用 Keras 来优化神经网络</title>
-        <pubTime>2017-11-12T04:10:14.000Z</pubTime>
-        
-        <tag>Keras translation </tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine-Learning" url="http://ucasfl.me/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/</loc>
-    <lastmod>2017-11-12T16:28:55.689Z</lastmod>
+    <lastmod>2017-11-16T03:08:53.045Z</lastmod>
     <data>
         <display>
         <title>使用 Tensorflow 实现神经网络</title>
