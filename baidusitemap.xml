@@ -3,6 +3,26 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/03/20/Recommand-Some-Vim-Plugins-I-use/</loc>
+    <lastmod>2017-12-05T14:06:17.349Z</lastmod>
+    <data>
+        <display>
+        <title>安利一波正在使用的 Vim 插件和配色</title>
+        <pubTime>2017-03-20T15:08:43.000Z</pubTime>
+        
+        <tag>Vim </tag>
+         
+         
+           
+             
+              <breadCrumb title="Vim" url="http://ucasfl.me/categories/Vim/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/</loc>
     <lastmod>2017-11-16T03:08:53.045Z</lastmod>
     <data>
@@ -16,26 +36,6 @@
            
              
               <breadCrumb title="Machine-Learning" url="http://ucasfl.me/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/03/20/Recommand-Some-Vim-Plugins-I-use/</loc>
-    <lastmod>2017-11-12T16:28:38.149Z</lastmod>
-    <data>
-        <display>
-        <title>安利一波正在使用的 Vim 插件和配色</title>
-        <pubTime>2017-03-20T15:08:43.000Z</pubTime>
-        
-        <tag>Vim </tag>
-         
-         
-           
-             
-              <breadCrumb title="Vim" url="http://ucasfl.me/categories/Vim/"/>
           
         </display>
     </data>

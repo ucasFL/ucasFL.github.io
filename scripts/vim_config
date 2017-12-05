@@ -22,7 +22,7 @@ else
 	sudo apt install git;
 	sudo apt install curl;
 fi
-echo "Begin configuring Vim......"
+echo "开始配置 Vim"
 sleep 2;
 
 git clone https://github.com/ucasFL/my_vimrc.git;
@@ -43,4 +43,7 @@ git clone https://github.com/Lokaltog/vim-powerline.git;
 git clone https://github.com/drmingdrmer/xptemplate.git;
 git clone https://github.com/kien/ctrlp.vim.git;
 git clone https://github.com/unblevable/quick-scope.git;
-echo "Configuring Vim completed! Enjoying your Vim."
+git clone https://github.com/alvan/vim-closetag.git
+git clone https://github.com/mattn/emmet-vim.git
+git clone https://github.com/terryma/vim-multiple-cursors.git;
+echo "配置完成。"
