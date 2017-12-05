@@ -25,12 +25,12 @@ fi
 echo "开始配置 Vim"
 sleep 2;
 
-git clone https://github.com/ucasFL/my_vimrc.git;
-sudo cp my_vimrc/vimrc /etc/vim;
+git clone https://github.com/ucasFL/vimrc.git;
+sudo cp vimrc/vimrc /etc/vim;
 mkdir -p ~/.vim/autoload ~/.vim/bundle;
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
-sudo mv my_vimrc/colors ~/.vim/;
-sudo rm -r my_vimrc;
+sudo mv vimrc/colors ~/.vim/;
+sudo rm -r vimrc;
 mkdir -p ~/.vim/autoload ~/.vim/bundle;
 cd ~/.vim/bundle;
 git clone https://github.com/jiangmiao/auto-pairs.git;
