@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-12-09T16:57:29.343Z</updated>
+  <updated>2017-12-14T14:26:11.900Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>无题</title>
+    <link href="http://ucasfl.me/2017/12/14/One-year/"/>
+    <id>http://ucasfl.me/2017/12/14/One-year/</id>
+    <published>2017-12-14T14:10:33.000Z</published>
+    <updated>2017-12-14T14:26:11.900Z</updated>
+    
+    <content type="html"><![CDATA[<p>再过三天，博客就一周年了<br>这一年以来，好像也没能够写出什么有意义的东西<br>也许当时只是觉得一个独立博客大概是一个程序员的标志吧</p>
+<a id="more"></a>
+<p>博客正式上线是 2016 年 12 月 17 日<br>也就是去年四六级考试那天</p>
+<p>这一年，博客也发生过许多变化<br>主题从最开始的 yilia 换到了 next<br>今天三月份购买了一个域名<br>从此使用上了独立域名<br>评论系统多次变更<br>上月通过 Cloudflare 将域名上 https<br>…</p>
+<p>原本打算在 17 日那天好好写一篇博客来记录一下博客这一年以来的变化<br>却突然改在今天<br>一切都是意料之外<br>而对于博客这一年以来的变化也只是只言片语的带过</p>
+<p>最近学习上又遇到了瓶颈<br>很多事情要干<br>但什么也感觉不会<br>什么也做不下去</p>
+<p>时隔一周<br>又和女朋友吵架了<br>爱情带给人的不仅仅只有甜蜜<br>还有很多很多<br>包括痛苦</p>
+<p>梦碎了<br>梦醒了<br>生活还得继续<br>谁不是被生活赶着走</p>
+<p>最近越来越宅<br>越来越不喜欢接触外面的热闹<br>也越来越不会说话<br>连胡说八道都不知道该说什么了</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;再过三天，博客就一周年了&lt;br&gt;这一年以来，好像也没能够写出什么有意义的东西&lt;br&gt;也许当时只是觉得一个独立博客大概是一个程序员的标志吧&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Essay" scheme="http://ucasfl.me/categories/Essay/"/>
+    
+    
+      <category term="Essay" scheme="http://ucasfl.me/tags/Essay/"/>
+    
+  </entry>
   
   <entry>
     <title>Xrandr-一个可以设置屏幕分辨率的 Linux 命令</title>
@@ -4269,500 +4317,6 @@
   &lt;li&gt;Solution: 平衡二叉排序树 (Balanced Binary Sort Tree) ,由 Adelson-Velskii 和 Landis于 1962 年提出的,故称 AVL 树&lt;/li&gt;
   &lt;li&gt;变种:红黑树,树堆,伸展树&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Data-Structures" scheme="http://ucasfl.me/categories/Data-Structures/"/>
-    
-    
-      <category term="Data-Structures" scheme="http://ucasfl.me/tags/Data-Structures/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>查找和搜索-Part1</title>
-    <link href="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/"/>
-    <id>http://ucasfl.me/2017/08/05/Find-and-Search-Part1/</id>
-    <published>2017-08-05T04:51:20.000Z</published>
-    <updated>2017-11-06T08:04:49.175Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3>
-<ul>
-  <li>查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成</li>
-  <li>关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素</li>
-</ul>
-<p>– 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字<br>– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字</p>
-<a id="more"></a>
-<h4 id="关键字类型"><a href="#关键字类型" class="headerlink" title="关键字类型"></a>关键字类型</h4>
-<ul>
-  <li>数据元素的关键字:其类型通常是可以进行比较运算的类型</li>
-  <li>典型的关键字类型</li>
-</ul>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">float</span> KeyType ;</div><div class="line"><span class="comment">// 实型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> KeyType ; <span class="comment">// 整型</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> KeyType ; <span class="comment">// 字符串型</span></div><div class="line">• 数据元素类型</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> RecType &#123;</div><div class="line">KeyType key ; <span class="comment">// 关键字域</span></div><div class="line">... ... <span class="comment">// 其他域</span></div><div class="line">&#125; ElemType;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h4 id="对两个关键字的比较"><a href="#对两个关键字的比较" class="headerlink" title="对两个关键字的比较"></a>对两个关键字的比较</h4>
-<figure class="highlight awk">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="regexp">//</span>C 的宏定义</div><div class="line"><span class="regexp">//</span> 对数值型关键字</div><div class="line"><span class="comment">#define EQ(a, b) ((a)==(b))</span></div><div class="line"><span class="comment">#define LT(a, b) ((a)&lt;(b))</span></div><div class="line"><span class="comment">#define LQ(a, b) ((a)&lt;=(b))</span></div><div class="line"><span class="regexp">//</span> 对字符串型关键字</div><div class="line"><span class="comment">#define EQ(a, b) (!strcmp((a), (b)) )</span></div><div class="line"><span class="comment">#define LT(a, b) (strcmp((a), (b))&lt;0 )</span></div><div class="line"><span class="comment">#define LQ(a, b) (strcmp((a), (b))&lt;=0 )</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4>
-<p>根据给定的 <code>Key</code> 值,在查找表中确定一个关键字等于给定值的数据元素或记录</p>
-<ul>
-  <li>查找表中存在满足条件的数据元素 / 记录,则查找成功,返回所查到的数据元素或其在查找表中的位置</li>
-  <li>查找表中不存在满足条件的记录,则查找失败</li>
-  <li>“ 关键字等于给定值 ” 只是一种最为常用的查找条件,实际应用中可能会有其他的查找件,例如查找 “ 关键字在某个范围内的数据元素 ” 等等</li>
-</ul>
-<p>采用何种查找方法,首先取决于查找表的组织,即按何种关系组织 / 存储数据元素</p>
-<ul>
-  <li>查找表是记录的集合,而集合中的元素之间是一种完全松散的关系,因此,查找表是一种非常灵活的数据结构,可以用多种方式来存储</li>
-</ul>
-<h3 id="查找及其方法分类"><a href="#查找及其方法分类" class="headerlink" title="查找及其方法分类"></a>查找及其方法分类</h3>
-<ul>
-  <li>静态查找 / 静态查找表 (Static Search Table):只对该表的数据元素进行查询</li>
-  <li>动态查找 / 动态查找表 (Dynamic Search Table) :在对该表实施查找的同时,可插入查找表中不存在的记录,或从查找表中删除已存在的某个记录;表的结构本身是在查找过程中动态生成的</li>
-</ul>
-<h4 id="分类1：按存储结构的不同"><a href="#分类1：按存储结构的不同" class="headerlink" title="分类1：按存储结构的不同"></a>分类1：按存储结构的不同</h4>
-<ul>
-  <li>线性表查找: 数据元素保存在顺序表或链表中</li>
-  <li>哈希查找:数据元素保存在哈希表中,根据给定的 <code>Key</code> 值直接访问 查找表, 从而找到要查找的记录</li>
-  <li>树表查找:数据元素保存在树中</li>
-</ul>
-<h4 id="分类2："><a href="#分类2：" class="headerlink" title="分类2："></a>分类2：</h4>
-<ul>
-  <li>内查找:整个查找过程全部在内存进行</li>
-  <li>外查找:在查找过程中还需要访问外存，例如:查找表太大,无法全部放入内存中</li>
-</ul>
-<h4 id="查找方法的评价指标"><a href="#查找方法的评价指标" class="headerlink" title="查找方法的评价指标"></a>查找方法的评价指标</h4>
-<ul>
-  <li>查找过程中的主要操作是关键字的比较,查找过程中关键字的平均比较次数是衡量一个查找算法效率高低的标准</li>
-  <li>ASL (Average Search Length , 平均查找长度 ) 定义为需要和给定值进行比较的关键字的个数的期望值</li>
-</ul>
-<h3 id="静态查找表"><a href="#静态查找表" class="headerlink" title="静态查找表"></a>静态查找表</h3>
-<p>静态查找表:可以用线性表 ( 顺序表或线性链表 ) 实现</p>
-<p>静态查找表 StaticSearchTable 的基本操作:</p>
-<figure class="highlight cs">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateSSTable</span>(<span class="params">SSTable *t</span>)</span>;<span class="comment">// 构造一个查找表</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Destroy</span>(<span class="params">SSTable *t</span>)</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ListSSTable</span>(<span class="params">SSTable *t</span>)</span>; <span class="comment">// 输出查找表</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SearchSSTable</span>(<span class="params">SSTable *t,KeyType key</span>)</span>; <span class="comment">// 查找成功,返回元素值在表中位置</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Traverser</span>(<span class="params">SSTable *t, <span class="keyword">void</span> Visit(ElemType *e</span>))</span>; <span class="comment">// 按某种次序对 t 的每个元素调用函数 Visit()</span></div><div class="line">一次且一次</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h4 id="静态查找表的查找方法"><a href="#静态查找表的查找方法" class="headerlink" title="静态查找表的查找方法"></a>静态查找表的查找方法</h4>
-<ul>
-  <li>基于顺序表的查找: 顺序查找 (SequentialSearch) ,逐一比较</li>
-  <li>基于有序表的查找</li>
-</ul>
-<p>– 折半查找 / 二分查找 (Binary Search) :每次对查找表进行折半缩小<br>– Fibonacci 查找 :根据 Fibonacci 数列的特点对查找表进行分割<br>– 静态树表查找</p>
-<ul>
-  <li>基于索引顺序表的查找:索引顺序查找 /分块查找 (Blocking Search) ,基于顺序表和其索引的查找</li>
-</ul>
-<h4 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h4>
-<p>顺序表的定义如下：</p>
-<figure class="highlight thrift">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SSTable</span></span>&#123;</div><div class="line"><span class="comment">// 数据元素存储空间的基地址</span></div><div class="line"><span class="comment">// 建表时按实际长度分配, 0 号单元留空</span></div><div class="line">ElemType *elem;</div><div class="line">int length ; <span class="comment">// 实际元素个数</span></div><div class="line">&#125; SSTable;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>顺序查找算法：</p>
-<p>从表的一端 ( 例如:最后一个记录 ) 开始,逐个将记录的关键字和给定 <code>Key</code> 值进行比较<br>– 若某个记录的关键字和给定 <code>Key</code> 值相等,查找成功<br>– 否则,若扫描完整个表,仍然没有找到相应的记录,则查找失败</p>
-<p>简单实现：</p>
-<figure class="highlight maxima">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">int SearchSSTable(SSTable *t, KeyType <span class="built_in">key</span>) &#123;</div><div class="line">  <span class="keyword">for</span>(int i=<span class="number">1</span>; i&lt;=t-&gt;<span class="built_in">length</span> &amp;&amp; (t-&gt;<span class="built_in">elem</span>[i].<span class="built_in">key</span> != <span class="built_in">key</span>); i++ );</div><div class="line">  <span class="keyword">if</span>( i&lt;=t-&gt;<span class="built_in">length</span> )</div><div class="line">    <span class="built_in">return</span> i;</div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="built_in">return</span> <span class="number">0</span>;</div><div class="line">&#125; //Search_Seq</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>标准算法：</p>
-<figure class="highlight processing">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="built_in">int</span> SearchSSTable(SSTable *t,KeyType <span class="built_in">key</span>) &#123;</div><div class="line"><span class="comment">// 设置哨兵,查找失败时返回 0</span></div><div class="line">  t-&gt;elem[<span class="number">0</span>].<span class="built_in">key</span>=<span class="built_in">key</span>;</div><div class="line"><span class="comment">// 从后往前找</span></div><div class="line">  <span class="keyword">for</span> (<span class="built_in">int</span> i=t-&gt;length; !EQ(t-&gt;elem[i].<span class="built_in">key</span>, <span class="built_in">key</span>); i--) ;</div><div class="line">  <span class="keyword">return</span> i ; <span class="comment">// 找不到时, i 为 0</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//设立哨兵后可以使循环中省掉了一次比较</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>算法分析：</p>
-<ul>
-  <li>查找成功时候的比较次数：<code>ASL = (n+1)/2</code></li>
-  <li>查找失败时候的比较次数：<code>ASL=n+1</code></li>
-  <li>若查找成功与不成功的概率相等，则 <code>ASL = 3(n+1)/4</code></li>
-</ul>
-<p>缺点：</p>
-<p>查找效率低,当 <code>n</code> 较大时,不宜采用顺序查找。</p>
-<p>改进：</p>
-<ul>
-  <li>根据数据元素被查找的概率组织顺序表，在不等概率的情况下，按被查找概率的升序排序。</li>
-  <li>在数据元素中增加一数据项,用于记录对该数据元素的访问次数<br>– 在每次查找后,维护查找表使得其按照数据元素的访问次数升序排序</li>
-  <li>在每次查找后,将刚查找到的元素移动至表尾:已发生的事会重复发生</li>
-  <li>为顺序表加索引</li>
-</ul>
-<h4 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h4>
-<ul>
-  <li>基于有序顺序表的查找算法。</li>
-</ul>
-<p>– 查找表中的所有记录是按关键字有序 ( 升序或降序 ) 排列的</p>
-<ul>
-  <li>查找过程中,先确定待查找记录在表中的范围,然后逐步缩小范围 ( 每次将待查记录所在区间缩小一半 ) ,直到找到或找不到记录为止</li>
-</ul>
-<p>算法思想：</p>
-<ul>
-  <li>初始:用 <code>Low</code>、 <code>High</code> 和 <code>Mid</code> 表示待查找区间的下界、上界和中间位置指针,初值设置为 <code>Low=1</code> , <code>High=n</code></li>
-  <li>(1) 取中间位置 Mid : <code>Mid=(Low+High)/2</code></li>
-  <li>(2) 比较中间位置记录的关键字与给定的 <code>Ke</code>值:</li>
-</ul>
-<p>– 相等:查找成功;<br>– 大于:待查记录在区间的前半段,修改上界指针: <code>High=Mid-1</code> ,转 (1) ;<br>– 小于:待查记录在区间的后半段,修改下界指针: <code>Low=Mid+1</code> ,转 (1) ;</p>
-<ul>
-  <li>直到越界 <code>(Low&gt;High)</code> ,查找失败</li>
-</ul>
-<p><strong>算法实现</strong>：</p>
-<figure class="highlight processing">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">// 在有序表 t 中折半查找其关键字等于 key 的数据元素</span></div><div class="line"><span class="built_in">int</span> SearchSSTable(SSTable *t, KeyType <span class="built_in">key</span>) &#123;</div><div class="line">  <span class="built_in">int</span> low, high, mid;</div><div class="line">  low = <span class="number">1</span>; high = t-&gt;length; <span class="comment">// 置区间初值</span></div><div class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</div><div class="line">    mid = (low + high) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">if</span> (EQ(<span class="built_in">key</span> , t-&gt;elem[mid].<span class="built_in">key</span>))</div><div class="line"><span class="comment">// 找到,返回该待查元素在表中的位置</span></div><div class="line">      <span class="keyword">return</span> mid;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LT(<span class="built_in">key</span>, t-&gt;elem[mid].<span class="built_in">key</span>))</div><div class="line"><span class="comment">// 继续在前半区间进行查找</span></div><div class="line">      high = mid - <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="comment">// 继续在后半区间进行查找</span></div><div class="line">      low = mid + <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 顺序表中不存在待查元素</span></div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>算法分析</strong>：</p>
-<ul>
-  <li>查找时,每经过一次比较,查找范围就缩小一半,该过程可用一棵二叉树表示:</li>
-</ul>
-<p>– 把当前查找区间的中点作为根结点<br>– 左子区间和右子区间分别作为根的左子树和右子树<br>– 排在中间位置前面的作为左子树的结点<br>– 排在中间位置后面的作为右子树的结点</p>
-<ul>
-  <li>上述描述查找过程的二叉树被称为折半查找的判定树(Decision Tree)</li>
-</ul>
-<p>– 内结点代表顺序表中已有的元素,外结点代表失败结点,它表示在两个相邻已有元素值之间的值</p>
-<ul>
-  <li>找到有序表中任一记录的过程是走了一条从根结点到与该记录相应的结点的路径,与给定值进行比较的关键字个数为该结点在判定树上的层次数</li>
-  <li>查找成功时候的<code>ASL = (n+1)/nlog2(n+1) - 1</code></li>
-  <li>当n很大时(<code>n&gt;50</code>)，<code>ASL = log2(n+1) - 1</code></li>
-</ul>
-<p><strong>算法优缺点分析</strong>：</p>
-<ul>
-  <li>Strength :折半查找速度很快</li>
-</ul>
-<p>– <code>1000</code> 个元素的有序表,至多需要比较 <code>10</code> 次<br>– <code>1000,000</code>个元素的有序表,需要不超过 <code>20</code> 次的比较</p>
-<ul>
-  <li>Limitation :查找对象是有序表,即在查找之前需要对顺序表进行排序操作</li>
-</ul>
-<ul>
-  <li>Weaknesses :</li>
-</ul>
-<p>– 折半查找无法应用于链表<br>– 在不等概率查找的情况下,折半查找不一定是有序表最好的查找方法<br>– 当查找表的长度不大时,也许折半查找的效率不如顺序查找</p>
-<ul>
-  <li>Conclusion :适合于大量的静态数据</li>
-</ul>
-<p>– 有序表的插入和删除都比较麻烦,平均要移动表中一半的元素</p>
-<h4 id="Fibonacci-查找"><a href="#Fibonacci-查找" class="headerlink" title="Fibonacci 查找"></a>Fibonacci 查找</h4>
-<ul>
-  <li>基于有序顺序表的查找</li>
-</ul>
-<p>– 查找表中的所有记录是按关键字有序 ( 升序或降序 )排列的</p>
-<ul>
-  <li>查找过程中,先确定待查找记录在表中的范围,然后逐步缩小范围 ( 每次根据 Fibonacci 数列的特点对查找表进行分割 ) ,直到找到或找不到记录为止</li>
-</ul>
-<p><strong>算法思想</strong></p>
-<ul>
-  <li>设查找表中的记录数 <code>n</code>比某个 Fibonacci 数小 <code>1</code>,即设 <code>n=F(j)-1</code></li>
-  <li>用 <code>Low</code> 、 <code>High</code> 和 <code>Mid</code> 表示待查找区间的下界、上界和分割位置,初值为 <code>Low=1</code> , <code>High=n</code></li>
-  <li>(1) 取分割位置 Mid : <code>Mid=F(j-1)</code></li>
-  <li>(2) 比较 <code>key</code> 值与分割位置记录的关键字:</li>
-</ul>
-<p>– 相等: 查找成功<br>– 小于:待查记录在区间的前半段,修改上界指针:<code>High=Mid-1</code> ,这时,区间长度为 <code>F(j-1)-1</code> ,转(1) ;<br>– 大于:待查记录在区间的后半段,修改下界指针:<code>Low=Mid+1</code> , 这时,区间长度为 <code>F(j-2)-1</code> ,转(1) ;</p>
-<ul>
-  <li>直到越界 <code>(Low&gt;High)</code> ,查找失败</li>
-</ul>
-<p><strong>算法实现</strong></p>
-<figure class="highlight processing">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">//Fibonacci 数的计算</span></div><div class="line"><span class="built_in">int</span> fib(<span class="built_in">int</span> n) &#123;</div><div class="line">  <span class="built_in">int</span> i, f, f0=<span class="number">0</span>, f1=<span class="number">1</span>;</div><div class="line">  <span class="keyword">if</span> (n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span> ;</div><div class="line">  <span class="keyword">if</span> (n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span> ;</div><div class="line">  <span class="keyword">for</span> (i=<span class="number">2</span> ; i&lt;=n ; i++ ) &#123;</div><div class="line">    f=f0+f1 ; f0=f1 ; f1=f ; </div><div class="line">  &#125;chazhao</div><div class="line">  <span class="keyword">return</span> f ;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 在有序表 t 中用 Fibonacci 方法查找关键字为 key 的记录</span></div><div class="line"><span class="built_in">int</span> SearchSSTableFibonacci(SSTable *t, KeyType <span class="built_in">key</span> , <span class="built_in">int</span> n)&#123;</div><div class="line">  <span class="built_in">int</span> Low=<span class="number">1</span>, High, Mid, f1, f2 ;</div><div class="line">  High=fib(n); </div><div class="line">  f1=fib(n<span class="number">-1</span>); </div><div class="line">  f2=fib(n<span class="number">-2</span>);chazhao</div><div class="line">  <span class="keyword">while</span> (Low&lt;=High) &#123;</div><div class="line">    Mid=Low+f1<span class="number">-1</span>;</div><div class="line">    <span class="keyword">if</span> ( EQ(<span class="built_in">key</span>, t-&gt;elem[Mid].<span class="built_in">key</span>) ) </div><div class="line">      <span class="keyword">return</span> Mid ;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ( LT(<span class="built_in">key</span>, t-&gt;elem[Mid].<span class="built_in">key</span>) )&#123; </div><div class="line">      High=Mid<span class="number">-1</span>; f2=f1-f2; f1=f1-f2; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123; </div><div class="line">      Low=Mid+<span class="number">1</span>; f1=f1-f2; f2=f2-f1; </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>算法分析</strong></p>
-<ul>
-  <li>Fibonacci 查找的平均性能比折半查找好，但最坏情况下比折半查找差。</li>
-  <li>插值查找：根据<code>key</code>值来决定与哪个记录比较并分区。</li>
-  <li>插值查找适用于关键字均匀分布。</li>
-</ul>
-<h4 id="索引顺序查找-分块查找"><a href="#索引顺序查找-分块查找" class="headerlink" title="索引顺序查找 / 分块查找"></a>索引顺序查找 / 分块查找</h4>
-<ul>
-  <li>查找表的组织:将查找表分成几块</li>
-</ul>
-<p>– 块间有序,即第 <code>i+1</code> 块的所有记录关键字均大于 ( 或小于 ) 第 <code>i</code> 块记录关键字<br>– 块内无序<br>– 在查找表的基础上附加一个索引表,索引表是按关键字有序的,索引表中记录的构成是:<br>– 可以建立多级索引<br>– 可以建立多种索引</p>
-<ul>
-  <li>先 ( 用顺序查找或折半查找 ) 确定待查记录所在块,再在块内查找 ( 顺序查找 )</li>
-</ul>
-<p><strong>算法实现</strong></p>
-<figure class="highlight processing">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">//数据结构</span></div><div class="line">typedef struct IndexType &#123;</div><div class="line">  KeyType maxkey; <span class="comment">// 块中最大的关键字</span></div><div class="line">  <span class="built_in">int</span> startpos;</div><div class="line"><span class="comment">// 块的起始位置指针</span></div><div class="line"><span class="comment">//int length;</span></div><div class="line"><span class="comment">// 块的长度</span></div><div class="line">&#125; Index;</div><div class="line"><span class="comment">//算法实现</span></div><div class="line"><span class="built_in">int</span> SearchSSTableBlock (SSTable *t, Index ind[], KeyType <span class="built_in">key</span> , <span class="built_in">int</span> n , <span class="built_in">int</span> b) &#123; <span class="comment">// 表长为 n ,块数为 b</span></div><div class="line">  <span class="built_in">int</span> i=<span class="number">0</span>, j , k ;</div><div class="line"><span class="comment">// 在块间顺序查找</span></div><div class="line">  <span class="keyword">while</span> ((i&lt;b)&amp;&amp; LT(ind[i].maxkey, <span class="built_in">key</span>) ) i++ ;</div><div class="line">  <span class="keyword">if</span> (i&gt;b)</div><div class="line">    <span class="keyword">return</span>(<span class="number">0</span>); <span class="comment">// 没有找到</span></div><div class="line">  j=ind[i].startpos;</div><div class="line">  <span class="keyword">while</span> ((j&lt;n) &amp;&amp; LQ(t-&gt;elem[j].<span class="built_in">key</span>, ind[i].maxkey) ) &#123;</div><div class="line"><span class="comment">// 在块内顺序查找</span></div><div class="line">    <span class="keyword">if</span> ( EQ(t-&gt;elem[j].<span class="built_in">key</span>, <span class="built_in">key</span>) ) <span class="keyword">break</span> ;</div><div class="line">    j++ ;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (j&gt;n||!EQ(t-&gt;elem[j].<span class="built_in">key</span>, <span class="built_in">key</span>) ) j=<span class="number">0</span>;</div><div class="line">  <span class="keyword">return</span>(j)；</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>算法分析</strong></p>
-<ul>
-  <li>索引顺序查找的平均查找长度ASL等于 = 查找索引表确定所在块的平均查找长度Lb + 在块内查找元素的平均查找长度Lw.</li>
-</ul>
-<h4 id="查找方法比较"><a href="#查找方法比较" class="headerlink" title="查找方法比较"></a>查找方法比较</h4>
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:right"></th>
-      <th>顺序查找</th>
-      <th>分块查找</th>
-      <th>折半查找</th>
-      <th>Fibonacci查找</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:right">表结构</td>
-      <td>有序表/无序表</td>
-      <td>分块有序表</td>
-      <td>有序表</td>
-      <td>有序表</td>
-    </tr>
-    <tr>
-      <td style="text-align:right">存储结构</td>
-      <td>顺序存储结构/线性链表</td>
-      <td>顺序存储结构/线性链表</td>
-      <td>顺序存储结构</td>
-      <td>顺序存储结构</td>
-    </tr>
-    <tr>
-      <td style="text-align:right">ASL</td>
-      <td>最大</td>
-      <td>介于两者之间</td>
-      <td>最小</td>
-      <td>平均比折半查找好</td>
-    </tr>
-  </tbody>
-</table>
-<h3 id="静态树表-次优查找树的查找"><a href="#静态树表-次优查找树的查找" class="headerlink" title="静态树表/次优查找树的查找"></a>静态树表/次优查找树的查找</h3>
-<ul>
-  <li>若有序表中的各个元素的查找概率不等,那么,用折半查找,性能未必最优</li>
-  <li>如何改进,以提高性能 ?</li>
-</ul>
-<p>– 需要找到查找性能最佳的判定树,即,静态最优查找树 (Static Optimal Tree)<br>– 该判定树的带权内路径长度之和最小</p>
-<p><strong>算法思路</strong></p>
-<ul>
-  <li>构造静态最优查找树的时间开销太大</li>
-  <li>为有序表构造次优查找树 (Nearly Optimal Search Tree)</li>
-  <li>基于次优查找树的查找</li>
-</ul>
-<p>– 给定 <code>Key</code> ,<br>– 从根结点开始,将 <code>Key</code> 值与根结点比较,若 <code>key</code>大于根结点值,在右子树中查找,若 <code>key</code> 小于根结点值,在左子树中查找<br>– 平均查找长度与 <code>logn</code> 成正比</p>
-<hr>
-<p><strong>递归构造次优查找树t</strong></p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">// 根据有序表 R[low..high] 及其累计权值表 sw( 其中 sw[0]==0)构造次优查找树 t</span></div><div class="line"><span class="function">BiTree <span class="title">SecondOptimal</span><span class="params">(ElemType R[], <span class="keyword">float</span> sw[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i,j; </div><div class="line">  <span class="keyword">float</span> min,dw; </div><div class="line">  BiTree *t;</div><div class="line">  i = low; </div><div class="line">  min = (<span class="keyword">float</span>) <span class="built_in">fabs</span>(sw[high]-sw[low]);</div><div class="line">  dw = sw[high]+sw[low<span class="number">-1</span>];</div><div class="line">  <span class="keyword">for</span> (j=low+<span class="number">1</span>; j&lt;=high; ++j) <span class="comment">// 选择最小的 ΔPi 值</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(dw-sw[j]-sw[j<span class="number">-1</span>]) &lt; min) &#123;</div><div class="line">      i = j; min = (<span class="keyword">float</span>)<span class="built_in">fabs</span>(dw-sw[j]-sw[j<span class="number">-1</span>]);</div><div class="line">    &#125;</div><div class="line">  <span class="keyword">if</span> (!(t = (BiTree *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTreeTNode))))</div><div class="line">    <span class="keyword">return</span> ERROR;</div><div class="line">  t-&gt;data = R[i];</div><div class="line"><span class="comment">// 生成结点</span></div><div class="line">  <span class="keyword">if</span> (i==low) </div><div class="line">    t-&gt;lchild = <span class="literal">NULL</span>;</div><div class="line"><span class="comment">// 左子树空</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    t-&gt;lchild=SecondOptimal(R, sw, low, i<span class="number">-1</span>); <span class="comment">// 构造左子树</span></div><div class="line">  <span class="keyword">if</span> (i==high) </div><div class="line">    t-&gt;rchild = <span class="literal">NULL</span>; <span class="comment">// 右子树空</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    t-&gt;rchild=SecondOptimal(R, sw, i+<span class="number">1</span>, high); <span class="comment">// 构造右子树</span></div><div class="line">  <span class="keyword">return</span> t; </div><div class="line">&#125; <span class="comment">// SecondOptimal</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="动态查找表"><a href="#动态查找表" class="headerlink" title="动态查找表"></a>动态查找表</h3>
-<p><strong>表的组织方式</strong></p>
-<ul>
-  <li>若以线性表的形式组织查找表,那么如需要对查找表进行插入、删除或排序操作,就必须移动大量的记录</li>
-</ul>
-<p>– 当记录数很多时,这种移动的代价很大</p>
-<ul>
-  <li>以树的形式组织查找表,可以对查找表进行动态、高效的查找</li>
-</ul>
-<p>– 二叉排序树<br>– 平衡二叉树<br>– B 树<br>– B+ 树<br>– 键树</p>
-<h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3>
-<p>二叉排序树或者是空树,或者是满足下列性质的二叉树:</p>
-<ul>
-  <li>若左子树不为空,则左子树上所有结点的值( 关键字 ) 都小于根结点的值;</li>
-  <li>若右子树不为空,则右子树上所有结点的值( 关键字 ) 都大于根结点的值;</li>
-  <li>左、右子树都分别是二叉排序树</li>
-  <li>每个结点的 <code>Key</code>互不相同</li>
-</ul>
-<p><strong>数据结构</strong></p>
-<figure class="highlight thrift">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">//BST 可以用二叉链表来存储</span></div><div class="line"><span class="keyword">typedef</span> int KeyType;</div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">RecType</span></span>&#123;</div><div class="line">  KeyType key;</div><div class="line"><span class="comment">//Others</span></div><div class="line">&#125; ElemType;</div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTreeNode</span> </span>&#123;</div><div class="line">  ElemType data;</div><div class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">BiTreeNode</span> *lchild,*rchild;</span></div><div class="line">&#125; *BiTree;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>BST的查找算法1</strong></p>
-<figure class="highlight gauss">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">// 在根指针 T 所指二叉排序树中,</span></div><div class="line"><span class="comment">// 递归地查找其关键字等于 key 的数据元素,</span></div><div class="line"><span class="comment">// 若查找成功,则返回指向该数据元素结点的指针</span></div><div class="line"><span class="comment">// 若查找不成功,则返回空指针</span></div><div class="line">BiTree SearchBST (BiTree T, KeyType <span class="built_in">key</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (!T || EQ(<span class="built_in">key</span>, T-&gt;data.<span class="built_in">key</span>)) </div><div class="line">    <span class="keyword">return</span> T; <span class="comment">// 查找结束</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (LT(<span class="built_in">key</span>, T-&gt;data.<span class="built_in">key</span>))</div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;lchild, <span class="built_in">key</span>); <span class="comment">// 在左子树中查找</span></div><div class="line">  <span class="keyword">else</span> </div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;rchild, <span class="built_in">key</span>); <span class="comment">// 在右子树中查找</span></div><div class="line">&#125; <span class="comment">// SearchBST</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>注：若按中序遍历一棵二叉排序树,所得到的结点序列是一个递增序列</strong></p>
-<p><strong>BST的构造</strong></p>
-<ul>
-  <li>BST 是在查找过程中,当树中不存在关键字等于给定值的结点时进行插入</li>
-</ul>
-<p>– 新插入的结点一定是 BST 的一个新的叶子结点,并且是查找不成功时查找路径上访问的最后一个结点的左孩子或右孩子</p>
-<ul>
-  <li>因此:</li>
-</ul>
-<p>– 需要一个 BST 的查找算法,它在没有找到指定值时,返回:查找路径上访问的最后一个结点<br>– 基于上述查找算法,形成 BST 的构造算法：</p>
-<figure class="highlight gauss">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">// 若查找成功,则指针 p 指向该数据元素结点,并返回 TRUE</span></div><div class="line"><span class="comment">// 否则指针 p 指向查找路径上访问的最后一个结点,并返回</span></div><div class="line"><span class="comment">// FALSE 。指针 f 指向 T 的双亲,其初始调用值为 NULL</span></div><div class="line">Status SearchBST(BiTree T, KeyType <span class="built_in">key</span>, BiTree f, BiTree &amp;p)&#123;</div><div class="line">  <span class="keyword">if</span> (!T) &#123;</div><div class="line">    p = f; <span class="keyword">return</span> FALSE; </div><div class="line">  &#125; <span class="comment">// 查找不成功</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (EQ(<span class="built_in">key</span>, T-&gt;data.<span class="built_in">key</span>)) &#123;</div><div class="line">    p = T; <span class="keyword">return</span> TRUE; </div><div class="line">  &#125; <span class="comment">// 查找成功</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (LT(<span class="built_in">key</span>, T-&gt;data.<span class="built_in">key</span>))</div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;lchild, <span class="built_in">key</span>, T, p); <span class="comment">// 在左子树中查找</span></div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="keyword">return</span> SearchBST(T-&gt;rchild, <span class="built_in">key</span>, T, p); <span class="comment">// 在右子树中查找</span></div><div class="line">&#125; <span class="comment">// SearchBST</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>BST的插入算法</strong></p>
-<figure class="highlight xl">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">// 当二叉排序树 T 中没有关键字等于 e.key 的数据元素时,</span></div><div class="line"><span class="comment">// 插入 e 并返回 TRUE ,否则返回 FALSE</span></div><div class="line">Status InsertBST(BiTree &amp;T, ElemType e)&#123;</div><div class="line">  BiTree p,s;</div><div class="line">  <span class="keyword">if</span> (!SearchBST(T, e.key, NULL, p)) &#123; <span class="comment">// 查找不成功</span></div><div class="line">    s = (BiTree)malloc(sizeof( BiTreeNode ));</div><div class="line">    <span class="function"><span class="title">s</span>-&gt;</span><span class="keyword">data</span> = e; </div><div class="line">    <span class="function"><span class="title">s</span>-&gt;</span><span class="function"><span class="title">lchild</span> = s-&gt;</span>rchild = NULL; </div><div class="line">    <span class="keyword">if</span> (!p) T = s; <span class="comment">// 插入 s 为新的根结点</span></div><div class="line">    <span class="function"><span class="title">else</span> <span class="keyword">if</span> (LT(e.key, p-&gt;</span><span class="keyword">data</span>.key))</div><div class="line">      <span class="function"><span class="title">p</span>-&gt;</span>lchild=s; <span class="comment">// 插入 s 为左孩子 时,不必移动其它</span></div><div class="line">    <span class="keyword">else</span> </div><div class="line">      <span class="function"><span class="title">p</span>-&gt;</span>rchild=s;<span class="comment">// 插入 s 为右孩子</span></div><div class="line">    return TRUE;</div><div class="line">  &#125; </div><div class="line">  <span class="keyword">else</span> </div><div class="line">    return FALSE; <span class="comment">// 树中已有关键字相同的结点,不再插入</span></div><div class="line">&#125; <span class="comment">// Insert BST</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>BST上节点的删除</strong></p>
-<p>从 BST 上删除一个结点,需要保证删除结点后的树仍满足 BST 的性质</p>
-<p>设被删除结点为 <code>p</code> ,其父结点为 <code>f</code> ,分如下情况:</p>
-<ol>
-  <li>
-    <p>若 <code>p</code> 是叶子结点: 直接删除 <code>p</code></p>
-  </li>
-  <li>
-    <p>若 <code>p</code> 只有一棵子树 ( 左子树或右子树 ) :直接用 <code>p</code> 的左子树 ( 或右子树 ) 取代 <code>p</code> 的位置而成为 <code>f</code>的一棵子树</p>
-  </li>
-  <li>
-    <p>若 <code>p</code> 既有左子树又有右子树</p>
-    <p>方法一：用 <code>p</code> 的直接前驱 ( 或直接后继 ) 结点 <code>s</code> 代替 <code>p</code> ,即从 <code>p</code> 的左子树中选择值最大的结点 <code>s</code> 放在 <code>p</code> 的位置 ( 用结点 s 的内容替换结点 <code>p</code> 内容 ) ,然后删除结点 <code>s</code> ,并将 <code>s</code>的左子树作为 <code>s</code> 的父结点的右子树</p>
-    <p>方法二：找到 <code>s</code> , <code>s</code> 是 <code>p</code> 的左子树中的最右边的结点且没有右子树,将 <code>p</code> 的右子树作为 <code>s</code> 的右子树,然后用 <code>p</code>的左子树顶替被删结点 ( 也就是将 <code>p</code> 的左子树为 <code>f</code> 的左子树 )</p>
-  </li>
-</ol>
-<p><strong>算法实现</strong></p>
-<figure class="highlight xl">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">Status DeleteBST(BiTree *T, KeyType key)</div><div class="line"><span class="comment">// 若二叉排序树 T 中存在关键字等于 key 的数据元素时,</span></div><div class="line"><span class="comment">// 则删除该数据元素结点 p ,返回 TRUE ;否则返回 FALSE</span></div><div class="line">&#123; </div><div class="line">  <span class="keyword">if</span> (!T)</div><div class="line">    return FALSE;<span class="comment">// 不存在关键字等于 key 的数据元素</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    <span class="function"><span class="title">if</span> (EQ(key, T-&gt;</span><span class="keyword">data</span>.key))</div><div class="line"><span class="comment">// 找到关键字等于 key 的数据元素</span></div><div class="line">      return Delete(T);</div><div class="line">    <span class="function"><span class="title">else</span> <span class="keyword">if</span> (LT(key, T-&gt;</span><span class="keyword">data</span>.key))</div><div class="line">      <span class="function"><span class="title">return</span> DeleteBST(T-&gt;</span>lchild, key);</div><div class="line">    <span class="keyword">else</span></div><div class="line">      <span class="function"><span class="title">return</span> DeleteBST(T-&gt;</span>rchild, key);</div><div class="line">  &#125;</div><div class="line">&#125;<span class="comment">//DeleteBST</span></div><div class="line"><span class="comment">// 从二叉排序树中删除结点 p ,并重接它的左或右子树，伪代码</span></div><div class="line">Status Delete(BiTree &amp;p) &#123;</div><div class="line">  BiTree q, s;</div><div class="line">  <span class="function"><span class="title">if</span> (!p-&gt;</span>rchild) &#123;<span class="comment">// 右子树空则只需重接它的左子树</span></div><div class="line">    <span class="function"><span class="title">q</span> = p; p = p-&gt;</span>lchild;</div><div class="line">    <span class="comment">//将 p 原来的父结点 ( 设为 f) 与 p 相连 </span></div><div class="line">    <span class="function"><span class="title">f</span>-&gt;</span>lchild/rchild=p</div><div class="line">      free(q); </div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="title">else</span> <span class="keyword">if</span> (!p-&gt;</span>lchild) &#123;<span class="comment">// 只需重接它的右子树</span></div><div class="line">    <span class="function"><span class="title">q</span> = p; p = p-&gt;</span>rchild;</div><div class="line">   <span class="comment">//将 p 原来的父结点 ( 设为 f) 与 p 相连 </span></div><div class="line">    <span class="function"><span class="title">f</span>-&gt;</span>lchild/rchild=p</div><div class="line">      free(q); </div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123; <span class="comment">// 左右子树均不空,按方法一</span></div><div class="line"><span class="comment">// 左右子树均不空</span></div><div class="line">    <span class="function"><span class="title">q</span> = p; s = p-&gt;</span>lchild;</div><div class="line">    <span class="function"><span class="title">while</span> (s-&gt;</span>rchild)</div><div class="line"><span class="comment">// 转左,然后向右到尽头 q</span></div><div class="line">    &#123;</div><div class="line">      <span class="function"><span class="title">q</span> = s; s = s-&gt;</span>rchild;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//s 指向被删结点的前驱</span></div><div class="line">    <span class="function"><span class="title">p</span>-&gt;</span><span class="function"><span class="title">data</span> = s-&gt;</span><span class="keyword">data</span>;</div><div class="line">    <span class="keyword">if</span> (q != p)</div><div class="line">      <span class="function"><span class="title">q</span>-&gt;</span><span class="function"><span class="title">rchild</span> = s-&gt;</span>lchild;</div><div class="line"><span class="comment">// 重接 *q 的右子树</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">      <span class="function"><span class="title">q</span>-&gt;</span><span class="function"><span class="title">lchild</span> = s-&gt;</span>lchild;</div><div class="line"><span class="comment">// 重接 *q 的左子树</span></div><div class="line">    free(s);</div><div class="line">  &#125;</div><div class="line">  return TRUE;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>BST的查找性能分析</strong></p>
-<ul>
-  <li>二叉排序树上成功的查找次数不会超过二叉树的深度,而具有 <code>n</code> 个结点的二叉排序树的深度,最好为 <code>log2n</code> ,最坏为 <code>n</code> 。因此二叉排序树查找的最好时间复杂度为 <code>O(log2n)</code> ,最坏的时间复杂度为 <code>O(n)</code>。</li>
-  <li>在随机情况下, <code>n</code> 个结点的二叉排序树的平均查找长度 (ASL) 和<code>log2n</code>( 树的深度 ) 是等数量级的。</li>
-  <li>随机:各个元素的查找概率相同,元素组成的序列是随机的</li>
-</ul>
-<p>
-  <div id="container"></div>
-</p>
-<p>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-</p>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-  var gitment = new Gitment({
-    owner: 'ucasFL',
-    repo: 'BlogComments',
-    oauth: {
-      client_id: 'ef399b43f01e072241fd',
-      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
-    },
-  })
-  gitment.render('container');
-</script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成&lt;/li&gt;
-  &lt;li&gt;关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;– 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字&lt;br&gt;– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字&lt;/p&gt;
     
     </summary>
     
