@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-12-14T14:26:11.900Z</updated>
+  <updated>2017-12-14T14:29:17.047Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="http://ucasfl.me/2017/12/14/One-year/"/>
     <id>http://ucasfl.me/2017/12/14/One-year/</id>
     <published>2017-12-14T14:10:33.000Z</published>
-    <updated>2017-12-14T14:26:11.900Z</updated>
+    <updated>2017-12-14T14:29:17.047Z</updated>
     
     <content type="html"><![CDATA[<p>再过三天，博客就一周年了<br>这一年以来，好像也没能够写出什么有意义的东西<br>也许当时只是觉得一个独立博客大概是一个程序员的标志吧</p>
 <a id="more"></a>
 <p>博客正式上线是 2016 年 12 月 17 日<br>也就是去年四六级考试那天</p>
 <p>这一年，博客也发生过许多变化<br>主题从最开始的 yilia 换到了 next<br>今天三月份购买了一个域名<br>从此使用上了独立域名<br>评论系统多次变更<br>上月通过 Cloudflare 将域名上 https<br>…</p>
-<p>原本打算在 17 日那天好好写一篇博客来记录一下博客这一年以来的变化<br>却突然改在今天<br>一切都是意料之外<br>而对于博客这一年以来的变化也只是只言片语的带过</p>
+<p>原本打算在 17 日那天好好写一篇文章来记录一下博客这一年以来的变化<br>却突然改在今天<br>一切都是意料之外<br>而对于博客这一年以来的变化也只是只言片语的带过</p>
 <p>最近学习上又遇到了瓶颈<br>很多事情要干<br>但什么也感觉不会<br>什么也做不下去</p>
 <p>时隔一周<br>又和女朋友吵架了<br>爱情带给人的不仅仅只有甜蜜<br>还有很多很多<br>包括痛苦</p>
 <p>梦碎了<br>梦醒了<br>生活还得继续<br>谁不是被生活赶着走</p>
@@ -59,7 +59,7 @@
       <category term="Essay" scheme="http://ucasfl.me/categories/Essay/"/>
     
     
-      <category term="Essay" scheme="http://ucasfl.me/tags/Essay/"/>
+      <category term="Emotion" scheme="http://ucasfl.me/tags/Emotion/"/>
     
   </entry>
   
