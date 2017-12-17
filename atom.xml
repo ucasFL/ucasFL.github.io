@@ -181,7 +181,7 @@
     <link href="http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/"/>
     <id>http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/</id>
     <published>2017-12-09T16:53:10.000Z</published>
-    <updated>2017-12-09T16:57:29.343Z</updated>
+    <updated>2017-12-17T07:44:32.184Z</updated>
     
     <content type="html"><![CDATA[<p>一个可以设置屏幕分辨率的 Linux 命令。</p>
 <figure class="highlight ada">
@@ -196,6 +196,7 @@
     </tr>
   </table>
 </figure>
+<a id="more"></a>
 <p>
   <div id="container"></div>
 </p>
@@ -223,7 +224,14 @@
   &lt;table&gt;
     &lt;tr&gt;
       &lt;td class=&quot;gutter&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;code&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;xrandr : 显示系统支持的所有分辨率&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;xrandr -s &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; : 设置为系统默认分辨率&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;xrandr -s arg : 设置具体分辨率,如 &lt;span class=&quot;type&quot;&gt;xrandr&lt;/span&gt; -s &lt;span class=&quot;number&quot;&gt;1024&lt;/span&gt;x768&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/figure&gt;
     
     </summary>
     
