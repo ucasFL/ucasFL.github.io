@@ -47,5 +47,6 @@ git clone https://github.com/alvan/vim-closetag.git
 git clone https://github.com/mattn/emmet-vim.git
 git clone https://github.com/terryma/vim-multiple-cursors.git;
 git clone https://github.com/luochen1990/rainbow;
+git clone https://github.com/python-mode/python-mode.git
 git submodule add https://github.com/octol/vim-cpp-enhanced-highlight.git bundle/syntax/
 echo "配置完成。"
