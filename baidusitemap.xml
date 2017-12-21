@@ -3,6 +3,26 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/</loc>
+    <lastmod>2017-12-21T15:03:46.090Z</lastmod>
+    <data>
+        <display>
+        <title>解决 /Usr/lib/x86_64-Linux-gnu/libstdc++.so.6 Version GLIBCXX_3.4.22' Not Found 的问题</title>
+        <pubTime>2017-12-21T12:48:42.000Z</pubTime>
+        
+        <tag>Linux </tag>
+         
+         
+           
+             
+              <breadCrumb title="fix-problem" url="http://ucasfl.me/categories/fix-problem/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/12/21/python-exit-error/</loc>
     <lastmod>2017-12-21T14:59:43.150Z</lastmod>
     <data>

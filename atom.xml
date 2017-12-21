@@ -83,6 +83,103 @@
   </entry>
   
   <entry>
+    <title>解决 /Usr/lib/x86_64-Linux-gnu/libstdc++.so.6 Version GLIBCXX_3.4.22&#39; Not Found 的问题</title>
+    <link href="http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/"/>
+    <id>http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/</id>
+    <published>2017-12-21T12:48:42.000Z</published>
+    <updated>2017-12-21T15:03:46.090Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天升级了一下 OpenCv，升级完之后，却出问题了，执行<code>import cv2</code> 报下面的错误：</p>
+<figure class="highlight crystal">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, in &lt;<span class="class"><span class="keyword">module</span>&gt;</span></div><div class="line"><span class="symbol">ImportError:</span> /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/<span class="title">libstdc</span>++.<span class="title">so</span>.6: <span class="title">version</span> `<span class="title">GLIBCXX_3</span>.4.22' <span class="title">not</span> <span class="title">found</span> (<span class="title">required</span> <span class="title">by</span> /<span class="title">home</span>/<span class="title">fenglv</span>/<span class="title">FILE</span>/<span class="title">anaconda3</span>/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/../../<span class="title">libopencv_objdetect</span>.<span class="title">so</span>.3.3)</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>意思是导入库所需要的 <code>libstdc++.so.6</code> 没有找到，然后，我执行 <code>locate libstdc++.so.6</code> 命令，发现这个库是存在的啊。上网查了一下发现原本是因为升级了 <code>OpenCv</code> 之后需要更高版本的库，而当前的版本过低，所以才出错。</p>
+<a id="more"></a>
+<p>执行命令 <code>strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX</code> ，果然，显示的版本低于<code>3.4.22</code> 。</p>
+<p>之后找到解决办法：</p>
+<p>下载最新版的<code>libstdc++</code>，<a href="http://ftp.de.debian.org/debian/pool/main/g/gcc-8/libstdc++-8-dev_8-20171213-1_amd64.deb" target="_blank" rel="external">点击下载</a>，然后解压缩：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">ar -x libstdc++<span class="number">6</span>_8-<span class="number">20171213</span>-<span class="number">1</span>_amd64<span class="selector-class">.deb</span> &amp;&amp; tar xvf data<span class="selector-class">.tar</span><span class="selector-class">.xz</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>之后，直接将解压出来的<code>/usr/x86_64-linux-gnu/libstdc++.so.6</code> 复制到<code>/usr/lib/x86_64-linux-gnu/</code> 下，当然，为了保险起见，你也可以先备份一下原文件。现在，你再次执行命令<code>strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX</code> ，显示的版本号就如下：</p>
+<figure class="highlight css">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.1</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.2</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.3</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.4</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.5</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.6</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.7</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.8</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.9</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.10</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.11</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.12</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.13</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.14</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.15</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.16</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.17</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.18</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.19</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.20</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.21</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.22</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.23</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.24</span></div><div class="line"><span class="selector-tag">GLIBCXX_3</span><span class="selector-class">.4</span><span class="selector-class">.25</span></div><div class="line"><span class="selector-tag">GLIBCXX_DEBUG_MESSAGE_LENGTH</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>至此，问题解决～</p>
+<p>
+  <div id="container"></div>
+</p>
+<p>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+</p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    owner: 'ucasFL',
+    repo: 'BlogComments',
+    oauth: {
+
+      client_id: 'ef399b43f01e072241fd',
+      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+    },
+  })
+  gitment.render('container');
+</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天升级了一下 OpenCv，升级完之后，却出问题了，执行&lt;code&gt;import cv2&lt;/code&gt; 报下面的错误：&lt;/p&gt;
+&lt;figure class=&quot;highlight crystal&quot;&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;gutter&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;code&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Traceback (most recent call last):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  File &lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;stdin&amp;gt;&quot;&lt;/span&gt;, line &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, in &amp;lt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;module&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;ImportError:&lt;/span&gt; /usr/&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;lib&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;x86_64&lt;/span&gt;-&lt;span class=&quot;title&quot;&gt;linux&lt;/span&gt;-&lt;span class=&quot;title&quot;&gt;gnu&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;libstdc&lt;/span&gt;++.&lt;span class=&quot;title&quot;&gt;so&lt;/span&gt;.6: &lt;span class=&quot;title&quot;&gt;version&lt;/span&gt; `&lt;span class=&quot;title&quot;&gt;GLIBCXX_3&lt;/span&gt;.4.22&#39; &lt;span class=&quot;title&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;found&lt;/span&gt; (&lt;span class=&quot;title&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;by&lt;/span&gt; /&lt;span class=&quot;title&quot;&gt;home&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;fenglv&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;FILE&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;anaconda3&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;lib&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;python3&lt;/span&gt;.6/&lt;span class=&quot;title&quot;&gt;site&lt;/span&gt;-&lt;span class=&quot;title&quot;&gt;packages&lt;/span&gt;/../../&lt;span class=&quot;title&quot;&gt;libopencv_objdetect&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;so&lt;/span&gt;.3.3)&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/figure&gt;
+&lt;p&gt;意思是导入库所需要的 &lt;code&gt;libstdc++.so.6&lt;/code&gt; 没有找到，然后，我执行 &lt;code&gt;locate libstdc++.so.6&lt;/code&gt; 命令，发现这个库是存在的啊。上网查了一下发现原本是因为升级了 &lt;code&gt;OpenCv&lt;/code&gt; 之后需要更高版本的库，而当前的版本过低，所以才出错。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="fix-problem" scheme="http://ucasfl.me/categories/fix-problem/"/>
+    
+    
+      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>在 Ubuntu 中如何阻止一个包升级</title>
     <link href="http://ucasfl.me/2017/12/17/How-to-hold-a-package-in-Ubuntu/"/>
     <id>http://ucasfl.me/2017/12/17/How-to-hold-a-package-in-Ubuntu/</id>
@@ -3308,128 +3405,6 @@
     
     
       <category term="Ruby" scheme="http://ucasfl.me/tags/Ruby/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>外部排序</title>
-    <link href="http://ucasfl.me/2017/08/08/External-Sort/"/>
-    <id>http://ucasfl.me/2017/08/08/External-Sort/</id>
-    <published>2017-08-08T04:53:19.000Z</published>
-    <updated>2017-11-06T07:53:10.299Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="主存储器与外部存储器"><a href="#主存储器与外部存储器" class="headerlink" title="主存储器与外部存储器"></a>主存储器与外部存储器</h3>
-<p>外存储器与内存储器相比,优点是:</p>
-<ul>
-  <li>价格较低</li>
-  <li>永久的存储能力</li>
-</ul>
-<a id="more"></a>
-<p>缺点:</p>
-<ul>
-  <li>访问外存储器上的数据比访问内存要慢<code>5 ~ 6</code> 个数量级</li>
-</ul>
-<p>因此，要求我们在开发系统时必须考虑如何使外存访<br>问次数达到最少。</p>
-<h3 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h3>
-<ul>
-  <li>磁盘存储器通常称为直接存取设备,或随机存取设备,它访问外存上文件的任一记录的时间几乎相同。</li>
-  <li>磁盘存储器可以顺序存取,也可以随机存取。</li>
-  <li>每个记录盘面上有很多磁道,数据就存放在这些磁道上。它们在记录盘面上形成一个个同心圆。</li>
-  <li>每个记录盘面都有一个读写磁头。所有记录盘面的读写磁头都安装在同一个动臂上,随动臂向内或向外做径向移动,从一个磁道移到另一个磁道。</li>
-  <li>任一时刻,所有记录盘面的读写磁头停留在各个记录盘面的半径相同的磁道上。</li>
-  <li>各个记录盘面上半径相同的磁道合在一起称为柱面。一个磁道可以划分为若干段,称为扇区,一个扇区就是一次读写的最小数据量。这样,对磁盘存储器来说,从大到小的存储单位是:柱面号、盘片号、磁道号和扇区。</li>
-  <li>在磁盘组上一次读写的时间主要花在寻找时间上。因此,在磁盘上存放信息时应将相关信息放在同一柱面或邻近柱面上,以求在读写信息时尽量减少磁头来回移动的次数,以避免不必要的寻找时间。</li>
-</ul>
-<h3 id="外排序"><a href="#外排序" class="headerlink" title="外排序"></a>外排序</h3>
-<p>当待排序的记录数目特别多时,在内存中不能一次处理,必须把它们以文件的形式存放于外存,排序时再把它们一部分一部分调入内存进行处理。这样,在排序过程中必须不断地在内存与外存之间传送数据。这种基于外部存储设备(或文件)的排序技术就是外排序。</p>
-<h4 id="外排序的基本过程"><a href="#外排序的基本过程" class="headerlink" title="外排序的基本过程"></a>外排序的基本过程</h4>
-<p>基于磁盘进行的排序多使用归并排序方法。其排序过程主要分为两个阶段:</p>
-<ol>
-  <li>按可用内存大小,将外存上含 <code>n</code> 个记录的文件划分为若干长度为 <code>l</code> 的段 , 用某种内排序方法对各段进行排序。经过排序的段叫做归并段 (Run) 。当它们生成后就被写到外存中去。</li>
-  <li>把<code>1</code>生成的初始归并段加以归并 , 一趟趟扩大归并段和减少归并段数 , 直至得到整个有序文件为止。</li>
-</ol>
-<h3 id="K-路平衡归并"><a href="#K-路平衡归并" class="headerlink" title="K-路平衡归并"></a>K-路平衡归并</h3>
-<p>做K-路平衡归并时，如果有<code>m</code>个初始归并段，相应的归并树有<code>logkm+1</code>(<code>logkm</code>上取整)层，需要归并<code>logkm</code>(上取整)趟。</p>
-<h4 id="败者树"><a href="#败者树" class="headerlink" title="败者树"></a>败者树</h4>
-<p>败者树是一棵正则的完全二叉树。其中</p>
-<ul>
-  <li>每个叶结点存放各归并段在归并过程中当前参加比较的记录;</li>
-  <li>每个非叶结点记忆它两个子女结点中记录排序码大的结点 ( 即败者 ) ;</li>
-</ul>
-<p>因此,根结点中记忆树中当前记录排序码最小的结点 ( 最小记录 ) 。</p>
-<ul>
-  <li>败者树与胜者树的区别在于一个选择了败者 ( 排序码大者)，一个选择了胜者(排序码小者)</li>
-</ul>
-<p><strong>K-路平衡归并排序算法</strong></p>
-<figure class="highlight processing">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">const</span> <span class="built_in">int</span> MaxValue = ;	<span class="comment">//当作无穷大值使用</span></div><div class="line"><span class="keyword">void</span> kwaymerge(Element *r, <span class="built_in">int</span> k) &#123;</div><div class="line">  <span class="built_in">int</span> i, q; </div><div class="line">  r = <span class="keyword">new</span> Element[k];		<span class="comment">//败者树中的k个记录</span></div><div class="line">  <span class="built_in">int</span> *<span class="built_in">key</span> = <span class="keyword">new</span> <span class="built_in">int</span>[k+<span class="number">1</span>];	<span class="comment">//记录的排序码	</span></div><div class="line">  <span class="built_in">int</span> *loser = <span class="keyword">new</span> <span class="built_in">int</span>[k];	<span class="comment">//存放败者树</span></div><div class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; k; i++) &#123;           <span class="comment">//叶结点的值</span></div><div class="line">    InputRecord(r[i]);  <span class="built_in">key</span>[i] = r[i].<span class="built_in">key</span>; &#125;;</div><div class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; k; i++) loser[i] = k;</div><div class="line">  <span class="built_in">key</span>[k] = -Maxvalue;		<span class="comment">//初始化	</span></div><div class="line">  <span class="keyword">for</span> (i = k<span class="number">-1</span>; i &gt; <span class="number">0</span>; i--) </div><div class="line">    adjust (<span class="built_in">key</span>, loser, k, i);    <span class="comment">//从key[k-1]到key[0]调整形成败者树</span></div><div class="line">  <span class="keyword">while</span> (<span class="built_in">key</span>[loser[<span class="number">0</span>]] != MaxValue) &#123;      <span class="comment">//选冠军</span></div><div class="line">    q = loser[<span class="number">0</span>];			 <span class="comment">//取当前最小记录</span></div><div class="line">    OutputRecord(r[q]);		 <span class="comment">//写到输出归并段</span></div><div class="line">    InputRecord(r[q]);		 <span class="comment">//读入下一个记录</span></div><div class="line">    <span class="built_in">key</span>[q] = r[q].<span class="built_in">key</span>;</div><div class="line">    adjust (<span class="built_in">key</span>, loser, k, q); 	 <span class="comment">//从key[q]起调整</span></div><div class="line">  &#125;</div><div class="line">  Output end of run marker; 	 <span class="comment">//输出段结束标志</span></div><div class="line">  delete []r;  </div><div class="line">  delete []<span class="built_in">key</span>;</div><div class="line">  delete []loser;</div><div class="line">&#125;; </div><div class="line"><span class="comment">//败者树的调整算法</span></div><div class="line"><span class="keyword">void</span> adjust (<span class="built_in">int</span> <span class="built_in">key</span>[]; <span class="built_in">int</span> loser[]; <span class="built_in">int</span> k; <span class="built_in">int</span> q) &#123;</div><div class="line"><span class="comment">// 从败者树某叶结点 key[q] 起到根进行比较 , 将最小</span></div><div class="line"><span class="comment">// key 记录所在归并段的段号记入 loser[0] 。</span></div><div class="line">  <span class="keyword">for</span> (<span class="built_in">int</span> t = (k+q)/<span class="number">2</span>; t &gt; <span class="number">0</span>; t /= <span class="number">2</span>)</div><div class="line"><span class="comment">//t 是 q 的双亲</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">key</span>[loser[t]] &lt; <span class="built_in">key</span>[q]) &#123;</div><div class="line"><span class="comment">// 败者记入 loser[t] ,胜者记入 q</span></div><div class="line">      <span class="built_in">int</span> temp = q; q = loser[t]; loser[t] = temp;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//q 与 loser[t] 交换</span></div><div class="line">  loser[<span class="number">0</span>] = q;</div><div class="line">&#125;;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>每选出一个当前排序码最小的记录 , 就需要在将它送入输出缓冲区之后 , 从相应归并段的输入缓冲区中取出下一个参加归并的记录 , 替换已经取走的最小记录 , 再从叶结点到根结点 , 沿某一特定路径进行调整 , 将下一个排序码最小记录的归并段号调整到 <code>loser[0]</code>中。</li>
-  <li>段结束标志 <code>MaxNum</code>升入 <code>loser[0]</code>, 排序完成。</li>
-  <li>归并路数 <code>k</code> 不是越大越好。归并路数 <code>k</code> 增大 , 相应需增加输入缓冲区个数。如果可供使用的内存空间不变 , 势必要减少每个输入缓冲区的容量 , 使内外存交换数据的次数增大。</li>
-</ul>
-<p><strong>初始归并段的生成</strong></p>
-<ul>
-  <li>为减少读写磁盘次数 , 除增加归并路数 <code>k</code> 外 ,还可减少初始归并段个数 <code>m</code> 。在总记录数 <code>n</code>一定时 , 要减少 <code>m</code> , 必须增大初始归并段长度。</li>
-  <li>如果规定每个初始归并段等长 , 则此长度应根据生成它的内存工作区空间大小而定 , 因而 <code>m</code>的减少也就受到了限制。</li>
-  <li>为了突破这个限制 , 可采用败者树来生成初始归并段。在使用同样大内存工作区的情况下 ,可以生成平均比原来等长情况下大一倍的初始归并段 , 从而减少初始归并段个数。</li>
-</ul>
-<h3 id="最佳归并树"><a href="#最佳归并树" class="headerlink" title="最佳归并树"></a>最佳归并树</h3>
-<p>归并树是描述归并过程的 <code>m</code> 叉树。因为每一次做 m路归并都需要有 <code>m</code>个归并段参加 , 因此 , 归并树是只有度为 <code>0</code>和度为 <code>m</code> 的结点的正则 <code>m</code> 叉树。</p>
-<p>在归并树中：</p>
-<ul>
-  <li>各叶结点代表参加归并的各初始归并段</li>
-  <li>叶结点上的权值即为该初始归并段中的记录个数</li>
-  <li>根结点代表最终生成的归并段</li>
-  <li>叶结点到根结点的路径长度表示在归并过程中的读记录次数</li>
-  <li>各非叶结点代表归并出来的新归并段</li>
-  <li>归并树的带权路径长度 WPL 即为归并过程中的总读记录数。因而,在归并过程中总的读写记录次数为 2*WPL 。</li>
-</ul>
-<p>不同的归并方案所对应的归并树的带权路径长度各不相同。为了使得总的读写次数达到最少 , 需要改变归并方案 , 重新组织归并树。可将 <code>Huffman</code> 树的思想扩充到 <code>m</code> 叉树的情形。在归并树中 , 让记录个数少的初始归并段最先归并 , 记录个数多的初始归并段最晚归并 , 就可建立总读写次数达到最少的最佳归并树。</p>
-<p>
-  <div id="container"></div>
-</p>
-<p>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-</p>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-  var gitment = new Gitment({
-    owner: 'ucasFL',
-    repo: 'BlogComments',
-    oauth: {
-      client_id: 'ef399b43f01e072241fd',
-      client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
-    },
-  })
-  gitment.render('container');
-</script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;主存储器与外部存储器&quot;&gt;&lt;a href=&quot;#主存储器与外部存储器&quot; class=&quot;headerlink&quot; title=&quot;主存储器与外部存储器&quot;&gt;&lt;/a&gt;主存储器与外部存储器&lt;/h3&gt;
-&lt;p&gt;外存储器与内存储器相比,优点是:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;价格较低&lt;/li&gt;
-  &lt;li&gt;永久的存储能力&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Data-Structures" scheme="http://ucasfl.me/categories/Data-Structures/"/>
-    
-    
-      <category term="Data-Structures" scheme="http://ucasfl.me/tags/Data-Structures/"/>
     
   </entry>
   
