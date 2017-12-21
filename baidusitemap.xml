@@ -3,14 +3,14 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/</loc>
-    <lastmod>2017-12-21T15:03:46.090Z</lastmod>
+    <loc>http://ucasfl.me/2017/12/21/python-exit-error/</loc>
+    <lastmod>2017-12-21T15:07:52.574Z</lastmod>
     <data>
         <display>
-        <title>解决 /Usr/lib/x86_64-Linux-gnu/libstdc++.so.6 Version GLIBCXX_3.4.22' Not Found 的问题</title>
-        <pubTime>2017-12-21T12:48:42.000Z</pubTime>
+        <title>Python 退出时出现 PermissionError</title>
+        <pubTime>2017-12-21T14:51:29.000Z</pubTime>
         
-        <tag>Linux </tag>
+        <tag>Python ananconda </tag>
          
          
            
@@ -23,14 +23,14 @@
 
     
   <url>
-    <loc>http://ucasfl.me/2017/12/21/python-exit-error/</loc>
-    <lastmod>2017-12-21T14:59:43.150Z</lastmod>
+    <loc>http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/</loc>
+    <lastmod>2017-12-21T15:03:46.090Z</lastmod>
     <data>
         <display>
-        <title>Python 退出时出现 PermissionError</title>
-        <pubTime>2017-12-21T14:51:29.000Z</pubTime>
+        <title>解决 /Usr/lib/x86_64-Linux-gnu/libstdc++.so.6 Version GLIBCXX_3.4.22' Not Found 的问题</title>
+        <pubTime>2017-12-21T12:48:42.000Z</pubTime>
         
-        <tag>Python ananconda </tag>
+        <tag>Linux </tag>
          
          
            

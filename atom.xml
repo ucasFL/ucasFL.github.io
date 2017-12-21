@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2017-12-21T14:59:43.150Z</updated>
+  <updated>2017-12-21T15:07:52.574Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://ucasfl.me/2017/12/21/python-exit-error/"/>
     <id>http://ucasfl.me/2017/12/21/python-exit-error/</id>
     <published>2017-12-21T14:51:29.000Z</published>
-    <updated>2017-12-21T14:59:43.150Z</updated>
+    <updated>2017-12-21T15:07:52.574Z</updated>
     
-    <content type="html"><![CDATA[<p>在解决上一个关于<a href="">OpenCv导入失败</a>的问题的时候，不小心在<code>root</code>权限下运行了Python，导致之后在普通用户下运行Python，退出时出现如下错误：</p>
+    <content type="html"><![CDATA[<p>在解决上一个关于<a href="https://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/">OpenCv导入失败</a>的问题的时候，不小心在<code>root</code>权限下运行了Python，导致之后在普通用户下运行Python，退出时出现如下错误：</p>
 <figure class="highlight subunit">
   <table>
     <tr>
@@ -59,7 +59,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;在解决上一个关于&lt;a href=&quot;&quot;&gt;OpenCv导入失败&lt;/a&gt;的问题的时候，不小心在&lt;code&gt;root&lt;/code&gt;权限下运行了Python，导致之后在普通用户下运行Python，退出时出现如下错误：&lt;/p&gt;
+      &lt;p&gt;在解决上一个关于&lt;a href=&quot;https://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/&quot;&gt;OpenCv导入失败&lt;/a&gt;的问题的时候，不小心在&lt;code&gt;root&lt;/code&gt;权限下运行了Python，导致之后在普通用户下运行Python，退出时出现如下错误：&lt;/p&gt;
 &lt;figure class=&quot;highlight subunit&quot;&gt;
   &lt;table&gt;
     &lt;tr&gt;
