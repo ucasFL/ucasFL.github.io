@@ -87,7 +87,7 @@
     <link href="http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/"/>
     <id>http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/</id>
     <published>2017-12-21T12:48:42.000Z</published>
-    <updated>2017-12-21T15:03:46.090Z</updated>
+    <updated>2017-12-22T16:01:15.071Z</updated>
     
     <content type="html"><![CDATA[<p>今天升级了一下 OpenCv，升级完之后，却出问题了，执行<code>import cv2</code> 报下面的错误：</p>
 <figure class="highlight crystal">
@@ -119,7 +119,21 @@
     </tr>
   </table>
 </figure>
-<p>之后，直接将解压出来的<code>/usr/x86_64-linux-gnu/libstdc++.so.6</code> 复制到<code>/usr/lib/x86_64-linux-gnu/</code> 下，当然，为了保险起见，你也可以先备份一下原文件。现在，你再次执行命令<code>strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX</code> ，显示的版本号就如下：</p>
+<p>之后，直接将解压出来的<code>/usr/x86_64-linux-gnu/libstdc++.so.6.25</code> 复制到<code>/usr/lib/x86_64-linux-gnu/</code> 下，当然，为了保险起见，你也可以先备份一下原文件。然后<br>
+  <figure class="highlight crystal">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">cd /usr/bin/<span class="class"><span class="keyword">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/</span></div><div class="line">sudo rm lidstdc++.so.<span class="number">6</span></div><div class="line">ln libstdc++.so.<span class="number">6.25</span> libstdc++.so.<span class="number">6</span></div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>现在，你再次执行命令<code>strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX</code> ，显示的版本号就如下：</p>
 <figure class="highlight css">
   <table>
     <tr>
