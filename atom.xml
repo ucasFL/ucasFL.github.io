@@ -87,7 +87,7 @@
     <link href="http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/"/>
     <id>http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/</id>
     <published>2017-12-21T12:48:42.000Z</published>
-    <updated>2017-12-22T16:01:15.071Z</updated>
+    <updated>2017-12-22T16:13:55.384Z</updated>
     
     <content type="html"><![CDATA[<p>今天升级了一下 OpenCv，升级完之后，却出问题了，执行<code>import cv2</code> 报下面的错误：</p>
 <figure class="highlight crystal">
@@ -127,7 +127,7 @@
           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
         </td>
         <td class="code">
-          <pre><div class="line">cd /usr/bin/<span class="class"><span class="keyword">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/</span></div><div class="line">sudo rm lidstdc++.so.<span class="number">6</span></div><div class="line">ln libstdc++.so.<span class="number">6.25</span> libstdc++.so.<span class="number">6</span></div></pre>
+          <pre><div class="line">cd /usr/bin/<span class="class"><span class="keyword">lib</span>/<span class="title">x86_64</span>-<span class="title">linux</span>-<span class="title">gnu</span>/</span></div><div class="line">sudo rm lidstdc++.so.<span class="number">6</span></div><div class="line">sudo ln libstdc++.so.<span class="number">6.25</span> libstdc++.so.<span class="number">6</span></div></pre>
         </td>
       </tr>
     </table>
