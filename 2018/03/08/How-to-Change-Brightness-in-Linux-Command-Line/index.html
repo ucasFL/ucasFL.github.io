@@ -1,0 +1,1228 @@
+<!doctype html>
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Command Linux," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+  <meta name="description" content="寒假的时候，笔记本又坏了，这次比前面两次还要更严重，直接开不了机。于是好了，一个寒假在家什么也没干。到学校的第一天就把电脑送去维修，今天才拿回来。好吧，这已经是第三次维修了。取电脑的时候，我问维修的工程师，这次是哪儿坏了。他回答，主板坏了。我说，主板不是刚刚才换了没多久的吗……他说，又坏了。我竟无言以对。
+电脑确实修好了。不过拿回来以后，发现屏幕怎么这么暗，然后我通过桌面设置调节，竟然无法调节，即">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="如果在 Linux 命令行中更改屏幕亮度">
+  <meta property="og:url" content="http://ucasfl.me/2018/03/08/How-to-Change-Brightness-in-Linux-Command-Line/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="寒假的时候，笔记本又坏了，这次比前面两次还要更严重，直接开不了机。于是好了，一个寒假在家什么也没干。到学校的第一天就把电脑送去维修，今天才拿回来。好吧，这已经是第三次维修了。取电脑的时候，我问维修的工程师，这次是哪儿坏了。他回答，主板坏了。我说，主板不是刚刚才换了没多久的吗……他说，又坏了。我竟无言以对。
+电脑确实修好了。不过拿回来以后，发现屏幕怎么这么暗，然后我通过桌面设置调节，竟然无法调节，即">
+  <meta property="og:updated_time" content="2018-03-08T15:50:08.744Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="如果在 Linux 命令行中更改屏幕亮度">
+  <meta name="twitter:description" content="寒假的时候，笔记本又坏了，这次比前面两次还要更严重，直接开不了机。于是好了，一个寒假在家什么也没干。到学校的第一天就把电脑送去维修，今天才拿回来。好吧，这已经是第三次维修了。取电脑的时候，我问维修的工程师，这次是哪儿坏了。他回答，主板坏了。我说，主板不是刚刚才换了没多久的吗……他说，又坏了。我竟无言以对。
+电脑确实修好了。不过拿回来以后，发现屏幕怎么这么暗，然后我通过桌面设置调节，竟然无法调节，即">
+
+
+
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2018/03/08/How-to-Change-Brightness-in-Linux-Command-Line/" />
+
+
+
+
+
+  <title> 如果在 Linux 命令行中更改屏幕亮度 | 春暖花开 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
+
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">春暖花开</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+            </div>
+
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-tags">
+              <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+            </li>
+
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
+
+        </nav>
+
+
+
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+
+
+            <div id="posts" class="posts-expand">
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2018/03/08/How-to-Change-Brightness-in-Linux-Command-Line/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
+                <header class="post-header">
+
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    如果在 Linux 命令行中更改屏幕亮度
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T23:28:59+08:00">
+                2018/03/08
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+
+
+
+
+                    <span id="/2018/03/08/How-to-Change-Brightness-in-Linux-Command-Line/" class="leancloud_visitors" data-flag-title="如果在 Linux 命令行中更改屏幕亮度">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <p>寒假的时候，笔记本又坏了，这次比前面两次还要更严重，直接开不了机。于是好了，一个寒假在家什么也没干。到学校的第一天就把电脑送去维修，今天才拿回来。好吧，这已经是第三次维修了。取电脑的时候，我问维修的工程师，这次是哪儿坏了。他回答，主板坏了。我说，主板不是刚刚才换了没多久的吗……他说，又坏了。我竟无言以对。</p>
+                  <p>电脑确实修好了。不过拿回来以后，发现屏幕怎么这么暗，然后我通过桌面设置调节，竟然无法调节，即使调到最大也没变化。我心里一凉，是不是硬件上哪儿又坏了。我切回 Windows 系统，惊喜的发现，亮度是可以调节的，那就好办了，既然是软件的问题，咱就可以自己解决。桌面无法调节，那就直接在命令行手动设置亮度值。</p>
+                  <a id="more"></a>
+                  <p>首先，查看屏幕亮度的最大值：</p>
+                  <figure class="highlight ruby">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">fenglv@segmentfault<span class="symbol">:~</span>$ cat /sys/<span class="class"><span class="keyword">class</span>/<span class="title">backlight</span>/<span class="title">intel_backlight</span>/<span class="title">max_brightness</span> </span></div><div class="line"><span class="number">7500</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>输出结果表明，亮度最大值为 7500 ，因此，可以在 0 ~ 7500 之间。</p>
+                  <p>然后，再查看一下当前的亮度值：</p>
+                  <figure class="highlight ruby">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">fenglv@segmentfault<span class="symbol">:~</span>$ cat /sys/<span class="class"><span class="keyword">class</span>/<span class="title">backlight</span>/<span class="title">intel_backlight</span>/<span class="title">brightness</span> </span></div><div class="line"><span class="number">957</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>当前亮度为 957，这 TM 屏幕能不暗吗？</p>
+                  <p>如果要更改屏幕亮度，那么只需手动更改 <code>/sys/class/backlight/intel_backlight/brightness</code> 文件内容即可。至此，你就应该知道怎么办了。</p>
+                  <h3 id="设置启动时的默认亮度"><a href="#设置启动时的默认亮度" class="headerlink" title="设置启动时的默认亮度"></a>设置启动时的默认亮度</h3>
+                  <p>如果要设置电脑启动时候的默认亮度，那么，只需要在文件 <code>/etc/rc.local</code> <code>exit 0</code> 前面加上如下一行内容：<br>
+                    <figure class="highlight gradle">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">echo <span class="number">5500</span> &gt; <span class="regexp">/sys/</span><span class="keyword">class</span><span class="regexp">/backlight/i</span>ntel_backlight<span class="regexp">/brightness</span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                  </p>
+                  <p>如上，我把启动时候的亮度值设置为 5500。</p>
+                  <h3 id="自定义亮度"><a href="#自定义亮度" class="headerlink" title="自定义亮度"></a>自定义亮度</h3>
+                  <p>另外，为了每次方便的设置亮度，我写了一个小脚本，并命名为 <code>chbgn</code> ，然后增加执行权限，并放在 <code>$HOME/bin</code> 目录下，这样，每次要设置亮度的时候就可以很方便的进行交互式设置了，体验不比图形界面差。脚本内容如下：<br>
+                    <figure class="highlight bash">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="meta">#!/usr/bin/env bash</span></div><div class="line"><span class="comment"># 一个用于调节屏幕亮度的脚本</span></div><div class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$USER</span>"</span> != <span class="string">"root"</span> ]]; <span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"The program must be executed under the root user."</span>;</div><div class="line">	<span class="built_in">exit</span> 0;</div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="built_in">echo</span>  -n <span class="string">"Please input the brightness value(0 ~ 7500): "</span>;</div><div class="line"><span class="built_in">read</span> int;</div><div class="line"></div><div class="line">value=`expr <span class="variable">$int</span> + 0`;</div><div class="line">expr <span class="variable">$value</span> &amp;&gt;/dev/null;</div><div class="line"><span class="keyword">if</span> [ $? <span class="_">-ne</span> 0 ]; <span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"Input must be an integer. Change brightness failed!!!"</span></div><div class="line">	<span class="built_in">exit</span> 0;</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ <span class="variable">$value</span> -ge 0 ] &amp;&amp; [ <span class="variable">$value</span> -le 7500 ]; <span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="variable">$value</span> &gt; /sys/class/backlight/intel_backlight/brightness</div><div class="line">	<span class="built_in">echo</span> <span class="string">"The brightness of the Computer has successfully changed ^_^"</span></div><div class="line">	<span class="built_in">exit</span> 0;</div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"Input must be an integer betwwen 0 and 7500. Change brightness failed!!!"</span>;</div><div class="line"><span class="built_in">exit</span> 0;</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                  </p>
+                  <p>
+                    <div id="container"></div>
+                  </p>
+                  <p>
+                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                  </p>
+                  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                  <script>
+                    var gitment = new Gitment({
+                      owner: 'ucasFL',
+                      repo: 'BlogComments',
+                      oauth: {
+                        client_id: 'ef399b43f01e072241fd',
+                        client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
+                      },
+                    })
+                    gitment.render('container');
+                  </script>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Command-Linux/" rel="tag"># Command Linux</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2017/12/31/the-end-of-2017/" rel="next" title="再见, 2017">
+                <i class="fa fa-chevron-left"></i> 再见, 2017
+              </a>
+
+                    </div>
+
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          </div>
+        </div>
+
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
+
+
+
+
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
+
+
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
+
+
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">96</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags">
+                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ilovezyq.github.io" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#设置启动时的默认亮度"><span class="nav-number">1.</span> <span class="nav-text">设置启动时的默认亮度</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#自定义亮度"><span class="nav-number">2.</span> <span class="nav-text">自定义亮度</span></a></li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
+          </div>
+        </aside>
+        <script type="text/javascript" src="/js/src/op.js"></script>
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2018</span>
+          <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+          <span> <span><a href="https://fenglv.ac.cn">Flynn</a></span>
+          </span>
+        </div>
+        <div>
+          <php? $ip=$ _SERVER[ 'REMOTE_ADDR'] echo "您的 IP: $ip." ?>
+        </div>
+
+
+        <div>
+          本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        </div>
+
+
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
+
+
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
+
+
+
+
+
+
+
+      </div>
+    </footer>
+
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
+  </div>
+
+
+
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
