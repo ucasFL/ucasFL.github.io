@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-03-08T15:50:08.744Z</updated>
+  <updated>2018-03-09T06:43:41.345Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>如果在 Linux 命令行中更改屏幕亮度</title>
+    <title>如何在 Linux 命令行中更改屏幕亮度</title>
     <link href="http://ucasfl.me/2018/03/08/How-to-Change-Brightness-in-Linux-Command-Line/"/>
     <id>http://ucasfl.me/2018/03/08/How-to-Change-Brightness-in-Linux-Command-Line/</id>
     <published>2018-03-08T15:28:59.000Z</published>
-    <updated>2018-03-08T15:50:08.744Z</updated>
+    <updated>2018-03-09T06:43:41.345Z</updated>
     
     <content type="html"><![CDATA[<p>寒假的时候，笔记本又坏了，这次比前面两次还要更严重，直接开不了机。于是好了，一个寒假在家什么也没干。到学校的第一天就把电脑送去维修，今天才拿回来。好吧，这已经是第三次维修了。取电脑的时候，我问维修的工程师，这次是哪儿坏了。他回答，主板坏了。我说，主板不是刚刚才换了没多久的吗……他说，又坏了。我竟无言以对。</p>
 <p>电脑确实修好了。不过拿回来以后，发现屏幕怎么这么暗，然后我通过桌面设置调节，竟然无法调节，即使调到最大也没变化。我心里一凉，是不是硬件上哪儿又坏了。我切回 Windows 系统，惊喜的发现，亮度是可以调节的，那就好办了，既然是软件的问题，咱就可以自己解决。桌面无法调节，那就直接在命令行手动设置亮度值。</p>
