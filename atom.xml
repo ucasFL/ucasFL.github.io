@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-03-11T11:31:35.840Z</updated>
+  <updated>2018-03-11T14:34:22.091Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何通过命令行调节音量</title>
+    <link href="http://ucasfl.me/2018/03/11/How-to-adjust-volume-in-command-line/"/>
+    <id>http://ucasfl.me/2018/03/11/How-to-adjust-volume-in-command-line/</id>
+    <published>2018-03-11T14:31:20.000Z</published>
+    <updated>2018-03-11T14:34:22.091Z</updated>
+    
+    <content type="html"><![CDATA[<p>直接使用命令：<br>
+  <figure class="highlight crmsh">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">amixer set <span class="keyword">Master</span> <span class="title">100</span>% : 调到最大，参数范围是 <span class="number">0</span>% ~ <span class="number">100</span> %</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<a id="more"></a>
+<p>或输入：<br>
+  <figure class="highlight ebnf">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="attribute">alsamixer</span></div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>运行该命令后将会进入命令行图形界面，从而可调节音量。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;直接使用命令：&lt;br&gt;
+  &lt;figure class=&quot;highlight crmsh&quot;&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;gutter&quot;&gt;
+          &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;
+        &lt;/td&gt;
+        &lt;td class=&quot;code&quot;&gt;
+          &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;amixer set &lt;span class=&quot;keyword&quot;&gt;Master&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;100&lt;/span&gt;% : 调到最大，参数范围是 &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;% ~ &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt; %&lt;/div&gt;&lt;/pre&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/figure&gt;
+&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Command" scheme="http://ucasfl.me/tags/Command/"/>
+    
+  </entry>
   
   <entry>
     <title>C++中的关联容器</title>
@@ -2629,176 +2693,6 @@
     
     
       <category term="FileSystem Linux" scheme="http://ucasfl.me/tags/FileSystem-Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C 语言中变量的段</title>
-    <link href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/"/>
-    <id>http://ucasfl.me/2017/09/12/the-Section-of-Variables/</id>
-    <published>2017-09-12T02:16:42.000Z</published>
-    <updated>2018-03-11T04:08:20.217Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
-<p>在 C 语言中，不同的变量位于不同的段，下面进行简单分析。</p>
-<p>看下面一个简单的 C 程序：</p>
-<figure class="highlight c">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">char</span> *myname=<span class="string">"Bao Yungang"</span>;</div><div class="line"><span class="keyword">char</span> gdata[<span class="number">128</span>];</div><div class="line"><span class="keyword">char</span> bdata[<span class="number">16</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div><div class="line">main() &#123;</div><div class="line">	<span class="keyword">char</span> * ldata[<span class="number">16</span>];	</div><div class="line">	<span class="keyword">char</span> * ddata;</div><div class="line"></div><div class="line">	ddata = <span class="built_in">malloc</span>(<span class="number">16</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"myname:%llX\n"</span>, myname);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"main: %llX\n"</span>, main);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;ddata:%llx\nddata: %llx\n"</span>,</div><div class="line">		gdata,bdata,ldata,&amp;ddata,ddata);</div><div class="line">	<span class="built_in">free</span>(ddata);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>我们分析一下程序中出现的变量所位于的段。</p>
-<a id="more"></a>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3>
-<p>首先，根据所学知识进行分析：</p>
-<ul>
-  <li><code>myname</code> 变量是一个全局变量，并且进行了初始化，指向一个字符串常量。因此，<code>myname</code> 变量本身位于<em>数据段：</em><code>.data</code></li>
-  <li><code>myname</code>所<strong>指向的字符串</strong>是一个字符串常量，根据 C 语言知识，是只读的，所以应位于<em>只读数据段：</em><code>.rodata</code></li>
-  <li><code>gdata</code>是一个为进行初始化的全局变量，因此位于<em>BSS段（Block Started by Symbol）</em>。</li>
-  <li><code>bdata</code>和<code>myname</code>一样是初始化了的全局变量，因此位于数据段。</li>
-  <li><code>ldata</code>是一个<code>main</code>函数中的局部变量，因此位于<em>栈中。</em></li>
-  <li><code>ddata</code>变量自身也是<code>main</code>函数中的一个局部变量，因此也位于<em>栈中。</em></li>
-  <li><code>ddata</code>所<strong>指向的内存空间</strong>是通过<code>malloc</code>函数动态分配的，因此位于<em>堆中。</em></li>
-</ul>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3>
-<p>下面，通过<code>objdump</code>来进行验证：</p>
-<p>首先，使用<code>gcc</code>来编译源程序(Ubuntu 16.04.4 + gcc 5.4.0)：</p>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">gcc -save-temps addr_space.c</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>通过添加 <code>-save-temps</code>选项来生成中间文件。</p>
-<p>下面，使用 <code>objdump</code> 来查看段信息：</p>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">objdump -D ./a.out</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>通过<code>-D</code>选项显示出所有段的内容。</p>
-<ul>
-  <li>首先看<code>bdata</code> 和<code>myname</code> ，我们可以直接在 <code>.data</code> 段看到：</li>
-</ul>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">Disassembly of section .data:</div><div class="line"></div><div class="line">0000000000601040 &lt;__data_start&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601048 &lt;__dso_handle&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601050 &lt;myname&gt;:</div><div class="line">  601050:	68 07 40 00 00       	pushq  $0x4007</div><div class="line">	...</div><div class="line"></div><div class="line">0000000000601060 &lt;bdata&gt;:</div><div class="line">  601060:	01 02                	add    %eax,(%rdx)</div><div class="line">  601062:	03 04 00             	add    (%rax,%rax,1),%eax</div><div class="line">	...</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>对于 <code>gdata</code> ，也可以直接在 <code>.bss</code> 段看到：</li>
-</ul>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">Disassembly of section .bss:</div><div class="line"></div><div class="line">0000000000601080 &lt;completed.7585&gt;:</div><div class="line">	...</div><div class="line"></div><div class="line">00000000006010a0 &lt;gdata&gt;:</div><div class="line">	...</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>下面看<code>myname</code> 所指向的字符串常量。</li>
-</ul>
-<p>首先，运行程序，输出如下：</p>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">myname:400768</div><div class="line">main: 400626</div><div class="line">gdata: 6010A0</div><div class="line">bdata:601060</div><div class="line">ldata:7ffc84068960</div><div class="line">ddata:1490010</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>由运行结果知，<code>myname</code>的值为 400768，它即为 <code>myname</code>所指向的字符串常量的地址。然后我们在 <code>objdump</code>的输出内容中搜索该地址，得到它位于 <code>.rodata</code>中：</p>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">Disassembly of section .rodata:</div><div class="line"></div><div class="line">0000000000400760 &lt;_IO_stdin_used&gt;:</div><div class="line">  400760:	01 00                	add    %eax,(%rax)</div><div class="line">  400762:	02 00                	add    (%rax),%al</div><div class="line">  400764:	00 00                	add    %al,(%rax)</div><div class="line">  400766:	00 00                	add    %al,(%rax)</div><div class="line">  400768:	42 61                	rex.X (bad) </div><div class="line">  40076a:	6f                   	outsl  %ds:(%rsi),(%dx)</div><div class="line">  40076b:	20 59 75             	and    %bl,0x75(%rcx)</div><div class="line">  40076e:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  40076f:	67 61                	addr32 (bad) </div><div class="line">  400771:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  400772:	67 00 6d 79          	add    %ch,0x79(%ebp)</div><div class="line">  400776:	6e                   	outsb  %ds:(%rsi),(%dx)</div><div class="line">  400777:	61                   	(bad)  </div><div class="line">  400778:	6d                   	insl   (%dx),%es:(%rdi)</div><div class="line">  400779:	65 3a 25 6c 6c 58 0a 	cmp    %gs:0xa586c6c(%rip),%ah        # a9873ec &lt;_end+0xa3862cc&gt;</div><div class="line">  400780:	00 6d 61             	add    %ch,0x61(%rbp)</div><div class="line">  400783:	69 6e 3a 20 25 6c 6c 	imul   $0x6c6c2520,0x3a(%rsi),%ebp</div><div class="line">  40078a:	58                   	pop    %rax</div><div class="line">  40078b:	0a 00                	or     (%rax),%al</div><div class="line">  40078d:	00 00                	add    %al,(%rax)</div><div class="line">  40078f:	00 67 64             	add    %ah,0x64(%rdi)</div><div class="line">  400792:	61                   	(bad)  </div><div class="line">  400793:	74 61                	je     4007f6 &lt;__GNU_EH_FRAME_HDR+0x36&gt;</div><div class="line">  400795:	3a 20                	cmp    (%rax),%ah</div><div class="line">  400797:	25 6c 6c 58 0a       	and    $0xa586c6c,%eax</div><div class="line">  40079c:	62                   	(bad)  </div><div class="line">  40079d:	64 61                	fs (bad) </div><div class="line">  40079f:	74 61                	je     400802 &lt;__GNU_EH_FRAME_HDR+0x42&gt;</div><div class="line">  4007a1:	3a 25 6c 6c 58 0a    	cmp    0xa586c6c(%rip),%ah        # a987413 &lt;_end+0xa3862f3&gt;</div><div class="line">  4007a7:	6c                   	insb   (%dx),%es:(%rdi)</div><div class="line">  4007a8:	64 61                	fs (bad) </div><div class="line">  4007aa:	74 61                	je     40080d &lt;__GNU_EH_FRAME_HDR+0x4d&gt;</div><div class="line">  4007ac:	3a 25 6c 6c 78 0a    	cmp    0xa786c6c(%rip),%ah        # ab8741e &lt;_end+0xa5862fe&gt;</div><div class="line">  4007b2:	64 64 61             	fs fs (bad) </div><div class="line">  4007b5:	74 61                	je     400818 &lt;__GNU_EH_FRAME_HDR+0x58&gt;</div><div class="line">  4007b7:	3a 25 6c 6c 78 0a    	cmp    0xa786c6c(%rip),%ah        # ab87429 &lt;_end+0xa586309&gt;</div><div class="line">	...</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>因此，说明 <code>myname</code>指向的字符串常量位于 <code>.rodata</code> 中。事实上，看中间一栏，从 400768 开始，到 400772 的第一个数结束，其中的内容 <code>42 61 6f 20 59 75 6e 67 61 6e 67</code>对应的 ASCII 码就是字符串 “Bao Yungang” 。</p>
-<ul>
-  <li>对于 <code>ldata</code> 和 <code>ddata</code> 以及 <code>ddata</code> 所指向的分配空间，很难直接从 <code>objdump</code> 的输出中看出来。我们再把 <code>ddata</code>变量本身的地址也打印出来：</li>
-</ul>
-<figure class="highlight plain">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">myname:400768</div><div class="line">main: 400626</div><div class="line">gdata: 6010A0</div><div class="line">bdata:601060</div><div class="line">ldata:7ffe92607930</div><div class="line">&amp;ddata:7ffe92607928</div><div class="line">ddata: 221a010</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>我们看到，<code>ldata</code>和<code>ddata</code>的地址非常大，而 <code>ddata</code>所指向的分配空间的地址相对来说要小很多，这其实也一定程度上验证了我们的结论，根据我们已知的结论，在程序执行过程中，函数中的局部变量是在函数压栈以后，在栈中分配的，而 <code>malloc</code> 函数分配的空间则是在堆中进行分配的，而栈是从上往下长（高地址到低地址），堆则相反，是从下往上长（低地址到高地址），因此，栈中的变量地址较大，而堆中的则较小，所以，程序运行结果与之相符。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;
-&lt;p&gt;在 C 语言中，不同的变量位于不同的段，下面进行简单分析。&lt;/p&gt;
-&lt;p&gt;看下面一个简单的 C 程序：&lt;/p&gt;
-&lt;figure class=&quot;highlight c&quot;&gt;
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;td class=&quot;gutter&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;code&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; *myname=&lt;span class=&quot;string&quot;&gt;&quot;Bao Yungang&quot;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; gdata[&lt;span class=&quot;number&quot;&gt;128&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; bdata[&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;] = &amp;#123;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;main() &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; * ldata[&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;];	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; * ddata;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	ddata = &lt;span class=&quot;built_in&quot;&gt;malloc&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;myname:%llX\n&quot;&lt;/span&gt;, myname);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;main: %llX\n&quot;&lt;/span&gt;, main);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;amp;ddata:%llx\nddata: %llx\n&quot;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		gdata,bdata,ldata,&amp;amp;ddata,ddata);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;free&lt;/span&gt;(ddata);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-&lt;/figure&gt;
-&lt;p&gt;我们分析一下程序中出现的变量所位于的段。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
-    
-    
-      <category term="C Section" scheme="http://ucasfl.me/tags/C-Section/"/>
     
   </entry>
   
