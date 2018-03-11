@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-03-11T05:46:18.372Z</updated>
+  <updated>2018-03-11T11:31:35.840Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++中的关联容器</title>
+    <link href="http://ucasfl.me/2018/03/11/Summary-of-Associative-Container-in-C-plus-plus/"/>
+    <id>http://ucasfl.me/2018/03/11/Summary-of-Associative-Container-in-C-plus-plus/</id>
+    <published>2018-03-11T06:47:30.000Z</published>
+    <updated>2018-03-11T11:31:35.840Z</updated>
+    
+    <content type="html"><![CDATA[<p>关联容器(Associative containers)支持通过键来高效地查找和读取元素。两个基本的关联容器类型是 map, set。</p>
+<p>本文主要是对 C++ 中基本的关联容器 map, set 中的类型和支持的操作进行总结。</p>
+<p>关联容器支持很多顺序容器也提供的相同操作,此外,还提供管理或使用键的特殊操作。</p>
+<h3 id="关联容器类型"><a href="#关联容器类型" class="headerlink" title="关联容器类型"></a>关联容器类型</h3>
+<p><img src="/photos/ac/1.png" alt=""></p>
+<a id="more"></a>
+<h3 id="pair-类型"><a href="#pair-类型" class="headerlink" title="pair 类型"></a>pair 类型</h3>
+<p>在头文件 <code>utility</code> 中定义。</p>
+<p><img src="/photos/ac/1.png" alt=""><br> <em>pair 类型提供的操作, T1, T2, 为类型，如 <code>pair&lt;string, vector&lt;int&gt; &gt; line;</code></em></p>
+<p>pair 类型的使用相当繁琐,因此,如果需要定义多个相同的 pair 类型对象,可考虑利用 typedef 简化其声明。</p>
+<p>与其他标准库类型不同,对于 pair 类,可以直接访问其数据成员:其成员都是仅有的,分别命名为 first 和 second。只需使用普通的点操作符——成员访问标志即可访问其成员。</p>
+<h3 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h3>
+<p>关联容器共享大部分——但并非全部——的顺序容器操作。关联容器不提供front、 push_front、 pop_front、back、push_back 以及 pop_back 操作。</p>
+<h3 id="map-容器"><a href="#map-容器" class="headerlink" title="map 容器"></a>map 容器</h3>
+<p>map 类型通常可理解为关联数组。同样，要使用 map 类型，也需要包含相应的头文件。</p>
+<p>map 的构造函数：</p>
+<p><img src="/photos/ac/3.png" alt=""></p>
+<p>对于键类型,唯一的约束就是必须支持 &lt; 操作符,至于是否支持其他的关系或相等运算,则不作要求。</p>
+<h4 id="map-类定义的类型"><a href="#map-类定义的类型" class="headerlink" title="map 类定义的类型"></a>map 类定义的类型</h4>
+<p><img src="/photos/ac/4.png" alt=""></p>
+<p>对 map 类型迭代器解引用，会得到一个 pair 类型。</p>
+<h4 id="给-map-添加元素"><a href="#给-map-添加元素" class="headerlink" title="给 map 添加元素"></a>给 map 添加元素</h4>
+<ul>
+  <li>通过下标：下标为键，如果没找到，则添加键值对。使用下标访问 map 与使用下标访问数组或 vector 的行为截然不同:用下标访问不存在的元素将导致在 map 容器中添加一个新元素,它的键即为该下标值。</li>
+</ul>
+<p>在 map 中，迭代器返回 value_type 类型的值——包含 const key_type 和mapped_type 类型成员的 pair 对象;下标操作符则返回一个 mapped_type 类型的值。</p>
+<p>对于 map 容器,如果下标所表示的键在容器中不存在,则添加新元素，而值进行默认初始化。</p>
+<p>例如，利用 map 来统计输入单词数的简单方法：<br>
+  <figure class="highlight cpp">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; words;</div><div class="line">	<span class="built_in">string</span> word;</div><div class="line">	<span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; word)&#123;</div><div class="line">		++words[word];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt;::iterator iter = words.begin(); iter != words.end(); ++iter)&#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; iter-&gt;first &lt;&lt;<span class="string">"\t"</span> &lt;&lt; iter-&gt;second &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<h4 id="map-的-insert-操作"><a href="#map-的-insert-操作" class="headerlink" title="map 的 insert 操作"></a>map 的 insert 操作</h4>
+<p><img src="/photos/ac/5.png" alt=""></p>
+<h4 id="不修改map对象的查询操作"><a href="#不修改map对象的查询操作" class="headerlink" title="不修改map对象的查询操作"></a>不修改map对象的查询操作</h4>
+<ul>
+  <li>m.count(k) : 返回 m 中 k 出现的次数</li>
+  <li>m.find(k) : 如果 m 中存在按 k 索引的元素，则返回指向该元素的迭代器，否则，返回超出末端迭代器。</li>
+</ul>
+<h4 id="map-的删除操作"><a href="#map-的删除操作" class="headerlink" title="map 的删除操作"></a>map 的删除操作</h4>
+<p><img src="/photos/ac/6.png" alt=""></p>
+<h4 id="map对象的遍历"><a href="#map对象的遍历" class="headerlink" title="map对象的遍历"></a>map对象的遍历</h4>
+<p>同样提供 begin, end 运算，以生成用于遍历整个容器的迭代器。</p>
+<h3 id="set-容器"><a href="#set-容器" class="headerlink" title="set 容器"></a>set 容器</h3>
+<p>set 是键的集合，支持大部分前面的操作，但不支持下标操作。set 支持的操作基本与 map 相同。set 中的键和 map 中的一样，只能做读操作，不能做写操作。</p>
+<h3 id="multimap-和-multiset-类型"><a href="#multimap-和-multiset-类型" class="headerlink" title="multimap 和 multiset 类型"></a>multimap 和 multiset 类型</h3>
+<p>multimap 和 multiset 所支持的操作分别与 map 和 set 的操作相同,只有一个例外:multimap 不支持下标运算。</p>
+<h3 id="返回迭代器的关联容器操作"><a href="#返回迭代器的关联容器操作" class="headerlink" title="返回迭代器的关联容器操作"></a>返回迭代器的关联容器操作</h3>
+<p><img src="/photos/ac/7.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关联容器(Associative containers)支持通过键来高效地查找和读取元素。两个基本的关联容器类型是 map, set。&lt;/p&gt;
+&lt;p&gt;本文主要是对 C++ 中基本的关联容器 map, set 中的类型和支持的操作进行总结。&lt;/p&gt;
+&lt;p&gt;关联容器支持很多顺序容器也提供的相同操作,此外,还提供管理或使用键的特殊操作。&lt;/p&gt;
+&lt;h3 id=&quot;关联容器类型&quot;&gt;&lt;a href=&quot;#关联容器类型&quot; class=&quot;headerlink&quot; title=&quot;关联容器类型&quot;&gt;&lt;/a&gt;关联容器类型&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/photos/ac/1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
+    
+    
+      <category term="C/C++" scheme="http://ucasfl.me/tags/C-C/"/>
+    
+  </entry>
   
   <entry>
     <title>C++中三种顺序容器的总结</title>
@@ -2716,215 +2799,6 @@
     
     
       <category term="C Section" scheme="http://ucasfl.me/tags/C-Section/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>编译器简介： 在 Siri 前时代如何与计算机对话</title>
-    <link href="http://ucasfl.me/2017/09/12/Introduction-to-Compiler/"/>
-    <id>http://ucasfl.me/2017/09/12/Introduction-to-Compiler/</id>
-    <published>2017-09-12T02:16:15.000Z</published>
-    <updated>2018-03-11T04:01:18.567Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg" alt="了解在编译器的世界里前端和后端的新意义"></p>
-<p>简单说来，一个<ruby>编译器<rt>compiler</rt></ruby>不过是一个可以翻译其他程序的程序。传统的编译器可以把源代码翻译成你的计算机能够理解的可执行机器代码。（一些编译器将源代码翻译成别的程序语言，这样的编译器称为源到源翻译器或<ruby>转化器<rt>transpilers</rt></ruby>。）<a href="http://llvm.org/" target="_blank" rel="external">LLVM</a> 是一个广泛使用的编译器项目，包含许多模块化的编译工具。</p>
-<a id="more"></a>
-<p>传统的编译器设计包含三个部分：</p>
-<p><img src="https://nicoleorchard.com/img/blog/compilers/compiler1.jpg" alt=""></p>
-<ul>
-  <li><ruby>前端<rt>Frontend</rt></ruby>将源代码翻译为<ruby>中间表示<rt>intermediate representation </rt></ruby> (IR)* 。<a href="http://clang.llvm.org/" target="_blank" rel="external">clang</a> 是 LLVM 中用于 C 家族语言的前端工具。</li>
-  <li><ruby>优化器<rt>Optimizer</rt></ruby>分析 IR 然后将其转化为更高效的形式。<a href="http://llvm.org/docs/CommandGuide/opt.html" target="_blank" rel="external">opt</a> 是 LLVM 的优化工具。</li>
-  <li><ruby>后端<rt>Backend</rt></ruby>通过将 IR 映射到目标硬件指令集从而生成机器代码。<a href="http://llvm.org/docs/CommandGuide/llc.html" target="_blank" rel="external">llc</a> 是 LLVM 的后端工具。</li>
-</ul>
-<p>注：LLVM 的 IR 是一种和汇编类似的低级语言。然而，它抽离了特定硬件信息。</p>
-<h3 id="Hello-Compiler"><a href="#Hello-Compiler" class="headerlink" title="Hello, Compiler"></a>Hello, Compiler</h3>
-<p>下面是一个打印 “Hello, Compiler!” 到标准输出的简单 C 程序。C 语法是人类可读的，但是计算机却不能理解，不知道该程序要干什么。我将通过三个编译阶段使该程序变成机器可执行的程序。</p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">// compile_me.c</span></div><div class="line"><span class="comment">// Wave to the compiler. The world can wait.</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"Hello, Compiler!\n"</span>);</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4>
-<p>正如我在上面所提到的，<code>clang</code> 是 LLVM 中用于 C 家族语言的前端工具。Clang 包含 <ruby>C 预处理器<rt>C preprocessor</rt></ruby>、<ruby>词法分析器<rt>lexer</rt></ruby>、<ruby>语法解析器<rt>parser</rt></ruby>、<ruby>语义分析器<rt>semantic analyzer</rt></ruby>和 <ruby>IR 生成器<rt>IR generator</rt></ruby>。</p>
-<p><strong>C 预处理器</strong>在将源程序翻译成 IR 前修改源程序。预处理器处理外部包含文件，比如上面的 <code>#include &lt;stdio.h&gt;</code>。 它将会把这一行替换为 <code>stdio.h</code> C 标准库文件的完整内容，其中包含 <code>printf</code> 函数的声明。</p>
-<p>通过运行下面的命令来查看预处理步骤的输出：</p>
-<figure class="highlight css">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="selector-tag">clang</span> <span class="selector-tag">-E</span> <span class="selector-tag">compile_me</span><span class="selector-class">.c</span> <span class="selector-tag">-o</span> <span class="selector-tag">preprocessed</span><span class="selector-class">.i</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>词法分析器</strong>（或<ruby>扫描器<rt>scanner</rt></ruby>或<ruby>分词器<rt>tokenizer</rt></ruby>）将一串字符转化为一串单词。每一个单词或<ruby>记号<rt>token</rt></ruby>，被归并到五种语法类别之一：标点符号、关键字、标识符、文字或注释。</p>
-<p>compile_me.c 的分词过程：</p>
-<p><img src="https://nicoleorchard.com/img/blog/compilers/lexer.jpg" alt=""></p>
-<p><strong>语法分析器</strong>确定源程序中的单词流是否组成了合法的句子。在分析记号流的语法后，它会输出一个<ruby>抽象语法树<rt>abstract syntax tree</rt></ruby>（AST）。Clang 的 AST 中的节点表示声明、语句和类型。</p>
-<p>compile_me.c 的语法树：</p>
-<p><img src="https://nicoleorchard.com/img/blog/compilers/tree.jpg" alt=""></p>
-<p><strong>语义分析器</strong>会遍历抽象语法树，从而确定代码语句是否有正确意义。这个阶段会检查类型错误。如果 <code>compile_me.c</code> 的 main 函数返回 <code>&quot;zero&quot;</code>而不是 <code>0</code>， 那么语义分析器将会抛出一个错误，因为 <code>&quot;zero&quot;</code> 不是 <code>int</code> 类型。</p>
-<p><strong>IR 生成器</strong>将抽象语法树翻译为 IR。</p>
-<p>对 compile_me.c 运行 clang 来生成 LLVM IR：</p>
-<figure class="highlight css">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="selector-tag">clang</span> <span class="selector-tag">-S</span> <span class="selector-tag">-emit-llvm</span> <span class="selector-tag">-o</span> <span class="selector-tag">llvm_ir</span><span class="selector-class">.ll</span> <span class="selector-tag">compile_me</span><span class="selector-class">.c</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>在 <code>llvm_ir.ll</code> 中的 main 函数：</p>
-<figure class="highlight llvm">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">; llvm_ir.ll</span></div><div class="line"><span class="title">@.str</span> = <span class="keyword">private</span> <span class="keyword">unnamed_addr</span> <span class="keyword">constant</span> [<span class="number">18</span> <span class="keyword">x</span> <span class="keyword">i8</span>] <span class="keyword">c</span><span class="string">"Hello, Compiler!\0A\00"</span>, <span class="keyword">align</span> <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">define</span> <span class="keyword">i32</span> <span class="title">@main</span>() &#123;</div><div class="line">  <span class="symbol">%1</span> = <span class="keyword">alloca</span> <span class="keyword">i32</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- memory allocated on the stack</span></div><div class="line">  <span class="keyword">store</span> <span class="keyword">i32</span> <span class="number">0</span>, <span class="keyword">i32</span>* <span class="symbol">%1</span>, <span class="keyword">align</span> <span class="number">4</span></div><div class="line">  <span class="symbol">%2</span> = <span class="keyword">call</span> <span class="keyword">i32</span> (<span class="keyword">i8</span>*, ...) <span class="title">@printf</span>(<span class="keyword">i8</span>* <span class="keyword">getelementptr</span> <span class="keyword">inbounds</span> ([<span class="number">18</span> <span class="keyword">x</span> <span class="keyword">i8</span>], [<span class="number">18</span> <span class="keyword">x</span> <span class="keyword">i8</span>]* <span class="title">@.str</span>, <span class="keyword">i32</span> <span class="number">0</span>, <span class="keyword">i32</span> <span class="number">0</span>))</div><div class="line">  <span class="keyword">ret</span> <span class="keyword">i32</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">declare</span> <span class="keyword">i32</span> <span class="title">@printf</span>(<span class="keyword">i8</span>*, ...)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h4 id="优化程序"><a href="#优化程序" class="headerlink" title="优化程序"></a>优化程序</h4>
-<p>优化程序的工作是基于其对程序的运行时行为的理解来提高代码效率。优化程序将 IR 作为输入，然后生成改进后的 IR 作为输出。LLVM 的优化工具 <code>opt</code> 将会通过标记 <code>-O2</code>（大写字母 <code>o</code>，数字 2）来优化处理器速度，通过标记 <code>Os</code>（大写字母 <code>o</code>，小写字母 <code>s</code>）来减少指令数目。</p>
-<p>看一看上面的前端工具生成的 LLVM IR 代码和运行下面的命令生成的结果之间的区别：</p>
-<figure class="highlight vim">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">opt</span> -O2 -S llvm_ir.<span class="keyword">ll</span> -<span class="keyword">o</span> optimized.<span class="keyword">ll</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>在 <code>optimized.ll</code> 中的 main 函数：</p>
-<figure class="highlight llvm">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">optimized.ll</div><div class="line"></div><div class="line"><span class="title">@str</span> = <span class="keyword">private</span> <span class="keyword">unnamed_addr</span> <span class="keyword">constant</span> [<span class="number">17</span> <span class="keyword">x</span> <span class="keyword">i8</span>] <span class="keyword">c</span><span class="string">"Hello, Compiler!\00"</span></div><div class="line"></div><div class="line"><span class="keyword">define</span> <span class="keyword">i32</span> <span class="title">@main</span>() &#123;</div><div class="line">  <span class="symbol">%puts</span> = <span class="keyword">tail</span> <span class="keyword">call</span> <span class="keyword">i32</span> <span class="title">@puts</span>(<span class="keyword">i8</span>* <span class="keyword">getelementptr</span> <span class="keyword">inbounds</span> ([<span class="number">17</span> <span class="keyword">x</span> <span class="keyword">i8</span>], [<span class="number">17</span> <span class="keyword">x</span> <span class="keyword">i8</span>]* <span class="title">@str</span>, <span class="keyword">i64</span> <span class="number">0</span>, <span class="keyword">i64</span> <span class="number">0</span>))</div><div class="line">  <span class="keyword">ret</span> <span class="keyword">i32</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">declare</span> <span class="keyword">i32</span> <span class="title">@puts</span>(<span class="keyword">i8</span>* <span class="keyword">nocapture</span> <span class="keyword">readonly</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>优化后的版本中， main 函数没有在栈中分配内存，因为它不使用任何内存。优化后的代码中调用 <code>puts</code> 函数而不是 <code>printf</code> 函数，因为程序中并没有使用 <code>printf</code> 函数的格式化功能。</p>
-<p>当然，优化程序不仅仅知道何时可以把 <code>printf</code> 函数用 <code>puts</code> 函数代替。优化程序也能展开循环并内联简单计算的结果。考虑下面的程序，它将两个整数相加并打印出结果。</p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">// add.c</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> a = <span class="number">5</span>, b = <span class="number">10</span>, c = a + b;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"%i + %i = %i\n"</span>, a, b, c);</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>下面是未优化的 LLVM IR：</p>
-<figure class="highlight llvm">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="title">@.str</span> = <span class="keyword">private</span> <span class="keyword">unnamed_addr</span> <span class="keyword">constant</span> [<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>] <span class="keyword">c</span><span class="string">"%i + %i = %i\0A\00"</span>, <span class="keyword">align</span> <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">define</span> <span class="keyword">i32</span> <span class="title">@main</span>() &#123;</div><div class="line">  <span class="symbol">%1</span> = <span class="keyword">alloca</span> <span class="keyword">i32</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- allocate stack space for var a</span></div><div class="line">  <span class="symbol">%2</span> = <span class="keyword">alloca</span> <span class="keyword">i32</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- allocate stack space for var b</span></div><div class="line">  <span class="symbol">%3</span> = <span class="keyword">alloca</span> <span class="keyword">i32</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- allocate stack space for var c</span></div><div class="line">  <span class="keyword">store</span> <span class="keyword">i32</span> <span class="number">5</span>, <span class="keyword">i32</span>* <span class="symbol">%1</span>, <span class="keyword">align</span> <span class="number">4</span>  <span class="comment">; &lt;- store 5 at memory location %1</span></div><div class="line">  <span class="keyword">store</span> <span class="keyword">i32</span> <span class="number">10</span>, <span class="keyword">i32</span>* <span class="symbol">%2</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- store 10 at memory location %2</span></div><div class="line">  <span class="symbol">%4</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%1</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %1 into register %4</span></div><div class="line">  <span class="symbol">%5</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%2</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %2 into register %5</span></div><div class="line">  <span class="symbol">%6</span> = <span class="keyword">add</span> <span class="keyword">nsw</span> <span class="keyword">i32</span> <span class="symbol">%4</span>, <span class="symbol">%5</span> <span class="comment">; &lt;- add the values in registers %4 and %5\. put the result in register %6</span></div><div class="line">  <span class="keyword">store</span> <span class="keyword">i32</span> <span class="symbol">%6</span>, <span class="keyword">i32</span>* <span class="symbol">%3</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- put the value of register %6 into memory address %3</span></div><div class="line">  <span class="symbol">%7</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%1</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %1 into register %7</span></div><div class="line">  <span class="symbol">%8</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%2</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %2 into register %8</span></div><div class="line">  <span class="symbol">%9</span> = <span class="keyword">load</span> <span class="keyword">i32</span>, <span class="keyword">i32</span>* <span class="symbol">%3</span>, <span class="keyword">align</span> <span class="number">4</span> <span class="comment">; &lt;- load the value at memory address %3 into register %9</span></div><div class="line">  <span class="symbol">%10</span> = <span class="keyword">call</span> <span class="keyword">i32</span> (<span class="keyword">i8</span>*, ...) <span class="title">@printf</span>(<span class="keyword">i8</span>* <span class="keyword">getelementptr</span> <span class="keyword">inbounds</span> ([<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>], [<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>]* <span class="title">@.str</span>, <span class="keyword">i32</span> <span class="number">0</span>, <span class="keyword">i32</span> <span class="number">0</span>), <span class="keyword">i32</span> <span class="symbol">%7</span>, <span class="keyword">i32</span> <span class="symbol">%8</span>, <span class="keyword">i32</span> <span class="symbol">%9</span>)</div><div class="line">  <span class="keyword">ret</span> <span class="keyword">i32</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">declare</span> <span class="keyword">i32</span> <span class="title">@printf</span>(<span class="keyword">i8</span>*, ...)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>下面是优化后的 LLVM IR：</p>
-<figure class="highlight llvm">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="title">@.str</span> = <span class="keyword">private</span> <span class="keyword">unnamed_addr</span> <span class="keyword">constant</span> [<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>] <span class="keyword">c</span><span class="string">"%i + %i = %i\0A\00"</span>, <span class="keyword">align</span> <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">define</span> <span class="keyword">i32</span> <span class="title">@main</span>() &#123;</div><div class="line">  <span class="symbol">%1</span> = <span class="keyword">tail</span> <span class="keyword">call</span> <span class="keyword">i32</span> (<span class="keyword">i8</span>*, ...) <span class="title">@printf</span>(<span class="keyword">i8</span>* <span class="keyword">getelementptr</span> <span class="keyword">inbounds</span> ([<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>], [<span class="number">14</span> <span class="keyword">x</span> <span class="keyword">i8</span>]* <span class="title">@.str</span>, <span class="keyword">i64</span> <span class="number">0</span>, <span class="keyword">i64</span> <span class="number">0</span>), <span class="keyword">i32</span> <span class="number">5</span>, <span class="keyword">i32</span> <span class="number">10</span>, <span class="keyword">i32</span> <span class="number">15</span>)</div><div class="line">  <span class="keyword">ret</span> <span class="keyword">i32</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">declare</span> <span class="keyword">i32</span> <span class="title">@printf</span>(<span class="keyword">i8</span>* <span class="keyword">nocapture</span> <span class="keyword">readonly</span>, ...)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>优化后的 main 函数本质上是未优化版本的第 17 行和 18 行，伴有变量值内联。<code>opt</code> 计算加法，因为所有的变量都是常数。很酷吧，对不对？</p>
-<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4>
-<p>LLVM 的后端工具是 <code>llc</code>。它分三个阶段将 LLVM IR 作为输入生成机器代码。</p>
-<ul>
-  <li><strong>指令选择</strong>是将 IR 指令映射到目标机器的指令集。这个步骤使用虚拟寄存器的无限名字空间。</li>
-  <li><strong>寄存器分配</strong>是将虚拟寄存器映射到目标体系结构的实际寄存器。我的 CPU 是 x86 结构，它只有 16 个寄存器。然而，编译器将会尽可能少的使用寄存器。</li>
-  <li><strong>指令安排</strong>是重排操作，从而反映出目标机器的性能约束。</li>
-</ul>
-<p>运行下面这个命令将会产生一些机器代码：</p>
-<figure class="highlight css">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="selector-tag">llc</span> <span class="selector-tag">-o</span> <span class="selector-tag">compiled-assembly</span><span class="selector-class">.s</span> <span class="selector-tag">optimized</span><span class="selector-class">.ll</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<figure class="highlight cos">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">_main:</div><div class="line">	pushq	<span class="built_in">%rbp</span></div><div class="line">	movq	<span class="built_in">%rsp</span>, <span class="built_in">%rbp</span></div><div class="line">	leaq	L_str(<span class="built_in">%rip</span>), <span class="built_in">%rdi</span></div><div class="line">	callq	_puts</div><div class="line">	xorl	<span class="built_in">%eax</span>, <span class="built_in">%eax</span></div><div class="line">	popq	<span class="built_in">%rbp</span></div><div class="line">	retq</div><div class="line">L_str:</div><div class="line">	.asciz	<span class="string">"Hello, Compiler!"</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这个程序是 x86 汇编语言，它是计算机所说的语言，并具有人类可读语法。某些人最后也许能理解我。</p>
-<hr>
-<p>相关资源：</p>
-<ol>
-  <li><a href="https://www.amazon.com/Engineering-Compiler-Second-Keith-Cooper/dp/012088478X" target="_blank" rel="external">设计一个编译器</a></li>
-  <li><a href="https://www.amazon.com/Getting-Started-LLVM-Core-Libraries/dp/1782166920" target="_blank" rel="external">开始探索 LLVM 核心库</a></li>
-</ol>
-<hr>
-<p>via: <a href="https://nicoleorchard.com/blog/compilers" target="_blank" rel="external">https://nicoleorchard.com/blog/compilers</a></p>
-<p>作者：<a href="https://nicoleorchard.com/" target="_blank" rel="external">Nicole Orchard</a><br>译者：<a href="https://github.com/ucasFL" target="_blank" rel="external">ucasFL</a><br>校对：<a href="https://github.com/wxy" target="_blank" rel="external">wxy</a></p>
-<p>本文由 <a href="https://github.com/LCTT/TranslateProject" target="_blank" rel="external">LCTT</a> 原创编译，<a href="https://linux.cn/" target="_blank" rel="external">Linux中国</a> 荣誉推出</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg&quot; alt=&quot;了解在编译器的世界里前端和后端的新意义&quot;&gt;&lt;/p&gt;
-&lt;p&gt;简单说来，一个&lt;ruby&gt;编译器&lt;rt&gt;compiler&lt;/rt&gt;&lt;/ruby&gt;不过是一个可以翻译其他程序的程序。传统的编译器可以把源代码翻译成你的计算机能够理解的可执行机器代码。（一些编译器将源代码翻译成别的程序语言，这样的编译器称为源到源翻译器或&lt;ruby&gt;转化器&lt;rt&gt;transpilers&lt;/rt&gt;&lt;/ruby&gt;。）&lt;a href=&quot;http://llvm.org/&quot;&gt;LLVM&lt;/a&gt; 是一个广泛使用的编译器项目，包含许多模块化的编译工具。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Compiler" scheme="http://ucasfl.me/categories/Compiler/"/>
-    
-    
-      <category term="Compiler LLVM" scheme="http://ucasfl.me/tags/Compiler-LLVM/"/>
     
   </entry>
   
