@@ -90,7 +90,7 @@
       
       
         #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;char *myname=&quot;Bao Yungang&quot;;ch">
-  <meta property="og:updated_time" content="2017-11-05T11:36:07.958Z">
+  <meta property="og:updated_time" content="2018-03-11T04:08:20.217Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="C 语言中变量的段">
   <meta name="twitter:description" content="前言
@@ -564,24 +564,6 @@
                     </table>
                   </figure>
                   <p>我们看到，<code>ldata</code>和<code>ddata</code>的地址非常大，而 <code>ddata</code>所指向的分配空间的地址相对来说要小很多，这其实也一定程度上验证了我们的结论，根据我们已知的结论，在程序执行过程中，函数中的局部变量是在函数压栈以后，在栈中分配的，而 <code>malloc</code> 函数分配的空间则是在堆中进行分配的，而栈是从上往下长（高地址到低地址），堆则相反，是从下往上长（低地址到高地址），因此，栈中的变量地址较大，而堆中的则较小，所以，程序运行结果与之相符。</p>
-                  <p>
-                    <div id="container"></div>
-                  </p>
-                  <p>
-                    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-                  </p>
-                  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-                  <script>
-                    var gitment = new Gitment({
-                      owner: 'ucasFL',
-                      repo: 'BlogComments',
-                      oauth: {
-                        client_id: 'ef399b43f01e072241fd',
-                        client_secret: '9258aef304e43fda24e51941bb0bbfc167e4e0a5',
-                      },
-                    })
-                    gitment.render('container');
-                  </script>
 
                 </div>
 
@@ -741,7 +723,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">96</span>
+                <span class="site-state-item-count">97</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -759,7 +741,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>
