@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ucasfl.me/2017/12/17/How-to-hold-a-package-in-Ubuntu/</loc>
+    
+    <lastmod>2018-03-14T08:15:43.192Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ucasfl.me/2018/03/11/How-to-adjust-volume-in-command-line/</loc>
     
     <lastmod>2018-03-11T14:34:22.091Z</lastmod>
@@ -467,13 +474,6 @@
     <loc>http://ucasfl.me/2017/03/18/How-to-Install-and-configure-FTP-in-Ubuntu/</loc>
     
     <lastmod>2018-03-11T03:59:25.879Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/12/17/How-to-hold-a-package-in-Ubuntu/</loc>
-    
-    <lastmod>2018-03-11T03:59:18.239Z</lastmod>
     
   </url>
   

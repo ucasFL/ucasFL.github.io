@@ -98,7 +98,7 @@ package 为包的名字。">
   
 
 package 为包的名字。">
-  <meta property="og:updated_time" content="2018-03-11T03:59:18.239Z">
+  <meta property="og:updated_time" content="2018-03-14T08:15:43.192Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="在 Ubuntu 中如何阻止一个包升级">
   <meta name="twitter:description" content="阻止升级：
@@ -458,7 +458,20 @@ package 为包的名字。">
                   </p>
                   <p><code>package</code> 为包的名字。</p>
                   <a id="more"></a>
-                  <p>如果要取消，则再次执行上面的命令即可。</p>
+                  <p>如果要取消，则执行命令：<br>
+                    <figure class="highlight coq">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">sudo echo <span class="string">"package install"</span> | <span class="type">sudo</span> dpkg --<span class="built_in">set</span>-selections</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                  </p>
 
                 </div>
 

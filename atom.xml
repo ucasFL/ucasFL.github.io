@@ -568,7 +568,7 @@
     <link href="http://ucasfl.me/2017/12/17/How-to-hold-a-package-in-Ubuntu/"/>
     <id>http://ucasfl.me/2017/12/17/How-to-hold-a-package-in-Ubuntu/</id>
     <published>2017-12-17T07:27:06.000Z</published>
-    <updated>2018-03-11T03:59:18.239Z</updated>
+    <updated>2018-03-14T08:15:43.192Z</updated>
     
     <content type="html"><![CDATA[<p>阻止升级：<br>
   <figure class="highlight coq">
@@ -586,7 +586,20 @@
 </p>
 <p><code>package</code> 为包的名字。</p>
 <a id="more"></a>
-<p>如果要取消，则再次执行上面的命令即可。</p>]]></content>
+<p>如果要取消，则执行命令：<br>
+  <figure class="highlight coq">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">sudo echo <span class="string">"package install"</span> | <span class="type">sudo</span> dpkg --<span class="built_in">set</span>-selections</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>]]></content>
     
     <summary type="html">
     
