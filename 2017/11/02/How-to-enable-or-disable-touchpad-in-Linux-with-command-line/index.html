@@ -70,7 +70,7 @@
   <meta property="og:url" content="http://ucasfl.me/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/index.html">
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。">
-  <meta property="og:updated_time" content="2018-03-11T03:58:56.786Z">
+  <meta property="og:updated_time" content="2018-03-23T03:35:48.264Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="在 Linux 中如何通过命令行开启或禁用触摸板">
   <meta name="twitter:description" content="本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。">
@@ -402,6 +402,7 @@
 
                   <p>本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。</p>
                   <a id="more"></a>
+                  <h3 id="xinput"><a href="#xinput" class="headerlink" title="xinput"></a>xinput</h3>
                   <p>首先，需要了解一个工具：<code>xinput</code></p>
                   <figure class="highlight stylus">
                     <table>
@@ -500,6 +501,20 @@
                     </table>
                   </figure>
                   <p>注意，脚本中的设备 ID 和属性编号应和你的笔记本一致，<code>user</code> 为你的用户名。</p>
+                  <h3 id="gsettings"><a href="#gsettings" class="headerlink" title="gsettings"></a>gsettings</h3>
+                  <p>另外，如果上面的命令不起用了，那么可以试试(Gnome)：</p>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">开启触摸板:</div><div class="line">sudo gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.desktop</span><span class="selector-class">.peripherals</span><span class="selector-class">.touchpad</span> send-events true</div><div class="line">输入时禁用：</div><div class="line">sudo gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.desktop</span><span class="selector-class">.peripherals</span><span class="selector-class">.touchpad</span> disable-while-typing true</div><div class="line">双指滚动</div><div class="line">sudo gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.desktop</span><span class="selector-class">.peripherals</span><span class="selector-class">.touchpad</span> disable-while-typing true</div><div class="line">tap to click:</div><div class="line">sudo gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.desktop</span><span class="selector-class">.peripherals</span><span class="selector-class">.touchpad</span> tap-to-click true</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
                 </div>
 
@@ -636,8 +651,17 @@
 
 
 
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
 
-            <section class="site-overview sidebar-panel sidebar-panel-active">
+
+            <section class="site-overview sidebar-panel">
               <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
                 <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
                 <p class="site-author-name" itemprop="name">Flynn</p>
@@ -751,6 +775,27 @@
 
             </section>
 
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#xinput"><span class="nav-number">1.</span> <span class="nav-text">xinput</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#gsettings"><span class="nav-number">2.</span> <span class="nav-text">gsettings</span></a></li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
 
 
 
