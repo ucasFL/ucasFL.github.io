@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-03-30T02:50:43.098Z</updated>
+  <updated>2018-05-01T06:19:53.948Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分别</title>
+    <link href="http://ucasfl.me/2018/05/01/ending/"/>
+    <id>http://ucasfl.me/2018/05/01/ending/</id>
+    <published>2018-05-01T06:13:12.000Z</published>
+    <updated>2018-05-01T06:19:53.948Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<h3 id="曾经沧海难为水，除却巫山不是云"><a href="#曾经沧海难为水，除却巫山不是云" class="headerlink" title="曾经沧海难为水，除却巫山不是云"></a>曾经沧海难为水，除却巫山不是云</h3>
+<p>2018 年 5 月 1 日<br>我失恋了<br>我们于 17 年 1 月 22 日在一起<br>到今天 465 天<br>没想到这一次真的要离别了</p>
+<p>之前有一个<a href="https://ilovezyq.github.io" target="_blank" rel="external">博客</a><br>专门用于记录我们之间的爱情<br>不过其实也没有在上面放过多少东西<br>以后 没有以后了</p>
+<p>是结束<br>也是开始</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;曾经沧海难为水，除却巫山不是云&quot;&gt;&lt;a href=&quot;#曾经沧海难为水，除却巫山不是云&quot; class=&quot;headerlink&quot; title=&quot;曾经沧海难为水，除却巫山不是云&quot;&gt;&lt;/a&gt;曾经沧海难为水，除却巫山不是云&lt;/h3&gt;
+&lt;p
+    
+    </summary>
+    
+      <category term="ending" scheme="http://ucasfl.me/categories/ending/"/>
+    
+    
+      <category term="ending" scheme="http://ucasfl.me/tags/ending/"/>
+    
+  </entry>
   
   <entry>
     <title>Git 通过 Ssh 连接 GitHub 无反应</title>
@@ -2512,83 +2540,6 @@
     
     
       <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu 下代理服务器失败无法上网的解决办法</title>
-    <link href="http://ucasfl.me/2017/09/25/Setting-Proxy-For-google-chrome-in-Ubuntu/"/>
-    <id>http://ucasfl.me/2017/09/25/Setting-Proxy-For-google-chrome-in-Ubuntu/</id>
-    <published>2017-09-25T00:56:12.000Z</published>
-    <updated>2018-03-11T04:05:23.972Z</updated>
-    
-    <content type="html"><![CDATA[<p>在 Ubuntu 上装了一个 Xfce 桌面，前段时间一直在使用 Xfce 桌面，今天切换回 GNOME 桌面以后，发现 google-chrome 无法上网了，说是代理服务器有问题，按照它的提示在设置中进行设置，结果打开代理服务器设置时，又出现下面的信息：</p>
-<figure class="highlight livecodeserver">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">When running Google Chrome under <span class="keyword">a</span> supported desktop environment, <span class="keyword">the</span> <span class="keyword">system</span> proxy settings will be used. However, either your <span class="keyword">system</span> is <span class="keyword">not</span> supported <span class="keyword">or</span> there was <span class="keyword">a</span> problem launching your <span class="keyword">system</span> configuration.</div><div class="line"></div><div class="line">But you can still configure via <span class="keyword">the</span> <span class="keyword">command</span> <span class="title">line</span>. <span class="title">Please</span> <span class="title">see</span> <span class="title">man</span> <span class="title">google-chrome-stable</span> <span class="title">for</span> <span class="title">more</span> <span class="title">information</span> <span class="title">on</span> <span class="title">flags</span> <span class="title">and</span> <span class="title">environment</span> <span class="title">variables</span>.</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<a id="more"></a>
-<p>因此，无法在浏览器中进行设置。</p>
-<p>后来找到了解决办法：直接对桌面图标进行设置。</p>
-<p>首先，在 root 下用 vim 编辑器打开 <code>/usr/share/applications/google-chrome.destop</code>，或者直接<code>sudo vim /usr/share/applications/google-chrome.destop</code></p>
-<p>打开后显示下面的内容：</p>
-<figure class="highlight ini">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="section">[Desktop Entry]</span></div><div class="line"><span class="attr">Version</span>=<span class="number">1.0</span></div><div class="line"><span class="attr">Name</span>=Google Chrome</div><div class="line"><span class="attr">GenericName</span>=Web Browser</div><div class="line"><span class="attr">Comment</span>=Access the Internet</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable %U</div><div class="line"><span class="attr">Terminal</span>=<span class="literal">false</span></div><div class="line"><span class="attr">Icon</span>=google-chrome</div><div class="line"><span class="attr">Type</span>=Application</div><div class="line"><span class="attr">Categories</span>=Network;WebBrowser;</div><div class="line"><span class="attr">MimeType</span>=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;</div><div class="line"><span class="attr">Actions</span>=NewWindow;NewPrivateWindow;</div><div class="line"><span class="section"></span></div><div class="line">[Desktop Action NewWindow]</div><div class="line"><span class="attr">Name</span>=New Window</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable </div><div class="line"><span class="section"></span></div><div class="line">[Desktop Action NewPrivateWindow]</div><div class="line"><span class="attr">Name</span>=New Incognito Window</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable --incognito</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>在第六行的后面加上<code>--proxy-auto-detect</code>，变为如下：</p>
-<figure class="highlight ini">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="section">[Desktop Entry]</span></div><div class="line"><span class="attr">Version</span>=<span class="number">1.0</span></div><div class="line"><span class="attr">Name</span>=Google Chrome</div><div class="line"><span class="attr">GenericName</span>=Web Browser</div><div class="line"><span class="attr">Comment</span>=Access the Internet</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable %U --proxy-auto-detect</div><div class="line"><span class="attr">Terminal</span>=<span class="literal">false</span></div><div class="line"><span class="attr">Icon</span>=google-chrome</div><div class="line"><span class="attr">Type</span>=Application</div><div class="line"><span class="attr">Categories</span>=Network;WebBrowser;</div><div class="line"><span class="attr">MimeType</span>=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;</div><div class="line"><span class="attr">Actions</span>=NewWindow;NewPrivateWindow;</div><div class="line"><span class="section"></span></div><div class="line">[Desktop Action NewWindow]</div><div class="line"><span class="attr">Name</span>=New Window</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable </div><div class="line"><span class="section"></span></div><div class="line">[Desktop Action NewPrivateWindow]</div><div class="line"><span class="attr">Name</span>=New Incognito Window</div><div class="line"><span class="attr">Exec</span>=/usr/bin/google-chrome-stable --incognito</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>保存退出，再次打开 google-chrome，便可以正常上网了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在 Ubuntu 上装了一个 Xfce 桌面，前段时间一直在使用 Xfce 桌面，今天切换回 GNOME 桌面以后，发现 google-chrome 无法上网了，说是代理服务器有问题，按照它的提示在设置中进行设置，结果打开代理服务器设置时，又出现下面的信息：&lt;/p&gt;
-&lt;figure class=&quot;highlight livecodeserver&quot;&gt;
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;td class=&quot;gutter&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;code&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;When running Google Chrome under &lt;span class=&quot;keyword&quot;&gt;a&lt;/span&gt; supported desktop environment, &lt;span class=&quot;keyword&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;system&lt;/span&gt; proxy settings will be used. However, either your &lt;span class=&quot;keyword&quot;&gt;system&lt;/span&gt; is &lt;span class=&quot;keyword&quot;&gt;not&lt;/span&gt; supported &lt;span class=&quot;keyword&quot;&gt;or&lt;/span&gt; there was &lt;span class=&quot;keyword&quot;&gt;a&lt;/span&gt; problem launching your &lt;span class=&quot;keyword&quot;&gt;system&lt;/span&gt; configuration.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;But you can still configure via &lt;span class=&quot;keyword&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;line&lt;/span&gt;. &lt;span class=&quot;title&quot;&gt;Please&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;see&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;man&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;google-chrome-stable&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;more&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;information&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;flags&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;environment&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;variables&lt;/span&gt;.&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Browser" scheme="http://ucasfl.me/categories/Browser/"/>
-    
-    
-      <category term="Google-chrome proxy" scheme="http://ucasfl.me/tags/Google-chrome-proxy/"/>
     
   </entry>
   
