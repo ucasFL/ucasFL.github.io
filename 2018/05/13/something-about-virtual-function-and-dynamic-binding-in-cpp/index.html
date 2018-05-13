@@ -1,0 +1,1210 @@
+<!doctype html>
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+  <meta name="description" content="上大学之后学的第一门编程语言是 C，尽管 C 的确是一门很强大的语言，但是，在某些情况下，用 C 语言来解决问题实现起来会麻烦很多，另外，某些东西在 C 语言里面也是没有的，比如面向对象。
+第一次接触面向对象大概是大二自学 Python 的时候，那时候看的一头雾水，什么构造函数，析构函数不理解它的原理，书里面讲解的也不是很清楚，更别提多态、继承等等。到后面看 C++ 的时候终于对面向对象有一些基本">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="C++ 中的虚函数与动态绑定杂谈">
+  <meta property="og:url" content="http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="上大学之后学的第一门编程语言是 C，尽管 C 的确是一门很强大的语言，但是，在某些情况下，用 C 语言来解决问题实现起来会麻烦很多，另外，某些东西在 C 语言里面也是没有的，比如面向对象。
+第一次接触面向对象大概是大二自学 Python 的时候，那时候看的一头雾水，什么构造函数，析构函数不理解它的原理，书里面讲解的也不是很清楚，更别提多态、继承等等。到后面看 C++ 的时候终于对面向对象有一些基本">
+  <meta property="og:updated_time" content="2018-05-13T09:17:58.510Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="C++ 中的虚函数与动态绑定杂谈">
+  <meta name="twitter:description" content="上大学之后学的第一门编程语言是 C，尽管 C 的确是一门很强大的语言，但是，在某些情况下，用 C 语言来解决问题实现起来会麻烦很多，另外，某些东西在 C 语言里面也是没有的，比如面向对象。
+第一次接触面向对象大概是大二自学 Python 的时候，那时候看的一头雾水，什么构造函数，析构函数不理解它的原理，书里面讲解的也不是很清楚，更别提多态、继承等等。到后面看 C++ 的时候终于对面向对象有一些基本">
+
+
+
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/" />
+
+
+
+
+
+  <title> C++ 中的虚函数与动态绑定杂谈 | 春暖花开 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
+
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">春暖花开</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+            </div>
+
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-tags">
+              <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+            </li>
+
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
+
+        </nav>
+
+
+
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+
+
+            <div id="posts" class="posts-expand">
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
+                <header class="post-header">
+
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    C++ 中的虚函数与动态绑定杂谈
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-13T15:59:23+08:00">
+                2018/05/13
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+
+
+
+
+                    <span id="/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/" class="leancloud_visitors" data-flag-title="C++ 中的虚函数与动态绑定杂谈">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <p>上大学之后学的第一门编程语言是 C，尽管 C 的确是一门很强大的语言，但是，在某些情况下，用 C 语言来解决问题实现起来会麻烦很多，另外，某些东西在 C 语言里面也是没有的，比如面向对象。</p>
+                  <p>第一次接触面向对象大概是大二自学 Python 的时候，那时候看的一头雾水，什么构造函数，析构函数不理解它的原理，书里面讲解的也不是很清楚，更别提多态、继承等等。到后面看 C++ 的时候终于对面向对象有一些基本的理解了，虽然很多东西还是理解的不够透彻。</p>
+                  <a id="more"></a>
+                  <p>说到底，面向对象最重要的还是在其思想，当你理解了它的精髓和思想，那么，你再去看无论是 C++ ，还是 Python，还是 Java，其中的面向对象的内容都是一样的，只是不同语言的实现形式有所不同而已。</p>
+                  <h3 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h3>
+                  <p>先简单说一下 C++ 里面的重载，所谓重载，就是可以定义两个名字一样的函数，它们的参数列表不同，那么就可以把其中一个函数称为另一个函数的重载，例如：</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Equal</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> a == b;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Equal</span><span class="params">(<span class="keyword">long</span> a, <span class="keyword">long</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> a == b;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>需要注意的是，只有参数列表不同：个数或类型。如果只有返回类型不同，那么第二个声明是错误的。这样，当你在调用函数时，编译器会根据参数类型来选择合适的函数。显然，这儿会产生一个问题，比如上面的 <code>Equal</code> 函数，如果传入的参数一个为 <code>int</code> ，一个为 <code>long</code> ，那么编译器就会被迷惑，因为它无法确定哪一个是最匹配的，编程的过程中应尽量避免这样的歧义。另外，<code>main</code>                    函数不可以被重载。</p>
+                  <h3 id="构造函数与析构函数"><a href="#构造函数与析构函数" class="headerlink" title="构造函数与析构函数"></a>构造函数与析构函数</h3>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">class</span> Person &#123;</div><div class="line">	<span class="keyword">public</span> :</div><div class="line">		<span class="keyword">float</span> height;</div><div class="line">		<span class="keyword">float</span> weight;</div><div class="line">		<span class="keyword">int</span> age;</div><div class="line">		Person()&#123;</div><div class="line">			height = <span class="number">0.0</span></div><div class="line">			weight = <span class="number">0.0</span></div><div class="line">			age = <span class="number">0</span>;</div><div class="line">		&#125;;</div><div class="line">		Person(<span class="keyword">float</span>, h, <span class="keyword">float</span> w, <span class="keyword">int</span> a)&#123;</div><div class="line">			height = h;</div><div class="line">			weight = w;</div><div class="line">			age = a;</div><div class="line">		&#125;;</div><div class="line">		<span class="keyword">virtual</span> ~Person()&#123;</div><div class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Kill me."</span>;</div><div class="line">		&#125;</div><div class="line">&#125;;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>上面定义了一个类 <code>Person</code> ，同时定义了两个构造函数，当创建一个新的对象时，就会执行构造函数，显然，构造函数是可以被重载的，因此，编译器会根据参数列表来选择合适的构造函数，另外，初始类成员时也可以通过初始化列表，这儿不再叙述。</p>
+                  <p>而析构函数则与构造函数相反，它是在一个对象消失的时候执行的，比如静态声明的对象退出作用域时，或动态分配的对象调用 <code>delete</code> 删除时。析构函数的函数名也和类名相同，只是前面多了一个符号 <code>~</code> 。另外，注意到上面的析构函数前面多了一个关键字 <code>virtual</code> 。先说一下该关键字是什么意思，它是实现动态绑定的关键，<code>virtual</code> 关键字允许在子类中重新定义该成员函数。下面，定义一个子类：</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">class</span> Man : <span class="keyword">public</span> Person&#123;</div><div class="line">	<span class="keyword">public</span> :</div><div class="line">		<span class="keyword">int</span> salary;</div><div class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> *name;</div><div class="line">		Man(<span class="keyword">char</span> *s)&#123;</div><div class="line">			name = <span class="keyword">new</span> <span class="built_in">string</span>(s);</div><div class="line">			salary = <span class="number">0</span>;</div><div class="line">		&#125;;</div><div class="line">		<span class="keyword">virtual</span> ~Man()&#123;</div><div class="line">			<span class="keyword">if</span> (name)&#123;</div><div class="line">				<span class="keyword">delete</span> name;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">&#125;;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>在该类初始化的时候，动态分配了一个 <code>string</code> 存储名字，因此，需要在虚构函数中将其删除。</p>
+                  <p>在 C++ 中，基类的指针是可以指向派生类的：</p>
+                  <figure class="highlight inform7">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">Person</span> *<span class="keyword">man</span> = new <span class="keyword">Man</span>(<span class="string">"Ana"</span>);</div><div class="line">delete <span class="keyword">man</span>;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>考虑上面的代码，<code>man</code> 是一个 <code>Person</code> 类的指针，它指向了一个 <code>Man</code> 对象，假如上面的虚构函数没有定义成虚函数，那么 <code>delete</code> 的时候，只会调用 <code>Person</code> 的析构函数，这样，便发生了内存泄露，因为，动态分配的 <code>string</code> 并没有被删除。但定义成虚函数，那么编译器会根据它所指向的对象来选择对应的析构函数，从而实现动态绑定，这就是为什么基类的析构函数一般需要定义成虚函数。</p>
+                  <p>最后，说一个有趣的问题，假如就像上面说的由于没有进行动态绑定导致发生内存泄露，那么，这部分内存什么时候被释放？很多人会以为需要等待关机或者重启，因为内存是易失性存储，但事实不是的，别忘了，计算机的终极大 Boss 可是操作系统，你分配出去的每一块内存它都时候监测着呢，<code>malloc</code> 是通过系统调用分配内存，而 <code>new</code> 则是通过 <code>malloc</code> 以及调用构造函数来实现对象分配。因此，当程序运行结束或
+                    Crash 终止之后，操作系统会回收所有内存，无论是动态分配的还是静态分配的。但是，如果在程序运行的过程中，动态分配的内存是不会被回收的，因此，如果在运行过程不停分配内存而没有释放，那么内存就可能会被耗尽，这就是为什么要防止出现内存泄露。当然，如果一个进程分配了过多的内存超过一定限制，那么，我们的终极大 Boss 又会出场了，它会直接把你 Kill 了。</p>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/C/" rel="tag"># C++</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2018/05/04/make-it-up/" rel="next" title="我们和好啦啦啦">
+                <i class="fa fa-chevron-left"></i> 我们和好啦啦啦
+              </a>
+
+                    </div>
+
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          </div>
+        </div>
+
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
+
+
+
+
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
+
+
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
+
+
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags">
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ilovezyq.github.io" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#重载"><span class="nav-number">1.</span> <span class="nav-text">重载</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数与析构函数"><span class="nav-number">2.</span> <span class="nav-text">构造函数与析构函数</span></a></li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
+          </div>
+        </aside>
+        <script type="text/javascript" src="/js/src/op.js"></script>
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2018</span>
+          <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+          <span> <span><a href="https://fenglv.ac.cn">Flynn</a></span>
+          </span>
+        </div>
+        <div>
+          <php? $ip=$ _SERVER[ 'REMOTE_ADDR'] echo "您的 IP: $ip." ?>
+        </div>
+
+
+        <div>
+          本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        </div>
+
+
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
+
+
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
+
+
+
+
+
+
+
+      </div>
+    </footer>
+
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
+  </div>
+
+
+
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

@@ -293,6 +293,338 @@
 
 
               <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/09/12/the-Section-of-Variables/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
+                <header class="post-header">
+
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+
+                    <a class="post-title-link" href="/2017/09/12/the-Section-of-Variables/" itemprop="url">
+                  C 语言中变量的段
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T10:16:42+08:00">
+                2017/09/12
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+
+
+
+
+                    <span id="/2017/09/12/the-Section-of-Variables/" class="leancloud_visitors" data-flag-title="C 语言中变量的段">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3>
+                  <p>在 C 语言中，不同的变量位于不同的段，下面进行简单分析。</p>
+                  <p>看下面一个简单的 C 程序：</p>
+                  <figure class="highlight c">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">char</span> *myname=<span class="string">"Bao Yungang"</span>;</div><div class="line"><span class="keyword">char</span> gdata[<span class="number">128</span>];</div><div class="line"><span class="keyword">char</span> bdata[<span class="number">16</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div><div class="line">main() &#123;</div><div class="line">	<span class="keyword">char</span> * ldata[<span class="number">16</span>];	</div><div class="line">	<span class="keyword">char</span> * ddata;</div><div class="line"></div><div class="line">	ddata = <span class="built_in">malloc</span>(<span class="number">16</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"myname:%llX\n"</span>, myname);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"main: %llX\n"</span>, main);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"gdata: %llX\nbdata:%llX\nldata:%llx\n&amp;ddata:%llx\nddata: %llx\n"</span>,</div><div class="line">		gdata,bdata,ldata,&amp;ddata,ddata);</div><div class="line">	<span class="built_in">free</span>(ddata);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>我们分析一下程序中出现的变量所位于的段。</p>
+                  <!--noindex-->
+                  <div class="post-button text-center">
+                    <a class="btn" href="/2017/09/12/the-Section-of-Variables/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                  </div>
+                  <!--/noindex-->
+
+
+                </div>
+
+                <div>
+
+                </div>
+
+                <div>
+
+                </div>
+
+
+                <footer class="post-footer">
+
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/09/12/Introduction-to-Compiler/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
+                <header class="post-header">
+
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+
+                    <a class="post-title-link" href="/2017/09/12/Introduction-to-Compiler/" itemprop="url">
+                  编译器简介： 在 Siri 前时代如何与计算机对话
+                </a>
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T10:16:15+08:00">
+                2017/09/12
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Compiler/" itemprop="url" rel="index">
+                    <span itemprop="name">Compiler</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+
+
+
+
+                    <span id="/2017/09/12/Introduction-to-Compiler/" class="leancloud_visitors" data-flag-title="编译器简介： 在 Siri 前时代如何与计算机对话">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                  <p><img src="https://pbs.twimg.com/media/C_5qf8aXkAAvSXC.jpg" alt="了解在编译器的世界里前端和后端的新意义"></p>
+                  <p>简单说来，一个<ruby>编译器<rt>compiler</rt></ruby>不过是一个可以翻译其他程序的程序。传统的编译器可以把源代码翻译成你的计算机能够理解的可执行机器代码。（一些编译器将源代码翻译成别的程序语言，这样的编译器称为源到源翻译器或<ruby>转化器<rt>transpilers</rt></ruby>。）<a href="http://llvm.org/">LLVM</a> 是一个广泛使用的编译器项目，包含许多模块化的编译工具。</p>
+                  <!--noindex-->
+                  <div class="post-button text-center">
+                    <a class="btn" href="/2017/09/12/Introduction-to-Compiler/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+                  </div>
+                  <!--/noindex-->
+
+
+                </div>
+
+                <div>
+
+                </div>
+
+                <div>
+
+                </div>
+
+
+                <footer class="post-footer">
+
+
+
+
+
+
+
+
+                  <div class="post-eof"></div>
+
+                </footer>
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
                 <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/09/02/Fix-Error-With-Install-Hexo/">
 
                 <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1252,332 +1584,6 @@
 
 
 
-
-
-
-
-
-
-
-
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/08/07/Find-and-Search-Part2/">
-
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
-
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
-    </span>
-                </span>
-
-
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
-
-
-
-                    <a class="post-title-link" href="/2017/08/07/Find-and-Search-Part2/" itemprop="url">
-                  查找和搜索-Part2
-                </a>
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-
-                    <span class="post-meta-item-text">发表于</span>
-
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T12:51:24+08:00">
-                2017/08/07
-              </time>
-
-
-
-
-
-                    </span>
-
-
-                    <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-
-                    <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-
-                    <span class="post-meta-item-text">分类于</span>
-
-
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Structures/" itemprop="url" rel="index">
-                    <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
-
-
-
-
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/08/07/Find-and-Search-Part2/" class="leancloud_visitors" data-flag-title="查找和搜索-Part2">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
-
-
-
-
-
-
-
-
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
-
-
-
-
-
-
-                  <h3 id="AVL-树"><a href="#AVL-树" class="headerlink" title="AVL 树"></a>AVL 树</h3>
-                  <ul>
-                    <li>Motivation: 二叉排序树是一种查找效率比较高的数据组织形式,但其平均查找长度受树的形态影响较大,形态比较均匀时查找效率很好,形态明显偏向某一方向时其效率就大大降低。因此,希望有更好的二叉排序树,其形态总是均衡的,查找时能得到最好的效率</li>
-                    <li>Solution: 平衡二叉排序树 (Balanced Binary Sort Tree) ,由 Adelson-Velskii 和 Landis于 1962 年提出的,故称 AVL 树</li>
-                    <li>变种:红黑树,树堆,伸展树</li>
-                  </ul>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/08/07/Find-and-Search-Part2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                  </div>
-                  <!--/noindex-->
-
-
-                </div>
-
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
-              </article>
-
-
-
-
-
-
-
-
-
-
-
-              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/08/05/Find-and-Search-Part1/">
-
-                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Flynn">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/photos/profile.jpeg">
-  </span>
-
-                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="春暖花开">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
-    </span>
-                </span>
-
-
-                <header class="post-header">
-
-
-
-                  <h1 class="post-title" itemprop="name headline">
-
-
-
-
-                    <a class="post-title-link" href="/2017/08/05/Find-and-Search-Part1/" itemprop="url">
-                  查找和搜索-Part1
-                </a>
-
-
-                  </h1>
-
-
-                  <div class="post-meta">
-                    <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-
-                    <span class="post-meta-item-text">发表于</span>
-
-                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T12:51:20+08:00">
-                2017/08/05
-              </time>
-
-
-
-
-
-                    </span>
-
-
-                    <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-
-                    <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-
-                    <span class="post-meta-item-text">分类于</span>
-
-
-                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Structures/" itemprop="url" rel="index">
-                    <span itemprop="name">Data-Structures</span>
-                    </a>
-                    </span>
-
-
-
-
-                    </span>
-
-
-
-
-
-
-
-
-                    <span id="/2017/08/05/Find-and-Search-Part1/" class="leancloud_visitors" data-flag-title="查找和搜索-Part1">
-               <span class="post-meta-divider">|</span>
-                    <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-
-                    <span class="post-meta-item-text">阅读次数 </span>
-
-                    <span class="leancloud-visitors-count"></span>
-                    </span>
-
-
-
-
-
-
-
-
-                  </div>
-                </header>
-
-
-
-                <div class="post-body" itemprop="articleBody">
-
-
-
-
-
-
-                  <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3>
-                  <ul>
-                    <li>查找表 (Search Table) :相同类型的数据元素 ( 或记录 ) 组成的集合,每个数据元素通常由若干数据项构成</li>
-                    <li>关键字 (Key ,码 ) :数据元素中某个 ( 或几个 ) 数据项的值,它可以标识一个数据元素</li>
-                  </ul>
-                  <p>– 主关键字 (Primary Key) :能唯一标识一个数据元素的关键字<br>– 次关键字 (Secondary Key) :能标识若干个数据元素的关键字</p>
-                  <!--noindex-->
-                  <div class="post-button text-center">
-                    <a class="btn" href="/2017/08/05/Find-and-Search-Part1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-                  </div>
-                  <!--/noindex-->
-
-
-                </div>
-
-                <div>
-
-                </div>
-
-                <div>
-
-                </div>
-
-
-                <footer class="post-footer">
-
-
-
-
-
-
-
-
-                  <div class="post-eof"></div>
-
-                </footer>
-              </article>
-
-
-
             </section>
 
 
@@ -1628,7 +1634,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">101</span>
+                <span class="site-state-item-count">103</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -1637,7 +1643,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -1646,7 +1652,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">63</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>
