@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-05-13T09:23:34.327Z</updated>
+  <updated>2018-05-20T08:13:49.771Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网易公开课《博弈论简介》总结</title>
+    <link href="http://ucasfl.me/2018/05/15/NetEase-openCourse-of-Game-theory/"/>
+    <id>http://ucasfl.me/2018/05/15/NetEase-openCourse-of-Game-theory/</id>
+    <published>2018-05-15T12:29:52.000Z</published>
+    <updated>2018-05-20T08:13:49.771Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="囚徒困境与严格优势策略"><a href="#囚徒困境与严格优势策略" class="headerlink" title="囚徒困境与严格优势策略"></a>囚徒困境与严格优势策略</h3>
+<p>囚徒困境定义：<br><em>两个嫌疑人甲乙被捕，如果均否认，两人都关押一个月，如果均承认，两人都关押六个月，如果一个承认，一个否认，那么否认的人关押十二个月，承认的人释放。</em></p>
+<p>策略矩阵分析 x = 甲, y = 乙<br> deny confess<br>deny (-1, -1) (-12, 0)<br>confess (0, -12) (-6, -6)</p>
+<p>对于甲来说，如果乙承认，那么承认的 payoff 是 -1, 否则 payoff 是 -12，承认更好；如果乙否认，那么承认的 payoff 是 0, 而否认的 payoff 是 -12。对于甲来说，无论乙选择何种策略，选择承认都能得到最高的 payoff ，所以在这儿，对甲来说，承认就是一个<strong>严格优势策略</strong>(strictly dominate strategy)。交换甲乙的位置，也是同样的。即：</p>
+<p>如果对于对手的任何策略，该策略都能得到最高的 payoff，那么就是严格优势策略。</p>
+<p>因此，此时，两人都会选择自己的严格优势策略：承认。尽管这样并不能得到最好的 payoff。</p>
+<h3 id="严格劣势策略"><a href="#严格劣势策略" class="headerlink" title="严格劣势策略"></a>严格劣势策略</h3>
+<p>在一次博弈中，如果无法找出严格优势策略，那么我们可以先排除严格劣势策略：</p>
+<p><em>如果存在两个策略，无论对手选择何种策略，策略一都能得到比策略二更高的 payoff，那么策略二就是严格劣势策略。注意，总的策略数不止两个.</em></p>
+<p>当排除了严格劣势策略之后，可能就能够选出严格优势策略。</p>
+<h3 id="纳什均衡NE"><a href="#纳什均衡NE" class="headerlink" title="纳什均衡NE"></a>纳什均衡NE</h3>
+<p>某些情况下，既找不到严格优势策略，也找不到严格劣势策略，这时候，就需要找到一个稳定的结果，使得双方都能得到最好的利益，这就是纳什均衡。</p>
+<h4 id="协调均衡"><a href="#协调均衡" class="headerlink" title="协调均衡"></a>协调均衡</h4>
+<p>两个人一起去捕猎，可以选择捕鹿或者兔，捕鹿需要合作，捕兔不需要</p>
+<pre><code>捕鹿   捕兔
+</code></pre>
+<p>捕鹿 (12,12) (0, 2)<br>捕兔 (2, 0) (2, 2)</p>
+<p>在这儿，对于两个人来说，均没有严格优势策略和严格劣势策略，如果一个人选择捕鹿，那么另一个人也应该选择捕鹿才能得到最高的 payoff, 如果一个人选择捕兔，那么另一个也应该选择捕兔，才能得到最高的 payoff. 因此，在这一个博弈中，双方应该做同样的决策。因此，我们说在这个博弈中有两个纳什均衡：(12, 12), (2, 2).</p>
+<p>纳什均衡指的是博弈中的一对策略，选择这对策略后，没有博弈者会想改变自己的策略，因为在给定决策中，这个博弈者已经选择了最佳策略。</p>
+<h3 id="反协调均衡"><a href="#反协调均衡" class="headerlink" title="反协调均衡"></a>反协调均衡</h3>
+<p>玩家选择不同策略才能获益最高：<br>(-2, -2) (2, 0)<br>(0, 2) (1, 1)</p>
+<h3 id="混合均衡策略"><a href="#混合均衡策略" class="headerlink" title="混合均衡策略"></a>混合均衡策略</h3>
+<p>上面说到的均为纯策略，混合策略就是说假设有两个策略，那么以概率 p 选择一个策略，1-p 选择另一个策略，存在概率 p, 使得博弈的另一方随机选择策略 payoff 最高</p>
+<p> p 1-p<br>(1, -1) (-1, 1)<br>(-1, 1) (1, -1)</p>
+<p>p - (1- p) = -p + 1- p =&gt; p = 1/2</p>
+<p><strong>在每个有限博弈中（有限人数和有限策略），至少存在一个纳什均衡。</strong></p>
+<h3 id="序贯模型"><a href="#序贯模型" class="headerlink" title="序贯模型"></a>序贯模型</h3>
+<p>博弈者需要在不同时间，不同阶段做出决策。</p>
+<p>公司 A 和 B，A 想要进入市场，如果 A 进入市场， B accept, 那么A的payoff = 2, B的payoff = 1, 如果 B fight, 那么 A 的payoff = -3, B 的payoff = -1，而如果 A 不进入市场，那么 A 的 payoff = 0, B的 payoff = 2</p>
+<p><strong>子博弈完美纳什均衡(subgame perfect Nash equilibrium)SPNE</strong> : A strategy profile is a SPNE if it is a NE of every subgame of the original game</p>
+<p>A – Out – (0, 2)<br>|<br>In – B fight – (-3, -1)<br>|<br>B accept<br>|<br>(2, 1)</p>
+<p>即使 B 威胁如果 A 进入就 fight, 但实际上是一个幌子，因为如果 A 进入了，那么 accept 比 fight 会得到更高的 payoff，因此 B 会选择 accept 而不是 fight，有了这一结论之后，对 A 的分析就可以简化，如果进入 payoff = 2, 不进入, payoff = 0，自然，进入是更好的策略。</p>
+<p>因此，在整个博弈中，A In, B accept 是唯一的 SPNE. 该理论是关于威胁和承诺的，通过 SPNE, 能够排除 B 在第二阶段中的 fight 并不是真正的威胁，除非 B 通过一些方法，排除了 accept 这一种策略，只剩下 fight 这一策略，那么就真正对 A 构成了威胁。</p>
+<p>未完~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;囚徒困境与严格优势策略&quot;&gt;&lt;a href=&quot;#囚徒困境与严格优势策略&quot; class=&quot;headerlink&quot; title=&quot;囚徒困境与严格优势策略&quot;&gt;&lt;/a&gt;囚徒困境与严格优势策略&lt;/h3&gt;
+&lt;p&gt;囚徒困境定义：&lt;br&gt;&lt;em&gt;两个嫌疑人甲乙被捕，如果均否认，两人
+    
+    </summary>
+    
+      <category term="Math" scheme="http://ucasfl.me/categories/Math/"/>
+    
+    
+      <category term="Math/Game theory" scheme="http://ucasfl.me/tags/Math-Game-theory/"/>
+    
+  </entry>
   
   <entry>
     <title>C++ 中的虚函数与动态绑定杂谈</title>
@@ -1689,206 +1745,6 @@
     
     
       <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 编程风格</title>
-    <link href="http://ucasfl.me/2017/10/26/Pythonic-programming-tips/"/>
-    <id>http://ucasfl.me/2017/10/26/Pythonic-programming-tips/</id>
-    <published>2017-10-26T04:10:08.000Z</published>
-    <updated>2018-03-11T04:04:49.971Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。</p>
-<a id="more"></a>
-<h3 id="多变量赋值"><a href="#多变量赋值" class="headerlink" title="多变量赋值"></a>多变量赋值</h3>
-<p>变量赋值是编程语言里面最简单的语句之一，通常情况下，我们会这样做：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line">c = <span class="number">3</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这样便完成了对三个变量的赋值，但你可以用更简单的方式：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="元素值交换"><a href="#元素值交换" class="headerlink" title="元素值交换"></a>元素值交换</h3>
-<p>在编程过程中，交换两个变量的值是非常常见的。一般情况下，我们会用下面这种方式来交换两个变量的值（尤其是对于第一门语言是C/C++的人来说）：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">t = a</div><div class="line">a = b</div><div class="line">b = t</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这种方式是正确的，没有人敢说它不对，但事实上，在 Python 里，你可以有更简单的方式来完成这件事：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a, b = b, a</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>没错，一行语句就够了。</p>
-<p>对上面两个技巧的解释：在 Python 中，任何以逗号分隔的对象均被当作元组处理，因此<code>1, 2, 3</code>　实际上就是一个元组<code>(1, 2, 3)</code>，赋值过程可以看成是元组的解包 。交换值也是同样的，它相当于把等号右边的元组解包后赋值给了左边的变量。为了提高代码的可读性，上面的例子可以加上括号：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span> = (<span class="selector-tag">b</span>, a)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="列表解析"><a href="#列表解析" class="headerlink" title="列表解析"></a>列表解析</h3>
-<p>假设 <code>list1</code> 是一个字符串组成的列表，现在，需要把 <code>list1</code> 中的每一个字符串的每一个小写字母找出来，形成一个新的元组。一般情况下，我们可以这样做：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list1 = [<span class="string">'adg'</span>, <span class="string">'Adf'</span>, <span class="string">'124'</span>]</div><div class="line">list2 = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> i:</div><div class="line">    <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>:</div><div class="line">      list2.append(j)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>但实际上，你只需要用一个语句就可以完成这件事：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list2 = [j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>]</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>没错，Python 就是这么简洁。如果把上面的方括号换成圆括号，那么结果返回的就是一个迭代器，可以使用 <code>next()</code> 方法获取元素：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list2 = (j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>)</div><div class="line">list2.next() <span class="comment"># 返回'a'</span></div><div class="line">list2.next() <span class="comment"># 返回'd'</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="收集参数"><a href="#收集参数" class="headerlink" title="收集参数"></a>收集参数</h3>
-<p>函数的多个参数可通过一个元组传递，假设有如下函数：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x + y</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>可重新定义为：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(*params)</span>:</span></div><div class="line">  <span class="keyword">return</span> params[<span class="number">0</span>] + params[<span class="number">1</span>]</div><div class="line"><span class="comment">#传递参数</span></div><div class="line">add2(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="comment">#或</span></div><div class="line">tuple1 = (<span class="number">1</span>, <span class="number">2</span>)</div><div class="line">add2(*tuple1)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>使用双星号则可以传递一个字典：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">with_star</span><span class="params">(**kwds)</span>:</span></div><div class="line">  print(kwds[<span class="string">'name'</span>], <span class="string">' is '</span>, kwds[<span class="string">'age'</span>] ,<span class="string">' years old.'</span>)</div><div class="line">args = &#123;<span class="string">'name'</span> : <span class="string">'Mrs. GUmby'</span>, <span class="string">'age'</span> : <span class="number">42</span>&#125;</div><div class="line">with_star(**args)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="使用两个列表创建字典"><a href="#使用两个列表创建字典" class="headerlink" title="使用两个列表创建字典"></a>使用两个列表创建字典</h3>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">list2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">d = dict(zip(list1, list2))</div><div class="line">list1 == list(d.keys())</div><div class="line">list2 == list(d.values())</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
-<p>多态意味着就算不知道变量所引用的对象类型是什么，也可以对它进行操作，看下面的函数：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span> <span class="params">(a, b)</span>:</span></div><div class="line">  <span class="keyword">return</span> a + b</div><div class="line">add(<span class="number">1</span>, <span class="number">2</span>)  <span class="comment"># 返回３</span></div><div class="line">add(<span class="string">'ab'</span>, <span class="string">'cd'</span>) <span class="comment"># 返回'abcd'</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>很多函数和运算符都是多态的，因此写程序时也应该尽量避免破坏多态，尽量不使用 <code>type, isinstance, issubclass</code> 之类会破坏多态的函数。</p>
-<p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://ucasfl.me/tags/Python/"/>
     
   </entry>
   
