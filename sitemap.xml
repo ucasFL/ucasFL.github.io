@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ucasfl.me/2017/10/07/Python-cheat-sheet/</loc>
+    
+    <lastmod>2018-06-05T14:56:17.335Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/</loc>
     
     <lastmod>2018-06-05T06:04:38.520Z</lastmod>
@@ -320,13 +327,6 @@
     <loc>http://ucasfl.me/2017/12/21/python-exit-error/</loc>
     
     <lastmod>2018-03-11T04:04:39.847Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/10/07/Python-cheat-sheet/</loc>
-    
-    <lastmod>2018-03-11T04:04:28.043Z</lastmod>
     
   </url>
   
