@@ -3,6 +3,46 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/</loc>
+    <lastmod>2018-06-05T05:56:42.838Z</lastmod>
+    <data>
+        <display>
+        <title>记一次意外的移位错误</title>
+        <pubTime>2018-06-05T04:37:40.000Z</pubTime>
+        
+        <tag>C/C++ </tag>
+         
+         
+           
+             
+              <breadCrumb title="C/C++" url="http://ucasfl.me/categories/C-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/</loc>
+    <lastmod>2018-06-05T04:46:31.142Z</lastmod>
+    <data>
+        <display>
+        <title>C++ 中的虚函数与动态绑定杂谈</title>
+        <pubTime>2018-05-13T07:59:23.000Z</pubTime>
+        
+        <tag>C/C++ </tag>
+         
+         
+           
+             
+              <breadCrumb title="C/C++" url="http://ucasfl.me/categories/C-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2018/05/15/NetEase-openCourse-of-Game-theory/</loc>
     <lastmod>2018-05-20T08:19:23.765Z</lastmod>
     <data>
@@ -16,26 +56,6 @@
            
              
               <breadCrumb title="Math" url="http://ucasfl.me/categories/Math/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/</loc>
-    <lastmod>2018-05-13T09:23:34.327Z</lastmod>
-    <data>
-        <display>
-        <title>C++ 中的虚函数与动态绑定杂谈</title>
-        <pubTime>2018-05-13T07:59:23.000Z</pubTime>
-        
-        <tag>C++ </tag>
-         
-         
-           
-             
-              <breadCrumb title="C++" url="http://ucasfl.me/categories/C/"/>
           
         </display>
     </data>

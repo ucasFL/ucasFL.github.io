@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-05-20T08:19:23.765Z</updated>
+  <updated>2018-06-05T05:56:42.838Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次意外的移位错误</title>
+    <link href="http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/"/>
+    <id>http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/</id>
+    <published>2018-06-05T04:37:40.000Z</published>
+    <updated>2018-06-05T05:56:42.838Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="移位错误"><a href="#移位错误" class="headerlink" title="移位错误"></a>移位错误</h3>
+<p>前天晚上，刷<a href="http://www.51nod.com" target="_blank" rel="external">51Nod</a>上面的一个题：通过矩阵快速幂计算斐波那契数列，结果发生了一个意想不到的错误，这件事也告诉了我一个道理：</p>
+<p><strong>当代码出错的时候，不要轻易去怀疑工具的问题，而要去想 90% 的可能性是自己的代码有问题.</strong></p>
+<a id="more"></a>
+<p>下面是最开始的代码：<br>
+  <figure class="highlight mipsasm">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></div><div class="line">typedef long long <span class="keyword">ll;</span></div><div class="line">using namespace std<span class="comment">;</span></div><div class="line"></div><div class="line">const <span class="keyword">ll </span>MAXV = <span class="number">1</span>e9 + <span class="number">9</span><span class="comment">;</span></div><div class="line"><span class="keyword">ll </span><span class="keyword">base[2][2] </span>= &#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;&#125;<span class="comment">;</span></div><div class="line"><span class="keyword">ll </span>Reult[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">0</span>&#125;, &#123;<span class="number">0</span>,<span class="number">1</span>&#125;&#125;<span class="comment">;</span></div><div class="line"></div><div class="line">void <span class="keyword">multi(ll </span>A[][<span class="number">2</span>], <span class="keyword">ll </span><span class="keyword">B[][2])&#123;</span></div><div class="line">	<span class="keyword">ll </span>tmp[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">0</span>&#125;&#125;<span class="comment">;</span></div><div class="line">	for(int i = <span class="number">0</span><span class="comment">; i != 2; ++i)&#123;</span></div><div class="line">		for(int <span class="keyword">j </span>= <span class="number">0</span><span class="comment">; j != 2; ++j)&#123;</span></div><div class="line">			for(int k = <span class="number">0</span><span class="comment">; k != 2; ++k)&#123;</span></div><div class="line">				tmp[i][<span class="keyword">j] </span>+= (A[i][k] * <span class="keyword">B[k][j]) </span>% MAXV<span class="comment">;</span></div><div class="line">				tmp[i][<span class="keyword">j] </span>%= MAXV<span class="comment">;</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	for(int i = <span class="number">0</span><span class="comment">; i != 2; ++i)&#123;</span></div><div class="line">		for(int <span class="keyword">j </span>= <span class="number">0</span><span class="comment">; j != 2; ++j)&#123;</span></div><div class="line">			A[i][<span class="keyword">j] </span>= tmp[i][<span class="keyword">j];</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void QuickPow(int N)&#123;</div><div class="line">	while (N)&#123;</div><div class="line">		if (N&amp;<span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">multi(Reult, </span><span class="keyword">base);</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">multi(base, </span><span class="keyword">base);</span></div><div class="line">		N &gt;&gt;= <span class="number">1</span><span class="comment">;</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">	<span class="keyword">ll </span>n<span class="comment">;</span></div><div class="line">	cin &gt;&gt; n<span class="comment">;</span></div><div class="line">	QuickPow(n-1)<span class="comment">;</span></div><div class="line">	cout &lt;&lt; Reult[<span class="number">0</span>][<span class="number">0</span>] &lt;&lt;endl<span class="comment">;</span></div><div class="line">	return <span class="number">0</span><span class="comment">;</span></div><div class="line">&#125;</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>提交之后，有一部分 test cases 发生错误，而且居然还出现超时.之后查看了一下题目，发现是因为函数 QuickPow 的参数是 <code>int</code> 型，而需要计算的数列的项最大是 10^18，因此，导致发生了溢出，之后，将参数由 <code>int</code> 改为 <code>long long</code> 就好了：<br>
+  <figure class="highlight mipsasm">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></div><div class="line">typedef long long <span class="keyword">ll;</span></div><div class="line">using namespace std<span class="comment">;</span></div><div class="line"></div><div class="line">const <span class="keyword">ll </span>MAXV = <span class="number">1</span>e9 + <span class="number">9</span><span class="comment">;</span></div><div class="line"><span class="keyword">ll </span><span class="keyword">base[2][2] </span>= &#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;&#125;<span class="comment">;</span></div><div class="line"><span class="keyword">ll </span>Reult[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">0</span>&#125;, &#123;<span class="number">0</span>,<span class="number">1</span>&#125;&#125;<span class="comment">;</span></div><div class="line"></div><div class="line">void <span class="keyword">multi(ll </span>A[][<span class="number">2</span>], <span class="keyword">ll </span><span class="keyword">B[][2])&#123;</span></div><div class="line">	<span class="keyword">ll </span>tmp[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">0</span>&#125;&#125;<span class="comment">;</span></div><div class="line">	for(int i = <span class="number">0</span><span class="comment">; i != 2; ++i)&#123;</span></div><div class="line">		for(int <span class="keyword">j </span>= <span class="number">0</span><span class="comment">; j != 2; ++j)&#123;</span></div><div class="line">			for(int k = <span class="number">0</span><span class="comment">; k != 2; ++k)&#123;</span></div><div class="line">				tmp[i][<span class="keyword">j] </span>+= (A[i][k] * <span class="keyword">B[k][j]) </span>% MAXV<span class="comment">;</span></div><div class="line">				tmp[i][<span class="keyword">j] </span>%= MAXV<span class="comment">;</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	for(int i = <span class="number">0</span><span class="comment">; i != 2; ++i)&#123;</span></div><div class="line">		for(int <span class="keyword">j </span>= <span class="number">0</span><span class="comment">; j != 2; ++j)&#123;</span></div><div class="line">			A[i][<span class="keyword">j] </span>= tmp[i][<span class="keyword">j];</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void QuickPow(<span class="keyword">ll </span>N)&#123;</div><div class="line">	while (N)&#123;</div><div class="line">		if (N&amp;<span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">multi(Reult, </span><span class="keyword">base);</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">multi(base, </span><span class="keyword">base);</span></div><div class="line">		N &gt;&gt;= <span class="number">1</span><span class="comment">;</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">	<span class="keyword">ll </span>n<span class="comment">;</span></div><div class="line">	cin &gt;&gt; n<span class="comment">;</span></div><div class="line">	QuickPow(n-1)<span class="comment">;</span></div><div class="line">	cout &lt;&lt; Reult[<span class="number">0</span>][<span class="number">0</span>] &lt;&lt;endl<span class="comment">;</span></div><div class="line">	return <span class="number">0</span><span class="comment">;</span></div><div class="line">&#125;</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>当输入的数过大时，前一个程序由于发生溢出导致计算结果不对我能理解，但是有时候会卡我就无法理解了，讲道理不应该啊，由于两个程序除了一个参数类型之外其他地方完全相同，所以我也就没有怀疑是程序的逻辑出了问题，反而去怀疑是编译器的问题.对目标程序进行反汇编，也没发现什么不对劲的地方，唯一的区别就是前者用的是一个 32 位寄存器传参，后者用的是一个 64 位寄存器传参.</p>
+<p>昨天，我去向编译原理老师请教，还在想自己会不会发现了一个天大的编译器错误.当老师给我指出错误的时候，突然觉得无比尴尬，自己宛如一个智障.</p>
+<p>错误原因如下：</p>
+<p><strong>在C/C++中，无符号数移位是逻辑移位，而有符号数移位是算术移位.我在函数中使用了移位运算，因此，当溢出变为负数之后，我们知道，计算机中数的表示都是补码，负数的符号位是 1 ，因此，算术移位右移时高位补符号位就是补 1，所以导致 N 永远不会变为 0，<code>while</code> 循环永远不会结束，程序自然就卡住了.</strong></p>
+<p>看下面一个例子：<br><img src="/photos/shift/sh.png" class="full-image"></p>
+<p>从上面例子可以看出，有符号移位是算术移位，右移时高位补符号位.</p>
+<h3 id="逻辑移位与算术移位"><a href="#逻辑移位与算术移位" class="headerlink" title="逻辑移位与算术移位"></a>逻辑移位与算术移位</h3>
+<p>顺便复习一下逻辑移位和算术移位：</p>
+<h4 id="逻辑移位"><a href="#逻辑移位" class="headerlink" title="逻辑移位"></a>逻辑移位</h4>
+<p>无论左移还是右移，都是补 0.</p>
+<h4 id="算术移位"><a href="#算术移位" class="headerlink" title="算术移位"></a>算术移位</h4>
+<p>左移：低位补 0<br>右移：高位补符号位</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;移位错误&quot;&gt;&lt;a href=&quot;#移位错误&quot; class=&quot;headerlink&quot; title=&quot;移位错误&quot;&gt;&lt;/a&gt;移位错误&lt;/h3&gt;
+&lt;p&gt;前天晚上，刷&lt;a href=&quot;http://www.51nod.com&quot;&gt;51Nod&lt;/a&gt;上面的一个题：通过矩阵快速幂计算斐波那契数列，结果发生了一个意想不到的错误，这件事也告诉了我一个道理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当代码出错的时候，不要轻易去怀疑工具的问题，而要去想 90% 的可能性是自己的代码有问题.&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
+    
+    
+      <category term="C/C++" scheme="http://ucasfl.me/tags/C-C/"/>
+    
+  </entry>
   
   <entry>
     <title>网易公开课《博弈论简介》总结</title>
@@ -153,7 +220,7 @@
     <link href="http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/"/>
     <id>http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/</id>
     <published>2018-05-13T07:59:23.000Z</published>
-    <updated>2018-05-13T09:23:34.327Z</updated>
+    <updated>2018-06-05T04:46:31.142Z</updated>
     
     <content type="html"><![CDATA[<p>上大学之后学的第一门编程语言是 C，尽管 C 的确是一门很强大的语言，但是，在某些情况下，用 C 语言来解决问题实现起来会麻烦很多，另外，某些东西在 C 语言里面也是没有的，比如面向对象。</p>
 <p>第一次接触面向对象大概是大二自学 Python 的时候，那时候看的一头雾水，什么构造函数，析构函数不理解它的原理，书里面讲解的也不是很清楚，更别提多态、继承等等。到后面看 C++ 的时候终于对面向对象有一些基本的理解了，虽然很多东西还是理解的不够透彻。</p>
@@ -226,10 +293,10 @@
     
     </summary>
     
-      <category term="C++" scheme="http://ucasfl.me/categories/C/"/>
+      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
     
     
-      <category term="C++" scheme="http://ucasfl.me/tags/C/"/>
+      <category term="C/C++" scheme="http://ucasfl.me/tags/C-C/"/>
     
   </entry>
   
@@ -1787,34 +1854,6 @@
     <summary type="html">
     
       &lt;p&gt;笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 &lt;code&gt;emergency mode&lt;/code&gt;，尝试重新启动到默认模式，然后出现下面的错误信息：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 主机和 Vbox 下的 Windows 虚拟机创建共享文件夹</title>
-    <link href="http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/"/>
-    <id>http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/</id>
-    <published>2017-10-28T06:42:12.000Z</published>
-    <updated>2018-03-11T04:03:08.595Z</updated>
-    
-    <content type="html"><![CDATA[<p>在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。</p>
-<a id="more"></a>
-<p>首先确保安装好虚拟机。</p>
-<p>第一步，启动虚拟机，点击左上方工具栏 -&gt; 安装增加功能 -&gt; 按照提示安装成功即可。</p>
-<p>第一步，打开虚拟机设置 -&gt; 共享文件夹 -&gt; 添加路径 -&gt; 设置共享文件夹名字（假设名字为 Win7，后面会用到。）</p>
-<p>第三步，重启虚拟机 -&gt; 打开 cmd -&gt; 输入命令 <code>net use x: \\vboxsvr\Win7</code> 即可。其中 <code>x</code> 为盘符，任意一个未使用的字母均可以，<code>Win7</code> 即为上面设置的共享文件夹名字。</p>
-<p>这样，在主机和虚拟机之间就创建了一个共享文件夹。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。&lt;/p&gt;
     
     </summary>
     
