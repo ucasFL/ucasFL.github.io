@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-06-05T05:56:42.838Z</updated>
+  <updated>2018-06-05T06:04:38.520Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/"/>
     <id>http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/</id>
     <published>2018-06-05T04:37:40.000Z</published>
-    <updated>2018-06-05T05:56:42.838Z</updated>
+    <updated>2018-06-05T06:04:38.520Z</updated>
     
     <content type="html"><![CDATA[<h3 id="移位错误"><a href="#移位错误" class="headerlink" title="移位错误"></a>移位错误</h3>
 <p>前天晚上，刷<a href="http://www.51nod.com" target="_blank" rel="external">51Nod</a>上面的一个题：通过矩阵快速幂计算斐波那契数列，结果发生了一个意想不到的错误，这件事也告诉了我一个道理：</p>
-<p><strong>当代码出错的时候，不要轻易去怀疑工具的问题，而要去想 90% 的可能性是自己的代码有问题.</strong></p>
+<p><strong>当代码出错的时候，不要轻易去怀疑工具的问题，而要去想 99% 的可能性是自己的代码有问题.</strong></p>
 <a id="more"></a>
 <p>下面是最开始的代码：<br>
   <figure class="highlight mipsasm">
@@ -71,7 +71,7 @@
     
       &lt;h3 id=&quot;移位错误&quot;&gt;&lt;a href=&quot;#移位错误&quot; class=&quot;headerlink&quot; title=&quot;移位错误&quot;&gt;&lt;/a&gt;移位错误&lt;/h3&gt;
 &lt;p&gt;前天晚上，刷&lt;a href=&quot;http://www.51nod.com&quot;&gt;51Nod&lt;/a&gt;上面的一个题：通过矩阵快速幂计算斐波那契数列，结果发生了一个意想不到的错误，这件事也告诉了我一个道理：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;当代码出错的时候，不要轻易去怀疑工具的问题，而要去想 90% 的可能性是自己的代码有问题.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当代码出错的时候，不要轻易去怀疑工具的问题，而要去想 99% 的可能性是自己的代码有问题.&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
