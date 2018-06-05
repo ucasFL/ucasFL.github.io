@@ -1191,7 +1191,7 @@ pre .javascript .function {
 }
 
 .headband {
-  height: 3px;
+  height: 0px;
   background: #222;
 }
 
@@ -2041,7 +2041,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff3d0e;
+  background: #4ba4ff;
 }
 
 .links-of-blogroll {
