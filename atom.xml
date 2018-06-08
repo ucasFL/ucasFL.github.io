@@ -301,61 +301,6 @@
   </entry>
   
   <entry>
-    <title>我们和好啦啦啦</title>
-    <link href="http://ucasfl.me/2018/05/04/make-it-up/"/>
-    <id>http://ucasfl.me/2018/05/04/make-it-up/</id>
-    <published>2018-05-03T16:28:05.000Z</published>
-    <updated>2018-05-13T07:55:16.619Z</updated>
-    
-    <content type="html"><![CDATA[<p>“unfortunately”, 我们在分手后的第二天（5 月 2 号）和好啦啦啦。</p>
-<p>顺便，哈哈哈哈哈</p>
-<a id="more"></a>
-<p><img src="/photos/make/1.jpg" alt=""></p>
-<p><img src="/photos/make/2.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;“unfortunately”, 我们在分手后的第二天（5 月 2 号）和好啦啦啦。&lt;/p&gt;
-&lt;p&gt;顺便，哈哈哈哈哈&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="love" scheme="http://ucasfl.me/categories/love/"/>
-    
-    
-      <category term="love" scheme="http://ucasfl.me/tags/love/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分别</title>
-    <link href="http://ucasfl.me/2018/05/01/ending/"/>
-    <id>http://ucasfl.me/2018/05/01/ending/</id>
-    <published>2018-05-01T06:13:12.000Z</published>
-    <updated>2018-05-01T11:02:19.370Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a>
-<h3 id="曾经沧海难为水，除却巫山不是云"><a href="#曾经沧海难为水，除却巫山不是云" class="headerlink" title="曾经沧海难为水，除却巫山不是云"></a>曾经沧海难为水，除却巫山不是云</h3>
-<p>2018 年 5 月 1 日<br>我失恋了<br>我们于 17 年 1 月 22 日在一起<br>到今天 465 天<br>刚好一年零 100 天<br>没想到这一次真的要离别了</p>
-<p>之前有一个<a href="https://ilovezyq.github.io" target="_blank" rel="external">博客</a><br>专门用于记录我们之间的爱情<br>不过其实也没有在上面放过多少东西<br>以后 没有以后了</p>
-<p>今天<br>是结束<br>也是开始</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;曾经沧海难为水，除却巫山不是云&quot;&gt;&lt;a href=&quot;#曾经沧海难为水，除却巫山不是云&quot; class=&quot;headerlink&quot; title=&quot;曾经沧海难为水，除却巫山不是云&quot;&gt;&lt;/a&gt;曾经沧海难为水，除却巫山不是云&lt;/h3&gt;
-&lt;p
-    
-    </summary>
-    
-      <category term="ending" scheme="http://ucasfl.me/categories/ending/"/>
-    
-    
-      <category term="ending" scheme="http://ucasfl.me/tags/ending/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Git 通过 Ssh 连接 GitHub 无反应</title>
     <link href="http://ucasfl.me/2018/03/30/git-connect-to-github-with-ssh-no-response/"/>
     <id>http://ucasfl.me/2018/03/30/git-connect-to-github-with-ssh-no-response/</id>
@@ -1861,6 +1806,234 @@
     
     
       <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 主机和 Vbox 下的 Windows 虚拟机创建共享文件夹</title>
+    <link href="http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/"/>
+    <id>http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/</id>
+    <published>2017-10-28T06:42:12.000Z</published>
+    <updated>2018-03-11T04:03:08.595Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。</p>
+<a id="more"></a>
+<p>首先确保安装好虚拟机。</p>
+<p>第一步，启动虚拟机，点击左上方工具栏 -&gt; 安装增加功能 -&gt; 按照提示安装成功即可。</p>
+<p>第一步，打开虚拟机设置 -&gt; 共享文件夹 -&gt; 添加路径 -&gt; 设置共享文件夹名字（假设名字为 Win7，后面会用到。）</p>
+<p>第三步，重启虚拟机 -&gt; 打开 cmd -&gt; 输入命令 <code>net use x: \\vboxsvr\Win7</code> 即可。其中 <code>x</code> 为盘符，任意一个未使用的字母均可以，<code>Win7</code> 即为上面设置的共享文件夹名字。</p>
+<p>这样，在主机和虚拟机之间就创建了一个共享文件夹。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 编程风格</title>
+    <link href="http://ucasfl.me/2017/10/26/Pythonic-programming-tips/"/>
+    <id>http://ucasfl.me/2017/10/26/Pythonic-programming-tips/</id>
+    <published>2017-10-26T04:10:08.000Z</published>
+    <updated>2018-03-11T04:04:49.971Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。</p>
+<a id="more"></a>
+<h3 id="多变量赋值"><a href="#多变量赋值" class="headerlink" title="多变量赋值"></a>多变量赋值</h3>
+<p>变量赋值是编程语言里面最简单的语句之一，通常情况下，我们会这样做：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line">c = <span class="number">3</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>这样便完成了对三个变量的赋值，但你可以用更简单的方式：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="元素值交换"><a href="#元素值交换" class="headerlink" title="元素值交换"></a>元素值交换</h3>
+<p>在编程过程中，交换两个变量的值是非常常见的。一般情况下，我们会用下面这种方式来交换两个变量的值（尤其是对于第一门语言是C/C++的人来说）：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">t = a</div><div class="line">a = b</div><div class="line">b = t</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>这种方式是正确的，没有人敢说它不对，但事实上，在 Python 里，你可以有更简单的方式来完成这件事：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a, b = b, a</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>没错，一行语句就够了。</p>
+<p>对上面两个技巧的解释：在 Python 中，任何以逗号分隔的对象均被当作元组处理，因此<code>1, 2, 3</code>　实际上就是一个元组<code>(1, 2, 3)</code>，赋值过程可以看成是元组的解包 。交换值也是同样的，它相当于把等号右边的元组解包后赋值给了左边的变量。为了提高代码的可读性，上面的例子可以加上括号：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span> = (<span class="selector-tag">b</span>, a)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="列表解析"><a href="#列表解析" class="headerlink" title="列表解析"></a>列表解析</h3>
+<p>假设 <code>list1</code> 是一个字符串组成的列表，现在，需要把 <code>list1</code> 中的每一个字符串的每一个小写字母找出来，形成一个新的元组。一般情况下，我们可以这样做：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list1 = [<span class="string">'adg'</span>, <span class="string">'Adf'</span>, <span class="string">'124'</span>]</div><div class="line">list2 = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> i:</div><div class="line">    <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>:</div><div class="line">      list2.append(j)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>但实际上，你只需要用一个语句就可以完成这件事：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list2 = [j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>没错，Python 就是这么简洁。如果把上面的方括号换成圆括号，那么结果返回的就是一个迭代器，可以使用 <code>next()</code> 方法获取元素：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list2 = (j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>)</div><div class="line">list2.next() <span class="comment"># 返回'a'</span></div><div class="line">list2.next() <span class="comment"># 返回'd'</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="收集参数"><a href="#收集参数" class="headerlink" title="收集参数"></a>收集参数</h3>
+<p>函数的多个参数可通过一个元组传递，假设有如下函数：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x + y</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可重新定义为：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(*params)</span>:</span></div><div class="line">  <span class="keyword">return</span> params[<span class="number">0</span>] + params[<span class="number">1</span>]</div><div class="line"><span class="comment">#传递参数</span></div><div class="line">add2(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="comment">#或</span></div><div class="line">tuple1 = (<span class="number">1</span>, <span class="number">2</span>)</div><div class="line">add2(*tuple1)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>使用双星号则可以传递一个字典：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">with_star</span><span class="params">(**kwds)</span>:</span></div><div class="line">  print(kwds[<span class="string">'name'</span>], <span class="string">' is '</span>, kwds[<span class="string">'age'</span>] ,<span class="string">' years old.'</span>)</div><div class="line">args = &#123;<span class="string">'name'</span> : <span class="string">'Mrs. GUmby'</span>, <span class="string">'age'</span> : <span class="number">42</span>&#125;</div><div class="line">with_star(**args)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="使用两个列表创建字典"><a href="#使用两个列表创建字典" class="headerlink" title="使用两个列表创建字典"></a>使用两个列表创建字典</h3>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">list2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">d = dict(zip(list1, list2))</div><div class="line">list1 == list(d.keys())</div><div class="line">list2 == list(d.values())</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
+<p>多态意味着就算不知道变量所引用的对象类型是什么，也可以对它进行操作，看下面的函数：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span> <span class="params">(a, b)</span>:</span></div><div class="line">  <span class="keyword">return</span> a + b</div><div class="line">add(<span class="number">1</span>, <span class="number">2</span>)  <span class="comment"># 返回３</span></div><div class="line">add(<span class="string">'ab'</span>, <span class="string">'cd'</span>) <span class="comment"># 返回'abcd'</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>很多函数和运算符都是多态的，因此写程序时也应该尽量避免破坏多态，尽量不使用 <code>type, isinstance, issubclass</code> 之类会破坏多态的函数。</p>
+<p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://ucasfl.me/tags/Python/"/>
     
   </entry>
   
