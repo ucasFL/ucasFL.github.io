@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/</loc>
+    
+    <lastmod>2018-06-13T05:38:38.158Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ucasfl.me/2017/03/20/Recommand-Some-Vim-Plugins-I-use/</loc>
     
     <lastmod>2018-06-08T15:40:44.736Z</lastmod>
@@ -299,13 +306,6 @@
     <loc>http://ucasfl.me/2017/03/18/Queue/</loc>
     
     <lastmod>2018-03-11T04:04:57.803Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ucasfl.me/2017/10/26/Pythonic-programming-tips/</loc>
-    
-    <lastmod>2018-03-11T04:04:49.971Z</lastmod>
     
   </url>
   

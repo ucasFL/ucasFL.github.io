@@ -64,16 +64,19 @@
 
 
 
-  <meta name="description" content="本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。">
+  <meta name="description" content="本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。
+2018 年 6 月 13 日更新。">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Python 编程风格">
-  <meta property="og:url" content="http://ucasfl.me/2017/10/26/Pythonic-programming-tips/index.html">
+  <meta property="og:url" content="http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/index.html">
   <meta property="og:site_name" content="春暖花开">
-  <meta property="og:description" content="本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。">
-  <meta property="og:updated_time" content="2018-03-11T04:04:49.971Z">
+  <meta property="og:description" content="本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。
+2018 年 6 月 13 日更新。">
+  <meta property="og:updated_time" content="2018-06-13T05:38:38.158Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Python 编程风格">
-  <meta name="twitter:description" content="本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。">
+  <meta name="twitter:description" content="本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。
+2018 年 6 月 13 日更新。">
 
 
 
@@ -114,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://ucasfl.me/2017/10/26/Pythonic-programming-tips/" />
+  <link rel="canonical" href="http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/" />
 
 
 
@@ -292,7 +295,7 @@
 
 
               <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/10/26/Pythonic-programming-tips/">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/">
 
                 <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Flynn">
@@ -371,7 +374,7 @@
 
 
 
-                    <span id="/2017/10/26/Pythonic-programming-tips/" class="leancloud_visitors" data-flag-title="Python 编程风格">
+                    <span id="/2017/10/26/Pythonic-programming-tricks/" class="leancloud_visitors" data-flag-title="Python 编程风格">
                <span class="post-meta-divider">|</span>
                     <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -400,7 +403,8 @@
 
 
 
-                  <p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。</p>
+                  <p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。</p>
+                  <p>2018 年 6 月 13 日更新。</p>
                   <a id="more"></a>
                   <h3 id="多变量赋值"><a href="#多变量赋值" class="headerlink" title="多变量赋值"></a>多变量赋值</h3>
                   <p>变量赋值是编程语言里面最简单的语句之一，通常情况下，我们会这样做：</p>
@@ -470,6 +474,119 @@
                       </tr>
                     </table>
                   </figure>
+                  <h3 id="循环遍历区间元素"><a href="#循环遍历区间元素" class="headerlink" title="循环遍历区间元素"></a>循环遍历区间元素</h3>
+                  <p>你可以这样：<br>
+                    <figure class="highlight stylus">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>] :</div><div class="line">	print(i)</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                  </p>
+                  <p>但更好的方法是：<br>
+                    <figure class="highlight ada">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">6</span>) :</div><div class="line">	<span class="type">print</span>(i)</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                  </p>
+                  <p>值得一提的是, <code>range</code> 返回的是生成器对象，生成器比列表更加节省内存。</p>
+                  <h3 id="带有索引位置的集合遍历"><a href="#带有索引位置的集合遍历" class="headerlink" title="带有索引位置的集合遍历"></a>带有索引位置的集合遍历</h3>
+                  <p>遍历集合时，如果需要索引信息，直接迭代是没有的，普通的方式是：</p>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">peoples = [<span class="string">'Tim'</span>, <span class="string">'Bob'</span>, <span class="string">'Ada'</span>]</div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> range(len(peoples)) :</div><div class="line">	print(<span class="selector-tag">i</span>, <span class="string">'---&gt;'</span>, peoples[i])</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>但你还可以这样：</p>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span>, people <span class="keyword">in</span> enumerate(peoples) :</div><div class="line">	print(<span class="selector-tag">i</span>, <span class="string">'---&gt;'</span>, people)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3>
+                  <p>普通方式可以用 <code>+</code> 操作：<br>
+                    <figure class="highlight stylus">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line">strs = [<span class="string">'I'</span>, <span class="string">'Love'</span>, <span class="string">'You'</span>]</div><div class="line">s = strs[<span class="number">0</span>]</div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> strs[<span class="number">1</span>: ]:</div><div class="line">	s += <span class="string">' '</span> + <span class="selector-tag">i</span></div><div class="line"><span class="function"><span class="title">print</span><span class="params">(s)</span></span></div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                  </p>
+                  <p>但你还可以使用 <code>join</code> 方法：</p>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">' '</span>.join(strs)</span></span>)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>与 <code>join</code> 相对应的就是 <code>split</code> 方法，<code>split</code> 方法通过指定分隔符参数来分割字符串，默认为空白符：<br>
+                    <figure class="highlight ini">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><div class="line">1</div><div class="line">2</div></pre>
+                          </td>
+                          <td class="code">
+                            <pre><div class="line"><span class="attr">s</span> = <span class="string">'I love you'</span></div><div class="line"><span class="attr">l</span> = s.split() # l = [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'you'</span>]</div></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                  </p>
+                  <p>此外，<code>split</code> 方法还有一个用法。我们知道，在 Python 中，从键盘输入时，<code>input()</code> 方法会读取一整行输入，然后返回一个字符串，如果想要在同一行输入多个整数并赋值给多个对象，那么 <code>split()</code> 方法就派上用场了：</p>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = input().split()</div><div class="line"><span class="selector-tag">a</span> = int(a)</div><div class="line"><span class="selector-tag">b</span> = int(b)</div><div class="line">c = int(c)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>这样，就可以在同一行输入三个整数，然后分别赋值给 a, b, c，当然，此时，仍然是字符串，如果要作为整数使用，那么，使用 <code>int()</code> 转化一下即可。</p>
                   <h3 id="列表解析"><a href="#列表解析" class="headerlink" title="列表解析"></a>列表解析</h3>
                   <p>假设 <code>list1</code> 是一个字符串组成的列表，现在，需要把 <code>list1</code> 中的每一个字符串的每一个小写字母找出来，形成一个新的元组。一般情况下，我们可以这样做：</p>
                   <figure class="highlight python">
@@ -579,6 +696,211 @@
                   </figure>
                   <p>很多函数和运算符都是多态的，因此写程序时也应该尽量避免破坏多态，尽量不使用 <code>type, isinstance, issubclass</code> 之类会破坏多态的函数。</p>
                   <p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>
+                  <h3 id="打开-关闭文件"><a href="#打开-关闭文件" class="headerlink" title="打开/关闭文件"></a>打开/关闭文件</h3>
+                  <p>执行文件操作时，一定不能忘记 <code>close()</code>，即使代码出错，普遍的方法是在 <code>finally</code> 块中显示的调用 <code>close</code> 方法：</p>
+                  <figure class="highlight livecodeserver">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">f = <span class="built_in">open</span>(<span class="string">'data.txt'</span>)</div><div class="line"><span class="keyword">try</span> :</div><div class="line">	data = f.<span class="built_in">read</span>()</div><div class="line"><span class="keyword">finally</span> :</div><div class="line">	f.<span class="built_in">close</span>()</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>但更简介的方法是：</p>
+                  <figure class="highlight haskell">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="title">with</span> open('<span class="class"><span class="keyword">data</span>.txt') as f :</span></div><div class="line">	<span class="class"><span class="keyword">data</span> = f.read()</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>使用 <code>with</code> 语句，系统会在执行完文件操作之后自动关闭文件对象。</p>
+                  <h3 id="合理使用列表"><a href="#合理使用列表" class="headerlink" title="合理使用列表"></a>合理使用列表</h3>
+                  <p>列表对象是一个查询效率高但更新效率低的数据结构。比如删除元素和插入元素的时候执行效率非常低，需要对剩下的元素进行移动。</p>
+                  <figure class="highlight vim">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">people = [<span class="string">'xiaoming'</span>, <span class="string">'xiaohong'</span>, <span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>]</div><div class="line">people.<span class="keyword">pop</span>(<span class="number">0</span>)</div><div class="line">people.<span class="keyword">insert</span>(<span class="number">0</span>, <span class="string">'lihua'</span>)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>更好的方法是使用 <code>deque</code>:</p>
+                  <figure class="highlight xl">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">from collections <span class="keyword">import</span> deque</div><div class="line"><span class="keyword">name</span> = deque([<span class="string">'xiaoming'</span>, <span class="string">'xiaohong'</span>, <span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>])</div><div class="line"><span class="keyword">name</span>.popleft()</div><div class="line"><span class="keyword">name</span>.appendleft(<span class="string">'lihua'</span>)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><code>deque</code> 是一个双向队列的数据结构，删除元素和插入元素会很快。</p>
+                  <h3 id="遍历字典中的-key-和-value"><a href="#遍历字典中的-key-和-value" class="headerlink" title="遍历字典中的 key 和 value"></a>遍历字典中的 key 和 value</h3>
+                  <p>普通方法：</p>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">d = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span>&#125;</div><div class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d :</div><div class="line">	<span class="type">print</span>(k, '<span class="comment">---&gt;', d[k])</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>该方法效率较低，因为每次都需要重新进行 hash 查找 key 对应的 value 。</p>
+                  <p>高效的方法是：</p>
+                  <figure class="highlight bash">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items():</div><div class="line">	<span class="built_in">print</span>(k, <span class="string">'---&gt;'</span>, d[k])</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><code>items</code> 返回迭代器对象，效率高，且节省内存。</p>
+                  <h3 id="链式比较"><a href="#链式比较" class="headerlink" title="链式比较"></a>链式比较</h3>
+                  <p>学了那么久 Python，最近才知道 Python 居然支持大多数编程语言都不支持的链式比较：</p>
+                  <p>常规方法：</p>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">age = <span class="number">18</span></div><div class="line"><span class="keyword">if</span> age &gt; <span class="number">18</span> <span class="keyword">and</span> age &lt; <span class="number">60</span> :</div><div class="line">	<span class="type">print</span>(<span class="symbol">'young</span> man')</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>事实上，在 Python 中，你可以这样写：</p>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">if</span> <span class="number">18</span> &lt; age &lt; <span class="number">60</span> :</div><div class="line">	<span class="type">print</span>(<span class="symbol">'young</span> man')</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>理解了链式比较操作，那么你也就明白了下面这行代码为什么会返回 <code>False</code> :</p>
+                  <figure class="highlight ini">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="attr">True</span> == <span class="literal">True</span> == <span class="literal">False</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="if-else-三目运算"><a href="#if-else-三目运算" class="headerlink" title="if/else 三目运算"></a>if/else 三目运算</h3>
+                  <p>常规：</p>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">if</span> gender == <span class="symbol">'male</span>' :</div><div class="line">	<span class="type">text</span> = <span class="symbol">'man</span>'</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">text</span> = <span class="symbol">'women</span>'</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>pythonic:</p>
+                  <figure class="highlight arduino">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="built_in">text</span> = <span class="string">'man'</span> <span class="built_in">if</span> gender == <span class="string">'male'</span> <span class="built_in">else</span> <span class="string">'women'</span></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <h3 id="for-else-while-else-语句"><a href="#for-else-while-else-语句" class="headerlink" title="for/else, while/else 语句"></a>for/else, while/else 语句</h3>
+                  <p><code>for/else, while/else</code> 语句是 Python 中最迷惑人的语法：如果以正常方式退出循环(非 <code>break&#39;, 非</code>return<code>, 程序异常)，那么</code>else` 分支将执行：</p>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>) :</div><div class="line">	<span class="type">if</span> i == <span class="number">5</span> :</div><div class="line">		<span class="type">break</span></div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">print</span>(<span class="string">"hello, world."</span>) # 无输出</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>) :</div><div class="line">	<span class="type">print</span>(i)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">print</span>(<span class="string">"hello, world."</span>) # 有输出</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>当然，上面说到的例子没什么用，看下面一个：</p>
+                  <figure class="highlight ada">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line">found = <span class="literal">false</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> mylist :</div><div class="line">	<span class="type">if</span> i == theflag :</div><div class="line">		<span class="type">found</span> = <span class="literal">True</span></div><div class="line">		break</div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> found :</div><div class="line">	<span class="type">print</span>(<span class="string">"Not found."</span>)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>使用 <code>for/else</code> :</p>
+                  <figure class="highlight stylus">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> mylist :</div><div class="line">	<span class="keyword">if</span> <span class="selector-tag">i</span> == theflag :</div><div class="line">		break</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	print(<span class="string">"Not found."</span>)</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
                 </div>
 
@@ -853,10 +1175,19 @@
                   <ol class="nav">
                     <li class="nav-item nav-level-3"><a class="nav-link" href="#多变量赋值"><span class="nav-number">1.</span> <span class="nav-text">多变量赋值</span></a></li>
                     <li class="nav-item nav-level-3"><a class="nav-link" href="#元素值交换"><span class="nav-number">2.</span> <span class="nav-text">元素值交换</span></a></li>
-                    <li class="nav-item nav-level-3"><a class="nav-link" href="#列表解析"><span class="nav-number">3.</span> <span class="nav-text">列表解析</span></a></li>
-                    <li class="nav-item nav-level-3"><a class="nav-link" href="#收集参数"><span class="nav-number">4.</span> <span class="nav-text">收集参数</span></a></li>
-                    <li class="nav-item nav-level-3"><a class="nav-link" href="#使用两个列表创建字典"><span class="nav-number">5.</span> <span class="nav-text">使用两个列表创建字典</span></a></li>
-                    <li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">6.</span> <span class="nav-text">多态</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#循环遍历区间元素"><span class="nav-number">3.</span> <span class="nav-text">循环遍历区间元素</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#带有索引位置的集合遍历"><span class="nav-number">4.</span> <span class="nav-text">带有索引位置的集合遍历</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#字符串连接"><span class="nav-number">5.</span> <span class="nav-text">字符串连接</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#列表解析"><span class="nav-number">6.</span> <span class="nav-text">列表解析</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#收集参数"><span class="nav-number">7.</span> <span class="nav-text">收集参数</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#使用两个列表创建字典"><span class="nav-number">8.</span> <span class="nav-text">使用两个列表创建字典</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">9.</span> <span class="nav-text">多态</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#打开-关闭文件"><span class="nav-number">10.</span> <span class="nav-text">打开/关闭文件</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#合理使用列表"><span class="nav-number">11.</span> <span class="nav-text">合理使用列表</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#遍历字典中的-key-和-value"><span class="nav-number">12.</span> <span class="nav-text">遍历字典中的 key 和 value</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#链式比较"><span class="nav-number">13.</span> <span class="nav-text">链式比较</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#if-else-三目运算"><span class="nav-number">14.</span> <span class="nav-text">if/else 三目运算</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#for-else-while-else-语句"><span class="nav-number">15.</span> <span class="nav-text">for/else, while/else 语句</span></a></li>
                   </ol>
                 </div>
 

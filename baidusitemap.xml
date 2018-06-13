@@ -3,6 +3,26 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/</loc>
+    <lastmod>2018-06-13T05:38:38.158Z</lastmod>
+    <data>
+        <display>
+        <title>Python 编程风格</title>
+        <pubTime>2017-10-26T04:10:08.000Z</pubTime>
+        
+        <tag>Python </tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2017/03/20/Recommand-Some-Vim-Plugins-I-use/</loc>
     <lastmod>2018-06-08T15:40:44.736Z</lastmod>
     <data>
@@ -837,26 +857,6 @@
            
              
               <breadCrumb title="Data-Structures" url="http://ucasfl.me/categories/Data-Structures/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/10/26/Pythonic-programming-tips/</loc>
-    <lastmod>2018-03-11T04:04:49.971Z</lastmod>
-    <data>
-        <display>
-        <title>Python 编程风格</title>
-        <pubTime>2017-10-26T04:10:08.000Z</pubTime>
-        
-        <tag>Python </tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://ucasfl.me/categories/Python/"/>
           
         </display>
     </data>
