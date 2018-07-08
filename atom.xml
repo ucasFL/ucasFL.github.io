@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-06-05T06:04:38.520Z</updated>
+  <updated>2018-07-08T07:15:08.703Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,281 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LLVM Pass 与 APA 简介</title>
+    <link href="http://ucasfl.me/2018/07/08/LLVM-Pass-and-APA-Introduction/"/>
+    <id>http://ucasfl.me/2018/07/08/LLVM-Pass-and-APA-Introduction/</id>
+    <published>2018-07-08T05:54:01.000Z</published>
+    <updated>2018-07-08T07:15:08.703Z</updated>
+    
+    <content type="html"><![CDATA[<p>前段时间学习了一些关于 LLVM Pass 和 APA 方面的知识，趁今天有空，做一些总结。</p>
+<h3 id="LLVM-Pass"><a href="#LLVM-Pass" class="headerlink" title="LLVM Pass"></a>LLVM Pass</h3>
+<p>Pass 是 LLVM 中一个非常重要的框架，在 LLVM 后端的分析、转化、优化等过程中，通常是多个 Pass 一起作用来共同完成的。</p>
+<p>每一个 LLVM Pass 都是 <code>Pass</code> 类的一个派生类，通过重写 <code>Pass</code> 类的虚方法来实现自身的功能。根据你想要实现的功能，你可以选择继承<code>ModulePass</code>或<code>FunctionPass</code> 等等一系列Pass.</p>
+<a id="more"></a>
+<p>下面实现一个简单的Pass: 该 Pass 的功能就是在 <code>main</code> 函数的入口处添加一个打印 <code>hello, world.\n</code> 的语句。在这儿，我们选择继承 <code>ModulePass</code> 来实现：</p>
+<figure class="highlight autoit">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"llvm/ADT/Statistic.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"llvm/IR/Function.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"llvm/IR/Module.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"llvm/IR/IRBuilder.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"llvm/IR/TypeBuilder.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"llvm/Pass.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"llvm/Support/raw_ostream.h"</span></span></div><div class="line">using namespace llvm<span class="comment">;</span></div><div class="line"></div><div class="line"></div><div class="line">namespace &#123;</div><div class="line">  struct PrintfAfterMain : public ModulePass &#123;</div><div class="line">    <span class="keyword">static</span> char ID<span class="comment">; // Pass identification, replacement for typeid</span></div><div class="line">    PrintfAfterMain() : ModulePass(ID) &#123;&#125;</div><div class="line"></div><div class="line">    virtual bool runOnModule(Module &amp;M) &#123;</div><div class="line">		Function *F = M.getFunction(<span class="string">"main"</span>)<span class="comment">;</span></div><div class="line">		<span class="keyword">if</span> (!F)&#123;</div><div class="line">			errs() &lt;&lt; <span class="string">"Not exist main function.\n"</span><span class="comment">;</span></div><div class="line">			<span class="keyword">return</span> <span class="literal">false</span><span class="comment">;</span></div><div class="line">		&#125;</div><div class="line">		Instruction *inst = &amp;(*F-&gt;begin()-&gt;begin())<span class="comment">;</span></div><div class="line">		IRBuilder&lt;&gt; Builder(inst)<span class="comment">;</span></div><div class="line">		FunctionType *printf_type = TypeBuilder&lt;<span class="built_in">int</span>(char *, ...), <span class="literal">false</span>&gt;::get(getGlobalContext())<span class="comment">;</span></div><div class="line">		Function *<span class="function"><span class="keyword">func</span> = <span class="title">cast</span>&lt;<span class="title">Function</span>&gt;<span class="params">(M.getOrInsertFunction( <span class="string">"printf"</span>, printf_type,</span></span></div><div class="line">      AttributeSet().<span class="title">addAttribute</span><span class="params">(M.getContext()</span>, 1<span class="title">U</span>, <span class="title">Attribute</span>::<span class="title">NoAlias</span>)));</div><div class="line">		Value *helloWorld = Builder.CreateGlobalStringPtr(<span class="string">"hello world!\n"</span>)<span class="comment">;</span></div><div class="line">		Builder.CreateCall(<span class="function"><span class="keyword">func</span>, <span class="title">helloWorld</span>);</span></div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span><span class="comment">;</span></div><div class="line">    &#125;</div><div class="line">  &#125;<span class="comment">;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">char PrintfAfterMain::ID = <span class="number">0</span><span class="comment">;</span></div><div class="line"><span class="keyword">static</span> RegisterPass&lt;PrintfAfterMain&gt; X(<span class="string">"PrintfAfterMain"</span>, <span class="string">"PrintfAfterMain World Pass"</span>, <span class="literal">false</span>, <span class="literal">false</span>)<span class="comment">;</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>我们可以看出，通过重写 <code>ModulePass</code> 的虚函数 <code>runOnModule</code>，只需要几行的代码，便可以实现该功能。简单说一些它的逻辑：在 LLVM 中，每一个 Module 可以看做就代表一个程序，<code>ModulePass</code> 就是对一个 Module 进行操作，一个 Module 维护着一个函数列表，一个 Function 维护有一个 BB 块列表，而一个 BB 块维护有一个指令列表，首先通过 Module 的 <code>getFunction</code>  方法找到 <code>main</code> ，如果没找到，说明模块中不存在 <code>main</code> 函数，这时候不需要对模块进行任何更改，直接返回 <code>false</code> 即可，如果存在 <code>main</code> 函数，那么便可以找到它的第一条指令：<code>&amp;(*F-&gt;begin()-&gt;begin())</code>，然后，通过 <code>IRBuilder.CreateCall</code> 创建一个调用 <code>printf</code>  函数打印 <code>hello, world!\n</code>. </p>
+<p>通过继承 <code>FunctionPass</code> 也可以实现该功能，<code>FunctionPass</code> 作用在每一个函数上，此时，重写 <code>runOnFunction</code> 方法，判断函数为 <code>main</code> 函数，如果不是，则返回，否则，同上进行指令插桩。</p>
+<h3 id="APA"><a href="#APA" class="headerlink" title="APA"></a>APA</h3>
+<p>APA 的全称是 automatic pool allocation，它是 LLVM 后端的一个优化框架，通过将分离的数据结构分配到不同的内存池中，从而控制数据结构在内存中布局。</p>
+<p>编译原理研讨课上本人做了一个关于 APA 的调研，发现网上关于 APA 的资源很少，并且 APA 项目本身不稳定，甚至代码存在一些未修复的 bug，因此将编译安装/使用 APA 的一些步骤记录如下：</p>
+<p>本次实验中使用的是 LLVM 3.3 和 poolalloc r192788</p>
+<ul>
+  <li>下载 LLVM 3.3</li>
+</ul>
+<figure class="highlight awk">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">svn co http:<span class="regexp">//</span>llvm.org<span class="regexp">/svn/</span>llvm-project<span class="regexp">/llvm/</span>branches<span class="regexp">/release_33/</span> llvm3.<span class="number">3</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>
+    <p>下载 clang 3.3 到 llvm3.3/tools</p>
+    <figure class="highlight awk">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div><div class="line">2</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">cd llvm3.<span class="number">3</span><span class="regexp">/tools/</span></div><div class="line">svn co http:<span class="regexp">//</span>llvm.org<span class="regexp">/svn/</span>llvm-project<span class="regexp">/cfe/</span>branches<span class="regexp">/release_33/</span> clang</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <p>由于我在编译 Compiler RT 的时候发生错误，因此这儿不安装 Compiler RT</p>
+  </li>
+  <li>
+    <p>下载 poolalloc 到 llvm3.3/projects</p>
+    <figure class="highlight awk">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">svn co http:<span class="regexp">//</span>llvm.org<span class="regexp">/svn/</span>llvm-project<span class="regexp">/poolalloc/</span>trunk<span class="regexp">/ poolalloc</span></div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <p>将 poolalloc 还原到版本 192788</p>
+    <figure class="highlight lsl">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">svn update -r <span class="number">192788</span></div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <p>修复 poolalloc 192788 中的一些bug, 调用 <code>-poolalloc</code> pass 时发生段错误：</p>
+    <figure class="highlight stata">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div><div class="line">2</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line"><span class="keyword">cd</span> /path/to/poolalloc</div><div class="line">vi <span class="keyword">include</span>/poolalloc/Heuristic.<span class="built_in">h</span></div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+</ul>
+<p>为 class Heuristic 添加成员方法 setGraphs:<br>
+  <figure class="highlight stata">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">void setGraphs(DataStructures *<span class="keyword">ds</span>)&#123;</div><div class="line">	<span class="keyword">Graph</span> = <span class="keyword">ds</span>;</div><div class="line">&#125;</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<figure class="highlight crystal">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">vi <span class="class"><span class="keyword">lib</span>/<span class="title">PoolAllocate</span>/<span class="title">PoolAllocate</span>.<span class="title">cpp</span></span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>在 <code>line 1252: CurHeuristic-&gt;getLocalPoolNodes (F, LocalNodes);</code> 前插入<code>CurHeuristic-&gt;setGraphs(Graphs);</code></p>
+<ul>
+  <li>使用 ninja 进行编译安装</li>
+</ul>
+<p>在 llvm3.3 同目录下：<br>
+  <figure class="highlight armasm">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="symbol">mkdir</span> <span class="keyword">build;</span></div><div class="line"><span class="symbol">cd</span> <span class="keyword">build;</span></div><div class="line"><span class="symbol">cmake</span> -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS<span class="symbol">=ON</span> -DCMAKE_INSTALL_PREFIX=/<span class="meta">opt</span>/llvm3.<span class="number">3</span> ../llvm3.<span class="number">3</span></div><div class="line"><span class="symbol">ln</span> -s ../<span class="keyword">build/compile_commands.json </span>..</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>编译：<br>
+  <figure class="highlight ebnf">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="attribute">ninja</span></div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>安装：<br>
+  <figure class="highlight cmake">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">sudo ninja <span class="keyword">install</span></div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<ul>
+  <li>查看 poolalloc 是否安装成功：
+    <figure class="highlight crystal">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div><div class="line">2</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">cd /opt/llvm3.<span class="number">3</span>/<span class="class"><span class="keyword">lib</span></span></div><div class="line">find .|grep poolmalloc</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+</ul>
+<p>如果能看到poolmalloc的库poolalloc.a、poolalloc.so, 则证明安装成功.</p>
+<h3 id="ninja-安装方法"><a href="#ninja-安装方法" class="headerlink" title="ninja 安装方法"></a>ninja 安装方法</h3>
+<figure class="highlight vim">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">git clone gi<span class="variable">t:</span>//github.<span class="keyword">com</span>/martine/ninja.git</div><div class="line"><span class="keyword">cd</span> ninja</div><div class="line">./bootstrap.<span class="keyword">py</span></div><div class="line">sudo <span class="keyword">cp</span> ninja /usr/local/bin/</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="使用-DSA"><a href="#使用-DSA" class="headerlink" title="使用 DSA"></a>使用 DSA</h3>
+<p>1)查看与dsa相关的选项<br>
+  <figure class="highlight crystal">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">opt -load /opt/llvm3.<span class="number">3</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">LLVMDataStructure</span>.<span class="title">so</span> -<span class="title">load</span> /<span class="title">opt</span>/<span class="title">llvm3</span>.3/<span class="title">lib</span>/<span class="title">poolalloc</span>.<span class="title">so</span> --<span class="title">help</span>|<span class="title">grep</span> <span class="title">dsa</span></span></div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>2)使用dsa(以dsa-local分析为例)<br>
+  <figure class="highlight crystal">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">opt -load /opt/llvm3.<span class="number">3</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">LLVMDataStructure</span>.<span class="title">so</span> -<span class="title">load</span> /<span class="title">opt</span>/<span class="title">llvm3</span>.3/<span class="title">lib</span>/<span class="title">poolalloc</span>.<span class="title">so</span> -<span class="title">analyze</span> --<span class="title">dsa</span>-<span class="title">local</span> <span class="title">test</span>.<span class="title">ll</span></span></div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<h3 id="使用poolalloc"><a href="#使用poolalloc" class="headerlink" title="使用poolalloc"></a>使用poolalloc</h3>
+<figure class="highlight crystal">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">clang -emit-llvm -c test.c;</div><div class="line"><span class="regexp">/opt/llvm</span>3.<span class="number">3</span>/bin/opt -load /opt/llvm3.<span class="number">3</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">LLVMDataStructure</span>.<span class="title">so</span> -<span class="title">load</span> /<span class="title">opt</span>/<span class="title">llvm3</span>.3/<span class="title">lib</span>/<span class="title">poolalloc</span>.<span class="title">so</span> -<span class="title">poolalloc</span> <span class="title">test</span>.<span class="title">o</span> &gt; <span class="title">test</span>.<span class="title">o1</span>;</span></div><div class="line">/opt/llvm3.<span class="number">3</span>/bin/llvm-dis test.o/test.o1;</div><div class="line"><span class="regexp">//</span>查看前后不同：diff test.o.ll test.o1.ll</div><div class="line">/<span class="regexp">/生成可执行文件：</span></div><div class="line">llc test.o1.ll;</div><div class="line">gcc /opt<span class="regexp">/llvm3.3/lib</span><span class="regexp">/libpoolalloc_rt.a test.o1.s;</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="Slide"><a href="#Slide" class="headerlink" title="Slide"></a>Slide</h3>
+<p>下面，附上做报告时用的slide:</p>
+<p><a href="https://ucasfl.github.io/slides/apa.pdf" target="_blank" rel="external">poolalloc</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前段时间学习了一些关于 LLVM Pass 和 APA 方面的知识，趁今天有空，做一些总结。&lt;/p&gt;
+&lt;h3 id=&quot;LLVM-Pass&quot;&gt;&lt;a href=&quot;#LLVM-Pass&quot; class=&quot;headerlink&quot; title=&quot;LLVM Pass&quot;&gt;&lt;/a&gt;LLVM Pass&lt;/h3&gt;
+&lt;p&gt;Pass 是 LLVM 中一个非常重要的框架，在 LLVM 后端的分析、转化、优化等过程中，通常是多个 Pass 一起作用来共同完成的。&lt;/p&gt;
+&lt;p&gt;每一个 LLVM Pass 都是 &lt;code&gt;Pass&lt;/code&gt; 类的一个派生类，通过重写 &lt;code&gt;Pass&lt;/code&gt; 类的虚方法来实现自身的功能。根据你想要实现的功能，你可以选择继承&lt;code&gt;ModulePass&lt;/code&gt;或&lt;code&gt;FunctionPass&lt;/code&gt; 等等一系列Pass.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="LLVM" scheme="http://ucasfl.me/categories/LLVM/"/>
+    
+    
+      <category term="LLVM Pass/APA" scheme="http://ucasfl.me/tags/LLVM-Pass-APA/"/>
+    
+  </entry>
   
   <entry>
     <title>记一次意外的移位错误</title>
@@ -1834,526 +2109,6 @@
     
     
       <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 编程风格</title>
-    <link href="http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/"/>
-    <id>http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/</id>
-    <published>2017-10-26T04:10:08.000Z</published>
-    <updated>2018-06-13T05:38:38.158Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。</p>
-<p>2018 年 6 月 13 日更新。</p>
-<a id="more"></a>
-<h3 id="多变量赋值"><a href="#多变量赋值" class="headerlink" title="多变量赋值"></a>多变量赋值</h3>
-<p>变量赋值是编程语言里面最简单的语句之一，通常情况下，我们会这样做：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line">c = <span class="number">3</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这样便完成了对三个变量的赋值，但你可以用更简单的方式：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="元素值交换"><a href="#元素值交换" class="headerlink" title="元素值交换"></a>元素值交换</h3>
-<p>在编程过程中，交换两个变量的值是非常常见的。一般情况下，我们会用下面这种方式来交换两个变量的值（尤其是对于第一门语言是C/C++的人来说）：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">t = a</div><div class="line">a = b</div><div class="line">b = t</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这种方式是正确的，没有人敢说它不对，但事实上，在 Python 里，你可以有更简单的方式来完成这件事：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a, b = b, a</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>没错，一行语句就够了。</p>
-<p>对上面两个技巧的解释：在 Python 中，任何以逗号分隔的对象均被当作元组处理，因此<code>1, 2, 3</code>　实际上就是一个元组<code>(1, 2, 3)</code>，赋值过程可以看成是元组的解包 。交换值也是同样的，它相当于把等号右边的元组解包后赋值给了左边的变量。为了提高代码的可读性，上面的例子可以加上括号：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span> = (<span class="selector-tag">b</span>, a)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="循环遍历区间元素"><a href="#循环遍历区间元素" class="headerlink" title="循环遍历区间元素"></a>循环遍历区间元素</h3>
-<p>你可以这样：<br>
-  <figure class="highlight stylus">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>] :</div><div class="line">	print(i)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>但更好的方法是：<br>
-  <figure class="highlight ada">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">6</span>) :</div><div class="line">	<span class="type">print</span>(i)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>值得一提的是, <code>range</code> 返回的是生成器对象，生成器比列表更加节省内存。</p>
-<h3 id="带有索引位置的集合遍历"><a href="#带有索引位置的集合遍历" class="headerlink" title="带有索引位置的集合遍历"></a>带有索引位置的集合遍历</h3>
-<p>遍历集合时，如果需要索引信息，直接迭代是没有的，普通的方式是：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">peoples = [<span class="string">'Tim'</span>, <span class="string">'Bob'</span>, <span class="string">'Ada'</span>]</div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> range(len(peoples)) :</div><div class="line">	print(<span class="selector-tag">i</span>, <span class="string">'---&gt;'</span>, peoples[i])</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>但你还可以这样：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span>, people <span class="keyword">in</span> enumerate(peoples) :</div><div class="line">	print(<span class="selector-tag">i</span>, <span class="string">'---&gt;'</span>, people)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3>
-<p>普通方式可以用 <code>+</code> 操作：<br>
-  <figure class="highlight stylus">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line">strs = [<span class="string">'I'</span>, <span class="string">'Love'</span>, <span class="string">'You'</span>]</div><div class="line">s = strs[<span class="number">0</span>]</div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> strs[<span class="number">1</span>: ]:</div><div class="line">	s += <span class="string">' '</span> + <span class="selector-tag">i</span></div><div class="line"><span class="function"><span class="title">print</span><span class="params">(s)</span></span></div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>但你还可以使用 <code>join</code> 方法：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">' '</span>.join(strs)</span></span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>与 <code>join</code> 相对应的就是 <code>split</code> 方法，<code>split</code> 方法通过指定分隔符参数来分割字符串，默认为空白符：<br>
-  <figure class="highlight ini">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line"><span class="attr">s</span> = <span class="string">'I love you'</span></div><div class="line"><span class="attr">l</span> = s.split() # l = [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'you'</span>]</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>此外，<code>split</code> 方法还有一个用法。我们知道，在 Python 中，从键盘输入时，<code>input()</code> 方法会读取一整行输入，然后返回一个字符串，如果想要在同一行输入多个整数并赋值给多个对象，那么 <code>split()</code> 方法就派上用场了：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = input().split()</div><div class="line"><span class="selector-tag">a</span> = int(a)</div><div class="line"><span class="selector-tag">b</span> = int(b)</div><div class="line">c = int(c)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这样，就可以在同一行输入三个整数，然后分别赋值给 a, b, c，当然，此时，仍然是字符串，如果要作为整数使用，那么，使用 <code>int()</code> 转化一下即可。</p>
-<h3 id="列表解析"><a href="#列表解析" class="headerlink" title="列表解析"></a>列表解析</h3>
-<p>假设 <code>list1</code> 是一个字符串组成的列表，现在，需要把 <code>list1</code> 中的每一个字符串的每一个小写字母找出来，形成一个新的元组。一般情况下，我们可以这样做：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list1 = [<span class="string">'adg'</span>, <span class="string">'Adf'</span>, <span class="string">'124'</span>]</div><div class="line">list2 = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> i:</div><div class="line">    <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>:</div><div class="line">      list2.append(j)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>但实际上，你只需要用一个语句就可以完成这件事：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list2 = [j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>]</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>没错，Python 就是这么简洁。如果把上面的方括号换成圆括号，那么结果返回的就是一个迭代器，可以使用 <code>next()</code> 方法获取元素：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list2 = (j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>)</div><div class="line">list2.next() <span class="comment"># 返回'a'</span></div><div class="line">list2.next() <span class="comment"># 返回'd'</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="收集参数"><a href="#收集参数" class="headerlink" title="收集参数"></a>收集参数</h3>
-<p>函数的多个参数可通过一个元组传递，假设有如下函数：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x + y</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>可重新定义为：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(*params)</span>:</span></div><div class="line">  <span class="keyword">return</span> params[<span class="number">0</span>] + params[<span class="number">1</span>]</div><div class="line"><span class="comment">#传递参数</span></div><div class="line">add2(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="comment">#或</span></div><div class="line">tuple1 = (<span class="number">1</span>, <span class="number">2</span>)</div><div class="line">add2(*tuple1)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>使用双星号则可以传递一个字典：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">with_star</span><span class="params">(**kwds)</span>:</span></div><div class="line">  print(kwds[<span class="string">'name'</span>], <span class="string">' is '</span>, kwds[<span class="string">'age'</span>] ,<span class="string">' years old.'</span>)</div><div class="line">args = &#123;<span class="string">'name'</span> : <span class="string">'Mrs. GUmby'</span>, <span class="string">'age'</span> : <span class="number">42</span>&#125;</div><div class="line">with_star(**args)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="使用两个列表创建字典"><a href="#使用两个列表创建字典" class="headerlink" title="使用两个列表创建字典"></a>使用两个列表创建字典</h3>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">list2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">d = dict(zip(list1, list2))</div><div class="line">list1 == list(d.keys())</div><div class="line">list2 == list(d.values())</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
-<p>多态意味着就算不知道变量所引用的对象类型是什么，也可以对它进行操作，看下面的函数：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span> <span class="params">(a, b)</span>:</span></div><div class="line">  <span class="keyword">return</span> a + b</div><div class="line">add(<span class="number">1</span>, <span class="number">2</span>)  <span class="comment"># 返回３</span></div><div class="line">add(<span class="string">'ab'</span>, <span class="string">'cd'</span>) <span class="comment"># 返回'abcd'</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>很多函数和运算符都是多态的，因此写程序时也应该尽量避免破坏多态，尽量不使用 <code>type, isinstance, issubclass</code> 之类会破坏多态的函数。</p>
-<p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>
-<h3 id="打开-关闭文件"><a href="#打开-关闭文件" class="headerlink" title="打开/关闭文件"></a>打开/关闭文件</h3>
-<p>执行文件操作时，一定不能忘记 <code>close()</code>，即使代码出错，普遍的方法是在 <code>finally</code> 块中显示的调用 <code>close</code> 方法：</p>
-<figure class="highlight livecodeserver">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">f = <span class="built_in">open</span>(<span class="string">'data.txt'</span>)</div><div class="line"><span class="keyword">try</span> :</div><div class="line">	data = f.<span class="built_in">read</span>()</div><div class="line"><span class="keyword">finally</span> :</div><div class="line">	f.<span class="built_in">close</span>()</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>但更简介的方法是：</p>
-<figure class="highlight haskell">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="title">with</span> open('<span class="class"><span class="keyword">data</span>.txt') as f :</span></div><div class="line">	<span class="class"><span class="keyword">data</span> = f.read()</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>使用 <code>with</code> 语句，系统会在执行完文件操作之后自动关闭文件对象。</p>
-<h3 id="合理使用列表"><a href="#合理使用列表" class="headerlink" title="合理使用列表"></a>合理使用列表</h3>
-<p>列表对象是一个查询效率高但更新效率低的数据结构。比如删除元素和插入元素的时候执行效率非常低，需要对剩下的元素进行移动。</p>
-<figure class="highlight vim">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">people = [<span class="string">'xiaoming'</span>, <span class="string">'xiaohong'</span>, <span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>]</div><div class="line">people.<span class="keyword">pop</span>(<span class="number">0</span>)</div><div class="line">people.<span class="keyword">insert</span>(<span class="number">0</span>, <span class="string">'lihua'</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>更好的方法是使用 <code>deque</code>:</p>
-<figure class="highlight xl">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">from collections <span class="keyword">import</span> deque</div><div class="line"><span class="keyword">name</span> = deque([<span class="string">'xiaoming'</span>, <span class="string">'xiaohong'</span>, <span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>])</div><div class="line"><span class="keyword">name</span>.popleft()</div><div class="line"><span class="keyword">name</span>.appendleft(<span class="string">'lihua'</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><code>deque</code> 是一个双向队列的数据结构，删除元素和插入元素会很快。</p>
-<h3 id="遍历字典中的-key-和-value"><a href="#遍历字典中的-key-和-value" class="headerlink" title="遍历字典中的 key 和 value"></a>遍历字典中的 key 和 value</h3>
-<p>普通方法：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">d = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span>&#125;</div><div class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d :</div><div class="line">	<span class="type">print</span>(k, '<span class="comment">---&gt;', d[k])</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>该方法效率较低，因为每次都需要重新进行 hash 查找 key 对应的 value 。</p>
-<p>高效的方法是：</p>
-<figure class="highlight bash">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items():</div><div class="line">	<span class="built_in">print</span>(k, <span class="string">'---&gt;'</span>, d[k])</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><code>items</code> 返回迭代器对象，效率高，且节省内存。</p>
-<h3 id="链式比较"><a href="#链式比较" class="headerlink" title="链式比较"></a>链式比较</h3>
-<p>学了那么久 Python，最近才知道 Python 居然支持大多数编程语言都不支持的链式比较：</p>
-<p>常规方法：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">age = <span class="number">18</span></div><div class="line"><span class="keyword">if</span> age &gt; <span class="number">18</span> <span class="keyword">and</span> age &lt; <span class="number">60</span> :</div><div class="line">	<span class="type">print</span>(<span class="symbol">'young</span> man')</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>事实上，在 Python 中，你可以这样写：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">if</span> <span class="number">18</span> &lt; age &lt; <span class="number">60</span> :</div><div class="line">	<span class="type">print</span>(<span class="symbol">'young</span> man')</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>理解了链式比较操作，那么你也就明白了下面这行代码为什么会返回 <code>False</code> :</p>
-<figure class="highlight ini">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="attr">True</span> == <span class="literal">True</span> == <span class="literal">False</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="if-else-三目运算"><a href="#if-else-三目运算" class="headerlink" title="if/else 三目运算"></a>if/else 三目运算</h3>
-<p>常规：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">if</span> gender == <span class="symbol">'male</span>' :</div><div class="line">	<span class="type">text</span> = <span class="symbol">'man</span>'</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">text</span> = <span class="symbol">'women</span>'</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>pythonic:</p>
-<figure class="highlight arduino">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="built_in">text</span> = <span class="string">'man'</span> <span class="built_in">if</span> gender == <span class="string">'male'</span> <span class="built_in">else</span> <span class="string">'women'</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="for-else-while-else-语句"><a href="#for-else-while-else-语句" class="headerlink" title="for/else, while/else 语句"></a>for/else, while/else 语句</h3>
-<p><code>for/else, while/else</code> 语句是 Python 中最迷惑人的语法：如果以正常方式退出循环(非 <code>break&#39;, 非</code>return<code>, 程序异常)，那么</code>else` 分支将执行：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>) :</div><div class="line">	<span class="type">if</span> i == <span class="number">5</span> :</div><div class="line">		<span class="type">break</span></div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">print</span>(<span class="string">"hello, world."</span>) # 无输出</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>) :</div><div class="line">	<span class="type">print</span>(i)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">print</span>(<span class="string">"hello, world."</span>) # 有输出</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>当然，上面说到的例子没什么用，看下面一个：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">found = <span class="literal">false</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> mylist :</div><div class="line">	<span class="type">if</span> i == theflag :</div><div class="line">		<span class="type">found</span> = <span class="literal">True</span></div><div class="line">		break</div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> found :</div><div class="line">	<span class="type">print</span>(<span class="string">"Not found."</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>使用 <code>for/else</code> :</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> mylist :</div><div class="line">	<span class="keyword">if</span> <span class="selector-tag">i</span> == theflag :</div><div class="line">		break</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	print(<span class="string">"Not found."</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。&lt;/p&gt;
-&lt;p&gt;2018 年 6 月 13 日更新。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://ucasfl.me/tags/Python/"/>
     
   </entry>
   
