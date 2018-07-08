@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-07-08T07:21:18.809Z</updated>
+  <updated>2018-07-08T07:31:31.981Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ucasfl.me/2018/07/08/LLVM-Pass-and-APA-Introduction/"/>
     <id>http://ucasfl.me/2018/07/08/LLVM-Pass-and-APA-Introduction/</id>
     <published>2018-07-08T05:54:01.000Z</published>
-    <updated>2018-07-08T07:21:18.809Z</updated>
+    <updated>2018-07-08T07:31:31.981Z</updated>
     
     <content type="html"><![CDATA[<p>前段时间学习了一些关于 LLVM Pass 和 APA 方面的知识，趁今天有空，做一些总结。</p>
 <h3 id="LLVM-Pass"><a href="#LLVM-Pass" class="headerlink" title="LLVM Pass"></a>LLVM Pass</h3>
@@ -62,70 +62,70 @@
   </table>
 </figure>
 <ul>
-  <li>
-    <p>下载 clang 3.3 到 llvm3.3/tools</p>
-    <figure class="highlight awk">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div><div class="line">2</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line">cd llvm3.<span class="number">3</span><span class="regexp">/tools/</span></div><div class="line">svn co http:<span class="regexp">//</span>llvm.org<span class="regexp">/svn/</span>llvm-project<span class="regexp">/cfe/</span>branches<span class="regexp">/release_33/</span> clang</div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
-  </li>
+  <li>下载 clang 3.3 到 llvm3.3/tools</li>
+</ul>
+<figure class="highlight awk">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">cd llvm3.<span class="number">3</span><span class="regexp">/tools/</span></div><div class="line">svn co http:<span class="regexp">//</span>llvm.org<span class="regexp">/svn/</span>llvm-project<span class="regexp">/cfe/</span>branches<span class="regexp">/release_33/</span> clang</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
   <li>
     <p>由于我在编译 Compiler RT 的时候发生错误，因此这儿不安装 Compiler RT</p>
   </li>
   <li>
     <p>下载 poolalloc 到 llvm3.3/projects</p>
-    <figure class="highlight awk">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line">svn co http:<span class="regexp">//</span>llvm.org<span class="regexp">/svn/</span>llvm-project<span class="regexp">/poolalloc/</span>trunk<span class="regexp">/ poolalloc</span></div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
-  </li>
-  <li>
-    <p>将 poolalloc 还原到版本 192788</p>
-    <figure class="highlight lsl">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line">svn update -r <span class="number">192788</span></div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
-  </li>
-  <li>
-    <p>修复 poolalloc 192788 中的一些bug, 调用 <code>-poolalloc</code> pass 时发生段错误：</p>
-    <figure class="highlight stata">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div><div class="line">2</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line"><span class="keyword">cd</span> /path/to/poolalloc</div><div class="line">vi <span class="keyword">include</span>/poolalloc/Heuristic.<span class="built_in">h</span></div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
   </li>
 </ul>
+<figure class="highlight awk">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">svn co http:<span class="regexp">//</span>llvm.org<span class="regexp">/svn/</span>llvm-project<span class="regexp">/poolalloc/</span>trunk<span class="regexp">/ poolalloc</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>将 poolalloc 还原到版本 192788</li>
+</ul>
+<figure class="highlight lsl">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">svn update -r <span class="number">192788</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>修复 poolalloc 192788 中的一些bug, 调用 <code>-poolalloc</code> pass 时发生段错误：</li>
+</ul>
+<figure class="highlight stata">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">cd</span> /path/to/poolalloc</div><div class="line">vi <span class="keyword">include</span>/poolalloc/Heuristic.<span class="built_in">h</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
 <p>为 class Heuristic 添加成员方法 setGraphs:<br>
   <figure class="highlight stata">
     <table>
@@ -134,24 +134,26 @@
           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
         </td>
         <td class="code">
-          <pre><div class="line">void setGraphs(DataStructures *<span class="keyword">ds</span>)&#123;</div><div class="line">	<span class="keyword">Graph</span> = <span class="keyword">ds</span>;</div><div class="line">&#125;</div></pre>
+          <pre><div class="line">void setGraphs(DataStructures <span class="keyword">ds</span>)&#123;</div><div class="line">	<span class="keyword">Graph</span> = <span class="keyword">ds</span>;</div><div class="line">&#125;</div></pre>
         </td>
       </tr>
     </table>
   </figure>
 </p>
-<figure class="highlight crystal">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">vi <span class="class"><span class="keyword">lib</span>/<span class="title">PoolAllocate</span>/<span class="title">PoolAllocate</span>.<span class="title">cpp</span></span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
+<p>PoolAllocate.cpp<br>
+  <figure class="highlight crystal">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">vi <span class="class"><span class="keyword">lib</span>/<span class="title">PoolAllocate</span>/<span class="title">PoolAllocate</span>.<span class="title">cpp</span></span></div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
 <p>在 <code>line 1252: CurHeuristic-&gt;getLocalPoolNodes (F, LocalNodes);</code> 前插入<code>CurHeuristic-&gt;setGraphs(Graphs);</code></p>
 <ul>
   <li>使用 ninja 进行编译安装</li>
@@ -199,21 +201,20 @@
   </figure>
 </p>
 <ul>
-  <li>查看 poolalloc 是否安装成功：
-    <figure class="highlight crystal">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div><div class="line">2</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line">cd /opt/llvm3.<span class="number">3</span>/<span class="class"><span class="keyword">lib</span></span></div><div class="line">find .|grep poolmalloc</div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
-  </li>
+  <li>查看 poolalloc 是否安装成功：</li>
 </ul>
+<figure class="highlight crystal">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">cd /opt/llvm3.<span class="number">3</span>/<span class="class"><span class="keyword">lib</span></span></div><div class="line">find .|grep poolmalloc</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
 <p>如果能看到poolmalloc的库poolalloc.a、poolalloc.so, 则证明安装成功.</p>
 <h3 id="ninja-安装方法"><a href="#ninja-安装方法" class="headerlink" title="ninja 安装方法"></a>ninja 安装方法</h3>
 <figure class="highlight vim">
