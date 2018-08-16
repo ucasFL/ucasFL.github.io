@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-07-08T07:31:31.981Z</updated>
+  <updated>2018-08-16T02:14:04.256Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ucasfl.me/2018/07/08/LLVM-Pass-and-APA-Introduction/"/>
     <id>http://ucasfl.me/2018/07/08/LLVM-Pass-and-APA-Introduction/</id>
     <published>2018-07-08T05:54:01.000Z</published>
-    <updated>2018-07-08T07:31:31.981Z</updated>
+    <updated>2018-08-16T02:14:04.256Z</updated>
     
     <content type="html"><![CDATA[<p>前段时间学习了一些关于 LLVM Pass 和 APA 方面的知识，趁今天有空，做一些总结。</p>
 <h3 id="LLVM-Pass"><a href="#LLVM-Pass" class="headerlink" title="LLVM Pass"></a>LLVM Pass</h3>
@@ -273,7 +273,7 @@
 </figure>
 <h3 id="Slide"><a href="#Slide" class="headerlink" title="Slide"></a>Slide</h3>
 <p>下面，附上做报告时用的slide:</p>
-<p><a href="https://ucasfl.github.io/slides/apa.pdf" target="_blank" rel="external">poolalloc</a></p>]]></content>
+<p><a href="./slides/Automatic_Pool_Allocation.pdf">Automatic Pool Allocation</a></p>]]></content>
     
     <summary type="html">
     
