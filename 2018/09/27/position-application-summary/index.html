@@ -1,0 +1,1249 @@
+<!doctype html>
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithms," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+  <meta name="description" content="开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。
+最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="两次失败的校招笔试总结">
+  <meta property="og:url" content="http://ucasfl.me/2018/09/27/position-application-summary/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。
+最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。">
+  <meta property="og:image" content="http://ucasfl.me/photos/position/fifo.png">
+  <meta property="og:updated_time" content="2018-09-27T04:43:57.458Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="两次失败的校招笔试总结">
+  <meta name="twitter:description" content="开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。
+最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。">
+  <meta name="twitter:image" content="http://ucasfl.me/photos/position/fifo.png">
+
+
+
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2018/09/27/position-application-summary/" />
+
+
+
+
+
+  <title> 两次失败的校招笔试总结 | 春暖花开 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
+
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">春暖花开</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+            </div>
+
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-tags">
+              <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+            </li>
+
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
+
+        </nav>
+
+
+
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+
+
+            <div id="posts" class="posts-expand">
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2018/09/27/position-application-summary/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
+                <header class="post-header">
+
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    两次失败的校招笔试总结
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T09:16:35+08:00">
+                2018/09/27
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+
+
+
+
+                    <span id="/2018/09/27/position-application-summary/" class="leancloud_visitors" data-flag-title="两次失败的校招笔试总结">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <p>开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。</p>
+                  <p>最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。</p>
+                  <a id="more"></a>
+                  <p>笔试都是分为两部分，第一部分是基础题（选择题），第二部分是算法编程题。不过腾讯的基础题和百度的略有不同，算法题考的方向也不太一样。首先说明，我投的都是后端的岗位。腾讯的基础题覆盖的知识点几乎都是数据结构、操作系统、计算机网络以及 C++ 的知识，不过考的确实比较细，需要把所有相关知识掌握牢固才行。比如其中一个题，问的是<em>什么置换算法会产生<code>Belady</code>现象</em>，看到这个题的时候，我蒙圈了，虽然页替换算法操作系统课学过，但我从来没看到什么<code>Belady</code>现象。考试结束后查了一下才知道，原来操作系统课上是有讲到的，只是自己忽视了：<code>Belady</code>现象就是指在
+                    FIFO 替换算法中，增加页的数目，不一定能够减少缺页。</p>
+                  <p><img src="/photos/position/fifo.png" alt="fifo"></p>
+                  <p>百度的基础题和腾讯略有差别，基础题分为三部分，第一部分是逻辑分析题，第二部分是数学题，第三部分才是关于计算机后端的题。当然，前面的逻辑分析题和数学题都很简单，对于一个理工科专业的学生来说，应该都没有什么问题，只是因为有时间限制，所以容易出现做不完。</p>
+                  <p>下面着重来看一看算法编程题，毕竟这是我的心头之痛。两次笔试的算法题都是有三道，我们逐一来看看。由于具体题目描述已经记不清了，所以下面的题目描述中，仅做形式化描述，并非原题目的完整描述，但不改变题意和要求。</p>
+                  <h3 id="腾讯"><a href="#腾讯" class="headerlink" title="腾讯"></a>腾讯</h3>
+                  <p><strong>1.给定一个正整数 N，求最小的 M，满足 lcm(N+1, N+2, …, N+M) = lcm(1, 2,…, M)</strong></p>
+                  <p>本题一看就是一个数论题，对于一个数学渣来说，数论真的好难啊，然而不幸的是，腾讯的三个算法题中两个是数论题。考试的时候，我自然是没有做出来。下面提供一种暴力解法：M 个数的最小公倍数，可以通过质因数分解来求解，那么便可以将 M 从 1 开始，不停往上加，求 lcm(N+1, N+2, …, N+M) 和 lcm(1, 2, …, M) 直到相等。如果 M 很小，那么能够很快算出来，但如果很大，那么复杂度会很高，必定会超时。</p>
+                  <p>下面是暴力法质因数分解的实现：（有空再补）</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"></div><div class="line"></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>2.给定一个有向图，定义 F(A) 为从顶点 A 出发能够到达（存在路径）的所有顶点的数目，T(A) 为能够到达 A 的所有顶点的数目。给定一个有向图，找出满足 T(A) &gt; F(A) 的顶点数目</strong></p>
+                  <p>本题是一个图论题，原题目是说找”重要城市“的数目，我进行了形式化描述。下面提供一种可行解法：对于任意一个顶点，要计算 F(A)，那么从 A 点开始做一次广度优先遍历即可求出，假设得到的能够到达的顶点集合为 S(A)。对所有顶点都做一次广度优先遍历之后，那么我们便知道了从每一个顶点出发能够到达的顶点，也就可以计算出 T(A) 了，T(A) = A 在所有顶点集合 S(i) 中出现的次数。</p>
+                  <p>分析一下算法时间复杂度，广度优先遍历的时间复杂度是 O(|V|)，|V| 为有向图的顶点数目，对每个顶点都进行一个遍历，因为复杂度为 O(|V|^2)。计算 T(A) 时，S 集合通过索引存储，那么在一个集合中查找需要的时间为 O(1)，需要在 |V| - 1 个集合中查找，需要时间 O(|V|)，每个顶点都需要在 |V| - 1 个集合中进行查找，因此，时间复杂度为 O(|V|^2)。</p>
+                  <p>综上，该算法的时间复杂度为 O(|V|^2)。</p>
+                  <p>代码实现：（有空再补）</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"></div><div class="line"></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>3.给定三个正整数 M，N，K，计算是否存在整数 m，满足 mM mod N = K，即 K | (mM - N)，如果存在，输出 m，如果不存在，输出 -1</strong></p>
+                  <p>本题又又又是一个数论题，目前我还没有想出一个可行的解法。在本题中，暴力解法（将 m 从 1 往上加）是行不通的，这是因为，如果不存在满足条件的 m，那么算法将永远不会终止，这不符合算法的定义：有穷性。</p>
+                  <h3 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h3>
+                  <p>下面看一看百度的算法题，和腾讯的相比就没有那么”数学“了，虽然考试的时候我还是没有能够完整做出来一道。再次说明，以下的题目描述均为个人在不改变题意和要求的情况下的形式化描述。</p>
+                  <p><strong>1.给定 n 个数 M1, M2, …, Mn，满足 Mi &gt;= 0，以及两个数 P, Q 满足 P &gt; Q &gt; 0，定义对 n 个数的一次运算 F(M1, M2, …, Mn) 为从这 n 个数中任意选择一个数，假设为 Mi，将 Mi 的值减去 P，如果 Mi &lt;= P，则 Mi = 0，同时将另外 n - 1 个数的值分别减去 Q。问：给定 n 个数以及 P，Q，至少需要多少次 F 运算，能够让所有 n 个数均变为 0?</strong></p>
+                  <p>在该问题中，我们每次可以任意选择一个数，由于 P &gt; Q，因此，被选中的那个数减小值最大，显然，每次都选择 n 个数中最大的那个能够使需要的次数最少，即贪心能够达到最优。解法就是：从 n 个数中选择最大数，将该数的值减小 P，再将另外 n - 1 个数的值分别减少 Q，然后再次选择最大数，重复进行，直到 n 个数都变为 0 为止。</p>
+                  <p>下面，我们对算法的具体实现和复杂度进行一些讨论。第一种简单实现： n 个数顺序存储，每次查找最大数，然后进行一次 F 操作，查找最大数需要的时间为 O(n)，进行一次 F 运算需要的时间也为 O(n)，最坏情况下，需要 Mmax 次 F 运算，Mmax　为初始时 n 个数的最大值。那么总共需要的时间为 Mmax*(n + n) 即 O(nMax)。</p>
+                  <p>对于 F 运算，不太有什么好的办法来优化计算时间，但是对于查找过程，我们可以进一步优化。上面的查找是顺序查找，如果将 n 个数排成有序的，那么我们就可以直接得到最大数，这样查找时间就大大减小了。但是进行了一次 F 运算之后，上一轮的所有非最大数依旧是有序的，而上一轮的最大数可能不再是最大数，则需要进行调整，，将它插入到合适的位置。该算法的详细描述和复杂度分析如下：</p>
+                  <ol>
+                    <li>对 n 个数进行一次排序，假设使用快排，需要的时间为 O(nlogn)</li>
+                    <li>检查最大数是否等于 0，如果是，则结束，否则进行一次 F 运算，需要的时间依然为 O(n)</li>
+                    <li>进行调整，通过折半查找将上一轮中的最大数插入到合适的位置，查找时间为 O(logn)，然后返回第 2 步。</li>
+                  </ol>
+                  <p>在该实现中，需要的时间为 nlogn + Mmax <em> logn + n </em> Mmax，第一种实现需要 2n*Mmax，由于 Mmax 的不确定性，如果 Mmax &lt; logn，那么通过排序的方法并不能减少算法需要的时间，因为，需要花费大量的时间进行排序。另外，上面的调整过程只计算了二分查找的时间，没有计算移动元素的时间，最坏情况下，每次需要移动 n-1 个元素，则需要的时间将会远远超过不排序的方法。</p>
+                  <p>实际上，我们可以有更好的改进方法。在数据结构课上，我们学过堆排序，因此我们可以利用堆排序的方法来优化查找过程：</p>
+                  <ol>
+                    <li>建一个大顶堆，需要的时间为 O(n)</li>
+                    <li>取最大数，如果最大数为 0，则结束，否则进行一次 F 运算，需要的时间为 O(n)</li>
+                    <li>将堆再次调整为大顶堆，需要时间为 O(logn)，返回 2</li>
+                  </ol>
+                  <p>此时，总共需要的时间为 n + Mmax <em> logn + n </em> Mmax，此时，虽然依旧不一定能够总是比第一种情况好（n + Mmax <em> logn &gt; n</em>Mmax时），但是，当 Mmax &lt; n / (n - log n) 时，则能够减少算法需要的时间。</p>
+                  <p>下面给出使用堆排序的实现代码：（有空再补）</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"></div><div class="line"></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>2.给定一个非空 0,1 字符串和一个正整数 K，可以将字符串中的最多 K 个 0 翻转为　１，求翻转后能够得到最长连续 1 的翻转方案的数目</strong></p>
+                  <p>为了解释题目，举个例子，0,1串为 00100，K为 2,即可以将其中两个 0 翻转为 1，则显然能够得到的最长连续 1 的长度为 3，并且翻转方案有:11100, 01110, 00111共三种方案，因此，结果应该输出 3。</p>
+                  <p>该题应该立刻想到动态规划，下面是我想到的一个可行算法，也许还有更好的方案。</p>
+                  <p>假设串为S[n]，定义F(i)为翻转后以第 i 个字符结尾的最长连续 1 子串的长度，则有</p>
+                  <ul>
+                    <li>F(0) = 1</li>
+                    <li>i &gt; 0，如果 S[i] == ‘1’，F[i] = F[i-1] + 1; 如果 S[i] == ‘0’ &amp;&amp; numOf0[0~i] &lt;= k,F[i] = i + 1，否则，F[i] = i - Loc0of[numOf0[0~i] - k]</li>
+                  </ul>
+                  <p>在计算的过程中，需要记录 S[0] 到 S[i] 之间0的个数以及每一个 0 的 index，计算 F[i] 需要的时间为 O(n)，另外，我们可以在计算的过程中记录最大长度，同时将长度映射到一个 map 中，计算完成后直接就可得到总的方法数目。</p>
+                  <p>实现的代码如下：（有空再补）</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"></div><div class="line"></div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p><strong>3.多个班级的人排成一列，规定任何相同班级的两个人之间至少需要隔 K 个其他班级的人，给定班级和人数以及 K，问是否存在满足条件的排列，存在则输出，多个输出字典序最小的一个，如果不存在则输出”-1”</strong></p>
+                  <p>比如 aacabbcbba, K = 1，不同字母代表不同班级，相同字母代表同一个班级，此时满足条件的排列即为没有任何两个连续的字母相同，比如 abacbababc 即满足要求。</p>
+                  <p>暂时未想出可行算法。</p>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2018/07/08/LLVM-Pass-and-APA-Introduction/" rel="next" title="LLVM Pass 与 APA 简介">
+                <i class="fa fa-chevron-left"></i> LLVM Pass 与 APA 简介
+              </a>
+
+                    </div>
+
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          </div>
+        </div>
+
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
+
+
+
+
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+              </li>
+            </ul>
+
+
+            <section class="site-overview sidebar-panel">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
+
+
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags">
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ilovezyq.github.io" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+
+
+
+
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#腾讯"><span class="nav-number">1.</span> <span class="nav-text">腾讯</span></a></li>
+                    <li class="nav-item nav-level-3"><a class="nav-link" href="#百度"><span class="nav-number">2.</span> <span class="nav-text">百度</span></a></li>
+                  </ol>
+                </div>
+
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+
+
+
+          </div>
+        </aside>
+        <script type="text/javascript" src="/js/src/op.js"></script>
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2018</span>
+          <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+          <span> <span><a href="https://fenglv.ac.cn">Flynn</a></span>
+          </span>
+        </div>
+        <div>
+          <php? $ip=$ _SERVER[ 'REMOTE_ADDR'] echo "您的 IP: $ip." ?>
+        </div>
+
+
+        <div>
+          本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        </div>
+
+
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
+
+
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
+
+
+
+
+
+
+
+      </div>
+    </footer>
+
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
+  </div>
+
+
+
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

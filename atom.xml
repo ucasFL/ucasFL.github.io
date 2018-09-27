@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-08-16T02:19:20.053Z</updated>
+  <updated>2018-09-27T04:43:57.458Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,128 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>两次失败的校招笔试总结</title>
+    <link href="http://ucasfl.me/2018/09/27/position-application-summary/"/>
+    <id>http://ucasfl.me/2018/09/27/position-application-summary/</id>
+    <published>2018-09-27T01:16:35.000Z</published>
+    <updated>2018-09-27T04:43:57.458Z</updated>
+    
+    <content type="html"><![CDATA[<p>开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。</p>
+<p>最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。</p>
+<a id="more"></a>
+<p>笔试都是分为两部分，第一部分是基础题（选择题），第二部分是算法编程题。不过腾讯的基础题和百度的略有不同，算法题考的方向也不太一样。首先说明，我投的都是后端的岗位。腾讯的基础题覆盖的知识点几乎都是数据结构、操作系统、计算机网络以及 C++ 的知识，不过考的确实比较细，需要把所有相关知识掌握牢固才行。比如其中一个题，问的是<em>什么置换算法会产生<code>Belady</code>现象</em>，看到这个题的时候，我蒙圈了，虽然页替换算法操作系统课学过，但我从来没看到什么<code>Belady</code>现象。考试结束后查了一下才知道，原来操作系统课上是有讲到的，只是自己忽视了：<code>Belady</code>现象就是指在
+  FIFO 替换算法中，增加页的数目，不一定能够减少缺页。</p>
+<p><img src="/photos/position/fifo.png" alt="fifo"></p>
+<p>百度的基础题和腾讯略有差别，基础题分为三部分，第一部分是逻辑分析题，第二部分是数学题，第三部分才是关于计算机后端的题。当然，前面的逻辑分析题和数学题都很简单，对于一个理工科专业的学生来说，应该都没有什么问题，只是因为有时间限制，所以容易出现做不完。</p>
+<p>下面着重来看一看算法编程题，毕竟这是我的心头之痛。两次笔试的算法题都是有三道，我们逐一来看看。由于具体题目描述已经记不清了，所以下面的题目描述中，仅做形式化描述，并非原题目的完整描述，但不改变题意和要求。</p>
+<h3 id="腾讯"><a href="#腾讯" class="headerlink" title="腾讯"></a>腾讯</h3>
+<p><strong>1.给定一个正整数 N，求最小的 M，满足 lcm(N+1, N+2, …, N+M) = lcm(1, 2,…, M)</strong></p>
+<p>本题一看就是一个数论题，对于一个数学渣来说，数论真的好难啊，然而不幸的是，腾讯的三个算法题中两个是数论题。考试的时候，我自然是没有做出来。下面提供一种暴力解法：M 个数的最小公倍数，可以通过质因数分解来求解，那么便可以将 M 从 1 开始，不停往上加，求 lcm(N+1, N+2, …, N+M) 和 lcm(1, 2, …, M) 直到相等。如果 M 很小，那么能够很快算出来，但如果很大，那么复杂度会很高，必定会超时。</p>
+<p>下面是暴力法质因数分解的实现：（有空再补）</p>
+<figure class="highlight cpp">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"></div><div class="line"></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>2.给定一个有向图，定义 F(A) 为从顶点 A 出发能够到达（存在路径）的所有顶点的数目，T(A) 为能够到达 A 的所有顶点的数目。给定一个有向图，找出满足 T(A) &gt; F(A) 的顶点数目</strong></p>
+<p>本题是一个图论题，原题目是说找”重要城市“的数目，我进行了形式化描述。下面提供一种可行解法：对于任意一个顶点，要计算 F(A)，那么从 A 点开始做一次广度优先遍历即可求出，假设得到的能够到达的顶点集合为 S(A)。对所有顶点都做一次广度优先遍历之后，那么我们便知道了从每一个顶点出发能够到达的顶点，也就可以计算出 T(A) 了，T(A) = A 在所有顶点集合 S(i) 中出现的次数。</p>
+<p>分析一下算法时间复杂度，广度优先遍历的时间复杂度是 O(|V|)，|V| 为有向图的顶点数目，对每个顶点都进行一个遍历，因为复杂度为 O(|V|^2)。计算 T(A) 时，S 集合通过索引存储，那么在一个集合中查找需要的时间为 O(1)，需要在 |V| - 1 个集合中查找，需要时间 O(|V|)，每个顶点都需要在 |V| - 1 个集合中进行查找，因此，时间复杂度为 O(|V|^2)。</p>
+<p>综上，该算法的时间复杂度为 O(|V|^2)。</p>
+<p>代码实现：（有空再补）</p>
+<figure class="highlight cpp">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"></div><div class="line"></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>3.给定三个正整数 M，N，K，计算是否存在整数 m，满足 mM mod N = K，即 K | (mM - N)，如果存在，输出 m，如果不存在，输出 -1</strong></p>
+<p>本题又又又是一个数论题，目前我还没有想出一个可行的解法。在本题中，暴力解法（将 m 从 1 往上加）是行不通的，这是因为，如果不存在满足条件的 m，那么算法将永远不会终止，这不符合算法的定义：有穷性。</p>
+<h3 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h3>
+<p>下面看一看百度的算法题，和腾讯的相比就没有那么”数学“了，虽然考试的时候我还是没有能够完整做出来一道。再次说明，以下的题目描述均为个人在不改变题意和要求的情况下的形式化描述。</p>
+<p><strong>1.给定 n 个数 M1, M2, …, Mn，满足 Mi &gt;= 0，以及两个数 P, Q 满足 P &gt; Q &gt; 0，定义对 n 个数的一次运算 F(M1, M2, …, Mn) 为从这 n 个数中任意选择一个数，假设为 Mi，将 Mi 的值减去 P，如果 Mi &lt;= P，则 Mi = 0，同时将另外 n - 1 个数的值分别减去 Q。问：给定 n 个数以及 P，Q，至少需要多少次 F 运算，能够让所有 n 个数均变为 0?</strong></p>
+<p>在该问题中，我们每次可以任意选择一个数，由于 P &gt; Q，因此，被选中的那个数减小值最大，显然，每次都选择 n 个数中最大的那个能够使需要的次数最少，即贪心能够达到最优。解法就是：从 n 个数中选择最大数，将该数的值减小 P，再将另外 n - 1 个数的值分别减少 Q，然后再次选择最大数，重复进行，直到 n 个数都变为 0 为止。</p>
+<p>下面，我们对算法的具体实现和复杂度进行一些讨论。第一种简单实现： n 个数顺序存储，每次查找最大数，然后进行一次 F 操作，查找最大数需要的时间为 O(n)，进行一次 F 运算需要的时间也为 O(n)，最坏情况下，需要 Mmax 次 F 运算，Mmax　为初始时 n 个数的最大值。那么总共需要的时间为 Mmax*(n + n) 即 O(nMax)。</p>
+<p>对于 F 运算，不太有什么好的办法来优化计算时间，但是对于查找过程，我们可以进一步优化。上面的查找是顺序查找，如果将 n 个数排成有序的，那么我们就可以直接得到最大数，这样查找时间就大大减小了。但是进行了一次 F 运算之后，上一轮的所有非最大数依旧是有序的，而上一轮的最大数可能不再是最大数，则需要进行调整，，将它插入到合适的位置。该算法的详细描述和复杂度分析如下：</p>
+<ol>
+  <li>对 n 个数进行一次排序，假设使用快排，需要的时间为 O(nlogn)</li>
+  <li>检查最大数是否等于 0，如果是，则结束，否则进行一次 F 运算，需要的时间依然为 O(n)</li>
+  <li>进行调整，通过折半查找将上一轮中的最大数插入到合适的位置，查找时间为 O(logn)，然后返回第 2 步。</li>
+</ol>
+<p>在该实现中，需要的时间为 nlogn + Mmax <em> logn + n </em> Mmax，第一种实现需要 2n*Mmax，由于 Mmax 的不确定性，如果 Mmax &lt; logn，那么通过排序的方法并不能减少算法需要的时间，因为，需要花费大量的时间进行排序。另外，上面的调整过程只计算了二分查找的时间，没有计算移动元素的时间，最坏情况下，每次需要移动 n-1 个元素，则需要的时间将会远远超过不排序的方法。</p>
+<p>实际上，我们可以有更好的改进方法。在数据结构课上，我们学过堆排序，因此我们可以利用堆排序的方法来优化查找过程：</p>
+<ol>
+  <li>建一个大顶堆，需要的时间为 O(n)</li>
+  <li>取最大数，如果最大数为 0，则结束，否则进行一次 F 运算，需要的时间为 O(n)</li>
+  <li>将堆再次调整为大顶堆，需要时间为 O(logn)，返回 2</li>
+</ol>
+<p>此时，总共需要的时间为 n + Mmax <em> logn + n </em> Mmax，此时，虽然依旧不一定能够总是比第一种情况好（n + Mmax <em> logn &gt; n</em>Mmax时），但是，当 Mmax &lt; n / (n - log n) 时，则能够减少算法需要的时间。</p>
+<p>下面给出使用堆排序的实现代码：（有空再补）</p>
+<figure class="highlight cpp">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"></div><div class="line"></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>2.给定一个非空 0,1 字符串和一个正整数 K，可以将字符串中的最多 K 个 0 翻转为　１，求翻转后能够得到最长连续 1 的翻转方案的数目</strong></p>
+<p>为了解释题目，举个例子，0,1串为 00100，K为 2,即可以将其中两个 0 翻转为 1，则显然能够得到的最长连续 1 的长度为 3，并且翻转方案有:11100, 01110, 00111共三种方案，因此，结果应该输出 3。</p>
+<p>该题应该立刻想到动态规划，下面是我想到的一个可行算法，也许还有更好的方案。</p>
+<p>假设串为S[n]，定义F(i)为翻转后以第 i 个字符结尾的最长连续 1 子串的长度，则有</p>
+<ul>
+  <li>F(0) = 1</li>
+  <li>i &gt; 0，如果 S[i] == ‘1’，F[i] = F[i-1] + 1; 如果 S[i] == ‘0’ &amp;&amp; numOf0[0~i] &lt;= k,F[i] = i + 1，否则，F[i] = i - Loc0of[numOf0[0~i] - k]</li>
+</ul>
+<p>在计算的过程中，需要记录 S[0] 到 S[i] 之间0的个数以及每一个 0 的 index，计算 F[i] 需要的时间为 O(n)，另外，我们可以在计算的过程中记录最大长度，同时将长度映射到一个 map 中，计算完成后直接就可得到总的方法数目。</p>
+<p>实现的代码如下：（有空再补）</p>
+<figure class="highlight cpp">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"></div><div class="line"></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>3.多个班级的人排成一列，规定任何相同班级的两个人之间至少需要隔 K 个其他班级的人，给定班级和人数以及 K，问是否存在满足条件的排列，存在则输出，多个输出字典序最小的一个，如果不存在则输出”-1”</strong></p>
+<p>比如 aacabbcbba, K = 1，不同字母代表不同班级，相同字母代表同一个班级，此时满足条件的排列即为没有任何两个连续的字母相同，比如 abacbababc 即满足要求。</p>
+<p>暂时未想出可行算法。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。&lt;/p&gt;
+&lt;p&gt;最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithms" scheme="http://ucasfl.me/categories/Algorithms/"/>
+    
+    
+      <category term="Algorithms" scheme="http://ucasfl.me/tags/Algorithms/"/>
+    
+  </entry>
   
   <entry>
     <title>LLVM Pass 与 APA 简介</title>
@@ -2075,34 +2197,6 @@
     <summary type="html">
     
       &lt;p&gt;笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 &lt;code&gt;emergency mode&lt;/code&gt;，尝试重新启动到默认模式，然后出现下面的错误信息：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 主机和 Vbox 下的 Windows 虚拟机创建共享文件夹</title>
-    <link href="http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/"/>
-    <id>http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/</id>
-    <published>2017-10-28T06:42:12.000Z</published>
-    <updated>2018-03-11T04:03:08.595Z</updated>
-    
-    <content type="html"><![CDATA[<p>在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。</p>
-<a id="more"></a>
-<p>首先确保安装好虚拟机。</p>
-<p>第一步，启动虚拟机，点击左上方工具栏 -&gt; 安装增加功能 -&gt; 按照提示安装成功即可。</p>
-<p>第一步，打开虚拟机设置 -&gt; 共享文件夹 -&gt; 添加路径 -&gt; 设置共享文件夹名字（假设名字为 Win7，后面会用到。）</p>
-<p>第三步，重启虚拟机 -&gt; 打开 cmd -&gt; 输入命令 <code>net use x: \\vboxsvr\Win7</code> 即可。其中 <code>x</code> 为盘符，任意一个未使用的字母均可以，<code>Win7</code> 即为上面设置的共享文件夹名字。</p>
-<p>这样，在主机和虚拟机之间就创建了一个共享文件夹。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。&lt;/p&gt;
     
     </summary>
     
