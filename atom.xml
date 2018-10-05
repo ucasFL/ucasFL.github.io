@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2018-10-05T04:00:31.130Z</updated>
+  <updated>2018-10-05T04:10:58.880Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ucasfl.me/2018/09/27/position-application-summary/"/>
     <id>http://ucasfl.me/2018/09/27/position-application-summary/</id>
     <published>2018-09-27T01:16:35.000Z</published>
-    <updated>2018-10-05T04:00:31.130Z</updated>
+    <updated>2018-10-05T04:10:58.880Z</updated>
     
     <content type="html"><![CDATA[<p>开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。</p>
 <p>最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。</p>
@@ -84,7 +84,7 @@
   <li>将堆再次调整为大顶堆，需要时间为 O(logn)，返回 2</li>
 </ol>
 <p>此时，总共需要的时间为 n + Mmax <em> logn + n </em> Mmax，此时，虽然依旧不一定能够总是比第一种情况好（n + Mmax <em> logn &gt; n</em>Mmax时），但是，当 Mmax &lt; n / (n - log n) 时，则能够减少算法需要的时间。</p>
-<p>下面给出使用堆排序的实现代码：（有空再补）</p>
+<p>下面给出使用堆排序的实现代码：</p>
 <figure class="highlight cpp">
   <table>
     <tr>
@@ -112,7 +112,7 @@
   </li>
 </ul>
 <p>在计算的过程中，需要记录 S[0] 到 S[i] 之间0的个数以及每一个 0 的 index，计算 F[i] 需要的时间为 O(n)，另外，我们需要在计算的过程中记录最大长度以及最长长度的方法数目。</p>
-<p>实现的代码如下：（有空再补）</p>
+<p>实现的代码如下：</p>
 <figure class="highlight cpp">
   <table>
     <tr>
