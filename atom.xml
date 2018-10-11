@@ -148,7 +148,7 @@
     <link href="http://ucasfl.me/2018/09/10/os-review/"/>
     <id>http://ucasfl.me/2018/09/10/os-review/</id>
     <published>2018-09-10T14:00:00.000Z</published>
-    <updated>2018-10-11T01:31:43.430Z</updated>
+    <updated>2018-10-11T01:37:19.112Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Chapter01-操作系统简介"><a href="#Chapter01-操作系统简介" class="headerlink" title="Chapter01 操作系统简介"></a>Chapter01 操作系统简介</h2>
 <p><em>什么是操作系统</em></p>
@@ -158,6 +158,7 @@
   <li>对底层硬件进行管理：共享和隔离</li>
   <li>对底层硬件的处理：细节实现</li>
 </ul>
+<a id="more"></a>
 <h3 id="操作系统概观"><a href="#操作系统概观" class="headerlink" title="操作系统概观"></a>操作系统概观</h3>
 <p><em>典型Unix操作系统结构</em></p>
 <ul>
@@ -6054,7 +6055,13 @@
     <summary type="html">
     
       &lt;h2 id=&quot;Chapter01-操作系统简介&quot;&gt;&lt;a href=&quot;#Chapter01-操作系统简介&quot; class=&quot;headerlink&quot; title=&quot;Chapter01 操作系统简介&quot;&gt;&lt;/a&gt;Chapter01 操作系统简介&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;什么是操作系统&lt;/
+&lt;p&gt;&lt;em&gt;什么是操作系统&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;在应用和硬件之间的一层软件&lt;/li&gt;
+  &lt;li&gt;对上层软件提供硬件的抽象&lt;/li&gt;
+  &lt;li&gt;对底层硬件进行管理：共享和隔离&lt;/li&gt;
+  &lt;li&gt;对底层硬件的处理：细节实现&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
