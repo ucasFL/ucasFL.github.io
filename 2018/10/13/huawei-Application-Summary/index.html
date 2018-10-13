@@ -1,0 +1,1193 @@
+<!doctype html>
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+  <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithms," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="春暖花开" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+  <meta name="description" content="今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，与前两次腾讯和百度的算法题相比，华为的题要简单得多。总共两个小时的考试时间，最后用了一个半小时的时间 AC 了全部三个题。大概笔试不怎么刷人。下面简单记录一下题目。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="华为校招笔试总结">
+  <meta property="og:url" content="http://ucasfl.me/2018/10/13/huawei-Application-Summary/index.html">
+  <meta property="og:site_name" content="春暖花开">
+  <meta property="og:description" content="今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，与前两次腾讯和百度的算法题相比，华为的题要简单得多。总共两个小时的考试时间，最后用了一个半小时的时间 AC 了全部三个题。大概笔试不怎么刷人。下面简单记录一下题目。">
+  <meta property="og:updated_time" content="2018-10-13T14:57:37.480Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="华为校招笔试总结">
+  <meta name="twitter:description" content="今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，与前两次腾讯和百度的算法题相比，华为的题要简单得多。总共两个小时的考试时间，最后用了一个半小时的时间 AC 了全部三个题。大概笔试不怎么刷人。下面简单记录一下题目。">
+
+
+
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "offset_float": 0,
+        "b2t": false,
+        "scrollpercent": true
+      },
+      fancybox: true,
+      motion: true,
+      duoshuo: {
+        userId: 'undefined',
+        author: '博主'
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
+
+
+
+  <link rel="canonical" href="http://ucasfl.me/2018/10/13/huawei-Application-Summary/" />
+
+
+
+
+
+  <title> 华为校招笔试总结 | 春暖花开 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
+
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">春暖花开</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+            </div>
+
+            <p class="site-subtitle">love, life, thinking, coding</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+
+
+
+          <ul id="menu" class="menu">
+
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-about">
+              <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+            </li>
+
+
+            <li class="menu-item menu-item-tags">
+              <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+            </li>
+
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+            </li>
+
+          </ul>
+
+
+
+          <div class="site-search">
+
+            <div class="popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+                <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+                <div class="local-search-input-wrapper">
+                  <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
+
+        </nav>
+
+
+
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+
+
+            <div id="posts" class="posts-expand">
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+                <link itemprop="mainEntityOfPage" href="http://ucasfl.me/2018/10/13/huawei-Application-Summary/">
+
+                <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Flynn">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/photos/profile.jpeg">
+  </span>
+
+                <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="春暖花开">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="春暖花开" src="">
+    </span>
+                </span>
+
+
+                <header class="post-header">
+
+
+
+                  <h1 class="post-title" itemprop="name headline">
+
+
+
+                    华为校招笔试总结
+
+
+                  </h1>
+
+
+                  <div class="post-meta">
+                    <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">发表于</span>
+
+                    <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-13T21:00:54+08:00">
+                2018/10/13
+              </time>
+
+
+
+
+
+                    </span>
+
+
+                    <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+
+                    <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+
+                    <span class="post-meta-item-text">分类于</span>
+
+
+                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                    </a>
+                    </span>
+
+
+
+
+                    </span>
+
+
+
+
+
+
+
+
+                    <span id="/2018/10/13/huawei-Application-Summary/" class="leancloud_visitors" data-flag-title="华为校招笔试总结">
+               <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+
+                    <span class="post-meta-item-text">阅读次数 </span>
+
+                    <span class="leancloud-visitors-count"></span>
+                    </span>
+
+
+
+
+
+
+
+
+                  </div>
+                </header>
+
+
+
+                <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+                  <p>今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，与前两次腾讯和百度的算法题相比，华为的题要简单得多。总共两个小时的考试时间，最后用了一个半小时的时间 AC 了全部三个题。大概笔试不怎么刷人。下面简单记录一下题目。</p>
+                  <a id="more"></a>
+                  <p><strong>1. n个人（n &gt;= 1) 站成一个环，编号为 1 ~ n，即编号为 n 的人与编号为 1 的人相邻，从第一个人开始报数，假如编号为 x 的报数为 m ，则该人出局，出局后不再参加报数，出局这一个人的后面一个人从 1 开始继续报数，直到所有人都出局，要求输出出局的编号序列。</strong></p>
+                  <p>该题为著名的<a href="https://baike.baidu.com/item/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/348830?fr=aladdin" target="_blank" rel="external">约瑟夫环</a>问题，实现方法很多。可通过模拟，也可通过数学公式推导，网上有现成的代码，不过考试的时候我没有上网找，是自己实现的，算是一个数学推导的方法吧。</p>
+                  <p>考试时的 AC 代码：</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">    &gt; Filename: dele.cpp</div><div class="line">    &gt; Author: Lv Feng</div><div class="line">    &gt; Mail: lvfeng97@outlook.com</div><div class="line">    &gt; Date: 2018-10-13</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;n, <span class="keyword">const</span> <span class="keyword">int</span> &amp;m)</span></span>&#123;</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; people;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</div><div class="line">	  people.push_back(i);</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator cur = people.begin();</div><div class="line">	<span class="keyword">int</span> loc;</div><div class="line">	<span class="keyword">while</span>(people.size() &gt; <span class="number">1</span>)&#123;</div><div class="line">		loc = (cur - people.begin() + m) % people.size() - <span class="number">1</span>; </div><div class="line">		<span class="keyword">if</span> (loc == <span class="number">-1</span>)&#123;</div><div class="line">			loc = people.size() - <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; people[loc] &lt;&lt; <span class="string">' '</span>;</div><div class="line">		cur = people.erase(people.begin() + loc);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt;  people[<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> num;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; num;</div><div class="line">	<span class="keyword">int</span> data[num][<span class="number">2</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != num; ++i)&#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; data[i][<span class="number">0</span>] &gt;&gt; data[i][<span class="number">1</span>];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != num; ++i)&#123;</div><div class="line">		Solve(data[i][<span class="number">0</span>], data[i][<span class="number">1</span>]);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>n 个数用 vector 存储，每次确定一个出列的数，然后输出该数并将该数从 vector 中删除，算法时间复杂度为 O(n)。<code>main</code> 函数中的 <code>num</code> 变量表示测试数据的组数。</p>
+                  <p><strong>2. 给定一个 10X10 的方格，数组中的数均为 0 或 1，每一个为 1 的方格的面积为 1，要求求出 1 的连通区域的最大面积（连通区域由上下左右为 1 的方格组成，不包括对角线）</strong></p>
+                  <p>本题中，<code>10x10</code> 的方格可以看成是一个二维数组，每次从一个没有遍历过的为 1 的元素出发，向四周遍历，所有为 1 的元素都遍历一遍就可求出最大连通面积。</p>
+                  <p>考试时的 AC 代码如下：</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">    &gt; Filename: max.cpp</div><div class="line">    &gt; Author: Lv Feng</div><div class="line">    &gt; Mail: lvfeng97@outlook.com</div><div class="line">    &gt; Date: 2018-10-13</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> Len = <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> data[<span class="number">10</span>][<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> visited[Len][Len];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">input</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != Len; ++i)</div><div class="line">	  <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j != Len; ++j)</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; data[i][j];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getS</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> s = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(data[m][n] == <span class="number">0</span> || visited[m][n])</div><div class="line">	  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		s += <span class="number">1</span>;</div><div class="line">		visited[m][n] = <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span> (m - <span class="number">1</span> &gt;= <span class="number">0</span>)&#123;</div><div class="line">			s += getS(m<span class="number">-1</span>, n);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (m + <span class="number">1</span> &lt; Len)&#123;</div><div class="line">			s += getS(m+<span class="number">1</span>, n);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (n - <span class="number">1</span> &gt;= <span class="number">0</span>)&#123;</div><div class="line">			s += getS(m, n<span class="number">-1</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (n + <span class="number">1</span> &lt;Len)&#123;</div><div class="line">			s += getS(m, n+ <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> maxS = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> tmp;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i != Len; ++i)&#123;</div><div class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j != Len; ++j)&#123;</div><div class="line">			<span class="built_in">memset</span>(visited, <span class="number">0</span>, <span class="number">100</span>);</div><div class="line">			tmp = getS(i, j);</div><div class="line">			maxS = (tmp &gt; maxS)? tmp: maxS;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; maxS &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	input();</div><div class="line">	Solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>上面的代码实现中，从每一个元素开始都进行了一次遍历，实际上是不需要的，比如，对于值为 0 的元素，不需要从它开始进行遍历，另外，对于每一个 1 ，实际上也只需要遍历一次，但这儿遍历了多次，因为从每一个 1 出发都进行了一次遍历，如果数组不是 <code>10x10</code>，比如是 <code>1000x1000</code> ，那么这样可能会导致超时。</p>
+                  <p>优化后的代码如下：</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">    &gt; Filename: max.cpp</div><div class="line">    &gt; Author: Lv Feng</div><div class="line">    &gt; Mail: lvfeng97@outlook.com</div><div class="line">    &gt; Date: 2018-10-13</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> Len = <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> data[<span class="number">10</span>][<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> visited[Len][Len];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">input</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != Len; ++i)</div><div class="line">	  <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j != Len; ++j)</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; data[i][j];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getS</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> s = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(!data[m][n] || visited[m][n])</div><div class="line">	  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		s += <span class="number">1</span>;</div><div class="line">		visited[m][n] = <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span> (m - <span class="number">1</span> &gt;= <span class="number">0</span>)&#123;</div><div class="line">			s += getS(m<span class="number">-1</span>, n);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (m + <span class="number">1</span> &lt; Len)&#123;</div><div class="line">			s += getS(m+<span class="number">1</span>, n);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (n - <span class="number">1</span> &gt;= <span class="number">0</span>)&#123;</div><div class="line">			s += getS(m, n<span class="number">-1</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (n + <span class="number">1</span> &lt;Len)&#123;</div><div class="line">			s += getS(m, n+ <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> maxS = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> tmp;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i != Len; ++i)&#123;</div><div class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j != Len; ++j)&#123;</div><div class="line">			<span class="keyword">if</span>(!data[i][j] || visited[i][j])</div><div class="line">			  <span class="keyword">continue</span>;</div><div class="line">			tmp = getS(i, j);</div><div class="line">			maxS = (tmp &gt; maxS)? tmp: maxS;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; maxS &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	input();</div><div class="line">	Solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>实际上，只是在 <code>for</code> 循环里面多了一个 <code>if</code> 判断，这样对于为 0 的元素，就不用进入函数，减少了函数调用的开销，同时，不需要从每一个 1 都开始进行一次遍历，因此，不需要每次循环都对 <code>visited</code> 数组进行一次 <code>memset</code> 。</p>
+                  <p><strong>3. 如果一个整数序列从前往后读和从后往前读序列相同，则称该序列为回文序列，如 (1)，(1, 3, 1) ，(23, 25, 25, 23)，给定一个整数序列，定义对该整数序列的一次操作如下：从该序列中选出两个数，将两个数相加，将相加后的和放入原来两个数在的位置（只放一个和），问任意给定一个序列，需要多少次这样的操作可将该序列变成一个回文序列。</strong></p>
+                  <p>例如，序列为 (1, 1, 1, 3)，则两次操作可将其变为回文序列：(1, 1, 1, 3) -&gt;(2, 1, 3) -&gt; (3, 3)，即先将 1,2 两个数相加，再将 1,2 两个数相加。显然任意给定一个包含 n 个数的序列，最多进行 n-1 次操作即可将其变为回文序列，此时，序列中只有一个数。</p>
+                  <p>一个序列要是回文序列，那么前后的数要分别相同，因此，我们设置两个指针，分别指向第一个数和最后一个数，如果第一个数和最后一个数相同，那么第一个指针加一，第二个指针减一，继续判断，如果不等，则将小的哪一端的数加到与它相邻的数上面，并将指针加一… 重复下去，直到第一个指针不小于第二个指针为止，此时的序列即为回文序列，这样便可求出操作次数。</p>
+                  <ul>
+                    <li>Input : data[n];</li>
+                    <li>output : OpTime;</li>
+                  </ul>
+                  <ol>
+                    <li>Optime = 0; low = 0, high = n - 1;</li>
+                    <li>if (low &lt; high)
+                      <ul>
+                        <li>if (data[low] == data[high]) low = low + 1, high = high - 1, goto 2;</li>
+                        <li>else if (data[low] &lt; data [high]) data[low + 1] = data[low+1] + data[low], OpTime = OpTime + 1, low = low + 1, goto 2;</li>
+                        <li>else data[high - 1] = data[high-1] + data[high], OpTime = OpTime + 1, high = high - 1, goto 2</li>
+                      </ul>
+                    </li>
+                    <li>else return OpTime;</li>
+                  </ol>
+                  <p>AC 代码如下：</p>
+                  <figure class="highlight cpp">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">  &gt; Filename: huiwen.cpp</div><div class="line">  &gt; Author: Lv Feng</div><div class="line">  &gt; Mail: lvfeng97@outlook.com</div><div class="line">  &gt; Date: 2018-10-13</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxNum = <span class="number">50</span>;</div><div class="line"><span class="keyword">int</span> data[MaxNum];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i)&#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; data[i];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> Time = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> low = <span class="number">0</span>, high = n - <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span>(low &lt; high)&#123;</div><div class="line">		<span class="keyword">if</span> (data[low] == data[high])&#123;</div><div class="line">			++low;</div><div class="line">			--high;</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(data[low] &lt; data[high])&#123;</div><div class="line">			++Time;</div><div class="line">			data[low+<span class="number">1</span>] += data[low];</div><div class="line">			++low;</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			++Time;</div><div class="line">			data[high<span class="number">-1</span>] += data[high];</div><div class="line">			--high;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> Time;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	input();</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; Solve() &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+                <div>
+
+
+
+
+                </div>
+
+
+                <footer class="post-footer">
+
+                  <div class="post-tags">
+
+                    <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="post-nav">
+                    <div class="post-nav-next post-nav-item">
+
+                      <a href="/2018/09/27/position-application-summary/" rel="next" title="两次失败的校招笔试总结">
+                <i class="fa fa-chevron-left"></i> 两次失败的校招笔试总结
+              </a>
+
+                    </div>
+
+                    <span class="post-nav-divider"></span>
+
+                    <div class="post-nav-prev post-nav-item">
+
+                    </div>
+                  </div>
+
+
+
+
+                </footer>
+              </article>
+
+
+
+
+
+
+              <div class="post-spread">
+
+
+                <div class="bdsharebuttonbox">
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                  <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                  <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                  <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a class="bds_count" data-cmd="count"></a>
+                </div>
+                <script>
+                  window._bd_share_config = {
+                    "common": {
+                      "bdText": "",
+                      "bdMini": "2",
+                      "bdMiniList": false,
+                      "bdPic": ""
+                    },
+                    "share": {
+                      "bdSize": "16",
+                      "bdStyle": "0"
+                    },
+                    "image": {
+                      "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+                      "viewText": "分享到：",
+                      "viewSize": "16"
+                    }
+                  }
+                </script>
+
+                <script>
+                  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+                </script>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+          <div class="comments" id="comments">
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          </div>
+        </div>
+
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-inner">
+
+
+
+
+
+            <section class="site-overview sidebar-panel sidebar-panel-active">
+              <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="/photos/profile.jpeg" alt="Flynn" />
+                <p class="site-author-name" itemprop="name">Flynn</p>
+
+                <p class="site-description motion-element" itemprop="description">高山仰止，景行行止</p>
+
+              </div>
+              <nav class="site-state motion-element">
+
+
+                <div class="site-state-item site-state-posts">
+                  <a href="/archives">
+                <span class="site-state-item-count">107</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+                </div>
+
+
+
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+                </div>
+
+
+              </nav>
+
+
+              <div class="feed-link motion-element">
+                <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+              </div>
+
+
+              <div class="links-of-author motion-element">
+
+
+                <span class="links-of-author-item">
+                <a href="https://github.com/ucasFL" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+
+                <span class="links-of-author-item">
+                <a href="http://weibo.com/fenglv1997" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+
+
+              </div>
+
+
+
+              <div class="cc-license motion-element" itemprop="license">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+              </div>
+
+
+
+
+              <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+                <div class="links-of-blogroll-title">
+                  <i class="fa  fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://linux.cn/lctt/ucasfl" title="LCTT" target="_blank">LCTT</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ilovezyq.github.io" title="Miss.Zhu" target="_blank">Miss.Zhu</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moumaobuchiyu.com/" title="某猫" target="_blank">某猫</a>
+                  </li>
+
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shyboys.github.io/" title="shyboys" target="_blank">shyboys</a>
+                  </li>
+
+                </ul>
+              </div>
+
+
+
+
+
+            </section>
+
+
+
+
+
+          </div>
+        </aside>
+        <script type="text/javascript" src="/js/src/op.js"></script>
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+
+          &copy; 2016 -
+          <span itemprop="copyrightYear">2018</span>
+          <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+          <span> <span><a href="https://fenglv.ac.cn">Flynn</a></span>
+          </span>
+        </div>
+        <div>
+          <php? $ip=$ _SERVER[ 'REMOTE_ADDR'] echo "您的 IP: $ip." ?>
+        </div>
+
+
+        <div>
+          本站总点击 <span id="busuanzi_value_site_pv"></span> 次 &nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+        </div>
+
+
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
+
+
+        <script>
+          (function() {
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+          })();
+        </script>
+
+
+
+
+
+
+
+      </div>
+    </footer>
+
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+
+      <span id="scrollpercent"><span>0</span>%</span>
+
+    </div>
+
+
+  </div>
+
+
+
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function(xmlResponse) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function() {
+            var matchcounts = 0;
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if (data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title >= 0 || index_content >= 0) {
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 50;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">" + keyword + "</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              })
+            };
+            str += "</ul>";
+            if (matchcounts == 0) {
+              str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            }
+            if (keywords == "") {
+              str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e) {
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+      <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("uVJKiFx2eApAI7xacT3gsCi1-gzGzoHsz", "SFTRMIk7UoEgkKa1yn1C0b8q");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          var entries = [];
+          var $visitors = $(".leancloud_visitors");
+
+          $visitors.each(function() {
+            entries.push($(this).attr("id").trim());
+          });
+
+          query.containedIn('url', entries);
+          query.find()
+            .done(function(results) {
+              var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+              if (results.length === 0) {
+                $visitors.find(COUNT_CONTAINER_REF).text(0);
+                return;
+              }
+
+              for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+              }
+              for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                  countSpan.text(0);
+                }
+              }
+            })
+            .fail(function(object, error) {
+              console.log("Error: " + error.code + " " + error.message);
+            });
+        }
+
+        function addCount(Counter) {
+          var $visitors = $(".leancloud_visitors");
+          var url = $visitors.attr('id').trim();
+          var title = $visitors.attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+
+          query.equalTo("url", url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                  success: function(counter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                /* Set ACL */
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                /* End Set ACL */
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                newcounter.set("time", 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    var $element = $(document.getElementById(url));
+                    $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + " " + error.message);
+            }
+          });
+        }
+
+        $(function() {
+          var Counter = AV.Object.extend("Counter");
+          if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+      <script>
+        (function() {
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        })();
+      </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+<!-- 动态背景 -->
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+<!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
