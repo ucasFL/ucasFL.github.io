@@ -70,7 +70,7 @@
   <meta property="og:url" content="http://ucasfl.me/2018/10/13/huawei-Application-Summary/index.html">
   <meta property="og:site_name" content="春暖花开">
   <meta property="og:description" content="今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，与前两次腾讯和百度的算法题相比，华为的题要简单得多。总共两个小时的考试时间，最后用了一个半小时的时间 AC 了全部三个题。大概笔试不怎么刷人。下面简单记录一下题目。">
-  <meta property="og:updated_time" content="2018-10-13T14:57:37.480Z">
+  <meta property="og:updated_time" content="2018-10-15T10:12:02.633Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="华为校招笔试总结">
   <meta name="twitter:description" content="今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，与前两次腾讯和百度的算法题相比，华为的题要简单得多。总共两个小时的考试时间，最后用了一个半小时的时间 AC 了全部三个题。大概笔试不怎么刷人。下面简单记录一下题目。">
@@ -474,7 +474,7 @@
                           <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre>
                         </td>
                         <td class="code">
-                          <pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">  &gt; Filename: huiwen.cpp</div><div class="line">  &gt; Author: Lv Feng</div><div class="line">  &gt; Mail: lvfeng97@outlook.com</div><div class="line">  &gt; Date: 2018-10-13</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxNum = <span class="number">50</span>;</div><div class="line"><span class="keyword">int</span> data[MaxNum];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i)&#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; data[i];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> Time = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> low = <span class="number">0</span>, high = n - <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span>(low &lt; high)&#123;</div><div class="line">		<span class="keyword">if</span> (data[low] == data[high])&#123;</div><div class="line">			++low;</div><div class="line">			--high;</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(data[low] &lt; data[high])&#123;</div><div class="line">			++Time;</div><div class="line">			data[low+<span class="number">1</span>] += data[low];</div><div class="line">			++low;</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			++Time;</div><div class="line">			data[high<span class="number">-1</span>] += data[high];</div><div class="line">			--high;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> Time;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	input();</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; Solve() &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
+                          <pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">  &gt; Filename: huiwen.cpp</div><div class="line">  &gt; Author: Lv Feng</div><div class="line">  &gt; Mail: lvfeng97@outlook.com</div><div class="line">  &gt; Date: 2018-10-13</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxNum = <span class="number">50</span>;</div><div class="line"><span class="keyword">int</span> data[MaxNum];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != n; ++i)&#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; data[i];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> Time = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> low = <span class="number">0</span>, high = n - <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span>(low &lt; high)&#123;</div><div class="line">		<span class="keyword">if</span> (data[low] == data[high])&#123;</div><div class="line">			++low;</div><div class="line">			--high;</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(data[low] &lt; data[high])&#123;</div><div class="line">			++Time;</div><div class="line">			data[low+<span class="number">1</span>] += data[low];</div><div class="line">			++low;</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			++Time;</div><div class="line">			data[high<span class="number">-1</span>] += data[high];</div><div class="line">			--high;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> Time;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	input();</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; Solve() &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
                         </td>
                       </tr>
                     </table>
@@ -523,6 +523,10 @@
                     <span class="post-nav-divider"></span>
 
                     <div class="post-nav-prev post-nav-item">
+
+                      <a href="/2018/10/15/huawei-interview-summary/" rel="prev" title="华为校招面试总结">
+                华为校招面试总结 <i class="fa fa-chevron-right"></i>
+              </a>
 
                     </div>
                   </div>
@@ -625,7 +629,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">107</span>
+                <span class="site-state-item-count">108</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -634,7 +638,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -643,7 +647,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>
