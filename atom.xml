@@ -202,134 +202,6 @@
   </entry>
   
   <entry>
-    <title>两次失败的校招笔试总结</title>
-    <link href="http://ucasfl.me/2018/09/27/position-application-summary/"/>
-    <id>http://ucasfl.me/2018/09/27/position-application-summary/</id>
-    <published>2018-09-27T01:16:35.000Z</published>
-    <updated>2018-10-05T04:10:58.880Z</updated>
-    
-    <content type="html"><![CDATA[<p>开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。</p>
-<p>最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。</p>
-<a id="more"></a>
-<p>笔试都是分为两部分，第一部分是基础题（选择题），第二部分是算法编程题。不过腾讯的基础题和百度的略有不同，算法题考的方向也不太一样。首先说明，我投的都是后端的岗位。腾讯的基础题覆盖的知识点几乎都是数据结构、操作系统、计算机网络以及 C++ 的知识，不过考的确实比较细，需要把所有相关知识掌握牢固才行。比如其中一个题，问的是<em>什么置换算法会产生<code>Belady</code>现象</em>，看到这个题的时候，我蒙圈了，虽然页替换算法操作系统课学过，但我从来没看到什么<code>Belady</code>现象。考试结束后查了一下才知道，原来操作系统课上是有讲到的，只是自己忽视了：<code>Belady</code>现象就是指在
-  FIFO 替换算法中，增加页的数目，不一定能够减少缺页。</p>
-<p><img src="/photos/position/fifo.png" alt="fifo"></p>
-<p>百度的基础题和腾讯略有差别，基础题分为三部分，第一部分是逻辑分析题，第二部分是数学题，第三部分才是关于计算机后端的题。当然，前面的逻辑分析题和数学题都很简单，对于一个理工科专业的学生来说，应该都没有什么问题，只是因为有时间限制，所以容易出现做不完。</p>
-<p>下面着重来看一看算法编程题，毕竟这是我的心头之痛。两次笔试的算法题都是有三道，我们逐一来看看。由于具体题目描述已经记不清了，所以下面的题目描述中，仅做形式化描述，并非原题目的完整描述，但不改变题意和要求。</p>
-<h3 id="腾讯"><a href="#腾讯" class="headerlink" title="腾讯"></a>腾讯</h3>
-<p><strong>1.给定一个正整数 N，求最小的 M，满足 lcm(N+1, N+2, …, N+M) = lcm(1, 2,…, M)</strong></p>
-<p>本题一看就是一个数论题，对于一个数学渣来说，数论真的好难啊，然而不幸的是，腾讯的三个算法题中两个是数论题。考试的时候，我自然是没有做出来。下面提供一种暴力解法：M 个数的最小公倍数，可以通过质因数分解来求解，那么便可以将 M 从 1 开始，不停往上加，求 lcm(N+1, N+2, …, N+M) 和 lcm(1, 2, …, M) 直到相等。如果 M 很小，那么能够很快算出来，但如果很大，那么复杂度会很高，必定会超时。</p>
-<p>下面是暴力法质因数分解的实现：（有空再补）</p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"></div><div class="line"></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>2.给定一个有向图，定义 F(A) 为从顶点 A 出发能够到达（存在路径）的所有顶点的数目，T(A) 为能够到达 A 的所有顶点的数目。给定一个有向图，找出满足 T(A) &gt; F(A) 的顶点数目</strong></p>
-<p>本题是一个图论题，原题目是说找”重要城市“的数目，我进行了形式化描述。下面提供一种可行解法：对于任意一个顶点，要计算 F(A)，那么从 A 点开始做一次广度优先遍历即可求出，假设得到的能够到达的顶点集合为 S(A)。对所有顶点都做一次广度优先遍历之后，那么我们便知道了从每一个顶点出发能够到达的顶点，也就可以计算出 T(A) 了，T(A) = A 在所有顶点集合 S(i) 中出现的次数。</p>
-<p>分析一下算法时间复杂度，广度优先遍历的时间复杂度是 O(|V|)，|V| 为有向图的顶点数目，对每个顶点都进行一个遍历，因为复杂度为 O(|V|^2)。计算 T(A) 时，S 集合通过索引存储，那么在一个集合中查找需要的时间为 O(1)，需要在 |V| - 1 个集合中查找，需要时间 O(|V|)，每个顶点都需要在 |V| - 1 个集合中进行查找，因此，时间复杂度为 O(|V|^2)。</p>
-<p>综上，该算法的时间复杂度为 O(|V|^2)。</p>
-<p>代码实现：（有空再补）</p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"></div><div class="line"></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>3.给定三个正整数 M，N，K，计算是否存在整数 m，满足 mM mod N = K，即 K | (mM - N)，如果存在，输出 m，如果不存在，输出 -1</strong></p>
-<p>本题又又又是一个数论题，目前我还没有想出一个可行的解法。在本题中，暴力解法（将 m 从 1 往上加）是行不通的，这是因为，如果不存在满足条件的 m，那么算法将永远不会终止，这不符合算法的定义：有穷性。</p>
-<h3 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h3>
-<p>下面看一看百度的算法题，和腾讯的相比就没有那么”数学“了，虽然考试的时候我还是没有能够完整做出来一道。再次说明，以下的题目描述均为个人在不改变题意和要求的情况下的形式化描述。</p>
-<p><strong>1.给定 n 个数 M1, M2, …, Mn，满足 Mi &gt;= 0，以及两个数 P, Q 满足 P &gt; Q &gt; 0，定义对 n 个数的一次运算 F(M1, M2, …, Mn) 为从这 n 个数中任意选择一个数，假设为 Mi，将 Mi 的值减去 P，如果 Mi &lt;= P，则 Mi = 0，同时将另外 n - 1 个数的值分别减去 Q。问：给定 n 个数以及 P，Q，至少需要多少次 F 运算，能够让所有 n 个数均变为 0?</strong></p>
-<p>在该问题中，我们每次可以任意选择一个数，由于 P &gt; Q，因此，被选中的那个数减小值最大，显然，每次都选择 n 个数中最大的那个能够使需要的次数最少，即贪心能够达到最优。解法就是：从 n 个数中选择最大数，将该数的值减小 P，再将另外 n - 1 个数的值分别减少 Q，然后再次选择最大数，重复进行，直到 n 个数都变为 0 为止。</p>
-<p>下面，我们对算法的具体实现和复杂度进行一些讨论。第一种简单实现： n 个数顺序存储，每次查找最大数，然后进行一次 F 操作，查找最大数需要的时间为 O(n)，进行一次 F 运算需要的时间也为 O(n)，最坏情况下，需要 Mmax 次 F 运算，Mmax　为初始时 n 个数的最大值。那么总共需要的时间为 Mmax*(n + n) 即 O(nMax)。</p>
-<p>对于 F 运算，不太有什么好的办法来优化计算时间，但是对于查找过程，我们可以进一步优化。上面的查找是顺序查找，如果将 n 个数排成有序的，那么我们就可以直接得到最大数，这样查找时间就大大减小了。但是进行了一次 F 运算之后，上一轮的所有非最大数依旧是有序的，而上一轮的最大数可能不再是最大数，则需要进行调整，，将它插入到合适的位置。该算法的详细描述和复杂度分析如下：</p>
-<ol>
-  <li>对 n 个数进行一次排序，假设使用快排，需要的时间为 O(nlogn)</li>
-  <li>检查最大数是否等于 0，如果是，则结束，否则进行一次 F 运算，需要的时间依然为 O(n)</li>
-  <li>进行调整，通过折半查找将上一轮中的最大数插入到合适的位置，查找时间为 O(logn)，然后返回第 2 步。</li>
-</ol>
-<p>在该实现中，需要的时间为 nlogn + Mmax <em> logn + n </em> Mmax，第一种实现需要 2n*Mmax，由于 Mmax 的不确定性，如果 Mmax &lt; logn，那么通过排序的方法并不能减少算法需要的时间，因为，需要花费大量的时间进行排序。另外，上面的调整过程只计算了二分查找的时间，没有计算移动元素的时间，最坏情况下，每次需要移动 n-1 个元素，则需要的时间将会远远超过不排序的方法。</p>
-<p>实际上，我们可以有更好的改进方法。在数据结构课上，我们学过堆排序，因此我们可以利用堆排序的方法来优化查找过程：</p>
-<ol>
-  <li>建一个大顶堆，需要的时间为 O(n)</li>
-  <li>取最大数，如果最大数为 0，则结束，否则进行一次 F 运算，需要的时间为 O(n)</li>
-  <li>将堆再次调整为大顶堆，需要时间为 O(logn)，返回 2</li>
-</ol>
-<p>此时，总共需要的时间为 n + Mmax <em> logn + n </em> Mmax，此时，虽然依旧不一定能够总是比第一种情况好（n + Mmax <em> logn &gt; n</em>Mmax时），但是，当 Mmax &lt; n / (n - log n) 时，则能够减少算法需要的时间。</p>
-<p>下面给出使用堆排序的实现代码：</p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">    &gt; Filename: substract.cpp</div><div class="line">    &gt; Author: Lv Feng</div><div class="line">    &gt; Mail: lvfeng97@outlook.com</div><div class="line">    &gt; Date: 2018-10-05</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNUM 1000</span></div><div class="line"><span class="keyword">int</span> number[MAXNUM];</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> P, Q; <span class="comment">// P &gt; Q</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeapAdjust</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> m)</span></span>&#123;</div><div class="line">	<span class="comment">//number[s...m] satisfy heap definition except number[s]</span></div><div class="line">	<span class="keyword">int</span> rc = number[s];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span> * s; j &lt;= m; j *= <span class="number">2</span>)&#123;</div><div class="line">		<span class="keyword">if</span> (j &lt; m &amp;&amp; number[j] &lt; number[j+<span class="number">1</span>]) ++j;</div><div class="line">		<span class="keyword">if</span> (rc &gt;= number[j]) <span class="keyword">break</span>;</div><div class="line">		number[s] = number[j];</div><div class="line">		s = j;</div><div class="line">	&#125;</div><div class="line">	number[s] = rc;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">substract</span><span class="params">()</span></span>&#123;</div><div class="line">	number[<span class="number">1</span>] = (number[<span class="number">1</span>] - P &gt; <span class="number">0</span>)? number[<span class="number">1</span>] - P : <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i != n + <span class="number">1</span>; ++i)&#123;</div><div class="line">		number[i] = (number[i] - Q &gt; <span class="number">0</span>)?number[i] - Q : <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">mimTimes</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> times = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n / <span class="number">2</span>; i &gt; <span class="number">0</span>; --i)&#123;</div><div class="line">		HeapAdjust(i, n); <span class="comment">//building heap</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span> (number[<span class="number">1</span>])&#123;</div><div class="line">		++times;</div><div class="line">		substract();</div><div class="line">		HeapAdjust(<span class="number">1</span>, n);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> times;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; n ;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i != n + <span class="number">1</span> &amp;&amp; i != MAXNUM; ++i)&#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; number[i];</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; P &gt;&gt; Q;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; mimTimes() &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>2.给定一个非空 0,1 字符串和一个正整数 K，可以将字符串中的最多 K 个 0 翻转为　１，求翻转后能够得到最长连续 1 的翻转方案的数目</strong></p>
-<p>为了解释题目，举个例子，0,1串为 00100，K为 2,即可以将其中两个 0 翻转为 1，则显然能够得到的最长连续 1 的长度为 3，并且翻转方案有:11100, 01110, 00111共三种方案，因此，结果应该输出 3。</p>
-<p>该题应该立刻想到动态规划，下面是我想到的一个可行算法，也许还有更好的方案。</p>
-<p>假设串为S[n]，定义F(i)为翻转后以第 i 个字符结尾的最长连续 1 子串的长度，则有</p>
-<ul>
-  <li>F(0) = 1</li>
-  <li>i &gt; 0
-    <ul>
-      <li>if S[i] == ‘1’，F[i] = F[i-1] + 1;</li>
-      <li>else if S[i] == ‘0’ &amp;&amp; numOf0[0~i] &lt;= k,F[i] = i + 1;</li>
-      <li>else F[i] = i - Loc0of[numOf0[0~i] - k - 1];</li>
-    </ul>
-  </li>
-</ul>
-<p>在计算的过程中，需要记录 S[0] 到 S[i] 之间0的个数以及每一个 0 的 index，计算 F[i] 需要的时间为 O(n)，另外，我们需要在计算的过程中记录最大长度以及最长长度的方法数目。</p>
-<p>实现的代码如下：</p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">  &gt; Filename: maxlen.cpp</div><div class="line">  &gt; Author: Lv Feng</div><div class="line">  &gt; Mail: lvfeng97@outlook.com</div><div class="line">  &gt; Date: 2018-10-05</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNUM 1000</span></div><div class="line"></div><div class="line"><span class="built_in">string</span> S;</div><div class="line"><span class="keyword">int</span> k; <span class="comment">// k &gt; 0</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> F[MAXNUM];</div><div class="line"><span class="keyword">int</span> zeroNum = <span class="number">0</span>;</div><div class="line"><span class="keyword">int</span> zeroIndex[MAXNUM];</div><div class="line"><span class="keyword">int</span> maxLen;</div><div class="line"><span class="keyword">int</span> maxLenNum;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</div><div class="line">	F[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">	maxLen = <span class="number">1</span>;</div><div class="line">	maxLenNum = <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (S[<span class="number">0</span>] == <span class="string">'0'</span>)&#123;</div><div class="line">		zeroIndex[zeroNum ++] = <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="built_in">string</span>::size_type i = <span class="number">1</span>; i != S.size(); ++i)&#123;</div><div class="line">		<span class="keyword">if</span> (S[i] == <span class="string">'1'</span>)&#123;</div><div class="line">			F[i] = F[i<span class="number">-1</span>] + <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (S[i] == <span class="string">'0'</span> &amp;&amp; zeroNum &lt; k)&#123;</div><div class="line">			zeroIndex[zeroNum++] = i;</div><div class="line">			F[i] = i + <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			zeroIndex[zeroNum++] = i;</div><div class="line">			F[i] = i - zeroIndex[zeroNum - k - <span class="number">1</span>];</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// update maxlen and maxlen number</span></div><div class="line">		<span class="keyword">if</span> (F[i] &gt; maxLen)&#123;</div><div class="line">			maxLen = F[i];</div><div class="line">			maxLenNum = <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (F[i] == maxLen)&#123;</div><div class="line">			++maxLenNum;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; S &gt;&gt; k;</div><div class="line">	Solve();</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; maxLen &lt;&lt; <span class="string">' '</span> &lt;&lt; maxLenNum &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>3.多个班级的人排成一列，规定任何相同班级的两个人之间至少需要隔 K 个其他班级的人，给定班级和人数以及 K，问是否存在满足条件的排列，存在则输出，多个输出字典序最小的一个，如果不存在则输出”-1”</strong></p>
-<p>比如 aacabbcbba, K = 1，不同字母代表不同班级，相同字母代表同一个班级，此时满足条件的排列即为没有任何两个连续的字母相同，比如 abacbababc 即满足要求。</p>
-<p>暂时未想出可行算法。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;开学的时候，随手投了几分校招。虽然一年后很大的可能还是会继续读研，不过参加一下校招不见得是什么坏事，可以当作是一次简单的考试，同时可以看看自己现在什么水平。&lt;/p&gt;
-&lt;p&gt;最开始收到的是腾讯的笔试通知，于是大概两周多前参加了腾讯的校招笔试，昨天晚上又参加了百度的校招笔试。两次考试自然都是凉了，不过通过这两次笔试，让我看到了自己身上的很多问题：基础知识掌握的不够好，算法能力实在是太太太太弱了。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Algorithms" scheme="http://ucasfl.me/categories/Algorithms/"/>
-    
-    
-      <category term="Algorithms" scheme="http://ucasfl.me/tags/Algorithms/"/>
-    
-  </entry>
-  
-  <entry>
     <title>操作系统知识整理</title>
     <link href="http://ucasfl.me/2018/09/10/os-review/"/>
     <id>http://ucasfl.me/2018/09/10/os-review/</id>
@@ -7570,6 +7442,493 @@
     
     
       <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Tensorflow 实现神经网络</title>
+    <link href="http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/"/>
+    <id>http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/</id>
+    <published>2017-11-12T04:09:50.000Z</published>
+    <updated>2018-03-11T03:54:40.247Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2>
+<p>如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！</p>
+<a id="more"></a>
+<p>如果你对深度学习的前景感到兴奋，但还没有开始你的旅途，那么我将会开启你的旅程。从这篇文章开始，我将会写一系列关于深度学习的文章，包括最受欢迎的深度学习库和它们的实现。</p>
+<p>在这篇文章中，我将会向你介绍 Tensorflow。读完这篇文章以后，你将会了解神经网络的应用，并且能够使用 TensorFlow 来解决实际生活中的问题。阅读本文前，你需要了解神经网络的基本知识并且对编程比较熟悉。虽然本文中使用的语言是 Python，但我关注得更多的是概念，并且尽可能保持语言的不可知性。</p>
+<p>让我们开始吧！</p>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1.jpg" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1-1024x576.jpg" alt="TensorFlow"></a></p>
+<h2 id="何时使用神经网络？"><a href="#何时使用神经网络？" class="headerlink" title="何时使用神经网络？"></a>何时使用神经网络？</h2>
+<p>神经网络成为人们的关注点已经有很长的一段时间了。如果你想了解关于神经网络和深度学习的更详细的解释，请阅读<a href="https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/" target="_blank" rel="external">这篇文章</a>。它的 “depper” 版本在图像识别、语音和自然语言处理等许多领域都取得了巨大的突破。</p>
+<p>最主要的问题是什么时候使用神经网络，什么时候不用？这个领域就像现在的金矿一样，每天都会有许多新的发现。为了成为一个“淘金热”分子，你需要记住下面这些事情：</p>
+<ul>
+  <li><strong>首先，神经网络需要清晰而详实的数据（主要是大数据）来进行训练</strong>。如果把神经网络想象成一个孩子，他首先需要观察他的父母如何走路，然后尝试独立行走，用他的每一步，学会如何来完成一个特定的任务。他可能会跌倒几次，但经过几次失败的尝试，他便学会了如何走路。如果你不让他自己尝试，那么他可能永远也不能学会走路。你给他接触的越多，那么他就会学得越好。</li>
+  <li><strong>使用神经网络来处理一些复杂的问题，比如图像处理是明智的。</strong>神经网络属于一类称为表示学习算法的算法类。这些算法将复杂的问题分解成简单的形式，从而使它们能够理解（或“表示“）。就像你在吃东西的时候，需要先把食物嚼碎，然后才咽下。这比传统（非表示学习）算法更加困难。</li>
+  <li><strong>什么时候你能够拥有合适的神经网络来解决问题？</strong>每个问题都有它的困难之处。所以，数据决定了解决问题的方式。比如，如果问题是序列生成，那么递归神经网络更加合适。然而，如果是图像相关的问题，那么改用卷积神经网络会更好。</li>
+  <li><strong>最后，但不是不重要，硬件需求对于运行一个深度神经网络模型是至关重要的。</strong>神经网络模型在很早之前就有了，但是在近些年才开始活跃起来，主要原因就是计算资源更好，更强大了。如果你想用神经网络来解决现实生活中的问题，请准备购买一些高端的硬件设备。</li>
+</ul>
+<h2 id="使用神经网络来解决问题的通常手段"><a href="#使用神经网络来解决问题的通常手段" class="headerlink" title="使用神经网络来解决问题的通常手段"></a>使用神经网络来解决问题的通常手段</h2>
+<p>神经网络是一种特殊的机器学习（ML）算法。就像每一个机器学习算法一样，你需要按照通常的机器学习工作流程来进行数据预处理，模型建立和模型评估。为了简单起见，我在下面列出了一个处理神经网络问题的清单：</p>
+<ul>
+  <li>思考一下，使用神经网络算法来处理该问题是否比用传统算法更好（参考上面章节的清单）</li>
+  <li>调查一下，待解决的问题使用哪种神经网络更适合</li>
+  <li>使用你选择的语言/库来定义神经网络结构</li>
+  <li>将数据转化为正确的格式并进行数据划分</li>
+  <li>根据你的需要对数据进行预处理</li>
+  <li>添加数据来增大数据量从而更好的训练模型</li>
+  <li>将数据”喂给”神经网络进行训练</li>
+  <li>训练并监测训练过程中的变化和验证数据集的变化</li>
+  <li>测试你的模型，并将它保存下来以便将来使用</li>
+</ul>
+<p>在这篇文章中，我将重点放在图像数据上。所以在开始探讨 TensorFlow 之前，让我们先理解一下图像数据。</p>
+<h2 id="图像数据以及常用于解决图像问题的库"><a href="#图像数据以及常用于解决图像问题的库" class="headerlink" title="图像数据以及常用于解决图像问题的库"></a>图像数据以及常用于解决图像问题的库</h2>
+<p>图像数据通常以三维数据的形式排序，每一维分别代表高、宽和颜色通道。比如，此时你在你的电脑上截一张图，它将会先转化为一个三维数组，然后再压缩成 <code>.jpeg</code> 或 <code>.png</code> 文件格式。</p>
+<p>虽然这些图像对于人类来说很容易理解，但是计算机却很难理解它们。这种现象被称为“语义鸿沟”。我们的大脑能够在几秒钟的时间内看到图像并理解完整的图像，然而，计算机却只是把图像看成一组数字。所以问题是如何向计算机解释图片？</p>
+<p>在早期时候，人们试图将图像分解成机器“可理解”的形式，就像一个模板一样。比如，人脸总是有一种特定的结构，这种结构在每个人中都有一定的保留，例如眼睛、鼻子或脸的形状。但是这种方法很乏味，因为当要识别的对象数量增加时，“模板”就不能保存了。</p>
+<p>快速前进到 2012 年，一个深度神经网络赢得了 <code>ImageNet</code> 挑战，这是一个根据自然场景来识别对象的著名挑战。在所有随即到来的 <code>ImageNet</code> 挑战中，它持续占领统治地位，从而证明了用它来解决图像问题的有用性。</p>
+<p>所以，人们通常使用哪种语言（库）来解决图像识别问题呢？在一个<a href="https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/" target="_blank" rel="external">最近的调查中</a>，我发现绝大多数受欢迎的深度学习库都有 Python 接口，紧跟着的是 Lua、Java 和 Matlab 。下面是一些最受欢迎的库：</p>
+<ul>
+  <li><a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">Caffe</a></li>
+  <li><a href="http://deeplearning4j.org/" target="_blank" rel="external">DeepLearning4j</a></li>
+  <li><a href="https://www.tensorflow.org/" target="_blank" rel="external">TensorFlow</a></li>
+  <li><a href="http://www.deeplearning.net/software/theano" target="_blank" rel="external">Theano</a></li>
+  <li><a href="http://torch.ch/" target="_blank" rel="external">Torch</a></li>
+</ul>
+<p>现在，你已经知道了一张图像是如何存储的，并且知道了常用的库。下面，让我们来看一下 TensorFlow 能够为我们提供什么。 </p>
+<h2 id="TensorFlow-是什么？"><a href="#TensorFlow-是什么？" class="headerlink" title="TensorFlow 是什么？"></a>TensorFlow 是什么？</h2>
+<p>我们先看一下官方的定义：</p>
+<blockquote>
+  <p>“TensorFlow 是一个使用数据流图来进行数值计算的开源软件库。图中的节点表示数学运算，而图中的边表示在节点之间进行传递的多维数据数组（又叫做张量）。灵活的架构允许你在桌面、服务器或移动设备上通过一个单一的 API 使用一个或多个 CPU 或 GPU 部署进行计算。”</p>
+</blockquote>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif" alt="tensors_flowing"></a><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif" alt="tensors_flowing"></a></p>
+<p>如果这听起来很让人迷糊，别担心，下面是我的简单定义：你可以简单的把 TensorFlow 看成一个扭曲的 <code>numpy</code>。如果你过去接触过 <code>numpy</code>，那么理解 TensorFlow 就非常简单了。numpy 和 TensorFlow 之间最主要的区别就是 TensorFLow 使用一种惰性的编程范式。它首先搭建一个把所有操作都定义好了的图，然后，当一个“会话“被调用时，它就会开始”运行“这个图。这个图是可扩展的，只需要改变内部张量（又叫做多维数组）的数据表示即可。构建计算图可以看作是使用
+  TensorFlow 的主要工作。如果想了解更多关于计算图的数学组成，请阅读<a href="http://colah.github.io/posts/2015-08-Backprop/" target="_blank" rel="external">这篇文章</a>。</p>
+<p>我们很容易把 TensorFlow 归为一个神经网络库，但它不仅仅是这样。的确，它是一个非常强大的神经网络库。但是，它还能够做更多的事情。你可以使用它来构建其他机器学习算法，比如决策树或 K-近邻算法。你可以用它来完成任何你通常用 numpy 来完成的事情。因此它又被形象地称为 “NumPy 类固醇”。</p>
+<p>使用 TensorFlow 的优点有：</p>
+<ul>
+  <li><strong>它具有一个直观的结构。</strong>顾名思义它具有”张量流“。你可以轻松的可视化图的每一个部分。</li>
+  <li><strong>对于分布式计算，很容易在 CPU/GPU 上面进行训练。</strong></li>
+  <li><strong>平台灵活性。</strong>你可以在任何地方运行你的模型，移动设备、服务器或 PC 。</li>
+</ul>
+<h2 id="一个典型的-TensorFlow-”流“"><a href="#一个典型的-TensorFlow-”流“" class="headerlink" title="一个典型的 TensorFlow ”流“"></a>一个典型的 TensorFlow ”流“</h2>
+<p>每个库都有自己的”实现细节“，即一种遵循其编码范式的编写方式。例如，在实现 <code>scikit-learn</code> 时，你首先创建一个需要的算法对象，然后构建一个训练模型，进而对测试集进行预测，看起来就像下面这样：</p>
+<figure class="highlight nix">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment"># 定义机器学习算法的 hyperparamters</span></div><div class="line"><span class="attr">clf</span> = svm.SVC(<span class="attr">gamma=0.001,</span> <span class="attr">C=100.)</span></div><div class="line"><span class="comment"># 训练</span></div><div class="line">clf.fit(X, y)</div><div class="line"><span class="comment"># 测试</span></div><div class="line">clf.predict(X_test)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>正如前面说过的，TensorFlow 遵循一种惰性的编程范式。在 TensorFlow 中运行一个程序的通常工作流如下：</p>
+<ul>
+  <li><strong>构建一个计算图</strong>，它可以是 TensorFlow 支持的任意一种数学操作。</li>
+  <li><strong>初始化变量</strong>，编译之前定义的变量</li>
+  <li><strong>创建会话</strong>，这是魔法开始的地方</li>
+  <li><strong>在会话中运行图</strong>，编译后的图传到会话中，然后会话开始执行</li>
+  <li><strong>关闭会话</strong></li>
+</ul>
+<p>TensorFlow 中使用的几个术语：</p>
+<ul>
+  <li>
+    <figure class="highlight">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">占位符：一种将数据输入图表的方法</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <figure class="highlight avrasm">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line"><span class="symbol">feed_dict:</span> 一个将数组传递给计算图的字典</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+</ul>
+<p>让我们写一个小程序并添加两个数字！</p>
+<figure class="highlight vim">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"># 导入 TensorFlow</div><div class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line"></div><div class="line"># 搭建计算图</div><div class="line"><span class="keyword">a</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"></div><div class="line">addition = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">a</span>, <span class="keyword">b</span>)</div><div class="line"></div><div class="line"># 初始化变量</div><div class="line">init = <span class="keyword">tf</span>.initialize_all_variables()</div><div class="line"></div><div class="line"># 创建会话并运行图</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    sess.run(init)</div><div class="line">    <span class="keyword">print</span> <span class="string">"Addition: %i"</span> % sess.run(addition, feed_dict=&#123;<span class="variable">a:</span> <span class="number">2</span>, <span class="variable">b:</span> <span class="number">3</span>&#125;)</div><div class="line"></div><div class="line"># 关闭会话</div><div class="line">sess.<span class="keyword">close</span>()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h2 id="在-TensorFlow-中实现神经网络"><a href="#在-TensorFlow-中实现神经网络" class="headerlink" title="在 TensorFlow 中实现神经网络"></a>在 TensorFlow 中实现神经网络</h2>
+<p><em>注意：我们可以使用不同的神经网络结构来解决问题，但为了简单起见，在这儿，我们致力于一个前馈多层感知机的深层实现。</em></p>
+<p>让我们首先记住我们学到的关于神经网络的知识。</p>
+<p>一个典型的神经网络实现如下：</p>
+<ul>
+  <li>定义需要编译的神经网络结构</li>
+  <li>将数据传输到模型</li>
+  <li>在后台，数据首先被分成批，以便进行摄取，首先对批数据进行预处理，扩充，然后送入神经网络进行训练</li>
+  <li>神经网络模型进行增量训练</li>
+  <li>在特定时间显示准确率</li>
+  <li>训练过后，保存模型，以便日后再次使用</li>
+  <li>用新数据测试模型并检查它是如何执行的</li>
+</ul>
+<p>在这儿，我们解决深度学习实践问题 - <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="external">识别数字</a>。让我们先看一下问题陈述。</p>
+<p>这是一个图像识别问题，从一个给定的 <code>28x28</code> 的图像中识别数字。我们将所有图像的一个子集用于训练，剩余部分用于测试模型。首先，下载训练和测试文件。数据集包含一个所有图像的压缩文件，以及名字和训练/测试图像相对应的 <code>train.csv</code> 和 <code>test.csv</code> 文件。在数据集中没有提供任何额外的特征，只提供了 <code>.png</code> 格式的原始图像。</p>
+<p>正如你所知道的，我们将使用 TensorFlow 来搭建一个神经网络模型。所以你首先需要在你的系统上安装 TensorFlow。请参考<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md" target="_blank" rel="external">官方安装指南</a>，根据你的系统进行安装。</p>
+<p>我们将按照上面描述的步骤来搭建神经网络。首先，使用 Python 2.7 核来创建一个 Jupyter notebook，后续步骤如下：</p>
+<ul>
+  <li>首先导入所有需要的模块：</li>
+</ul>
+<figure class="highlight haskell">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta"># pylab inline</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="title">from</span> scipy.misc <span class="keyword">import</span> imread</div><div class="line"><span class="title">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>让我们设置一个种子值，从而我们能够控制模型的随机性</li>
+</ul>
+<figure class="highlight ini">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment"># To stop potential randomness</span></div><div class="line"><span class="attr">seed</span> = <span class="number">128</span></div><div class="line"><span class="attr">rng</span> = np.random.RandomState(seed)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>第一步是设置目录路径，以便安全保存！</li>
+</ul>
+<figure class="highlight lua">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">root_dir = <span class="built_in">os</span>.path.abspath(<span class="string">'../..'</span>)</div><div class="line">data_dir = <span class="built_in">os</span>.path.join(root_dir, <span class="string">'data'</span>)</div><div class="line">sub_dir = <span class="built_in">os</span>.path.join(root_dir, <span class="string">'sub'</span>)</div><div class="line"></div><div class="line"># check <span class="keyword">for</span> existence</div><div class="line"><span class="built_in">os</span>.path.exists(root_dir)</div><div class="line"><span class="built_in">os</span>.path.exists(data_dir)</div><div class="line"><span class="built_in">os</span>.path.exists(sub_dir)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，让我们读入数据集。数据集是 <code>.csv</code> 文件格式的，并且有一个伴有合适标签的名字。</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">train = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'train.csv'</span>))</div><div class="line">test = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Test.csv'</span>))</div><div class="line"></div><div class="line">sample_submission = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Sample_Submission.csv'</span>))</div><div class="line"></div><div class="line">train.head()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>文件名</th>
+      <th>标签</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.png</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1.png</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2.png</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3.png</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4.png</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+<ul>
+  <li>让我们看一下我们的数据长什么样！读取图片并显示：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">img_name = rng.choice(train.filename)</div><div class="line">filepath = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'train'</span>, img_name)</div><div class="line"></div><div class="line"><span class="selector-tag">img</span> = imread(filepath, flatten=True)</div><div class="line"></div><div class="line">pylab.imshow(<span class="selector-tag">img</span>, cmap=<span class="string">'gray'</span>)</div><div class="line">pylab.axis(<span class="string">'off'</span>)</div><div class="line">pylab.show()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png" alt="3"></a></p>
+<p>上面的图片表示为 numpy 数组，就是下面这样：</p>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one.png" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one-1024x353.png" alt="one"></a></p>
+<ul>
+  <li>为了使数据操作更简单，我们把所有图像存为 numpy 数组：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">temp = []</div><div class="line"><span class="keyword">for</span> img_name <span class="keyword">in</span> train<span class="selector-class">.filename</span>:</div><div class="line">    image_path = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'train'</span>, img_name)</div><div class="line">    <span class="selector-tag">img</span> = imread(image_path, flatten=True)</div><div class="line">    <span class="selector-tag">img</span> = <span class="selector-tag">img</span>.astype(<span class="string">'float32'</span>)</div><div class="line">    temp.append(img)</div><div class="line">    </div><div class="line">train_x = np.stack(temp)</div><div class="line"></div><div class="line">temp = []</div><div class="line"><span class="keyword">for</span> img_name <span class="keyword">in</span> test<span class="selector-class">.filename</span>:</div><div class="line">    image_path = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'test'</span>, img_name)</div><div class="line">    <span class="selector-tag">img</span> = imread(image_path, flatten=True)</div><div class="line">    <span class="selector-tag">img</span> = <span class="selector-tag">img</span>.astype(<span class="string">'float32'</span>)</div><div class="line">    temp.append(img)</div><div class="line">    </div><div class="line">test_x = np.stack(temp)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>因为这是一个典型的机器学习问题，为了测试模型的正常功能，我们需要创建一个验证集。我们将数据按 <code>7:3</code> 分为训练集和验证集。</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">split_size = int(train_x<span class="selector-class">.shape</span>[<span class="number">0</span>]*<span class="number">0.7</span>)</div><div class="line"></div><div class="line">train_x, val_x = train_x[:split_size], train_x[split_size:]</div><div class="line">train_y, val_y = train<span class="selector-class">.label</span><span class="selector-class">.values</span>[:split_size], train<span class="selector-class">.label</span><span class="selector-class">.values</span>[split_size:]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，在程序中定义一些我们在后面将会用到的有用函数：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dense_to_one_hot</span><span class="params">(labels_dense, num_classes=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="string">"""Convert class labels from scalars to one-hot vectors"""</span></div><div class="line">    num_labels = labels_dense.shape[<span class="number">0</span>]</div><div class="line">    index_offset = np.arange(num_labels) * num_classes</div><div class="line">    labels_one_hot = np.zeros((num_labels, num_classes))</div><div class="line">    labels_one_hot.flat[index_offset + labels_dense.ravel()] = <span class="number">1</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> labels_one_hot</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">preproc</span><span class="params">(unclean_batch_x)</span>:</span></div><div class="line">    <span class="string">"""Convert values to range 0-1"""</span></div><div class="line">    temp_batch = unclean_batch_x / unclean_batch_x.max()</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> temp_batch</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_creator</span><span class="params">(batch_size, dataset_length, dataset_name)</span>:</span></div><div class="line">    <span class="string">"""Create batch with random samples and return appropriate format"""</span></div><div class="line">    batch_mask = rng.choice(dataset_length, batch_size)</div><div class="line">    </div><div class="line">    batch_x = eval(dataset_name + <span class="string">'_x'</span>)[[batch_mask]].reshape(<span class="number">-1</span>, input_num_units)</div><div class="line">    batch_x = preproc(batch_x)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> dataset_name == <span class="string">'train'</span>:</div><div class="line">        batch_y = eval(dataset_name).ix[batch_mask, <span class="string">'label'</span>].values</div><div class="line">        batch_y = dense_to_one_hot(batch_y)</div><div class="line">        </div><div class="line">    <span class="keyword">return</span> batch_x, batch_y</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，到了主要部分。让我们首先来定义神经网络的结构。我们定义一个三层神经网络：输入层、隐含层和输出层。输入层和输出层的神经元数目是固定的，因为输入就是一个 <code>28x28</code> 的图像，输出就是一个 <code>10x1</code> 的表示类别的向量。在隐含层中，我们设置 500 个神经元，这个数目可以根据你的需要来设置。同时，我们也需要对其余变量赋值。阅读<a href="https://www.analyticsvidhya.com/blog/2016/03/introduction-deep-learning-fundamentals-neural-networks/" target="_blank" rel="external">神经网络基础</a>这篇文章来深入了解它是如何工作的。</li>
+</ul>
+<figure class="highlight nix">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">### set all variables</span></div><div class="line"></div><div class="line"><span class="comment"># number of neurons in each layer</span></div><div class="line"><span class="attr">input_num_units</span> = <span class="number">28</span>*<span class="number">28</span></div><div class="line"><span class="attr">hidden_num_units</span> = <span class="number">500</span></div><div class="line"><span class="attr">output_num_units</span> = <span class="number">10</span></div><div class="line"></div><div class="line"><span class="comment"># define placeholders</span></div><div class="line"><span class="attr">x</span> = tf.placeholder(tf.float32, [None, input_num_units])</div><div class="line"><span class="attr">y</span> = tf.placeholder(tf.float32, [None, output_num_units])</div><div class="line"></div><div class="line"><span class="comment"># set remaining variables</span></div><div class="line"><span class="attr">epochs</span> = <span class="number">5</span></div><div class="line"><span class="attr">batch_size</span> = <span class="number">128</span></div><div class="line"><span class="attr">learning_rate</span> = <span class="number">0.01</span></div><div class="line"></div><div class="line"><span class="comment">### define weights and biases of the neural network (refer this article if you don't understand the terminologies)</span></div><div class="line"></div><div class="line"><span class="attr">weights</span> = &#123;</div><div class="line">    'hidden': tf.Variable(tf.random_normal([input_num_units, hidden_num_units], <span class="attr">seed=seed)),</span></div><div class="line">    'output': tf.Variable(tf.random_normal([hidden_num_units, output_num_units], <span class="attr">seed=seed))</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="attr">biases</span> = &#123;</div><div class="line">    'hidden': tf.Variable(tf.random_normal([hidden_num_units], <span class="attr">seed=seed)),</span></div><div class="line">    'output': tf.Variable(tf.random_normal([output_num_units], <span class="attr">seed=seed))</span></div><div class="line">&#125;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，开始创建神经网络计算图：</li>
+</ul>
+<figure class="highlight ini">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="attr">hidden_layer</span> = tf.add(tf.matmul(x, weights[<span class="string">'hidden'</span>]), biases[<span class="string">'hidden'</span>])</div><div class="line"><span class="attr">hidden_layer</span> = tf.nn.relu(hidden_layer)</div><div class="line"></div><div class="line"><span class="attr">output_layer</span> = tf.matmul(hidden_layer, weights[<span class="string">'output'</span>]) + biases[<span class="string">'output'</span>]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>我们也需要定义神经网络的损失（cost）：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">cost =　tf.reduce_mean(tf<span class="selector-class">.nn</span><span class="selector-class">.softmax_cross_entropy_with_logits</span>(output_layer, y))</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>设置优化算法，比如后向传播算法（BP 算法）。在这儿，我们使用 <a href="https://arxiv.org/abs/1412.6980" target="_blank" rel="external">Adam</a>，这是一个高效的梯度下降算法的变种。在 TensorFlow 中还有许多可用的优化算法（参考<a href="https://www.tensorflow.org/versions/r0.11/api_docs/python/train.html#optimizers" target="_blank" rel="external">这儿</a>）</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">optimizer = tf<span class="selector-class">.train</span><span class="selector-class">.AdamOptimizer</span>(learning_rate=learning_rate).minimize(cost)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>定义好神经网络结构之后，初始化所有变量：</li>
+</ul>
+<figure class="highlight ini">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="attr">init</span> = tf.initialize_all_variables()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，创建一个会话，在会话中运行我们的神经网络。同时，使用我们已经创建好的验证集来验证我们的模型：</li>
+</ul>
+<figure class="highlight vim">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    # create initialized variables</div><div class="line">    sess.run(init)</div><div class="line">    </div><div class="line">    ### <span class="keyword">for</span> each epoch, <span class="keyword">do</span>:</div><div class="line">    ###   <span class="keyword">for</span> each batch, <span class="keyword">do</span>:</div><div class="line">    ###     create <span class="keyword">pre</span>-processed batch</div><div class="line">    ###     run optimizer by feeding batch</div><div class="line">    ###     <span class="keyword">find</span> cost <span class="built_in">and</span> reiterate <span class="keyword">to</span> minimize</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> epoch in <span class="built_in">range</span>(epochs):</div><div class="line">        avg_cost = <span class="number">0</span></div><div class="line">        total_batch = <span class="keyword">int</span>(train.shape[<span class="number">0</span>]/batch_size)</div><div class="line">        <span class="keyword">for</span> i in <span class="built_in">range</span>(total_batch):</div><div class="line">            batch_x, batch_y = batch_creator(batch_size, train_x.shape[<span class="number">0</span>], <span class="string">'train'</span>)</div><div class="line">            _, <span class="keyword">c</span> = sess.run([optimizer, cost], feed_dict = &#123;<span class="keyword">x</span>: batch_x, <span class="keyword">y</span>: batch_y&#125;)</div><div class="line">            </div><div class="line">            avg_cost += <span class="keyword">c</span> / total_batch</div><div class="line">            </div><div class="line">        <span class="keyword">print</span> <span class="string">"Epoch:"</span>, (epoch+<span class="number">1</span>), <span class="string">"cost ="</span>, <span class="string">"&#123;:.5f&#125;"</span>.format(avg_cost)</div><div class="line">    </div><div class="line">    <span class="keyword">print</span> <span class="string">"\nTraining complete!"</span></div><div class="line">    </div><div class="line">    </div><div class="line">    # <span class="keyword">find</span> predictions <span class="keyword">on</span> val <span class="keyword">set</span></div><div class="line">    pred_temp = <span class="keyword">tf</span>.equal(<span class="keyword">tf</span>.argmax(output_layer, <span class="number">1</span>), <span class="keyword">tf</span>.argmax(<span class="keyword">y</span>, <span class="number">1</span>))</div><div class="line">    accuracy = <span class="keyword">tf</span>.reduce_mean(<span class="keyword">tf</span>.cast(pred_temp, <span class="string">"float"</span>))</div><div class="line">    <span class="keyword">print</span> <span class="string">"Validation Accuracy:"</span>, accuracy.<span class="built_in">eval</span>(&#123;<span class="keyword">x</span>: val_x.reshape(-<span class="number">1</span>, input_num_units), <span class="keyword">y</span>: dense_to_one_hot(val_y)&#125;)</div><div class="line">    </div><div class="line">    predict = <span class="keyword">tf</span>.argmax(output_layer, <span class="number">1</span>)</div><div class="line">    pred = predict.<span class="built_in">eval</span>(&#123;<span class="keyword">x</span>: test_x.reshape(-<span class="number">1</span>, input_num_units)&#125;)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>上面代码的输出如下：</p>
+<figure class="highlight http">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="attribute">Epoch</span>: 1 cost = 8.93566</div><div class="line"><span class="attribute">Epoch</span>: 2 cost = 1.82103</div><div class="line"><span class="attribute">Epoch</span>: 3 cost = 0.98648</div><div class="line"><span class="attribute">Epoch</span>: 4 cost = 0.57141</div><div class="line"><span class="attribute">Epoch</span>: 5 cost = 0.44550</div><div class="line"></div><div class="line"><span class="css"><span class="selector-tag">Training</span> <span class="selector-tag">complete</span>!</span></div><div class="line"><span class="selector-tag">Validation</span> <span class="selector-tag">Accuracy</span>: 0<span class="selector-class">.952823</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>为了使用我们的眼睛来测试模型，让我们来看一些它的预测结果：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">img_name = rng.choice(test.filename)</div><div class="line">filepath = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'test'</span>, img_name)</div><div class="line"></div><div class="line"><span class="selector-tag">img</span> = imread(filepath, flatten=True)</div><div class="line"></div><div class="line">test_index = int(img_name.split(<span class="string">'.'</span>)[<span class="number">0</span>]) - <span class="number">49000</span></div><div class="line"></div><div class="line">print <span class="string">"Prediction is: "</span>, pred[test_index]</div><div class="line"></div><div class="line">pylab.imshow(<span class="selector-tag">img</span>, cmap=<span class="string">'gray'</span>)</div><div class="line">pylab.axis(<span class="string">'off'</span>)</div><div class="line">pylab.show()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>Prediction is: 8</p>
+<p><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/8.png" alt=""></p>
+<ul>
+  <li>我们看到模型的性能非常好。现在我们来创建一个子会话：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sample_submission<span class="selector-class">.filename</span> = test<span class="selector-class">.filename</span></div><div class="line"></div><div class="line"> sample_submission<span class="selector-class">.label</span> = pred</div><div class="line"></div><div class="line">sample_submission.to_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(sub_dir, <span class="string">'sub01.csv'</span>), index=False)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>到现在，我们就把已经训练好的神经网络保存下来了。</p>
+<h2 id="TensorFlow-的局限性"><a href="#TensorFlow-的局限性" class="headerlink" title="TensorFlow 的局限性"></a>TensorFlow 的局限性</h2>
+<ul>
+  <li>尽管 TensorFlow 很强大，但它依旧是一个低级库，打个比方，你可以把它看出一个机器级语言。但是大多数情况下，你需要模块化和高层次的接口，比如 keras 这样的库便能够提供。</li>
+  <li>TensorFlow 目前仍然在开发中，因此未来还会有很多令人激动的东西到来。</li>
+  <li>TensorFlow 依赖于你的硬件配置，硬件配置越高越好。</li>
+  <li>对于许多语言，TensorFlow 还没有 API.</li>
+  <li>TensorFlow 中还有许多东西需要实现，比如 OpenCL 的支持。</li>
+</ul>
+<p>上面提到的内容大多数是站在 TensorFlow 开发者的角度的。他们已经制定了一个路线图来说明将来这个库应该如何发展。</p>
+<h2 id="TensorFlow-vs-其他库"><a href="#TensorFlow-vs-其他库" class="headerlink" title="TensorFlow vs. 其他库"></a>TensorFlow vs. 其他库</h2>
+<p>TensorFlow 是以和 Theano 和 Torch 相似的原则构建的，都是使用数学计算图。但是由于具有分布式计算的支持，TensorFlow 对于解决复杂的问题表现得更好。同时，由于已经支持 TensorFlow 模型的部署（即开源免费），这使得在工业上使用更加容易，对 Deeplearning4j、H2O 和 Turi 这些商业库造成了竞争威胁。TensorFlow 有 Python、C++ 和 Matlab 的 API，接下来可能将要有对其他语言的支持，比如 Ruby 和 R。所以，TensorFlow
+  正在试图成为具有普遍语言的机器学习库。</p>
+<h2 id="接下来往哪走"><a href="#接下来往哪走" class="headerlink" title="接下来往哪走"></a>接下来往哪走</h2>
+<p>你已经看到了如何使用 TensorFlow 来建立一个简单的神经网路。这个代码对于来理解如何开始实现 TensorFlow 是有意义的，所以不要小瞧它。但是请记住现实生活需要解决的问题将会更加复杂，你需要稍微修改一下代码。</p>
+<p>上面的许多函数能够被抽象出来，以提供无缝的端到端工作流。如果你使用过 scikit-learn，那么你可能知道一个高级库是如何抽象出底层实现，然后给终端用户提供一个更加简单的接口的。虽然 TensorFlow 已经抽象出了大多数的实现，但高级库正在出现，比如 TF-slim 和 TFlearn 。</p>
+<h2 id="有用的资源"><a href="#有用的资源" class="headerlink" title="有用的资源"></a>有用的资源</h2>
+<ul>
+  <li><a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="external">TensorFlow 官方仓库</a></li>
+  <li>Rajat Monga (TensorFlow 技术引导) <a href="https://youtu.be/wmw8Bbb_eIE" target="_blank" rel="external">“TensorFlow for everyone”</a> 视频</li>
+  <li>一个专用资源列表](<a href="https://github.com/jtoy/awesome-tensorflow/#github-projects" target="_blank" rel="external">https://github.com/jtoy/awesome-tensorflow/#github-projects</a>)</li>
+</ul>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2>
+<p>我希望你觉得这篇文章很有帮助，现在，是时候来进行更多的练习和阅读了。Good luck！如果你使用一个不同的方法/包/库来实现神经网络，那么我很愿意在评论中跟你互动。如果你有什么建议，也请在评论中告知。为了让自己对神经网络的使用更加熟练，请不要忘记尝试解决我们的深度学习练习问题 - <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="external">数字识别</a>。</p>
+<p>你可以测试你的技能和知识。查看 <a href="http://datahack.analyticsvidhya.com/contest/all" target="_blank" rel="external">Live Competitions</a>，来和世界上最优秀的数据科学家进行比赛。</p>
+<blockquote>
+  <p>原文链接：<a href="https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/" target="_blank" rel="external">https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/</a></p>
+  <p>翻译：<a href="https://fenglv.ac.cn" target="_blank" rel="external">Flynn</a></p>
+</blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;
+&lt;p&gt;如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Machine-Learning" scheme="http://ucasfl.me/categories/Machine-Learning/"/>
+    
+    
+      <category term="Tensorflow translation" scheme="http://ucasfl.me/tags/Tensorflow-translation/"/>
     
   </entry>
   
