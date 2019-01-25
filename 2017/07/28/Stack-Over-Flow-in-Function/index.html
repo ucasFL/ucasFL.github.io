@@ -88,7 +88,7 @@
         #include&amp;lt;iostream&amp;gt;const int MAX_N = 10000000;using namespace std;bool Tree[MAX_N] = &amp;#123;false&amp;">
   <meta property="og:image" content="http://ucasfl.me/photos/stack/1.png">
   <meta property="og:image" content="http://ucasfl.me/photos/stack/2.png">
-  <meta property="og:updated_time" content="2018-03-11T04:06:13.784Z">
+  <meta property="og:updated_time" content="2019-01-25T05:55:13.721Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="局部变量的栈溢出">
   <meta name="twitter:description" content="先上代码：
@@ -374,8 +374,8 @@
 
                     <span class="post-meta-item-text">更新于</span>
 
-                    <time title="更新于" itemprop="dateModified" datetime="2018-03-11T12:06:13+08:00">
-                2018/03/11
+                    <time title="更新于" itemprop="dateModified" datetime="2019-01-25T13:55:13+08:00">
+                2019/01/25
               </time>
 
                     </span>
@@ -470,7 +470,6 @@
                   <p>观察<em>代码1</em>和<em>代码2</em>，二者只有一个区别，前者<code>Tree</code>为全局变量，而后者为局部变量。一般来说，我们可能觉得两个函数运行的时候不会有什么不同，然而却出现不同的结果：</p>
                   <p><em>代码1</em>能正确运行，<em>代码2</em>：</p>
                   <p><img src="/photos/stack/1.png" alt=""></p>
-                  <p>惊喜不惊喜，意外不意外！</p>
                   <p>我们知道，<strong>在内存中，全局变量存于全局变量区，而局部变量位于栈中，函数以栈帧的形式存储。</strong>相对来说，全局变量区空间较大，而栈空间较小，因此便导致了<em>代码2</em>的栈溢出，而<em>代码1</em>则正常。</p>
                   <p><img src="/photos/stack/2.png" alt=""></p>
 
@@ -623,7 +622,7 @@
 
                 <div class="site-state-item site-state-posts">
                   <a href="/archives">
-                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">日志</span>
               </a>
                 </div>
@@ -632,7 +631,7 @@
 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
                 </div>
@@ -641,7 +640,7 @@
 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
                 </div>

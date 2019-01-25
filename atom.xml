@@ -6643,128 +6643,6 @@
   </entry>
   
   <entry>
-    <title>C++ 中的虚函数与动态绑定杂谈</title>
-    <link href="http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/"/>
-    <id>http://ucasfl.me/2018/05/13/something-about-virtual-function-and-dynamic-binding-in-cpp/</id>
-    <published>2018-05-13T07:59:23.000Z</published>
-    <updated>2018-06-05T04:46:31.142Z</updated>
-    
-    <content type="html"><![CDATA[<p>上大学之后学的第一门编程语言是 C，尽管 C 的确是一门很强大的语言，但是，在某些情况下，用 C 语言来解决问题实现起来会麻烦很多，另外，某些东西在 C 语言里面也是没有的，比如面向对象。</p>
-<p>第一次接触面向对象大概是大二自学 Python 的时候，那时候看的一头雾水，什么构造函数，析构函数不理解它的原理，书里面讲解的也不是很清楚，更别提多态、继承等等。到后面看 C++ 的时候终于对面向对象有一些基本的理解了，虽然很多东西还是理解的不够透彻。</p>
-<a id="more"></a>
-<p>说到底，面向对象最重要的还是在其思想，当你理解了它的精髓和思想，那么，你再去看无论是 C++ ，还是 Python，还是 Java，其中的面向对象的内容都是一样的，只是不同语言的实现形式有所不同而已。</p>
-<h3 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h3>
-<p>先简单说一下 C++ 里面的重载，所谓重载，就是可以定义两个名字一样的函数，它们的参数列表不同，那么就可以把其中一个函数称为另一个函数的重载，例如：</p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Equal</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> a == b;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Equal</span><span class="params">(<span class="keyword">long</span> a, <span class="keyword">long</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> a == b;</div><div class="line">&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>需要注意的是，只有参数列表不同：个数或类型。如果只有返回类型不同，那么第二个声明是错误的。这样，当你在调用函数时，编译器会根据参数类型来选择合适的函数。显然，这儿会产生一个问题，比如上面的 <code>Equal</code> 函数，如果传入的参数一个为 <code>int</code> ，一个为 <code>long</code> ，那么编译器就会被迷惑，因为它无法确定哪一个是最匹配的，编程的过程中应尽量避免这样的歧义。另外，<code>main</code> 函数不可以被重载。</p>
-<h3 id="构造函数与析构函数"><a href="#构造函数与析构函数" class="headerlink" title="构造函数与析构函数"></a>构造函数与析构函数</h3>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">class</span> Person &#123;</div><div class="line">	<span class="keyword">public</span> :</div><div class="line">		<span class="keyword">float</span> height;</div><div class="line">		<span class="keyword">float</span> weight;</div><div class="line">		<span class="keyword">int</span> age;</div><div class="line">		Person()&#123;</div><div class="line">			height = <span class="number">0.0</span></div><div class="line">			weight = <span class="number">0.0</span></div><div class="line">			age = <span class="number">0</span>;</div><div class="line">		&#125;;</div><div class="line">		Person(<span class="keyword">float</span>, h, <span class="keyword">float</span> w, <span class="keyword">int</span> a)&#123;</div><div class="line">			height = h;</div><div class="line">			weight = w;</div><div class="line">			age = a;</div><div class="line">		&#125;;</div><div class="line">		<span class="keyword">virtual</span> ~Person()&#123;</div><div class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Kill me."</span>;</div><div class="line">		&#125;</div><div class="line">&#125;;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>上面定义了一个类 <code>Person</code> ，同时定义了两个构造函数，当创建一个新的对象时，就会执行构造函数，显然，构造函数是可以被重载的，因此，编译器会根据参数列表来选择合适的构造函数，另外，初始类成员时也可以通过初始化列表，这儿不再叙述。</p>
-<p>而析构函数则与构造函数相反，它是在一个对象消失的时候执行的，比如静态声明的对象退出作用域时，或动态分配的对象调用 <code>delete</code> 删除时。析构函数的函数名也和类名相同，只是前面多了一个符号 <code>~</code> 。另外，注意到上面的析构函数前面多了一个关键字 <code>virtual</code> 。先说一下该关键字是什么意思，它是实现动态绑定的关键，<code>virtual</code> 关键字允许在子类中重新定义该成员函数。下面，定义一个子类：</p>
-<figure class="highlight cpp">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">class</span> Man : <span class="keyword">public</span> Person&#123;</div><div class="line">	<span class="keyword">public</span> :</div><div class="line">		<span class="keyword">int</span> salary;</div><div class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> *name;</div><div class="line">		Man(<span class="keyword">char</span> *s)&#123;</div><div class="line">			name = <span class="keyword">new</span> <span class="built_in">string</span>(s);</div><div class="line">			salary = <span class="number">0</span>;</div><div class="line">		&#125;;</div><div class="line">		<span class="keyword">virtual</span> ~Man()&#123;</div><div class="line">			<span class="keyword">if</span> (name)&#123;</div><div class="line">				<span class="keyword">delete</span> name;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">&#125;;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>在该类初始化的时候，动态分配了一个 <code>string</code> 存储名字，因此，需要在虚构函数中将其删除。</p>
-<p>在 C++ 中，基类的指针是可以指向派生类的：</p>
-<figure class="highlight inform7">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">Person</span> *<span class="keyword">man</span> = new <span class="keyword">Man</span>(<span class="string">"Ana"</span>);</div><div class="line">delete <span class="keyword">man</span>;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>考虑上面的代码，<code>man</code> 是一个 <code>Person</code> 类的指针，它指向了一个 <code>Man</code> 对象，假如上面的虚构函数没有定义成虚函数，那么 <code>delete</code> 的时候，只会调用 <code>Person</code> 的析构函数，这样，便发生了内存泄露，因为，动态分配的 <code>string</code> 并没有被删除。但定义成虚函数，那么编译器会根据它所指向的对象来选择对应的析构函数，从而实现动态绑定，这就是为什么基类的析构函数一般需要定义成虚函数。</p>
-<p>最后，说一个有趣的问题，假如就像上面说的由于没有进行动态绑定导致发生内存泄露，那么，这部分内存什么时候被释放？很多人会以为需要等到关机或者重启，因为内存是易失性存储，但事实不是的，别忘了，计算机的终极大 Boss 可是操作系统，你分配出去的每一块内存它都时候监测着呢，<code>malloc</code> 是通过系统调用分配内存，而 <code>new</code> 则是通过 <code>malloc</code> 以及调用构造函数来实现对象分配。因此，当程序运行结束或 Crash 终止之后，操作系统会回收所有内存，无论是动态分配的还是静态分配的。但是，如果在程序运行的过程中，动态分配的内存是不会被回收的，因此，如果在运行过程不停分配内存而没有释放，那么内存就可能会被耗尽，这就是为什么要防止出现内存泄露。当然，如果一个进程分配了过多的内存超过一定限制，那么，我们的终极大
-  Boss 又会出场了，它会直接把你 Kill 了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;上大学之后学的第一门编程语言是 C，尽管 C 的确是一门很强大的语言，但是，在某些情况下，用 C 语言来解决问题实现起来会麻烦很多，另外，某些东西在 C 语言里面也是没有的，比如面向对象。&lt;/p&gt;
-&lt;p&gt;第一次接触面向对象大概是大二自学 Python 的时候，那时候看的一头雾水，什么构造函数，析构函数不理解它的原理，书里面讲解的也不是很清楚，更别提多态、继承等等。到后面看 C++ 的时候终于对面向对象有一些基本的理解了，虽然很多东西还是理解的不够透彻。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://ucasfl.me/categories/C-C/"/>
-    
-    
-      <category term="C/C++" scheme="http://ucasfl.me/tags/C-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git 通过 Ssh 连接 GitHub 无反应</title>
-    <link href="http://ucasfl.me/2018/03/30/git-connect-to-github-with-ssh-no-response/"/>
-    <id>http://ucasfl.me/2018/03/30/git-connect-to-github-with-ssh-no-response/</id>
-    <published>2018-03-30T02:45:38.000Z</published>
-    <updated>2018-03-30T02:50:43.098Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近，ssh 连接 GitHub 突然不能用了，重新生成 ssh-key 也一样，执行命令 <code>git push origin master</code> 之后没有任何反应。<br>
-  <a id="more"></a><br>通过网上查询得到如下方法，经验证有效（但不一定适用所有情况），故记录如下：</p>
-<p>在命令行执行如下命令：</p>
-<figure class="highlight ruby">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">$ eval <span class="string">`ssh-agent`</span></div><div class="line">$ ssh-add ~<span class="regexp">/.ssh/id</span>_rsa</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>问题解决~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近，ssh 连接 GitHub 突然不能用了，重新生成 ssh-key 也一样，执行命令 &lt;code&gt;git push origin master&lt;/code&gt; 之后没有任何反应。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="ssh" scheme="http://ucasfl.me/categories/ssh/"/>
-    
-    
-      <category term="git ssh github" scheme="http://ucasfl.me/tags/git-ssh-github/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何通过命令行调节音量</title>
     <link href="http://ucasfl.me/2018/03/11/How-to-adjust-volume-in-command-line/"/>
     <id>http://ucasfl.me/2018/03/11/How-to-adjust-volume-in-command-line/</id>
@@ -7142,85 +7020,6 @@
   </entry>
   
   <entry>
-    <title>再见, 2017</title>
-    <link href="http://ucasfl.me/2017/12/31/the-end-of-2017/"/>
-    <id>http://ucasfl.me/2017/12/31/the-end-of-2017/</id>
-    <published>2017-12-31T13:32:52.000Z</published>
-    <updated>2017-12-31T19:11:41.137Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天，是2017年的最后一天<br>再过不到三个小时，就是2018了<br>过去这一年，说起来，生活好像也没有多大变化</p>
-<a id="more"></a>
-<p>首先，说说学习<br>马上，大学生涯就只剩下三分之一了<br>原本看样子，大二下学期的时候成绩有些起色<br>但最后发现，一整年下来<br>成绩毫无变化</p>
-<p>大三也只剩下一半了<br>有的路不得不走，所以还是要走<br>比如考研也许就是其中之一</p>
-<p>生活上，2017年印象最深刻的大概就是感冒必发烧吧<br>其中比较严重的两次还不得不进医院输液<br>一次是四月份，刚过完清明，到医院输了三天液<br>一次就是上周，到医院输了四天液</p>
-<p>过去的一年好像也熬过不少夜<br>大概还通过四次宵<br>不过这真的是一个坏习惯</p>
-<p>作为一个计系学生<br>过去这一年应该也写了不少代码<br>目前最熟练的语言还是 C 吧<br>虽然不得不写了很多的 Verilog，但真的不感兴趣<br>Python 是一门很强大的语言，于是便成为了我第二喜爱的语言<br>这学期因为数据库实验学了一下世界上最好的语言，也写了一点东西<br>不过目前真的只懂一些基础语法<br>JS/Java/C++/HTML/CSS 大概是可以略过了<br>实践是学习一门语言最快的方式</p>
-<p>2017 年最大的一个变化大概就是生命中多了一个人<br>多了一个让我朝思暮想的人<br>嘻嘻，你们懂的</p>
-<p>每次写东西前好像都感觉有很多东西要写<br>但真正开始写的时候却发现什么也写不出来<br>最后只能胡说八道一些<br>大概就这些吧</p>
-<p>新的一年<br>希望自己还有亲人、爱人都能有一个好身体<br>希望成绩能有所长进<br>希望考研顺利<br>希望和女朋友能少吵几次架<br>舍不得看到她哭<br>还有一个最大的愿望就留在心里当作秘密吧<br>因为我害怕说出来就不能实现了</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天，是2017年的最后一天&lt;br&gt;再过不到三个小时，就是2018了&lt;br&gt;过去这一年，说起来，生活好像也没有多大变化&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Essay" scheme="http://ucasfl.me/categories/Essay/"/>
-    
-    
-      <category term="Year" scheme="http://ucasfl.me/tags/Year/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 退出时出现 PermissionError</title>
-    <link href="http://ucasfl.me/2017/12/21/python-exit-error/"/>
-    <id>http://ucasfl.me/2017/12/21/python-exit-error/</id>
-    <published>2017-12-21T14:51:29.000Z</published>
-    <updated>2018-03-11T04:04:39.847Z</updated>
-    
-    <content type="html"><![CDATA[<p>在解决上一个关于<a href="https://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/">OpenCv导入失败</a>的问题的时候，不小心在<code>root</code>权限下运行了Python，导致之后在普通用户下运行Python，退出时出现如下错误：</p>
-<figure class="highlight subunit">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">Error </span>in atexit._run_exitfuncs:</div><div class="line">PermissionError: [Errno 13] Permission denied</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<a id="more"></a>
-<p>上网查了一番没找到好的解决办法，唯一的解决办法就是把它卸载了重装，但是，对于系统自带的Python版本，则不能这样做，因为有很多库依赖。由于我使用的是 anaconda ，因此，干脆直接卸了重新安装～</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在解决上一个关于&lt;a href=&quot;https://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/&quot;&gt;OpenCv导入失败&lt;/a&gt;的问题的时候，不小心在&lt;code&gt;root&lt;/code&gt;权限下运行了Python，导致之后在普通用户下运行Python，退出时出现如下错误：&lt;/p&gt;
-&lt;figure class=&quot;highlight subunit&quot;&gt;
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;td class=&quot;gutter&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;code&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Error &lt;/span&gt;in atexit._run_exitfuncs:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;PermissionError: [Errno 13] Permission denied&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="fix-problem" scheme="http://ucasfl.me/categories/fix-problem/"/>
-    
-    
-      <category term="Python ananconda" scheme="http://ucasfl.me/tags/Python-ananconda/"/>
-    
-  </entry>
-  
-  <entry>
     <title>解决 /Usr/lib/x86_64-Linux-gnu/libstdc++.so.6 Version GLIBCXX_3.4.22&#39; Not Found 的问题</title>
     <link href="http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/"/>
     <id>http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/</id>
@@ -7378,67 +7177,11 @@
   </entry>
   
   <entry>
-    <title>如果眼泪会说话</title>
-    <link href="http://ucasfl.me/2017/12/15/If-tears-can-speak/"/>
-    <id>http://ucasfl.me/2017/12/15/If-tears-can-speak/</id>
-    <published>2017-12-15T10:45:06.000Z</published>
-    <updated>2018-03-11T04:00:52.727Z</updated>
-    
-    <content type="html"><![CDATA[<p>如果眼泪会说话<br>也许，生活就会容易一些</p>
-<p>如果眼泪会说话<br>也许，爱情就会轻松一些</p>
-<a id="more"></a>
-<p>^_^</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;如果眼泪会说话&lt;br&gt;也许，生活就会容易一些&lt;/p&gt;
-&lt;p&gt;如果眼泪会说话&lt;br&gt;也许，爱情就会轻松一些&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Essay" scheme="http://ucasfl.me/categories/Essay/"/>
-    
-    
-      <category term="emotion" scheme="http://ucasfl.me/tags/emotion/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无题</title>
-    <link href="http://ucasfl.me/2017/12/14/One-year/"/>
-    <id>http://ucasfl.me/2017/12/14/One-year/</id>
-    <published>2017-12-14T14:10:33.000Z</published>
-    <updated>2018-03-11T04:04:01.199Z</updated>
-    
-    <content type="html"><![CDATA[<p>再过三天，博客就一周年了<br>这一年以来，好像也没能够写出什么有意义的东西<br>也许当时只是觉得一个独立博客大概是一个程序员的标志吧</p>
-<a id="more"></a>
-<p>博客正式上线是 2016 年 12 月 17 日<br>也就是去年四六级考试那天</p>
-<p>这一年，博客也发生过许多变化<br>主题从最开始的 yilia 换到了 next<br>今天三月份购买了一个域名<br>从此使用上了独立域名<br>评论系统多次变更<br>上月通过 Cloudflare 将域名上 https<br>…</p>
-<p>原本打算在 17 日那天好好写一篇文章来记录一下博客这一年以来的变化<br>却突然改在今天<br>一切都是意料之外<br>而对于博客这一年以来的变化也只是只言片语的带过</p>
-<p>最近学习上又遇到了瓶颈<br>很多事情要干<br>但什么也感觉不会<br>什么也做不下去</p>
-<p>时隔一周<br>又和女朋友吵架了<br>爱情带给人的不仅仅只有甜蜜<br>还有很多很多<br>包括痛苦</p>
-<p>梦碎了<br>梦醒了<br>生活还得继续<br>谁不是被生活赶着走</p>
-<p>最近越来越宅<br>越来越不喜欢接触外面的热闹<br>也越来越不会说话<br>连胡说八道都不知道该说什么了</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;再过三天，博客就一周年了&lt;br&gt;这一年以来，好像也没能够写出什么有意义的东西&lt;br&gt;也许当时只是觉得一个独立博客大概是一个程序员的标志吧&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Essay" scheme="http://ucasfl.me/categories/Essay/"/>
-    
-    
-      <category term="Emotion" scheme="http://ucasfl.me/tags/Emotion/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Xrandr-一个可以设置屏幕分辨率的 Linux 命令</title>
     <link href="http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/"/>
     <id>http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/</id>
     <published>2017-12-09T16:53:10.000Z</published>
-    <updated>2018-03-11T04:02:56.527Z</updated>
+    <updated>2019-01-25T05:53:05.784Z</updated>
     
     <content type="html"><![CDATA[<p>一个可以设置屏幕分辨率的 Linux 命令。</p>
 <figure class="highlight ada">
@@ -7452,9 +7195,7 @@
       </td>
     </tr>
   </table>
-</figure>
-<a id="more"></a>
-<p>完^_^</p>]]></content>
+</figure>]]></content>
     
     <summary type="html">
     
@@ -7463,14 +7204,7 @@
   &lt;table&gt;
     &lt;tr&gt;
       &lt;td class=&quot;gutter&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;code&quot;&gt;
-        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;xrandr : 显示系统支持的所有分辨率&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;xrandr -s &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; : 设置为系统默认分辨率&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;xrandr -s arg : 设置具体分辨率,如 &lt;span class=&quot;type&quot;&gt;xrandr&lt;/span&gt; -s &lt;span class=&quot;number&quot;&gt;1024&lt;/span&gt;x768&lt;/div&gt;&lt;/pre&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-&lt;/figure&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/
     
     </summary>
     
@@ -7478,6 +7212,1984 @@
     
     
       <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Tensorflow 实现神经网络</title>
+    <link href="http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/"/>
+    <id>http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/</id>
+    <published>2017-11-12T04:09:50.000Z</published>
+    <updated>2018-03-11T03:54:40.247Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2>
+<p>如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！</p>
+<a id="more"></a>
+<p>如果你对深度学习的前景感到兴奋，但还没有开始你的旅途，那么我将会开启你的旅程。从这篇文章开始，我将会写一系列关于深度学习的文章，包括最受欢迎的深度学习库和它们的实现。</p>
+<p>在这篇文章中，我将会向你介绍 Tensorflow。读完这篇文章以后，你将会了解神经网络的应用，并且能够使用 TensorFlow 来解决实际生活中的问题。阅读本文前，你需要了解神经网络的基本知识并且对编程比较熟悉。虽然本文中使用的语言是 Python，但我关注得更多的是概念，并且尽可能保持语言的不可知性。</p>
+<p>让我们开始吧！</p>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1.jpg" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/maxresdefault-1-1024x576.jpg" alt="TensorFlow"></a></p>
+<h2 id="何时使用神经网络？"><a href="#何时使用神经网络？" class="headerlink" title="何时使用神经网络？"></a>何时使用神经网络？</h2>
+<p>神经网络成为人们的关注点已经有很长的一段时间了。如果你想了解关于神经网络和深度学习的更详细的解释，请阅读<a href="https://www.analyticsvidhya.com/blog/2016/08/evolution-core-concepts-deep-learning-neural-networks/" target="_blank" rel="external">这篇文章</a>。它的 “depper” 版本在图像识别、语音和自然语言处理等许多领域都取得了巨大的突破。</p>
+<p>最主要的问题是什么时候使用神经网络，什么时候不用？这个领域就像现在的金矿一样，每天都会有许多新的发现。为了成为一个“淘金热”分子，你需要记住下面这些事情：</p>
+<ul>
+  <li><strong>首先，神经网络需要清晰而详实的数据（主要是大数据）来进行训练</strong>。如果把神经网络想象成一个孩子，他首先需要观察他的父母如何走路，然后尝试独立行走，用他的每一步，学会如何来完成一个特定的任务。他可能会跌倒几次，但经过几次失败的尝试，他便学会了如何走路。如果你不让他自己尝试，那么他可能永远也不能学会走路。你给他接触的越多，那么他就会学得越好。</li>
+  <li><strong>使用神经网络来处理一些复杂的问题，比如图像处理是明智的。</strong>神经网络属于一类称为表示学习算法的算法类。这些算法将复杂的问题分解成简单的形式，从而使它们能够理解（或“表示“）。就像你在吃东西的时候，需要先把食物嚼碎，然后才咽下。这比传统（非表示学习）算法更加困难。</li>
+  <li><strong>什么时候你能够拥有合适的神经网络来解决问题？</strong>每个问题都有它的困难之处。所以，数据决定了解决问题的方式。比如，如果问题是序列生成，那么递归神经网络更加合适。然而，如果是图像相关的问题，那么改用卷积神经网络会更好。</li>
+  <li><strong>最后，但不是不重要，硬件需求对于运行一个深度神经网络模型是至关重要的。</strong>神经网络模型在很早之前就有了，但是在近些年才开始活跃起来，主要原因就是计算资源更好，更强大了。如果你想用神经网络来解决现实生活中的问题，请准备购买一些高端的硬件设备。</li>
+</ul>
+<h2 id="使用神经网络来解决问题的通常手段"><a href="#使用神经网络来解决问题的通常手段" class="headerlink" title="使用神经网络来解决问题的通常手段"></a>使用神经网络来解决问题的通常手段</h2>
+<p>神经网络是一种特殊的机器学习（ML）算法。就像每一个机器学习算法一样，你需要按照通常的机器学习工作流程来进行数据预处理，模型建立和模型评估。为了简单起见，我在下面列出了一个处理神经网络问题的清单：</p>
+<ul>
+  <li>思考一下，使用神经网络算法来处理该问题是否比用传统算法更好（参考上面章节的清单）</li>
+  <li>调查一下，待解决的问题使用哪种神经网络更适合</li>
+  <li>使用你选择的语言/库来定义神经网络结构</li>
+  <li>将数据转化为正确的格式并进行数据划分</li>
+  <li>根据你的需要对数据进行预处理</li>
+  <li>添加数据来增大数据量从而更好的训练模型</li>
+  <li>将数据”喂给”神经网络进行训练</li>
+  <li>训练并监测训练过程中的变化和验证数据集的变化</li>
+  <li>测试你的模型，并将它保存下来以便将来使用</li>
+</ul>
+<p>在这篇文章中，我将重点放在图像数据上。所以在开始探讨 TensorFlow 之前，让我们先理解一下图像数据。</p>
+<h2 id="图像数据以及常用于解决图像问题的库"><a href="#图像数据以及常用于解决图像问题的库" class="headerlink" title="图像数据以及常用于解决图像问题的库"></a>图像数据以及常用于解决图像问题的库</h2>
+<p>图像数据通常以三维数据的形式排序，每一维分别代表高、宽和颜色通道。比如，此时你在你的电脑上截一张图，它将会先转化为一个三维数组，然后再压缩成 <code>.jpeg</code> 或 <code>.png</code> 文件格式。</p>
+<p>虽然这些图像对于人类来说很容易理解，但是计算机却很难理解它们。这种现象被称为“语义鸿沟”。我们的大脑能够在几秒钟的时间内看到图像并理解完整的图像，然而，计算机却只是把图像看成一组数字。所以问题是如何向计算机解释图片？</p>
+<p>在早期时候，人们试图将图像分解成机器“可理解”的形式，就像一个模板一样。比如，人脸总是有一种特定的结构，这种结构在每个人中都有一定的保留，例如眼睛、鼻子或脸的形状。但是这种方法很乏味，因为当要识别的对象数量增加时，“模板”就不能保存了。</p>
+<p>快速前进到 2012 年，一个深度神经网络赢得了 <code>ImageNet</code> 挑战，这是一个根据自然场景来识别对象的著名挑战。在所有随即到来的 <code>ImageNet</code> 挑战中，它持续占领统治地位，从而证明了用它来解决图像问题的有用性。</p>
+<p>所以，人们通常使用哪种语言（库）来解决图像识别问题呢？在一个<a href="https://www.analyticsvidhya.com/blog/2016/08/deep-learning-path/" target="_blank" rel="external">最近的调查中</a>，我发现绝大多数受欢迎的深度学习库都有 Python 接口，紧跟着的是 Lua、Java 和 Matlab 。下面是一些最受欢迎的库：</p>
+<ul>
+  <li><a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">Caffe</a></li>
+  <li><a href="http://deeplearning4j.org/" target="_blank" rel="external">DeepLearning4j</a></li>
+  <li><a href="https://www.tensorflow.org/" target="_blank" rel="external">TensorFlow</a></li>
+  <li><a href="http://www.deeplearning.net/software/theano" target="_blank" rel="external">Theano</a></li>
+  <li><a href="http://torch.ch/" target="_blank" rel="external">Torch</a></li>
+</ul>
+<p>现在，你已经知道了一张图像是如何存储的，并且知道了常用的库。下面，让我们来看一下 TensorFlow 能够为我们提供什么。 </p>
+<h2 id="TensorFlow-是什么？"><a href="#TensorFlow-是什么？" class="headerlink" title="TensorFlow 是什么？"></a>TensorFlow 是什么？</h2>
+<p>我们先看一下官方的定义：</p>
+<blockquote>
+  <p>“TensorFlow 是一个使用数据流图来进行数值计算的开源软件库。图中的节点表示数学运算，而图中的边表示在节点之间进行传递的多维数据数组（又叫做张量）。灵活的架构允许你在桌面、服务器或移动设备上通过一个单一的 API 使用一个或多个 CPU 或 GPU 部署进行计算。”</p>
+</blockquote>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing.gif" alt="tensors_flowing"></a><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/tensors_flowing-3.gif" alt="tensors_flowing"></a></p>
+<p>如果这听起来很让人迷糊，别担心，下面是我的简单定义：你可以简单的把 TensorFlow 看成一个扭曲的 <code>numpy</code>。如果你过去接触过 <code>numpy</code>，那么理解 TensorFlow 就非常简单了。numpy 和 TensorFlow 之间最主要的区别就是 TensorFLow 使用一种惰性的编程范式。它首先搭建一个把所有操作都定义好了的图，然后，当一个“会话“被调用时，它就会开始”运行“这个图。这个图是可扩展的，只需要改变内部张量（又叫做多维数组）的数据表示即可。构建计算图可以看作是使用
+  TensorFlow 的主要工作。如果想了解更多关于计算图的数学组成，请阅读<a href="http://colah.github.io/posts/2015-08-Backprop/" target="_blank" rel="external">这篇文章</a>。</p>
+<p>我们很容易把 TensorFlow 归为一个神经网络库，但它不仅仅是这样。的确，它是一个非常强大的神经网络库。但是，它还能够做更多的事情。你可以使用它来构建其他机器学习算法，比如决策树或 K-近邻算法。你可以用它来完成任何你通常用 numpy 来完成的事情。因此它又被形象地称为 “NumPy 类固醇”。</p>
+<p>使用 TensorFlow 的优点有：</p>
+<ul>
+  <li><strong>它具有一个直观的结构。</strong>顾名思义它具有”张量流“。你可以轻松的可视化图的每一个部分。</li>
+  <li><strong>对于分布式计算，很容易在 CPU/GPU 上面进行训练。</strong></li>
+  <li><strong>平台灵活性。</strong>你可以在任何地方运行你的模型，移动设备、服务器或 PC 。</li>
+</ul>
+<h2 id="一个典型的-TensorFlow-”流“"><a href="#一个典型的-TensorFlow-”流“" class="headerlink" title="一个典型的 TensorFlow ”流“"></a>一个典型的 TensorFlow ”流“</h2>
+<p>每个库都有自己的”实现细节“，即一种遵循其编码范式的编写方式。例如，在实现 <code>scikit-learn</code> 时，你首先创建一个需要的算法对象，然后构建一个训练模型，进而对测试集进行预测，看起来就像下面这样：</p>
+<figure class="highlight nix">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment"># 定义机器学习算法的 hyperparamters</span></div><div class="line"><span class="attr">clf</span> = svm.SVC(<span class="attr">gamma=0.001,</span> <span class="attr">C=100.)</span></div><div class="line"><span class="comment"># 训练</span></div><div class="line">clf.fit(X, y)</div><div class="line"><span class="comment"># 测试</span></div><div class="line">clf.predict(X_test)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>正如前面说过的，TensorFlow 遵循一种惰性的编程范式。在 TensorFlow 中运行一个程序的通常工作流如下：</p>
+<ul>
+  <li><strong>构建一个计算图</strong>，它可以是 TensorFlow 支持的任意一种数学操作。</li>
+  <li><strong>初始化变量</strong>，编译之前定义的变量</li>
+  <li><strong>创建会话</strong>，这是魔法开始的地方</li>
+  <li><strong>在会话中运行图</strong>，编译后的图传到会话中，然后会话开始执行</li>
+  <li><strong>关闭会话</strong></li>
+</ul>
+<p>TensorFlow 中使用的几个术语：</p>
+<ul>
+  <li>
+    <figure class="highlight">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">占位符：一种将数据输入图表的方法</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <figure class="highlight avrasm">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line"><span class="symbol">feed_dict:</span> 一个将数组传递给计算图的字典</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+</ul>
+<p>让我们写一个小程序并添加两个数字！</p>
+<figure class="highlight vim">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"># 导入 TensorFlow</div><div class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line"></div><div class="line"># 搭建计算图</div><div class="line"><span class="keyword">a</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.int16)</div><div class="line"></div><div class="line">addition = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">a</span>, <span class="keyword">b</span>)</div><div class="line"></div><div class="line"># 初始化变量</div><div class="line">init = <span class="keyword">tf</span>.initialize_all_variables()</div><div class="line"></div><div class="line"># 创建会话并运行图</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    sess.run(init)</div><div class="line">    <span class="keyword">print</span> <span class="string">"Addition: %i"</span> % sess.run(addition, feed_dict=&#123;<span class="variable">a:</span> <span class="number">2</span>, <span class="variable">b:</span> <span class="number">3</span>&#125;)</div><div class="line"></div><div class="line"># 关闭会话</div><div class="line">sess.<span class="keyword">close</span>()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h2 id="在-TensorFlow-中实现神经网络"><a href="#在-TensorFlow-中实现神经网络" class="headerlink" title="在 TensorFlow 中实现神经网络"></a>在 TensorFlow 中实现神经网络</h2>
+<p><em>注意：我们可以使用不同的神经网络结构来解决问题，但为了简单起见，在这儿，我们致力于一个前馈多层感知机的深层实现。</em></p>
+<p>让我们首先记住我们学到的关于神经网络的知识。</p>
+<p>一个典型的神经网络实现如下：</p>
+<ul>
+  <li>定义需要编译的神经网络结构</li>
+  <li>将数据传输到模型</li>
+  <li>在后台，数据首先被分成批，以便进行摄取，首先对批数据进行预处理，扩充，然后送入神经网络进行训练</li>
+  <li>神经网络模型进行增量训练</li>
+  <li>在特定时间显示准确率</li>
+  <li>训练过后，保存模型，以便日后再次使用</li>
+  <li>用新数据测试模型并检查它是如何执行的</li>
+</ul>
+<p>在这儿，我们解决深度学习实践问题 - <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="external">识别数字</a>。让我们先看一下问题陈述。</p>
+<p>这是一个图像识别问题，从一个给定的 <code>28x28</code> 的图像中识别数字。我们将所有图像的一个子集用于训练，剩余部分用于测试模型。首先，下载训练和测试文件。数据集包含一个所有图像的压缩文件，以及名字和训练/测试图像相对应的 <code>train.csv</code> 和 <code>test.csv</code> 文件。在数据集中没有提供任何额外的特征，只提供了 <code>.png</code> 格式的原始图像。</p>
+<p>正如你所知道的，我们将使用 TensorFlow 来搭建一个神经网络模型。所以你首先需要在你的系统上安装 TensorFlow。请参考<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md" target="_blank" rel="external">官方安装指南</a>，根据你的系统进行安装。</p>
+<p>我们将按照上面描述的步骤来搭建神经网络。首先，使用 Python 2.7 核来创建一个 Jupyter notebook，后续步骤如下：</p>
+<ul>
+  <li>首先导入所有需要的模块：</li>
+</ul>
+<figure class="highlight haskell">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta"># pylab inline</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="title">from</span> scipy.misc <span class="keyword">import</span> imread</div><div class="line"><span class="title">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>让我们设置一个种子值，从而我们能够控制模型的随机性</li>
+</ul>
+<figure class="highlight ini">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment"># To stop potential randomness</span></div><div class="line"><span class="attr">seed</span> = <span class="number">128</span></div><div class="line"><span class="attr">rng</span> = np.random.RandomState(seed)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>第一步是设置目录路径，以便安全保存！</li>
+</ul>
+<figure class="highlight lua">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">root_dir = <span class="built_in">os</span>.path.abspath(<span class="string">'../..'</span>)</div><div class="line">data_dir = <span class="built_in">os</span>.path.join(root_dir, <span class="string">'data'</span>)</div><div class="line">sub_dir = <span class="built_in">os</span>.path.join(root_dir, <span class="string">'sub'</span>)</div><div class="line"></div><div class="line"># check <span class="keyword">for</span> existence</div><div class="line"><span class="built_in">os</span>.path.exists(root_dir)</div><div class="line"><span class="built_in">os</span>.path.exists(data_dir)</div><div class="line"><span class="built_in">os</span>.path.exists(sub_dir)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，让我们读入数据集。数据集是 <code>.csv</code> 文件格式的，并且有一个伴有合适标签的名字。</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">train = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'train.csv'</span>))</div><div class="line">test = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Test.csv'</span>))</div><div class="line"></div><div class="line">sample_submission = pd.read_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Sample_Submission.csv'</span>))</div><div class="line"></div><div class="line">train.head()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>文件名</th>
+      <th>标签</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.png</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1.png</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2.png</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3.png</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4.png</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+<ul>
+  <li>让我们看一下我们的数据长什么样！读取图片并显示：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">img_name = rng.choice(train.filename)</div><div class="line">filepath = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'train'</span>, img_name)</div><div class="line"></div><div class="line"><span class="selector-tag">img</span> = imread(filepath, flatten=True)</div><div class="line"></div><div class="line">pylab.imshow(<span class="selector-tag">img</span>, cmap=<span class="string">'gray'</span>)</div><div class="line">pylab.axis(<span class="string">'off'</span>)</div><div class="line">pylab.show()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/3.png" alt="3"></a></p>
+<p>上面的图片表示为 numpy 数组，就是下面这样：</p>
+<p><a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one.png" target="_blank" rel="external"><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/one-1024x353.png" alt="one"></a></p>
+<ul>
+  <li>为了使数据操作更简单，我们把所有图像存为 numpy 数组：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">temp = []</div><div class="line"><span class="keyword">for</span> img_name <span class="keyword">in</span> train<span class="selector-class">.filename</span>:</div><div class="line">    image_path = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'train'</span>, img_name)</div><div class="line">    <span class="selector-tag">img</span> = imread(image_path, flatten=True)</div><div class="line">    <span class="selector-tag">img</span> = <span class="selector-tag">img</span>.astype(<span class="string">'float32'</span>)</div><div class="line">    temp.append(img)</div><div class="line">    </div><div class="line">train_x = np.stack(temp)</div><div class="line"></div><div class="line">temp = []</div><div class="line"><span class="keyword">for</span> img_name <span class="keyword">in</span> test<span class="selector-class">.filename</span>:</div><div class="line">    image_path = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'test'</span>, img_name)</div><div class="line">    <span class="selector-tag">img</span> = imread(image_path, flatten=True)</div><div class="line">    <span class="selector-tag">img</span> = <span class="selector-tag">img</span>.astype(<span class="string">'float32'</span>)</div><div class="line">    temp.append(img)</div><div class="line">    </div><div class="line">test_x = np.stack(temp)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>因为这是一个典型的机器学习问题，为了测试模型的正常功能，我们需要创建一个验证集。我们将数据按 <code>7:3</code> 分为训练集和验证集。</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">split_size = int(train_x<span class="selector-class">.shape</span>[<span class="number">0</span>]*<span class="number">0.7</span>)</div><div class="line"></div><div class="line">train_x, val_x = train_x[:split_size], train_x[split_size:]</div><div class="line">train_y, val_y = train<span class="selector-class">.label</span><span class="selector-class">.values</span>[:split_size], train<span class="selector-class">.label</span><span class="selector-class">.values</span>[split_size:]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，在程序中定义一些我们在后面将会用到的有用函数：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dense_to_one_hot</span><span class="params">(labels_dense, num_classes=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="string">"""Convert class labels from scalars to one-hot vectors"""</span></div><div class="line">    num_labels = labels_dense.shape[<span class="number">0</span>]</div><div class="line">    index_offset = np.arange(num_labels) * num_classes</div><div class="line">    labels_one_hot = np.zeros((num_labels, num_classes))</div><div class="line">    labels_one_hot.flat[index_offset + labels_dense.ravel()] = <span class="number">1</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> labels_one_hot</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">preproc</span><span class="params">(unclean_batch_x)</span>:</span></div><div class="line">    <span class="string">"""Convert values to range 0-1"""</span></div><div class="line">    temp_batch = unclean_batch_x / unclean_batch_x.max()</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> temp_batch</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_creator</span><span class="params">(batch_size, dataset_length, dataset_name)</span>:</span></div><div class="line">    <span class="string">"""Create batch with random samples and return appropriate format"""</span></div><div class="line">    batch_mask = rng.choice(dataset_length, batch_size)</div><div class="line">    </div><div class="line">    batch_x = eval(dataset_name + <span class="string">'_x'</span>)[[batch_mask]].reshape(<span class="number">-1</span>, input_num_units)</div><div class="line">    batch_x = preproc(batch_x)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> dataset_name == <span class="string">'train'</span>:</div><div class="line">        batch_y = eval(dataset_name).ix[batch_mask, <span class="string">'label'</span>].values</div><div class="line">        batch_y = dense_to_one_hot(batch_y)</div><div class="line">        </div><div class="line">    <span class="keyword">return</span> batch_x, batch_y</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，到了主要部分。让我们首先来定义神经网络的结构。我们定义一个三层神经网络：输入层、隐含层和输出层。输入层和输出层的神经元数目是固定的，因为输入就是一个 <code>28x28</code> 的图像，输出就是一个 <code>10x1</code> 的表示类别的向量。在隐含层中，我们设置 500 个神经元，这个数目可以根据你的需要来设置。同时，我们也需要对其余变量赋值。阅读<a href="https://www.analyticsvidhya.com/blog/2016/03/introduction-deep-learning-fundamentals-neural-networks/" target="_blank" rel="external">神经网络基础</a>这篇文章来深入了解它是如何工作的。</li>
+</ul>
+<figure class="highlight nix">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">### set all variables</span></div><div class="line"></div><div class="line"><span class="comment"># number of neurons in each layer</span></div><div class="line"><span class="attr">input_num_units</span> = <span class="number">28</span>*<span class="number">28</span></div><div class="line"><span class="attr">hidden_num_units</span> = <span class="number">500</span></div><div class="line"><span class="attr">output_num_units</span> = <span class="number">10</span></div><div class="line"></div><div class="line"><span class="comment"># define placeholders</span></div><div class="line"><span class="attr">x</span> = tf.placeholder(tf.float32, [None, input_num_units])</div><div class="line"><span class="attr">y</span> = tf.placeholder(tf.float32, [None, output_num_units])</div><div class="line"></div><div class="line"><span class="comment"># set remaining variables</span></div><div class="line"><span class="attr">epochs</span> = <span class="number">5</span></div><div class="line"><span class="attr">batch_size</span> = <span class="number">128</span></div><div class="line"><span class="attr">learning_rate</span> = <span class="number">0.01</span></div><div class="line"></div><div class="line"><span class="comment">### define weights and biases of the neural network (refer this article if you don't understand the terminologies)</span></div><div class="line"></div><div class="line"><span class="attr">weights</span> = &#123;</div><div class="line">    'hidden': tf.Variable(tf.random_normal([input_num_units, hidden_num_units], <span class="attr">seed=seed)),</span></div><div class="line">    'output': tf.Variable(tf.random_normal([hidden_num_units, output_num_units], <span class="attr">seed=seed))</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="attr">biases</span> = &#123;</div><div class="line">    'hidden': tf.Variable(tf.random_normal([hidden_num_units], <span class="attr">seed=seed)),</span></div><div class="line">    'output': tf.Variable(tf.random_normal([output_num_units], <span class="attr">seed=seed))</span></div><div class="line">&#125;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，开始创建神经网络计算图：</li>
+</ul>
+<figure class="highlight ini">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="attr">hidden_layer</span> = tf.add(tf.matmul(x, weights[<span class="string">'hidden'</span>]), biases[<span class="string">'hidden'</span>])</div><div class="line"><span class="attr">hidden_layer</span> = tf.nn.relu(hidden_layer)</div><div class="line"></div><div class="line"><span class="attr">output_layer</span> = tf.matmul(hidden_layer, weights[<span class="string">'output'</span>]) + biases[<span class="string">'output'</span>]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>我们也需要定义神经网络的损失（cost）：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">cost =　tf.reduce_mean(tf<span class="selector-class">.nn</span><span class="selector-class">.softmax_cross_entropy_with_logits</span>(output_layer, y))</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>设置优化算法，比如后向传播算法（BP 算法）。在这儿，我们使用 <a href="https://arxiv.org/abs/1412.6980" target="_blank" rel="external">Adam</a>，这是一个高效的梯度下降算法的变种。在 TensorFlow 中还有许多可用的优化算法（参考<a href="https://www.tensorflow.org/versions/r0.11/api_docs/python/train.html#optimizers" target="_blank" rel="external">这儿</a>）</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">optimizer = tf<span class="selector-class">.train</span><span class="selector-class">.AdamOptimizer</span>(learning_rate=learning_rate).minimize(cost)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>定义好神经网络结构之后，初始化所有变量：</li>
+</ul>
+<figure class="highlight ini">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="attr">init</span> = tf.initialize_all_variables()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>现在，创建一个会话，在会话中运行我们的神经网络。同时，使用我们已经创建好的验证集来验证我们的模型：</li>
+</ul>
+<figure class="highlight vim">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    # create initialized variables</div><div class="line">    sess.run(init)</div><div class="line">    </div><div class="line">    ### <span class="keyword">for</span> each epoch, <span class="keyword">do</span>:</div><div class="line">    ###   <span class="keyword">for</span> each batch, <span class="keyword">do</span>:</div><div class="line">    ###     create <span class="keyword">pre</span>-processed batch</div><div class="line">    ###     run optimizer by feeding batch</div><div class="line">    ###     <span class="keyword">find</span> cost <span class="built_in">and</span> reiterate <span class="keyword">to</span> minimize</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> epoch in <span class="built_in">range</span>(epochs):</div><div class="line">        avg_cost = <span class="number">0</span></div><div class="line">        total_batch = <span class="keyword">int</span>(train.shape[<span class="number">0</span>]/batch_size)</div><div class="line">        <span class="keyword">for</span> i in <span class="built_in">range</span>(total_batch):</div><div class="line">            batch_x, batch_y = batch_creator(batch_size, train_x.shape[<span class="number">0</span>], <span class="string">'train'</span>)</div><div class="line">            _, <span class="keyword">c</span> = sess.run([optimizer, cost], feed_dict = &#123;<span class="keyword">x</span>: batch_x, <span class="keyword">y</span>: batch_y&#125;)</div><div class="line">            </div><div class="line">            avg_cost += <span class="keyword">c</span> / total_batch</div><div class="line">            </div><div class="line">        <span class="keyword">print</span> <span class="string">"Epoch:"</span>, (epoch+<span class="number">1</span>), <span class="string">"cost ="</span>, <span class="string">"&#123;:.5f&#125;"</span>.format(avg_cost)</div><div class="line">    </div><div class="line">    <span class="keyword">print</span> <span class="string">"\nTraining complete!"</span></div><div class="line">    </div><div class="line">    </div><div class="line">    # <span class="keyword">find</span> predictions <span class="keyword">on</span> val <span class="keyword">set</span></div><div class="line">    pred_temp = <span class="keyword">tf</span>.equal(<span class="keyword">tf</span>.argmax(output_layer, <span class="number">1</span>), <span class="keyword">tf</span>.argmax(<span class="keyword">y</span>, <span class="number">1</span>))</div><div class="line">    accuracy = <span class="keyword">tf</span>.reduce_mean(<span class="keyword">tf</span>.cast(pred_temp, <span class="string">"float"</span>))</div><div class="line">    <span class="keyword">print</span> <span class="string">"Validation Accuracy:"</span>, accuracy.<span class="built_in">eval</span>(&#123;<span class="keyword">x</span>: val_x.reshape(-<span class="number">1</span>, input_num_units), <span class="keyword">y</span>: dense_to_one_hot(val_y)&#125;)</div><div class="line">    </div><div class="line">    predict = <span class="keyword">tf</span>.argmax(output_layer, <span class="number">1</span>)</div><div class="line">    pred = predict.<span class="built_in">eval</span>(&#123;<span class="keyword">x</span>: test_x.reshape(-<span class="number">1</span>, input_num_units)&#125;)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>上面代码的输出如下：</p>
+<figure class="highlight http">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="attribute">Epoch</span>: 1 cost = 8.93566</div><div class="line"><span class="attribute">Epoch</span>: 2 cost = 1.82103</div><div class="line"><span class="attribute">Epoch</span>: 3 cost = 0.98648</div><div class="line"><span class="attribute">Epoch</span>: 4 cost = 0.57141</div><div class="line"><span class="attribute">Epoch</span>: 5 cost = 0.44550</div><div class="line"></div><div class="line"><span class="css"><span class="selector-tag">Training</span> <span class="selector-tag">complete</span>!</span></div><div class="line"><span class="selector-tag">Validation</span> <span class="selector-tag">Accuracy</span>: 0<span class="selector-class">.952823</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>为了使用我们的眼睛来测试模型，让我们来看一些它的预测结果：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">img_name = rng.choice(test.filename)</div><div class="line">filepath = os<span class="selector-class">.path</span><span class="selector-class">.join</span>(data_dir, <span class="string">'Train'</span>, <span class="string">'Images'</span>, <span class="string">'test'</span>, img_name)</div><div class="line"></div><div class="line"><span class="selector-tag">img</span> = imread(filepath, flatten=True)</div><div class="line"></div><div class="line">test_index = int(img_name.split(<span class="string">'.'</span>)[<span class="number">0</span>]) - <span class="number">49000</span></div><div class="line"></div><div class="line">print <span class="string">"Prediction is: "</span>, pred[test_index]</div><div class="line"></div><div class="line">pylab.imshow(<span class="selector-tag">img</span>, cmap=<span class="string">'gray'</span>)</div><div class="line">pylab.axis(<span class="string">'off'</span>)</div><div class="line">pylab.show()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>Prediction is: 8</p>
+<p><img src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/8.png" alt=""></p>
+<ul>
+  <li>我们看到模型的性能非常好。现在我们来创建一个子会话：</li>
+</ul>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sample_submission<span class="selector-class">.filename</span> = test<span class="selector-class">.filename</span></div><div class="line"></div><div class="line"> sample_submission<span class="selector-class">.label</span> = pred</div><div class="line"></div><div class="line">sample_submission.to_csv(os<span class="selector-class">.path</span><span class="selector-class">.join</span>(sub_dir, <span class="string">'sub01.csv'</span>), index=False)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>到现在，我们就把已经训练好的神经网络保存下来了。</p>
+<h2 id="TensorFlow-的局限性"><a href="#TensorFlow-的局限性" class="headerlink" title="TensorFlow 的局限性"></a>TensorFlow 的局限性</h2>
+<ul>
+  <li>尽管 TensorFlow 很强大，但它依旧是一个低级库，打个比方，你可以把它看出一个机器级语言。但是大多数情况下，你需要模块化和高层次的接口，比如 keras 这样的库便能够提供。</li>
+  <li>TensorFlow 目前仍然在开发中，因此未来还会有很多令人激动的东西到来。</li>
+  <li>TensorFlow 依赖于你的硬件配置，硬件配置越高越好。</li>
+  <li>对于许多语言，TensorFlow 还没有 API.</li>
+  <li>TensorFlow 中还有许多东西需要实现，比如 OpenCL 的支持。</li>
+</ul>
+<p>上面提到的内容大多数是站在 TensorFlow 开发者的角度的。他们已经制定了一个路线图来说明将来这个库应该如何发展。</p>
+<h2 id="TensorFlow-vs-其他库"><a href="#TensorFlow-vs-其他库" class="headerlink" title="TensorFlow vs. 其他库"></a>TensorFlow vs. 其他库</h2>
+<p>TensorFlow 是以和 Theano 和 Torch 相似的原则构建的，都是使用数学计算图。但是由于具有分布式计算的支持，TensorFlow 对于解决复杂的问题表现得更好。同时，由于已经支持 TensorFlow 模型的部署（即开源免费），这使得在工业上使用更加容易，对 Deeplearning4j、H2O 和 Turi 这些商业库造成了竞争威胁。TensorFlow 有 Python、C++ 和 Matlab 的 API，接下来可能将要有对其他语言的支持，比如 Ruby 和 R。所以，TensorFlow
+  正在试图成为具有普遍语言的机器学习库。</p>
+<h2 id="接下来往哪走"><a href="#接下来往哪走" class="headerlink" title="接下来往哪走"></a>接下来往哪走</h2>
+<p>你已经看到了如何使用 TensorFlow 来建立一个简单的神经网路。这个代码对于来理解如何开始实现 TensorFlow 是有意义的，所以不要小瞧它。但是请记住现实生活需要解决的问题将会更加复杂，你需要稍微修改一下代码。</p>
+<p>上面的许多函数能够被抽象出来，以提供无缝的端到端工作流。如果你使用过 scikit-learn，那么你可能知道一个高级库是如何抽象出底层实现，然后给终端用户提供一个更加简单的接口的。虽然 TensorFlow 已经抽象出了大多数的实现，但高级库正在出现，比如 TF-slim 和 TFlearn 。</p>
+<h2 id="有用的资源"><a href="#有用的资源" class="headerlink" title="有用的资源"></a>有用的资源</h2>
+<ul>
+  <li><a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="external">TensorFlow 官方仓库</a></li>
+  <li>Rajat Monga (TensorFlow 技术引导) <a href="https://youtu.be/wmw8Bbb_eIE" target="_blank" rel="external">“TensorFlow for everyone”</a> 视频</li>
+  <li>一个专用资源列表](<a href="https://github.com/jtoy/awesome-tensorflow/#github-projects" target="_blank" rel="external">https://github.com/jtoy/awesome-tensorflow/#github-projects</a>)</li>
+</ul>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2>
+<p>我希望你觉得这篇文章很有帮助，现在，是时候来进行更多的练习和阅读了。Good luck！如果你使用一个不同的方法/包/库来实现神经网络，那么我很愿意在评论中跟你互动。如果你有什么建议，也请在评论中告知。为了让自己对神经网络的使用更加熟练，请不要忘记尝试解决我们的深度学习练习问题 - <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="external">数字识别</a>。</p>
+<p>你可以测试你的技能和知识。查看 <a href="http://datahack.analyticsvidhya.com/contest/all" target="_blank" rel="external">Live Competitions</a>，来和世界上最优秀的数据科学家进行比赛。</p>
+<blockquote>
+  <p>原文链接：<a href="https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/" target="_blank" rel="external">https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/</a></p>
+  <p>翻译：<a href="https://fenglv.ac.cn" target="_blank" rel="external">Flynn</a></p>
+</blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;
+&lt;p&gt;如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Machine-Learning" scheme="http://ucasfl.me/categories/Machine-Learning/"/>
+    
+    
+      <category term="Tensorflow translation" scheme="http://ucasfl.me/tags/Tensorflow-translation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Linux 中如何通过命令行开启或禁用触摸板</title>
+    <link href="http://ucasfl.me/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/"/>
+    <id>http://ucasfl.me/2017/11/02/How-to-enable-or-disable-touchpad-in-Linux-with-command-line/</id>
+    <published>2017-11-02T15:45:10.000Z</published>
+    <updated>2018-03-23T03:35:48.264Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。</p>
+<a id="more"></a>
+<h3 id="xinput"><a href="#xinput" class="headerlink" title="xinput"></a>xinput</h3>
+<p>首先，需要了解一个工具：<code>xinput</code></p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">xinput is <span class="selector-tag">a</span> utility to list available <span class="selector-tag">input</span> devices, query information</div><div class="line">about <span class="selector-tag">a</span> device and change <span class="selector-tag">input</span> device settings.</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>上面是 <code>man</code> 手册对它的描述。</p>
+<p>要通过触摸板开启或关闭触摸板，首先要要获取触摸板的设备 ID 和属性。</p>
+<p>我们可以可以先通过 <code>xinput --list</code> 命令查看有哪些输入设备。下面的结果是在我的笔记本上的输出：</p>
+<figure class="highlight crmsh">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">⎡ Virtual core pointer                          <span class="attr">id=</span><span class="number">2</span>    [<span class="keyword">master</span> <span class="title">pointer</span>  (<span class="number">3</span>)]</div><div class="line">⎜   ↳ Virtual core XTEST pointer                <span class="attr">id=</span><span class="number">4</span>    [<span class="literal">slave</span>  pointer  (<span class="number">2</span>)]</div><div class="line">⎜   ↳ PixArt USB Optical Mouse                  <span class="attr">id=</span><span class="number">10</span>   [<span class="literal">slave</span>  pointer  (<span class="number">2</span>)]</div><div class="line">⎜   ↳ DELL0767:<span class="number">00</span> <span class="number">06</span>CB:<span class="number">7</span>E92 Touchpad            <span class="attr">id=</span><span class="number">12</span>   [<span class="literal">slave</span>  pointer  (<span class="number">2</span>)]</div><div class="line">⎜   ↳ SynPS/<span class="number">2</span> Synaptics TouchPad                <span class="attr">id=</span><span class="number">14</span>   [<span class="literal">slave</span>  pointer  (<span class="number">2</span>)]</div><div class="line">⎣ Virtual core keyboard                         <span class="attr">id=</span><span class="number">3</span>    [<span class="keyword">master</span> <span class="title">keyboard</span> (<span class="number">2</span>)]</div><div class="line">    ↳ Virtual core XTEST keyboard               <span class="attr">id=</span><span class="number">5</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Power Button                              <span class="attr">id=</span><span class="number">6</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Video Bus                                 <span class="attr">id=</span><span class="number">7</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Power Button                              <span class="attr">id=</span><span class="number">8</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Sleep Button                              <span class="attr">id=</span><span class="number">9</span>    [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Integrated Webcam                         <span class="attr">id=</span><span class="number">11</span>   [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ AT Translated Set <span class="number">2</span> keyboard              <span class="attr">id=</span><span class="number">13</span>   [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ Dell WMI hotkeys                          <span class="attr">id=</span><span class="number">15</span>   [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div><div class="line">    ↳ DELL Wireless hotkeys                     <span class="attr">id=</span><span class="number">16</span>   [<span class="literal">slave</span>  keyboard (<span class="number">3</span>)]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可以看到，第 4 行输出即为触摸板，后面的 <code>id</code> 即为设备号。</p>
+<p>下面，查看触摸板的属性：</p>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">xinput <span class="comment">--list-props 12 </span></div><div class="line">＃或</div><div class="line">xinput <span class="comment">--list-props ‘DELL0767:00 06CB:7E92 Touchpad’</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>即使用设备 <code>id</code> 或设备名作为后面的参数均可以。</p>
+<p>下面是在我的笔记本上的输出：</p>
+<figure class="highlight aspectj">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">Device <span class="string">'DELL0767:00 06CB:7E92 Touchpad'</span>:</div><div class="line">	Device Enabled (140):	0</div><div class="line">	Coordinate Transformation Matrix (142):	1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000</div><div class="line">	Device Accel Profile (263):	1</div><div class="line">	Device Accel Constant Deceleration (264):	2.500000</div><div class="line">	Device Accel Adaptive Deceleration (265):	1.000000</div><div class="line">	Device Accel Velocity Scaling (266):	12.500000</div><div class="line">	Synaptics Edges (288):	49, 1180, 50, 879</div><div class="line">	Synaptics Finger (289):	25, 30, 0</div><div class="line">	Synaptics Tap Time (290):	180</div><div class="line">	Synaptics Tap Move (291):	67</div><div class="line">	Synaptics Tap Durations (292):	180, 180, 100</div><div class="line">	Synaptics ClickPad (293):	1</div><div class="line">	Synaptics Middle Button Timeout (294):	0</div><div class="line">	Synaptics Two-Finger Pressure (295):	282</div><div class="line">	Synaptics Two-Finger Width (296):	7</div><div class="line">	Synaptics Scrolling Distance (297):	30, 30</div><div class="line">	Synaptics Edge Scrolling (298):	0, 0, 0</div><div class="line">	Synaptics Two-Finger Scrolling (299):	1, 1</div><div class="line">	Synaptics Move Speed (300):	1.000000, 1.750000, 0.129870, 0.000000</div><div class="line">	Synaptics Off (301):	0</div><div class="line">	Synaptics Locked Drags (302):	0</div><div class="line">	Synaptics Locked Drags Timeout (303):	5000</div><div class="line">	Synaptics Tap Action (304):	2, 3, 0, 0, 1, 3, 2</div><div class="line">	Synaptics Click Action (305):	1, 3, 0</div><div class="line">	Synaptics Circular Scrolling (306):	0</div><div class="line">	Synaptics Circular Scrolling Distance (307):	0.100000</div><div class="line">	Synaptics Circular Scrolling Trigger (308):	0</div><div class="line">	Synaptics Circular Pad (309):	0</div><div class="line">	Synaptics Palm Detection (310):	0</div><div class="line">	Synaptics Palm Dimensions (311):	10, 200</div><div class="line">	Synaptics Coasting Speed (312):	20.000000, 50.000000</div><div class="line">	Synaptics Pressure Motion (313):	30, 160</div><div class="line">	Synaptics Pressure Motion Factor (314):	1.000000, 1.000000</div><div class="line">	Synaptics Resolution Detect (315):	1</div><div class="line">	Synaptics Grab Event Device (316):	0</div><div class="line">	Synaptics Gestures (317):	1</div><div class="line">	Synaptics Capabilities (318):	1, 0, 0, 1, 1, 0, 0</div><div class="line">	Synaptics Pad Resolution (319):	12, 12</div><div class="line">	Synaptics Area (320):	0, 0, 0, 0</div><div class="line">	Synaptics Soft Button Areas (321):	614, 0, 761, 0, 0, 0, 0, 0</div><div class="line">	Synaptics Noise Cancellation (322):	7, 7</div><div class="line">	Device Product ID (258):	1739, 32402</div><div class="line">	Device Node (259):	<span class="string">"/dev/input/event15"</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可以看到，第一个属性即为触摸板状态：1 表示开启，0 表示关闭，属性编号为 140。</p>
+<p>之后，我们可以使用下面的命令来开启或关闭触摸板：</p>
+<figure class="highlight dsconfig">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment"># 开启触摸板</span></div><div class="line"><span class="string">xinput </span><span class="built_in">set-prop</span> <span class="string">12 </span><span class="string">140 </span>1</div><div class="line"><span class="comment"># 关闭触摸板</span></div><div class="line"><span class="string">xinput </span><span class="built_in">set-prop</span> <span class="string">12 </span><span class="string">140 </span>0</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>其中，设备 ID 和属性编号也可替换为名字。</p>
+<p>但是，每次都使用这个命令会比较麻烦，因此，可以通过一个简单的脚本来实现：</p>
+<figure class="highlight bash">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> == <span class="string">"on"</span> ]; <span class="keyword">then</span></div><div class="line">	xinput <span class="built_in">set</span>-prop 12 140 1;</div><div class="line">	<span class="built_in">echo</span> <span class="string">"Touchpad successfully enabled!"</span>;</div><div class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$1</span>"</span> == <span class="string">"off"</span> ]; <span class="keyword">then</span></div><div class="line">	xinput <span class="built_in">set</span>-prop 12 140 0;</div><div class="line">	<span class="built_in">echo</span> <span class="string">"Touchpad successfully disabled!"</span></div><div class="line"><span class="keyword">else</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"Please use the program with one of the following arguments:"</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"   (1) on  : enable the touchpad!"</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"   (2) off : disable the touchpad!"</span></div><div class="line"><span class="keyword">fi</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>将该脚本命名为 <code>touchpad</code> ，然后放到 <code>/home/user/bin</code> 目录下。然后，开启或关闭触摸板就很方便了：</p>
+<figure class="highlight nginx">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment"># 开启触摸板</span></div><div class="line"><span class="attribute">touchpad</span> <span class="literal">on</span></div><div class="line"><span class="comment"># 关闭触摸板</span></div><div class="line">touchpad <span class="literal">off</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>注意，脚本中的设备 ID 和属性编号应和你的笔记本一致，<code>user</code> 为你的用户名。</p>
+<h3 id="gsettings"><a href="#gsettings" class="headerlink" title="gsettings"></a>gsettings</h3>
+<p>另外，如果上面的命令不起用了，那么可以试试(Gnome)：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">开启触摸板:</div><div class="line">sudo gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.desktop</span><span class="selector-class">.peripherals</span><span class="selector-class">.touchpad</span> send-events true</div><div class="line">输入时禁用：</div><div class="line">sudo gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.desktop</span><span class="selector-class">.peripherals</span><span class="selector-class">.touchpad</span> disable-while-typing true</div><div class="line">双指滚动</div><div class="line">sudo gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.desktop</span><span class="selector-class">.peripherals</span><span class="selector-class">.touchpad</span> disable-while-typing true</div><div class="line">tap to click:</div><div class="line">sudo gsettings set org<span class="selector-class">.gnome</span><span class="selector-class">.desktop</span><span class="selector-class">.peripherals</span><span class="selector-class">.touchpad</span> tap-to-click true</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将介绍如何在 Linux 中如何使用命令行命令来打开和关闭触摸板。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Linux touchpad" scheme="http://ucasfl.me/tags/Linux-touchpad/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一下那些年使用 Linux 踩过的坑</title>
+    <link href="http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/"/>
+    <id>http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/</id>
+    <published>2017-10-30T11:54:31.000Z</published>
+    <updated>2018-03-11T04:10:10.966Z</updated>
+    
+    <content type="html"><![CDATA[<p>笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 <code>emergency mode</code>，尝试重新启动到默认模式，然后出现下面的错误信息：</p>
+<a id="more"></a>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">[   84.260812] EXT4-fs (sda7): VFS: can&apos;t find ext4 filesystem.</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>错误信息很直接，说<code>sda7</code>不是<code>ext4</code>文件系统格式。</p>
+<p>然后查看分区：<code>fdisk -l</code>，输出如下：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">Disk /dev/sda: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors</div><div class="line">Units: sectors of 1 * 512 = 512 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 4096 bytes</div><div class="line">I/O size (minimum/optimal): 4096 bytes / 4096 bytes</div><div class="line">Disklabel type: gpt</div><div class="line">Disk identifier: A3FE2E3C-3EBC-401D-8BB3-987D9B33F0EC</div><div class="line"></div><div class="line">Device          Start        End   Sectors   Size Type</div><div class="line">/dev/sda1        2048    1026047   1024000   500M EFI System</div><div class="line">/dev/sda2     1026048    1288191    262144   128M Microsoft reserved</div><div class="line">/dev/sda3     1288192  284209819 282921628 134.9G Microsoft basic data</div><div class="line">/dev/sda4   284211200  508033023 223821824 106.7G Microsoft basic data</div><div class="line">/dev/sda5   508035072  949225471 441190400 210.4G Linux filesystem</div><div class="line">/dev/sda6   949225472  965793791  16568320   7.9G Linux swap</div><div class="line">/dev/sda7   965793792 1298845695 333051904 158.8G Microsoft basic data</div><div class="line">/dev/sda8  1298845696 1718274047 419428352   200G Linux filesystem</div><div class="line">/dev/sda9  1718276096 1927991295 209715200   100G Microsoft basic datamount -o remount,rw /</div><div class="line">mount --all</div><div class="line">chown root:root /usr/bin/sudo</div><div class="line">chmod 4755 /usr/bin/sudo</div><div class="line">/dev/sda10 1927993344 1928998911   1005568   491M Windows recovery environment</div><div class="line">/dev/sda11 1928998912 1951117311  22118400  10.6G Windows recovery environment</div><div class="line">/dev/sda12 1951119360 1953523711   2404352   1.2G Windows recovery environment</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>What ? <code>/dev/sd7</code> 是 Windows 系统的 C 盘，怎么它会在启动的时候挂载呢，而且还是以 <code>ext4</code> 的文件系统格式挂载。想了半天，没发现问题。还好，机智的我赶紧看了一下 <code>/etc/fstab</code> 文件内容：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"># /etc/fstab: static file system information.</div><div class="line">#</div><div class="line"># Use &apos;blkid&apos; to print the universally unique identifier for a</div><div class="line"># device; this may be used with UUID= as a more robust way to name devices</div><div class="line"># that works even if disks are added and removed. See fstab(5).</div><div class="line">#</div><div class="line"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</div><div class="line"># / was on /dev/sda9 during installation</div><div class="line">UUID=e3a38d48-680a-49e5-a98f-ae8bb6a37293 /               ext4    errors=remount-ro 0       1</div><div class="line"># /boot/efi was on /dev/sda1 during installation</div><div class="line">UUID=FE51-6D32  /boot/efi       vfat    umask=0077      0       1</div><div class="line"># swap was on /dev/sda10 during installation</div><div class="line">UUID=c6a51fbb-d72a-4d93-9305-b75aaf6ab1fa none            swap    sw              0       0</div><div class="line">dev/sda7 home/fenglv/FILE ext4 defaults 0 1</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>？？？原来之前挂载到 Ubuntu 上的盘设备名就是 <code>/dev/sda7</code> ，添加一个新的分区后设备名变为了 <code>/dev/sda8</code>，现在的 <code>/dev/sda7</code> 对应的就是 Windows 系统的 C 盘。而我没有修改 <code>/etc/fstab</code> ，所以才导致 Linux 系统启动的时候无法将该设备挂载上。</p>
+<p>修改之后终于正常启动了。</p>
+<p>然而事情并没有结束。之后，<code>sudo</code> 不能使用了，错误信息如下：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sudo: error in /etc/sudo.conf, line 0 while loading plugin `sudoers_policy&apos;</div><div class="line">sudo: /usr/lib/sudo/sudoers.so must be only be writable by owner</div><div class="line">sudo: fatal error, unable to load plugins</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>好吧，直接上网查。最后在 <a href="https://askubuntu.com/questions/637432/sudo-comes-up-with-an-error-cannot-run-anything-as-root" target="_blank" rel="external">askubunntu</a> 上找到了解决办法：启动到 <code>recovery mode</code> ，然后执行下面的命令：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">mount -o remount,rw /</div><div class="line">chmod 644 /usr/lib/sudo/sudoers.so</div><div class="line">chown -R root /usr/lib/sudo</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>至此，全部问题解决。</p>
+<p>问题并没有真的结束（文章更新），之后，virtualbox 不能启动了：</p>
+<figure class="highlight vim">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">VBoxHeadles<span class="variable">s:</span> Effective UID <span class="keyword">is</span> not root (euid=<span class="number">1000</span> egid=<span class="number">1000</span> uid=<span class="number">1000</span> gid=<span class="number">1000</span>)</div><div class="line">VBoxHeadles<span class="variable">s:</span> Tip! It may <span class="keyword">help</span> <span class="keyword">to</span> reinstall VirtualBox.</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>正确的做法就是按照它的提示把 virtualbox 卸了重新安装。然而，我却去修改<code>/usr/bin</code>的所有者：<code>chown -R root /usr/bin</code> 。这样以后，不但 <code>virtual box</code> 无法启动，<code>sudo</code> 又不能用了，这次的错误信息如下：</p>
+<figure class="highlight armasm">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="symbol">sudo</span>: /usr/<span class="keyword">bin/sudo </span>must <span class="keyword">be </span>owned <span class="keyword">by </span>uid <span class="number">0</span> <span class="keyword">and </span>have the setuid <span class="keyword">bit </span>set</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>最后找到解决办法：再次进入 <code>recovery mode</code>，执行下面命令：</p>
+<figure class="highlight plain">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">mount -o remount,rw /</div><div class="line">mount --all</div><div class="line">chown root:root /usr/bin/sudo</div><div class="line">chmod 4755 /usr/bin/sudo</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>问题解决。</p>
+<p>Linux 的权限问题真让人头疼。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 &lt;code&gt;emergency mode&lt;/code&gt;，尝试重新启动到默认模式，然后出现下面的错误信息：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 主机和 Vbox 下的 Windows 虚拟机创建共享文件夹</title>
+    <link href="http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/"/>
+    <id>http://ucasfl.me/2017/10/28/Linux-host-create-share-folder-with-windows-vbox/</id>
+    <published>2017-10-28T06:42:12.000Z</published>
+    <updated>2018-03-11T04:03:08.595Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。</p>
+<a id="more"></a>
+<p>首先确保安装好虚拟机。</p>
+<p>第一步，启动虚拟机，点击左上方工具栏 -&gt; 安装增加功能 -&gt; 按照提示安装成功即可。</p>
+<p>第一步，打开虚拟机设置 -&gt; 共享文件夹 -&gt; 添加路径 -&gt; 设置共享文件夹名字（假设名字为 Win7，后面会用到。）</p>
+<p>第三步，重启虚拟机 -&gt; 打开 cmd -&gt; 输入命令 <code>net use x: \\vboxsvr\Win7</code> 即可。其中 <code>x</code> 为盘符，任意一个未使用的字母均可以，<code>Win7</code> 即为上面设置的共享文件夹名字。</p>
+<p>这样，在主机和虚拟机之间就创建了一个共享文件夹。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Linux 下，难免会使用一些 Windows 的软件，此时其中一个选择就是安装虚拟机。下面将阐述如何在 Linux 主机下创建一个和 VirtualBox 下的 Windows 虚拟机的共享文件夹。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://ucasfl.me/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 编程风格</title>
+    <link href="http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/"/>
+    <id>http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/</id>
+    <published>2017-10-26T04:10:08.000Z</published>
+    <updated>2018-06-13T05:38:38.158Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。</p>
+<p>2018 年 6 月 13 日更新。</p>
+<a id="more"></a>
+<h3 id="多变量赋值"><a href="#多变量赋值" class="headerlink" title="多变量赋值"></a>多变量赋值</h3>
+<p>变量赋值是编程语言里面最简单的语句之一，通常情况下，我们会这样做：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line">c = <span class="number">3</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>这样便完成了对三个变量的赋值，但你可以用更简单的方式：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="元素值交换"><a href="#元素值交换" class="headerlink" title="元素值交换"></a>元素值交换</h3>
+<p>在编程过程中，交换两个变量的值是非常常见的。一般情况下，我们会用下面这种方式来交换两个变量的值（尤其是对于第一门语言是C/C++的人来说）：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">t = a</div><div class="line">a = b</div><div class="line">b = t</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>这种方式是正确的，没有人敢说它不对，但事实上，在 Python 里，你可以有更简单的方式来完成这件事：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">a, b = b, a</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>没错，一行语句就够了。</p>
+<p>对上面两个技巧的解释：在 Python 中，任何以逗号分隔的对象均被当作元组处理，因此<code>1, 2, 3</code>　实际上就是一个元组<code>(1, 2, 3)</code>，赋值过程可以看成是元组的解包 。交换值也是同样的，它相当于把等号右边的元组解包后赋值给了左边的变量。为了提高代码的可读性，上面的例子可以加上括号：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span> = (<span class="selector-tag">b</span>, a)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="循环遍历区间元素"><a href="#循环遍历区间元素" class="headerlink" title="循环遍历区间元素"></a>循环遍历区间元素</h3>
+<p>你可以这样：<br>
+  <figure class="highlight stylus">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>] :</div><div class="line">	print(i)</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>但更好的方法是：<br>
+  <figure class="highlight ada">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">6</span>) :</div><div class="line">	<span class="type">print</span>(i)</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>值得一提的是, <code>range</code> 返回的是生成器对象，生成器比列表更加节省内存。</p>
+<h3 id="带有索引位置的集合遍历"><a href="#带有索引位置的集合遍历" class="headerlink" title="带有索引位置的集合遍历"></a>带有索引位置的集合遍历</h3>
+<p>遍历集合时，如果需要索引信息，直接迭代是没有的，普通的方式是：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">peoples = [<span class="string">'Tim'</span>, <span class="string">'Bob'</span>, <span class="string">'Ada'</span>]</div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> range(len(peoples)) :</div><div class="line">	print(<span class="selector-tag">i</span>, <span class="string">'---&gt;'</span>, peoples[i])</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>但你还可以这样：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span>, people <span class="keyword">in</span> enumerate(peoples) :</div><div class="line">	print(<span class="selector-tag">i</span>, <span class="string">'---&gt;'</span>, people)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3>
+<p>普通方式可以用 <code>+</code> 操作：<br>
+  <figure class="highlight stylus">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">strs = [<span class="string">'I'</span>, <span class="string">'Love'</span>, <span class="string">'You'</span>]</div><div class="line">s = strs[<span class="number">0</span>]</div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> strs[<span class="number">1</span>: ]:</div><div class="line">	s += <span class="string">' '</span> + <span class="selector-tag">i</span></div><div class="line"><span class="function"><span class="title">print</span><span class="params">(s)</span></span></div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>但你还可以使用 <code>join</code> 方法：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">' '</span>.join(strs)</span></span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>与 <code>join</code> 相对应的就是 <code>split</code> 方法，<code>split</code> 方法通过指定分隔符参数来分割字符串，默认为空白符：<br>
+  <figure class="highlight ini">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="attr">s</span> = <span class="string">'I love you'</span></div><div class="line"><span class="attr">l</span> = s.split() # l = [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'you'</span>]</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>此外，<code>split</code> 方法还有一个用法。我们知道，在 Python 中，从键盘输入时，<code>input()</code> 方法会读取一整行输入，然后返回一个字符串，如果想要在同一行输入多个整数并赋值给多个对象，那么 <code>split()</code> 方法就派上用场了：</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = input().split()</div><div class="line"><span class="selector-tag">a</span> = int(a)</div><div class="line"><span class="selector-tag">b</span> = int(b)</div><div class="line">c = int(c)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>这样，就可以在同一行输入三个整数，然后分别赋值给 a, b, c，当然，此时，仍然是字符串，如果要作为整数使用，那么，使用 <code>int()</code> 转化一下即可。</p>
+<h3 id="列表解析"><a href="#列表解析" class="headerlink" title="列表解析"></a>列表解析</h3>
+<p>假设 <code>list1</code> 是一个字符串组成的列表，现在，需要把 <code>list1</code> 中的每一个字符串的每一个小写字母找出来，形成一个新的元组。一般情况下，我们可以这样做：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list1 = [<span class="string">'adg'</span>, <span class="string">'Adf'</span>, <span class="string">'124'</span>]</div><div class="line">list2 = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> i:</div><div class="line">    <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>:</div><div class="line">      list2.append(j)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>但实际上，你只需要用一个语句就可以完成这件事：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list2 = [j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>没错，Python 就是这么简洁。如果把上面的方括号换成圆括号，那么结果返回的就是一个迭代器，可以使用 <code>next()</code> 方法获取元素：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list2 = (j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>)</div><div class="line">list2.next() <span class="comment"># 返回'a'</span></div><div class="line">list2.next() <span class="comment"># 返回'd'</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="收集参数"><a href="#收集参数" class="headerlink" title="收集参数"></a>收集参数</h3>
+<p>函数的多个参数可通过一个元组传递，假设有如下函数：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x + y</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可重新定义为：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(*params)</span>:</span></div><div class="line">  <span class="keyword">return</span> params[<span class="number">0</span>] + params[<span class="number">1</span>]</div><div class="line"><span class="comment">#传递参数</span></div><div class="line">add2(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="comment">#或</span></div><div class="line">tuple1 = (<span class="number">1</span>, <span class="number">2</span>)</div><div class="line">add2(*tuple1)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>使用双星号则可以传递一个字典：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">with_star</span><span class="params">(**kwds)</span>:</span></div><div class="line">  print(kwds[<span class="string">'name'</span>], <span class="string">' is '</span>, kwds[<span class="string">'age'</span>] ,<span class="string">' years old.'</span>)</div><div class="line">args = &#123;<span class="string">'name'</span> : <span class="string">'Mrs. GUmby'</span>, <span class="string">'age'</span> : <span class="number">42</span>&#125;</div><div class="line">with_star(**args)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="使用两个列表创建字典"><a href="#使用两个列表创建字典" class="headerlink" title="使用两个列表创建字典"></a>使用两个列表创建字典</h3>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">list2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">d = dict(zip(list1, list2))</div><div class="line">list1 == list(d.keys())</div><div class="line">list2 == list(d.values())</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
+<p>多态意味着就算不知道变量所引用的对象类型是什么，也可以对它进行操作，看下面的函数：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span> <span class="params">(a, b)</span>:</span></div><div class="line">  <span class="keyword">return</span> a + b</div><div class="line">add(<span class="number">1</span>, <span class="number">2</span>)  <span class="comment"># 返回３</span></div><div class="line">add(<span class="string">'ab'</span>, <span class="string">'cd'</span>) <span class="comment"># 返回'abcd'</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>很多函数和运算符都是多态的，因此写程序时也应该尽量避免破坏多态，尽量不使用 <code>type, isinstance, issubclass</code> 之类会破坏多态的函数。</p>
+<p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>
+<h3 id="打开-关闭文件"><a href="#打开-关闭文件" class="headerlink" title="打开/关闭文件"></a>打开/关闭文件</h3>
+<p>执行文件操作时，一定不能忘记 <code>close()</code>，即使代码出错，普遍的方法是在 <code>finally</code> 块中显示的调用 <code>close</code> 方法：</p>
+<figure class="highlight livecodeserver">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">f = <span class="built_in">open</span>(<span class="string">'data.txt'</span>)</div><div class="line"><span class="keyword">try</span> :</div><div class="line">	data = f.<span class="built_in">read</span>()</div><div class="line"><span class="keyword">finally</span> :</div><div class="line">	f.<span class="built_in">close</span>()</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>但更简介的方法是：</p>
+<figure class="highlight haskell">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="title">with</span> open('<span class="class"><span class="keyword">data</span>.txt') as f :</span></div><div class="line">	<span class="class"><span class="keyword">data</span> = f.read()</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>使用 <code>with</code> 语句，系统会在执行完文件操作之后自动关闭文件对象。</p>
+<h3 id="合理使用列表"><a href="#合理使用列表" class="headerlink" title="合理使用列表"></a>合理使用列表</h3>
+<p>列表对象是一个查询效率高但更新效率低的数据结构。比如删除元素和插入元素的时候执行效率非常低，需要对剩下的元素进行移动。</p>
+<figure class="highlight vim">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">people = [<span class="string">'xiaoming'</span>, <span class="string">'xiaohong'</span>, <span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>]</div><div class="line">people.<span class="keyword">pop</span>(<span class="number">0</span>)</div><div class="line">people.<span class="keyword">insert</span>(<span class="number">0</span>, <span class="string">'lihua'</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>更好的方法是使用 <code>deque</code>:</p>
+<figure class="highlight xl">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">from collections <span class="keyword">import</span> deque</div><div class="line"><span class="keyword">name</span> = deque([<span class="string">'xiaoming'</span>, <span class="string">'xiaohong'</span>, <span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>])</div><div class="line"><span class="keyword">name</span>.popleft()</div><div class="line"><span class="keyword">name</span>.appendleft(<span class="string">'lihua'</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><code>deque</code> 是一个双向队列的数据结构，删除元素和插入元素会很快。</p>
+<h3 id="遍历字典中的-key-和-value"><a href="#遍历字典中的-key-和-value" class="headerlink" title="遍历字典中的 key 和 value"></a>遍历字典中的 key 和 value</h3>
+<p>普通方法：</p>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">d = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span>&#125;</div><div class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d :</div><div class="line">	<span class="type">print</span>(k, '<span class="comment">---&gt;', d[k])</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>该方法效率较低，因为每次都需要重新进行 hash 查找 key 对应的 value 。</p>
+<p>高效的方法是：</p>
+<figure class="highlight bash">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items():</div><div class="line">	<span class="built_in">print</span>(k, <span class="string">'---&gt;'</span>, d[k])</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><code>items</code> 返回迭代器对象，效率高，且节省内存。</p>
+<h3 id="链式比较"><a href="#链式比较" class="headerlink" title="链式比较"></a>链式比较</h3>
+<p>学了那么久 Python，最近才知道 Python 居然支持大多数编程语言都不支持的链式比较：</p>
+<p>常规方法：</p>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">age = <span class="number">18</span></div><div class="line"><span class="keyword">if</span> age &gt; <span class="number">18</span> <span class="keyword">and</span> age &lt; <span class="number">60</span> :</div><div class="line">	<span class="type">print</span>(<span class="symbol">'young</span> man')</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>事实上，在 Python 中，你可以这样写：</p>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">if</span> <span class="number">18</span> &lt; age &lt; <span class="number">60</span> :</div><div class="line">	<span class="type">print</span>(<span class="symbol">'young</span> man')</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>理解了链式比较操作，那么你也就明白了下面这行代码为什么会返回 <code>False</code> :</p>
+<figure class="highlight ini">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="attr">True</span> == <span class="literal">True</span> == <span class="literal">False</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="if-else-三目运算"><a href="#if-else-三目运算" class="headerlink" title="if/else 三目运算"></a>if/else 三目运算</h3>
+<p>常规：</p>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">if</span> gender == <span class="symbol">'male</span>' :</div><div class="line">	<span class="type">text</span> = <span class="symbol">'man</span>'</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">text</span> = <span class="symbol">'women</span>'</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>pythonic:</p>
+<figure class="highlight arduino">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="built_in">text</span> = <span class="string">'man'</span> <span class="built_in">if</span> gender == <span class="string">'male'</span> <span class="built_in">else</span> <span class="string">'women'</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="for-else-while-else-语句"><a href="#for-else-while-else-语句" class="headerlink" title="for/else, while/else 语句"></a>for/else, while/else 语句</h3>
+<p><code>for/else, while/else</code> 语句是 Python 中最迷惑人的语法：如果以正常方式退出循环(非 <code>break&#39;, 非</code>return<code>, 程序异常)，那么</code>else` 分支将执行：</p>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>) :</div><div class="line">	<span class="type">if</span> i == <span class="number">5</span> :</div><div class="line">		<span class="type">break</span></div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">print</span>(<span class="string">"hello, world."</span>) # 无输出</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>) :</div><div class="line">	<span class="type">print</span>(i)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">print</span>(<span class="string">"hello, world."</span>) # 有输出</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>当然，上面说到的例子没什么用，看下面一个：</p>
+<figure class="highlight ada">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">found = <span class="literal">false</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> mylist :</div><div class="line">	<span class="type">if</span> i == theflag :</div><div class="line">		<span class="type">found</span> = <span class="literal">True</span></div><div class="line">		break</div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> found :</div><div class="line">	<span class="type">print</span>(<span class="string">"Not found."</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>使用 <code>for/else</code> :</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> mylist :</div><div class="line">	<span class="keyword">if</span> <span class="selector-tag">i</span> == theflag :</div><div class="line">		break</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	print(<span class="string">"Not found."</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。&lt;/p&gt;
+&lt;p&gt;2018 年 6 月 13 日更新。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://ucasfl.me/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 速查表</title>
+    <link href="http://ucasfl.me/2017/10/07/Python-cheat-sheet/"/>
+    <id>http://ucasfl.me/2017/10/07/Python-cheat-sheet/</id>
+    <published>2017-10-07T11:20:55.000Z</published>
+    <updated>2018-06-05T14:56:17.335Z</updated>
+    
+    <content type="html"><![CDATA[<p>本手册是 <a href="http://datasciencefree.com/python.pdf" target="_blank" rel="external">Python cheat sheet</a> 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。</p>
+<p>该手册同时位于 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition" target="_blank" rel="external">GitHub</a> 上，可下载 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/README.pdf" target="_blank" rel="external">PDF 版</a>。</p>
+<a id="more"></a>
+<h2 id="惯例"><a href="#惯例" class="headerlink" title="惯例"></a>惯例</h2>
+<ul>
+  <li>Python 对大小写敏感；</li>
+  <li>Python 的索引从 0 开始（所有编程语言均如此）；</li>
+  <li>Python 使用空白符（制表符或空格）来缩进代码，而不是使用花括号。</li>
+</ul>
+<h2 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h2>
+<ul>
+  <li>获取主页帮助： <code>help()</code></li>
+  <li>获取函数帮助： <code>help(str.replace)</code></li>
+  <li>获取模块帮助： <code>help(re)</code></li>
+</ul>
+<h2 id="模块（亦称库）"><a href="#模块（亦称库）" class="headerlink" title="模块（亦称库）"></a>模块（亦称库）</h2>
+<p>模块只是一个简单地以 <code>.py</code> 为后缀的文件。</p>
+<ul>
+  <li>列出模块内容：<code>dir(module1)</code></li>
+  <li>导入模块：<code>import module</code></li>
+  <li>调用模块中的函数：<code>module1.func1()</code></li>
+</ul>
+<p><strong>注：<code>import</code> 语句会创建一个新的名字空间，并且在该名字空间内执行 <code>.py</code> 文件中的所有语句。如果你想把模块内容导入到当前名字空间，请使用 <code>from module1 import *</code> 语句。</strong></p>
+<h2 id="数值类类型"><a href="#数值类类型" class="headerlink" title="数值类类型"></a>数值类类型</h2>
+<p>查看变量的数据类型：<code>type(variable)</code></p>
+<h3 id="六种经常使用的数据类型"><a href="#六种经常使用的数据类型" class="headerlink" title="六种经常使用的数据类型"></a>六种经常使用的数据类型</h3>
+<ol>
+  <li>
+    <p><strong>int/long</strong>：过大的 <code>int</code> 类型会被自动转化为 <code>long</code> 类型。</p>
+  </li>
+  <li>
+    <p><strong>float</strong>：64 位，Python 中没有 <code>double</code> 类型。</p>
+  </li>
+  <li>
+    <p><strong>bool</strong>：真或假。</p>
+  </li>
+  <li>
+    <p><strong>str</strong>：在 Python 2 中默认以 ASCII 编码，而在 Python 3 中默认以 Unicode 编码；</p>
+    <ul>
+      <li>字符串可置于单/双/三引号中；</li>
+      <li>字符串是字符的序列，因此可以像处理其他序列一样处理字符串；</li>
+      <li>特殊字符可通过 <code>\</code> 或者前缀 <code>r</code> 实现：</li>
+    </ul>
+    <figure class="highlight python">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">str1 = <span class="string">r'this\f?ff'</span></div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+    <ul>
+      <li>字符串可通过多种方式格式化：</li>
+    </ul>
+    <figure class="highlight python">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div><div class="line">2</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">template = <span class="string">'%.2f %s haha $%d'</span>;</div><div class="line">str1 = template % (<span class="number">4.88</span>, <span class="string">'hola'</span>, <span class="number">2</span>)</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <p><strong>NoneType(None)</strong>：Python <code>null</code> 值（只有 None 对象的一个实例中存在）。</p>
+    <ul>
+      <li><code>None</code> 不是一个保留关键字，而是 <strong>NoneType</strong> 的一个唯一实例。</li>
+      <li><code>None</code> 通常是可选函数参数的默认值：</li>
+    </ul>
+    <figure class="highlight python">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(a, b, c = None)</span></span></div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+    <ul>
+      <li><code>None</code> 的常见用法：</li>
+    </ul>
+    <figure class="highlight python">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line"><span class="keyword">if</span> variable <span class="keyword">is</span> <span class="keyword">None</span> :</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <p><strong>datatime</strong>：Python 内建的 datetime 模块提供了 <code>datetime</code>、<code>data</code> 以及 <code>time</code> 类型。</p>
+    <ul>
+      <li><code>datetime</code> 组合了存储于 <code>date</code> 和 <code>time</code> 中的信息。</li>
+    </ul>
+  </li>
+</ol>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#从字符串中创建 datetime</span></div><div class="line">dt1 = datetime.strptime(<span class="string">'20091031'</span>, <span class="string">'%Y%m%d'</span>)</div><div class="line"><span class="comment">#获取 date 对象</span></div><div class="line">dt1.date()</div><div class="line"><span class="comment">#获取 time 对象</span></div><div class="line">dt1.time()</div><div class="line"><span class="comment">#将 datetime 格式化为字符串</span></div><div class="line">dt1.strftime(<span class="string">'%m/%d/%Y%H:%M'</span>)</div><div class="line"><span class="comment">#更改字段值</span></div><div class="line">dt2 = dt1.replace(minute = <span class="number">0</span>, second = <span class="number">30</span>)</div><div class="line"><span class="comment">#做差, diff 是一个 datetime.timedelta 对象</span></div><div class="line">diff = dt1 - dt2</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注：Python 中的绝大多数对象都是可变的，只有字符串和元组例外。</strong></p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2>
+<p><strong>注：所有的 non-Get 函数调用，比如下面例子中的 <code>list1.sort()</code> 都是原地操作，即不会创建新的对象，除非特别声明。</strong></p>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3>
+<p>元组是 Python 中任何类型的对象的一个一维、固定长度、不可变的序列。</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#创建元组</span></div><div class="line">tup1 = <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> </div><div class="line"><span class="comment"># or</span></div><div class="line">tup1 = (<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>)</div><div class="line"><span class="comment">#创建嵌套元组</span></div><div class="line">tup1 = (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), (<span class="number">7</span>, <span class="number">8</span>)</div><div class="line"><span class="comment">#将序列或迭代器转化为元组</span></div><div class="line">tuple([<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>])</div><div class="line"><span class="comment">#连接元组</span></div><div class="line">tup1 + tup2</div><div class="line"><span class="comment">#解包元组</span></div><div class="line">a, b, c = tup1</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>元组应用：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#交换两个变量的值</span></div><div class="line">a, b = b, a</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3>
+<p>列表是 Python 中任何类型的对象的一个一维、非固定长度、可变（比如内容可以被修改）的序列。</p>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">#创建列表</div><div class="line">list1 = [1, 'a', 3]</div><div class="line">#or</div><div class="line">list1 = list(tup1)</div><div class="line">#连接列表</div><div class="line">list1 + list2 </div><div class="line">#or</div><div class="line">list1.extend(list2)</div><div class="line">#追加到列表的末尾</div><div class="line">list1.append('b')</div><div class="line">#插入指定位置</div><div class="line">list1.insert(PosIndex, 'a')</div><div class="line">#反向插入，即弹出给定位置的值/删除</div><div class="line">ValueAtIdx = list1.pop(PosIndex)</div><div class="line">#移除列表中的第一个值, a 必须是列表中第一个值</div><div class="line">list1.remove('a')</div><div class="line">#检查成员资格</div><div class="line">3 in list1 =&gt; True or False</div><div class="line">#对列表进行排序</div><div class="line">list1.sort()</div><div class="line">#按特定方式排序</div><div class="line">list1.sort(key = len) # 按长度排序</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>使用 + 连接列表会有比较大的开支，因为这个过程中会创建一个新的列表，然后复制对象。因此，使用 <code>extend()</code> 是更明智的选择；</li>
+  <li><code>insert</code> 和 <code>append</code> 相比会有更大的开支（时间/空间）；</li>
+  <li>在列表中检查是否包含一个值会比在字典和集合中慢很多，因为前者需要进行线性扫描，而后者是基于哈希表的，所以只需要花费常数时间。</li>
+</ul>
+<h4 id="内建的-bisect-模块"><a href="#内建的-bisect-模块" class="headerlink" title="内建的 bisect 模块"></a>内建的 <code>bisect</code> 模块</h4>
+<ul>
+  <li>对一个排序好的列表进行二分查找或插入；</li>
+  <li><code>bisect.bisect</code>找到元素在列表中的位置，<code>bisect.insort</code>将元素插入到相应位置。用法：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">import</span> bisect</div><div class="line">list1 = list(range(<span class="number">10</span>))</div><div class="line"><span class="comment">#找到 5 在 list1 中的位置，从 1 开始，因此 position = index + 1</span></div><div class="line">bisect.bisect(list1, <span class="number">5</span>)</div><div class="line"><span class="comment">#将 3.5 插入 list1 中合适位置</span></div><div class="line">bisect.insort(list1, <span class="number">3.5</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注：<code>bisect</code> 模块中的函数并不会去检查列表是否排序好，因为这会花费很多时间。所以，对未排序好的列表使用这些函数也不会报错，但可能会返回不正确的结果。</strong></p>
+<h3 id="针对序列类型的切片"><a href="#针对序列类型的切片" class="headerlink" title="针对序列类型的切片"></a>针对序列类型的切片</h3>
+<p>序列类型包括 <code>str</code>、<code>array</code>、<code>tuple</code>、<code>list</code> 等。</p>
+<p>用法：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list1[start:stop]</div><div class="line"><span class="comment">#如果使用 step</span></div><div class="line">list1(start:stop:step)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注：切片结果包含 <code>start</code> 索引，但不包含 <code>stop</code> 索引；<code>start/stop</code> 索引可以省略，如果省略，则默认为序列从开始到结束，如 <code>list1 == list1[:]</code> 。</strong></p>
+<p><code>step</code> 的应用：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#取出奇数位置的元素</span></div><div class="line">list1[::<span class="number">2</span>]</div><div class="line"><span class="comment">#反转字符串</span></div><div class="line">str1[::<span class="number">-1</span>]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="字典（哈希映射）"><a href="#字典（哈希映射）" class="headerlink" title="字典（哈希映射）"></a>字典（哈希映射）</h3>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#创建字典</span></div><div class="line">dict1 = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="number">2</span>: [<span class="number">3</span>,<span class="number">2</span>]&#125;</div><div class="line"><span class="comment">#从序列创建字典</span></div><div class="line">dict(zip(KeyList, ValueList))</div><div class="line"><span class="comment">#获取/设置/插入元素</span></div><div class="line">dict1[<span class="string">'key1'</span>]</div><div class="line">dict1[<span class="string">'key1'</span>] = <span class="string">'NewValue'</span></div><div class="line"><span class="comment">#get 提供默认值</span></div><div class="line">dict1.get(<span class="string">'key1'</span>, DefaultValue)</div><div class="line"><span class="comment">#检查键是否存在</span></div><div class="line"><span class="string">'key1'</span> <span class="keyword">in</span> dict1</div><div class="line"><span class="comment">#获取键列表</span></div><div class="line">dict1.keys()</div><div class="line"><span class="comment">#获取值列表</span></div><div class="line">dict1.values()</div><div class="line"><span class="comment">#更新值</span></div><div class="line">dict1.update(dict2)<span class="comment">#dict1 的值被 dict2 替换</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>如果键不存在，则会出现 <code>KeyError Exception</code> 。</li>
+  <li>当键不存在时，如果 <code>get()</code>不提供默认值则会返回 <code>None</code> 。</li>
+  <li>以相同的顺序返回键列表和值列表，但顺序不是特定的，又称极大可能非排序。</li>
+</ul>
+<h4 id="有效字典键类型"><a href="#有效字典键类型" class="headerlink" title="有效字典键类型"></a>有效字典键类型</h4>
+<ul>
+  <li>键必须是不可变的，比如标量类型(<code>int</code>、<code>float</code>、<code>string</code>)或者元组（元组中的所有对象也必须是不可变的）。</li>
+  <li>这儿涉及的技术术语是 <code>hashability</code>。可以用函数 <code>hash()</code>来检查一个对象是否是可哈希的，比如 <code>hash(&#39;This is a string&#39;)</code> 会返回一个哈希值，而 <code>hash([1,2])</code> 则会报错（不可哈希）。</li>
+</ul>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3>
+<ul>
+  <li>一个集合是一些无序且唯一的元素的聚集；</li>
+  <li>你可以把它看成只有键的字典；</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#创建集合</span></div><div class="line">set([<span class="number">3</span>, <span class="number">6</span>, <span class="number">3</span>])</div><div class="line"><span class="comment">#or</span></div><div class="line">&#123;<span class="number">3</span>, <span class="number">6</span>, <span class="number">3</span>&#125;</div><div class="line"><span class="comment">#子集测试</span></div><div class="line">set1.issubset(set2)</div><div class="line"><span class="comment">#超集测试</span></div><div class="line">set1.issuperset(set2)</div><div class="line"><span class="comment">#测试两个集合中的元素是否完全相同</span></div><div class="line">set1 == set2</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h4 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h4>
+<ul>
+  <li>并（又称或）：<code>set1 | set2</code></li>
+  <li>交（又称与）：<code>set1 &amp; set2</code></li>
+  <li>差：<code>set1 - set2</code></li>
+  <li>对称差（又称异或）：<code>set1 ^ set2</code></li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2>
+<p>Python 的函数参数传递是通过<strong>引用传递</strong>。</p>
+<ul>
+  <li>基本形式</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(posArg1, keywordArg1 = <span class="number">1</span>, ..)</span></span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注</strong></p>
+<ul>
+  <li>关键字参数必须跟在位置参数的后面；</li>
+  <li>默认情况下，Python 不会“延迟求值”，表达式的值会立刻求出来。</li>
+</ul>
+<h3 id="函数调用机制"><a href="#函数调用机制" class="headerlink" title="函数调用机制"></a>函数调用机制</h3>
+<ul>
+  <li>所有函数均位于模块内部作用域。见“模块”部分。</li>
+  <li>在调用函数时，参数被打包成一个元组和一个字典，函数接收一个元组 <code>args</code> 和一个字典 <code>kwargs</code>，然后在函数内部解包。</li>
+</ul>
+<p>“函数是对象”的常见用法：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(ops = [str.strip, user_define_func, ..], ..)</span>:</span></div><div class="line">  <span class="keyword">for</span> function <span class="keyword">in</span> ops:</div><div class="line">    value = function(value)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3>
+<ul>
+  <li>如果函数末尾没有 <code>return</code> 语句，则不会返回任何东西。</li>
+  <li>如果有多个返回值则通过一个元组来实现。</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">return</span> (value1, value2)</div><div class="line">value1, value2 = func1(..)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="匿名函数（又称-LAMBDA-函数）"><a href="#匿名函数（又称-LAMBDA-函数）" class="headerlink" title="匿名函数（又称 LAMBDA 函数）"></a>匿名函数（又称 LAMBDA 函数）</h3>
+<ul>
+  <li>什么是匿名函数？</li>
+</ul>
+<p>匿名函数是一个只包含一条语句的简单函数。</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">lambda</span> x : x * <span class="number">2</span></div><div class="line"><span class="comment">#def func1(x) : return x * 2</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>匿名函数的应用：’curring’，又称利用已存在函数的部分参数来派生新的函数。</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">ma60 = <span class="keyword">lambda</span> x : pd.rolling_mean(x, <span class="number">60</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="一些有用的函数（针对数据结构）"><a href="#一些有用的函数（针对数据结构）" class="headerlink" title="一些有用的函数（针对数据结构）"></a>一些有用的函数（针对数据结构）</h3>
+<ul>
+  <li><code>enumerate()</code> 返回一个序列<code>(i, value)</code>元组，<code>i</code> 是当前 <code>item</code> 的索引。</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate(collection):</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>应用：创建一个序列中值与其在序列中的位置的字典映射（假设每一个值都是唯一的）。</p>
+<ul>
+  <li><code>sort()</code>可以从任意序列中返回一个排序好的序列。</li>
+</ul>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sorted([2, 1, 3]) =&gt; [1, 2, 3]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>应用：</p>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sorted(set('abc bcd')) =&gt; [' ',</div><div class="line">'a', 'b', 'c', 'd']</div><div class="line"># 返回一个字符串排序后无重复的字母序列</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li><code>zip()</code>函数可以把许多列表、元组或其他序列的元素配对起来创建一系列的元组。</li>
+</ul>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">zip(seq1, seq2) =&gt; [('seq1_1', 'seq2_1'), (..), ..]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ol>
+  <li><code>zip()</code>可以接收任意数量的序列作为参数，但是产生的元素的数目取决于最短的序列。</li>
+</ol>
+<p>应用：多个序列同时迭代：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> i, (a, b) <span class="keyword">in</span> enumerate(zip(seq1, seq2)):</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ol>
+  <li><code>unzip</code>：另一种思考方式是把一些行转化为一些列：</li>
+</ol>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">seq1, seq2 = zip(zipOutput)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li><code>reversed()</code> 将一个序列的元素以逆序迭代。</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list(reversed(range(<span class="number">10</span>)))</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong><code>reversed()</code> 会返回一个迭代器，<code>list()</code> 使之成为一个列表。</strong></p>
+<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2>
+<ul>
+  <li>用于 <code>if-else</code> 条件中的操作符：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#检查两个变量是否是相同的对象</span></div><div class="line">var1 <span class="keyword">is</span> var2</div><div class="line"><span class="comment">#检查两个变量是否是不同的对象</span></div><div class="line">var1 <span class="keyword">is</span> <span class="keyword">not</span> var2</div><div class="line"><span class="comment">#检查两个变量的值是否相等</span></div><div class="line">var1 == var2</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注：Python 中使用 <code>and</code>、<code>or</code>、<code>not</code> 来组合条件，而不是使用 <code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 。</strong></p>
+<ul>
+  <li><code>for</code>循环的常见用法：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#可迭代对象（list、tuple）或迭代器</span></div><div class="line"><span class="keyword">for</span> element <span class="keyword">in</span> iterator:</div><div class="line"><span class="comment">#如果元素是可以解包的序列</span></div><div class="line"><span class="keyword">for</span> a, b, c <span class="keyword">in</span> iterator:</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li><code>pass</code>：无操作语句，在不需要进行任何操作的块中使用。</li>
+  <li>三元表达式，又称简洁的 <code>if-else</code>，基本形式：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">value = true-expr <span class="keyword">if</span> condition <span class="keyword">else</span> false-expr</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>Python 中没有 <code>switch/case</code> 语句，请使用 <code>if/elif</code>。</li>
+</ul>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2>
+<ul>
+  <li><strong>对象（object）</strong>是 Python 中所有类型的根。</li>
+  <li>万物（数字、字符串、函数、类、模块等）皆为对象，每个对象均有一个类型（type）。对象变量是一个指向变量在内存中位置的指针。</li>
+  <li>所有对象均为<strong>引用计数</strong>。</li>
+</ul>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sys.getrefcount(5) =&gt; x</div><div class="line">a = 5, b = a</div><div class="line">#上式会在等号的右边创建一个对象的引用，因此 a 和 b 均指向 5</div><div class="line">sys.getrefcount(5)</div><div class="line">=&gt; x + 2</div><div class="line">del(a); sys.getrefcount(5) =&gt; x + 1</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>类的基本形式：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyObject</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="comment"># 'self' 等价于 Java/C++ 中的 'this'</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">    self.name = name</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">memberFunc1</span><span class="params">(self, arg1)</span>:</span></div><div class="line">      ..</div><div class="line"><span class="meta">  @staticmethod</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">classFunc2</span><span class="params">(arg1)</span>:</span></div><div class="line">    ..</div><div class="line">obj1 = MyObject(<span class="string">'name1'</span>)</div><div class="line">obj1.memberFunc1(<span class="string">'a'</span>)</div><div class="line">MyObject.classFunc2(<span class="string">'b'</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>有用的交互式工具：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">dir(variable1) <span class="comment">#列出对象的所有可用方法</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h2 id="常见字符串操作"><a href="#常见字符串操作" class="headerlink" title="常见字符串操作"></a>常见字符串操作</h2>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">#通过分隔符连接列表/元组</div><div class="line">', '.join([ 'v1', 'v2', 'v3']) =&gt; 'v1, v2, v3'</div><div class="line"></div><div class="line">#格式化字符串</div><div class="line">string1 = 'My name is &#123;0&#125;　&#123;name&#125;'</div><div class="line">newString1 = string1.format('Sean', name =　'Chen')</div><div class="line"></div><div class="line">#分裂字符串</div><div class="line">sep = '-';</div><div class="line">stringList1 =　string1.split(sep)</div><div class="line"></div><div class="line">#获取子串</div><div class="line">start = 1;</div><div class="line">string1[start:8]</div><div class="line"></div><div class="line">#补 '0' 向右对齐字符串</div><div class="line">month = '5';</div><div class="line">month.zfill(2) =&gt; '05'</div><div class="line">month = '12';</div><div class="line">month.zfill(2) =&gt; '12'</div><div class="line">month.zfill(3) =&gt; '012'</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2>
+<ul>
+  <li>基本形式：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">try</span>:</div><div class="line">  ..</div><div class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</div><div class="line">  <span class="keyword">print</span> e</div><div class="line"><span class="keyword">except</span> (TypeError, AnotherError):</div><div class="line">  ..</div><div class="line"><span class="keyword">except</span>:</div><div class="line">  ..</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">  .. <span class="comment"># 清理，比如 close db;</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>手动引发异常：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">raise</span> AssertionError <span class="comment"># 断言失败</span></div><div class="line"><span class="keyword">raise</span> SystemExit</div><div class="line"><span class="comment"># 请求程序退出</span></div><div class="line"><span class="keyword">raise</span> RuntimeError(<span class="string">'错误信息 :..'</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h2 id="对列表、字典和元组的深入理解"><a href="#对列表、字典和元组的深入理解" class="headerlink" title="对列表、字典和元组的深入理解"></a>对列表、字典和元组的深入理解</h2>
+<p>语法糖（syntactic sugar）会使代码变得更加易读易写。</p>
+<h3 id="对列表的理解"><a href="#对列表的理解" class="headerlink" title="对列表的理解"></a>对列表的理解</h3>
+<p>将一些元素通过一个简短的语句传入一个过滤器进行过滤和转化，然后可以组成一个新的列表。</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#基本形式</span></div><div class="line">[expr <span class="keyword">for</span> val <span class="keyword">in</span> collection <span class="keyword">if</span> condition]</div><div class="line"><span class="comment">#ShortCut</span></div><div class="line">result = []</div><div class="line"><span class="keyword">for</span> val <span class="keyword">in</span> collection:</div><div class="line">  <span class="keyword">if</span> condition:</div><div class="line">    result.append(expr)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可以省略过滤条件，只留下表达式。</p>
+<h3 id="对字典的理解"><a href="#对字典的理解" class="headerlink" title="对字典的理解"></a>对字典的理解</h3>
+<p>基本形式：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">&#123;key-expr : value-expr <span class="keyword">for</span> value <span class="keyword">in</span> collection <span class="keyword">if</span> condition&#125;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="对集合的理解"><a href="#对集合的理解" class="headerlink" title="对集合的理解"></a>对集合的理解</h3>
+<p>基本形式：和列表一样，只是应该使用 <code>()</code> 而不是 <code>[]</code> 。</p>
+<h3 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h3>
+<p>基本形式：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">[expr <span class="keyword">for</span> val <span class="keyword">in</span> collection <span class="keyword">for</span> innerVal <span class="keyword">in</span> val <span class="keyword">if</span> condition]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本手册是 &lt;a href=&quot;http://datasciencefree.com/python.pdf&quot;&gt;Python cheat sheet&lt;/a&gt; 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。&lt;/p&gt;
+&lt;p&gt;该手册同时位于 &lt;a href=&quot;https://github.com/ucasFL/python-cheat-sheet-Chinese-edition&quot;&gt;GitHub&lt;/a&gt; 上，可下载 &lt;a href=&quot;https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/README.pdf&quot;&gt;PDF 版&lt;/a&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
+    
+    
+      <category term="Python cheat-sheet" scheme="http://ucasfl.me/tags/Python-cheat-sheet/"/>
     
   </entry>
   
