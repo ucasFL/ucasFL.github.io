@@ -1182,10 +1182,6 @@ pre .javascript .function {
   bottom: 30px;
 }
 
-.header {
-  background: url("/images/beijing.jpg");
-}
-
 .header-inner {
   position: relative;
 }
@@ -2041,7 +2037,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #16ffd2;
+  background: #93feff;
 }
 
 .links-of-blogroll {

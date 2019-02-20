@@ -1210,7 +1210,7 @@
 
 
                     <a class="post-title-link" href="/2017/12/10/Linux-commands-of-xrandr/" itemprop="url">
-                  Xrandr-一个可以设置屏幕分辨率的 Linux 命令
+                  Xrandr 命令 的一些使用
                 </a>
 
 
@@ -1242,8 +1242,8 @@
 
                     <span class="post-meta-item-text">更新于</span>
 
-                    <time title="更新于" itemprop="dateModified" datetime="2019-01-25T13:53:05+08:00">
-                2019/01/25
+                    <time title="更新于" itemprop="dateModified" datetime="2019-02-20T17:30:50+08:00">
+                2019/02/20
               </time>
 
                     </span>
@@ -1278,7 +1278,7 @@
 
 
 
-                    <span id="/2017/12/10/Linux-commands-of-xrandr/" class="leancloud_visitors" data-flag-title="Xrandr-一个可以设置屏幕分辨率的 Linux 命令">
+                    <span id="/2017/12/10/Linux-commands-of-xrandr/" class="leancloud_visitors" data-flag-title="Xrandr 命令 的一些使用">
                <span class="post-meta-divider">|</span>
                     <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1309,7 +1309,7 @@
 
 
 
-                  <p>一个可以设置屏幕分辨率的 Linux 命令。</p>
+                  <p>设置屏幕分辨率：</p>
                   <figure class="highlight ada">
                     <table>
                       <tr>
@@ -1318,6 +1318,19 @@
                         </td>
                         <td class="code">
                           <pre><div class="line">xrandr : 显示系统支持的所有分辨率</div><div class="line">xrandr -s <span class="number">0</span> : 设置为系统默认分辨率</div><div class="line">xrandr -s arg : 设置具体分辨率,如 <span class="type">xrandr</span> -s <span class="number">1024</span>x768</div></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                  <p>双屏设置：</p>
+                  <figure class="highlight brainfuck">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+                        </td>
+                        <td class="code">
+                          <pre><div class="line"><span class="comment">xrandr</span> <span class="comment">:</span> <span class="comment">显示所有显示屏设备名称</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">same</span><span class="literal">-</span><span class="comment">as</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">设置双屏显示相同的内容</span><span class="string">,</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">为最高分辨率，可通过</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">mode</span> <span class="comment">arg</span> <span class="comment">设置分辨率</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">right</span><span class="literal">-</span><span class="comment">of</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">右侧扩展</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">left</span><span class="literal">-</span><span class="comment">of</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">左侧扩展</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">off</span> <span class="comment">:</span> <span class="comment">关闭显示器</span></div></pre>
                         </td>
                       </tr>
                     </table>
