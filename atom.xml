@@ -150,18 +150,17 @@
     <link href="http://ucasfl.me/2018/10/15/huawei-interview-summary/"/>
     <id>http://ucasfl.me/2018/10/15/huawei-interview-summary/</id>
     <published>2018-10-15T10:15:13.000Z</published>
-    <updated>2018-11-08T09:39:00.171Z</updated>
+    <updated>2019-02-22T13:30:14.706Z</updated>
     
-    <content type="html"><![CDATA[<p>前天晚上参加了华为的校招笔试，结果昨天早上刚睡起来就收到短信通知今天面试……难道这就是“华为速度”。</p>
-<p>今天去参加了面试，现在把面试中的一些问题总结一下。另外说一下，其实我很早以前就发现了自己的一个奇怪的“体质”：当要参加重要的考试/面试的时候，距离面试/考试时间还有一天或者 12 个小时的时候，我会特别紧张，但是，到了最后一小时的时候内心毫无波澜，完全体会不到紧张是什么，大概这就是传说中的“佛系”心态。所以今天的面试我也完全没有紧张，甚至还跟面试官谈笑风生。<del>虽然我对这次面试并不满意，估计也不太可能拿到 offer</del></p>
-<p>拿到华为 offer 了，如果考研失败就滚去搬砖。</p>
+    <content type="html"><![CDATA[<p>前天晚上参加了华为的校招笔试，结果昨天早上刚睡醒就收到短信通知今天面试…</p>
+<p>今天去参加了面试，现在把面试中的一些问题总结一下。<del>虽然我对这次面试并不满意，估计也不太可能拿到 offer</del></p>
+<p>拿到华为 offer 了，如果考研失败就滚去搬砖(18年11月6号)。</p>
+<p>399 分，所以研究生应该稳了(19年2月22日)。</p>
 <a id="more"></a>
-<p>面试地点在海淀区京仪大酒店。面试貌似是三轮，两轮业务面试，一轮综合面试，但是不知道为什么，我面了一轮业务面试之后，就直接通知综合面试了。</p>
-<p>今天的面试让我体会到我真的读的是“野鸡大学”……两轮面试解释了两次国科大是个什么学校？和中国科学技术大学有什么关系？？？</p>
+<p>面试貌似是三轮，两轮业务面试，一轮综合面试，但是不知道为什么，我面了一轮业务面试之后，就直接通知综合面试了。</p>
 <p>接下来，说一说面试的情况吧。</p>
 <h3 id="业务面试"><a href="#业务面试" class="headerlink" title="业务面试"></a>业务面试</h3>
-<p>我原本以为面试最开始肯定都需要一个自我介绍，于是在坐地铁的途中想了个自我介绍，但是最后并没有用到。</p>
-<p>我之前貌似投的是软件研发岗？业务面试主要面的是专业知识。我原本以为可能会面一些算法题，但是却没有问，只问了几个操作系统，C++，数据结构方面的问题。</p>
+<p>不知道是面试官的原因，还是华为的面试就是这样，感觉整个业务面试没有问太多很有深度的问题，也没有考算法，只问了一些操作系统，C++，数据结构方面的基础知识。</p>
 <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4>
 <p>首先问的是几个操作系统方面的问题。</p>
 <p><em>“操作系统有哪几个主要模块?”</em><br><em>“进程管理，虚存管理，文件管理/文件系统，输入输出系统“</em></p>
@@ -173,37 +172,27 @@
 <p>硬件控制的 TLB：<br><img src="/photos/huawei/ying.png" alt=""></p>
 <p>软件控制的 TLB：<br><img src="/photos/huawei/ruan.png" alt=""></p>
 <p><em>“写程序时，你看到的是虚地址还是物理地址？”</em><br><em>“虚地址”</em></p>
-<p>这个就不用多说了，稍微学过点操作系统或者组成原理的人都知道。</p>
-<p>下面问了几个 C++ 的问题。说实话，世界上为什么会有 C++ 这么复杂的语言，学了一年多，还是感觉自己不知道的东西太多了。</p>
+<p>下面问了几个 C++ 的问题。</p>
 <p><em>“虚函数是什么？”</em><br><em>“带有 <code>virtual</code> 关键字的成员函数，基类中定义的虚函数可以在派生类中重新实现。”</em></p>
-<p>直接问虚函数是什么……</p>
 <p><em>“有一个虚函数在基类和派生类中均有实现，现在用一个基类指针指向一个派生类对象，当调用该虚函数时，会调用基类的虚函数还是派生类的虚函数？”</em><br><em>“派生类，因为虚函数支持动态绑定。”</em></p>
-<p>问完第一个问题我就猜到肯定要问”动态绑定“了。</p>
 <p><em>“它是如何调用的？”</em><br><em>“通过查虚函数表。”</em><br><em>“通过什么指针调用？”</em><br><em>“不知道。”</em></p>
-<p>说实话，这两个问题我是有点懵的，这似乎是要问 C++ 底层的东西了，虽然我也大概知道一些关于虚函数表，虚函数调用的东西，但是并不是很清楚，于是没有回答上来。然后，面试官在纸上写了一个，通过 <code>this</code> 指针调用。打扰了……原来这两个问题他想要的答案只是通过 <code>this</code> 指针调用，是我自己把问题想复杂了。</p>
+<p>说实话，这两个问题我是有点懵的，这似乎是要问 C++ 底层的东西了，虽然我也大概知道一些关于虚函数表，虚函数调用的东西，但是并不是很清楚，于是没有回答上来。然后，面试官在纸上写了一个，通过 <code>this</code> 指针调用。原来这个问题他想要的答案只是通过 <code>this</code> 指针调用，是我自己把问题想复杂了。</p>
 <p><em>“纯虚函数是什么？”</em><br><em>“纯虚函数就是只定义不实现的虚函数。”</em></p>
-<p>还要最近在看《Effective C++》正好看到过虚函数。</p>
 <p><em>“含有虚函数的类可以实例化吗？”</em><br><em>“不可以”</em></p>
 <p>含有纯虚函数的类是抽象类，不可以实例化。只有实现了该纯虚函数的派生类才可以实例化。</p>
 <p>最后问了几个数据结构方面的问题。</p>
 <p><em>“栈和队列的区别是什么?“</em><br><em>“栈是先进后出，队列是先进先出。”</em></p>
-<p>数据结构中最基本的知识。</p>
 <p><em>“什么是平衡二叉树。”</em><br><em>“平衡二叉树首先是一棵二叉树，然后满足左右子树的高度差不超过 1，并且这是一个递归定义，即子树的左右子树高度差也不能超过 1。”</em></p>
-<p>同样是数据结构中最基本的问题。</p>
 <p><em>“二叉树有几种遍历方式？”</em><br><em>“三种，前序遍历，中序遍历，后序遍历。”</em></p>
-<p>其实，当时想起来了还有层次遍历，但是当时不知道脑子中了什么邪，就是懒得说层次遍历。然后，面试官在纸上画了一棵三层的满二叉树。让我写出三种遍历方式对应的遍历序列。写完后，他看了看，对我说是不是优点不太对，我又看了一遍，没问题啊，然后他说可能是我记不太清了……</p>
+<p>其实，当时想起来了还有层次遍历，但是当时不知道脑子中了什么邪，就是没有接着说层次遍历。然后，面试官在纸上画了一棵三层的满二叉树。让我写出三种遍历方式对应的遍历序列。写完后，他看了看，对我说是不是有点不太对，我又看了一遍，没问题啊，然后他说可能是我记不太清了…</p>
 <p>大概就问了这些问题，之后他问我有没有什么想问的问题，我问了下关于新员工的入职培训，近期项目，以及新员工的薪资：13k~16k X 15。看来网上流传的白菜价大概八九不离十吧。</p>
 <p>业务面试就结束了，让我等待后续的面试通知。</p>
 <h3 id="综合面试"><a href="#综合面试" class="headerlink" title="综合面试"></a>综合面试</h3>
-<p>等到中午十二点多，还没有通知第二轮面试，然后领了自助餐券到楼下吃午饭。吃完午饭没多久就通知综合面试。</p>
-<p>我原本以为综合面试会问些更难的技术问题吧，但是我又想错了。</p>
-<p>第一件事当然是解释国科大是个什么野鸡学校了……</p>
-<p>综合面试问的都不是什么技术问题。大概问了这么些问题：</p>
-<p>最近有做过写什么项目？项目是干什么的？你在项目中做了什么工作？收获了什么？</p>
+<p>综合面试没有问什么技术问题。大概问了这么些问题：</p>
+<p>最近有做过些什么项目？项目是干什么的？你在项目中做了什么工作？收获了什么？</p>
 <p>这个问题问的算是最具体的一个，我觉得自己回答的并不好。</p>
 <p>大学里学了些什么课程？入职之后遇到困难你会怎么办？刚入职时可能会要接触很多新的东西，之前不会的东西，你怎么看？如果有一个任务，在规定期限你完成不了你会怎么办？未来五年的人生你想达到什么目标？十年呢？你对华为了解多吗，以你的了解，华为是一家什么样的公司？对加班有什么看法？你希望华为带给你什么？你认为你能够给华为带来什么？假如有别的公司和华为同时给了你 offer，你会如何选，选择的时候你会看重公司的什么方面？比如一个 BAT 公司和华为同时给了你 offer？</p>
-<p>大概还记得的就这么多问题吧。现在想想，最后一个问题完全就是送命题啊，来华为面试肯定要说选择华为啊，我当时怎么还乱七八糟说什么都不知道，甚至不知道怎么选，所以后面面试官又问我有没有在准备考研，如果考上研了和工作会选择什么？好吧，这个问题我没有回答。首先，问我有没有在准备考研我没有想撒谎，就实话说了，然后问我选什么没有回答上，于是就结束了，告诉我等待后续通知。</p>
-<p><del>怎么说呢，这次面试主要是当作一次锻炼的机会。我觉得第一轮的业务面试自己的表现还可以，但是综合面试就差强人意了，最后两个送命题直接断送了 offer，所以 offer 肯定是拿不到了。</del></p>
+<p>大概还记得的就这么多问题，都是一些开放性的问题，说不上有什么标准答案。后面面试官又问我有没有在准备考研，如果考上研了和工作会选择什么？这个问题我没有回答。首先，问我有没有在准备考研我没有想撒谎，就实话说了，然后问我选什么没有回答上，于是就结束了，告诉我等待后续通知。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
 <p>最后，总结一下自己的经验吧：</p>
 <ol>
@@ -212,15 +201,14 @@
   <li>良好的表达能力和沟通能力，要能够清晰明确的回答出问题，尤其是一些观点性问题，由于答案不是唯一的，此时，表达能力尤为重要。</li>
   <li>放平心态，千万不要因为紧张导致原本知道的东西都回答不上来。但是也不要一听完问题就急于回答，可以稍微思考一下，组织一下语言。</li>
   <li>公司除了看你的能力，还要看你对工作的态度，对公司的看法等各方面的情况，因此这些方面的问题不容忽视，尤其要能够清楚地让对方知道你能够为公司带来什么。</li>
-  <li>对程序员这个行业来说，有一个博客并学会利用博客记录一些学习过程中的东西，可能会是一个加分项。综面在和面试官谈论五子棋程序的时候，我说记不太清了，但我的博客上有记录，然后面试官说你还有博客啊，能够感觉到他的眼前一亮。</li>
-</ol>
-<p>暂时就想到这么多吧，等想到别的再更新。</p>]]></content>
+</ol>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;前天晚上参加了华为的校招笔试，结果昨天早上刚睡起来就收到短信通知今天面试……难道这就是“华为速度”。&lt;/p&gt;
-&lt;p&gt;今天去参加了面试，现在把面试中的一些问题总结一下。另外说一下，其实我很早以前就发现了自己的一个奇怪的“体质”：当要参加重要的考试/面试的时候，距离面试/考试时间还有一天或者 12 个小时的时候，我会特别紧张，但是，到了最后一小时的时候内心毫无波澜，完全体会不到紧张是什么，大概这就是传说中的“佛系”心态。所以今天的面试我也完全没有紧张，甚至还跟面试官谈笑风生。&lt;del&gt;虽然我对这次面试并不满意，估计也不太可能拿到 offer&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;拿到华为 offer 了，如果考研失败就滚去搬砖。&lt;/p&gt;
+      &lt;p&gt;前天晚上参加了华为的校招笔试，结果昨天早上刚睡醒就收到短信通知今天面试…&lt;/p&gt;
+&lt;p&gt;今天去参加了面试，现在把面试中的一些问题总结一下。&lt;del&gt;虽然我对这次面试并不满意，估计也不太可能拿到 offer&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;拿到华为 offer 了，如果考研失败就滚去搬砖(18年11月6号)。&lt;/p&gt;
+&lt;p&gt;399 分，所以研究生应该稳了(19年2月22日)。&lt;/p&gt;
     
     </summary>
     
@@ -236,10 +224,11 @@
     <link href="http://ucasfl.me/2018/10/13/huawei-Application-Summary/"/>
     <id>http://ucasfl.me/2018/10/13/huawei-Application-Summary/</id>
     <published>2018-10-13T13:00:54.000Z</published>
-    <updated>2018-10-15T10:12:02.633Z</updated>
+    <updated>2019-02-22T13:12:38.496Z</updated>
     
-    <content type="html"><![CDATA[<p>今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，与前两次腾讯和百度的算法题相比，华为的题要简单得多。总共两个小时的考试时间，最后用了一个半小时的时间 AC 了全部三个题。大概笔试不怎么刷人。下面简单记录一下题目。</p>
-<a id="more"></a>
+    <content type="html"><![CDATA[<p>今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，三个题相对来说都比较简单，没有太大难度。<br>
+  <a id="more"></a>
+</p>
 <p><strong>1. n个人（n &gt;= 1) 站成一个环，编号为 1 ~ n，即编号为 n 的人与编号为 1 的人相邻，从第一个人开始报数，假如编号为 x 的报数为 m ，则该人出局，出局后不再参加报数，出局这一个人的后面一个人从 1 开始继续报数，直到所有人都出局，要求输出出局的编号序列。</strong></p>
 <p>该题为著名的<a href="https://baike.baidu.com/item/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/348830?fr=aladdin" target="_blank" rel="external">约瑟夫环</a>问题，实现方法很多。可通过模拟，也可通过数学公式推导，网上有现成的代码，不过考试的时候我没有上网找，是自己实现的，算是一个数学推导的方法吧。</p>
 <p>考试时的 AC 代码：</p>
@@ -320,7 +309,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，与前两次腾讯和百度的算法题相比，华为的题要简单得多。总共两个小时的考试时间，最后用了一个半小时的时间 AC 了全部三个题。大概笔试不怎么刷人。下面简单记录一下题目。&lt;/p&gt;
+      &lt;p&gt;今天晚上参加了华为今年的校招笔试（软件类）。华为的笔试题只有三个算法题，三个题相对来说都比较简单，没有太大难度。&lt;br&gt;
     
     </summary>
     
@@ -6541,7 +6530,7 @@
     <link href="http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/"/>
     <id>http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/</id>
     <published>2018-06-05T04:37:40.000Z</published>
-    <updated>2018-06-05T06:04:38.520Z</updated>
+    <updated>2019-02-22T13:51:34.689Z</updated>
     
     <content type="html"><![CDATA[<h3 id="移位错误"><a href="#移位错误" class="headerlink" title="移位错误"></a>移位错误</h3>
 <p>前天晚上，刷<a href="http://www.51nod.com" target="_blank" rel="external">51Nod</a>上面的一个题：通过矩阵快速幂计算斐波那契数列，结果发生了一个意想不到的错误，这件事也告诉了我一个道理：</p>
@@ -6600,139 +6589,6 @@
     
     
       <category term="C/C++" scheme="http://ucasfl.me/tags/C-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网易公开课《博弈论简介》总结</title>
-    <link href="http://ucasfl.me/2018/05/15/NetEase-openCourse-of-Game-theory/"/>
-    <id>http://ucasfl.me/2018/05/15/NetEase-openCourse-of-Game-theory/</id>
-    <published>2018-05-15T12:29:52.000Z</published>
-    <updated>2018-05-20T08:19:23.765Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="囚徒困境与严格优势策略"><a href="#囚徒困境与严格优势策略" class="headerlink" title="囚徒困境与严格优势策略"></a>囚徒困境与严格优势策略</h3>
-<p>囚徒困境定义：<br><em>两个嫌疑人甲乙被捕，如果均否认，两人都关押一个月，如果均承认，两人都关押六个月，如果一个承认，一个否认，那么否认的人关押十二个月，承认的人释放。</em></p>
-<p>策略矩阵分析 x = 甲, y = 乙<br>
-  <figure class="highlight lsl">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line">          deny     confess</div><div class="line">deny    (<span class="number">-1</span>, <span class="number">-1</span>)  (<span class="number">-12</span>, <span class="number">0</span>)</div><div class="line">confess (<span class="number">0</span>, <span class="number">-12</span>)  (<span class="number">-6</span>, <span class="number">-6</span>)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>对于甲来说，如果乙承认，那么承认的 payoff 是 -1, 否则 payoff 是 -12，承认更好；如果乙否认，那么承认的 payoff 是 0, 而否认的 payoff 是 -12。对于甲来说，无论乙选择何种策略，选择承认都能得到最高的 payoff ，所以在这儿，对甲来说，承认就是一个<strong>严格优势策略</strong>(strictly dominate strategy)。交换甲乙的位置，也是同样的。即：</p>
-<p>如果对于对手的任何策略，该策略都能得到最高的 payoff，那么就是严格优势策略。</p>
-<a id="more"></a>
-<p>因此，此时，两人都会选择自己的严格优势策略：承认。尽管这样并不能得到最好的 payoff。</p>
-<h3 id="严格劣势策略"><a href="#严格劣势策略" class="headerlink" title="严格劣势策略"></a>严格劣势策略</h3>
-<p>在一次博弈中，如果无法找出严格优势策略，那么我们可以先排除严格劣势策略：</p>
-<p><em>如果存在两个策略，无论对手选择何种策略，策略一都能得到比策略二更高的 payoff，那么策略二就是严格劣势策略。注意，总的策略数不止两个.</em></p>
-<p>当排除了严格劣势策略之后，可能就能够选出严格优势策略。</p>
-<h3 id="纳什均衡NE"><a href="#纳什均衡NE" class="headerlink" title="纳什均衡NE"></a>纳什均衡NE</h3>
-<p>某些情况下，既找不到严格优势策略，也找不到严格劣势策略，这时候，就需要找到一个稳定的结果，使得双方都能得到最好的利益，这就是纳什均衡。</p>
-<h4 id="协调均衡"><a href="#协调均衡" class="headerlink" title="协调均衡"></a>协调均衡</h4>
-<p>两个人一起去捕猎，可以选择捕鹿或者兔，捕鹿需要合作，捕兔不需要<br>
-  <figure class="highlight lsl">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line">        捕鹿   捕兔</div><div class="line">捕鹿  (<span class="number">12</span>,<span class="number">12</span>) (<span class="number">0</span>, <span class="number">2</span>)</div><div class="line">捕兔  (<span class="number">2</span>,  <span class="number">0</span>) (<span class="number">2</span>, <span class="number">2</span>)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>在这儿，对于两个人来说，均没有严格优势策略和严格劣势策略，如果一个人选择捕鹿，那么另一个人也应该选择捕鹿才能得到最高的 payoff, 如果一个人选择捕兔，那么另一个也应该选择捕兔，才能得到最高的 payoff. 因此，在这一个博弈中，双方应该做同样的决策。因此，我们说在这个博弈中有两个纳什均衡：(12, 12), (2, 2).</p>
-<p>纳什均衡指的是博弈中的一对策略，选择这对策略后，没有博弈者会想改变自己的策略，因为在给定决策中，这个博弈者已经选择了最佳策略。</p>
-<h3 id="反协调均衡"><a href="#反协调均衡" class="headerlink" title="反协调均衡"></a>反协调均衡</h3>
-<p>玩家选择不同策略才能获益最高：<br>
-  <figure class="highlight lsl">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line">(<span class="number">-2</span>, <span class="number">-2</span>) (<span class="number">2</span>, <span class="number">0</span>)</div><div class="line">(<span class="number">0</span>,   <span class="number">2</span>) (<span class="number">1</span>, <span class="number">1</span>)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<h3 id="混合均衡策略"><a href="#混合均衡策略" class="headerlink" title="混合均衡策略"></a>混合均衡策略</h3>
-<p>上面说到的均为纯策略，混合策略就是说假设有两个策略，那么以概率 p 选择一个策略，1-p 选择另一个策略，存在概率 p, 使得博弈的另一方随机选择策略 payoff 最高<br>
-  <figure class="highlight lsl">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line"> p       <span class="number">1</span>-p</div><div class="line">(<span class="number">1</span>, <span class="number">-1</span>) (<span class="number">-1</span>, <span class="number">1</span>)</div><div class="line">(<span class="number">-1</span>, <span class="number">1</span>) (<span class="number">1</span>, <span class="number">-1</span>)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>p - (1- p) = -p + 1- p =&gt; p = 1/2</p>
-<p><strong>在每个有限博弈中（有限人数和有限策略），至少存在一个纳什均衡。</strong></p>
-<h3 id="序贯模型"><a href="#序贯模型" class="headerlink" title="序贯模型"></a>序贯模型</h3>
-<p>博弈者需要在不同时间，不同阶段做出决策。</p>
-<p>公司 A 和 B，A 想要进入市场，如果 A 进入市场， B accept, 那么A的payoff = 2, B的payoff = 1, 如果 B fight, 那么 A 的payoff = -3, B 的payoff = -1，而如果 A 不进入市场，那么 A 的 payoff = 0, B的 payoff = 2</p>
-<p><strong>子博弈完美纳什均衡(subgame perfect Nash equilibrium)SPNE</strong> : A strategy profile is a SPNE if it is a NE of every subgame of the original game<br>
-  <figure class="highlight lsl">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line">A -- Out -- (<span class="number">0</span>, <span class="number">2</span>)</div><div class="line">|</div><div class="line">In -- B fight -- (<span class="number">-3</span>, <span class="number">-1</span>)</div><div class="line">|</div><div class="line">B accept</div><div class="line">|</div><div class="line">(<span class="number">2</span>, <span class="number">1</span>)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>即使 B 威胁如果 A 进入就 fight, 但实际上是一个幌子，因为如果 A 进入了，那么 accept 比 fight 会得到更高的 payoff，因此 B 会选择 accept 而不是 fight，有了这一结论之后，对 A 的分析就可以简化，如果进入 payoff = 2, 不进入, payoff = 0，自然，进入是更好的策略。</p>
-<p>因此，在整个博弈中，A In, B accept 是唯一的 SPNE. 该理论是关于威胁和承诺的，通过 SPNE, 能够排除 B 在第二阶段中的 fight 并不是真正的威胁，除非 B 通过一些方法，排除了 accept 这一种策略，只剩下 fight 这一策略，那么就真正对 A 构成了威胁。</p>
-<p>未完~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;囚徒困境与严格优势策略&quot;&gt;&lt;a href=&quot;#囚徒困境与严格优势策略&quot; class=&quot;headerlink&quot; title=&quot;囚徒困境与严格优势策略&quot;&gt;&lt;/a&gt;囚徒困境与严格优势策略&lt;/h3&gt;
-&lt;p&gt;囚徒困境定义：&lt;br&gt;&lt;em&gt;两个嫌疑人甲乙被捕，如果均否认，两人都关押一个月，如果均承认，两人都关押六个月，如果一个承认，一个否认，那么否认的人关押十二个月，承认的人释放。&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;策略矩阵分析 x = 甲, y = 乙&lt;br&gt;
-  &lt;figure class=&quot;highlight lsl&quot;&gt;
-    &lt;table&gt;
-      &lt;tr&gt;
-        &lt;td class=&quot;gutter&quot;&gt;
-          &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;
-        &lt;/td&gt;
-        &lt;td class=&quot;code&quot;&gt;
-          &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;          deny     confess&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deny    (&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;)  (&lt;span class=&quot;number&quot;&gt;-12&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;confess (&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;-12&lt;/span&gt;)  (&lt;span class=&quot;number&quot;&gt;-6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;-6&lt;/span&gt;)&lt;/div&gt;&lt;/pre&gt;
-        &lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/table&gt;
-  &lt;/figure&gt;
-&lt;/p&gt;
-&lt;p&gt;对于甲来说，如果乙承认，那么承认的 payoff 是 -1, 否则 payoff 是 -12，承认更好；如果乙否认，那么承认的 payoff 是 0, 而否认的 payoff 是 -12。对于甲来说，无论乙选择何种策略，选择承认都能得到最高的 payoff ，所以在这儿，对甲来说，承认就是一个&lt;strong&gt;严格优势策略&lt;/strong&gt;(strictly dominate strategy)。交换甲乙的位置，也是同样的。即：&lt;/p&gt;
-&lt;p&gt;如果对于对手的任何策略，该策略都能得到最高的 payoff，那么就是严格优势策略。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Math" scheme="http://ucasfl.me/categories/Math/"/>
-    
-    
-      <category term="Math/Game theory" scheme="http://ucasfl.me/tags/Math-Game-theory/"/>
     
   </entry>
   
@@ -7950,7 +7806,7 @@
     <link href="http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/"/>
     <id>http://ucasfl.me/2017/10/30/What-the-fuck-problem-with-Linux/</id>
     <published>2017-10-30T11:54:31.000Z</published>
-    <updated>2018-03-11T04:10:10.966Z</updated>
+    <updated>2019-02-22T13:57:45.028Z</updated>
     
     <content type="html"><![CDATA[<p>笔记本上装了双系统：Windows 10 + Ubuntu，刚装好 Ubuntu 不久就重新从 Windows 下分了一个盘挂载到 Ubuntu 下。如今，由于基本不再使用 Windows 系统，准确的说就只在虚拟机上使用一下 QQ、微信。于是，我又从 Windows 下分出一个盘，准备挂载到 Ubuntu 下。然而，却突然启动不进去了，直接进入了 <code>emergency mode</code>，尝试重新启动到默认模式，然后出现下面的错误信息：</p>
 <a id="more"></a>
@@ -8622,6 +8478,681 @@
     
     
       <category term="Python" scheme="http://ucasfl.me/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 速查表</title>
+    <link href="http://ucasfl.me/2017/10/07/Python-cheat-sheet/"/>
+    <id>http://ucasfl.me/2017/10/07/Python-cheat-sheet/</id>
+    <published>2017-10-07T11:20:55.000Z</published>
+    <updated>2018-06-05T14:56:17.335Z</updated>
+    
+    <content type="html"><![CDATA[<p>本手册是 <a href="http://datasciencefree.com/python.pdf" target="_blank" rel="external">Python cheat sheet</a> 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。</p>
+<p>该手册同时位于 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition" target="_blank" rel="external">GitHub</a> 上，可下载 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/README.pdf" target="_blank" rel="external">PDF 版</a>。</p>
+<a id="more"></a>
+<h2 id="惯例"><a href="#惯例" class="headerlink" title="惯例"></a>惯例</h2>
+<ul>
+  <li>Python 对大小写敏感；</li>
+  <li>Python 的索引从 0 开始（所有编程语言均如此）；</li>
+  <li>Python 使用空白符（制表符或空格）来缩进代码，而不是使用花括号。</li>
+</ul>
+<h2 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h2>
+<ul>
+  <li>获取主页帮助： <code>help()</code></li>
+  <li>获取函数帮助： <code>help(str.replace)</code></li>
+  <li>获取模块帮助： <code>help(re)</code></li>
+</ul>
+<h2 id="模块（亦称库）"><a href="#模块（亦称库）" class="headerlink" title="模块（亦称库）"></a>模块（亦称库）</h2>
+<p>模块只是一个简单地以 <code>.py</code> 为后缀的文件。</p>
+<ul>
+  <li>列出模块内容：<code>dir(module1)</code></li>
+  <li>导入模块：<code>import module</code></li>
+  <li>调用模块中的函数：<code>module1.func1()</code></li>
+</ul>
+<p><strong>注：<code>import</code> 语句会创建一个新的名字空间，并且在该名字空间内执行 <code>.py</code> 文件中的所有语句。如果你想把模块内容导入到当前名字空间，请使用 <code>from module1 import *</code> 语句。</strong></p>
+<h2 id="数值类类型"><a href="#数值类类型" class="headerlink" title="数值类类型"></a>数值类类型</h2>
+<p>查看变量的数据类型：<code>type(variable)</code></p>
+<h3 id="六种经常使用的数据类型"><a href="#六种经常使用的数据类型" class="headerlink" title="六种经常使用的数据类型"></a>六种经常使用的数据类型</h3>
+<ol>
+  <li>
+    <p><strong>int/long</strong>：过大的 <code>int</code> 类型会被自动转化为 <code>long</code> 类型。</p>
+  </li>
+  <li>
+    <p><strong>float</strong>：64 位，Python 中没有 <code>double</code> 类型。</p>
+  </li>
+  <li>
+    <p><strong>bool</strong>：真或假。</p>
+  </li>
+  <li>
+    <p><strong>str</strong>：在 Python 2 中默认以 ASCII 编码，而在 Python 3 中默认以 Unicode 编码；</p>
+    <ul>
+      <li>字符串可置于单/双/三引号中；</li>
+      <li>字符串是字符的序列，因此可以像处理其他序列一样处理字符串；</li>
+      <li>特殊字符可通过 <code>\</code> 或者前缀 <code>r</code> 实现：</li>
+    </ul>
+    <figure class="highlight python">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">str1 = <span class="string">r'this\f?ff'</span></div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+    <ul>
+      <li>字符串可通过多种方式格式化：</li>
+    </ul>
+    <figure class="highlight python">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div><div class="line">2</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line">template = <span class="string">'%.2f %s haha $%d'</span>;</div><div class="line">str1 = template % (<span class="number">4.88</span>, <span class="string">'hola'</span>, <span class="number">2</span>)</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <p><strong>NoneType(None)</strong>：Python <code>null</code> 值（只有 None 对象的一个实例中存在）。</p>
+    <ul>
+      <li><code>None</code> 不是一个保留关键字，而是 <strong>NoneType</strong> 的一个唯一实例。</li>
+      <li><code>None</code> 通常是可选函数参数的默认值：</li>
+    </ul>
+    <figure class="highlight python">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(a, b, c = None)</span></span></div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+    <ul>
+      <li><code>None</code> 的常见用法：</li>
+    </ul>
+    <figure class="highlight python">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><div class="line">1</div></pre>
+          </td>
+          <td class="code">
+            <pre><div class="line"><span class="keyword">if</span> variable <span class="keyword">is</span> <span class="keyword">None</span> :</div></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+  </li>
+  <li>
+    <p><strong>datatime</strong>：Python 内建的 datetime 模块提供了 <code>datetime</code>、<code>data</code> 以及 <code>time</code> 类型。</p>
+    <ul>
+      <li><code>datetime</code> 组合了存储于 <code>date</code> 和 <code>time</code> 中的信息。</li>
+    </ul>
+  </li>
+</ol>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#从字符串中创建 datetime</span></div><div class="line">dt1 = datetime.strptime(<span class="string">'20091031'</span>, <span class="string">'%Y%m%d'</span>)</div><div class="line"><span class="comment">#获取 date 对象</span></div><div class="line">dt1.date()</div><div class="line"><span class="comment">#获取 time 对象</span></div><div class="line">dt1.time()</div><div class="line"><span class="comment">#将 datetime 格式化为字符串</span></div><div class="line">dt1.strftime(<span class="string">'%m/%d/%Y%H:%M'</span>)</div><div class="line"><span class="comment">#更改字段值</span></div><div class="line">dt2 = dt1.replace(minute = <span class="number">0</span>, second = <span class="number">30</span>)</div><div class="line"><span class="comment">#做差, diff 是一个 datetime.timedelta 对象</span></div><div class="line">diff = dt1 - dt2</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注：Python 中的绝大多数对象都是可变的，只有字符串和元组例外。</strong></p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2>
+<p><strong>注：所有的 non-Get 函数调用，比如下面例子中的 <code>list1.sort()</code> 都是原地操作，即不会创建新的对象，除非特别声明。</strong></p>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3>
+<p>元组是 Python 中任何类型的对象的一个一维、固定长度、不可变的序列。</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#创建元组</span></div><div class="line">tup1 = <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> </div><div class="line"><span class="comment"># or</span></div><div class="line">tup1 = (<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>)</div><div class="line"><span class="comment">#创建嵌套元组</span></div><div class="line">tup1 = (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), (<span class="number">7</span>, <span class="number">8</span>)</div><div class="line"><span class="comment">#将序列或迭代器转化为元组</span></div><div class="line">tuple([<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>])</div><div class="line"><span class="comment">#连接元组</span></div><div class="line">tup1 + tup2</div><div class="line"><span class="comment">#解包元组</span></div><div class="line">a, b, c = tup1</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>元组应用：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#交换两个变量的值</span></div><div class="line">a, b = b, a</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3>
+<p>列表是 Python 中任何类型的对象的一个一维、非固定长度、可变（比如内容可以被修改）的序列。</p>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">#创建列表</div><div class="line">list1 = [1, 'a', 3]</div><div class="line">#or</div><div class="line">list1 = list(tup1)</div><div class="line">#连接列表</div><div class="line">list1 + list2 </div><div class="line">#or</div><div class="line">list1.extend(list2)</div><div class="line">#追加到列表的末尾</div><div class="line">list1.append('b')</div><div class="line">#插入指定位置</div><div class="line">list1.insert(PosIndex, 'a')</div><div class="line">#反向插入，即弹出给定位置的值/删除</div><div class="line">ValueAtIdx = list1.pop(PosIndex)</div><div class="line">#移除列表中的第一个值, a 必须是列表中第一个值</div><div class="line">list1.remove('a')</div><div class="line">#检查成员资格</div><div class="line">3 in list1 =&gt; True or False</div><div class="line">#对列表进行排序</div><div class="line">list1.sort()</div><div class="line">#按特定方式排序</div><div class="line">list1.sort(key = len) # 按长度排序</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>使用 + 连接列表会有比较大的开支，因为这个过程中会创建一个新的列表，然后复制对象。因此，使用 <code>extend()</code> 是更明智的选择；</li>
+  <li><code>insert</code> 和 <code>append</code> 相比会有更大的开支（时间/空间）；</li>
+  <li>在列表中检查是否包含一个值会比在字典和集合中慢很多，因为前者需要进行线性扫描，而后者是基于哈希表的，所以只需要花费常数时间。</li>
+</ul>
+<h4 id="内建的-bisect-模块"><a href="#内建的-bisect-模块" class="headerlink" title="内建的 bisect 模块"></a>内建的 <code>bisect</code> 模块</h4>
+<ul>
+  <li>对一个排序好的列表进行二分查找或插入；</li>
+  <li><code>bisect.bisect</code>找到元素在列表中的位置，<code>bisect.insort</code>将元素插入到相应位置。用法：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">import</span> bisect</div><div class="line">list1 = list(range(<span class="number">10</span>))</div><div class="line"><span class="comment">#找到 5 在 list1 中的位置，从 1 开始，因此 position = index + 1</span></div><div class="line">bisect.bisect(list1, <span class="number">5</span>)</div><div class="line"><span class="comment">#将 3.5 插入 list1 中合适位置</span></div><div class="line">bisect.insort(list1, <span class="number">3.5</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注：<code>bisect</code> 模块中的函数并不会去检查列表是否排序好，因为这会花费很多时间。所以，对未排序好的列表使用这些函数也不会报错，但可能会返回不正确的结果。</strong></p>
+<h3 id="针对序列类型的切片"><a href="#针对序列类型的切片" class="headerlink" title="针对序列类型的切片"></a>针对序列类型的切片</h3>
+<p>序列类型包括 <code>str</code>、<code>array</code>、<code>tuple</code>、<code>list</code> 等。</p>
+<p>用法：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list1[start:stop]</div><div class="line"><span class="comment">#如果使用 step</span></div><div class="line">list1(start:stop:step)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注：切片结果包含 <code>start</code> 索引，但不包含 <code>stop</code> 索引；<code>start/stop</code> 索引可以省略，如果省略，则默认为序列从开始到结束，如 <code>list1 == list1[:]</code> 。</strong></p>
+<p><code>step</code> 的应用：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#取出奇数位置的元素</span></div><div class="line">list1[::<span class="number">2</span>]</div><div class="line"><span class="comment">#反转字符串</span></div><div class="line">str1[::<span class="number">-1</span>]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="字典（哈希映射）"><a href="#字典（哈希映射）" class="headerlink" title="字典（哈希映射）"></a>字典（哈希映射）</h3>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#创建字典</span></div><div class="line">dict1 = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="number">2</span>: [<span class="number">3</span>,<span class="number">2</span>]&#125;</div><div class="line"><span class="comment">#从序列创建字典</span></div><div class="line">dict(zip(KeyList, ValueList))</div><div class="line"><span class="comment">#获取/设置/插入元素</span></div><div class="line">dict1[<span class="string">'key1'</span>]</div><div class="line">dict1[<span class="string">'key1'</span>] = <span class="string">'NewValue'</span></div><div class="line"><span class="comment">#get 提供默认值</span></div><div class="line">dict1.get(<span class="string">'key1'</span>, DefaultValue)</div><div class="line"><span class="comment">#检查键是否存在</span></div><div class="line"><span class="string">'key1'</span> <span class="keyword">in</span> dict1</div><div class="line"><span class="comment">#获取键列表</span></div><div class="line">dict1.keys()</div><div class="line"><span class="comment">#获取值列表</span></div><div class="line">dict1.values()</div><div class="line"><span class="comment">#更新值</span></div><div class="line">dict1.update(dict2)<span class="comment">#dict1 的值被 dict2 替换</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>如果键不存在，则会出现 <code>KeyError Exception</code> 。</li>
+  <li>当键不存在时，如果 <code>get()</code>不提供默认值则会返回 <code>None</code> 。</li>
+  <li>以相同的顺序返回键列表和值列表，但顺序不是特定的，又称极大可能非排序。</li>
+</ul>
+<h4 id="有效字典键类型"><a href="#有效字典键类型" class="headerlink" title="有效字典键类型"></a>有效字典键类型</h4>
+<ul>
+  <li>键必须是不可变的，比如标量类型(<code>int</code>、<code>float</code>、<code>string</code>)或者元组（元组中的所有对象也必须是不可变的）。</li>
+  <li>这儿涉及的技术术语是 <code>hashability</code>。可以用函数 <code>hash()</code>来检查一个对象是否是可哈希的，比如 <code>hash(&#39;This is a string&#39;)</code> 会返回一个哈希值，而 <code>hash([1,2])</code> 则会报错（不可哈希）。</li>
+</ul>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3>
+<ul>
+  <li>一个集合是一些无序且唯一的元素的聚集；</li>
+  <li>你可以把它看成只有键的字典；</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#创建集合</span></div><div class="line">set([<span class="number">3</span>, <span class="number">6</span>, <span class="number">3</span>])</div><div class="line"><span class="comment">#or</span></div><div class="line">&#123;<span class="number">3</span>, <span class="number">6</span>, <span class="number">3</span>&#125;</div><div class="line"><span class="comment">#子集测试</span></div><div class="line">set1.issubset(set2)</div><div class="line"><span class="comment">#超集测试</span></div><div class="line">set1.issuperset(set2)</div><div class="line"><span class="comment">#测试两个集合中的元素是否完全相同</span></div><div class="line">set1 == set2</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h4 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h4>
+<ul>
+  <li>并（又称或）：<code>set1 | set2</code></li>
+  <li>交（又称与）：<code>set1 &amp; set2</code></li>
+  <li>差：<code>set1 - set2</code></li>
+  <li>对称差（又称异或）：<code>set1 ^ set2</code></li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2>
+<p>Python 的函数参数传递是通过<strong>引用传递</strong>。</p>
+<ul>
+  <li>基本形式</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(posArg1, keywordArg1 = <span class="number">1</span>, ..)</span></span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注</strong></p>
+<ul>
+  <li>关键字参数必须跟在位置参数的后面；</li>
+  <li>默认情况下，Python 不会“延迟求值”，表达式的值会立刻求出来。</li>
+</ul>
+<h3 id="函数调用机制"><a href="#函数调用机制" class="headerlink" title="函数调用机制"></a>函数调用机制</h3>
+<ul>
+  <li>所有函数均位于模块内部作用域。见“模块”部分。</li>
+  <li>在调用函数时，参数被打包成一个元组和一个字典，函数接收一个元组 <code>args</code> 和一个字典 <code>kwargs</code>，然后在函数内部解包。</li>
+</ul>
+<p>“函数是对象”的常见用法：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(ops = [str.strip, user_define_func, ..], ..)</span>:</span></div><div class="line">  <span class="keyword">for</span> function <span class="keyword">in</span> ops:</div><div class="line">    value = function(value)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3>
+<ul>
+  <li>如果函数末尾没有 <code>return</code> 语句，则不会返回任何东西。</li>
+  <li>如果有多个返回值则通过一个元组来实现。</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">return</span> (value1, value2)</div><div class="line">value1, value2 = func1(..)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="匿名函数（又称-LAMBDA-函数）"><a href="#匿名函数（又称-LAMBDA-函数）" class="headerlink" title="匿名函数（又称 LAMBDA 函数）"></a>匿名函数（又称 LAMBDA 函数）</h3>
+<ul>
+  <li>什么是匿名函数？</li>
+</ul>
+<p>匿名函数是一个只包含一条语句的简单函数。</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">lambda</span> x : x * <span class="number">2</span></div><div class="line"><span class="comment">#def func1(x) : return x * 2</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>匿名函数的应用：’curring’，又称利用已存在函数的部分参数来派生新的函数。</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">ma60 = <span class="keyword">lambda</span> x : pd.rolling_mean(x, <span class="number">60</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="一些有用的函数（针对数据结构）"><a href="#一些有用的函数（针对数据结构）" class="headerlink" title="一些有用的函数（针对数据结构）"></a>一些有用的函数（针对数据结构）</h3>
+<ul>
+  <li><code>enumerate()</code> 返回一个序列<code>(i, value)</code>元组，<code>i</code> 是当前 <code>item</code> 的索引。</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate(collection):</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>应用：创建一个序列中值与其在序列中的位置的字典映射（假设每一个值都是唯一的）。</p>
+<ul>
+  <li><code>sort()</code>可以从任意序列中返回一个排序好的序列。</li>
+</ul>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sorted([2, 1, 3]) =&gt; [1, 2, 3]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>应用：</p>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sorted(set('abc bcd')) =&gt; [' ',</div><div class="line">'a', 'b', 'c', 'd']</div><div class="line"># 返回一个字符串排序后无重复的字母序列</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li><code>zip()</code>函数可以把许多列表、元组或其他序列的元素配对起来创建一系列的元组。</li>
+</ul>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">zip(seq1, seq2) =&gt; [('seq1_1', 'seq2_1'), (..), ..]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ol>
+  <li><code>zip()</code>可以接收任意数量的序列作为参数，但是产生的元素的数目取决于最短的序列。</li>
+</ol>
+<p>应用：多个序列同时迭代：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">for</span> i, (a, b) <span class="keyword">in</span> enumerate(zip(seq1, seq2)):</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ol>
+  <li><code>unzip</code>：另一种思考方式是把一些行转化为一些列：</li>
+</ol>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">seq1, seq2 = zip(zipOutput)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li><code>reversed()</code> 将一个序列的元素以逆序迭代。</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">list(reversed(range(<span class="number">10</span>)))</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong><code>reversed()</code> 会返回一个迭代器，<code>list()</code> 使之成为一个列表。</strong></p>
+<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2>
+<ul>
+  <li>用于 <code>if-else</code> 条件中的操作符：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#检查两个变量是否是相同的对象</span></div><div class="line">var1 <span class="keyword">is</span> var2</div><div class="line"><span class="comment">#检查两个变量是否是不同的对象</span></div><div class="line">var1 <span class="keyword">is</span> <span class="keyword">not</span> var2</div><div class="line"><span class="comment">#检查两个变量的值是否相等</span></div><div class="line">var1 == var2</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><strong>注：Python 中使用 <code>and</code>、<code>or</code>、<code>not</code> 来组合条件，而不是使用 <code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 。</strong></p>
+<ul>
+  <li><code>for</code>循环的常见用法：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#可迭代对象（list、tuple）或迭代器</span></div><div class="line"><span class="keyword">for</span> element <span class="keyword">in</span> iterator:</div><div class="line"><span class="comment">#如果元素是可以解包的序列</span></div><div class="line"><span class="keyword">for</span> a, b, c <span class="keyword">in</span> iterator:</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li><code>pass</code>：无操作语句，在不需要进行任何操作的块中使用。</li>
+  <li>三元表达式，又称简洁的 <code>if-else</code>，基本形式：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">value = true-expr <span class="keyword">if</span> condition <span class="keyword">else</span> false-expr</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>Python 中没有 <code>switch/case</code> 语句，请使用 <code>if/elif</code>。</li>
+</ul>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2>
+<ul>
+  <li><strong>对象（object）</strong>是 Python 中所有类型的根。</li>
+  <li>万物（数字、字符串、函数、类、模块等）皆为对象，每个对象均有一个类型（type）。对象变量是一个指向变量在内存中位置的指针。</li>
+  <li>所有对象均为<strong>引用计数</strong>。</li>
+</ul>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">sys.getrefcount(5) =&gt; x</div><div class="line">a = 5, b = a</div><div class="line">#上式会在等号的右边创建一个对象的引用，因此 a 和 b 均指向 5</div><div class="line">sys.getrefcount(5)</div><div class="line">=&gt; x + 2</div><div class="line">del(a); sys.getrefcount(5) =&gt; x + 1</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>类的基本形式：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyObject</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="comment"># 'self' 等价于 Java/C++ 中的 'this'</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">    self.name = name</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">memberFunc1</span><span class="params">(self, arg1)</span>:</span></div><div class="line">      ..</div><div class="line"><span class="meta">  @staticmethod</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">classFunc2</span><span class="params">(arg1)</span>:</span></div><div class="line">    ..</div><div class="line">obj1 = MyObject(<span class="string">'name1'</span>)</div><div class="line">obj1.memberFunc1(<span class="string">'a'</span>)</div><div class="line">MyObject.classFunc2(<span class="string">'b'</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>有用的交互式工具：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">dir(variable1) <span class="comment">#列出对象的所有可用方法</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h2 id="常见字符串操作"><a href="#常见字符串操作" class="headerlink" title="常见字符串操作"></a>常见字符串操作</h2>
+<figure class="highlight">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">#通过分隔符连接列表/元组</div><div class="line">', '.join([ 'v1', 'v2', 'v3']) =&gt; 'v1, v2, v3'</div><div class="line"></div><div class="line">#格式化字符串</div><div class="line">string1 = 'My name is &#123;0&#125;　&#123;name&#125;'</div><div class="line">newString1 = string1.format('Sean', name =　'Chen')</div><div class="line"></div><div class="line">#分裂字符串</div><div class="line">sep = '-';</div><div class="line">stringList1 =　string1.split(sep)</div><div class="line"></div><div class="line">#获取子串</div><div class="line">start = 1;</div><div class="line">string1[start:8]</div><div class="line"></div><div class="line">#补 '0' 向右对齐字符串</div><div class="line">month = '5';</div><div class="line">month.zfill(2) =&gt; '05'</div><div class="line">month = '12';</div><div class="line">month.zfill(2) =&gt; '12'</div><div class="line">month.zfill(3) =&gt; '012'</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2>
+<ul>
+  <li>基本形式：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">try</span>:</div><div class="line">  ..</div><div class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</div><div class="line">  <span class="keyword">print</span> e</div><div class="line"><span class="keyword">except</span> (TypeError, AnotherError):</div><div class="line">  ..</div><div class="line"><span class="keyword">except</span>:</div><div class="line">  ..</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">  .. <span class="comment"># 清理，比如 close db;</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>手动引发异常：</li>
+</ul>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="keyword">raise</span> AssertionError <span class="comment"># 断言失败</span></div><div class="line"><span class="keyword">raise</span> SystemExit</div><div class="line"><span class="comment"># 请求程序退出</span></div><div class="line"><span class="keyword">raise</span> RuntimeError(<span class="string">'错误信息 :..'</span>)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h2 id="对列表、字典和元组的深入理解"><a href="#对列表、字典和元组的深入理解" class="headerlink" title="对列表、字典和元组的深入理解"></a>对列表、字典和元组的深入理解</h2>
+<p>语法糖（syntactic sugar）会使代码变得更加易读易写。</p>
+<h3 id="对列表的理解"><a href="#对列表的理解" class="headerlink" title="对列表的理解"></a>对列表的理解</h3>
+<p>将一些元素通过一个简短的语句传入一个过滤器进行过滤和转化，然后可以组成一个新的列表。</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">#基本形式</span></div><div class="line">[expr <span class="keyword">for</span> val <span class="keyword">in</span> collection <span class="keyword">if</span> condition]</div><div class="line"><span class="comment">#ShortCut</span></div><div class="line">result = []</div><div class="line"><span class="keyword">for</span> val <span class="keyword">in</span> collection:</div><div class="line">  <span class="keyword">if</span> condition:</div><div class="line">    result.append(expr)</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>可以省略过滤条件，只留下表达式。</p>
+<h3 id="对字典的理解"><a href="#对字典的理解" class="headerlink" title="对字典的理解"></a>对字典的理解</h3>
+<p>基本形式：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">&#123;key-expr : value-expr <span class="keyword">for</span> value <span class="keyword">in</span> collection <span class="keyword">if</span> condition&#125;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<h3 id="对集合的理解"><a href="#对集合的理解" class="headerlink" title="对集合的理解"></a>对集合的理解</h3>
+<p>基本形式：和列表一样，只是应该使用 <code>()</code> 而不是 <code>[]</code> 。</p>
+<h3 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h3>
+<p>基本形式：</p>
+<figure class="highlight python">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">[expr <span class="keyword">for</span> val <span class="keyword">in</span> collection <span class="keyword">for</span> innerVal <span class="keyword">in</span> val <span class="keyword">if</span> condition]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本手册是 &lt;a href=&quot;http://datasciencefree.com/python.pdf&quot;&gt;Python cheat sheet&lt;/a&gt; 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。&lt;/p&gt;
+&lt;p&gt;该手册同时位于 &lt;a href=&quot;https://github.com/ucasFL/python-cheat-sheet-Chinese-edition&quot;&gt;GitHub&lt;/a&gt; 上，可下载 &lt;a href=&quot;https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/README.pdf&quot;&gt;PDF 版&lt;/a&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
+    
+    
+      <category term="Python cheat-sheet" scheme="http://ucasfl.me/tags/Python-cheat-sheet/"/>
     
   </entry>
   
