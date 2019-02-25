@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2019-02-22T08:21:42.490Z</updated>
+  <updated>2019-02-25T03:07:15.862Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ucasfl.me/2019/02/22/CPython-Summary/"/>
     <id>http://ucasfl.me/2019/02/22/CPython-Summary/</id>
     <published>2019-02-22T03:09:19.000Z</published>
-    <updated>2019-02-22T08:21:42.490Z</updated>
+    <updated>2019-02-25T03:07:15.862Z</updated>
     
     <content type="html"><![CDATA[<p>本文为查阅相关资料的过程中随手记录的，故内容较为杂乱，无任何章节可言。</p>
 <p>Python 源代码执行流程：</p>
@@ -28,7 +28,7 @@
 <p>Python 基于栈式执行，CPython 主要使用三种类型的栈：</p>
 <ul>
   <li>call stack：一个 frame 表示一个活动的函数调用</li>
-  <li>data stack：每一个函数对应一个 data stack，函数在其中进行数据操纵，包括函数参数，返回地址等</li>
+  <li>data stack：也称作 evaluation stack，每一个函数对应一个 data stack，函数在其中进行数据操纵，包括函数参数，返回地址等</li>
   <li>block stack：用于跟踪控制结构的确定类型：如循环，<code>try/except</code> 块，<code>with</code> 块等</li>
 </ul>
 <a id="more"></a>
@@ -86,7 +86,151 @@
 <p>假设此时，解释器正在 <code>foo</code> 函数的调用中，紧接着调用 <code>bar</code> ，则 call stack，data stack，block stack 的示意图如下：</p>
 <p><img src="/photos/py/ic.png" alt=""></p>
 <p>现在，解释器在 <code>bar</code> 函数的调用中，call stack 中有三个 frame，一旦 <code>bar</code> 返回，与之对应的 frame 就会被弹出并丢弃。</p>
-<p>字节码指令<code>RETURN_VALUE</code>告诉解释器在 frame 间传递一个值。首先，它把位于调用栈栈顶的 frame 中的 data stack 的栈顶值弹出。然后把整个 frame 弹出丢弃，最后把这个值压到下一个 frame 的 data stack 中。</p>]]></content>
+<p>字节码指令<code>RETURN_VALUE</code>告诉解释器在 frame 间传递一个值。首先，它把位于调用栈栈顶的 frame 中的 data stack 的栈顶值弹出。然后把整个 frame 弹出丢弃，最后把这个值压到下一个 frame 的 data stack 中。</p>
+<h3 id="Python-代码编译过程："><a href="#Python-代码编译过程：" class="headerlink" title="Python 代码编译过程："></a>Python 代码编译过程：</h3>
+<ul>
+  <li>解析源代码生成解析树(parse tree)</li>
+  <li>将解析树转换成抽象语法树 AST</li>
+  <li>生成符号表</li>
+  <li>根据 AST 生成 code object：AST -&gt; 控制流图 -&gt; code object</li>
+</ul>
+<p>使用 <code>parser</code> 模块可以获得 Python 代码的 parse tree：</p>
+<figure class="highlight inform7">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">&gt;&gt;&gt;code_str = <span class="string">""</span><span class="string">"def hello_world():</span></div><div class="line">                     return 'hello world'</div><div class="line">              "<span class="string">""</span></div><div class="line">&gt;&gt;&gt; import parser</div><div class="line">&gt;&gt;&gt; from pprint import pprint</div><div class="line">&gt;&gt;&gt; st = parser.suite(code_str)</div><div class="line">&gt;&gt;&gt; pprint(parser.st2list(st))</div><div class="line"><span class="comment">[257,</span></div><div class="line"><span class="comment">[269,</span></div><div class="line"><span class="comment">[294,</span></div><div class="line"><span class="comment">[263,</span></div><div class="line">    <span class="comment">[1, 'def']</span>,</div><div class="line">    <span class="comment">[1, 'hello_world']</span>,</div><div class="line">    <span class="comment">[264, <span class="comment">[7, '(']</span>, <span class="comment">[8, ')']</span>]</span>,</div><div class="line">    <span class="comment">[11, ':']</span>,</div><div class="line">    <span class="comment">[303,</span></div><div class="line">    <span class="comment">[4, '']</span>,</div><div class="line">    <span class="comment">[5, '']</span>,</div><div class="line">    <span class="comment">[269,</span></div><div class="line">    <span class="comment">[270,</span></div><div class="line">    <span class="comment">[271,</span></div><div class="line">        <span class="comment">[277,</span></div><div class="line">        <span class="comment">[280,</span></div><div class="line">        <span class="comment">[1, 'return']</span>,</div><div class="line">        <span class="comment">[330,</span></div><div class="line">        <span class="comment">[304,</span></div><div class="line">            <span class="comment">[308,</span></div><div class="line">            <span class="comment">[309,</span></div><div class="line">            <span class="comment">[310,</span></div><div class="line">            <span class="comment">[311,</span></div><div class="line">                <span class="comment">[314,</span></div><div class="line">                <span class="comment">[315,</span></div><div class="line">                <span class="comment">[316,</span></div><div class="line">                <span class="comment">[317,</span></div><div class="line">                    <span class="comment">[318,</span></div><div class="line">                    <span class="comment">[319,</span></div><div class="line">                    <span class="comment">[320,</span></div><div class="line">                    <span class="comment">[321,</span></div><div class="line">                        <span class="comment">[322, <span class="comment">[323, <span class="comment">[3, '"hello world"']</span>]</span>]</span>]]]]]]]]]]]]]]]]],</div><div class="line">    <span class="comment">[4, '']</span>]],</div><div class="line">    <span class="comment">[6, '']</span>]]]],</div><div class="line"><span class="comment">[4, '']</span>,</div><div class="line"><span class="comment">[0, '']</span>]</div><div class="line">&gt;&gt;&gt;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>使用 <code>ast</code> 模块来获取 Python 代码的 AST：<br>
+  <figure class="highlight python">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">&gt;&gt;&gt;code_str = <span class="string">"""def hello_world():</span></div><div class="line">                     return 'hello world'</div><div class="line">              """</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> ast</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pprint</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>node = ast.parse(code_str, mode=<span class="string">"exec"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>ast.dump(node)</div><div class="line">(<span class="string">"Module(body=[FunctionDef(name='hello_world', args=arguments(args=[], "</span></div><div class="line"><span class="string">'vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]), '</span></div><div class="line"><span class="string">"body=[Return(value=Str(s='hello world'))], decorator_list=[], "</span></div><div class="line"><span class="string">'returns=None)])'</span>)</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>Names and binding in Python：在 Python 中，对象通过名字引用，binding 即名字与对象的绑定，名字仅仅是与对象相联系的符号，是对象的引用，没有类型，对象具有类型。</p>
+<p>Code Blocks: A code block is a piece of program code that is executed as a single unit in python. Modules, functions and classes are all examples of code blocks. Commands typed in interactively at the REPL, script commands run with the -c option are also
+  code blocks.</p>
+<p>Namespaces：在 Python 中，名字空间通过字典映射实现，包含所有内建函数的内建名字空间可通过 <code>__builtins__.__dict__</code> 访问。</p>
+<h3 id="Python-Objects"><a href="#Python-Objects" class="headerlink" title="Python Objects"></a>Python Objects</h3>
+<p>Python 中的所有对象，函数、变量等，都是 <code>PyObject</code> ，或者说 <code>PyObject</code> 是所有 Python 对象的超类。</p>
+<p><code>PyObject</code> 定义：<br>
+  <figure class="highlight thrift">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">object</span> </span>&#123;</div><div class="line">    _PyObject_HEAD_EXTRA</div><div class="line">    Py_ssize_t ob_refcnt;</div><div class="line">    <span class="class"><span class="keyword">struct</span> _<span class="title">typeobject</span> *ob_type;</span></div><div class="line">&#125; PyObject;</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p><code>_PyObject_HEAD_EXTRA</code> 是一个宏，<code>ob_refcnt</code> 用于内存管理，表明该对象的引用次数，<code>ob_type</code> 是指向 type object 的指针。一个有趣的事,<code>type</code> 函数的 type 就是 <code>type</code>，因此，<code>type</code> 函数的 <code>ob_type</code> 域指向自身。</p>
+<ul>
+  <li><code>type</code> 类型是所有内建类型的元类型</li>
+  <li><code>object</code> 类型是所有用户自定义类型的元类型</li>
+</ul>
+<h3 id="Code-Objects"><a href="#Code-Objects" class="headerlink" title="Code Objects"></a>Code Objects</h3>
+<p>Code Objects 是已编译可执行 Python 代码，其中包含可运行的字节码指令。</p>
+<p>给定一个函数，我们可以通过 <code>__code__</code> 属性访问函数体的 code object：</p>
+<figure class="highlight ruby">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span></span>:</div><div class="line">...     print(<span class="string">"hello, world!"</span>)</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; hello.__code_<span class="number">_</span></div><div class="line">&lt;code object hello at <span class="number">0x7fd58d3b4ed0</span>, file <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>&gt;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>Code Object 的 <code>co_code</code> 属性包含字节码指令序列：<br>
+  <figure class="highlight llvm">
+    <table>
+      <tr>
+        <td class="gutter">
+          <pre><div class="line">1</div><div class="line">2</div></pre>
+        </td>
+        <td class="code">
+          <pre><div class="line">&gt;&gt;&gt; hello.__code__.co_code</div><div class="line">b't\<span class="keyword">x</span><span class="number">00</span>d\<span class="keyword">x</span><span class="number">01</span>\<span class="keyword">x</span><span class="number">83</span>\<span class="keyword">x</span><span class="number">01</span>\<span class="keyword">x</span><span class="number">01</span>\<span class="keyword">x</span><span class="number">00</span>d\<span class="keyword">x</span><span class="number">00</span>S\<span class="keyword">x</span><span class="number">00</span>'</div></pre>
+        </td>
+      </tr>
+    </table>
+  </figure>
+</p>
+<p>字节码指令的大小为两字节，一字节为 opcode(现为两字节大小)，另一字节为 opcode 的参数。如果 opcode 不需要参数，则对应参数部分为 0。</p>
+<h3 id="Frames-Objects"><a href="#Frames-Objects" class="headerlink" title="Frames Objects"></a>Frames Objects</h3>
+<p>Frame object 为 code object 的执行提供上下文信息。</p>
+<p>通过 <code>sys._getframe()</code> 访问 frame object：</p>
+<figure class="highlight ruby">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; import sys</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; f = sys._getframe()</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; f</div><div class="line">&lt;frame object at <span class="number">0x7fd580fd0b28</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; dir(f)</div><div class="line">[<span class="string">'__class__'</span>, <span class="string">'__delattr__'</span>, <span class="string">'__dir__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__eq__'</span>, <span class="string">'__format__'</span>, <span class="string">'__ge__'</span>, <span class="string">'__getattribute__'</span>, <span class="string">'__gt__'</span>, <span class="string">'__hash__'</span>, <span class="string">'__init__'</span>, <span class="string">'__init_subclass__'</span>, <span class="string">'__le__'</span>, <span class="string">'__lt__'</span>, <span class="string">'__ne__'</span>, <span class="string">'__new__'</span>, <span class="string">'__reduce__'</span>, <span class="string">'__reduce_ex__'</span>, <span class="string">'__repr__'</span>, <span class="string">'__setattr__'</span>, <span class="string">'__sizeof__'</span>, <span class="string">'__str__'</span>, <span class="string">'__subclasshook__'</span>, <span class="string">'clear'</span>, <span class="string">'f_back'</span>, <span class="string">'f_builtins'</span>, <span class="string">'f_code'</span>, <span class="string">'f_globals'</span>, <span class="string">'f_lasti'</span>, <span class="string">'f_lineno'</span>, <span class="string">'f_locals'</span>, <span class="string">'f_trace'</span>]</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>在一个 code object 执行前，都需要创建一个 frame object，该 frame object 包含该 code object 执行需要的所有名字空间，一个指向当前执行的线程的引用，data stack，block stack，以及其它 code object 执行需要的重要信息。</p>
+<p>在 Python 代码执行过程中，需要通过调用 <code>PyFrame_New</code> 函数创建很多次 frame object，为了减少函数调用带来的开销，采用了两种优化方式：</p>
+<ul>
+  <li>Code object 有一个域 <code>co_zombieframe</code> ，当一个 object 执行过后，对应的 frame 不会立刻释放，而会保存到 <code>co_zombieframe</code> 中，从而当下次执行相同的 code object 时，不需要再次分配内存创建新的 frame；</li>
+  <li>Python 虚拟机维护一个预分配好的空闲 frame 列表，供 code object 使用； </li>
+</ul>
+<h3 id="解释器状态和线程状态"><a href="#解释器状态和线程状态" class="headerlink" title="解释器状态和线程状态"></a>解释器状态和线程状态</h3>
+<p>Interpreter state 保存一个 Python 进程中一系列协作线程共享的全局状态。</p>
+<p>一个 thread state 与一个正在运行的 Python 进程的 native OS thread 相联系。</p>
+<p>解释器状态、线程状态和 frame 之间的关系：</p>
+<p><img src="/photos/py/state.png" alt=""></p>
+<h3 id="The-evaluation-loop-ceval-c"><a href="#The-evaluation-loop-ceval-c" class="headerlink" title="The evaluation loop, ceval.c"></a>The evaluation loop, ceval.c</h3>
+<p>Python 虚拟机循环迭代 code object 的每一条指令并执行：<code>Python/ceval.c</code>，关键函数：<code>PyEval_EvalFrameEx</code>。</p>
+<p>在 <code>PyEval_EvalFrameEx</code> 函数执行 Python 字节码之前，需要进行大量的设置工作，包括错误检查、frame 创建和初始化等(<code>_PyEval_EvalCodeWithName</code> 函数)。</p>
+<h3 id="Block-Stack"><a href="#Block-Stack" class="headerlink" title="Block Stack"></a>Block Stack</h3>
+<p>通过 block stack，能够很方便地实现异常处理，且仅用于处理循环和异常。<code>PyFrame_BlockSetup</code> 函数创建一个一个新的 block 并 push 到 block stack。</p>
+<h3 id="从-Class-code-到字节码"><a href="#从-Class-code-到字节码" class="headerlink" title="从 Class code 到字节码"></a>从 Class code 到字节码</h3>
+<p>创建类的过程大致如下：</p>
+<ul>
+  <li>将类定义语句放入一个 code object 中</li>
+  <li>确定该类实例的合适元类</li>
+  <li>为该类的名字空间准备一个字典</li>
+  <li>在该名字空间内执行上述对应的 code object</li>
+  <li>通过实例化元类创建类对象</li>
+</ul>
+<p>元类确定：</p>
+<ul>
+  <li>如果没有给定基类或明确的元类，则使用 <code>type()</code></li>
+  <li>如果给定了明确的元类但不是 <code>type()</code> 的实例，则使用该元类</li>
+  <li>如果给定了 <code>type()</code> 的实例作为明确元类，或者定义了基类，则使用最派生的元类。</li>
+</ul>
+<h3 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h3>
+<p>生成器对象包含一个 frame object 和 code object，当生成器函数被调用时，它并不会运行，而是返回一个生成器对象，只有将生成器对象作为一个参数传入内建的 <code>next</code> 函数时，生成器对象才能够运行：即在生成器对象所包含的 frame object 内调用 <code>PyEval_EvalFrameEx</code> 函数。</p>
+<p>当生成器函数执行遇到 <code>YIELD_VALUE</code> opcode 时，该 opcode 会使得执行暂停，并将栈顶值返回给调用者。暂停意味着当前正在执行的 frame 退出了，但是它并不会被释放，因为该 frame 还在被生成器对象引用，并且能够再次执行，即再次以该 frame 作为参数调用 <code>PyEval_EvalFrameEx</code> 函数时。</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3>
+<ul>
+  <li><a href="https://leanpub.com/insidethepythonvirtualmachine/read" target="_blank" rel="external">Inside the Python virtual machine</a></li>
+  <li><a href="https://opensource.com/article/18/4/introduction-python-bytecode" target="_blank" rel="external">An introduction to Python bytecode</a></li>
+  <li><a href="http://aosabook.org/en/500L/a-python-interpreter-written-in-python.html" target="_blank" rel="external">A Python Interpreter Written in Python</a></li>
+</ul>]]></content>
     
     <summary type="html">
     
@@ -96,7 +240,7 @@
 &lt;p&gt;Python 基于栈式执行，CPython 主要使用三种类型的栈：&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;call stack：一个 frame 表示一个活动的函数调用&lt;/li&gt;
-  &lt;li&gt;data stack：每一个函数对应一个 data stack，函数在其中进行数据操纵，包括函数参数，返回地址等&lt;/li&gt;
+  &lt;li&gt;data stack：也称作 evaluation stack，每一个函数对应一个 data stack，函数在其中进行数据操纵，包括函数参数，返回地址等&lt;/li&gt;
   &lt;li&gt;block stack：用于跟踪控制结构的确定类型：如循环，&lt;code&gt;try/except&lt;/code&gt; 块，&lt;code&gt;with&lt;/code&gt; 块等&lt;/li&gt;
 &lt;/ul&gt;
     
