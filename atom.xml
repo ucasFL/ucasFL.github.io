@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2019-02-25T03:07:15.862Z</updated>
+  <updated>2019-07-11T06:14:40.023Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git 合并多个 Commit</title>
+    <link href="http://ucasfl.me/2019/07/11/Git-Merge-Commits/"/>
+    <id>http://ucasfl.me/2019/07/11/Git-Merge-Commits/</id>
+    <published>2019-07-11T06:02:02.000Z</published>
+    <updated>2019-07-11T06:14:40.023Z</updated>
+    
+    <content type="html"><![CDATA[<p>总是记不住 Git 合并 Commit 的命令，故今天记录一下。</p>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">git rebase -<span class="selector-tag">i</span> HEAD~<span class="number">2</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><code>2</code> 为合并的 Commit 的个数，如果合并 3 个 Commit，则改为 <code>3</code>，同理。</p>
+<a id="more"></a>
+<p>之后，可能会出现如下内容：</p>
+<figure class="highlight vala">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">pick <span class="number">7</span>bb83e2 commit <span class="number">1</span></div><div class="line">pick ae60558 commit <span class="number">2</span></div><div class="line"></div><div class="line"><span class="meta"># Rebase f59dfd0..ae60558 onto f59dfd0 (2 commands)</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># Commands:</span></div><div class="line"><span class="meta"># p, pick = use commit</span></div><div class="line"><span class="meta"># r, reword = use commit, but edit the commit message</span></div><div class="line"><span class="meta"># e, edit = use commit, but stop for amending</span></div><div class="line"><span class="meta"># s, squash = use commit, but meld into previous commit</span></div><div class="line"><span class="meta"># f, fixup = like "squash", but discard this commit's log message</span></div><div class="line"><span class="meta"># x, exec = run command (the rest of the line) using shell</span></div><div class="line"><span class="meta"># d, drop = remove commit</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># These lines can be re-ordered; they are executed from top to bottom.</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># If you remove a line here THAT COMMIT WILL BE LOST.</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># However, if you remove everything, the rebase will be aborted.</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># Note that empty commits are commented out</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p><code>commit 1</code> 和 <code>commit 2</code> 为 commit 的消息，<code>commit 1</code> 在前，<code>commit 2</code> 在后。</p>
+<p>之后，修改如下：</p>
+<figure class="highlight vala">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line">pick <span class="number">7</span>bb83e2 commit <span class="number">1</span></div><div class="line">squash ae60558 commit <span class="number">2</span></div><div class="line"></div><div class="line"><span class="meta"># Rebase f59dfd0..ae60558 onto f59dfd0 (2 commands)</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># Commands:</span></div><div class="line"><span class="meta"># p, pick = use commit</span></div><div class="line"><span class="meta"># r, reword = use commit, but edit the commit message</span></div><div class="line"><span class="meta"># e, edit = use commit, but stop for amending</span></div><div class="line"><span class="meta"># s, squash = use commit, but meld into previous commit</span></div><div class="line"><span class="meta"># f, fixup = like "squash", but discard this commit's log message</span></div><div class="line"><span class="meta"># x, exec = run command (the rest of the line) using shell</span></div><div class="line"><span class="meta"># d, drop = remove commit</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># These lines can be re-ordered; they are executed from top to bottom.</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># If you remove a line here THAT COMMIT WILL BE LOST.</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># However, if you remove everything, the rebase will be aborted.</span></div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta"># Note that empty commits are commented out</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<p>即，将 <code>commit 2</code> 的 <code>pick</code> 改为 <code>squash</code>。然后保存退出，之后还会出现 commit 消息的修改，修改完保存退出即可。</p>
+<p>如果前一个 commit 已经 push 到了远程仓库中，那么还需要 <code>force push</code> 一下：</p>
+<figure class="highlight armasm">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="symbol">git</span> <span class="keyword">push </span>-f</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总是记不住 Git 合并 Commit 的命令，故今天记录一下。&lt;/p&gt;
+&lt;figure class=&quot;highlight stylus&quot;&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;gutter&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;code&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git rebase -&lt;span class=&quot;selector-tag&quot;&gt;i&lt;/span&gt; HEAD~&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;2&lt;/code&gt; 为合并的 Commit 的个数，如果合并 3 个 Commit，则改为 &lt;code&gt;3&lt;/code&gt;，同理。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="http://ucasfl.me/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="http://ucasfl.me/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>CPython 学习笔记</title>
@@ -7275,7 +7365,7 @@
     <link href="http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/"/>
     <id>http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/</id>
     <published>2017-12-09T16:53:10.000Z</published>
-    <updated>2019-02-20T09:30:50.713Z</updated>
+    <updated>2019-03-21T01:50:37.200Z</updated>
     
     <content type="html"><![CDATA[<p>设置屏幕分辨率：</p>
 <figure class="highlight ada">
@@ -7295,10 +7385,10 @@
   <table>
     <tr>
       <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
       </td>
       <td class="code">
-        <pre><div class="line"><span class="comment">xrandr</span> <span class="comment">:</span> <span class="comment">显示所有显示屏设备名称</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">same</span><span class="literal">-</span><span class="comment">as</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">设置双屏显示相同的内容</span><span class="string">,</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">为最高分辨率，可通过</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">mode</span> <span class="comment">arg</span> <span class="comment">设置分辨率</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">right</span><span class="literal">-</span><span class="comment">of</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">右侧扩展</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">left</span><span class="literal">-</span><span class="comment">of</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">左侧扩展</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">off</span> <span class="comment">:</span> <span class="comment">关闭显示器</span></div></pre>
+        <pre><div class="line"><span class="comment">xrandr</span> <span class="comment">:</span> <span class="comment">显示所有显示屏设备名称</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">same</span><span class="literal">-</span><span class="comment">as</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">设置双屏显示相同的内容</span><span class="string">,</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">为最高分辨率，可通过</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">mode</span> <span class="comment">arg</span> <span class="comment">设置分辨率</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">right</span><span class="literal">-</span><span class="comment">of</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">右侧扩展</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">left</span><span class="literal">-</span><span class="comment">of</span> <span class="comment">DEV1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">auto</span> <span class="comment">:</span> <span class="comment">左侧扩展</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">off</span> <span class="comment">:</span> <span class="comment">关闭显示器</span></div><div class="line"><span class="comment">xrandr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">DEV</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">mode</span> <span class="comment">arg</span> <span class="comment">:</span> <span class="comment">双屏分别设置分辨率</span></div></pre>
       </td>
     </tr>
   </table>
@@ -8622,681 +8712,6 @@
     
     
       <category term="Python" scheme="http://ucasfl.me/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 速查表</title>
-    <link href="http://ucasfl.me/2017/10/07/Python-cheat-sheet/"/>
-    <id>http://ucasfl.me/2017/10/07/Python-cheat-sheet/</id>
-    <published>2017-10-07T11:20:55.000Z</published>
-    <updated>2018-06-05T14:56:17.335Z</updated>
-    
-    <content type="html"><![CDATA[<p>本手册是 <a href="http://datasciencefree.com/python.pdf" target="_blank" rel="external">Python cheat sheet</a> 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。</p>
-<p>该手册同时位于 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition" target="_blank" rel="external">GitHub</a> 上，可下载 <a href="https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/README.pdf" target="_blank" rel="external">PDF 版</a>。</p>
-<a id="more"></a>
-<h2 id="惯例"><a href="#惯例" class="headerlink" title="惯例"></a>惯例</h2>
-<ul>
-  <li>Python 对大小写敏感；</li>
-  <li>Python 的索引从 0 开始（所有编程语言均如此）；</li>
-  <li>Python 使用空白符（制表符或空格）来缩进代码，而不是使用花括号。</li>
-</ul>
-<h2 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h2>
-<ul>
-  <li>获取主页帮助： <code>help()</code></li>
-  <li>获取函数帮助： <code>help(str.replace)</code></li>
-  <li>获取模块帮助： <code>help(re)</code></li>
-</ul>
-<h2 id="模块（亦称库）"><a href="#模块（亦称库）" class="headerlink" title="模块（亦称库）"></a>模块（亦称库）</h2>
-<p>模块只是一个简单地以 <code>.py</code> 为后缀的文件。</p>
-<ul>
-  <li>列出模块内容：<code>dir(module1)</code></li>
-  <li>导入模块：<code>import module</code></li>
-  <li>调用模块中的函数：<code>module1.func1()</code></li>
-</ul>
-<p><strong>注：<code>import</code> 语句会创建一个新的名字空间，并且在该名字空间内执行 <code>.py</code> 文件中的所有语句。如果你想把模块内容导入到当前名字空间，请使用 <code>from module1 import *</code> 语句。</strong></p>
-<h2 id="数值类类型"><a href="#数值类类型" class="headerlink" title="数值类类型"></a>数值类类型</h2>
-<p>查看变量的数据类型：<code>type(variable)</code></p>
-<h3 id="六种经常使用的数据类型"><a href="#六种经常使用的数据类型" class="headerlink" title="六种经常使用的数据类型"></a>六种经常使用的数据类型</h3>
-<ol>
-  <li>
-    <p><strong>int/long</strong>：过大的 <code>int</code> 类型会被自动转化为 <code>long</code> 类型。</p>
-  </li>
-  <li>
-    <p><strong>float</strong>：64 位，Python 中没有 <code>double</code> 类型。</p>
-  </li>
-  <li>
-    <p><strong>bool</strong>：真或假。</p>
-  </li>
-  <li>
-    <p><strong>str</strong>：在 Python 2 中默认以 ASCII 编码，而在 Python 3 中默认以 Unicode 编码；</p>
-    <ul>
-      <li>字符串可置于单/双/三引号中；</li>
-      <li>字符串是字符的序列，因此可以像处理其他序列一样处理字符串；</li>
-      <li>特殊字符可通过 <code>\</code> 或者前缀 <code>r</code> 实现：</li>
-    </ul>
-    <figure class="highlight python">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line">str1 = <span class="string">r'this\f?ff'</span></div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
-    <ul>
-      <li>字符串可通过多种方式格式化：</li>
-    </ul>
-    <figure class="highlight python">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div><div class="line">2</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line">template = <span class="string">'%.2f %s haha $%d'</span>;</div><div class="line">str1 = template % (<span class="number">4.88</span>, <span class="string">'hola'</span>, <span class="number">2</span>)</div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
-  </li>
-  <li>
-    <p><strong>NoneType(None)</strong>：Python <code>null</code> 值（只有 None 对象的一个实例中存在）。</p>
-    <ul>
-      <li><code>None</code> 不是一个保留关键字，而是 <strong>NoneType</strong> 的一个唯一实例。</li>
-      <li><code>None</code> 通常是可选函数参数的默认值：</li>
-    </ul>
-    <figure class="highlight python">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(a, b, c = None)</span></span></div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
-    <ul>
-      <li><code>None</code> 的常见用法：</li>
-    </ul>
-    <figure class="highlight python">
-      <table>
-        <tr>
-          <td class="gutter">
-            <pre><div class="line">1</div></pre>
-          </td>
-          <td class="code">
-            <pre><div class="line"><span class="keyword">if</span> variable <span class="keyword">is</span> <span class="keyword">None</span> :</div></pre>
-          </td>
-        </tr>
-      </table>
-    </figure>
-  </li>
-  <li>
-    <p><strong>datatime</strong>：Python 内建的 datetime 模块提供了 <code>datetime</code>、<code>data</code> 以及 <code>time</code> 类型。</p>
-    <ul>
-      <li><code>datetime</code> 组合了存储于 <code>date</code> 和 <code>time</code> 中的信息。</li>
-    </ul>
-  </li>
-</ol>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#从字符串中创建 datetime</span></div><div class="line">dt1 = datetime.strptime(<span class="string">'20091031'</span>, <span class="string">'%Y%m%d'</span>)</div><div class="line"><span class="comment">#获取 date 对象</span></div><div class="line">dt1.date()</div><div class="line"><span class="comment">#获取 time 对象</span></div><div class="line">dt1.time()</div><div class="line"><span class="comment">#将 datetime 格式化为字符串</span></div><div class="line">dt1.strftime(<span class="string">'%m/%d/%Y%H:%M'</span>)</div><div class="line"><span class="comment">#更改字段值</span></div><div class="line">dt2 = dt1.replace(minute = <span class="number">0</span>, second = <span class="number">30</span>)</div><div class="line"><span class="comment">#做差, diff 是一个 datetime.timedelta 对象</span></div><div class="line">diff = dt1 - dt2</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>注：Python 中的绝大多数对象都是可变的，只有字符串和元组例外。</strong></p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2>
-<p><strong>注：所有的 non-Get 函数调用，比如下面例子中的 <code>list1.sort()</code> 都是原地操作，即不会创建新的对象，除非特别声明。</strong></p>
-<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3>
-<p>元组是 Python 中任何类型的对象的一个一维、固定长度、不可变的序列。</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#创建元组</span></div><div class="line">tup1 = <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> </div><div class="line"><span class="comment"># or</span></div><div class="line">tup1 = (<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>)</div><div class="line"><span class="comment">#创建嵌套元组</span></div><div class="line">tup1 = (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), (<span class="number">7</span>, <span class="number">8</span>)</div><div class="line"><span class="comment">#将序列或迭代器转化为元组</span></div><div class="line">tuple([<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>])</div><div class="line"><span class="comment">#连接元组</span></div><div class="line">tup1 + tup2</div><div class="line"><span class="comment">#解包元组</span></div><div class="line">a, b, c = tup1</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>元组应用：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#交换两个变量的值</span></div><div class="line">a, b = b, a</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3>
-<p>列表是 Python 中任何类型的对象的一个一维、非固定长度、可变（比如内容可以被修改）的序列。</p>
-<figure class="highlight">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">#创建列表</div><div class="line">list1 = [1, 'a', 3]</div><div class="line">#or</div><div class="line">list1 = list(tup1)</div><div class="line">#连接列表</div><div class="line">list1 + list2 </div><div class="line">#or</div><div class="line">list1.extend(list2)</div><div class="line">#追加到列表的末尾</div><div class="line">list1.append('b')</div><div class="line">#插入指定位置</div><div class="line">list1.insert(PosIndex, 'a')</div><div class="line">#反向插入，即弹出给定位置的值/删除</div><div class="line">ValueAtIdx = list1.pop(PosIndex)</div><div class="line">#移除列表中的第一个值, a 必须是列表中第一个值</div><div class="line">list1.remove('a')</div><div class="line">#检查成员资格</div><div class="line">3 in list1 =&gt; True or False</div><div class="line">#对列表进行排序</div><div class="line">list1.sort()</div><div class="line">#按特定方式排序</div><div class="line">list1.sort(key = len) # 按长度排序</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>使用 + 连接列表会有比较大的开支，因为这个过程中会创建一个新的列表，然后复制对象。因此，使用 <code>extend()</code> 是更明智的选择；</li>
-  <li><code>insert</code> 和 <code>append</code> 相比会有更大的开支（时间/空间）；</li>
-  <li>在列表中检查是否包含一个值会比在字典和集合中慢很多，因为前者需要进行线性扫描，而后者是基于哈希表的，所以只需要花费常数时间。</li>
-</ul>
-<h4 id="内建的-bisect-模块"><a href="#内建的-bisect-模块" class="headerlink" title="内建的 bisect 模块"></a>内建的 <code>bisect</code> 模块</h4>
-<ul>
-  <li>对一个排序好的列表进行二分查找或插入；</li>
-  <li><code>bisect.bisect</code>找到元素在列表中的位置，<code>bisect.insort</code>将元素插入到相应位置。用法：</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">import</span> bisect</div><div class="line">list1 = list(range(<span class="number">10</span>))</div><div class="line"><span class="comment">#找到 5 在 list1 中的位置，从 1 开始，因此 position = index + 1</span></div><div class="line">bisect.bisect(list1, <span class="number">5</span>)</div><div class="line"><span class="comment">#将 3.5 插入 list1 中合适位置</span></div><div class="line">bisect.insort(list1, <span class="number">3.5</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>注：<code>bisect</code> 模块中的函数并不会去检查列表是否排序好，因为这会花费很多时间。所以，对未排序好的列表使用这些函数也不会报错，但可能会返回不正确的结果。</strong></p>
-<h3 id="针对序列类型的切片"><a href="#针对序列类型的切片" class="headerlink" title="针对序列类型的切片"></a>针对序列类型的切片</h3>
-<p>序列类型包括 <code>str</code>、<code>array</code>、<code>tuple</code>、<code>list</code> 等。</p>
-<p>用法：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list1[start:stop]</div><div class="line"><span class="comment">#如果使用 step</span></div><div class="line">list1(start:stop:step)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>注：切片结果包含 <code>start</code> 索引，但不包含 <code>stop</code> 索引；<code>start/stop</code> 索引可以省略，如果省略，则默认为序列从开始到结束，如 <code>list1 == list1[:]</code> 。</strong></p>
-<p><code>step</code> 的应用：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#取出奇数位置的元素</span></div><div class="line">list1[::<span class="number">2</span>]</div><div class="line"><span class="comment">#反转字符串</span></div><div class="line">str1[::<span class="number">-1</span>]</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="字典（哈希映射）"><a href="#字典（哈希映射）" class="headerlink" title="字典（哈希映射）"></a>字典（哈希映射）</h3>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#创建字典</span></div><div class="line">dict1 = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="number">2</span>: [<span class="number">3</span>,<span class="number">2</span>]&#125;</div><div class="line"><span class="comment">#从序列创建字典</span></div><div class="line">dict(zip(KeyList, ValueList))</div><div class="line"><span class="comment">#获取/设置/插入元素</span></div><div class="line">dict1[<span class="string">'key1'</span>]</div><div class="line">dict1[<span class="string">'key1'</span>] = <span class="string">'NewValue'</span></div><div class="line"><span class="comment">#get 提供默认值</span></div><div class="line">dict1.get(<span class="string">'key1'</span>, DefaultValue)</div><div class="line"><span class="comment">#检查键是否存在</span></div><div class="line"><span class="string">'key1'</span> <span class="keyword">in</span> dict1</div><div class="line"><span class="comment">#获取键列表</span></div><div class="line">dict1.keys()</div><div class="line"><span class="comment">#获取值列表</span></div><div class="line">dict1.values()</div><div class="line"><span class="comment">#更新值</span></div><div class="line">dict1.update(dict2)<span class="comment">#dict1 的值被 dict2 替换</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>如果键不存在，则会出现 <code>KeyError Exception</code> 。</li>
-  <li>当键不存在时，如果 <code>get()</code>不提供默认值则会返回 <code>None</code> 。</li>
-  <li>以相同的顺序返回键列表和值列表，但顺序不是特定的，又称极大可能非排序。</li>
-</ul>
-<h4 id="有效字典键类型"><a href="#有效字典键类型" class="headerlink" title="有效字典键类型"></a>有效字典键类型</h4>
-<ul>
-  <li>键必须是不可变的，比如标量类型(<code>int</code>、<code>float</code>、<code>string</code>)或者元组（元组中的所有对象也必须是不可变的）。</li>
-  <li>这儿涉及的技术术语是 <code>hashability</code>。可以用函数 <code>hash()</code>来检查一个对象是否是可哈希的，比如 <code>hash(&#39;This is a string&#39;)</code> 会返回一个哈希值，而 <code>hash([1,2])</code> 则会报错（不可哈希）。</li>
-</ul>
-<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3>
-<ul>
-  <li>一个集合是一些无序且唯一的元素的聚集；</li>
-  <li>你可以把它看成只有键的字典；</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#创建集合</span></div><div class="line">set([<span class="number">3</span>, <span class="number">6</span>, <span class="number">3</span>])</div><div class="line"><span class="comment">#or</span></div><div class="line">&#123;<span class="number">3</span>, <span class="number">6</span>, <span class="number">3</span>&#125;</div><div class="line"><span class="comment">#子集测试</span></div><div class="line">set1.issubset(set2)</div><div class="line"><span class="comment">#超集测试</span></div><div class="line">set1.issuperset(set2)</div><div class="line"><span class="comment">#测试两个集合中的元素是否完全相同</span></div><div class="line">set1 == set2</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h4 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h4>
-<ul>
-  <li>并（又称或）：<code>set1 | set2</code></li>
-  <li>交（又称与）：<code>set1 &amp; set2</code></li>
-  <li>差：<code>set1 - set2</code></li>
-  <li>对称差（又称异或）：<code>set1 ^ set2</code></li>
-</ul>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2>
-<p>Python 的函数参数传递是通过<strong>引用传递</strong>。</p>
-<ul>
-  <li>基本形式</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(posArg1, keywordArg1 = <span class="number">1</span>, ..)</span></span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>注</strong></p>
-<ul>
-  <li>关键字参数必须跟在位置参数的后面；</li>
-  <li>默认情况下，Python 不会“延迟求值”，表达式的值会立刻求出来。</li>
-</ul>
-<h3 id="函数调用机制"><a href="#函数调用机制" class="headerlink" title="函数调用机制"></a>函数调用机制</h3>
-<ul>
-  <li>所有函数均位于模块内部作用域。见“模块”部分。</li>
-  <li>在调用函数时，参数被打包成一个元组和一个字典，函数接收一个元组 <code>args</code> 和一个字典 <code>kwargs</code>，然后在函数内部解包。</li>
-</ul>
-<p>“函数是对象”的常见用法：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(ops = [str.strip, user_define_func, ..], ..)</span>:</span></div><div class="line">  <span class="keyword">for</span> function <span class="keyword">in</span> ops:</div><div class="line">    value = function(value)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3>
-<ul>
-  <li>如果函数末尾没有 <code>return</code> 语句，则不会返回任何东西。</li>
-  <li>如果有多个返回值则通过一个元组来实现。</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">return</span> (value1, value2)</div><div class="line">value1, value2 = func1(..)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="匿名函数（又称-LAMBDA-函数）"><a href="#匿名函数（又称-LAMBDA-函数）" class="headerlink" title="匿名函数（又称 LAMBDA 函数）"></a>匿名函数（又称 LAMBDA 函数）</h3>
-<ul>
-  <li>什么是匿名函数？</li>
-</ul>
-<p>匿名函数是一个只包含一条语句的简单函数。</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">lambda</span> x : x * <span class="number">2</span></div><div class="line"><span class="comment">#def func1(x) : return x * 2</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>匿名函数的应用：’curring’，又称利用已存在函数的部分参数来派生新的函数。</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">ma60 = <span class="keyword">lambda</span> x : pd.rolling_mean(x, <span class="number">60</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="一些有用的函数（针对数据结构）"><a href="#一些有用的函数（针对数据结构）" class="headerlink" title="一些有用的函数（针对数据结构）"></a>一些有用的函数（针对数据结构）</h3>
-<ul>
-  <li><code>enumerate()</code> 返回一个序列<code>(i, value)</code>元组，<code>i</code> 是当前 <code>item</code> 的索引。</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate(collection):</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>应用：创建一个序列中值与其在序列中的位置的字典映射（假设每一个值都是唯一的）。</p>
-<ul>
-  <li><code>sort()</code>可以从任意序列中返回一个排序好的序列。</li>
-</ul>
-<figure class="highlight">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">sorted([2, 1, 3]) =&gt; [1, 2, 3]</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>应用：</p>
-<figure class="highlight">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">sorted(set('abc bcd')) =&gt; [' ',</div><div class="line">'a', 'b', 'c', 'd']</div><div class="line"># 返回一个字符串排序后无重复的字母序列</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li><code>zip()</code>函数可以把许多列表、元组或其他序列的元素配对起来创建一系列的元组。</li>
-</ul>
-<figure class="highlight">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">zip(seq1, seq2) =&gt; [('seq1_1', 'seq2_1'), (..), ..]</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ol>
-  <li><code>zip()</code>可以接收任意数量的序列作为参数，但是产生的元素的数目取决于最短的序列。</li>
-</ol>
-<p>应用：多个序列同时迭代：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> i, (a, b) <span class="keyword">in</span> enumerate(zip(seq1, seq2)):</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ol>
-  <li><code>unzip</code>：另一种思考方式是把一些行转化为一些列：</li>
-</ol>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">seq1, seq2 = zip(zipOutput)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li><code>reversed()</code> 将一个序列的元素以逆序迭代。</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list(reversed(range(<span class="number">10</span>)))</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong><code>reversed()</code> 会返回一个迭代器，<code>list()</code> 使之成为一个列表。</strong></p>
-<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2>
-<ul>
-  <li>用于 <code>if-else</code> 条件中的操作符：</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#检查两个变量是否是相同的对象</span></div><div class="line">var1 <span class="keyword">is</span> var2</div><div class="line"><span class="comment">#检查两个变量是否是不同的对象</span></div><div class="line">var1 <span class="keyword">is</span> <span class="keyword">not</span> var2</div><div class="line"><span class="comment">#检查两个变量的值是否相等</span></div><div class="line">var1 == var2</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><strong>注：Python 中使用 <code>and</code>、<code>or</code>、<code>not</code> 来组合条件，而不是使用 <code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 。</strong></p>
-<ul>
-  <li><code>for</code>循环的常见用法：</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#可迭代对象（list、tuple）或迭代器</span></div><div class="line"><span class="keyword">for</span> element <span class="keyword">in</span> iterator:</div><div class="line"><span class="comment">#如果元素是可以解包的序列</span></div><div class="line"><span class="keyword">for</span> a, b, c <span class="keyword">in</span> iterator:</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li><code>pass</code>：无操作语句，在不需要进行任何操作的块中使用。</li>
-  <li>三元表达式，又称简洁的 <code>if-else</code>，基本形式：</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">value = true-expr <span class="keyword">if</span> condition <span class="keyword">else</span> false-expr</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>Python 中没有 <code>switch/case</code> 语句，请使用 <code>if/elif</code>。</li>
-</ul>
-<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2>
-<ul>
-  <li><strong>对象（object）</strong>是 Python 中所有类型的根。</li>
-  <li>万物（数字、字符串、函数、类、模块等）皆为对象，每个对象均有一个类型（type）。对象变量是一个指向变量在内存中位置的指针。</li>
-  <li>所有对象均为<strong>引用计数</strong>。</li>
-</ul>
-<figure class="highlight">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">sys.getrefcount(5) =&gt; x</div><div class="line">a = 5, b = a</div><div class="line">#上式会在等号的右边创建一个对象的引用，因此 a 和 b 均指向 5</div><div class="line">sys.getrefcount(5)</div><div class="line">=&gt; x + 2</div><div class="line">del(a); sys.getrefcount(5) =&gt; x + 1</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>类的基本形式：</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyObject</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="comment"># 'self' 等价于 Java/C++ 中的 'this'</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">    self.name = name</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">memberFunc1</span><span class="params">(self, arg1)</span>:</span></div><div class="line">      ..</div><div class="line"><span class="meta">  @staticmethod</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">classFunc2</span><span class="params">(arg1)</span>:</span></div><div class="line">    ..</div><div class="line">obj1 = MyObject(<span class="string">'name1'</span>)</div><div class="line">obj1.memberFunc1(<span class="string">'a'</span>)</div><div class="line">MyObject.classFunc2(<span class="string">'b'</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>有用的交互式工具：</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">dir(variable1) <span class="comment">#列出对象的所有可用方法</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h2 id="常见字符串操作"><a href="#常见字符串操作" class="headerlink" title="常见字符串操作"></a>常见字符串操作</h2>
-<figure class="highlight">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">#通过分隔符连接列表/元组</div><div class="line">', '.join([ 'v1', 'v2', 'v3']) =&gt; 'v1, v2, v3'</div><div class="line"></div><div class="line">#格式化字符串</div><div class="line">string1 = 'My name is &#123;0&#125;　&#123;name&#125;'</div><div class="line">newString1 = string1.format('Sean', name =　'Chen')</div><div class="line"></div><div class="line">#分裂字符串</div><div class="line">sep = '-';</div><div class="line">stringList1 =　string1.split(sep)</div><div class="line"></div><div class="line">#获取子串</div><div class="line">start = 1;</div><div class="line">string1[start:8]</div><div class="line"></div><div class="line">#补 '0' 向右对齐字符串</div><div class="line">month = '5';</div><div class="line">month.zfill(2) =&gt; '05'</div><div class="line">month = '12';</div><div class="line">month.zfill(2) =&gt; '12'</div><div class="line">month.zfill(3) =&gt; '012'</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2>
-<ul>
-  <li>基本形式：</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">try</span>:</div><div class="line">  ..</div><div class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</div><div class="line">  <span class="keyword">print</span> e</div><div class="line"><span class="keyword">except</span> (TypeError, AnotherError):</div><div class="line">  ..</div><div class="line"><span class="keyword">except</span>:</div><div class="line">  ..</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">  .. <span class="comment"># 清理，比如 close db;</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<ul>
-  <li>手动引发异常：</li>
-</ul>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">raise</span> AssertionError <span class="comment"># 断言失败</span></div><div class="line"><span class="keyword">raise</span> SystemExit</div><div class="line"><span class="comment"># 请求程序退出</span></div><div class="line"><span class="keyword">raise</span> RuntimeError(<span class="string">'错误信息 :..'</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h2 id="对列表、字典和元组的深入理解"><a href="#对列表、字典和元组的深入理解" class="headerlink" title="对列表、字典和元组的深入理解"></a>对列表、字典和元组的深入理解</h2>
-<p>语法糖（syntactic sugar）会使代码变得更加易读易写。</p>
-<h3 id="对列表的理解"><a href="#对列表的理解" class="headerlink" title="对列表的理解"></a>对列表的理解</h3>
-<p>将一些元素通过一个简短的语句传入一个过滤器进行过滤和转化，然后可以组成一个新的列表。</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="comment">#基本形式</span></div><div class="line">[expr <span class="keyword">for</span> val <span class="keyword">in</span> collection <span class="keyword">if</span> condition]</div><div class="line"><span class="comment">#ShortCut</span></div><div class="line">result = []</div><div class="line"><span class="keyword">for</span> val <span class="keyword">in</span> collection:</div><div class="line">  <span class="keyword">if</span> condition:</div><div class="line">    result.append(expr)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>可以省略过滤条件，只留下表达式。</p>
-<h3 id="对字典的理解"><a href="#对字典的理解" class="headerlink" title="对字典的理解"></a>对字典的理解</h3>
-<p>基本形式：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">&#123;key-expr : value-expr <span class="keyword">for</span> value <span class="keyword">in</span> collection <span class="keyword">if</span> condition&#125;</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="对集合的理解"><a href="#对集合的理解" class="headerlink" title="对集合的理解"></a>对集合的理解</h3>
-<p>基本形式：和列表一样，只是应该使用 <code>()</code> 而不是 <code>[]</code> 。</p>
-<h3 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h3>
-<p>基本形式：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">[expr <span class="keyword">for</span> val <span class="keyword">in</span> collection <span class="keyword">for</span> innerVal <span class="keyword">in</span> val <span class="keyword">if</span> condition]</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本手册是 &lt;a href=&quot;http://datasciencefree.com/python.pdf&quot;&gt;Python cheat sheet&lt;/a&gt; 的中文翻译版。原作者：Arianne Colton and Sean Chen(data.scientist.info@gmail.com)。&lt;/p&gt;
-&lt;p&gt;该手册同时位于 &lt;a href=&quot;https://github.com/ucasFL/python-cheat-sheet-Chinese-edition&quot;&gt;GitHub&lt;/a&gt; 上，可下载 &lt;a href=&quot;https://github.com/ucasFL/python-cheat-sheet-Chinese-edition/blob/master/README.pdf&quot;&gt;PDF 版&lt;/a&gt;。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
-    
-    
-      <category term="Python cheat-sheet" scheme="http://ucasfl.me/tags/Python-cheat-sheet/"/>
     
   </entry>
   

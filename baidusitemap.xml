@@ -3,6 +3,46 @@
 
     
   <url>
+    <loc>http://ucasfl.me/2019/07/11/Git-Merge-Commits/</loc>
+    <lastmod>2019-07-11T06:14:40.023Z</lastmod>
+    <data>
+        <display>
+        <title>Git 合并多个 Commit</title>
+        <pubTime>2019-07-11T06:02:02.000Z</pubTime>
+        
+        <tag>Git </tag>
+         
+         
+           
+             
+              <breadCrumb title="Git" url="http://ucasfl.me/categories/Git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/</loc>
+    <lastmod>2019-03-21T01:50:37.200Z</lastmod>
+    <data>
+        <display>
+        <title>Xrandr 命令 的一些使用</title>
+        <pubTime>2017-12-09T16:53:10.000Z</pubTime>
+        
+        <tag>Linux </tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ucasfl.me/2019/02/22/CPython-Summary/</loc>
     <lastmod>2019-02-25T03:07:15.862Z</lastmod>
     <data>
@@ -96,26 +136,6 @@
            
              
               <breadCrumb title="Algorithms" url="http://ucasfl.me/categories/Algorithms/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/</loc>
-    <lastmod>2019-02-20T09:30:50.713Z</lastmod>
-    <data>
-        <display>
-        <title>Xrandr 命令 的一些使用</title>
-        <pubTime>2017-12-09T16:53:10.000Z</pubTime>
-        
-        <tag>Linux </tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://ucasfl.me/categories/Linux/"/>
           
         </display>
     </data>
