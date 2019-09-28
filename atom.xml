@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2019-07-11T06:14:40.023Z</updated>
+  <updated>2019-09-28T15:09:00.175Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++ 笔记</title>
+    <link href="http://ucasfl.me/2019/09/28/Cpp-notes/"/>
+    <id>http://ucasfl.me/2019/09/28/Cpp-notes/</id>
+    <published>2019-09-28T15:03:36.000Z</published>
+    <updated>2019-09-28T15:09:00.175Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight cpp">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;type_traits&gt;</span></span></div><div class="line"></div><div class="line"><span class="built_in">std</span>::is_same&lt;T, U&gt;  <span class="comment">// 判断两个类型是否相同</span></div><div class="line"><span class="built_in">std</span>::is_same&lt;T, U&gt;::value   <span class="comment">// 返回 true 或 false</span></div><div class="line"></div><div class="line"><span class="built_in">std</span>::<span class="keyword">decay_t</span>&lt;T&gt; <span class="comment">// 返回类型信息，去除 const,引用等。</span></div><div class="line"><span class="built_in">std</span>::<span class="keyword">decay_t</span>&lt;<span class="keyword">decltype</span>(obj)&gt;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<a id="more"></a>
+<figure class="highlight stylus">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="selector-id">#include</span> &lt;typeinfo&gt;</div><div class="line"></div><div class="line"><span class="function"><span class="title">typeid</span><span class="params">(type)</span></span></div><div class="line"><span class="function"><span class="title">typeid</span><span class="params">(expr)</span></span> <span class="comment">// 返回 class type_info</span></div><div class="line"><span class="function"><span class="title">typeid</span><span class="params">(expr)</span></span>.name()  <span class="comment">// 返回 type 的名字c-str</span></div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight cpp&quot;&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;gutter&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;code&quot;&gt;
+        &lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;type_traits&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::is_same&amp;lt;T, U&amp;gt;  &lt;span class=&quot;comment&quot;&gt;// 判断两个类型是否相同&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::is_same&amp;lt;T, U&amp;gt;::value   &lt;span class=&quot;comment&quot;&gt;// 返回 true 或 false&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;keyword&quot;&gt;decay_t&lt;/span&gt;&amp;lt;T&amp;gt; &lt;span class=&quot;comment&quot;&gt;// 返回类型信息，去除 const,引用等。&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;keyword&quot;&gt;decay_t&lt;/span&gt;&amp;lt;&lt;span class=&quot;keyword&quot;&gt;decltype&lt;/span&gt;(obj)&amp;gt;&lt;/div&gt;&lt;/pre&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="C++" scheme="http://ucasfl.me/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://ucasfl.me/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>Git 合并多个 Commit</title>
@@ -110,7 +167,7 @@
     <link href="http://ucasfl.me/2019/02/22/CPython-Summary/"/>
     <id>http://ucasfl.me/2019/02/22/CPython-Summary/</id>
     <published>2019-02-22T03:09:19.000Z</published>
-    <updated>2019-02-25T03:07:15.862Z</updated>
+    <updated>2019-02-25T03:07:15.863Z</updated>
     
     <content type="html"><![CDATA[<p>本文为查阅相关资料的过程中随手记录的，故内容较为杂乱，无任何章节可言。</p>
 <p>Python 源代码执行流程：</p>
@@ -6488,7 +6545,7 @@
     <link href="http://ucasfl.me/2018/07/08/LLVM-Pass-and-APA-Introduction/"/>
     <id>http://ucasfl.me/2018/07/08/LLVM-Pass-and-APA-Introduction/</id>
     <published>2018-07-08T05:54:01.000Z</published>
-    <updated>2018-08-16T02:19:20.053Z</updated>
+    <updated>2018-08-16T02:19:20.054Z</updated>
     
     <content type="html"><![CDATA[<p>前段时间学习了一些关于 LLVM Pass 和 APA 方面的知识，趁今天有空，做一些总结。</p>
 <h3 id="LLVM-Pass"><a href="#LLVM-Pass" class="headerlink" title="LLVM Pass"></a>LLVM Pass</h3>
@@ -6764,7 +6821,7 @@
     <link href="http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/"/>
     <id>http://ucasfl.me/2018/06/05/An-unexpected-shifting-error/</id>
     <published>2018-06-05T04:37:40.000Z</published>
-    <updated>2019-02-22T13:51:34.689Z</updated>
+    <updated>2019-02-22T13:51:34.690Z</updated>
     
     <content type="html"><![CDATA[<h3 id="移位错误"><a href="#移位错误" class="headerlink" title="移位错误"></a>移位错误</h3>
 <p>前天晚上，刷<a href="http://www.51nod.com" target="_blank" rel="external">51Nod</a>上面的一个题：通过矩阵快速幂计算斐波那契数列，结果发生了一个意想不到的错误，这件事也告诉了我一个道理：</p>
@@ -6978,7 +7035,7 @@
     <link href="http://ucasfl.me/2018/03/11/Summary-of-Sequential-Container-in-C-plus-plus/"/>
     <id>http://ucasfl.me/2018/03/11/Summary-of-Sequential-Container-in-C-plus-plus/</id>
     <published>2018-03-11T03:51:30.000Z</published>
-    <updated>2018-03-11T05:46:18.372Z</updated>
+    <updated>2018-03-11T05:46:18.373Z</updated>
     
     <content type="html"><![CDATA[<p>在 C++ 中，标准库提供了三种顺序容器：vector, list, deque，还有三种顺序容器适配器：stack, queue, priority_queue，要使用这些容器，需要在源程序中包含对应的头文件，如 <code>include&lt;vector&gt;</code>。本文主要总结容器的操作。</p>
 <h3 id="容器类型："><a href="#容器类型：" class="headerlink" title="容器类型："></a>容器类型：</h3>
@@ -7123,7 +7180,7 @@
     <link href="http://ucasfl.me/2018/03/08/How-to-Change-Brightness-in-Linux-Command-Line/"/>
     <id>http://ucasfl.me/2018/03/08/How-to-Change-Brightness-in-Linux-Command-Line/</id>
     <published>2018-03-08T15:28:59.000Z</published>
-    <updated>2018-03-11T03:58:39.322Z</updated>
+    <updated>2018-03-11T03:58:39.323Z</updated>
     
     <content type="html"><![CDATA[<p>寒假的时候，笔记本又坏了，这次比前面两次还要更严重，直接开不了机。于是好了，一个寒假在家什么也没干。到学校的第一天就把电脑送去维修，今天才拿回来。好吧，这已经是第三次维修了。取电脑的时候，我问维修的工程师，这次是哪儿坏了。他回答，主板坏了。我说，主板不是刚刚才换了没多久的吗……他说，又坏了。我竟无言以对。</p>
 <p>电脑确实修好了。不过拿回来以后，发现屏幕怎么这么暗，然后我通过桌面设置调节，竟然无法调节，即使调到最大也没变化。我心里一凉，是不是硬件上哪儿又坏了。我切回 Windows 系统，惊喜的发现，亮度是可以调节的，那就好办了，既然是软件的问题，咱就可以自己解决。桌面无法调节，那就直接在命令行手动设置亮度值。</p>
@@ -7208,7 +7265,7 @@
     <link href="http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/"/>
     <id>http://ucasfl.me/2017/12/21/fix-the-problem-of-that-usr-lib-x86-64-linux-gnu-libstdc-so-6-version-GLIBCXX-3-4-22-not-found/</id>
     <published>2017-12-21T12:48:42.000Z</published>
-    <updated>2018-03-11T03:57:02.385Z</updated>
+    <updated>2018-03-11T03:57:02.386Z</updated>
     
     <content type="html"><![CDATA[<p>今天升级了一下 OpenCv，升级完之后，却出问题了，执行<code>import cv2</code> 报下面的错误：</p>
 <figure class="highlight crystal">
@@ -7365,7 +7422,7 @@
     <link href="http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/"/>
     <id>http://ucasfl.me/2017/12/10/Linux-commands-of-xrandr/</id>
     <published>2017-12-09T16:53:10.000Z</published>
-    <updated>2019-03-21T01:50:37.200Z</updated>
+    <updated>2019-03-21T01:50:37.201Z</updated>
     
     <content type="html"><![CDATA[<p>设置屏幕分辨率：</p>
 <figure class="highlight ada">
@@ -7417,7 +7474,7 @@
     <link href="http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/"/>
     <id>http://ucasfl.me/2017/11/12/an-introduction-to-implementing-neural-networks-using-tensorflow/</id>
     <published>2017-11-12T04:09:50.000Z</published>
-    <updated>2018-03-11T03:54:40.247Z</updated>
+    <updated>2018-03-11T03:54:40.248Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2>
 <p>如果你一直关注数据科学/机器学习，那么你肯定知道目前深度学习和神经网络非常流行。许多组织/公司都想要雇佣精通深度学习技能的人。从商业竞争到开源项目和支付高额薪水，人们在尝试一切可能的方法来挖掘这一有限的人才。自我驱动的工程师正被汽车工业中的利器所追逐，因为汽车工业正处于近几十年来最大的破坏边缘！</p>
@@ -8192,526 +8249,6 @@
     
     
       <category term="Linux" scheme="http://ucasfl.me/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 编程风格</title>
-    <link href="http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/"/>
-    <id>http://ucasfl.me/2017/10/26/Pythonic-programming-tricks/</id>
-    <published>2017-10-26T04:10:08.000Z</published>
-    <updated>2018-06-13T05:38:38.158Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。</p>
-<p>2018 年 6 月 13 日更新。</p>
-<a id="more"></a>
-<h3 id="多变量赋值"><a href="#多变量赋值" class="headerlink" title="多变量赋值"></a>多变量赋值</h3>
-<p>变量赋值是编程语言里面最简单的语句之一，通常情况下，我们会这样做：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line">c = <span class="number">3</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这样便完成了对三个变量的赋值，但你可以用更简单的方式：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="元素值交换"><a href="#元素值交换" class="headerlink" title="元素值交换"></a>元素值交换</h3>
-<p>在编程过程中，交换两个变量的值是非常常见的。一般情况下，我们会用下面这种方式来交换两个变量的值（尤其是对于第一门语言是C/C++的人来说）：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">t = a</div><div class="line">a = b</div><div class="line">b = t</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这种方式是正确的，没有人敢说它不对，但事实上，在 Python 里，你可以有更简单的方式来完成这件事：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">a, b = b, a</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>没错，一行语句就够了。</p>
-<p>对上面两个技巧的解释：在 Python 中，任何以逗号分隔的对象均被当作元组处理，因此<code>1, 2, 3</code>　实际上就是一个元组<code>(1, 2, 3)</code>，赋值过程可以看成是元组的解包 。交换值也是同样的，它相当于把等号右边的元组解包后赋值给了左边的变量。为了提高代码的可读性，上面的例子可以加上括号：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span> = (<span class="selector-tag">b</span>, a)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="循环遍历区间元素"><a href="#循环遍历区间元素" class="headerlink" title="循环遍历区间元素"></a>循环遍历区间元素</h3>
-<p>你可以这样：<br>
-  <figure class="highlight stylus">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>] :</div><div class="line">	print(i)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>但更好的方法是：<br>
-  <figure class="highlight ada">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">6</span>) :</div><div class="line">	<span class="type">print</span>(i)</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>值得一提的是, <code>range</code> 返回的是生成器对象，生成器比列表更加节省内存。</p>
-<h3 id="带有索引位置的集合遍历"><a href="#带有索引位置的集合遍历" class="headerlink" title="带有索引位置的集合遍历"></a>带有索引位置的集合遍历</h3>
-<p>遍历集合时，如果需要索引信息，直接迭代是没有的，普通的方式是：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">peoples = [<span class="string">'Tim'</span>, <span class="string">'Bob'</span>, <span class="string">'Ada'</span>]</div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> range(len(peoples)) :</div><div class="line">	print(<span class="selector-tag">i</span>, <span class="string">'---&gt;'</span>, peoples[i])</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>但你还可以这样：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span>, people <span class="keyword">in</span> enumerate(peoples) :</div><div class="line">	print(<span class="selector-tag">i</span>, <span class="string">'---&gt;'</span>, people)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3>
-<p>普通方式可以用 <code>+</code> 操作：<br>
-  <figure class="highlight stylus">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line">strs = [<span class="string">'I'</span>, <span class="string">'Love'</span>, <span class="string">'You'</span>]</div><div class="line">s = strs[<span class="number">0</span>]</div><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> strs[<span class="number">1</span>: ]:</div><div class="line">	s += <span class="string">' '</span> + <span class="selector-tag">i</span></div><div class="line"><span class="function"><span class="title">print</span><span class="params">(s)</span></span></div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>但你还可以使用 <code>join</code> 方法：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">' '</span>.join(strs)</span></span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>与 <code>join</code> 相对应的就是 <code>split</code> 方法，<code>split</code> 方法通过指定分隔符参数来分割字符串，默认为空白符：<br>
-  <figure class="highlight ini">
-    <table>
-      <tr>
-        <td class="gutter">
-          <pre><div class="line">1</div><div class="line">2</div></pre>
-        </td>
-        <td class="code">
-          <pre><div class="line"><span class="attr">s</span> = <span class="string">'I love you'</span></div><div class="line"><span class="attr">l</span> = s.split() # l = [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'you'</span>]</div></pre>
-        </td>
-      </tr>
-    </table>
-  </figure>
-</p>
-<p>此外，<code>split</code> 方法还有一个用法。我们知道，在 Python 中，从键盘输入时，<code>input()</code> 方法会读取一整行输入，然后返回一个字符串，如果想要在同一行输入多个整数并赋值给多个对象，那么 <code>split()</code> 方法就派上用场了：</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = input().split()</div><div class="line"><span class="selector-tag">a</span> = int(a)</div><div class="line"><span class="selector-tag">b</span> = int(b)</div><div class="line">c = int(c)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>这样，就可以在同一行输入三个整数，然后分别赋值给 a, b, c，当然，此时，仍然是字符串，如果要作为整数使用，那么，使用 <code>int()</code> 转化一下即可。</p>
-<h3 id="列表解析"><a href="#列表解析" class="headerlink" title="列表解析"></a>列表解析</h3>
-<p>假设 <code>list1</code> 是一个字符串组成的列表，现在，需要把 <code>list1</code> 中的每一个字符串的每一个小写字母找出来，形成一个新的元组。一般情况下，我们可以这样做：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list1 = [<span class="string">'adg'</span>, <span class="string">'Adf'</span>, <span class="string">'124'</span>]</div><div class="line">list2 = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> i:</div><div class="line">    <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>:</div><div class="line">      list2.append(j)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>但实际上，你只需要用一个语句就可以完成这件事：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list2 = [j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>]</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>没错，Python 就是这么简洁。如果把上面的方括号换成圆括号，那么结果返回的就是一个迭代器，可以使用 <code>next()</code> 方法获取元素：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list2 = (j <span class="keyword">for</span> i <span class="keyword">in</span> list1 <span class="keyword">for</span> j <span class="keyword">in</span> i <span class="keyword">if</span> j &gt;= <span class="string">'a'</span> <span class="keyword">and</span> j &lt;= <span class="string">'z'</span>)</div><div class="line">list2.next() <span class="comment"># 返回'a'</span></div><div class="line">list2.next() <span class="comment"># 返回'd'</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="收集参数"><a href="#收集参数" class="headerlink" title="收集参数"></a>收集参数</h3>
-<p>函数的多个参数可通过一个元组传递，假设有如下函数：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x + y</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>可重新定义为：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add2</span><span class="params">(*params)</span>:</span></div><div class="line">  <span class="keyword">return</span> params[<span class="number">0</span>] + params[<span class="number">1</span>]</div><div class="line"><span class="comment">#传递参数</span></div><div class="line">add2(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="comment">#或</span></div><div class="line">tuple1 = (<span class="number">1</span>, <span class="number">2</span>)</div><div class="line">add2(*tuple1)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>使用双星号则可以传递一个字典：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">with_star</span><span class="params">(**kwds)</span>:</span></div><div class="line">  print(kwds[<span class="string">'name'</span>], <span class="string">' is '</span>, kwds[<span class="string">'age'</span>] ,<span class="string">' years old.'</span>)</div><div class="line">args = &#123;<span class="string">'name'</span> : <span class="string">'Mrs. GUmby'</span>, <span class="string">'age'</span> : <span class="number">42</span>&#125;</div><div class="line">with_star(**args)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="使用两个列表创建字典"><a href="#使用两个列表创建字典" class="headerlink" title="使用两个列表创建字典"></a>使用两个列表创建字典</h3>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">list2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">d = dict(zip(list1, list2))</div><div class="line">list1 == list(d.keys())</div><div class="line">list2 == list(d.values())</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
-<p>多态意味着就算不知道变量所引用的对象类型是什么，也可以对它进行操作，看下面的函数：</p>
-<figure class="highlight python">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span> <span class="params">(a, b)</span>:</span></div><div class="line">  <span class="keyword">return</span> a + b</div><div class="line">add(<span class="number">1</span>, <span class="number">2</span>)  <span class="comment"># 返回３</span></div><div class="line">add(<span class="string">'ab'</span>, <span class="string">'cd'</span>) <span class="comment"># 返回'abcd'</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>很多函数和运算符都是多态的，因此写程序时也应该尽量避免破坏多态，尽量不使用 <code>type, isinstance, issubclass</code> 之类会破坏多态的函数。</p>
-<p>多态是 Python 式编程的核心，也被称为 “duck typing”。</p>
-<h3 id="打开-关闭文件"><a href="#打开-关闭文件" class="headerlink" title="打开/关闭文件"></a>打开/关闭文件</h3>
-<p>执行文件操作时，一定不能忘记 <code>close()</code>，即使代码出错，普遍的方法是在 <code>finally</code> 块中显示的调用 <code>close</code> 方法：</p>
-<figure class="highlight livecodeserver">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">f = <span class="built_in">open</span>(<span class="string">'data.txt'</span>)</div><div class="line"><span class="keyword">try</span> :</div><div class="line">	data = f.<span class="built_in">read</span>()</div><div class="line"><span class="keyword">finally</span> :</div><div class="line">	f.<span class="built_in">close</span>()</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>但更简介的方法是：</p>
-<figure class="highlight haskell">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="title">with</span> open('<span class="class"><span class="keyword">data</span>.txt') as f :</span></div><div class="line">	<span class="class"><span class="keyword">data</span> = f.read()</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>使用 <code>with</code> 语句，系统会在执行完文件操作之后自动关闭文件对象。</p>
-<h3 id="合理使用列表"><a href="#合理使用列表" class="headerlink" title="合理使用列表"></a>合理使用列表</h3>
-<p>列表对象是一个查询效率高但更新效率低的数据结构。比如删除元素和插入元素的时候执行效率非常低，需要对剩下的元素进行移动。</p>
-<figure class="highlight vim">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">people = [<span class="string">'xiaoming'</span>, <span class="string">'xiaohong'</span>, <span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>]</div><div class="line">people.<span class="keyword">pop</span>(<span class="number">0</span>)</div><div class="line">people.<span class="keyword">insert</span>(<span class="number">0</span>, <span class="string">'lihua'</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>更好的方法是使用 <code>deque</code>:</p>
-<figure class="highlight xl">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">from collections <span class="keyword">import</span> deque</div><div class="line"><span class="keyword">name</span> = deque([<span class="string">'xiaoming'</span>, <span class="string">'xiaohong'</span>, <span class="string">'zhangsan'</span>, <span class="string">'lisi'</span>])</div><div class="line"><span class="keyword">name</span>.popleft()</div><div class="line"><span class="keyword">name</span>.appendleft(<span class="string">'lihua'</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><code>deque</code> 是一个双向队列的数据结构，删除元素和插入元素会很快。</p>
-<h3 id="遍历字典中的-key-和-value"><a href="#遍历字典中的-key-和-value" class="headerlink" title="遍历字典中的 key 和 value"></a>遍历字典中的 key 和 value</h3>
-<p>普通方法：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">d = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span>&#125;</div><div class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d :</div><div class="line">	<span class="type">print</span>(k, '<span class="comment">---&gt;', d[k])</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>该方法效率较低，因为每次都需要重新进行 hash 查找 key 对应的 value 。</p>
-<p>高效的方法是：</p>
-<figure class="highlight bash">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items():</div><div class="line">	<span class="built_in">print</span>(k, <span class="string">'---&gt;'</span>, d[k])</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p><code>items</code> 返回迭代器对象，效率高，且节省内存。</p>
-<h3 id="链式比较"><a href="#链式比较" class="headerlink" title="链式比较"></a>链式比较</h3>
-<p>学了那么久 Python，最近才知道 Python 居然支持大多数编程语言都不支持的链式比较：</p>
-<p>常规方法：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">age = <span class="number">18</span></div><div class="line"><span class="keyword">if</span> age &gt; <span class="number">18</span> <span class="keyword">and</span> age &lt; <span class="number">60</span> :</div><div class="line">	<span class="type">print</span>(<span class="symbol">'young</span> man')</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>事实上，在 Python 中，你可以这样写：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">if</span> <span class="number">18</span> &lt; age &lt; <span class="number">60</span> :</div><div class="line">	<span class="type">print</span>(<span class="symbol">'young</span> man')</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>理解了链式比较操作，那么你也就明白了下面这行代码为什么会返回 <code>False</code> :</p>
-<figure class="highlight ini">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="attr">True</span> == <span class="literal">True</span> == <span class="literal">False</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="if-else-三目运算"><a href="#if-else-三目运算" class="headerlink" title="if/else 三目运算"></a>if/else 三目运算</h3>
-<p>常规：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">if</span> gender == <span class="symbol">'male</span>' :</div><div class="line">	<span class="type">text</span> = <span class="symbol">'man</span>'</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">text</span> = <span class="symbol">'women</span>'</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>pythonic:</p>
-<figure class="highlight arduino">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="built_in">text</span> = <span class="string">'man'</span> <span class="built_in">if</span> gender == <span class="string">'male'</span> <span class="built_in">else</span> <span class="string">'women'</span></div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<h3 id="for-else-while-else-语句"><a href="#for-else-while-else-语句" class="headerlink" title="for/else, while/else 语句"></a>for/else, while/else 语句</h3>
-<p><code>for/else, while/else</code> 语句是 Python 中最迷惑人的语法：如果以正常方式退出循环(非 <code>break&#39;, 非</code>return<code>, 程序异常)，那么</code>else` 分支将执行：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>) :</div><div class="line">	<span class="type">if</span> i == <span class="number">5</span> :</div><div class="line">		<span class="type">break</span></div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">print</span>(<span class="string">"hello, world."</span>) # 无输出</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>) :</div><div class="line">	<span class="type">print</span>(i)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	<span class="type">print</span>(<span class="string">"hello, world."</span>) # 有输出</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>当然，上面说到的例子没什么用，看下面一个：</p>
-<figure class="highlight ada">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line">found = <span class="literal">false</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> mylist :</div><div class="line">	<span class="type">if</span> i == theflag :</div><div class="line">		<span class="type">found</span> = <span class="literal">True</span></div><div class="line">		break</div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> found :</div><div class="line">	<span class="type">print</span>(<span class="string">"Not found."</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>
-<p>使用 <code>for/else</code> :</p>
-<figure class="highlight stylus">
-  <table>
-    <tr>
-      <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre>
-      </td>
-      <td class="code">
-        <pre><div class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> mylist :</div><div class="line">	<span class="keyword">if</span> <span class="selector-tag">i</span> == theflag :</div><div class="line">		break</div><div class="line"><span class="keyword">else</span> :</div><div class="line">	print(<span class="string">"Not found."</span>)</div></pre>
-      </td>
-    </tr>
-  </table>
-</figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文将记录在学习过程掌握/学习到的一些 Python 编程的奇技淫巧，即如何写 Pythonic 的 Python 代码。因此，文章将会持续更新，更新时间不限。由于本人知识有限，文中难免会出现不足或错误的地方。文中提到的方法适用于 Python 3，对于 Python 2 不一定完全适用。&lt;/p&gt;
-&lt;p&gt;2018 年 6 月 13 日更新。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://ucasfl.me/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://ucasfl.me/tags/Python/"/>
     
   </entry>
   
