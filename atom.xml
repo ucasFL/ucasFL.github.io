@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2019-10-08T05:26:49.264Z</updated>
+  <updated>2019-10-08T05:30:22.968Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ucasfl.me/2019/09/28/Cpp-notes/"/>
     <id>http://ucasfl.me/2019/09/28/Cpp-notes/</id>
     <published>2019-09-28T15:03:36.000Z</published>
-    <updated>2019-10-08T05:26:49.264Z</updated>
+    <updated>2019-10-08T05:30:22.968Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight cpp">
   <table>
@@ -65,10 +65,10 @@
   <table>
     <tr>
       <td class="gutter">
-        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre>
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre>
       </td>
       <td class="code">
-        <pre><div class="line"><span class="comment">// enable_if 可能的实现，若B为真，则 std::enable_if有一个与T相等的public typedef类型</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">bool</span> B, <span class="keyword">class</span> T = <span class="keyword">void</span>&gt;</div><div class="line"><span class="keyword">struct</span> enable_if &#123;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div><div class="line"><span class="keyword">struct</span> enable_if&lt;<span class="literal">true</span>, T&gt; &#123; <span class="keyword">typedef</span> T type; &#125;;</div><div class="line"></div><div class="line"><span class="comment">//Since C++14</span></div><div class="line"><span class="keyword">template</span>&lt; <span class="keyword">bool</span> B, <span class="keyword">class</span> T = <span class="keyword">void</span> &gt;</div><div class="line"><span class="keyword">using</span> <span class="keyword">enable_if_t</span> = <span class="keyword">typename</span> enable_if&lt;B,T&gt;::type;</div></pre>
+        <pre><div class="line"><span class="comment">// enable_if 可能的实现，若B为真，则 std::enable_if</span></div><div class="line"><span class="comment">//有一个与T相等的public typedef类型</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;type_traits&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">bool</span> B, <span class="keyword">class</span> T = <span class="keyword">void</span>&gt;</div><div class="line"><span class="keyword">struct</span> enable_if &#123;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div><div class="line"><span class="keyword">struct</span> enable_if&lt;<span class="literal">true</span>, T&gt; &#123; <span class="keyword">typedef</span> T type; &#125;;</div><div class="line"></div><div class="line"><span class="comment">//Since C++14</span></div><div class="line"><span class="keyword">template</span>&lt; <span class="keyword">bool</span> B, <span class="keyword">class</span> T = <span class="keyword">void</span> &gt;</div><div class="line"><span class="keyword">using</span> <span class="keyword">enable_if_t</span> = <span class="keyword">typename</span> enable_if&lt;B,T&gt;::type;</div></pre>
       </td>
     </tr>
   </table>
