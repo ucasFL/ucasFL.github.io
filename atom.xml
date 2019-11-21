@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2019-10-08T05:30:22.968Z</updated>
+  <updated>2019-11-21T07:37:38.032Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ucasfl.me/2019/09/28/Cpp-notes/"/>
     <id>http://ucasfl.me/2019/09/28/Cpp-notes/</id>
     <published>2019-09-28T15:03:36.000Z</published>
-    <updated>2019-10-08T05:30:22.968Z</updated>
+    <updated>2019-11-21T07:37:38.032Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight cpp">
   <table>
@@ -72,7 +72,22 @@
       </td>
     </tr>
   </table>
-</figure>]]></content>
+</figure>
+<figure class="highlight cpp">
+  <table>
+    <tr>
+      <td class="gutter">
+        <pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre>
+      </td>
+      <td class="code">
+        <pre><div class="line"><span class="comment">//C++17</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;type_traits&gt;</span></span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... T&gt;</div><div class="line"><span class="keyword">struct</span> disjunction; <span class="comment">//短路实例化</span></div><div class="line"><span class="comment">//若sizeof...(T) == 0, 则为std::false_type</span></div><div class="line"><span class="comment">//member</span></div><div class="line">value <span class="comment">// </span></div><div class="line">type <span class="comment">//最终类型</span></div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span>... B&gt;</div><div class="line"><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">bool</span> disjunction_v = disjunction&lt;B...&gt;::value;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> B&gt;</div><div class="line">strcut negation <span class="comment">//构建类型特性 B 的逻辑否定。</span></div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... T&gt;</div><div class="line">strcut conjunction;</div><div class="line"><span class="comment">//若sizeof...(T) == 0，则胃std::true_type, 否则为首个bool(Bi::value) == false 的Bi, 若不存在，则为BN</span></div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt; <span class="keyword">class</span> T, T v &gt;</div><div class="line"><span class="keyword">struct</span> integral_constant;<span class="comment">//包装特定类型的静态常量</span></div><div class="line"></div><div class="line"><span class="comment">//C++ 17</span></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">bool</span> B&gt;</div><div class="line"><span class="keyword">using</span> bool_constant = integral_constant&lt;<span class="keyword">bool</span>, B&gt;;</div></pre>
+      </td>
+    </tr>
+  </table>
+</figure>
+<ul>
+  <li>C++ 中<code>const</code> 对象只能引用<code>const</code>成员函数。</li>
+</ul>]]></content>
     
     <summary type="html">
     
