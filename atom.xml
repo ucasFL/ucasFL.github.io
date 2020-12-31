@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ucasfl.me/"/>
-  <updated>2020-12-31T17:04:05.369Z</updated>
+  <updated>2020-12-31T17:10:06.581Z</updated>
   <id>http://ucasfl.me/</id>
   
   <author>
@@ -20,10 +20,11 @@
     <link href="http://ucasfl.me/2021/01/01/2021/"/>
     <id>http://ucasfl.me/2021/01/01/2021/</id>
     <published>2020-12-31T16:48:52.000Z</published>
-    <updated>2020-12-31T17:04:05.369Z</updated>
+    <updated>2020-12-31T17:10:06.581Z</updated>
     
     <content type="html"><![CDATA[<p>2020年就这样了<br>感觉很快，又很恍惚</p>
 <p>我可能是一个比较多愁善感的人吧<br>也可能是因为孤独<br>所以每次到元旦的时候反而感觉痛苦<br>因为回望过去的一年<br>总是会发现没有完成的事情太多</p>
+<a id="more"></a>
 <p>2020对于全世界来说最大的一件事就是疫情<br>疫情到现在也还远远未结束<br>不知道何时结束<br>我们每个人都是历史的见证者</p>
 <p>因为疫情的原因<br>在家呆了大半年多<br>荒废了很多时间<br>最大的收获可能就是趁这段时间把驾照学了</p>
 <p>跌跌撞撞很久以后<br>发现还是搞ClickHouse更有意思<br>然而回实验室之后却因为种种原因导致这件事变得困难</p>
@@ -36,7 +37,6 @@
     
       &lt;p&gt;2020年就这样了&lt;br&gt;感觉很快，又很恍惚&lt;/p&gt;
 &lt;p&gt;我可能是一个比较多愁善感的人吧&lt;br&gt;也可能是因为孤独&lt;br&gt;所以每次到元旦的时候反而感觉痛苦&lt;br&gt;因为回望过去的一年&lt;br&gt;总是会发现没有完成的事情太多&lt;/p&gt;
-&lt;p&gt;2020对于全世界来说最大的一件事就是疫情
     
     </summary>
     
@@ -52,7 +52,7 @@
     <link href="http://ucasfl.me/2020/01/01/2019to2020/"/>
     <id>http://ucasfl.me/2020/01/01/2019to2020/</id>
     <published>2019-12-31T16:48:40.000Z</published>
-    <updated>2019-12-31T16:57:50.527Z</updated>
+    <updated>2020-12-31T17:09:47.413Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/photos/chandler.jpg" class="full-image"></p>
 <p>2020年到了<br>来北京的第五个元旦<br>回想起来<br>好像除了2017年<br>每年的元旦都是一个人在寝室度过的吧<br>倒也挺享受这一份孤独</p>
@@ -67,10 +67,10 @@
     
     </summary>
     
-      <category term="元旦" scheme="http://ucasfl.me/categories/%E5%85%83%E6%97%A6/"/>
+      <category term="Year" scheme="http://ucasfl.me/categories/Year/"/>
     
     
-      <category term="元旦" scheme="http://ucasfl.me/tags/%E5%85%83%E6%97%A6/"/>
+      <category term="2020" scheme="http://ucasfl.me/tags/2020/"/>
     
   </entry>
   
